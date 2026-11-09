@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/storage/preferences_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// Provider for [SharedPreferences] instance.
-final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
-  throw UnimplementedError(
-    'sharedPreferencesProvider must be overridden in ProviderScope',
-  );
-});
+export 'package:job_prep/core/storage/preferences_provider.dart';
 
 /// Key used to persist theme mode in [SharedPreferences].
 const String kThemeModeStorageKey = 'jobprep_theme_mode';

@@ -9,7 +9,7 @@ echo "🛡️  Running JobPrep Pre-commit Quality Gates"
 echo "=========================================="
 
 # 1. Format Check
-echo "🔍 [1/4] Checking code formatting..."
+echo "🔍 [1/5] Checking code formatting..."
 dart format --output=none --set-exit-if-changed .
 if [ $? -ne 0 ]; then
   echo "❌ Code formatting check failed! Run 'dart format .' to fix formatting." >&2
@@ -18,7 +18,7 @@ fi
 echo "✅ Code formatting check passed."
 
 # 2. Strict Analyzer Check
-echo "🔍 [2/4] Running strict static analyzer..."
+echo "🔍 [2/5] Running strict static analyzer..."
 dart analyze --fatal-warnings --fatal-infos
 if [ $? -ne 0 ]; then
   echo "❌ Dart analysis failed with warnings or errors!" >&2
@@ -26,8 +26,17 @@ if [ $? -ne 0 ]; then
 fi
 echo "✅ Static analysis passed with 0 warnings and 0 errors."
 
-# 3. Fast Tests
-echo "🔍 [3/4] Running fast test suite..."
+# 3. Hardcoded User-Facing Strings Check
+echo "🔍 [3/5] Checking for hardcoded user-facing strings in widgets..."
+dart run scripts/check_hardcoded_strings.dart
+if [ $? -ne 0 ]; then
+  echo "❌ Hardcoded strings check failed! Use ARB localizations instead." >&2
+  exit 1
+fi
+echo "✅ Hardcoded strings check passed."
+
+# 4. Fast Tests
+echo "🔍 [4/5] Running fast test suite..."
 flutter test
 if [ $? -ne 0 ]; then
   echo "❌ Automated test suite failed!" >&2
@@ -35,8 +44,8 @@ if [ $? -ne 0 ]; then
 fi
 echo "✅ Fast test suite passed."
 
-# 4. Secrets Scan (gitleaks)
-echo "🔍 [4/4] Scanning staged changes for secrets..."
+# 5. Secrets Scan (gitleaks)
+echo "🔍 [5/5] Scanning staged changes for secrets..."
 if command -v gitleaks >/dev/null 2>&1; then
   gitleaks protect --staged -v
   if [ $? -ne 0 ]; then

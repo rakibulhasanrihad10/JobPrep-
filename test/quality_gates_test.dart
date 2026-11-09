@@ -86,13 +86,14 @@ void main() {
   });
 
   group('Quality Gate 3: Git Hooks Configuration', () {
-    test('.githooks/pre-commit contains all four required quality gates', () {
+    test('.githooks/pre-commit contains all required quality gates', () {
       final file = File('.githooks/pre-commit');
       expect(file.existsSync(), isTrue, reason: 'pre-commit hook must exist');
 
       final content = file.readAsStringSync();
       expect(content, contains('dart format'));
       expect(content, contains('dart analyze'));
+      expect(content, contains('check_hardcoded_strings.dart'));
       expect(content, contains('flutter test'));
       expect(content, contains('gitleaks'));
     });
@@ -155,6 +156,10 @@ void main() {
         expect(
           content,
           contains('flutter analyze --fatal-infos --fatal-warnings'),
+        );
+        expect(
+          content,
+          contains('dart run scripts/check_hardcoded_strings.dart'),
         );
         expect(content, contains('flutter test'));
         expect(content, contains('flutter build web --release'));

@@ -47,6 +47,9 @@ jobs:
       - name: Run strict static analysis
         run: flutter analyze --fatal-infos --fatal-warnings
 
+      - name: Check for hardcoded user-facing strings
+        run: dart run scripts/check_hardcoded_strings.dart
+
       - name: Run automated tests
         run: flutter test
 

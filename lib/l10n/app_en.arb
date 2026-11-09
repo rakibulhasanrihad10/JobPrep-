@@ -1,0 +1,127 @@
+{
+  "@@locale": "en",
+  "appTitle": "JobPrep",
+  "@appTitle": {
+    "description": "Application title"
+  },
+  "dashboardTitle": "JobPrep Dashboard",
+  "@dashboardTitle": {
+    "description": "Main title on dashboard"
+  },
+  "dashboardSubtitle": "Job Circular Tracker & Exam Prep Foundations",
+  "@dashboardSubtitle": {
+    "description": "Subtitle on dashboard"
+  },
+  "themeSwitcherTitle": "Theme Mode Switcher",
+  "@themeSwitcherTitle": {
+    "description": "Header for theme settings card"
+  },
+  "themeSwitcherSubtitle": "Choose an appearance mode (persisted with SharedPreferences)",
+  "@themeSwitcherSubtitle": {
+    "description": "Description for theme settings card"
+  },
+  "systemTheme": "System Theme",
+  "@systemTheme": {
+    "description": "System theme option label"
+  },
+  "lightTheme": "Light Theme (Navy & Gold)",
+  "@lightTheme": {
+    "description": "Light theme option label"
+  },
+  "darkTheme": "Dark Theme (Deep Navy & Gold)",
+  "@darkTheme": {
+    "description": "Dark theme option label"
+  },
+  "languageSwitcherTitle": "Language Switcher",
+  "@languageSwitcherTitle": {
+    "description": "Header for language settings card"
+  },
+  "languageSwitcherSubtitle": "Choose an interface language (persisted with SharedPreferences)",
+  "@languageSwitcherSubtitle": {
+    "description": "Description for language settings card"
+  },
+  "languageEnglish": "English",
+  "@languageEnglish": {
+    "description": "English language option"
+  },
+  "languageBangla": "বাংলা (Bangla)",
+  "@languageBangla": {
+    "description": "Bangla language option"
+  },
+  "tokensPreviewTitle": "Design Tokens Preview",
+  "@tokensPreviewTitle": {
+    "description": "Header for tokens preview card"
+  },
+  "goldAccentButton": "Gold Accent Button",
+  "@goldAccentButton": {
+    "description": "Label for gold accent button"
+  },
+  "outlinedButton": "Outlined Button",
+  "@outlinedButton": {
+    "description": "Label for outlined button"
+  },
+  "statusSuccess": "Success",
+  "@statusSuccess": {
+    "description": "Status badge label for success"
+  },
+  "statusWarning": "Warning",
+  "@statusWarning": {
+    "description": "Status badge label for warning"
+  },
+  "statusDanger": "Danger",
+  "@statusDanger": {
+    "description": "Status badge label for danger"
+  },
+  "formattersTitle": "Locale Formatters & Plurals Preview",
+  "@formattersTitle": {
+    "description": "Header for formatters showcase card"
+  },
+  "sampleCurrency": "Application Fee: {formattedAmount}",
+  "@sampleCurrency": {
+    "description": "Sample localized currency",
+    "placeholders": {
+      "formattedAmount": {
+        "type": "String"
+      }
+    }
+  },
+  "sampleDate": "Exam Date: {formattedDate}",
+  "@sampleDate": {
+    "description": "Sample localized date",
+    "placeholders": {
+      "formattedDate": {
+        "type": "String"
+      }
+    }
+  },
+  "pageProgress": "Page {current} of {total}",
+  "@pageProgress": {
+    "description": "Progress display with placeholders",
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "booksCompleted": "{count, plural, =0{No books completed yet} =1{1 book completed} other{{count} books completed}}",
+  "@booksCompleted": {
+    "description": "Pluralized count of completed study books",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "deadlineDaysRemaining": "{days, plural, =0{Application deadline is today} =1{1 day remaining until deadline} other{{days} days remaining until deadline}}",
+  "@deadlineDaysRemaining": {
+    "description": "Pluralized days remaining until application deadline",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  }
+}

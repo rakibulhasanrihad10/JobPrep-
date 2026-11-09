@@ -23,63 +23,75 @@ class AppTextStylesToken {
     required Color secondary,
     required Color muted,
   }) {
+    const fallbackFonts = ['Noto Sans Bengali', 'sans-serif'];
+
     return AppTextStylesToken(
       headlineLarge: const TextStyle(
         fontFamily: 'Inter',
+        fontFamilyFallback: fallbackFonts,
         fontSize: 32,
         fontWeight: FontWeight.w700,
         height: 1.25,
       ).copyWith(color: primary),
       headlineMedium: const TextStyle(
         fontFamily: 'Inter',
+        fontFamilyFallback: fallbackFonts,
         fontSize: 24,
         fontWeight: FontWeight.w600,
         height: 1.3,
       ).copyWith(color: primary),
       titleLarge: const TextStyle(
         fontFamily: 'Inter',
+        fontFamilyFallback: fallbackFonts,
         fontSize: 20,
         fontWeight: FontWeight.w600,
         height: 1.35,
       ).copyWith(color: primary),
       titleMedium: const TextStyle(
         fontFamily: 'Inter',
+        fontFamilyFallback: fallbackFonts,
         fontSize: 16,
         fontWeight: FontWeight.w600,
         height: 1.4,
       ).copyWith(color: primary),
       bodyLarge: const TextStyle(
         fontFamily: 'Inter',
+        fontFamilyFallback: fallbackFonts,
         fontSize: 16,
         fontWeight: FontWeight.w400,
         height: 1.5,
       ).copyWith(color: primary),
       bodyMedium: const TextStyle(
         fontFamily: 'Inter',
+        fontFamilyFallback: fallbackFonts,
         fontSize: 14,
         fontWeight: FontWeight.w400,
         height: 1.5,
       ).copyWith(color: secondary),
       bodySmall: const TextStyle(
         fontFamily: 'Inter',
+        fontFamilyFallback: fallbackFonts,
         fontSize: 12,
         fontWeight: FontWeight.w400,
         height: 1.5,
       ).copyWith(color: muted),
       labelLarge: const TextStyle(
         fontFamily: 'Inter',
+        fontFamilyFallback: fallbackFonts,
         fontSize: 14,
         fontWeight: FontWeight.w600,
         height: 1.2,
       ).copyWith(color: primary),
       labelMedium: const TextStyle(
         fontFamily: 'Inter',
+        fontFamilyFallback: fallbackFonts,
         fontSize: 12,
         fontWeight: FontWeight.w500,
         height: 1.2,
       ).copyWith(color: secondary),
       labelSmall: const TextStyle(
         fontFamily: 'Inter',
+        fontFamilyFallback: fallbackFonts,
         fontSize: 10,
         fontWeight: FontWeight.w500,
         height: 1.2,
