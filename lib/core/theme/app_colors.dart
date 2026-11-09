@@ -9,6 +9,7 @@ class AppColorsToken {
     required this.surface,
     required this.surfaceElevated,
     required this.glassFill,
+    required this.glassFillSolid,
     required this.glassBorder,
     required this.goldAccent,
     required this.goldAccentSubtle,
@@ -26,8 +27,10 @@ class AppColorsToken {
       background: Color(0xFF0A0E1A),
       surface: Color(0xFF12182B),
       surfaceElevated: Color(0xFF1B243D),
-      glassFill: Color(0x331E2A4A),
-      glassBorder: Color(0x26E5A93C),
+      glassFill: Color(0x14FFFFFF), // White fill at 8% opacity (6-10% range)
+      // Solid translucent fill for reduce effects:
+      glassFillSolid: Color(0xFF141A2E),
+      glassBorder: Color(0x26FFFFFF), // 1px border at ~15% opacity
       goldAccent: Color(0xFFE5A93C),
       goldAccentSubtle: Color(0x26E5A93C),
       textPrimary: Color(0xFFF1F5F9),
@@ -45,8 +48,9 @@ class AppColorsToken {
       background: Color(0xFFF4F6FB),
       surface: Color(0xFFFFFFFF),
       surfaceElevated: Color(0xFFF8FAFC),
-      glassFill: Color(0xB3FFFFFF),
-      glassBorder: Color(0x33C59128),
+      glassFill: Color(0xB3FFFFFF), // Translucent clean white fill
+      glassFillSolid: Color(0xFFFFFFFF), // Solid clean fill for reduce effects
+      glassBorder: Color(0x260F172A), // 1px border at ~15% opacity
       goldAccent: Color(0xFFC59128),
       goldAccentSubtle: Color(0x1FC59128),
       textPrimary: Color(0xFF0F172A),
@@ -67,10 +71,13 @@ class AppColorsToken {
   /// Elevated surface color.
   final Color surfaceElevated;
 
-  /// Glassmorphic translucent fill color.
+  /// Glassmorphic translucent fill color (white at 6-10% opacity in dark mode).
   final Color glassFill;
 
-  /// Subtle border highlight for glass surfaces.
+  /// Solid translucent fill used when reduce effects is enabled.
+  final Color glassFillSolid;
+
+  /// Subtle border highlight for glass surfaces (at ~15% opacity).
   final Color glassBorder;
 
   /// Gold accent color.
@@ -105,6 +112,7 @@ class AppColorsToken {
       surface: Color.lerp(surface, other.surface, t)!,
       surfaceElevated: Color.lerp(surfaceElevated, other.surfaceElevated, t)!,
       glassFill: Color.lerp(glassFill, other.glassFill, t)!,
+      glassFillSolid: Color.lerp(glassFillSolid, other.glassFillSolid, t)!,
       glassBorder: Color.lerp(glassBorder, other.glassBorder, t)!,
       goldAccent: Color.lerp(goldAccent, other.goldAccent, t)!,
       goldAccentSubtle:
