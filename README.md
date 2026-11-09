@@ -113,6 +113,44 @@ lib/
 
 ---
 
+## Continuous Integration (CI) & Quality Gates
+
+Automated CI runs via GitHub Actions ([.github/workflows/ci.yml](.github/workflows/ci.yml)) on every pull request and push targeting `main` or `develop`.
+
+The pipeline executes the following checks sequentially:
+1. **Gitleaks Secrets Scan**: Scans repository history to block any exposed credentials or secret keys.
+2. **Flutter Setup & Caching**: Initializes Flutter stable SDK with automated tool caching.
+3. **Dependency Resolution**: Runs `flutter pub get`.
+4. **Code Formatting Check**: Enforces `dart format --output=none --set-exit-if-changed .`.
+5. **Strict Static Analysis**: Enforces `flutter analyze --fatal-infos --fatal-warnings`.
+6. **Automated Test Suite**: Executes unit and widget tests with `flutter test`.
+7. **Web Compilation Verification**: Compiles production web bundle (`flutter build web --release`).
+
+---
+
+## Branch Protection Setup for `main`
+
+To ensure code quality and prevent unauthorized direct commits to `main`:
+
+1. In GitHub, go to **Settings** > **Branches**.
+2. Under **Branch protection rules**, click **Add branch protection rule**.
+3. Set **Branch name pattern** to `main`.
+4. Enable the following settings:
+   - **Require a pull request before merging**:
+     - Check **Require approvals** (at least 1 reviewer).
+     - Check **Dismiss stale pull request approvals when new commits are pushed**.
+   - **Require status checks to pass before merging**:
+     - Check **Require branches to be up to date before merging**.
+     - In the search bar under **Status checks that are required**, select:
+       - `Quality Gates & Web Build` (job defined in `ci.yml`).
+   - **Require linear history**:
+     - Enforces clean Git history adhering to Conventional Commits.
+   - **Do not allow bypassing the above settings**:
+     - Ensures protection applies to everyone, including repository administrators.
+5. Click **Save changes** (or **Create**).
+
+---
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

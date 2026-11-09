@@ -134,4 +134,31 @@ void main() {
       expect(secretPattern.hasMatch(benignContent), isFalse);
     });
   });
+
+  group('Quality Gate 5: GitHub Actions CI Workflow', () {
+    test(
+      '.github/workflows/ci.yml defines complete CI quality gates and build',
+      () {
+        final file = File('.github/workflows/ci.yml');
+        expect(file.existsSync(), isTrue, reason: 'ci.yml must exist');
+
+        final content = file.readAsStringSync();
+        expect(content, contains('name: CI'));
+        expect(content, contains('actions/checkout@v4'));
+        expect(content, contains('gitleaks/gitleaks-action@v2'));
+        expect(content, contains('subosito/flutter-action@v2'));
+        expect(content, contains('flutter pub get'));
+        expect(
+          content,
+          contains('dart format --output=none --set-exit-if-changed .'),
+        );
+        expect(
+          content,
+          contains('flutter analyze --fatal-infos --fatal-warnings'),
+        );
+        expect(content, contains('flutter test'));
+        expect(content, contains('flutter build web --release'));
+      },
+    );
+  });
 }
