@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/router/app_router.dart';
 
 void main() {
-  runApp(const JobPrepApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const ProviderScope(child: JobPrepApp()));
 }
 
-class JobPrepApp extends StatelessWidget {
+/// Root application widget.
+class JobPrepApp extends ConsumerWidget {
+  /// Creates the [JobPrepApp].
   const JobPrepApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
+
+    return MaterialApp.router(
       title: 'JobPrep',
-      home: Scaffold(
-        body: Center(
-          child: Text('Job Circular Tracker & Exam Prep'),
-        ),
-      ),
+      routerConfig: router,
     );
   }
 }
