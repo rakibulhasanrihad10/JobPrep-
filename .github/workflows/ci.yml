@@ -55,3 +55,26 @@ jobs:
 
       - name: Build web application
         run: flutter build web --release
+
+  database:
+    name: Supabase Migrations & Database Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Start local Supabase instance
+        run: supabase start
+
+      - name: Verify clean database reset and migrations
+        run: supabase db reset
+
+      - name: Stop Supabase instance
+        if: always()
+        run: supabase stop
+

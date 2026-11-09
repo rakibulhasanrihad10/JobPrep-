@@ -163,6 +163,11 @@ void main() {
         );
         expect(content, contains('flutter test'));
         expect(content, contains('flutter build web --release'));
+        expect(content, contains('database:'));
+        expect(content, contains('supabase/setup-cli@v1'));
+        expect(content, contains('supabase start'));
+        expect(content, contains('supabase db reset'));
+        expect(content, contains('supabase stop'));
       },
     );
   });

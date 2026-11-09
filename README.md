@@ -101,6 +101,74 @@ lib/
 
 ---
 
+## Supabase Setup & Local Development
+
+### 1. Local Supabase Development
+
+The repository includes a configured `supabase/` directory with `config.toml` and baseline migrations in `supabase/migrations/`.
+
+- **Start local Supabase** (PostgreSQL, Auth, Storage, Studio):
+  ```bash
+  npx supabase start
+  ```
+- **Inspect local credentials and URLs**:
+  ```bash
+  npx supabase status
+  ```
+  This displays the local API URL (typically `http://127.0.0.1:54321`), the local anonymous key, database URL, and Supabase Studio dashboard URL (`http://127.0.0.1:54323`).
+- **Reset local database & apply all migrations**:
+  ```bash
+  npx supabase db reset
+  ```
+- **Stop local Supabase**:
+  ```bash
+  npx supabase stop
+  ```
+
+---
+
+### 2. Creating the Production / Cloud Supabase Project
+
+To create a real Supabase backend:
+
+1. Sign in or sign up at [supabase.com](https://supabase.com/).
+2. Click **New Project** and select your organization.
+3. Configure project details:
+   - **Name**: `JobPrep` (or your choice).
+   - **Database Password**: Generate and securely store a strong password.
+   - **Region**: Choose a region closest to your primary users (e.g., `Singapore (ap-southeast-1)`).
+4. Retrieve API credentials:
+   - Navigate to **Project Settings** (gear icon in the sidebar) > **API**.
+   - Copy the **Project URL** (e.g. `https://<your-project-id>.supabase.co`).
+   - Copy the **Project API Keys** -> `anon` / `public` key.
+
+> [!CAUTION]
+> **Security Requirement**: Never put the `service_role` key in the client application or commit it to the repository. The client application only permits the public `anon` key, provided at runtime via `--dart-define`.
+
+---
+
+### 3. Running Flutter with Supabase Configuration
+
+Pass your project credentials at build or runtime using `--dart-define`:
+
+- **Local Development**:
+  ```bash
+  flutter run -d chrome \
+    --dart-define=ENVIRONMENT=dev \
+    --dart-define=SUPABASE_URL=http://127.0.0.1:54321 \
+    --dart-define=SUPABASE_ANON_KEY=<local-anon-key-from-supabase-status>
+  ```
+
+- **Staging / Production**:
+  ```bash
+  flutter run -d chrome \
+    --dart-define=ENVIRONMENT=prod \
+    --dart-define=SUPABASE_URL=https://<your-project-id>.supabase.co \
+    --dart-define=SUPABASE_ANON_KEY=<your-anon-key>
+  ```
+
+---
+
 ## Git Workflow & Conventions
 
 - **Branches**:
@@ -142,7 +210,8 @@ To ensure code quality and prevent unauthorized direct commits to `main`:
    - **Require status checks to pass before merging**:
      - Check **Require branches to be up to date before merging**.
      - In the search bar under **Status checks that are required**, select:
-       - `Quality Gates & Web Build` (job defined in `ci.yml`).
+        - `Quality Gates & Web Build` (job defined in `ci.yml`).
+        - `Supabase Migrations & Database Verification` (job defined in `ci.yml`).
    - **Require linear history**:
      - Enforces clean Git history adhering to Conventional Commits.
    - **Do not allow bypassing the above settings**:
