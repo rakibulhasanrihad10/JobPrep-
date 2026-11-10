@@ -1,31 +1,28 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
+import 'package:job_prep/features/prep/domain/utils/prep_seeded_templates.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_progress_log_controller.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
-import 'package:job_prep/features/prep/presentation/providers/prep_subjects_controller.dart';
-import 'package:job_prep/features/prep/presentation/utils/prep_templates.dart';
-import 'package:job_prep/l10n/app_localizations.dart';
+import 'package:job_prep/features/prep/presentation/providers/prep_template_providers.dart';
 
 import 'fake_material_and_log_repositories.dart';
+import 'fake_prep_template_repository.dart';
 import 'fake_subject_and_topic_repositories.dart';
 
 void main() {
   group('PrepTemplates & PrepProgressLogNotifier', () {
-    test('loads localized templates and applies bcsCore subjects & materials',
+    test('loads seeded packs and applies Government Job subjects & materials',
         () async {
-      final enL10n = lookupAppLocalizations(const Locale('en'));
-      final bnL10n = lookupAppLocalizations(const Locale('bn'));
-      final enTemplates = PrepTemplates.all(enL10n);
-      final bnTemplates = PrepTemplates.all(bnL10n);
+      final templateRepo = FakePrepTemplateRepository();
+      final templates = PrepSeededTemplates.defaults();
 
-      expect(enTemplates, hasLength(3));
-      expect(bnTemplates, hasLength(3));
+      expect(templates, hasLength(2));
       expect(
-        enTemplates.first.subjects.first.materials.map((m) => m.totalUnits),
+        templates.first.groupedSubjects.first.materials
+            .map((m) => m.totalUnits),
         [300, 300, 400],
       );
 
@@ -33,23 +30,29 @@ void main() {
       final materialRepo = FakeMaterialRepository();
       final container = ProviderContainer(
         overrides: [
+          prepTemplateRepositoryProvider.overrideWithValue(templateRepo),
           subjectRepositoryProvider.overrideWithValue(subjectRepo),
           materialRepositoryProvider.overrideWithValue(materialRepo),
         ],
       );
       addTearDown(container.dispose);
 
-      final ok = await container
-          .read(prepSubjectsControllerProvider.notifier)
-          .applyTemplate(enTemplates.first);
+      final result = await container
+          .read(prepTemplateActionControllerProvider.notifier)
+          .applyTemplate(templates.first);
 
-      expect(ok, isTrue);
-      expect(subjectRepo.subjects, hasLength(3));
-      expect(subjectRepo.subjects.map((s) => s.sortOrder).toList(), [0, 1, 2]);
-      expect(materialRepo.materials, hasLength(5));
+      expect(result, isNotNull);
+      expect(result!.subjectsCreated, 6);
+      expect(result.materialsCreated, 11);
+      expect(subjectRepo.subjects, hasLength(6));
+      expect(
+        subjectRepo.subjects.map((s) => s.sortOrder).toList(),
+        [0, 1, 2, 3, 4, 5],
+      );
+      expect(materialRepo.materials, hasLength(11));
       expect(
         await container.read(subjectsProvider.future),
-        hasLength(3),
+        hasLength(6),
       );
     });
 

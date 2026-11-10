@@ -20,6 +20,8 @@ class PrepOverviewHeaderCard extends StatelessWidget {
     required this.onRefresh,
     super.key,
     this.replayKey,
+    this.onOpenTemplates,
+    this.onSaveAsTemplate,
   });
 
   /// Normalized overall progress across all subjects (`0` to `1`).
@@ -45,6 +47,12 @@ class PrepOverviewHeaderCard extends StatelessWidget {
 
   /// Callback refreshing subjects and materials.
   final VoidCallback onRefresh;
+
+  /// Callback opening the starter & personal templates dialog.
+  final VoidCallback? onOpenTemplates;
+
+  /// Callback saving current subjects as a reusable personal template.
+  final VoidCallback? onSaveAsTemplate;
 
   @override
   Widget build(BuildContext context) {
@@ -148,6 +156,28 @@ class PrepOverviewHeaderCard extends StatelessWidget {
                 onPressed: onAddSubject,
                 child: Text(l10n.prepAddSubjectButton),
               ),
+              if (onOpenTemplates != null)
+                GlassButton(
+                  key: const ValueKey('open-templates-button'),
+                  leading: Icon(
+                    Icons.library_add_outlined,
+                    size: spacing.lg,
+                    color: colors.textPrimary,
+                  ),
+                  onPressed: onOpenTemplates,
+                  child: Text(l10n.prepTemplatesOpenButton),
+                ),
+              if (subjectCount > 0 && onSaveAsTemplate != null)
+                GlassButton(
+                  key: const ValueKey('save-as-template-button'),
+                  leading: Icon(
+                    Icons.bookmark_add_outlined,
+                    size: spacing.lg,
+                    color: colors.textPrimary,
+                  ),
+                  onPressed: onSaveAsTemplate,
+                  child: Text(l10n.prepSaveAsTemplateButton),
+                ),
             ],
           ),
         ],

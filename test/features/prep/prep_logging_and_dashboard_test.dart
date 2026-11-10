@@ -95,11 +95,13 @@ void main() {
         find.byKey(const ValueKey('prep-empty-state-card')),
         findsOneWidget,
       );
-      await tester.tap(find.byKey(const ValueKey('apply-template-bcsCore')));
+      await tester.tap(
+        find.byKey(const ValueKey('apply-template-government_job')),
+      );
       await tester.pumpAndSettle();
 
-      expect(subjectRepo.subjects, hasLength(3));
-      expect(materialRepo.materials, hasLength(5));
+      expect(subjectRepo.subjects, hasLength(6));
+      expect(materialRepo.materials, hasLength(11));
       expect(find.byType(GlassCard), findsWidgets);
       expect(find.byType(AnimatedProgressRing), findsWidgets);
     });

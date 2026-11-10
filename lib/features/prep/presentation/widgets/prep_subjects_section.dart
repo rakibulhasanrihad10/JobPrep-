@@ -5,9 +5,10 @@ import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_template.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_l10n.dart';
-import 'package:job_prep/features/prep/presentation/utils/prep_templates.dart';
+import 'package:job_prep/features/prep/presentation/widgets/prep_template_card.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_card.dart';
 
 /// Displays loading, error, empty-state templates, or reorderable glass
@@ -16,14 +17,20 @@ class PrepSubjectsSection extends StatelessWidget {
   /// Creates a [PrepSubjectsSection].
   const PrepSubjectsSection({
     required this.subjectsAsync,
+    required this.templatesAsync,
     required this.orderedSubjects,
     required this.materialsBySubject,
     required this.selectedSubjectId,
     required this.isExpandedViewport,
     required this.tabVisitId,
     required this.isApplyingTemplate,
+    required this.activeTemplateKey,
+    required this.appliedTemplateKeys,
     required this.onRefresh,
+    required this.onRetryTemplates,
     required this.onApplyTemplate,
+    required this.onCustomizeTemplate,
+    required this.onDeleteTemplate,
     required this.onSelectSubject,
     required this.onEditSubject,
     required this.onDeleteSubject,
@@ -34,6 +41,9 @@ class PrepSubjectsSection extends StatelessWidget {
 
   /// Async loading state for subjects.
   final AsyncValue<List<Subject>> subjectsAsync;
+
+  /// Async loading state for starter and personal templates.
+  final AsyncValue<List<PrepTemplate>> templatesAsync;
 
   /// Pre-sorted subjects rendered when data is available.
   final List<Subject> orderedSubjects;
@@ -53,11 +63,26 @@ class PrepSubjectsSection extends StatelessWidget {
   /// Disables template buttons while a template batch write runs.
   final bool isApplyingTemplate;
 
+  /// Active template key currently mutating, if any.
+  final String? activeTemplateKey;
+
+  /// Template keys already completely represented in the user's subjects.
+  final Set<String> appliedTemplateKeys;
+
   /// Reloads subjects on error.
   final VoidCallback onRefresh;
 
-  /// Applies a chosen starter template to populate subjects and materials.
-  final ValueChanged<PrepStarterTemplate> onApplyTemplate;
+  /// Reloads templates when template fetch fails.
+  final VoidCallback onRetryTemplates;
+
+  /// Applies a chosen starter or personal template directly.
+  final ValueChanged<PrepTemplate> onApplyTemplate;
+
+  /// Opens customization dialog before copying a template.
+  final ValueChanged<PrepTemplate> onCustomizeTemplate;
+
+  /// Deletes a user-saved personal template.
+  final ValueChanged<PrepTemplate> onDeleteTemplate;
 
   /// Selects or navigates to a subject's materials view.
   final ValueChanged<Subject> onSelectSubject;
@@ -80,9 +105,7 @@ class PrepSubjectsSection extends StatelessWidget {
     final tokens = context.tokens;
     final colors = tokens.colors;
     final spacing = tokens.spacing;
-    final radii = tokens.radii;
     final l10n = context.l10n;
-    final locale = Localizations.localeOf(context);
 
     return subjectsAsync.when(
       loading: () => Padding(
@@ -109,7 +132,6 @@ class PrepSubjectsSection extends StatelessWidget {
       ),
       data: (_) {
         if (orderedSubjects.isEmpty) {
-          final templates = PrepTemplates.all(l10n);
           return GlassCard(
             key: const ValueKey('prep-empty-state-card'),
             padding: spacing.insetsAllXl,
@@ -144,58 +166,45 @@ class PrepSubjectsSection extends StatelessWidget {
                   style: tokens.textStyles.bodySmall,
                 ),
                 SizedBox(height: spacing.md),
-                for (final template in templates)
-                  Container(
-                    margin: EdgeInsets.only(bottom: spacing.sm),
-                    padding: spacing.insetsAllMd,
-                    decoration: BoxDecoration(
-                      color: colors.surfaceElevated,
-                      borderRadius: radii.cardRadius,
-                      border: Border.all(color: colors.glassBorder),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                template.title,
-                                style: tokens.textStyles.titleMedium,
-                              ),
-                              SizedBox(height: spacing.xxs),
-                              Text(
-                                template.subtitle,
-                                style: tokens.textStyles.bodySmall,
-                              ),
-                              SizedBox(height: spacing.xs),
-                              Text(
-                                l10n.prepSubjectCount(
-                                  template.subjects.length,
-                                  PrepL10n.formatInt(
-                                    template.subjects.length,
-                                    locale,
-                                  ),
-                                ),
-                                style: tokens.textStyles.labelSmall.copyWith(
-                                  color: colors.goldAccent,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: spacing.sm),
-                        GlassButton(
-                          key: ValueKey('apply-template-${template.id.name}'),
-                          variant: GlassButtonVariant.primary,
-                          onPressed: isApplyingTemplate
-                              ? null
-                              : () => onApplyTemplate(template),
-                          child: Text(l10n.prepApplyTemplateButton),
-                        ),
-                      ],
-                    ),
+                templatesAsync.when(
+                  loading: () => Padding(
+                    padding: spacing.insetsAllLg,
+                    child: const Center(child: CircularProgressIndicator()),
                   ),
+                  error: (error, _) => Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          PrepL10n.failureMessage(error, l10n),
+                          style: tokens.textStyles.bodyMedium,
+                        ),
+                      ),
+                      SizedBox(width: spacing.sm),
+                      GlassButton(
+                        onPressed: onRetryTemplates,
+                        child: Text(l10n.calendarRetry),
+                      ),
+                    ],
+                  ),
+                  data: (templates) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      for (final template in templates)
+                        PrepTemplateCard(
+                          template: template,
+                          isAlreadyApplied:
+                              appliedTemplateKeys.contains(template.stableKey),
+                          isBusy: isApplyingTemplate,
+                          isActive: activeTemplateKey == template.stableKey,
+                          onApply: () => onApplyTemplate(template),
+                          onCustomize: () => onCustomizeTemplate(template),
+                          onDelete: template.isSystem
+                              ? null
+                              : () => onDeleteTemplate(template),
+                        ),
+                    ],
+                  ),
+                ),
               ],
             ),
           );

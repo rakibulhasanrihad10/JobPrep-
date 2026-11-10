@@ -6,14 +6,19 @@ import 'package:go_router/go_router.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/fade_slide_in.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_template.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
+import 'package:job_prep/features/prep/domain/utils/prep_template_planner.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_subjects_controller.dart';
+import 'package:job_prep/features/prep/presentation/providers/prep_template_providers.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_screen.dart';
+import 'package:job_prep/features/prep/presentation/utils/prep_template_ui_helpers.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_delete_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_overview_header_card.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_subject_detail_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_subjects_section.dart';
+import 'package:job_prep/features/prep/presentation/widgets/prep_templates_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.dart';
 
 /// Main animated preparation dashboard and Subject & Material Manager screen.
@@ -52,6 +57,7 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
   void _refreshAll() {
     unawaited(ref.read(subjectsProvider.notifier).refresh());
     unawaited(ref.read(allMaterialsProvider.notifier).refresh());
+    unawaited(ref.read(prepTemplatesProvider.notifier).refresh());
   }
 
   Future<void> _openCreateSubject({required bool selectCreated}) async {
@@ -127,15 +133,27 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
         breakpoints.isCompact(viewportWidth) ? spacing.lg : spacing.xl;
 
     final subjectsAsync = ref.watch(subjectsProvider);
+    final templatesAsync = ref.watch(prepTemplatesProvider);
     final materials =
         ref.watch(allMaterialsProvider).asData?.value ?? const <PrepMaterial>[];
     final overallProgress =
         ref.watch(overallPrepProgressProvider).asData?.value ?? 0.0;
-    final subjectsMutationState = ref.watch(prepSubjectsControllerProvider);
+    final templateActionState = ref.watch(prepTemplateActionControllerProvider);
 
     final subjects = List<Subject>.of(
       subjectsAsync.asData?.value ?? const <Subject>[],
     )..sort((a, b) => a.sortOrder.compareTo(b.sortOrder));
+
+    final appliedTemplateKeys = <String>{
+      for (final template
+          in templatesAsync.asData?.value ?? const <PrepTemplate>[])
+        if (PrepTemplatePlanner.isAlreadyApplied(
+          template: template,
+          existingSubjects: subjects,
+          existingMaterials: materials,
+        ))
+          template.stableKey,
+    };
 
     final materialsBySubject = <String, List<PrepMaterial>>{};
     var completedUnitsTotal = 0;
@@ -162,20 +180,41 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
       replayKey: 'prep-overall-visit-$_tabVisitId',
       onAddSubject: () => _openCreateSubject(selectCreated: isExpanded),
       onRefresh: _refreshAll,
+      onOpenTemplates: () => unawaited(showPrepTemplatesDialog(context)),
+      onSaveAsTemplate: subjects.isEmpty
+          ? null
+          : () => unawaited(
+                PrepTemplateUiHelpers.savePersonalAndNotify(
+                  context,
+                  subjects: subjects,
+                  materials: materials,
+                ),
+              ),
     );
 
     final subjectsSection = PrepSubjectsSection(
       subjectsAsync: subjectsAsync,
+      templatesAsync: templatesAsync,
       orderedSubjects: subjects,
       materialsBySubject: materialsBySubject,
       selectedSubjectId: selectedSubject?.id,
       isExpandedViewport: isExpanded,
       tabVisitId: _tabVisitId,
-      isApplyingTemplate: subjectsMutationState.isSubmitting,
+      isApplyingTemplate: templateActionState.isBusy,
+      activeTemplateKey: templateActionState.activeTemplateId,
+      appliedTemplateKeys: appliedTemplateKeys,
       onRefresh: _refreshAll,
-      onApplyTemplate: (template) => ref
-          .read(prepSubjectsControllerProvider.notifier)
-          .applyTemplate(template),
+      onRetryTemplates: () =>
+          unawaited(ref.read(prepTemplatesProvider.notifier).refresh()),
+      onApplyTemplate: (template) => unawaited(
+        PrepTemplateUiHelpers.applyAndNotify(context, ref, template),
+      ),
+      onCustomizeTemplate: (template) => unawaited(
+        PrepTemplateUiHelpers.customizeAndNotify(context, template),
+      ),
+      onDeleteTemplate: (template) => unawaited(
+        PrepTemplateUiHelpers.confirmAndDeleteTemplate(context, ref, template),
+      ),
       onSelectSubject: (subject) =>
           _selectSubject(subject, isExpanded: isExpanded),
       onEditSubject: (subject) =>

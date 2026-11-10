@@ -1747,71 +1747,126 @@ class AppLocalizationsBn extends AppLocalizations {
   String get prepApplyTemplateButton => 'টেমপ্লেট প্রয়োগ করুন';
 
   @override
-  String get prepTemplateBcsTitle => 'বিসিএস ও বাংলা মূল ট্র্যাক';
+  String get prepTemplatesOpenButton => 'টেমপ্লেটসমূহ';
 
   @override
-  String get prepTemplateBcsSubtitle =>
-      'বাংলা ৩টি বই (৩০০/৩০০/৪০০ পৃষ্ঠা), ইংরেজি ও সাধারণ জ্ঞান';
+  String get prepTemplatesDialogTitle => 'প্রস্তুতি টেমপ্লেটসমূহ';
 
   @override
-  String get prepTemplateBankTitle => 'ব্যাংক অফিসার প্রস্তুতি';
+  String get prepTemplatesSystemSection => 'স্টার্টার প্যাক';
 
   @override
-  String get prepTemplateBankSubtitle =>
-      'গণিত, ইংরেজি রচনা ও ব্যাংকিং সাধারণ জ্ঞান';
+  String get prepTemplatesPersonalSection => 'আপনার ব্যক্তিগত টেমপ্লেট';
 
   @override
-  String get prepTemplateTechTitle => 'প্রকৌশল ও সফটওয়্যার';
+  String get prepTemplatesPersonalEmpty =>
+      'আপনার বর্তমান বিষয়গুলো একটি ব্যক্তিগত টেমপ্লেট হিসেবে সংরক্ষণ করুন যাতে যেকোনো সময় পুনরায় ব্যবহার করতে পারেন।';
 
   @override
-  String get prepTemplateTechSubtitle =>
-      'অ্যালগরিদম, সিস্টেম ডিজাইন ও কোর সিএস';
+  String get prepTemplateSystemBadge => 'স্টার্টার প্যাক';
 
   @override
-  String get prepTplSubBcsBangla => 'বাংলা সাহিত্য ও ব্যাকরণ';
+  String get prepTemplatePersonalBadge => 'ব্যক্তিগত';
 
   @override
-  String get prepTplSubBcsEnglish => 'ইংরেজি ভাষা ও সাহিত্য';
+  String get prepTemplateAppliedBadge => 'প্রয়োগ করা হয়েছে';
 
   @override
-  String get prepTplSubBcsGk => 'বাংলাদেশ ও আন্তর্জাতিক বিষয়াবলি';
+  String get prepTemplateCustomizeButton => 'একক পরিবর্তন';
 
   @override
-  String get prepTplMatBanglaOne => 'অগ্রদূত বাংলা সাহিত্য';
+  String get prepTemplateApplyAgainButton => 'পুনরায় প্রয়োগ';
 
   @override
-  String get prepTplMatBanglaTwo => 'MP3 বাংলা ব্যাকরণ';
+  String prepTemplateApplyConfirmTitle(String title) {
+    return '\"$title\" কাস্টমাইজ ও প্রয়োগ করুন';
+  }
 
   @override
-  String get prepTplMatBanglaThree => 'প্রফেসরস বাংলা ডাইজেস্ট';
+  String get prepTemplateApplyConfirmSubtitle =>
+      'আপনার প্রস্তুতি বিষয়ে কপি করার আগে নিচে একক সংখ্যা পরিবর্তন করতে পারেন। পরে যেকোনো সময় সবকিছু সম্পাদনা বা মুছে ফেলতে পারবেন।';
 
   @override
-  String get prepTplMatEnglishCore => 'কম্পিটিটিভ ইংলিশ';
+  String get prepTemplateConfirmApplyAction => 'আমার প্রস্তুতিতে কপি করুন';
 
   @override
-  String get prepTplMatGkDigest => 'সাম্প্রতিক ও মুক্তিযুদ্ধ নোটস';
+  String prepTemplateAppliedSnackbar(int subjectCount, String formattedSubjects,
+      int materialCount, String formattedMaterials, String title) {
+    return '\"$title\" থেকে $formattedSubjectsটি বিষয় এবং $formattedMaterialsটি উপকরণ যোগ করা হয়েছে।';
+  }
 
   @override
-  String get prepTplSubBankMath => 'গাণিতিক দক্ষতা';
+  String prepTemplateAlreadyAppliedSnackbar(String title) {
+    return '\"$title\" টেমপ্লেটের সব বিষয় ও উপকরণ ইতিমধ্যেই আপনার পরিকল্পনায় রয়েছে (কোনো ডুপ্লিকেট তৈরি হয়নি)।';
+  }
 
   @override
-  String get prepTplSubBankEnglish => 'ইংরেজি রচনা ও অনুবাদ';
+  String get prepSaveAsTemplateButton => 'টেমপ্লেট হিসেবে সংরক্ষণ';
 
   @override
-  String get prepTplMatBankMathBook => 'ব্যাংক ম্যাথ গাইড';
+  String get prepSaveTemplateDialogTitle => 'ব্যক্তিগত টেমপ্লেট সংরক্ষণ';
 
   @override
-  String get prepTplMatBankFocus => 'ফোকাস রাইটিং ও অনুবাদ';
+  String get prepSaveTemplateTitleLabel => 'টেমপ্লেটের নাম';
 
   @override
-  String get prepTplSubTechDsa => 'ডেটা স্ট্রাকচার ও অ্যালগরিদম';
+  String get prepSaveTemplateTitleHint => 'যেমন: ৪৮তম বিসিএস মূল পরিকল্পনা';
 
   @override
-  String get prepTplSubTechSysDesign => 'সিস্টেম ডিজাইন';
+  String get prepSaveTemplateTitleRequired =>
+      'অনুগ্রহ করে টেমপ্লেটের একটি নাম লিখুন।';
 
   @override
-  String get prepTplMatDsaSet => 'কোডিং প্রবলেম সেট';
+  String get prepSaveTemplateDescLabel => 'বিবরণ (ঐচ্ছিক)';
 
   @override
-  String get prepTplMatSysDesignGuide => 'সিস্টেম ডিজাইন গাইড';
+  String get prepSaveTemplateDescHint =>
+      'বিষয় এবং লক্ষ্য চাকরি সম্পর্কে সংক্ষিপ্ত নোট';
+
+  @override
+  String get prepSaveTemplateExamLabel => 'ক্যারিয়ার বা পরীক্ষার ধরন';
+
+  @override
+  String prepSaveTemplatePreviewSummary(
+      String formattedSubjects, String formattedMaterials) {
+    return '$formattedSubjectsটি বিষয় এবং $formattedMaterialsটি উপকরণ এই টেমপ্লেটে সংরক্ষণ করা হবে';
+  }
+
+  @override
+  String get prepSaveTemplateSaveAction => 'টেমপ্লেট সংরক্ষণ করুন';
+
+  @override
+  String prepSaveTemplateSavedSnackbar(String title) {
+    return 'ব্যক্তিগত টেমপ্লেট \"$title\" সংরক্ষণ করা হয়েছে।';
+  }
+
+  @override
+  String get prepDeleteTemplateTitle => 'ব্যক্তিগত টেমপ্লেট মুছবেন?';
+
+  @override
+  String prepDeleteTemplateMessage(String title) {
+    return '\"$title\" মুছে ফেলতে চান? আপনার ড্যাশবোর্ডে ইতিমধ্যে কপি করা বিষয় ও উপকরণ অপরিবর্তিত থাকবে।';
+  }
+
+  @override
+  String prepDeleteTemplateDeletedSnackbar(String title) {
+    return 'ব্যক্তিগত টেমপ্লেট \"$title\" মুছে ফেলা হয়েছে।';
+  }
+
+  @override
+  String get prepTemplateUnitsInvalid => '০ বা তার বড় পূর্ণসংখ্যা লিখুন।';
+
+  @override
+  String get prepSeededGovJobTitle => 'সরকারি চাকরি';
+
+  @override
+  String get prepSeededGovJobSubtitle =>
+      'বাংলা, ইংরেজি, সাধারণ জ্ঞান, গণিত, বিশ্লেষণাত্মক যুক্তি ও কম্পিউটার — পরিবর্তনযোগ্য স্টার্টার উপকরণসহ।';
+
+  @override
+  String get prepSeededSweTitle => 'সফটওয়্যার ইঞ্জিনিয়ার';
+
+  @override
+  String get prepSeededSweSubtitle =>
+      'ডেটা স্ট্রাকচার ও অ্যালগরিদম, ডেটাবেস সিস্টেম, ওওপি, ওয়েব ডেভেলপমেন্ট এবং সফটওয়্যার কোয়ালিটি অ্যাসুরেন্স।';
 }

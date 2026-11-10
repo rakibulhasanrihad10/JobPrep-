@@ -1746,71 +1746,140 @@ class AppLocalizationsEn extends AppLocalizations {
   String get prepApplyTemplateButton => 'Apply template';
 
   @override
-  String get prepTemplateBcsTitle => 'BCS & Bangla Core';
+  String get prepTemplatesOpenButton => 'Templates';
 
   @override
-  String get prepTemplateBcsSubtitle =>
-      'Bengali 3-book track (300/300/400 pages), English, GK, and Aptitude';
+  String get prepTemplatesDialogTitle => 'Study Templates';
 
   @override
-  String get prepTemplateBankTitle => 'Bank Officer Track';
+  String get prepTemplatesSystemSection => 'Starter packs';
 
   @override
-  String get prepTemplateBankSubtitle =>
-      'Quantitative math, English writing, and Banking GK';
+  String get prepTemplatesPersonalSection => 'Your personal templates';
 
   @override
-  String get prepTemplateTechTitle => 'Software & Engineering';
+  String get prepTemplatesPersonalEmpty =>
+      'Save your current subjects as a personal template so you can reuse or share your plan anytime.';
 
   @override
-  String get prepTemplateTechSubtitle =>
-      'Algorithms, system design, and core computer science';
+  String get prepTemplateSystemBadge => 'Starter pack';
 
   @override
-  String get prepTplSubBcsBangla => 'Bengali Literature & Grammar';
+  String get prepTemplatePersonalBadge => 'Personal';
 
   @override
-  String get prepTplSubBcsEnglish => 'English Language & Literature';
+  String get prepTemplateAppliedBadge => 'Applied';
 
   @override
-  String get prepTplSubBcsGk => 'Bangladesh & International Affairs';
+  String get prepTemplateCustomizeButton => 'Edit units';
 
   @override
-  String get prepTplMatBanglaOne => 'Agrodut Bengali Literature';
+  String get prepTemplateApplyAgainButton => 'Re-apply';
 
   @override
-  String get prepTplMatBanglaTwo => 'MP3 Bangla Grammar';
+  String prepTemplateApplyConfirmTitle(String title) {
+    return 'Customize & apply \"$title\"';
+  }
 
   @override
-  String get prepTplMatBanglaThree => 'Professors Bangla Digest';
+  String get prepTemplateApplyConfirmSubtitle =>
+      'Adjust unit counts below before copying into your own prep subjects. Everything remains fully editable afterward.';
 
   @override
-  String get prepTplMatEnglishCore => 'English For Competitive Exams';
+  String get prepTemplateConfirmApplyAction => 'Copy to my prep plan';
 
   @override
-  String get prepTplMatGkDigest => 'Recent GK & Liberation War Notes';
+  String prepTemplateAppliedSnackbar(int subjectCount, String formattedSubjects,
+      int materialCount, String formattedMaterials, String title) {
+    String _temp0 = intl.Intl.pluralLogic(
+      subjectCount,
+      locale: localeName,
+      other: '$formattedSubjects subjects',
+      one: '1 subject',
+      zero: '0 subjects',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      materialCount,
+      locale: localeName,
+      other: '$formattedMaterials materials',
+      one: '1 material',
+      zero: '0 materials',
+    );
+    return 'Copied $_temp0 and $_temp1 from \"$title\".';
+  }
 
   @override
-  String get prepTplSubBankMath => 'Quantitative Aptitude';
+  String prepTemplateAlreadyAppliedSnackbar(String title) {
+    return 'All subjects and materials from \"$title\" are already in your plan (no duplicates created).';
+  }
 
   @override
-  String get prepTplSubBankEnglish => 'English Comprehension & Writing';
+  String get prepSaveAsTemplateButton => 'Save as template';
 
   @override
-  String get prepTplMatBankMathBook => 'Khairul\'s Bank Math';
+  String get prepSaveTemplateDialogTitle => 'Save personal template';
 
   @override
-  String get prepTplMatBankFocus => 'Focus & Translation Practice';
+  String get prepSaveTemplateTitleLabel => 'Template name';
 
   @override
-  String get prepTplSubTechDsa => 'Data Structures & Algorithms';
+  String get prepSaveTemplateTitleHint => 'e.g. 48th BCS Core Plan';
 
   @override
-  String get prepTplSubTechSysDesign => 'System Design & Architecture';
+  String get prepSaveTemplateTitleRequired => 'Please enter a template name.';
 
   @override
-  String get prepTplMatDsaSet => 'Core Coding Problem Set';
+  String get prepSaveTemplateDescLabel => 'Description (optional)';
 
   @override
-  String get prepTplMatSysDesignGuide => 'Designing Data-Intensive Systems';
+  String get prepSaveTemplateDescHint =>
+      'Short summary of subjects and target role';
+
+  @override
+  String get prepSaveTemplateExamLabel => 'Career or exam track';
+
+  @override
+  String prepSaveTemplatePreviewSummary(
+      String formattedSubjects, String formattedMaterials) {
+    return 'Copies $formattedSubjects subjects and $formattedMaterials materials into this reusable template';
+  }
+
+  @override
+  String get prepSaveTemplateSaveAction => 'Save template';
+
+  @override
+  String prepSaveTemplateSavedSnackbar(String title) {
+    return 'Saved personal template \"$title\".';
+  }
+
+  @override
+  String get prepDeleteTemplateTitle => 'Delete personal template?';
+
+  @override
+  String prepDeleteTemplateMessage(String title) {
+    return 'Delete \"$title\"? Any subjects and materials already copied into your prep dashboard stay untouched.';
+  }
+
+  @override
+  String prepDeleteTemplateDeletedSnackbar(String title) {
+    return 'Deleted personal template \"$title\".';
+  }
+
+  @override
+  String get prepTemplateUnitsInvalid =>
+      'Enter zero or a positive whole number.';
+
+  @override
+  String get prepSeededGovJobTitle => 'Government Job';
+
+  @override
+  String get prepSeededGovJobSubtitle =>
+      'Bengali, English, General Knowledge, Mathematics, Analytical Reasoning, and Computer with customizable materials.';
+
+  @override
+  String get prepSeededSweTitle => 'Software Engineer';
+
+  @override
+  String get prepSeededSweSubtitle =>
+      'Data Structures & Algorithms, Database Systems, OOP, Web Development, and Software Quality Assurance.';
 }

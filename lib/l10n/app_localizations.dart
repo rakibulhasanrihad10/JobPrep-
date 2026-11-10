@@ -3066,137 +3066,211 @@ abstract class AppLocalizations {
   /// **'Apply template'**
   String get prepApplyTemplateButton;
 
-  /// Starter template title for BCS preparation
+  /// Header button label opening starter and personal templates
   ///
   /// In en, this message translates to:
-  /// **'BCS & Bangla Core'**
-  String get prepTemplateBcsTitle;
+  /// **'Templates'**
+  String get prepTemplatesOpenButton;
 
-  /// Starter template description for BCS preparation
+  /// Dialog heading listing starter packs and personal templates
   ///
   /// In en, this message translates to:
-  /// **'Bengali 3-book track (300/300/400 pages), English, GK, and Aptitude'**
-  String get prepTemplateBcsSubtitle;
+  /// **'Study Templates'**
+  String get prepTemplatesDialogTitle;
 
-  /// Starter template title for bank recruitment exams
+  /// Section heading for seeded read-only template packs
   ///
   /// In en, this message translates to:
-  /// **'Bank Officer Track'**
-  String get prepTemplateBankTitle;
+  /// **'Starter packs'**
+  String get prepTemplatesSystemSection;
 
-  /// Starter template description for bank recruitment exams
+  /// Section heading for user-saved reusable templates
   ///
   /// In en, this message translates to:
-  /// **'Quantitative math, English writing, and Banking GK'**
-  String get prepTemplateBankSubtitle;
+  /// **'Your personal templates'**
+  String get prepTemplatesPersonalSection;
 
-  /// Starter template title for technical engineering interviews
+  /// Empty guidance text when user has not saved any personal templates
   ///
   /// In en, this message translates to:
-  /// **'Software & Engineering'**
-  String get prepTemplateTechTitle;
+  /// **'Save your current subjects as a personal template so you can reuse or share your plan anytime.'**
+  String get prepTemplatesPersonalEmpty;
 
-  /// Starter template description for technical engineering interviews
+  /// Badge identifying a read-only system starter pack
   ///
   /// In en, this message translates to:
-  /// **'Algorithms, system design, and core computer science'**
-  String get prepTemplateTechSubtitle;
+  /// **'Starter pack'**
+  String get prepTemplateSystemBadge;
 
-  /// Template subject name for BCS Bengali
+  /// Badge identifying a user-created personal template
   ///
   /// In en, this message translates to:
-  /// **'Bengali Literature & Grammar'**
-  String get prepTplSubBcsBangla;
+  /// **'Personal'**
+  String get prepTemplatePersonalBadge;
 
-  /// Template subject name for BCS English
+  /// Badge shown when all subjects and materials of a template already exist
   ///
   /// In en, this message translates to:
-  /// **'English Language & Literature'**
-  String get prepTplSubBcsEnglish;
+  /// **'Applied'**
+  String get prepTemplateAppliedBadge;
 
-  /// Template subject name for BCS General Knowledge
+  /// Button opening preview dialog where users adjust template unit counts before copying
   ///
   /// In en, this message translates to:
-  /// **'Bangladesh & International Affairs'**
-  String get prepTplSubBcsGk;
+  /// **'Edit units'**
+  String get prepTemplateCustomizeButton;
 
-  /// Template material 1 for Bengali track
+  /// Button label when template items are already in user plan
   ///
   /// In en, this message translates to:
-  /// **'Agrodut Bengali Literature'**
-  String get prepTplMatBanglaOne;
+  /// **'Re-apply'**
+  String get prepTemplateApplyAgainButton;
 
-  /// Template material 2 for Bengali track
+  /// Title of preview modal allowing unit customization before applying template
   ///
   /// In en, this message translates to:
-  /// **'MP3 Bangla Grammar'**
-  String get prepTplMatBanglaTwo;
+  /// **'Customize & apply \"{title}\"'**
+  String prepTemplateApplyConfirmTitle(String title);
 
-  /// Template material 3 for Bengali track
+  /// Subtitle explaining unit adjustments and post-copy editability
   ///
   /// In en, this message translates to:
-  /// **'Professors Bangla Digest'**
-  String get prepTplMatBanglaThree;
+  /// **'Adjust unit counts below before copying into your own prep subjects. Everything remains fully editable afterward.'**
+  String get prepTemplateApplyConfirmSubtitle;
 
-  /// Template material for English track
+  /// Primary confirm button inside template customize dialog
   ///
   /// In en, this message translates to:
-  /// **'English For Competitive Exams'**
-  String get prepTplMatEnglishCore;
+  /// **'Copy to my prep plan'**
+  String get prepTemplateConfirmApplyAction;
 
-  /// Template material for GK track
+  /// Snackbar confirmation showing count of copied subjects and materials
   ///
   /// In en, this message translates to:
-  /// **'Recent GK & Liberation War Notes'**
-  String get prepTplMatGkDigest;
+  /// **'Copied {subjectCount, plural, =0{0 subjects} =1{1 subject} other{{formattedSubjects} subjects}} and {materialCount, plural, =0{0 materials} =1{1 material} other{{formattedMaterials} materials}} from \"{title}\".'**
+  String prepTemplateAppliedSnackbar(int subjectCount, String formattedSubjects,
+      int materialCount, String formattedMaterials, String title);
 
-  /// Template subject name for Bank Quantitative Aptitude
+  /// Snackbar message when applying a template that is already present
   ///
   /// In en, this message translates to:
-  /// **'Quantitative Aptitude'**
-  String get prepTplSubBankMath;
+  /// **'All subjects and materials from \"{title}\" are already in your plan (no duplicates created).'**
+  String prepTemplateAlreadyAppliedSnackbar(String title);
 
-  /// Template subject name for Bank English
+  /// Button label opening dialog to save current subjects as a personal template
   ///
   /// In en, this message translates to:
-  /// **'English Comprehension & Writing'**
-  String get prepTplSubBankEnglish;
+  /// **'Save as template'**
+  String get prepSaveAsTemplateButton;
 
-  /// Template material for Bank Math
+  /// Heading of dialog for saving current user subjects as a template
   ///
   /// In en, this message translates to:
-  /// **'Khairul\'s Bank Math'**
-  String get prepTplMatBankMathBook;
+  /// **'Save personal template'**
+  String get prepSaveTemplateDialogTitle;
 
-  /// Template material for Bank Writing
+  /// Text field label for personal template name
   ///
   /// In en, this message translates to:
-  /// **'Focus & Translation Practice'**
-  String get prepTplMatBankFocus;
+  /// **'Template name'**
+  String get prepSaveTemplateTitleLabel;
 
-  /// Template subject name for Tech DSA
+  /// Hint text for personal template name field
   ///
   /// In en, this message translates to:
-  /// **'Data Structures & Algorithms'**
-  String get prepTplSubTechDsa;
+  /// **'e.g. 48th BCS Core Plan'**
+  String get prepSaveTemplateTitleHint;
 
-  /// Template subject name for Tech System Design
+  /// Validation error when personal template title is blank
   ///
   /// In en, this message translates to:
-  /// **'System Design & Architecture'**
-  String get prepTplSubTechSysDesign;
+  /// **'Please enter a template name.'**
+  String get prepSaveTemplateTitleRequired;
 
-  /// Template material for Tech DSA
+  /// Text field label for optional template description
   ///
   /// In en, this message translates to:
-  /// **'Core Coding Problem Set'**
-  String get prepTplMatDsaSet;
+  /// **'Description (optional)'**
+  String get prepSaveTemplateDescLabel;
 
-  /// Template material for Tech System Design
+  /// Hint text for optional personal template description
   ///
   /// In en, this message translates to:
-  /// **'Designing Data-Intensive Systems'**
-  String get prepTplMatSysDesignGuide;
+  /// **'Short summary of subjects and target role'**
+  String get prepSaveTemplateDescHint;
+
+  /// Text field label for personal template career/exam track
+  ///
+  /// In en, this message translates to:
+  /// **'Career or exam track'**
+  String get prepSaveTemplateExamLabel;
+
+  /// Summary inside save-personal-template dialog showing snapshot size
+  ///
+  /// In en, this message translates to:
+  /// **'Copies {formattedSubjects} subjects and {formattedMaterials} materials into this reusable template'**
+  String prepSaveTemplatePreviewSummary(
+      String formattedSubjects, String formattedMaterials);
+
+  /// Primary button saving a personal prep template
+  ///
+  /// In en, this message translates to:
+  /// **'Save template'**
+  String get prepSaveTemplateSaveAction;
+
+  /// Snackbar shown after saving a personal template
+  ///
+  /// In en, this message translates to:
+  /// **'Saved personal template \"{title}\".'**
+  String prepSaveTemplateSavedSnackbar(String title);
+
+  /// Confirmation dialog heading before deleting a personal template
+  ///
+  /// In en, this message translates to:
+  /// **'Delete personal template?'**
+  String get prepDeleteTemplateTitle;
+
+  /// Confirmation message before deleting a personal template
+  ///
+  /// In en, this message translates to:
+  /// **'Delete \"{title}\"? Any subjects and materials already copied into your prep dashboard stay untouched.'**
+  String prepDeleteTemplateMessage(String title);
+
+  /// Snackbar shown after deleting a personal template
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted personal template \"{title}\".'**
+  String prepDeleteTemplateDeletedSnackbar(String title);
+
+  /// Validation error inside template customization dialog for invalid unit count
+  ///
+  /// In en, this message translates to:
+  /// **'Enter zero or a positive whole number.'**
+  String get prepTemplateUnitsInvalid;
+
+  /// Localized title for seeded Government Job pack
+  ///
+  /// In en, this message translates to:
+  /// **'Government Job'**
+  String get prepSeededGovJobTitle;
+
+  /// Localized summary for seeded Government Job pack
+  ///
+  /// In en, this message translates to:
+  /// **'Bengali, English, General Knowledge, Mathematics, Analytical Reasoning, and Computer with customizable materials.'**
+  String get prepSeededGovJobSubtitle;
+
+  /// Localized title for seeded Software Engineer pack
+  ///
+  /// In en, this message translates to:
+  /// **'Software Engineer'**
+  String get prepSeededSweTitle;
+
+  /// Localized summary for seeded Software Engineer pack
+  ///
+  /// In en, this message translates to:
+  /// **'Data Structures & Algorithms, Database Systems, OOP, Web Development, and Software Quality Assurance.'**
+  String get prepSeededSweSubtitle;
 }
 
 class _AppLocalizationsDelegate

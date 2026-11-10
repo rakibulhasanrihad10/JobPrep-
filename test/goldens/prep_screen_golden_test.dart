@@ -13,12 +13,14 @@ import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_cover_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/prep_template_providers.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
 import 'package:job_prep/l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../features/prep/fake_material_and_log_repositories.dart';
 import '../features/prep/fake_material_cover_repository.dart';
+import '../features/prep/fake_prep_template_repository.dart';
 import '../features/prep/fake_subject_and_topic_repositories.dart';
 
 class _TolerantGoldenComparator extends LocalFileComparator {
@@ -154,6 +156,9 @@ void main() {
           subjectRepositoryProvider.overrideWithValue(subjectRepo),
           materialRepositoryProvider.overrideWithValue(materialRepo),
           materialCoverRepositoryProvider.overrideWithValue(coverRepo),
+          prepTemplateRepositoryProvider.overrideWithValue(
+            FakePrepTemplateRepository(),
+          ),
           materialCoverPreviewImageBuilderProvider.overrideWithValue(
             (context, uri) {
               final tokens = context.tokens;

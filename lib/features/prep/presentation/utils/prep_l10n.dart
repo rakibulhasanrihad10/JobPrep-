@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:job_prep/core/localization/formatters.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_template.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/utils/material_cover_validator.dart';
+import 'package:job_prep/features/prep/domain/utils/prep_template_planner.dart';
 import 'package:job_prep/l10n/app_localizations.dart';
 
 /// Localization, formatted number, and suggestion helpers for Preparation UI.
@@ -110,5 +112,46 @@ abstract final class PrepL10n {
       l10n.prepUnitPresetQuestions,
       l10n.prepUnitPresetTests,
     ];
+  }
+
+  /// Localized display title for a seeded system [template] or raw user title.
+  static String templateTitle(PrepTemplate template, AppLocalizations l10n) {
+    return switch (template.slug) {
+      'government_job' => l10n.prepSeededGovJobTitle,
+      'software_engineer' => l10n.prepSeededSweTitle,
+      _ => template.title,
+    };
+  }
+
+  /// Localized summary for a seeded system [template] or stored description.
+  static String templateDescription(
+    PrepTemplate template,
+    AppLocalizations l10n,
+  ) {
+    return switch (template.slug) {
+      'government_job' => l10n.prepSeededGovJobSubtitle,
+      'software_engineer' => l10n.prepSeededSweSubtitle,
+      _ => template.description ?? '',
+    };
+  }
+
+  /// Localized snackbar summary emitted after applying a template pack.
+  static String applyResultMessage(
+    PrepTemplateApplyResult result,
+    PrepTemplate template,
+    AppLocalizations l10n,
+    Locale locale,
+  ) {
+    final title = templateTitle(template, l10n);
+    if (result.alreadyApplied) {
+      return l10n.prepTemplateAlreadyAppliedSnackbar(title);
+    }
+    return l10n.prepTemplateAppliedSnackbar(
+      result.subjectsCreated,
+      formatInt(result.subjectsCreated, locale),
+      result.materialsCreated,
+      formatInt(result.materialsCreated, locale),
+      title,
+    );
   }
 }

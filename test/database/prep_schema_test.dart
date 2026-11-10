@@ -146,4 +146,74 @@ void main() {
       expect(sql, contains('ROLLBACK;'));
     });
   });
+
+  group('Phase 4E - Prep Templates Migration & pgTAP Tests', () {
+    test(
+        'migration creates prep_templates & prep_template_items with RLS and '
+        'seeds Government Job & Software Engineer packs', () {
+      final migration = File(
+        'supabase/migrations/20261110060000_prep_templates.sql',
+      );
+      expect(migration.existsSync(), isTrue);
+
+      final sql = migration.readAsStringSync();
+      expect(sql, isNot(contains('\r\n')));
+      expect(sql, contains('CREATE TABLE public.prep_templates'));
+      expect(sql, contains('CREATE TABLE public.prep_template_items'));
+      expect(
+        sql,
+        contains(
+          'ALTER TABLE public.prep_templates ENABLE ROW LEVEL SECURITY',
+        ),
+      );
+      expect(
+        sql,
+        contains(
+          'ALTER TABLE public.prep_template_items ENABLE ROW LEVEL SECURITY',
+        ),
+      );
+      expect(sql, contains("'government_job'"));
+      expect(sql, contains("'Government Job'"));
+      expect(sql, contains("'software_engineer'"));
+      expect(sql, contains("'Software Engineer'"));
+
+      for (final subject in [
+        'Bengali',
+        'English',
+        'General Knowledge',
+        'Mathematics',
+        'Analytical Reasoning',
+        'Computer',
+        'Data Structures and Algorithms',
+        'Database Systems',
+        'Object-Oriented Programming',
+        'Web Development',
+        'Software Quality Assurance',
+      ]) {
+        expect(sql, contains("'$subject'"));
+      }
+    });
+
+    test(
+        'pgTAP suite verifies read-only system packs, personal templates, '
+        'and cross-user RLS', () {
+      final testFile = File(
+        'supabase/tests/07_prep_templates_and_rls_test.sql',
+      );
+      expect(testFile.existsSync(), isTrue);
+
+      final sql = testFile.readAsStringSync();
+      expect(sql, isNot(contains('\r\n')));
+      expect(sql, contains('BEGIN;'));
+      expect(sql, contains('SELECT plan(31);'));
+      expect(sql, contains('Signed-in users cannot insert system templates'));
+      expect(sql, contains('Signed-in users cannot update seeded system'));
+      expect(sql, contains('Signed-in users cannot delete seeded system'));
+      expect(sql, contains('User B cannot read User A personal template'));
+      expect(sql, contains('User B cannot update User A personal template'));
+      expect(sql, contains('User B cannot delete User A personal template'));
+      expect(sql, contains('SELECT * FROM finish();'));
+      expect(sql, contains('ROLLBACK;'));
+    });
+  });
 }

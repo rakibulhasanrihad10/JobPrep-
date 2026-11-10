@@ -2304,92 +2304,190 @@
   "@prepApplyTemplateButton": {
     "description": "Button label on each starter template card"
   },
-  "prepTemplateBcsTitle": "BCS & Bangla Core",
-  "@prepTemplateBcsTitle": {
-    "description": "Starter template title for BCS preparation"
+  "prepTemplatesOpenButton": "Templates",
+  "@prepTemplatesOpenButton": {
+    "description": "Header button label opening starter and personal templates"
   },
-  "prepTemplateBcsSubtitle": "Bengali 3-book track (300/300/400 pages), English, GK, and Aptitude",
-  "@prepTemplateBcsSubtitle": {
-    "description": "Starter template description for BCS preparation"
+  "prepTemplatesDialogTitle": "Study Templates",
+  "@prepTemplatesDialogTitle": {
+    "description": "Dialog heading listing starter packs and personal templates"
   },
-  "prepTemplateBankTitle": "Bank Officer Track",
-  "@prepTemplateBankTitle": {
-    "description": "Starter template title for bank recruitment exams"
+  "prepTemplatesSystemSection": "Starter packs",
+  "@prepTemplatesSystemSection": {
+    "description": "Section heading for seeded read-only template packs"
   },
-  "prepTemplateBankSubtitle": "Quantitative math, English writing, and Banking GK",
-  "@prepTemplateBankSubtitle": {
-    "description": "Starter template description for bank recruitment exams"
+  "prepTemplatesPersonalSection": "Your personal templates",
+  "@prepTemplatesPersonalSection": {
+    "description": "Section heading for user-saved reusable templates"
   },
-  "prepTemplateTechTitle": "Software & Engineering",
-  "@prepTemplateTechTitle": {
-    "description": "Starter template title for technical engineering interviews"
+  "prepTemplatesPersonalEmpty": "Save your current subjects as a personal template so you can reuse or share your plan anytime.",
+  "@prepTemplatesPersonalEmpty": {
+    "description": "Empty guidance text when user has not saved any personal templates"
   },
-  "prepTemplateTechSubtitle": "Algorithms, system design, and core computer science",
-  "@prepTemplateTechSubtitle": {
-    "description": "Starter template description for technical engineering interviews"
+  "prepTemplateSystemBadge": "Starter pack",
+  "@prepTemplateSystemBadge": {
+    "description": "Badge identifying a read-only system starter pack"
   },
-  "prepTplSubBcsBangla": "Bengali Literature & Grammar",
-  "@prepTplSubBcsBangla": {
-    "description": "Template subject name for BCS Bengali"
+  "prepTemplatePersonalBadge": "Personal",
+  "@prepTemplatePersonalBadge": {
+    "description": "Badge identifying a user-created personal template"
   },
-  "prepTplSubBcsEnglish": "English Language & Literature",
-  "@prepTplSubBcsEnglish": {
-    "description": "Template subject name for BCS English"
+  "prepTemplateAppliedBadge": "Applied",
+  "@prepTemplateAppliedBadge": {
+    "description": "Badge shown when all subjects and materials of a template already exist"
   },
-  "prepTplSubBcsGk": "Bangladesh & International Affairs",
-  "@prepTplSubBcsGk": {
-    "description": "Template subject name for BCS General Knowledge"
+  "prepTemplateCustomizeButton": "Edit units",
+  "@prepTemplateCustomizeButton": {
+    "description": "Button opening preview dialog where users adjust template unit counts before copying"
   },
-  "prepTplMatBanglaOne": "Agrodut Bengali Literature",
-  "@prepTplMatBanglaOne": {
-    "description": "Template material 1 for Bengali track"
+  "prepTemplateApplyAgainButton": "Re-apply",
+  "@prepTemplateApplyAgainButton": {
+    "description": "Button label when template items are already in user plan"
   },
-  "prepTplMatBanglaTwo": "MP3 Bangla Grammar",
-  "@prepTplMatBanglaTwo": {
-    "description": "Template material 2 for Bengali track"
+  "prepTemplateApplyConfirmTitle": "Customize & apply \"{title}\"",
+  "@prepTemplateApplyConfirmTitle": {
+    "description": "Title of preview modal allowing unit customization before applying template",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
   },
-  "prepTplMatBanglaThree": "Professors Bangla Digest",
-  "@prepTplMatBanglaThree": {
-    "description": "Template material 3 for Bengali track"
+  "prepTemplateApplyConfirmSubtitle": "Adjust unit counts below before copying into your own prep subjects. Everything remains fully editable afterward.",
+  "@prepTemplateApplyConfirmSubtitle": {
+    "description": "Subtitle explaining unit adjustments and post-copy editability"
   },
-  "prepTplMatEnglishCore": "English For Competitive Exams",
-  "@prepTplMatEnglishCore": {
-    "description": "Template material for English track"
+  "prepTemplateConfirmApplyAction": "Copy to my prep plan",
+  "@prepTemplateConfirmApplyAction": {
+    "description": "Primary confirm button inside template customize dialog"
   },
-  "prepTplMatGkDigest": "Recent GK & Liberation War Notes",
-  "@prepTplMatGkDigest": {
-    "description": "Template material for GK track"
+  "prepTemplateAppliedSnackbar": "Copied {subjectCount, plural, =0{0 subjects} =1{1 subject} other{{formattedSubjects} subjects}} and {materialCount, plural, =0{0 materials} =1{1 material} other{{formattedMaterials} materials}} from \"{title}\".",
+  "@prepTemplateAppliedSnackbar": {
+    "description": "Snackbar confirmation showing count of copied subjects and materials",
+    "placeholders": {
+      "subjectCount": {
+        "type": "int"
+      },
+      "formattedSubjects": {
+        "type": "String"
+      },
+      "materialCount": {
+        "type": "int"
+      },
+      "formattedMaterials": {
+        "type": "String"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
   },
-  "prepTplSubBankMath": "Quantitative Aptitude",
-  "@prepTplSubBankMath": {
-    "description": "Template subject name for Bank Quantitative Aptitude"
+  "prepTemplateAlreadyAppliedSnackbar": "All subjects and materials from \"{title}\" are already in your plan (no duplicates created).",
+  "@prepTemplateAlreadyAppliedSnackbar": {
+    "description": "Snackbar message when applying a template that is already present",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
   },
-  "prepTplSubBankEnglish": "English Comprehension & Writing",
-  "@prepTplSubBankEnglish": {
-    "description": "Template subject name for Bank English"
+  "prepSaveAsTemplateButton": "Save as template",
+  "@prepSaveAsTemplateButton": {
+    "description": "Button label opening dialog to save current subjects as a personal template"
   },
-  "prepTplMatBankMathBook": "Khairul's Bank Math",
-  "@prepTplMatBankMathBook": {
-    "description": "Template material for Bank Math"
+  "prepSaveTemplateDialogTitle": "Save personal template",
+  "@prepSaveTemplateDialogTitle": {
+    "description": "Heading of dialog for saving current user subjects as a template"
   },
-  "prepTplMatBankFocus": "Focus & Translation Practice",
-  "@prepTplMatBankFocus": {
-    "description": "Template material for Bank Writing"
+  "prepSaveTemplateTitleLabel": "Template name",
+  "@prepSaveTemplateTitleLabel": {
+    "description": "Text field label for personal template name"
   },
-  "prepTplSubTechDsa": "Data Structures & Algorithms",
-  "@prepTplSubTechDsa": {
-    "description": "Template subject name for Tech DSA"
+  "prepSaveTemplateTitleHint": "e.g. 48th BCS Core Plan",
+  "@prepSaveTemplateTitleHint": {
+    "description": "Hint text for personal template name field"
   },
-  "prepTplSubTechSysDesign": "System Design & Architecture",
-  "@prepTplSubTechSysDesign": {
-    "description": "Template subject name for Tech System Design"
+  "prepSaveTemplateTitleRequired": "Please enter a template name.",
+  "@prepSaveTemplateTitleRequired": {
+    "description": "Validation error when personal template title is blank"
   },
-  "prepTplMatDsaSet": "Core Coding Problem Set",
-  "@prepTplMatDsaSet": {
-    "description": "Template material for Tech DSA"
+  "prepSaveTemplateDescLabel": "Description (optional)",
+  "@prepSaveTemplateDescLabel": {
+    "description": "Text field label for optional template description"
   },
-  "prepTplMatSysDesignGuide": "Designing Data-Intensive Systems",
-  "@prepTplMatSysDesignGuide": {
-    "description": "Template material for Tech System Design"
+  "prepSaveTemplateDescHint": "Short summary of subjects and target role",
+  "@prepSaveTemplateDescHint": {
+    "description": "Hint text for optional personal template description"
+  },
+  "prepSaveTemplateExamLabel": "Career or exam track",
+  "@prepSaveTemplateExamLabel": {
+    "description": "Text field label for personal template career/exam track"
+  },
+  "prepSaveTemplatePreviewSummary": "Copies {formattedSubjects} subjects and {formattedMaterials} materials into this reusable template",
+  "@prepSaveTemplatePreviewSummary": {
+    "description": "Summary inside save-personal-template dialog showing snapshot size",
+    "placeholders": {
+      "formattedSubjects": {
+        "type": "String"
+      },
+      "formattedMaterials": {
+        "type": "String"
+      }
+    }
+  },
+  "prepSaveTemplateSaveAction": "Save template",
+  "@prepSaveTemplateSaveAction": {
+    "description": "Primary button saving a personal prep template"
+  },
+  "prepSaveTemplateSavedSnackbar": "Saved personal template \"{title}\".",
+  "@prepSaveTemplateSavedSnackbar": {
+    "description": "Snackbar shown after saving a personal template",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepDeleteTemplateTitle": "Delete personal template?",
+  "@prepDeleteTemplateTitle": {
+    "description": "Confirmation dialog heading before deleting a personal template"
+  },
+  "prepDeleteTemplateMessage": "Delete \"{title}\"? Any subjects and materials already copied into your prep dashboard stay untouched.",
+  "@prepDeleteTemplateMessage": {
+    "description": "Confirmation message before deleting a personal template",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepDeleteTemplateDeletedSnackbar": "Deleted personal template \"{title}\".",
+  "@prepDeleteTemplateDeletedSnackbar": {
+    "description": "Snackbar shown after deleting a personal template",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTemplateUnitsInvalid": "Enter zero or a positive whole number.",
+  "@prepTemplateUnitsInvalid": {
+    "description": "Validation error inside template customization dialog for invalid unit count"
+  },
+  "prepSeededGovJobTitle": "Government Job",
+  "@prepSeededGovJobTitle": {
+    "description": "Localized title for seeded Government Job pack"
+  },
+  "prepSeededGovJobSubtitle": "Bengali, English, General Knowledge, Mathematics, Analytical Reasoning, and Computer with customizable materials.",
+  "@prepSeededGovJobSubtitle": {
+    "description": "Localized summary for seeded Government Job pack"
+  },
+  "prepSeededSweTitle": "Software Engineer",
+  "@prepSeededSweTitle": {
+    "description": "Localized title for seeded Software Engineer pack"
+  },
+  "prepSeededSweSubtitle": "Data Structures & Algorithms, Database Systems, OOP, Web Development, and Software Quality Assurance.",
+  "@prepSeededSweSubtitle": {
+    "description": "Localized summary for seeded Software Engineer pack"
   }
 }
