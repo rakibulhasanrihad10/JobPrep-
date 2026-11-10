@@ -19,6 +19,7 @@ class MaterialCoverThumbnail extends ConsumerWidget {
     this.previewBytes,
     this.width,
     this.height,
+    this.expand = false,
   });
 
   /// Material title used to derive the glass placeholder's first letter.
@@ -36,11 +37,14 @@ class MaterialCoverThumbnail extends ConsumerWidget {
   /// Optional in-memory bytes shown immediately after picking/resizing a photo.
   final Uint8List? previewBytes;
 
-  /// Optional fixed thumbnail width (defaults to `56 dp`).
+  /// Optional fixed thumbnail width when [expand] is false (`56 dp` default).
   final double? width;
 
-  /// Optional fixed thumbnail height (defaults to `72 dp`).
+  /// Optional fixed thumbnail height when [expand] is false (`72 dp` default).
   final double? height;
+
+  /// When true, fills parent constraints (such as an [AspectRatio] cover box).
+  final bool expand;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -49,8 +53,10 @@ class MaterialCoverThumbnail extends ConsumerWidget {
     final spacing = tokens.spacing;
     final radii = tokens.radii;
 
-    final effectiveWidth = width ?? (spacing.xxxl + spacing.sm);
-    final effectiveHeight = height ?? (spacing.xxxl + spacing.xl);
+    final effectiveWidth =
+        expand ? double.infinity : (width ?? (spacing.xxxl + spacing.sm));
+    final effectiveHeight =
+        expand ? double.infinity : (height ?? (spacing.xxxl + spacing.xl));
     final borderRadius = radii.buttonRadius;
 
     Widget buildPlaceholder() {
@@ -72,9 +78,10 @@ class MaterialCoverThumbnail extends ConsumerWidget {
         alignment: Alignment.center,
         child: Text(
           initial,
-          style: tokens.textStyles.titleLarge.copyWith(
-            color: colors.textPrimary,
-          ),
+          style: (expand
+                  ? tokens.textStyles.headlineMedium
+                  : tokens.textStyles.titleLarge)
+              .copyWith(color: colors.textPrimary),
         ),
       );
     }

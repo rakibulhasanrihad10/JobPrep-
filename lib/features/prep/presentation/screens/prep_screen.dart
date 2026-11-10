@@ -16,8 +16,7 @@ import 'package:job_prep/features/prep/presentation/widgets/prep_subject_detail_
 import 'package:job_prep/features/prep/presentation/widgets/prep_subjects_section.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.dart';
 
-/// Main Subject & Material Manager screen with responsive desktop master-detail
-/// layout, drag/button subject reordering, and cover-enabled material CRUD.
+/// Main animated preparation dashboard and Subject & Material Manager screen.
 class PrepScreen extends ConsumerStatefulWidget {
   /// Creates a [PrepScreen].
   const PrepScreen({super.key, this.selectedSubjectId});
@@ -30,11 +29,15 @@ class PrepScreen extends ConsumerStatefulWidget {
 }
 
 class _PrepScreenState extends ConsumerState<PrepScreen> {
+  static int _nextTabVisitId = 0;
+
+  late final int _tabVisitId;
   String? _localSelectedId;
 
   @override
   void initState() {
     super.initState();
+    _tabVisitId = ++_nextTabVisitId;
     _localSelectedId = widget.selectedSubjectId;
   }
 
@@ -120,19 +123,29 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
 
     final viewportWidth = MediaQuery.sizeOf(context).width;
     final isExpanded = breakpoints.isExpanded(viewportWidth);
+    final horizontalPad =
+        breakpoints.isCompact(viewportWidth) ? spacing.lg : spacing.xl;
+
     final subjectsAsync = ref.watch(subjectsProvider);
     final materials =
         ref.watch(allMaterialsProvider).asData?.value ?? const <PrepMaterial>[];
     final overallProgress =
         ref.watch(overallPrepProgressProvider).asData?.value ?? 0.0;
+    final subjectsMutationState = ref.watch(prepSubjectsControllerProvider);
 
     final subjects = List<Subject>.of(
       subjectsAsync.asData?.value ?? const <Subject>[],
     )..sort((a, b) => a.sortOrder.compareTo(b.sortOrder));
 
     final materialsBySubject = <String, List<PrepMaterial>>{};
+    var completedUnitsTotal = 0;
+    var plannedUnitsTotal = 0;
     for (final mat in materials) {
       materialsBySubject.putIfAbsent(mat.subjectId, () => []).add(mat);
+      if (mat.totalUnits > 0) {
+        plannedUnitsTotal += mat.totalUnits;
+        completedUnitsTotal += mat.completedUnits.clamp(0, mat.totalUnits);
+      }
     }
 
     final activeId = _localSelectedId ?? widget.selectedSubjectId;
@@ -143,6 +156,10 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     final headerCard = PrepOverviewHeaderCard(
       overallProgress: overallProgress,
       subjectCount: subjects.length,
+      materialCount: materials.length,
+      completedUnitsTotal: completedUnitsTotal,
+      plannedUnitsTotal: plannedUnitsTotal,
+      replayKey: 'prep-overall-visit-$_tabVisitId',
       onAddSubject: () => _openCreateSubject(selectCreated: isExpanded),
       onRefresh: _refreshAll,
     );
@@ -153,7 +170,12 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
       materialsBySubject: materialsBySubject,
       selectedSubjectId: selectedSubject?.id,
       isExpandedViewport: isExpanded,
+      tabVisitId: _tabVisitId,
+      isApplyingTemplate: subjectsMutationState.isSubmitting,
       onRefresh: _refreshAll,
+      onApplyTemplate: (template) => ref
+          .read(prepSubjectsControllerProvider.notifier)
+          .applyTemplate(template),
       onSelectSubject: (subject) =>
           _selectSubject(subject, isExpanded: isExpanded),
       onEditSubject: (subject) =>
@@ -171,9 +193,9 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
 
     return SingleChildScrollView(
       padding: EdgeInsets.fromLTRB(
+        horizontalPad,
         spacing.xl,
-        spacing.xl,
-        spacing.xl,
+        horizontalPad,
         spacing.xl + spacing.xxxl,
       ),
       child: FadeSlideIn(
@@ -182,7 +204,7 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    flex: 5,
+                    flex: 4,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
@@ -194,10 +216,11 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
                   ),
                   SizedBox(width: spacing.xl),
                   Expanded(
-                    flex: 7,
+                    flex: 8,
                     child: PrepSubjectDetailView(
                       subject: selectedSubject,
-                      replayKey: 'detail-${selectedSubject.id}',
+                      replayKey:
+                          'detail-visit-$_tabVisitId-${selectedSubject.id}',
                       onSubjectDeleted: () =>
                           setState(() => _localSelectedId = null),
                     ),

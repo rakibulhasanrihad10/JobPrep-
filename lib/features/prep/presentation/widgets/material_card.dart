@@ -7,8 +7,9 @@ import 'package:job_prep/features/prep/domain/utils/prep_progress.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_l10n.dart';
 import 'package:job_prep/features/prep/presentation/widgets/material_cover_thumbnail.dart';
 
-/// Displays a study material with cover photo (or glass initial placeholder),
-/// kind label, unit breakdown, progress bar, edit, and delete controls.
+/// Vertical study material cover card displaying portrait cover art (or tinted
+/// glass initial badge), title, thin gold [AnimatedProgressBar], unit stats,
+/// edit/delete icons, and quick `+10`/`+20`/`+50`/custom log controls.
 class MaterialCard extends StatelessWidget {
   /// Creates a [MaterialCard].
   const MaterialCard({
@@ -16,15 +17,21 @@ class MaterialCard extends StatelessWidget {
     required this.subjectColor,
     required this.onEdit,
     required this.onDelete,
+    required this.onQuickLog,
+    required this.onOpenLogs,
     super.key,
+    this.isLogging = false,
     this.replayKey,
   });
 
-  /// Material entity rendered by this card.
+  /// Material entity rendered by this cover card.
   final PrepMaterial material;
 
-  /// Resolved subject accent color used behind cover placeholders and bars.
+  /// Resolved subject accent color used behind cover placeholders.
   final Color subjectColor;
+
+  /// Whether a log request is active for [material].
+  final bool isLogging;
 
   /// Optional animation replay key when switching tabs or subjects.
   final Object? replayKey;
@@ -34,6 +41,12 @@ class MaterialCard extends StatelessWidget {
 
   /// Opens material delete confirmation dialog.
   final VoidCallback onDelete;
+
+  /// Records a fixed quick increment (`10`, `20`, or `50`).
+  final ValueChanged<int> onQuickLog;
+
+  /// Opens custom progress log & history dialog.
+  final VoidCallback onOpenLogs;
 
   @override
   Widget build(BuildContext context) {
@@ -50,115 +63,170 @@ class MaterialCard extends StatelessWidget {
       PrepL10n.formatInt(material.totalUnits, locale),
       material.unitLabel,
     );
-    final percentText = l10n.prepPercentComplete(
-      PrepL10n.formatPercent(progress, locale),
-    );
+    final percentText = '${PrepL10n.formatPercent(progress, locale)}%';
 
     return Container(
       key: ValueKey('material-card-${material.id}'),
-      padding: spacing.insetsAllLg,
+      padding: spacing.insetsAllMd,
       decoration: BoxDecoration(
         color: colors.glassFillSolid,
         borderRadius: radii.cardRadius,
         border: Border.all(color: colors.glassBorder),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          MaterialCoverThumbnail(
-            title: material.title,
-            subjectColor: subjectColor,
-            coverImagePath: material.coverImagePath,
-            coverImageUrl: material.coverImageUrl,
-          ),
-          SizedBox(width: spacing.md),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+          InkWell(
+            borderRadius: radii.buttonRadius,
+            onTap: onOpenLogs,
+            child: Stack(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            material.title,
-                            style: tokens.textStyles.titleMedium,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          SizedBox(height: spacing.xs),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: spacing.sm,
-                              vertical: spacing.xxs,
-                            ),
-                            decoration: BoxDecoration(
-                              color: colors.surfaceElevated,
-                              borderRadius: radii.smRadius,
-                              border: Border.all(color: colors.glassBorder),
-                            ),
-                            child: Text(
-                              PrepL10n.materialKindLabel(material.kind, l10n),
-                              style: tokens.textStyles.labelSmall.copyWith(
-                                color: colors.textSecondary,
+                AspectRatio(
+                  aspectRatio: 0.80,
+                  child: MaterialCoverThumbnail(
+                    title: material.title,
+                    subjectColor: subjectColor,
+                    coverImagePath: material.coverImagePath,
+                    coverImageUrl: material.coverImageUrl,
+                    expand: true,
+                  ),
+                ),
+                Positioned(
+                  top: spacing.xs,
+                  right: spacing.xs,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: colors.background.withValues(alpha: 0.78),
+                      borderRadius: radii.buttonRadius,
+                      border: Border.all(color: colors.glassBorder),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Tooltip(
+                          message: l10n.prepEditAction,
+                          child: InkWell(
+                            key: ValueKey('material-edit-${material.id}'),
+                            borderRadius: radii.buttonRadius,
+                            onTap: onEdit,
+                            child: Padding(
+                              padding: spacing.insetsAllXs,
+                              child: Icon(
+                                Icons.edit_outlined,
+                                size: spacing.lg,
+                                color: colors.textPrimary,
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                        Tooltip(
+                          message: l10n.prepDeleteAction,
+                          child: InkWell(
+                            key: ValueKey('material-delete-${material.id}'),
+                            borderRadius: radii.buttonRadius,
+                            onTap: onDelete,
+                            child: Padding(
+                              padding: spacing.insetsAllXs,
+                              child: Icon(
+                                Icons.delete_outline,
+                                size: spacing.lg,
+                                color: colors.danger,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    IconButton(
-                      key: ValueKey('material-edit-${material.id}'),
-                      tooltip: l10n.prepEditAction,
-                      visualDensity: VisualDensity.compact,
-                      onPressed: onEdit,
-                      icon: Icon(
-                        Icons.edit_outlined,
-                        size: spacing.lg + spacing.xxs,
-                      ),
-                    ),
-                    IconButton(
-                      key: ValueKey('material-delete-${material.id}'),
-                      tooltip: l10n.prepDeleteAction,
-                      visualDensity: VisualDensity.compact,
-                      onPressed: onDelete,
-                      icon: Icon(
-                        Icons.delete_outline,
-                        color: colors.danger,
-                        size: spacing.lg + spacing.xxs,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: spacing.md),
-                AnimatedProgressBar(
-                  value: progress,
-                  replayKey: replayKey,
-                  progressColor: subjectColor,
-                ),
-                SizedBox(height: spacing.xs),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      child: Text(
-                        summary,
-                        style: tokens.textStyles.bodySmall,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    SizedBox(width: spacing.sm),
-                    Text(
-                      percentText,
-                      style: tokens.textStyles.labelMedium,
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
+          ),
+          SizedBox(height: spacing.sm),
+          Text(
+            material.title,
+            style: tokens.textStyles.titleMedium,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          SizedBox(height: spacing.sm),
+          AnimatedProgressBar(
+            value: progress,
+            replayKey: replayKey,
+            height: spacing.xs,
+            progressColor: colors.goldAccent,
+          ),
+          SizedBox(height: spacing.xs),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  summary,
+                  style: tokens.textStyles.bodySmall,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              SizedBox(width: spacing.xs),
+              Text(
+                percentText,
+                style: tokens.textStyles.labelMedium.copyWith(
+                  color: colors.goldAccent,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: spacing.sm),
+          Wrap(
+            spacing: spacing.xs,
+            runSpacing: spacing.xs,
+            children: [
+              for (final delta in const [10, 20, 50])
+                InkWell(
+                  key: ValueKey('material-quick-log-$delta-${material.id}'),
+                  borderRadius: radii.buttonRadius,
+                  onTap: isLogging ? null : () => onQuickLog(delta),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: spacing.sm,
+                      vertical: spacing.xs,
+                    ),
+                    decoration: BoxDecoration(
+                      color: colors.surfaceElevated,
+                      borderRadius: radii.buttonRadius,
+                      border: Border.all(color: colors.glassBorder),
+                    ),
+                    child: Text(
+                      l10n.prepQuickLogPlus(PrepL10n.formatInt(delta, locale)),
+                      style: tokens.textStyles.labelMedium.copyWith(
+                        color: colors.goldAccent,
+                      ),
+                    ),
+                  ),
+                ),
+              InkWell(
+                key: ValueKey('material-custom-log-${material.id}'),
+                borderRadius: radii.buttonRadius,
+                onTap: isLogging ? null : onOpenLogs,
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: spacing.sm,
+                    vertical: spacing.xs,
+                  ),
+                  decoration: BoxDecoration(
+                    color: colors.goldAccentSubtle,
+                    borderRadius: radii.buttonRadius,
+                    border: Border.all(color: colors.goldAccent),
+                  ),
+                  child: Text(
+                    l10n.prepLogButton,
+                    style: tokens.textStyles.labelMedium.copyWith(
+                      color: colors.textPrimary,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

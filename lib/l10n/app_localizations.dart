@@ -2944,6 +2944,259 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Something went wrong while updating preparation data.'**
   String get prepErrorUnknown;
+
+  /// Total completed over planned units across all prep materials
+  ///
+  /// In en, this message translates to:
+  /// **'{formattedCompleted} / {formattedTotal} total units'**
+  String prepOverallUnitsSummary(
+      String formattedCompleted, String formattedTotal);
+
+  /// Quick log button label for fixed increment like +10, +20, +50
+  ///
+  /// In en, this message translates to:
+  /// **'+{formattedAmount}'**
+  String prepQuickLogPlus(String formattedAmount);
+
+  /// Button opening custom study log and history dialog for a material
+  ///
+  /// In en, this message translates to:
+  /// **'Log'**
+  String get prepLogButton;
+
+  /// Dialog header for logging or managing study progress logs
+  ///
+  /// In en, this message translates to:
+  /// **'Log progress'**
+  String get prepLogDialogTitle;
+
+  /// Numeric field label for custom progress log units
+  ///
+  /// In en, this message translates to:
+  /// **'Units completed'**
+  String get prepCustomUnitsLabel;
+
+  /// Hint for custom progress log units
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 25'**
+  String get prepCustomUnitsHint;
+
+  /// Validation error when custom log units is not positive
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a whole number greater than 0.'**
+  String get prepCustomUnitsInvalid;
+
+  /// Date selector label inside progress log dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get prepLogDateLabel;
+
+  /// Optional note text field label inside progress log dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Note (optional)'**
+  String get prepLogNoteLabel;
+
+  /// Hint for optional study session note
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Chapters 1-3, revision set'**
+  String get prepLogNoteHint;
+
+  /// Primary submit button to add a new progress log
+  ///
+  /// In en, this message translates to:
+  /// **'Save log'**
+  String get prepLogSaveButton;
+
+  /// Primary submit button when editing an existing progress log
+  ///
+  /// In en, this message translates to:
+  /// **'Update log'**
+  String get prepLogUpdateButton;
+
+  /// Cancels editing an existing progress log
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel edit'**
+  String get prepLogCancelEditButton;
+
+  /// Banner indicating the log form is currently editing a past log
+  ///
+  /// In en, this message translates to:
+  /// **'Editing existing log entry'**
+  String get prepEditingLogBanner;
+
+  /// Section title above past logs list for a material
+  ///
+  /// In en, this message translates to:
+  /// **'Past study logs'**
+  String get prepPastLogsTitle;
+
+  /// Empty message when a material has zero logged study entries
+  ///
+  /// In en, this message translates to:
+  /// **'No study logs recorded for this material yet.'**
+  String get prepNoPastLogs;
+
+  /// Displayed unit delta inside a past log tile
+  ///
+  /// In en, this message translates to:
+  /// **'+{formattedUnits} {unitLabel}'**
+  String prepLogUnitsSummary(String formattedUnits, String unitLabel);
+
+  /// Header inside empty prep state offering starter templates
+  ///
+  /// In en, this message translates to:
+  /// **'Start quickly with a template'**
+  String get prepTemplatesTitle;
+
+  /// Subtitle explaining starter prep templates
+  ///
+  /// In en, this message translates to:
+  /// **'Apply a preset study plan you can freely customize, reorder, or delete anytime.'**
+  String get prepTemplatesSubtitle;
+
+  /// Button label on each starter template card
+  ///
+  /// In en, this message translates to:
+  /// **'Apply template'**
+  String get prepApplyTemplateButton;
+
+  /// Starter template title for BCS preparation
+  ///
+  /// In en, this message translates to:
+  /// **'BCS & Bangla Core'**
+  String get prepTemplateBcsTitle;
+
+  /// Starter template description for BCS preparation
+  ///
+  /// In en, this message translates to:
+  /// **'Bengali 3-book track (300/300/400 pages), English, GK, and Aptitude'**
+  String get prepTemplateBcsSubtitle;
+
+  /// Starter template title for bank recruitment exams
+  ///
+  /// In en, this message translates to:
+  /// **'Bank Officer Track'**
+  String get prepTemplateBankTitle;
+
+  /// Starter template description for bank recruitment exams
+  ///
+  /// In en, this message translates to:
+  /// **'Quantitative math, English writing, and Banking GK'**
+  String get prepTemplateBankSubtitle;
+
+  /// Starter template title for technical engineering interviews
+  ///
+  /// In en, this message translates to:
+  /// **'Software & Engineering'**
+  String get prepTemplateTechTitle;
+
+  /// Starter template description for technical engineering interviews
+  ///
+  /// In en, this message translates to:
+  /// **'Algorithms, system design, and core computer science'**
+  String get prepTemplateTechSubtitle;
+
+  /// Template subject name for BCS Bengali
+  ///
+  /// In en, this message translates to:
+  /// **'Bengali Literature & Grammar'**
+  String get prepTplSubBcsBangla;
+
+  /// Template subject name for BCS English
+  ///
+  /// In en, this message translates to:
+  /// **'English Language & Literature'**
+  String get prepTplSubBcsEnglish;
+
+  /// Template subject name for BCS General Knowledge
+  ///
+  /// In en, this message translates to:
+  /// **'Bangladesh & International Affairs'**
+  String get prepTplSubBcsGk;
+
+  /// Template material 1 for Bengali track
+  ///
+  /// In en, this message translates to:
+  /// **'Agrodut Bengali Literature'**
+  String get prepTplMatBanglaOne;
+
+  /// Template material 2 for Bengali track
+  ///
+  /// In en, this message translates to:
+  /// **'MP3 Bangla Grammar'**
+  String get prepTplMatBanglaTwo;
+
+  /// Template material 3 for Bengali track
+  ///
+  /// In en, this message translates to:
+  /// **'Professors Bangla Digest'**
+  String get prepTplMatBanglaThree;
+
+  /// Template material for English track
+  ///
+  /// In en, this message translates to:
+  /// **'English For Competitive Exams'**
+  String get prepTplMatEnglishCore;
+
+  /// Template material for GK track
+  ///
+  /// In en, this message translates to:
+  /// **'Recent GK & Liberation War Notes'**
+  String get prepTplMatGkDigest;
+
+  /// Template subject name for Bank Quantitative Aptitude
+  ///
+  /// In en, this message translates to:
+  /// **'Quantitative Aptitude'**
+  String get prepTplSubBankMath;
+
+  /// Template subject name for Bank English
+  ///
+  /// In en, this message translates to:
+  /// **'English Comprehension & Writing'**
+  String get prepTplSubBankEnglish;
+
+  /// Template material for Bank Math
+  ///
+  /// In en, this message translates to:
+  /// **'Khairul\'s Bank Math'**
+  String get prepTplMatBankMathBook;
+
+  /// Template material for Bank Writing
+  ///
+  /// In en, this message translates to:
+  /// **'Focus & Translation Practice'**
+  String get prepTplMatBankFocus;
+
+  /// Template subject name for Tech DSA
+  ///
+  /// In en, this message translates to:
+  /// **'Data Structures & Algorithms'**
+  String get prepTplSubTechDsa;
+
+  /// Template subject name for Tech System Design
+  ///
+  /// In en, this message translates to:
+  /// **'System Design & Architecture'**
+  String get prepTplSubTechSysDesign;
+
+  /// Template material for Tech DSA
+  ///
+  /// In en, this message translates to:
+  /// **'Core Coding Problem Set'**
+  String get prepTplMatDsaSet;
+
+  /// Template material for Tech System Design
+  ///
+  /// In en, this message translates to:
+  /// **'Designing Data-Intensive Systems'**
+  String get prepTplMatSysDesignGuide;
 }
 
 class _AppLocalizationsDelegate

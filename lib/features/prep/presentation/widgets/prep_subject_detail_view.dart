@@ -10,17 +10,20 @@ import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/domain/utils/prep_progress.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_material_controller.dart';
+import 'package:job_prep/features/prep/presentation/providers/prep_progress_log_controller.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_subjects_controller.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_l10n.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_style_tokens.dart';
 import 'package:job_prep/features/prep/presentation/widgets/material_card.dart';
 import 'package:job_prep/features/prep/presentation/widgets/material_form_dialog.dart';
+import 'package:job_prep/features/prep/presentation/widgets/material_logs_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_delete_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_subject_detail_header_card.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.dart';
 
-/// Displays header, progress ring, and study materials for [subject].
+/// Displays header, progress ring, and responsive cover cards grid (3-up on
+/// desktop, 2-column on mobile) with quick & custom study progress logging.
 class PrepSubjectDetailView extends ConsumerWidget {
   /// Creates a [PrepSubjectDetailView].
   const PrepSubjectDetailView({
@@ -40,7 +43,7 @@ class PrepSubjectDetailView extends ConsumerWidget {
   /// Invoked after deleting [subject] successfully.
   final VoidCallback? onSubjectDeleted;
 
-  /// Optional key controlling progress animations.
+  /// Key controlling animation replay on tab switch or subject selection.
   final Object? replayKey;
 
   Future<void> _handleAddMaterial(
@@ -115,6 +118,8 @@ class PrepSubjectDetailView extends ConsumerWidget {
     final materialsAsync = ref.watch(materialsForSubjectProvider(subject.id));
     final materials = materialsAsync.asData?.value ?? const <PrepMaterial>[];
     final subjectProgress = calculateSubjectProgress(materials);
+    final logState = ref.watch(prepProgressLogControllerProvider);
+    final effectiveReplayKey = replayKey ?? 'detail-${subject.id}';
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -125,7 +130,7 @@ class PrepSubjectDetailView extends ConsumerWidget {
           subjectProgress: subjectProgress,
           materialCount: materials.length,
           onBack: onBack,
-          replayKey: replayKey,
+          replayKey: effectiveReplayKey,
           onAddMaterial: () => _handleAddMaterial(context, subjectColor),
           onEditSubject: () =>
               showSubjectFormDialog(context, existing: subject),
@@ -195,51 +200,63 @@ class PrepSubjectDetailView extends ConsumerWidget {
 
             return LayoutBuilder(
               builder: (context, constraints) {
-                final columns = constraints.maxWidth >= 680 ? 2 : 1;
-                if (columns == 1) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      for (final item in items) ...[
-                        MaterialCard(
-                          material: item,
-                          subjectColor: subjectColor,
-                          replayKey: replayKey,
-                          onEdit: () => _handleEditMaterial(
-                            context,
-                            item,
-                            subjectColor,
-                          ),
-                          onDelete: () =>
-                              _handleDeleteMaterial(context, ref, item),
-                        ),
-                        SizedBox(height: spacing.md),
-                      ],
-                    ],
-                  );
-                }
-
-                final tileWidth = (constraints.maxWidth - spacing.md) / 2;
-                return Wrap(
-                  spacing: spacing.md,
-                  runSpacing: spacing.md,
+                final columns = constraints.maxWidth >= 560 ? 3 : 2;
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    for (final item in items)
-                      SizedBox(
-                        width: tileWidth,
-                        child: MaterialCard(
-                          material: item,
-                          subjectColor: subjectColor,
-                          replayKey: replayKey,
-                          onEdit: () => _handleEditMaterial(
-                            context,
-                            item,
-                            subjectColor,
-                          ),
-                          onDelete: () =>
-                              _handleDeleteMaterial(context, ref, item),
+                    for (var i = 0; i < items.length; i += columns) ...[
+                      IntrinsicHeight(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            for (var col = 0; col < columns; col++) ...[
+                              if (col > 0) SizedBox(width: spacing.md),
+                              if (i + col < items.length)
+                                Expanded(
+                                  child: MaterialCard(
+                                    material: items[i + col],
+                                    subjectColor: subjectColor,
+                                    replayKey: effectiveReplayKey,
+                                    isLogging: logState.isSaving &&
+                                        logState.activeMaterialId ==
+                                            items[i + col].id,
+                                    onEdit: () => _handleEditMaterial(
+                                      context,
+                                      items[i + col],
+                                      subjectColor,
+                                    ),
+                                    onDelete: () => _handleDeleteMaterial(
+                                      context,
+                                      ref,
+                                      items[i + col],
+                                    ),
+                                    onQuickLog: (delta) => unawaited(
+                                      ref
+                                          .read(
+                                            prepProgressLogControllerProvider
+                                                .notifier,
+                                          )
+                                          .logUnits(
+                                            material: items[i + col],
+                                            units: delta,
+                                          ),
+                                    ),
+                                    onOpenLogs: () => showMaterialLogsDialog(
+                                      context,
+                                      material: items[i + col],
+                                      subjectColor: subjectColor,
+                                    ),
+                                  ),
+                                )
+                              else
+                                const Expanded(child: SizedBox.shrink()),
+                            ],
+                          ],
                         ),
                       ),
+                      if (i + columns < items.length)
+                        SizedBox(height: spacing.md),
+                    ],
                   ],
                 );
               },

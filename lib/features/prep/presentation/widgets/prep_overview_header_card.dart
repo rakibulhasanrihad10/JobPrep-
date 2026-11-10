@@ -6,16 +6,20 @@ import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_l10n.dart';
 
-/// Top summary card showing overall preparation progress, subject count,
-/// refresh button, and primary add-subject button.
+/// Overall preparation dashboard card showing total completion ring,
+/// subjects/materials counts, completed unit totals, refresh, and add CTA.
 class PrepOverviewHeaderCard extends StatelessWidget {
   /// Creates a [PrepOverviewHeaderCard].
   const PrepOverviewHeaderCard({
     required this.overallProgress,
     required this.subjectCount,
+    required this.materialCount,
+    required this.completedUnitsTotal,
+    required this.plannedUnitsTotal,
     required this.onAddSubject,
     required this.onRefresh,
     super.key,
+    this.replayKey,
   });
 
   /// Normalized overall progress across all subjects (`0` to `1`).
@@ -23,6 +27,18 @@ class PrepOverviewHeaderCard extends StatelessWidget {
 
   /// Number of user-defined subjects.
   final int subjectCount;
+
+  /// Total number of study materials across all subjects.
+  final int materialCount;
+
+  /// Sum of clamped completed units across all materials.
+  final int completedUnitsTotal;
+
+  /// Sum of planned total units across all materials.
+  final int plannedUnitsTotal;
+
+  /// Optional animation replay key (bumps when entering Prep tab).
+  final Object? replayKey;
 
   /// Callback opening the new-subject dialog.
   final VoidCallback onAddSubject;
@@ -37,8 +53,10 @@ class PrepOverviewHeaderCard extends StatelessWidget {
     final spacing = tokens.spacing;
     final l10n = context.l10n;
     final locale = Localizations.localeOf(context);
+    final percentFormatted = PrepL10n.formatPercent(overallProgress, locale);
 
     return GlassCard(
+      key: const ValueKey('prep-overall-card'),
       padding: spacing.insetsAllXl,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -47,11 +65,12 @@ class PrepOverviewHeaderCard extends StatelessWidget {
             children: [
               AnimatedProgressRing(
                 value: overallProgress,
-                replayKey: 'prep-overall-ring',
-                size: spacing.xxxl + spacing.md,
+                replayKey: replayKey ?? 'prep-overall-ring',
+                size: spacing.xxxl + spacing.xl,
+                progressColor: colors.goldAccent,
                 child: Text(
-                  '${PrepL10n.formatPercent(overallProgress, locale)}%',
-                  style: tokens.textStyles.labelMedium.copyWith(
+                  '$percentFormatted%',
+                  style: tokens.textStyles.titleMedium.copyWith(
                     color: colors.textPrimary,
                   ),
                 ),
@@ -66,14 +85,17 @@ class PrepOverviewHeaderCard extends StatelessWidget {
                       style: tokens.textStyles.headlineMedium,
                     ),
                     SizedBox(height: spacing.xs),
+                    Text(
+                      l10n.prepOverallProgressLabel,
+                      style: tokens.textStyles.labelLarge.copyWith(
+                        color: colors.goldAccent,
+                      ),
+                    ),
+                    SizedBox(height: spacing.xxs),
                     Wrap(
                       spacing: spacing.sm,
                       runSpacing: spacing.xxs,
                       children: [
-                        Text(
-                          l10n.prepOverallProgressLabel,
-                          style: tokens.textStyles.bodyMedium,
-                        ),
                         Text(
                           l10n.prepSubjectCount(
                             subjectCount,
@@ -81,8 +103,25 @@ class PrepOverviewHeaderCard extends StatelessWidget {
                           ),
                           style: tokens.textStyles.bodyMedium,
                         ),
+                        Text(
+                          l10n.prepMaterialCount(
+                            materialCount,
+                            PrepL10n.formatInt(materialCount, locale),
+                          ),
+                          style: tokens.textStyles.bodyMedium,
+                        ),
                       ],
                     ),
+                    if (plannedUnitsTotal > 0) ...[
+                      SizedBox(height: spacing.xxs),
+                      Text(
+                        l10n.prepOverallUnitsSummary(
+                          PrepL10n.formatInt(completedUnitsTotal, locale),
+                          PrepL10n.formatInt(plannedUnitsTotal, locale),
+                        ),
+                        style: tokens.textStyles.bodySmall,
+                      ),
+                    ],
                   ],
                 ),
               ),

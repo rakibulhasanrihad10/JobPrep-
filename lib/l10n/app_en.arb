@@ -2202,5 +2202,194 @@
   "prepErrorUnknown": "Something went wrong while updating preparation data.",
   "@prepErrorUnknown": {
     "description": "Fallback error banner for prep errors"
+  },
+  "prepOverallUnitsSummary": "{formattedCompleted} / {formattedTotal} total units",
+  "@prepOverallUnitsSummary": {
+    "description": "Total completed over planned units across all prep materials",
+    "placeholders": {
+      "formattedCompleted": {
+        "type": "String"
+      },
+      "formattedTotal": {
+        "type": "String"
+      }
+    }
+  },
+  "prepQuickLogPlus": "+{formattedAmount}",
+  "@prepQuickLogPlus": {
+    "description": "Quick log button label for fixed increment like +10, +20, +50",
+    "placeholders": {
+      "formattedAmount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepLogButton": "Log",
+  "@prepLogButton": {
+    "description": "Button opening custom study log and history dialog for a material"
+  },
+  "prepLogDialogTitle": "Log progress",
+  "@prepLogDialogTitle": {
+    "description": "Dialog header for logging or managing study progress logs"
+  },
+  "prepCustomUnitsLabel": "Units completed",
+  "@prepCustomUnitsLabel": {
+    "description": "Numeric field label for custom progress log units"
+  },
+  "prepCustomUnitsHint": "e.g. 25",
+  "@prepCustomUnitsHint": {
+    "description": "Hint for custom progress log units"
+  },
+  "prepCustomUnitsInvalid": "Enter a whole number greater than 0.",
+  "@prepCustomUnitsInvalid": {
+    "description": "Validation error when custom log units is not positive"
+  },
+  "prepLogDateLabel": "Date",
+  "@prepLogDateLabel": {
+    "description": "Date selector label inside progress log dialog"
+  },
+  "prepLogNoteLabel": "Note (optional)",
+  "@prepLogNoteLabel": {
+    "description": "Optional note text field label inside progress log dialog"
+  },
+  "prepLogNoteHint": "e.g. Chapters 1-3, revision set",
+  "@prepLogNoteHint": {
+    "description": "Hint for optional study session note"
+  },
+  "prepLogSaveButton": "Save log",
+  "@prepLogSaveButton": {
+    "description": "Primary submit button to add a new progress log"
+  },
+  "prepLogUpdateButton": "Update log",
+  "@prepLogUpdateButton": {
+    "description": "Primary submit button when editing an existing progress log"
+  },
+  "prepLogCancelEditButton": "Cancel edit",
+  "@prepLogCancelEditButton": {
+    "description": "Cancels editing an existing progress log"
+  },
+  "prepEditingLogBanner": "Editing existing log entry",
+  "@prepEditingLogBanner": {
+    "description": "Banner indicating the log form is currently editing a past log"
+  },
+  "prepPastLogsTitle": "Past study logs",
+  "@prepPastLogsTitle": {
+    "description": "Section title above past logs list for a material"
+  },
+  "prepNoPastLogs": "No study logs recorded for this material yet.",
+  "@prepNoPastLogs": {
+    "description": "Empty message when a material has zero logged study entries"
+  },
+  "prepLogUnitsSummary": "+{formattedUnits} {unitLabel}",
+  "@prepLogUnitsSummary": {
+    "description": "Displayed unit delta inside a past log tile",
+    "placeholders": {
+      "formattedUnits": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTemplatesTitle": "Start quickly with a template",
+  "@prepTemplatesTitle": {
+    "description": "Header inside empty prep state offering starter templates"
+  },
+  "prepTemplatesSubtitle": "Apply a preset study plan you can freely customize, reorder, or delete anytime.",
+  "@prepTemplatesSubtitle": {
+    "description": "Subtitle explaining starter prep templates"
+  },
+  "prepApplyTemplateButton": "Apply template",
+  "@prepApplyTemplateButton": {
+    "description": "Button label on each starter template card"
+  },
+  "prepTemplateBcsTitle": "BCS & Bangla Core",
+  "@prepTemplateBcsTitle": {
+    "description": "Starter template title for BCS preparation"
+  },
+  "prepTemplateBcsSubtitle": "Bengali 3-book track (300/300/400 pages), English, GK, and Aptitude",
+  "@prepTemplateBcsSubtitle": {
+    "description": "Starter template description for BCS preparation"
+  },
+  "prepTemplateBankTitle": "Bank Officer Track",
+  "@prepTemplateBankTitle": {
+    "description": "Starter template title for bank recruitment exams"
+  },
+  "prepTemplateBankSubtitle": "Quantitative math, English writing, and Banking GK",
+  "@prepTemplateBankSubtitle": {
+    "description": "Starter template description for bank recruitment exams"
+  },
+  "prepTemplateTechTitle": "Software & Engineering",
+  "@prepTemplateTechTitle": {
+    "description": "Starter template title for technical engineering interviews"
+  },
+  "prepTemplateTechSubtitle": "Algorithms, system design, and core computer science",
+  "@prepTemplateTechSubtitle": {
+    "description": "Starter template description for technical engineering interviews"
+  },
+  "prepTplSubBcsBangla": "Bengali Literature & Grammar",
+  "@prepTplSubBcsBangla": {
+    "description": "Template subject name for BCS Bengali"
+  },
+  "prepTplSubBcsEnglish": "English Language & Literature",
+  "@prepTplSubBcsEnglish": {
+    "description": "Template subject name for BCS English"
+  },
+  "prepTplSubBcsGk": "Bangladesh & International Affairs",
+  "@prepTplSubBcsGk": {
+    "description": "Template subject name for BCS General Knowledge"
+  },
+  "prepTplMatBanglaOne": "Agrodut Bengali Literature",
+  "@prepTplMatBanglaOne": {
+    "description": "Template material 1 for Bengali track"
+  },
+  "prepTplMatBanglaTwo": "MP3 Bangla Grammar",
+  "@prepTplMatBanglaTwo": {
+    "description": "Template material 2 for Bengali track"
+  },
+  "prepTplMatBanglaThree": "Professors Bangla Digest",
+  "@prepTplMatBanglaThree": {
+    "description": "Template material 3 for Bengali track"
+  },
+  "prepTplMatEnglishCore": "English For Competitive Exams",
+  "@prepTplMatEnglishCore": {
+    "description": "Template material for English track"
+  },
+  "prepTplMatGkDigest": "Recent GK & Liberation War Notes",
+  "@prepTplMatGkDigest": {
+    "description": "Template material for GK track"
+  },
+  "prepTplSubBankMath": "Quantitative Aptitude",
+  "@prepTplSubBankMath": {
+    "description": "Template subject name for Bank Quantitative Aptitude"
+  },
+  "prepTplSubBankEnglish": "English Comprehension & Writing",
+  "@prepTplSubBankEnglish": {
+    "description": "Template subject name for Bank English"
+  },
+  "prepTplMatBankMathBook": "Khairul's Bank Math",
+  "@prepTplMatBankMathBook": {
+    "description": "Template material for Bank Math"
+  },
+  "prepTplMatBankFocus": "Focus & Translation Practice",
+  "@prepTplMatBankFocus": {
+    "description": "Template material for Bank Writing"
+  },
+  "prepTplSubTechDsa": "Data Structures & Algorithms",
+  "@prepTplSubTechDsa": {
+    "description": "Template subject name for Tech DSA"
+  },
+  "prepTplSubTechSysDesign": "System Design & Architecture",
+  "@prepTplSubTechSysDesign": {
+    "description": "Template subject name for Tech System Design"
+  },
+  "prepTplMatDsaSet": "Core Coding Problem Set",
+  "@prepTplMatDsaSet": {
+    "description": "Template material for Tech DSA"
+  },
+  "prepTplMatSysDesignGuide": "Designing Data-Intensive Systems",
+  "@prepTplMatSysDesignGuide": {
+    "description": "Template material for Tech System Design"
   }
 }

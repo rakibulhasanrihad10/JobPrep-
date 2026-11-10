@@ -6,9 +6,12 @@ import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
+import 'package:job_prep/features/prep/presentation/utils/prep_l10n.dart';
+import 'package:job_prep/features/prep/presentation/utils/prep_templates.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_card.dart';
 
-/// Displays the loading, error, empty, or reorderable list of study subjects.
+/// Displays loading, error, empty-state templates, or reorderable glass
+/// cards for study subjects.
 class PrepSubjectsSection extends StatelessWidget {
   /// Creates a [PrepSubjectsSection].
   const PrepSubjectsSection({
@@ -17,7 +20,10 @@ class PrepSubjectsSection extends StatelessWidget {
     required this.materialsBySubject,
     required this.selectedSubjectId,
     required this.isExpandedViewport,
+    required this.tabVisitId,
+    required this.isApplyingTemplate,
     required this.onRefresh,
+    required this.onApplyTemplate,
     required this.onSelectSubject,
     required this.onEditSubject,
     required this.onDeleteSubject,
@@ -41,8 +47,17 @@ class PrepSubjectsSection extends StatelessWidget {
   /// Whether the viewport renders the desktop master-detail split.
   final bool isExpandedViewport;
 
+  /// Monotonic visit counter replaying progress rings when switching tabs.
+  final int tabVisitId;
+
+  /// Disables template buttons while a template batch write runs.
+  final bool isApplyingTemplate;
+
   /// Reloads subjects on error.
   final VoidCallback onRefresh;
+
+  /// Applies a chosen starter template to populate subjects and materials.
+  final ValueChanged<PrepStarterTemplate> onApplyTemplate;
 
   /// Selects or navigates to a subject's materials view.
   final ValueChanged<Subject> onSelectSubject;
@@ -65,7 +80,9 @@ class PrepSubjectsSection extends StatelessWidget {
     final tokens = context.tokens;
     final colors = tokens.colors;
     final spacing = tokens.spacing;
+    final radii = tokens.radii;
     final l10n = context.l10n;
+    final locale = Localizations.localeOf(context);
 
     return subjectsAsync.when(
       loading: () => Padding(
@@ -92,9 +109,12 @@ class PrepSubjectsSection extends StatelessWidget {
       ),
       data: (_) {
         if (orderedSubjects.isEmpty) {
+          final templates = PrepTemplates.all(l10n);
           return GlassCard(
+            key: const ValueKey('prep-empty-state-card'),
             padding: spacing.insetsAllXl,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Icon(
                   Icons.menu_book_outlined,
@@ -113,6 +133,69 @@ class PrepSubjectsSection extends StatelessWidget {
                   style: tokens.textStyles.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
+                SizedBox(height: spacing.xl),
+                Text(
+                  l10n.prepTemplatesTitle,
+                  style: tokens.textStyles.titleMedium,
+                ),
+                SizedBox(height: spacing.xs),
+                Text(
+                  l10n.prepTemplatesSubtitle,
+                  style: tokens.textStyles.bodySmall,
+                ),
+                SizedBox(height: spacing.md),
+                for (final template in templates)
+                  Container(
+                    margin: EdgeInsets.only(bottom: spacing.sm),
+                    padding: spacing.insetsAllMd,
+                    decoration: BoxDecoration(
+                      color: colors.surfaceElevated,
+                      borderRadius: radii.cardRadius,
+                      border: Border.all(color: colors.glassBorder),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                template.title,
+                                style: tokens.textStyles.titleMedium,
+                              ),
+                              SizedBox(height: spacing.xxs),
+                              Text(
+                                template.subtitle,
+                                style: tokens.textStyles.bodySmall,
+                              ),
+                              SizedBox(height: spacing.xs),
+                              Text(
+                                l10n.prepSubjectCount(
+                                  template.subjects.length,
+                                  PrepL10n.formatInt(
+                                    template.subjects.length,
+                                    locale,
+                                  ),
+                                ),
+                                style: tokens.textStyles.labelSmall.copyWith(
+                                  color: colors.goldAccent,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: spacing.sm),
+                        GlassButton(
+                          key: ValueKey('apply-template-${template.id.name}'),
+                          variant: GlassButtonVariant.primary,
+                          onPressed: isApplyingTemplate
+                              ? null
+                              : () => onApplyTemplate(template),
+                          child: Text(l10n.prepApplyTemplateButton),
+                        ),
+                      ],
+                    ),
+                  ),
               ],
             ),
           );
@@ -135,7 +218,7 @@ class PrepSubjectsSection extends StatelessWidget {
               totalCount: orderedSubjects.length,
               materials: subjectMaterials,
               isSelected: isExpandedViewport && selectedSubjectId == subject.id,
-              replayKey: 'prep-subject-bar-${subject.id}',
+              replayKey: 'prep-sub-${subject.id}-visit-$tabVisitId',
               onTap: () => onSelectSubject(subject),
               onEdit: () => onEditSubject(subject),
               onDelete: () => onDeleteSubject(subject, subjectMaterials),

@@ -1676,4 +1676,141 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get prepErrorUnknown =>
       'Something went wrong while updating preparation data.';
+
+  @override
+  String prepOverallUnitsSummary(
+      String formattedCompleted, String formattedTotal) {
+    return '$formattedCompleted / $formattedTotal total units';
+  }
+
+  @override
+  String prepQuickLogPlus(String formattedAmount) {
+    return '+$formattedAmount';
+  }
+
+  @override
+  String get prepLogButton => 'Log';
+
+  @override
+  String get prepLogDialogTitle => 'Log progress';
+
+  @override
+  String get prepCustomUnitsLabel => 'Units completed';
+
+  @override
+  String get prepCustomUnitsHint => 'e.g. 25';
+
+  @override
+  String get prepCustomUnitsInvalid => 'Enter a whole number greater than 0.';
+
+  @override
+  String get prepLogDateLabel => 'Date';
+
+  @override
+  String get prepLogNoteLabel => 'Note (optional)';
+
+  @override
+  String get prepLogNoteHint => 'e.g. Chapters 1-3, revision set';
+
+  @override
+  String get prepLogSaveButton => 'Save log';
+
+  @override
+  String get prepLogUpdateButton => 'Update log';
+
+  @override
+  String get prepLogCancelEditButton => 'Cancel edit';
+
+  @override
+  String get prepEditingLogBanner => 'Editing existing log entry';
+
+  @override
+  String get prepPastLogsTitle => 'Past study logs';
+
+  @override
+  String get prepNoPastLogs => 'No study logs recorded for this material yet.';
+
+  @override
+  String prepLogUnitsSummary(String formattedUnits, String unitLabel) {
+    return '+$formattedUnits $unitLabel';
+  }
+
+  @override
+  String get prepTemplatesTitle => 'Start quickly with a template';
+
+  @override
+  String get prepTemplatesSubtitle =>
+      'Apply a preset study plan you can freely customize, reorder, or delete anytime.';
+
+  @override
+  String get prepApplyTemplateButton => 'Apply template';
+
+  @override
+  String get prepTemplateBcsTitle => 'BCS & Bangla Core';
+
+  @override
+  String get prepTemplateBcsSubtitle =>
+      'Bengali 3-book track (300/300/400 pages), English, GK, and Aptitude';
+
+  @override
+  String get prepTemplateBankTitle => 'Bank Officer Track';
+
+  @override
+  String get prepTemplateBankSubtitle =>
+      'Quantitative math, English writing, and Banking GK';
+
+  @override
+  String get prepTemplateTechTitle => 'Software & Engineering';
+
+  @override
+  String get prepTemplateTechSubtitle =>
+      'Algorithms, system design, and core computer science';
+
+  @override
+  String get prepTplSubBcsBangla => 'Bengali Literature & Grammar';
+
+  @override
+  String get prepTplSubBcsEnglish => 'English Language & Literature';
+
+  @override
+  String get prepTplSubBcsGk => 'Bangladesh & International Affairs';
+
+  @override
+  String get prepTplMatBanglaOne => 'Agrodut Bengali Literature';
+
+  @override
+  String get prepTplMatBanglaTwo => 'MP3 Bangla Grammar';
+
+  @override
+  String get prepTplMatBanglaThree => 'Professors Bangla Digest';
+
+  @override
+  String get prepTplMatEnglishCore => 'English For Competitive Exams';
+
+  @override
+  String get prepTplMatGkDigest => 'Recent GK & Liberation War Notes';
+
+  @override
+  String get prepTplSubBankMath => 'Quantitative Aptitude';
+
+  @override
+  String get prepTplSubBankEnglish => 'English Comprehension & Writing';
+
+  @override
+  String get prepTplMatBankMathBook => 'Khairul\'s Bank Math';
+
+  @override
+  String get prepTplMatBankFocus => 'Focus & Translation Practice';
+
+  @override
+  String get prepTplSubTechDsa => 'Data Structures & Algorithms';
+
+  @override
+  String get prepTplSubTechSysDesign => 'System Design & Architecture';
+
+  @override
+  String get prepTplMatDsaSet => 'Core Coding Problem Set';
+
+  @override
+  String get prepTplMatSysDesignGuide => 'Designing Data-Intensive Systems';
 }

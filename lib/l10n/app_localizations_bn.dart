@@ -1677,4 +1677,141 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get prepErrorUnknown =>
       'প্রস্তুতির তথ্য হালনাগাদ করার সময় সমস্যা হয়েছে।';
+
+  @override
+  String prepOverallUnitsSummary(
+      String formattedCompleted, String formattedTotal) {
+    return '$formattedCompleted / $formattedTotal মোট একক';
+  }
+
+  @override
+  String prepQuickLogPlus(String formattedAmount) {
+    return '+$formattedAmount';
+  }
+
+  @override
+  String get prepLogButton => 'লগ';
+
+  @override
+  String get prepLogDialogTitle => 'অগ্রগতি লগ করুন';
+
+  @override
+  String get prepCustomUnitsLabel => 'সম্পন্ন একক';
+
+  @override
+  String get prepCustomUnitsHint => 'যেমন: ২৫';
+
+  @override
+  String get prepCustomUnitsInvalid => '০-এর চেয়ে বড় একটি পূর্ণসংখ্যা লিখুন।';
+
+  @override
+  String get prepLogDateLabel => 'তারিখ';
+
+  @override
+  String get prepLogNoteLabel => 'নোট (ঐচ্ছিক)';
+
+  @override
+  String get prepLogNoteHint => 'যেমন: অধ্যায় ১-৩, রিভিশন';
+
+  @override
+  String get prepLogSaveButton => 'লগ সংরক্ষণ';
+
+  @override
+  String get prepLogUpdateButton => 'লগ হালনাগাদ';
+
+  @override
+  String get prepLogCancelEditButton => 'সম্পাদনা বাতিল';
+
+  @override
+  String get prepEditingLogBanner => 'পূর্ববর্তী লগ সম্পাদনা চলছে';
+
+  @override
+  String get prepPastLogsTitle => 'পূর্ববর্তী পাঠ লগসমূহ';
+
+  @override
+  String get prepNoPastLogs => 'এই উপকরণে এখনো কোনো পাঠ লগ করা হয়নি।';
+
+  @override
+  String prepLogUnitsSummary(String formattedUnits, String unitLabel) {
+    return '+$formattedUnits $unitLabel';
+  }
+
+  @override
+  String get prepTemplatesTitle => 'টেমপ্লেট দিয়ে দ্রুত শুরু করুন';
+
+  @override
+  String get prepTemplatesSubtitle =>
+      'একটি প্রস্তুত পরিকল্পনা বেছে নিন; পরে যেকোনো সময় পরিবর্তন বা মুছে ফেলতে পারবেন।';
+
+  @override
+  String get prepApplyTemplateButton => 'টেমপ্লেট প্রয়োগ করুন';
+
+  @override
+  String get prepTemplateBcsTitle => 'বিসিএস ও বাংলা মূল ট্র্যাক';
+
+  @override
+  String get prepTemplateBcsSubtitle =>
+      'বাংলা ৩টি বই (৩০০/৩০০/৪০০ পৃষ্ঠা), ইংরেজি ও সাধারণ জ্ঞান';
+
+  @override
+  String get prepTemplateBankTitle => 'ব্যাংক অফিসার প্রস্তুতি';
+
+  @override
+  String get prepTemplateBankSubtitle =>
+      'গণিত, ইংরেজি রচনা ও ব্যাংকিং সাধারণ জ্ঞান';
+
+  @override
+  String get prepTemplateTechTitle => 'প্রকৌশল ও সফটওয়্যার';
+
+  @override
+  String get prepTemplateTechSubtitle =>
+      'অ্যালগরিদম, সিস্টেম ডিজাইন ও কোর সিএস';
+
+  @override
+  String get prepTplSubBcsBangla => 'বাংলা সাহিত্য ও ব্যাকরণ';
+
+  @override
+  String get prepTplSubBcsEnglish => 'ইংরেজি ভাষা ও সাহিত্য';
+
+  @override
+  String get prepTplSubBcsGk => 'বাংলাদেশ ও আন্তর্জাতিক বিষয়াবলি';
+
+  @override
+  String get prepTplMatBanglaOne => 'অগ্রদূত বাংলা সাহিত্য';
+
+  @override
+  String get prepTplMatBanglaTwo => 'MP3 বাংলা ব্যাকরণ';
+
+  @override
+  String get prepTplMatBanglaThree => 'প্রফেসরস বাংলা ডাইজেস্ট';
+
+  @override
+  String get prepTplMatEnglishCore => 'কম্পিটিটিভ ইংলিশ';
+
+  @override
+  String get prepTplMatGkDigest => 'সাম্প্রতিক ও মুক্তিযুদ্ধ নোটস';
+
+  @override
+  String get prepTplSubBankMath => 'গাণিতিক দক্ষতা';
+
+  @override
+  String get prepTplSubBankEnglish => 'ইংরেজি রচনা ও অনুবাদ';
+
+  @override
+  String get prepTplMatBankMathBook => 'ব্যাংক ম্যাথ গাইড';
+
+  @override
+  String get prepTplMatBankFocus => 'ফোকাস রাইটিং ও অনুবাদ';
+
+  @override
+  String get prepTplSubTechDsa => 'ডেটা স্ট্রাকচার ও অ্যালগরিদম';
+
+  @override
+  String get prepTplSubTechSysDesign => 'সিস্টেম ডিজাইন';
+
+  @override
+  String get prepTplMatDsaSet => 'কোডিং প্রবলেম সেট';
+
+  @override
+  String get prepTplMatSysDesignGuide => 'সিস্টেম ডিজাইন গাইড';
 }
