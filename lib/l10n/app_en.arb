@@ -1161,5 +1161,264 @@
         "type": "String"
       }
     }
+  },
+  "circularDetailBackTooltip": "Back to circulars",
+  "@circularDetailBackTooltip": {
+    "description": "Tooltip on back button in mobile/full-screen circular detail view"
+  },
+  "circularDetailCloseTooltip": "Close details",
+  "@circularDetailCloseTooltip": {
+    "description": "Tooltip on close button in desktop master-detail pane"
+  },
+  "circularDetailEditAction": "Edit",
+  "@circularDetailEditAction": {
+    "description": "Action opening the edit circular form from detail screen"
+  },
+  "circularDetailDeleteAction": "Delete",
+  "@circularDetailDeleteAction": {
+    "description": "Action deleting the circular from detail screen"
+  },
+  "circularDetailDeleteTitle": "Delete this circular?",
+  "@circularDetailDeleteTitle": {
+    "description": "Confirmation dialog title before deleting a circular"
+  },
+  "circularDetailDeleteMessage": "\"{title}\" and any scheduled exam dates will be removed permanently.",
+  "@circularDetailDeleteMessage": {
+    "description": "Confirmation dialog body before deleting a circular",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "circularDetailQuickCaptureBadge": "Quick captured",
+  "@circularDetailQuickCaptureBadge": {
+    "description": "Subtle badge shown on circulars created through Quick Capture"
+  },
+  "circularDetailLaunchFailed": "Unable to open this link right now.",
+  "@circularDetailLaunchFailed": {
+    "description": "Error snackbar shown when launching an external circular link fails"
+  },
+  "circularDetailQuickActionsTitle": "Quick status & checklist",
+  "@circularDetailQuickActionsTitle": {
+    "description": "Section title for quick status selectors and application checklist"
+  },
+  "circularDetailChecklistTitle": "Application checklist",
+  "@circularDetailChecklistTitle": {
+    "description": "Heading above application milestone checkboxes"
+  },
+  "circularDetailChecklistProgress": "{formattedDone} of {formattedTotal} done",
+  "@circularDetailChecklistProgress": {
+    "description": "Completion progress label above checklist progress bar",
+    "placeholders": {
+      "formattedDone": {
+        "type": "String"
+      },
+      "formattedTotal": {
+        "type": "String"
+      }
+    }
+  },
+  "checklistPhoto": "Photo prepared",
+  "@checklistPhoto": {
+    "description": "Checklist item for scanned/printed photo preparation"
+  },
+  "checklistCertificates": "Certificates ready",
+  "@checklistCertificates": {
+    "description": "Checklist item for academic and supporting certificates"
+  },
+  "checklistFeePaid": "Fee paid",
+  "@checklistFeePaid": {
+    "description": "Checklist item for completing application fee payment"
+  },
+  "checklistSubmitted": "Submitted",
+  "@checklistSubmitted": {
+    "description": "Checklist item for submitting the application form"
+  },
+  "checklistAdmitCardDownloaded": "Admit card downloaded",
+  "@checklistAdmitCardDownloaded": {
+    "description": "Checklist item for downloading the admit card"
+  },
+  "circularDetailLinksTitle": "Official links",
+  "@circularDetailLinksTitle": {
+    "description": "Section title for external circular, application portal, and organization links"
+  },
+  "circularDetailOpenCircularLink": "Original circular link",
+  "@circularDetailOpenCircularLink": {
+    "description": "Button opening the original circular announcement URL"
+  },
+  "circularDetailOpenApplicationPortal": "Application portal",
+  "@circularDetailOpenApplicationPortal": {
+    "description": "Button opening the online application portal URL"
+  },
+  "circularDetailOpenOrgWebsite": "Organization website",
+  "@circularDetailOpenOrgWebsite": {
+    "description": "Button opening the recruiting organization's website URL"
+  },
+  "circularDetailLinkMissing": "Not provided",
+  "@circularDetailLinkMissing": {
+    "description": "Subtitle shown when an optional external URL is empty"
+  },
+  "circularDetailOverviewTitle": "Overview & compensation",
+  "@circularDetailOverviewTitle": {
+    "description": "Section title for circular metadata, dates, salary, and fee fields"
+  },
+  "circularDetailFieldDeadline": "Deadline",
+  "@circularDetailFieldDeadline": {
+    "description": "Overview label for application deadline"
+  },
+  "circularDetailFieldVacancies": "Vacancies",
+  "@circularDetailFieldVacancies": {
+    "description": "Overview label for advertised vacancy count"
+  },
+  "circularDetailFieldSalary": "Salary range",
+  "@circularDetailFieldSalary": {
+    "description": "Overview label for salary minimum/maximum"
+  },
+  "circularDetailFieldSalaryNote": "Salary note",
+  "@circularDetailFieldSalaryNote": {
+    "description": "Overview label for pay scale benefits note"
+  },
+  "circularDetailFieldFee": "Application fee",
+  "@circularDetailFieldFee": {
+    "description": "Overview label for application fee amount"
+  },
+  "circularDetailFieldFeeNote": "Fee note",
+  "@circularDetailFieldFeeNote": {
+    "description": "Overview label for application fee exemption or payment note"
+  },
+  "circularDetailFieldCreated": "Added on",
+  "@circularDetailFieldCreated": {
+    "description": "Overview label for creation date"
+  },
+  "circularDetailFieldUpdated": "Last updated",
+  "@circularDetailFieldUpdated": {
+    "description": "Overview label for last update date"
+  },
+  "circularDetailNotProvided": "Not specified",
+  "@circularDetailNotProvided": {
+    "description": "Placeholder text when an optional field has no value"
+  },
+  "circularDetailSalaryRange": "{min} - {max}",
+  "@circularDetailSalaryRange": {
+    "description": "Formatted salary range between minimum and maximum",
+    "placeholders": {
+      "min": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "circularDetailSalaryFrom": "From {min}",
+  "@circularDetailSalaryFrom": {
+    "description": "Formatted salary when only minimum is specified",
+    "placeholders": {
+      "min": {
+        "type": "String"
+      }
+    }
+  },
+  "circularDetailSalaryUpTo": "Up to {max}",
+  "@circularDetailSalaryUpTo": {
+    "description": "Formatted salary when only maximum is specified",
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "circularDetailExamDatesTitle": "Exam dates",
+  "@circularDetailExamDatesTitle": {
+    "description": "Section heading for scheduled exam dates"
+  },
+  "examDateAddAction": "Add exam date",
+  "@examDateAddAction": {
+    "description": "Button opening the add exam date dialog"
+  },
+  "examDateUpcomingHeading": "Upcoming exams",
+  "@examDateUpcomingHeading": {
+    "description": "Subheading above future or today's exam dates ordered chronologically"
+  },
+  "examDatePastHeading": "Past exams",
+  "@examDatePastHeading": {
+    "description": "Subheading above completed or past exam dates"
+  },
+  "examDateEmptyMessage": "No exam dates added yet. Track preliminary, written, viva, or practical stages here.",
+  "@examDateEmptyMessage": {
+    "description": "Empty state copy inside Exam Dates section"
+  },
+  "examDateStageLabel": "Exam stage",
+  "@examDateStageLabel": {
+    "description": "Field label for exam stage dropdown"
+  },
+  "examDateStagePreliminary": "Preliminary",
+  "@examDateStagePreliminary": {
+    "description": "Preliminary exam stage label"
+  },
+  "examDateStageWritten": "Written",
+  "@examDateStageWritten": {
+    "description": "Written exam stage label"
+  },
+  "examDateStageViva": "Viva",
+  "@examDateStageViva": {
+    "description": "Viva / oral interview stage label"
+  },
+  "examDateStagePractical": "Practical",
+  "@examDateStagePractical": {
+    "description": "Practical skill test stage label"
+  },
+  "examDateStageOther": "Other",
+  "@examDateStageOther": {
+    "description": "Other exam stage label"
+  },
+  "examDateDateLabel": "Exam date & time",
+  "@examDateDateLabel": {
+    "description": "Label for scheduled date and time picker controls"
+  },
+  "examDatePickDateAction": "Change date",
+  "@examDatePickDateAction": {
+    "description": "Button changing the scheduled exam date"
+  },
+  "examDatePickTimeAction": "Change time",
+  "@examDatePickTimeAction": {
+    "description": "Button changing the scheduled exam time"
+  },
+  "examDateVenueLabel": "Venue (optional)",
+  "@examDateVenueLabel": {
+    "description": "Input label for exam venue"
+  },
+  "examDateVenueHint": "e.g. Dhaka College / BPSC HQ",
+  "@examDateVenueHint": {
+    "description": "Input hint for exam venue"
+  },
+  "examDateNotesLabel": "Notes (optional)",
+  "@examDateNotesLabel": {
+    "description": "Input label for exam stage notes"
+  },
+  "examDateNotesHint": "Reporting time, seat plan, documents...",
+  "@examDateNotesHint": {
+    "description": "Input hint for exam stage notes"
+  },
+  "examDateDialogAddTitle": "Add exam date",
+  "@examDateDialogAddTitle": {
+    "description": "Dialog heading when creating an exam date"
+  },
+  "examDateDialogEditTitle": "Edit exam date",
+  "@examDateDialogEditTitle": {
+    "description": "Dialog heading when editing an existing exam date"
+  },
+  "examDateEditTooltip": "Edit exam date",
+  "@examDateEditTooltip": {
+    "description": "Tooltip on edit exam date button"
+  },
+  "examDateDeleteTooltip": "Delete exam date",
+  "@examDateDeleteTooltip": {
+    "description": "Tooltip on delete exam date button"
+  },
+  "circularDetailNotesTitle": "Instructions, notes & syllabus",
+  "@circularDetailNotesTitle": {
+    "description": "Section title for circular instructions, personal notes, and syllabus"
   }
 }

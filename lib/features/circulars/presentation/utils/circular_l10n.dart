@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:job_prep/core/localization/formatters.dart';
 import 'package:job_prep/core/theme/app_colors.dart';
+import 'package:job_prep/features/circulars/domain/entities/application_checklist.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_enums.dart';
 import 'package:job_prep/features/circulars/domain/errors/circular_failure.dart';
 import 'package:job_prep/features/circulars/domain/utils/deadline_countdown.dart';
@@ -237,6 +238,42 @@ abstract final class CircularL10n {
       QuickCaptureLinkValidationError.required => l10n.quickCaptureLinkRequired,
       QuickCaptureLinkValidationError.invalidFormat =>
         l10n.circularValidationInvalidUrl,
+    };
+  }
+
+  /// Localized display label for an [ExamStage].
+  static String examStageLabel(ExamStage stage, AppLocalizations l10n) {
+    return switch (stage) {
+      ExamStage.preliminary => l10n.examDateStagePreliminary,
+      ExamStage.written => l10n.examDateStageWritten,
+      ExamStage.viva => l10n.examDateStageViva,
+      ExamStage.practical => l10n.examDateStagePractical,
+      ExamStage.other => l10n.examDateStageOther,
+    };
+  }
+
+  /// Resolves localized label for a persisted `circular_exam_dates.stage`.
+  static String examStageDisplayLabel(
+    String rawStage,
+    AppLocalizations l10n,
+  ) {
+    final parsed = ExamStage.tryParse(rawStage);
+    if (parsed != null) return examStageLabel(parsed, l10n);
+    return rawStage.trim();
+  }
+
+  /// Localized label for an [ApplicationChecklistItem].
+  static String checklistItemLabel(
+    ApplicationChecklistItem item,
+    AppLocalizations l10n,
+  ) {
+    return switch (item) {
+      ApplicationChecklistItem.photo => l10n.checklistPhoto,
+      ApplicationChecklistItem.certificates => l10n.checklistCertificates,
+      ApplicationChecklistItem.feePaid => l10n.checklistFeePaid,
+      ApplicationChecklistItem.submitted => l10n.checklistSubmitted,
+      ApplicationChecklistItem.admitCardDownloaded =>
+        l10n.checklistAdmitCardDownloaded,
     };
   }
 }

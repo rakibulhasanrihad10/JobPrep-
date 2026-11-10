@@ -1651,6 +1651,349 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Deleted \"{title}\".'**
   String inboxActionDeleted(String title);
+
+  /// Tooltip on back button in mobile/full-screen circular detail view
+  ///
+  /// In en, this message translates to:
+  /// **'Back to circulars'**
+  String get circularDetailBackTooltip;
+
+  /// Tooltip on close button in desktop master-detail pane
+  ///
+  /// In en, this message translates to:
+  /// **'Close details'**
+  String get circularDetailCloseTooltip;
+
+  /// Action opening the edit circular form from detail screen
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get circularDetailEditAction;
+
+  /// Action deleting the circular from detail screen
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get circularDetailDeleteAction;
+
+  /// Confirmation dialog title before deleting a circular
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this circular?'**
+  String get circularDetailDeleteTitle;
+
+  /// Confirmation dialog body before deleting a circular
+  ///
+  /// In en, this message translates to:
+  /// **'\"{title}\" and any scheduled exam dates will be removed permanently.'**
+  String circularDetailDeleteMessage(String title);
+
+  /// Subtle badge shown on circulars created through Quick Capture
+  ///
+  /// In en, this message translates to:
+  /// **'Quick captured'**
+  String get circularDetailQuickCaptureBadge;
+
+  /// Error snackbar shown when launching an external circular link fails
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to open this link right now.'**
+  String get circularDetailLaunchFailed;
+
+  /// Section title for quick status selectors and application checklist
+  ///
+  /// In en, this message translates to:
+  /// **'Quick status & checklist'**
+  String get circularDetailQuickActionsTitle;
+
+  /// Heading above application milestone checkboxes
+  ///
+  /// In en, this message translates to:
+  /// **'Application checklist'**
+  String get circularDetailChecklistTitle;
+
+  /// Completion progress label above checklist progress bar
+  ///
+  /// In en, this message translates to:
+  /// **'{formattedDone} of {formattedTotal} done'**
+  String circularDetailChecklistProgress(
+      String formattedDone, String formattedTotal);
+
+  /// Checklist item for scanned/printed photo preparation
+  ///
+  /// In en, this message translates to:
+  /// **'Photo prepared'**
+  String get checklistPhoto;
+
+  /// Checklist item for academic and supporting certificates
+  ///
+  /// In en, this message translates to:
+  /// **'Certificates ready'**
+  String get checklistCertificates;
+
+  /// Checklist item for completing application fee payment
+  ///
+  /// In en, this message translates to:
+  /// **'Fee paid'**
+  String get checklistFeePaid;
+
+  /// Checklist item for submitting the application form
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted'**
+  String get checklistSubmitted;
+
+  /// Checklist item for downloading the admit card
+  ///
+  /// In en, this message translates to:
+  /// **'Admit card downloaded'**
+  String get checklistAdmitCardDownloaded;
+
+  /// Section title for external circular, application portal, and organization links
+  ///
+  /// In en, this message translates to:
+  /// **'Official links'**
+  String get circularDetailLinksTitle;
+
+  /// Button opening the original circular announcement URL
+  ///
+  /// In en, this message translates to:
+  /// **'Original circular link'**
+  String get circularDetailOpenCircularLink;
+
+  /// Button opening the online application portal URL
+  ///
+  /// In en, this message translates to:
+  /// **'Application portal'**
+  String get circularDetailOpenApplicationPortal;
+
+  /// Button opening the recruiting organization's website URL
+  ///
+  /// In en, this message translates to:
+  /// **'Organization website'**
+  String get circularDetailOpenOrgWebsite;
+
+  /// Subtitle shown when an optional external URL is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Not provided'**
+  String get circularDetailLinkMissing;
+
+  /// Section title for circular metadata, dates, salary, and fee fields
+  ///
+  /// In en, this message translates to:
+  /// **'Overview & compensation'**
+  String get circularDetailOverviewTitle;
+
+  /// Overview label for application deadline
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline'**
+  String get circularDetailFieldDeadline;
+
+  /// Overview label for advertised vacancy count
+  ///
+  /// In en, this message translates to:
+  /// **'Vacancies'**
+  String get circularDetailFieldVacancies;
+
+  /// Overview label for salary minimum/maximum
+  ///
+  /// In en, this message translates to:
+  /// **'Salary range'**
+  String get circularDetailFieldSalary;
+
+  /// Overview label for pay scale benefits note
+  ///
+  /// In en, this message translates to:
+  /// **'Salary note'**
+  String get circularDetailFieldSalaryNote;
+
+  /// Overview label for application fee amount
+  ///
+  /// In en, this message translates to:
+  /// **'Application fee'**
+  String get circularDetailFieldFee;
+
+  /// Overview label for application fee exemption or payment note
+  ///
+  /// In en, this message translates to:
+  /// **'Fee note'**
+  String get circularDetailFieldFeeNote;
+
+  /// Overview label for creation date
+  ///
+  /// In en, this message translates to:
+  /// **'Added on'**
+  String get circularDetailFieldCreated;
+
+  /// Overview label for last update date
+  ///
+  /// In en, this message translates to:
+  /// **'Last updated'**
+  String get circularDetailFieldUpdated;
+
+  /// Placeholder text when an optional field has no value
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get circularDetailNotProvided;
+
+  /// Formatted salary range between minimum and maximum
+  ///
+  /// In en, this message translates to:
+  /// **'{min} - {max}'**
+  String circularDetailSalaryRange(String min, String max);
+
+  /// Formatted salary when only minimum is specified
+  ///
+  /// In en, this message translates to:
+  /// **'From {min}'**
+  String circularDetailSalaryFrom(String min);
+
+  /// Formatted salary when only maximum is specified
+  ///
+  /// In en, this message translates to:
+  /// **'Up to {max}'**
+  String circularDetailSalaryUpTo(String max);
+
+  /// Section heading for scheduled exam dates
+  ///
+  /// In en, this message translates to:
+  /// **'Exam dates'**
+  String get circularDetailExamDatesTitle;
+
+  /// Button opening the add exam date dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Add exam date'**
+  String get examDateAddAction;
+
+  /// Subheading above future or today's exam dates ordered chronologically
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming exams'**
+  String get examDateUpcomingHeading;
+
+  /// Subheading above completed or past exam dates
+  ///
+  /// In en, this message translates to:
+  /// **'Past exams'**
+  String get examDatePastHeading;
+
+  /// Empty state copy inside Exam Dates section
+  ///
+  /// In en, this message translates to:
+  /// **'No exam dates added yet. Track preliminary, written, viva, or practical stages here.'**
+  String get examDateEmptyMessage;
+
+  /// Field label for exam stage dropdown
+  ///
+  /// In en, this message translates to:
+  /// **'Exam stage'**
+  String get examDateStageLabel;
+
+  /// Preliminary exam stage label
+  ///
+  /// In en, this message translates to:
+  /// **'Preliminary'**
+  String get examDateStagePreliminary;
+
+  /// Written exam stage label
+  ///
+  /// In en, this message translates to:
+  /// **'Written'**
+  String get examDateStageWritten;
+
+  /// Viva / oral interview stage label
+  ///
+  /// In en, this message translates to:
+  /// **'Viva'**
+  String get examDateStageViva;
+
+  /// Practical skill test stage label
+  ///
+  /// In en, this message translates to:
+  /// **'Practical'**
+  String get examDateStagePractical;
+
+  /// Other exam stage label
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get examDateStageOther;
+
+  /// Label for scheduled date and time picker controls
+  ///
+  /// In en, this message translates to:
+  /// **'Exam date & time'**
+  String get examDateDateLabel;
+
+  /// Button changing the scheduled exam date
+  ///
+  /// In en, this message translates to:
+  /// **'Change date'**
+  String get examDatePickDateAction;
+
+  /// Button changing the scheduled exam time
+  ///
+  /// In en, this message translates to:
+  /// **'Change time'**
+  String get examDatePickTimeAction;
+
+  /// Input label for exam venue
+  ///
+  /// In en, this message translates to:
+  /// **'Venue (optional)'**
+  String get examDateVenueLabel;
+
+  /// Input hint for exam venue
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Dhaka College / BPSC HQ'**
+  String get examDateVenueHint;
+
+  /// Input label for exam stage notes
+  ///
+  /// In en, this message translates to:
+  /// **'Notes (optional)'**
+  String get examDateNotesLabel;
+
+  /// Input hint for exam stage notes
+  ///
+  /// In en, this message translates to:
+  /// **'Reporting time, seat plan, documents...'**
+  String get examDateNotesHint;
+
+  /// Dialog heading when creating an exam date
+  ///
+  /// In en, this message translates to:
+  /// **'Add exam date'**
+  String get examDateDialogAddTitle;
+
+  /// Dialog heading when editing an existing exam date
+  ///
+  /// In en, this message translates to:
+  /// **'Edit exam date'**
+  String get examDateDialogEditTitle;
+
+  /// Tooltip on edit exam date button
+  ///
+  /// In en, this message translates to:
+  /// **'Edit exam date'**
+  String get examDateEditTooltip;
+
+  /// Tooltip on delete exam date button
+  ///
+  /// In en, this message translates to:
+  /// **'Delete exam date'**
+  String get examDateDeleteTooltip;
+
+  /// Section title for circular instructions, personal notes, and syllabus
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions, notes & syllabus'**
+  String get circularDetailNotesTitle;
 }
 
 class _AppLocalizationsDelegate

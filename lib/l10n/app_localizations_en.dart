@@ -918,4 +918,188 @@ class AppLocalizationsEn extends AppLocalizations {
   String inboxActionDeleted(String title) {
     return 'Deleted \"$title\".';
   }
+
+  @override
+  String get circularDetailBackTooltip => 'Back to circulars';
+
+  @override
+  String get circularDetailCloseTooltip => 'Close details';
+
+  @override
+  String get circularDetailEditAction => 'Edit';
+
+  @override
+  String get circularDetailDeleteAction => 'Delete';
+
+  @override
+  String get circularDetailDeleteTitle => 'Delete this circular?';
+
+  @override
+  String circularDetailDeleteMessage(String title) {
+    return '\"$title\" and any scheduled exam dates will be removed permanently.';
+  }
+
+  @override
+  String get circularDetailQuickCaptureBadge => 'Quick captured';
+
+  @override
+  String get circularDetailLaunchFailed =>
+      'Unable to open this link right now.';
+
+  @override
+  String get circularDetailQuickActionsTitle => 'Quick status & checklist';
+
+  @override
+  String get circularDetailChecklistTitle => 'Application checklist';
+
+  @override
+  String circularDetailChecklistProgress(
+      String formattedDone, String formattedTotal) {
+    return '$formattedDone of $formattedTotal done';
+  }
+
+  @override
+  String get checklistPhoto => 'Photo prepared';
+
+  @override
+  String get checklistCertificates => 'Certificates ready';
+
+  @override
+  String get checklistFeePaid => 'Fee paid';
+
+  @override
+  String get checklistSubmitted => 'Submitted';
+
+  @override
+  String get checklistAdmitCardDownloaded => 'Admit card downloaded';
+
+  @override
+  String get circularDetailLinksTitle => 'Official links';
+
+  @override
+  String get circularDetailOpenCircularLink => 'Original circular link';
+
+  @override
+  String get circularDetailOpenApplicationPortal => 'Application portal';
+
+  @override
+  String get circularDetailOpenOrgWebsite => 'Organization website';
+
+  @override
+  String get circularDetailLinkMissing => 'Not provided';
+
+  @override
+  String get circularDetailOverviewTitle => 'Overview & compensation';
+
+  @override
+  String get circularDetailFieldDeadline => 'Deadline';
+
+  @override
+  String get circularDetailFieldVacancies => 'Vacancies';
+
+  @override
+  String get circularDetailFieldSalary => 'Salary range';
+
+  @override
+  String get circularDetailFieldSalaryNote => 'Salary note';
+
+  @override
+  String get circularDetailFieldFee => 'Application fee';
+
+  @override
+  String get circularDetailFieldFeeNote => 'Fee note';
+
+  @override
+  String get circularDetailFieldCreated => 'Added on';
+
+  @override
+  String get circularDetailFieldUpdated => 'Last updated';
+
+  @override
+  String get circularDetailNotProvided => 'Not specified';
+
+  @override
+  String circularDetailSalaryRange(String min, String max) {
+    return '$min - $max';
+  }
+
+  @override
+  String circularDetailSalaryFrom(String min) {
+    return 'From $min';
+  }
+
+  @override
+  String circularDetailSalaryUpTo(String max) {
+    return 'Up to $max';
+  }
+
+  @override
+  String get circularDetailExamDatesTitle => 'Exam dates';
+
+  @override
+  String get examDateAddAction => 'Add exam date';
+
+  @override
+  String get examDateUpcomingHeading => 'Upcoming exams';
+
+  @override
+  String get examDatePastHeading => 'Past exams';
+
+  @override
+  String get examDateEmptyMessage =>
+      'No exam dates added yet. Track preliminary, written, viva, or practical stages here.';
+
+  @override
+  String get examDateStageLabel => 'Exam stage';
+
+  @override
+  String get examDateStagePreliminary => 'Preliminary';
+
+  @override
+  String get examDateStageWritten => 'Written';
+
+  @override
+  String get examDateStageViva => 'Viva';
+
+  @override
+  String get examDateStagePractical => 'Practical';
+
+  @override
+  String get examDateStageOther => 'Other';
+
+  @override
+  String get examDateDateLabel => 'Exam date & time';
+
+  @override
+  String get examDatePickDateAction => 'Change date';
+
+  @override
+  String get examDatePickTimeAction => 'Change time';
+
+  @override
+  String get examDateVenueLabel => 'Venue (optional)';
+
+  @override
+  String get examDateVenueHint => 'e.g. Dhaka College / BPSC HQ';
+
+  @override
+  String get examDateNotesLabel => 'Notes (optional)';
+
+  @override
+  String get examDateNotesHint => 'Reporting time, seat plan, documents...';
+
+  @override
+  String get examDateDialogAddTitle => 'Add exam date';
+
+  @override
+  String get examDateDialogEditTitle => 'Edit exam date';
+
+  @override
+  String get examDateEditTooltip => 'Edit exam date';
+
+  @override
+  String get examDateDeleteTooltip => 'Delete exam date';
+
+  @override
+  String get circularDetailNotesTitle => 'Instructions, notes & syllabus';
 }

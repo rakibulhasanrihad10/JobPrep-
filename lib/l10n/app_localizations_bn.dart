@@ -919,4 +919,188 @@ class AppLocalizationsBn extends AppLocalizations {
   String inboxActionDeleted(String title) {
     return '\"$title\" মুছে ফেলা হয়েছে।';
   }
+
+  @override
+  String get circularDetailBackTooltip => 'সার্কুলার তালিকায় ফিরুন';
+
+  @override
+  String get circularDetailCloseTooltip => 'বিস্তারিত বন্ধ করুন';
+
+  @override
+  String get circularDetailEditAction => 'সম্পাদনা';
+
+  @override
+  String get circularDetailDeleteAction => 'মুছে ফেলুন';
+
+  @override
+  String get circularDetailDeleteTitle => 'সার্কুলারটি মুছে ফেলবেন?';
+
+  @override
+  String circularDetailDeleteMessage(String title) {
+    return '\"$title\" এবং এর নির্ধারিত পরীক্ষার তারিখগুলো স্থায়ীভাবে মুছে ফেলা হবে।';
+  }
+
+  @override
+  String get circularDetailQuickCaptureBadge => 'দ্রুত সংরক্ষিত';
+
+  @override
+  String get circularDetailLaunchFailed => 'এই লিংকটি এখন খোলা যাচ্ছে না।';
+
+  @override
+  String get circularDetailQuickActionsTitle => 'দ্রুত অবস্থা ও চেকলিস্ট';
+
+  @override
+  String get circularDetailChecklistTitle => 'আবেদন চেকলিস্ট';
+
+  @override
+  String circularDetailChecklistProgress(
+      String formattedDone, String formattedTotal) {
+    return '$formattedTotalটির মধ্যে $formattedDoneটি সম্পন্ন';
+  }
+
+  @override
+  String get checklistPhoto => 'ছবি প্রস্তুত';
+
+  @override
+  String get checklistCertificates => 'সনদপত্র প্রস্তুত';
+
+  @override
+  String get checklistFeePaid => 'আবেদন ফি পরিশোধিত';
+
+  @override
+  String get checklistSubmitted => 'আবেদন জমা দেওয়া হয়েছে';
+
+  @override
+  String get checklistAdmitCardDownloaded => 'প্রবেশপত্র ডাউনলোড সম্পন্ন';
+
+  @override
+  String get circularDetailLinksTitle => 'অফিসিয়াল লিংক';
+
+  @override
+  String get circularDetailOpenCircularLink => 'মূল সার্কুলার লিংক';
+
+  @override
+  String get circularDetailOpenApplicationPortal => 'আবেদন পোর্টাল';
+
+  @override
+  String get circularDetailOpenOrgWebsite => 'প্রতিষ্ঠানের ওয়েবসাইট';
+
+  @override
+  String get circularDetailLinkMissing => 'দেওয়া হয়নি';
+
+  @override
+  String get circularDetailOverviewTitle => 'সারসংক্ষেপ ও বেতন-ভাতা';
+
+  @override
+  String get circularDetailFieldDeadline => 'আবেদনের শেষ সময়';
+
+  @override
+  String get circularDetailFieldVacancies => 'শূন্যপদ';
+
+  @override
+  String get circularDetailFieldSalary => 'বেতন সীমা';
+
+  @override
+  String get circularDetailFieldSalaryNote => 'বেতন নোট';
+
+  @override
+  String get circularDetailFieldFee => 'আবেদন ফি';
+
+  @override
+  String get circularDetailFieldFeeNote => 'ফি সংক্রান্ত নোট';
+
+  @override
+  String get circularDetailFieldCreated => 'যোগ করা হয়েছে';
+
+  @override
+  String get circularDetailFieldUpdated => 'সর্বশেষ হালনাগাদ';
+
+  @override
+  String get circularDetailNotProvided => 'উল্লেখ নেই';
+
+  @override
+  String circularDetailSalaryRange(String min, String max) {
+    return '$min - $max';
+  }
+
+  @override
+  String circularDetailSalaryFrom(String min) {
+    return '$min থেকে';
+  }
+
+  @override
+  String circularDetailSalaryUpTo(String max) {
+    return 'সর্বোচ্চ $max';
+  }
+
+  @override
+  String get circularDetailExamDatesTitle => 'পরীক্ষার তারিখ';
+
+  @override
+  String get examDateAddAction => 'পরীক্ষার তারিখ যোগ করুন';
+
+  @override
+  String get examDateUpcomingHeading => 'আসন্ন পরীক্ষাসমূহ';
+
+  @override
+  String get examDatePastHeading => 'অতীত পরীক্ষাসমূহ';
+
+  @override
+  String get examDateEmptyMessage =>
+      'এখনো কোনো পরীক্ষার তারিখ যোগ করা হয়নি। প্রিলিমিনারি, লিখিত, মৌখিক বা ব্যবহারিক ধাপ এখানে ট্র্যাক করুন।';
+
+  @override
+  String get examDateStageLabel => 'পরীক্ষার ধাপ';
+
+  @override
+  String get examDateStagePreliminary => 'প্রিলিমিনারি';
+
+  @override
+  String get examDateStageWritten => 'লিখিত';
+
+  @override
+  String get examDateStageViva => 'মৌখিক (ভাইভা)';
+
+  @override
+  String get examDateStagePractical => 'ব্যবহারিক';
+
+  @override
+  String get examDateStageOther => 'অন্যান্য';
+
+  @override
+  String get examDateDateLabel => 'পরীক্ষার তারিখ ও সময়';
+
+  @override
+  String get examDatePickDateAction => 'তারিখ পরিবর্তন';
+
+  @override
+  String get examDatePickTimeAction => 'সময় পরিবর্তন';
+
+  @override
+  String get examDateVenueLabel => 'ভেন্যু / কেন্দ্র (ঐচ্ছিক)';
+
+  @override
+  String get examDateVenueHint => 'যেমন: ঢাকা কলেজ / বিপিএসসি সদর দপ্তর';
+
+  @override
+  String get examDateNotesLabel => 'নোট (ঐচ্ছিক)';
+
+  @override
+  String get examDateNotesHint =>
+      'রিপোর্টিং সময়, আসন বিন্যাস, প্রয়োজনীয় কাগজপত্র...';
+
+  @override
+  String get examDateDialogAddTitle => 'পরীক্ষার তারিখ যোগ করুন';
+
+  @override
+  String get examDateDialogEditTitle => 'পরীক্ষার তারিখ সম্পাদনা';
+
+  @override
+  String get examDateEditTooltip => 'পরীক্ষার তারিখ সম্পাদনা করুন';
+
+  @override
+  String get examDateDeleteTooltip => 'পরীক্ষার তারিখ মুছে ফেলুন';
+
+  @override
+  String get circularDetailNotesTitle => 'নির্দেশনা, নোট ও সিলেবাস';
 }

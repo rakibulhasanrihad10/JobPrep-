@@ -190,5 +190,36 @@ void main() {
       expect(testSql, contains('SELECT * FROM finish();'));
       expect(testSql, contains('ROLLBACK;'));
     });
+
+    test(
+      'Phase 3F checklist migration and exam date pgTAP tests exist',
+      () {
+        final migration = File(
+          'supabase/migrations/20261110020000_add_application_checklist.sql',
+        );
+        expect(migration.existsSync(), isTrue);
+        final migrationSql = migration.readAsStringSync();
+        expect(migrationSql, isNot(contains('\r\n')));
+        expect(migrationSql, contains('checklist_photo'));
+        expect(migrationSql, contains('checklist_certificates'));
+        expect(migrationSql, contains('checklist_fee_paid'));
+        expect(migrationSql, contains('checklist_submitted'));
+        expect(migrationSql, contains('checklist_admit_card_downloaded'));
+
+        final examTest = File(
+          'supabase/tests/03_exam_dates_and_checklist_test.sql',
+        );
+        expect(examTest.existsSync(), isTrue);
+        final testSql = examTest.readAsStringSync();
+        expect(testSql, isNot(contains('\r\n')));
+        expect(testSql, contains('SELECT plan(10);'));
+        expect(
+          testSql,
+          contains('User B cannot view User A circular_exam_dates'),
+        );
+        expect(testSql, contains('SELECT * FROM finish();'));
+        expect(testSql, contains('ROLLBACK;'));
+      },
+    );
   });
 }

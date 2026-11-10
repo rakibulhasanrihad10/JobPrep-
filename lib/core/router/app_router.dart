@@ -9,6 +9,7 @@ import 'package:job_prep/features/auth/presentation/screens/reset_password_scree
 import 'package:job_prep/features/calendar/presentation/screens/calendar_screen.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular.dart';
 import 'package:job_prep/features/circulars/domain/utils/quick_capture_helpers.dart';
+import 'package:job_prep/features/circulars/presentation/screens/circular_detail_screen.dart';
 import 'package:job_prep/features/circulars/presentation/screens/circular_form_screen.dart';
 import 'package:job_prep/features/circulars/presentation/screens/circulars_screen.dart';
 import 'package:job_prep/features/circulars/presentation/screens/inbox_screen.dart';
@@ -124,18 +125,34 @@ final routerProvider = Provider<GoRouter>((ref) {
                 ),
               ),
               GoRoute(
-                path: ':id/edit',
-                name: 'circular_edit',
+                path: ':id',
+                name: 'circular_detail',
                 pageBuilder: (context, state) {
-                  final circularId = state.pathParameters['id'];
+                  final circularId = state.pathParameters['id']!;
                   final extra = state.extra;
                   return NoTransitionPage(
-                    child: CircularFormScreen(
+                    child: CircularDetailScreen(
                       circularId: circularId,
                       initialCircular: extra is Circular ? extra : null,
                     ),
                   );
                 },
+                routes: [
+                  GoRoute(
+                    path: 'edit',
+                    name: 'circular_edit',
+                    pageBuilder: (context, state) {
+                      final circularId = state.pathParameters['id'];
+                      final extra = state.extra;
+                      return NoTransitionPage(
+                        child: CircularFormScreen(
+                          circularId: circularId,
+                          initialCircular: extra is Circular ? extra : null,
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart' show immutable, listEquals;
+import 'package:job_prep/features/circulars/domain/entities/application_checklist.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_enums.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_exam_date.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_file.dart';
@@ -32,6 +33,7 @@ class Circular {
     this.notes,
     this.syllabus,
     this.isQuickCapture = false,
+    this.checklist = const ApplicationChecklist(),
     this.createdAt,
     this.updatedAt,
     this.examDates = const [],
@@ -109,6 +111,9 @@ class Circular {
   /// Whether the circular was saved via minimal quick-capture entry.
   final bool isQuickCapture;
 
+  /// Checklist tracking key application milestones for this circular.
+  final ApplicationChecklist checklist;
+
   /// Creation timestamp managed by PostgreSQL.
   final DateTime? createdAt;
 
@@ -154,6 +159,7 @@ class Circular {
     Object? notes = _unset,
     Object? syllabus = _unset,
     bool? isQuickCapture,
+    ApplicationChecklist? checklist,
     Object? createdAt = _unset,
     Object? updatedAt = _unset,
     List<CircularExamDate>? examDates,
@@ -202,6 +208,7 @@ class Circular {
       syllabus:
           identical(syllabus, _unset) ? this.syllabus : syllabus as String?,
       isQuickCapture: isQuickCapture ?? this.isQuickCapture,
+      checklist: checklist ?? this.checklist,
       createdAt: identical(createdAt, _unset)
           ? this.createdAt
           : createdAt as DateTime?,
@@ -241,6 +248,7 @@ class Circular {
         other.notes == notes &&
         other.syllabus == syllabus &&
         other.isQuickCapture == isQuickCapture &&
+        other.checklist == checklist &&
         other.createdAt == createdAt &&
         other.updatedAt == updatedAt &&
         listEquals(other.examDates, examDates) &&
@@ -272,6 +280,7 @@ class Circular {
         notes,
         syllabus,
         isQuickCapture,
+        checklist,
         createdAt,
         updatedAt,
         Object.hashAll(examDates),

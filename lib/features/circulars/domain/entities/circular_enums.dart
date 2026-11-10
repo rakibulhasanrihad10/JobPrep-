@@ -169,3 +169,35 @@ enum CircularSortOption {
   priorityDesc,
   titleAsc,
 }
+
+/// Exam stage categories stored in `public.circular_exam_dates.stage`.
+enum ExamStage {
+  preliminary('preliminary'),
+  written('written'),
+  viva('viva'),
+  practical('practical'),
+  other('other');
+
+  const ExamStage(this.value);
+
+  /// Normalized stage identifier persisted in PostgreSQL.
+  final String value;
+
+  /// Parses [raw] case-insensitively into an [ExamStage], or returns `null`.
+  static ExamStage? tryParse(String? raw) {
+    final normalized = raw?.trim().toLowerCase();
+    if (normalized == null || normalized.isEmpty) return null;
+    for (final item in ExamStage.values) {
+      if (item.value == normalized) return item;
+    }
+    return null;
+  }
+
+  /// Parses [raw] into an [ExamStage], falling back to [fallback].
+  static ExamStage fromValue(
+    String? raw, {
+    ExamStage fallback = ExamStage.other,
+  }) {
+    return tryParse(raw) ?? fallback;
+  }
+}
