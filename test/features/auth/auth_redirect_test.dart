@@ -30,6 +30,7 @@ void main() {
         '/',
         '/dashboard',
         '/circulars',
+        '/inbox',
         '/prep',
         '/calendar',
         '/settings',
@@ -65,6 +66,7 @@ void main() {
       for (final path in [
         '/dashboard',
         '/circulars',
+        '/inbox',
         '/prep',
         '/calendar',
         '/settings',

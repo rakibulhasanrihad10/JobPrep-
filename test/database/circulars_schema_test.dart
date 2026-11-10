@@ -165,5 +165,30 @@ void main() {
       expect(ciYaml, contains('supabase db reset'));
       expect(ciYaml, contains('supabase test db'));
     });
+
+    test('Phase 3E inbox workflow_status migration and pgTAP tests exist', () {
+      final migration = File(
+        'supabase/migrations/20261110010000_add_inbox_workflow_status.sql',
+      );
+      expect(migration.existsSync(), isTrue);
+      final migrationSql = migration.readAsStringSync();
+      expect(migrationSql, isNot(contains('\r\n')));
+      expect(
+        migrationSql,
+        contains('DROP CONSTRAINT circulars_workflow_status_check'),
+      );
+      expect(migrationSql, contains("'inbox'"));
+
+      final inboxTest = File(
+        'supabase/tests/02_inbox_workflow_status_test.sql',
+      );
+      expect(inboxTest.existsSync(), isTrue);
+      final testSql = inboxTest.readAsStringSync();
+      expect(testSql, isNot(contains('\r\n')));
+      expect(testSql, contains('SELECT plan(9);'));
+      expect(testSql, contains('User B cannot read User A inbox circular'));
+      expect(testSql, contains('SELECT * FROM finish();'));
+      expect(testSql, contains('ROLLBACK;'));
+    });
   });
 }

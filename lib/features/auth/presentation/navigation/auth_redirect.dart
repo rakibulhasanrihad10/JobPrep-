@@ -13,6 +13,9 @@ abstract final class AppRoutePaths {
 
   /// Main dashboard route.
   static const String dashboard = '/dashboard';
+
+  /// Quick-capture Inbox triage route.
+  static const String inbox = '/inbox';
 }
 
 /// Computes the target redirect route for [location] given [authState], or

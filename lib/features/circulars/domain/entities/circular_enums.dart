@@ -130,6 +130,7 @@ enum CircularPriority {
 
 /// Workflow lifecycle statuses matching `public.circulars.workflow_status`.
 enum CircularWorkflowStatus {
+  inbox('inbox'),
   saved('saved'),
   preparing('preparing'),
   applied('applied'),

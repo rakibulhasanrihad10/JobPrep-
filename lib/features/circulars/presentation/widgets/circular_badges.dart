@@ -165,12 +165,13 @@ class CircularStatusBadge extends StatelessWidget {
     final l10n = context.l10n;
 
     final statusColor = switch (workflowStatus) {
-      CircularWorkflowStatus.applied ||
-      CircularWorkflowStatus.resultAwaited =>
-        colors.success,
+      CircularWorkflowStatus.inbox ||
       CircularWorkflowStatus.examUpcoming ||
       CircularWorkflowStatus.preparing =>
         colors.goldAccent,
+      CircularWorkflowStatus.applied ||
+      CircularWorkflowStatus.resultAwaited =>
+        colors.success,
       CircularWorkflowStatus.archived => colors.textMuted,
       CircularWorkflowStatus.saved => colors.textSecondary,
     };

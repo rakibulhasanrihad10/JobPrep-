@@ -4,6 +4,7 @@ import 'package:job_prep/core/theme/app_colors.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_enums.dart';
 import 'package:job_prep/features/circulars/domain/errors/circular_failure.dart';
 import 'package:job_prep/features/circulars/domain/utils/deadline_countdown.dart';
+import 'package:job_prep/features/circulars/domain/utils/quick_capture_helpers.dart';
 import 'package:job_prep/features/circulars/domain/validators/circular_form_validators.dart';
 import 'package:job_prep/l10n/app_localizations.dart';
 
@@ -59,6 +60,7 @@ abstract final class CircularL10n {
     AppLocalizations l10n,
   ) {
     return switch (status) {
+      CircularWorkflowStatus.inbox => l10n.circularWorkflowInbox,
       CircularWorkflowStatus.saved => l10n.circularWorkflowSaved,
       CircularWorkflowStatus.preparing => l10n.circularWorkflowPreparing,
       CircularWorkflowStatus.applied => l10n.circularWorkflowApplied,
@@ -222,6 +224,19 @@ abstract final class CircularL10n {
     return switch (error) {
       CircularSalaryRangeValidationError.maxBelowMin =>
         l10n.circularValidationSalaryRange,
+    };
+  }
+
+  /// Localized validation error text for the required link in Quick Capture.
+  static String? quickCaptureLinkValidationMessage(
+    QuickCaptureLinkValidationError? error,
+    AppLocalizations l10n,
+  ) {
+    if (error == null) return null;
+    return switch (error) {
+      QuickCaptureLinkValidationError.required => l10n.quickCaptureLinkRequired,
+      QuickCaptureLinkValidationError.invalidFormat =>
+        l10n.circularValidationInvalidUrl,
     };
   }
 }

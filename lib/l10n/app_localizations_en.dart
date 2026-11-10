@@ -810,4 +810,112 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get circularDiscardConfirm => 'Discard changes';
+
+  @override
+  String get navInbox => 'Inbox';
+
+  @override
+  String navInboxCountSemantic(String label, String formattedCount) {
+    return '$label, $formattedCount waiting';
+  }
+
+  @override
+  String get circularWorkflowInbox => 'Inbox';
+
+  @override
+  String get quickCaptureButton => 'Quick capture';
+
+  @override
+  String quickCaptureShortcutTooltip(String shortcut) {
+    return 'Quick capture ($shortcut)';
+  }
+
+  @override
+  String get quickCaptureDialogTitle => 'Quick capture';
+
+  @override
+  String get quickCaptureDialogSubtitle =>
+      'Paste a circular link now and fill in the rest later from your Inbox.';
+
+  @override
+  String get quickCaptureLinkLabel => 'Circular link';
+
+  @override
+  String get quickCaptureLinkHint => 'https://...';
+
+  @override
+  String get quickCaptureLinkRequired => 'Please enter the circular link.';
+
+  @override
+  String get quickCaptureTitleLabel => 'Title (optional)';
+
+  @override
+  String get quickCaptureTitleHint =>
+      'Optional — uses website name if left blank';
+
+  @override
+  String get quickCaptureDeadlineLabel => 'Deadline (optional)';
+
+  @override
+  String get quickCaptureSaveAction => 'Save to Inbox';
+
+  @override
+  String get quickCaptureSavingAction => 'Saving...';
+
+  @override
+  String quickCaptureSavedSnackbar(String title) {
+    return 'Saved \"$title\" to Inbox.';
+  }
+
+  @override
+  String get quickCaptureViewInboxAction => 'View Inbox';
+
+  @override
+  String get inboxTitle => 'Inbox';
+
+  @override
+  String inboxCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount quick-captured items waiting',
+      one: '1 quick-captured item waiting',
+      zero: 'No quick-captured items waiting',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get inboxEmptyTitle => 'Your Inbox is clear';
+
+  @override
+  String get inboxEmptyMessage =>
+      'Use Quick capture (or press Alt+Q on web) from any screen to drop a circular link here for later triage.';
+
+  @override
+  String inboxCapturedOn(String formattedDate) {
+    return 'Captured $formattedDate';
+  }
+
+  @override
+  String get inboxCompleteDetailsAction => 'Complete details';
+
+  @override
+  String get inboxSkipAction => 'Skip';
+
+  @override
+  String get inboxDeleteAction => 'Delete';
+
+  @override
+  String get inboxRefreshTooltip => 'Refresh inbox';
+
+  @override
+  String inboxActionSkipped(String title) {
+    return 'Moved \"$title\" out of Inbox.';
+  }
+
+  @override
+  String inboxActionDeleted(String title) {
+    return 'Deleted \"$title\".';
+  }
 }

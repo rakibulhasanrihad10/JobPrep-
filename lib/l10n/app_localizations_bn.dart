@@ -811,4 +811,112 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get circularDiscardConfirm => 'পরিবর্তন বাতিল করুন';
+
+  @override
+  String get navInbox => 'ইনবক্স';
+
+  @override
+  String navInboxCountSemantic(String label, String formattedCount) {
+    return '$label, $formattedCountটি অপেক্ষমাণ';
+  }
+
+  @override
+  String get circularWorkflowInbox => 'ইনবক্স';
+
+  @override
+  String get quickCaptureButton => 'দ্রুত সংরক্ষণ';
+
+  @override
+  String quickCaptureShortcutTooltip(String shortcut) {
+    return 'দ্রুত সংরক্ষণ ($shortcut)';
+  }
+
+  @override
+  String get quickCaptureDialogTitle => 'দ্রুত সংরক্ষণ';
+
+  @override
+  String get quickCaptureDialogSubtitle =>
+      'এখনই সার্কুলার লিংক রাখুন এবং পরে ইনবক্স থেকে বিস্তারিত পূরণ করুন।';
+
+  @override
+  String get quickCaptureLinkLabel => 'সার্কুলারের লিংক';
+
+  @override
+  String get quickCaptureLinkHint => 'https://...';
+
+  @override
+  String get quickCaptureLinkRequired => 'অনুগ্রহ করে সার্কুলারের লিংক লিখুন।';
+
+  @override
+  String get quickCaptureTitleLabel => 'শিরোনাম (ঐচ্ছিক)';
+
+  @override
+  String get quickCaptureTitleHint =>
+      'ঐচ্ছিক — খালি রাখলে ওয়েবসাইটের নাম ব্যবহার হবে';
+
+  @override
+  String get quickCaptureDeadlineLabel => 'আবেদনের শেষ তারিখ (ঐচ্ছিক)';
+
+  @override
+  String get quickCaptureSaveAction => 'ইনবক্সে রাখুন';
+
+  @override
+  String get quickCaptureSavingAction => 'সংরক্ষণ হচ্ছে...';
+
+  @override
+  String quickCaptureSavedSnackbar(String title) {
+    return '\"$title\" ইনবক্সে সংরক্ষিত হয়েছে।';
+  }
+
+  @override
+  String get quickCaptureViewInboxAction => 'ইনবক্স দেখুন';
+
+  @override
+  String get inboxTitle => 'ইনবক্স';
+
+  @override
+  String inboxCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি দ্রুত-সংরক্ষিত আইটেম অপেক্ষমাণ',
+      one: '১টি দ্রুত-সংরক্ষিত আইটেম অপেক্ষমাণ',
+      zero: 'অপেক্ষমাণ কোনো দ্রুত-সংরক্ষিত আইটেম নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get inboxEmptyTitle => 'ইনবক্স সম্পূর্ণ খালি';
+
+  @override
+  String get inboxEmptyMessage =>
+      'যেকোনো স্ক্রিন থেকে দ্রুত সংরক্ষণ ব্যবহার করুন (অথবা ওয়েবে Alt+Q চাপুন) পরে যাচাই করার জন্য সার্কুলার লিংক জমা রাখতে।';
+
+  @override
+  String inboxCapturedOn(String formattedDate) {
+    return 'সংরক্ষিত $formattedDate';
+  }
+
+  @override
+  String get inboxCompleteDetailsAction => 'বিস্তারিত পূরণ করুন';
+
+  @override
+  String get inboxSkipAction => 'এড়িয়ে যান';
+
+  @override
+  String get inboxDeleteAction => 'মুছে ফেলুন';
+
+  @override
+  String get inboxRefreshTooltip => 'ইনবক্স রিফ্রেশ করুন';
+
+  @override
+  String inboxActionSkipped(String title) {
+    return '\"$title\" ইনবক্স থেকে সরানো হয়েছে।';
+  }
+
+  @override
+  String inboxActionDeleted(String title) {
+    return '\"$title\" মুছে ফেলা হয়েছে।';
+  }
 }

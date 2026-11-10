@@ -1483,6 +1483,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Discard changes'**
   String get circularDiscardConfirm;
+
+  /// Navigation label for Inbox tab
+  ///
+  /// In en, this message translates to:
+  /// **'Inbox'**
+  String get navInbox;
+
+  /// Accessibility label for Inbox navigation item with pending count
+  ///
+  /// In en, this message translates to:
+  /// **'{label}, {formattedCount} waiting'**
+  String navInboxCountSemantic(String label, String formattedCount);
+
+  /// Workflow status label for quick-captured circulars in inbox
+  ///
+  /// In en, this message translates to:
+  /// **'Inbox'**
+  String get circularWorkflowInbox;
+
+  /// Button label to open the quick capture circular dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Quick capture'**
+  String get quickCaptureButton;
+
+  /// Tooltip showing Quick capture action and keyboard shortcut
+  ///
+  /// In en, this message translates to:
+  /// **'Quick capture ({shortcut})'**
+  String quickCaptureShortcutTooltip(String shortcut);
+
+  /// Title of quick capture glass dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Quick capture'**
+  String get quickCaptureDialogTitle;
+
+  /// Subtitle inside quick capture dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Paste a circular link now and fill in the rest later from your Inbox.'**
+  String get quickCaptureDialogSubtitle;
+
+  /// Label for required link field in quick capture dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Circular link'**
+  String get quickCaptureLinkLabel;
+
+  /// Placeholder hint for required link field in quick capture dialog
+  ///
+  /// In en, this message translates to:
+  /// **'https://...'**
+  String get quickCaptureLinkHint;
+
+  /// Validation error when circular link is empty in quick capture
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the circular link.'**
+  String get quickCaptureLinkRequired;
+
+  /// Label for optional title field in quick capture dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Title (optional)'**
+  String get quickCaptureTitleLabel;
+
+  /// Placeholder hint for optional title field in quick capture dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Optional — uses website name if left blank'**
+  String get quickCaptureTitleHint;
+
+  /// Label for optional deadline field in quick capture dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline (optional)'**
+  String get quickCaptureDeadlineLabel;
+
+  /// Primary submit button label inside quick capture dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Save to Inbox'**
+  String get quickCaptureSaveAction;
+
+  /// Loading button label inside quick capture dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Saving...'**
+  String get quickCaptureSavingAction;
+
+  /// Snackbar shown after saving a quick-captured circular
+  ///
+  /// In en, this message translates to:
+  /// **'Saved \"{title}\" to Inbox.'**
+  String quickCaptureSavedSnackbar(String title);
+
+  /// Snackbar action navigating directly to the Inbox screen
+  ///
+  /// In en, this message translates to:
+  /// **'View Inbox'**
+  String get quickCaptureViewInboxAction;
+
+  /// Heading of the Inbox triage screen
+  ///
+  /// In en, this message translates to:
+  /// **'Inbox'**
+  String get inboxTitle;
+
+  /// Subtitle displaying total quick-captured items in Inbox
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No quick-captured items waiting} =1{1 quick-captured item waiting} other{{formattedCount} quick-captured items waiting}}'**
+  String inboxCount(int count, String formattedCount);
+
+  /// Empty state heading when no circulars remain in Inbox
+  ///
+  /// In en, this message translates to:
+  /// **'Your Inbox is clear'**
+  String get inboxEmptyTitle;
+
+  /// Empty state guidance explaining how to use Quick capture
+  ///
+  /// In en, this message translates to:
+  /// **'Use Quick capture (or press Alt+Q on web) from any screen to drop a circular link here for later triage.'**
+  String get inboxEmptyMessage;
+
+  /// Metadata text showing when an item was quick-captured
+  ///
+  /// In en, this message translates to:
+  /// **'Captured {formattedDate}'**
+  String inboxCapturedOn(String formattedDate);
+
+  /// Primary action opening full circular edit form from an Inbox item
+  ///
+  /// In en, this message translates to:
+  /// **'Complete details'**
+  String get inboxCompleteDetailsAction;
+
+  /// Action dismissing an Inbox item to archive without deleting
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get inboxSkipAction;
+
+  /// Action permanently deleting an Inbox item
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get inboxDeleteAction;
+
+  /// Tooltip for Inbox manual refresh button
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh inbox'**
+  String get inboxRefreshTooltip;
+
+  /// Feedback shown after skipping an Inbox circular
+  ///
+  /// In en, this message translates to:
+  /// **'Moved \"{title}\" out of Inbox.'**
+  String inboxActionSkipped(String title);
+
+  /// Feedback shown after deleting an Inbox circular
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted \"{title}\".'**
+  String inboxActionDeleted(String title);
 }
 
 class _AppLocalizationsDelegate

@@ -48,6 +48,15 @@ enum AppNavItem {
     selectedIcon: Icons.settings,
     shortcutDigit: 5,
     shortcutKey: LogicalKeyboardKey.digit5,
+  ),
+
+  /// Quick-captured circulars awaiting triage.
+  inbox(
+    route: '/inbox',
+    icon: Icons.inbox_outlined,
+    selectedIcon: Icons.inbox_rounded,
+    shortcutDigit: 6,
+    shortcutKey: LogicalKeyboardKey.digit6,
   );
 
   const AppNavItem({
@@ -86,6 +95,8 @@ enum AppNavItem {
         return l10n.navCalendar;
       case AppNavItem.settings:
         return l10n.navSettings;
+      case AppNavItem.inbox:
+        return l10n.navInbox;
     }
   }
 

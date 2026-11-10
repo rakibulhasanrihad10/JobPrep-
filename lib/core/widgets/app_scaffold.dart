@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:job_prep/core/localization/app_localizations_extension.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/app_bottom_nav_bar.dart';
 import 'package:job_prep/core/widgets/app_nav_item.dart';
 import 'package:job_prep/core/widgets/app_nav_rail.dart';
 import 'package:job_prep/core/widgets/app_sidebar_nav.dart';
+import 'package:job_prep/core/widgets/glass_button.dart';
 
 /// Responsive application scaffold adapting between compact (< 600 px),
 /// medium (600 - 1024 px), and expanded (> 1024 px) form factors.
 ///
-/// Under 600 px: Frosted bottom navigation bar.
+/// Under 600 px: Frosted bottom navigation bar + compact quick-capture button.
 /// 600 - 1024 px: Compact frosted navigation rail.
 /// Above 1024 px: Permanent glass sidebar with content constrained to 1200 px
 /// max width.
@@ -19,6 +22,8 @@ class AppScaffold extends StatelessWidget {
     required this.currentPath,
     required this.child,
     super.key,
+    this.inboxCount = 0,
+    this.onQuickCapture,
   });
 
   /// Current route path from `GoRouterState`.
@@ -27,15 +32,24 @@ class AppScaffold extends StatelessWidget {
   /// Active child content / screen from `ShellRoute`.
   final Widget child;
 
+  /// Pending quick-captured item count displayed in navigation.
+  final int inboxCount;
+
+  /// Optional callback opening the Quick Capture dialog from any screen.
+  final VoidCallback? onQuickCapture;
+
   @override
   Widget build(BuildContext context) {
     final tokens = context.tokens;
     final colors = tokens.colors;
+    final spacing = tokens.spacing;
     final breakpoints = tokens.breakpoints;
+    final l10n = context.l10n;
     final currentItem = AppNavItem.fromLocation(currentPath);
 
     void onNavigate(AppNavItem item) {
       if (item != currentItem) {
+        ScaffoldMessenger.maybeOf(context)?.removeCurrentSnackBar();
         context.go(item.route);
       }
     }
@@ -46,6 +60,22 @@ class AppScaffold extends StatelessWidget {
           () => onNavigate(item);
       shortcutBindings[SingleActivator(item.shortcutKey, control: true)] =
           () => onNavigate(item);
+    }
+    if (onQuickCapture != null) {
+      shortcutBindings[const SingleActivator(
+        LogicalKeyboardKey.keyQ,
+        alt: true,
+      )] = onQuickCapture!;
+      shortcutBindings[const SingleActivator(
+        LogicalKeyboardKey.keyQ,
+        control: true,
+        shift: true,
+      )] = onQuickCapture!;
+      shortcutBindings[const SingleActivator(
+        LogicalKeyboardKey.keyQ,
+        meta: true,
+        shift: true,
+      )] = onQuickCapture!;
     }
 
     return CallbackShortcuts(
@@ -60,8 +90,25 @@ class AppScaffold extends StatelessWidget {
               return Scaffold(
                 backgroundColor: colors.background,
                 body: child,
+                floatingActionButton: onQuickCapture == null
+                    ? null
+                    : Semantics(
+                        button: true,
+                        label: l10n.quickCaptureButton,
+                        child: GlassButton(
+                          key: const ValueKey('shell-quick-capture-btn'),
+                          variant: GlassButtonVariant.primary,
+                          onPressed: onQuickCapture,
+                          leading: Icon(
+                            Icons.add_link_rounded,
+                            size: spacing.lg,
+                          ),
+                          child: Text(l10n.quickCaptureButton),
+                        ),
+                      ),
                 bottomNavigationBar: AppBottomNavBar(
                   currentItem: currentItem,
+                  inboxCount: inboxCount,
                   onSelect: onNavigate,
                 ),
               );
@@ -74,6 +121,8 @@ class AppScaffold extends StatelessWidget {
                   children: [
                     AppNavRail(
                       currentItem: currentItem,
+                      inboxCount: inboxCount,
+                      onQuickCapture: onQuickCapture,
                       onSelect: onNavigate,
                     ),
                     Expanded(
@@ -98,6 +147,8 @@ class AppScaffold extends StatelessWidget {
                 children: [
                   AppSidebarNav(
                     currentItem: currentItem,
+                    inboxCount: inboxCount,
+                    onQuickCapture: onQuickCapture,
                     onSelect: onNavigate,
                   ),
                   Expanded(

@@ -2,6 +2,7 @@ export 'animated_counter.dart';
 export 'animated_progress_bar.dart';
 export 'animated_progress_ring.dart';
 export 'app_bottom_nav_bar.dart';
+export 'app_nav_badge.dart';
 export 'app_nav_item.dart';
 export 'app_nav_rail.dart';
 export 'app_scaffold.dart';

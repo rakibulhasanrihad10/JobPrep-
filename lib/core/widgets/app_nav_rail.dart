@@ -3,9 +3,13 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
+import 'package:job_prep/core/localization/formatters.dart';
+import 'package:job_prep/core/localization/locale_controller.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/theme/reduce_effects_controller.dart';
+import 'package:job_prep/core/widgets/app_nav_badge.dart';
 import 'package:job_prep/core/widgets/app_nav_item.dart';
+import 'package:job_prep/core/widgets/glass_button.dart';
 
 /// Glassmorphic navigation rail for medium / tablet viewports (600 - 1024 px).
 class AppNavRail extends ConsumerWidget {
@@ -14,6 +18,8 @@ class AppNavRail extends ConsumerWidget {
     required this.currentItem,
     required this.onSelect,
     super.key,
+    this.inboxCount = 0,
+    this.onQuickCapture,
   });
 
   /// Currently selected navigation destination.
@@ -22,11 +28,18 @@ class AppNavRail extends ConsumerWidget {
   /// Callback when a navigation destination is tapped.
   final ValueChanged<AppNavItem> onSelect;
 
+  /// Pending quick-captured items waiting in Inbox.
+  final int inboxCount;
+
+  /// Optional callback opening the Quick Capture dialog.
+  final VoidCallback? onQuickCapture;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tokens = context.tokens;
     final colors = tokens.colors;
     final spacing = tokens.spacing;
+    final l10n = context.l10n;
     final reduceEffects = ref.watch(reduceEffectsProvider);
 
     final effectiveFill =
@@ -63,6 +76,25 @@ class AppNavRail extends ConsumerWidget {
                 ),
               ),
             ),
+            if (onQuickCapture != null) ...[
+              SizedBox(height: spacing.md),
+              Tooltip(
+                message: l10n.quickCaptureShortcutTooltip(
+                  l10n.navShortcutBadge('Q'),
+                ),
+                child: Semantics(
+                  button: true,
+                  label: l10n.quickCaptureButton,
+                  child: GlassButton(
+                    key: const ValueKey('shell-quick-capture-btn'),
+                    variant: GlassButtonVariant.primary,
+                    padding: EdgeInsets.all(spacing.sm),
+                    onPressed: onQuickCapture,
+                    child: const Icon(Icons.add_link_rounded, size: 20),
+                  ),
+                ),
+              ),
+            ],
             SizedBox(height: spacing.lg),
             // Navigation destination items
             Expanded(
@@ -74,6 +106,7 @@ class AppNavRail extends ConsumerWidget {
                     child: _NavRailTile(
                       item: item,
                       isSelected: item == currentItem,
+                      badgeCount: item == AppNavItem.inbox ? inboxCount : 0,
                       onTap: () => onSelect(item),
                     ),
                   );
@@ -98,22 +131,24 @@ class AppNavRail extends ConsumerWidget {
   }
 }
 
-class _NavRailTile extends StatefulWidget {
+class _NavRailTile extends ConsumerStatefulWidget {
   const _NavRailTile({
     required this.item,
     required this.isSelected,
+    required this.badgeCount,
     required this.onTap,
   });
 
   final AppNavItem item;
   final bool isSelected;
+  final int badgeCount;
   final VoidCallback onTap;
 
   @override
-  State<_NavRailTile> createState() => _NavRailTileState();
+  ConsumerState<_NavRailTile> createState() => _NavRailTileState();
 }
 
-class _NavRailTileState extends State<_NavRailTile> {
+class _NavRailTileState extends ConsumerState<_NavRailTile> {
   bool _isHovered = false;
 
   @override
@@ -125,6 +160,8 @@ class _NavRailTileState extends State<_NavRailTile> {
     final textStyles = tokens.textStyles;
     final durations = tokens.durations;
     final l10n = context.l10n;
+    final locale = ref.watch(localeProvider);
+    final useBanglaDigits = ref.watch(useBanglaDigitsProvider);
 
     final activeColor = widget.isSelected
         ? colors.goldAccent
@@ -138,6 +175,16 @@ class _NavRailTileState extends State<_NavRailTile> {
       widget.item.shortcutDigit.toString(),
     );
     final tooltipText = l10n.navShortcutTooltip(shortcut);
+    final semanticLabel = widget.badgeCount > 0
+        ? l10n.navInboxCountSemantic(
+            widget.item.label(l10n),
+            AppFormatters.formatNumber(
+              widget.badgeCount,
+              locale: locale,
+              useBanglaDigits: useBanglaDigits,
+            ),
+          )
+        : widget.item.label(l10n);
 
     return Tooltip(
       message: '${widget.item.label(l10n)} ($tooltipText)',
@@ -148,7 +195,7 @@ class _NavRailTileState extends State<_NavRailTile> {
         child: Semantics(
           button: true,
           selected: widget.isSelected,
-          label: widget.item.label(l10n),
+          label: semanticLabel,
           child: InkWell(
             onTap: widget.onTap,
             borderRadius: radii.buttonRadius,
@@ -165,12 +212,15 @@ class _NavRailTileState extends State<_NavRailTile> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    widget.isSelected
-                        ? widget.item.selectedIcon
-                        : widget.item.icon,
-                    size: 22,
-                    color: activeColor,
+                  NavIconWithBadge(
+                    count: widget.badgeCount,
+                    icon: Icon(
+                      widget.isSelected
+                          ? widget.item.selectedIcon
+                          : widget.item.icon,
+                      size: 22,
+                      color: activeColor,
+                    ),
                   ),
                   SizedBox(height: spacing.xxs),
                   Text(

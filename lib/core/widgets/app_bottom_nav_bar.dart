@@ -3,8 +3,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
+import 'package:job_prep/core/localization/formatters.dart';
+import 'package:job_prep/core/localization/locale_controller.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/theme/reduce_effects_controller.dart';
+import 'package:job_prep/core/widgets/app_nav_badge.dart';
 import 'package:job_prep/core/widgets/app_nav_item.dart';
 
 /// Glassmorphic bottom navigation bar for compact / mobile viewports (< 600 px).
@@ -14,6 +17,7 @@ class AppBottomNavBar extends ConsumerWidget {
     required this.currentItem,
     required this.onSelect,
     super.key,
+    this.inboxCount = 0,
   });
 
   /// Currently selected navigation destination.
@@ -21,6 +25,9 @@ class AppBottomNavBar extends ConsumerWidget {
 
   /// Callback when a navigation destination is tapped.
   final ValueChanged<AppNavItem> onSelect;
+
+  /// Pending quick-captured items waiting in Inbox.
+  final int inboxCount;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -50,6 +57,7 @@ class AppBottomNavBar extends ConsumerWidget {
                 child: _BottomNavItemTile(
                   item: item,
                   isSelected: isSelected,
+                  badgeCount: item == AppNavItem.inbox ? inboxCount : 0,
                   onTap: () => onSelect(item),
                 ),
               );
@@ -72,22 +80,24 @@ class AppBottomNavBar extends ConsumerWidget {
   }
 }
 
-class _BottomNavItemTile extends StatefulWidget {
+class _BottomNavItemTile extends ConsumerStatefulWidget {
   const _BottomNavItemTile({
     required this.item,
     required this.isSelected,
+    required this.badgeCount,
     required this.onTap,
   });
 
   final AppNavItem item;
   final bool isSelected;
+  final int badgeCount;
   final VoidCallback onTap;
 
   @override
-  State<_BottomNavItemTile> createState() => _BottomNavItemTileState();
+  ConsumerState<_BottomNavItemTile> createState() => _BottomNavItemTileState();
 }
 
-class _BottomNavItemTileState extends State<_BottomNavItemTile> {
+class _BottomNavItemTileState extends ConsumerState<_BottomNavItemTile> {
   bool _isHovered = false;
 
   @override
@@ -99,6 +109,8 @@ class _BottomNavItemTileState extends State<_BottomNavItemTile> {
     final textStyles = tokens.textStyles;
     final durations = tokens.durations;
     final l10n = context.l10n;
+    final locale = ref.watch(localeProvider);
+    final useBanglaDigits = ref.watch(useBanglaDigitsProvider);
 
     final activeColor = widget.isSelected
         ? colors.goldAccent
@@ -108,6 +120,17 @@ class _BottomNavItemTileState extends State<_BottomNavItemTile> {
         ? colors.goldAccentSubtle
         : (_isHovered ? colors.glassFillSolid : Colors.transparent);
 
+    final semanticLabel = widget.badgeCount > 0
+        ? l10n.navInboxCountSemantic(
+            widget.item.label(l10n),
+            AppFormatters.formatNumber(
+              widget.badgeCount,
+              locale: locale,
+              useBanglaDigits: useBanglaDigits,
+            ),
+          )
+        : widget.item.label(l10n);
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _isHovered = true),
@@ -115,7 +138,7 @@ class _BottomNavItemTileState extends State<_BottomNavItemTile> {
       child: Semantics(
         button: true,
         selected: widget.isSelected,
-        label: widget.item.label(l10n),
+        label: semanticLabel,
         child: InkWell(
           onTap: widget.onTap,
           borderRadius: radii.buttonRadius,
@@ -137,12 +160,15 @@ class _BottomNavItemTileState extends State<_BottomNavItemTile> {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  widget.isSelected
-                      ? widget.item.selectedIcon
-                      : widget.item.icon,
-                  size: 22,
-                  color: activeColor,
+                NavIconWithBadge(
+                  count: widget.badgeCount,
+                  icon: Icon(
+                    widget.isSelected
+                        ? widget.item.selectedIcon
+                        : widget.item.icon,
+                    size: 22,
+                    color: activeColor,
+                  ),
                 ),
                 SizedBox(height: spacing.xxs),
                 Text(
