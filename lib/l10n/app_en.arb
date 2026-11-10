@@ -1008,5 +1008,1486 @@
   "circularDiscardConfirm": "Discard changes",
   "@circularDiscardConfirm": {
     "description": "Confirm button in discard confirmation dialog"
+  },
+  "navInbox": "Inbox",
+  "@navInbox": {
+    "description": "Navigation label for Inbox tab"
+  },
+  "navInboxCountSemantic": "{label}, {formattedCount} waiting",
+  "@navInboxCountSemantic": {
+    "description": "Accessibility label for Inbox navigation item with pending count",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "circularWorkflowInbox": "Inbox",
+  "@circularWorkflowInbox": {
+    "description": "Workflow status label for quick-captured circulars in inbox"
+  },
+  "quickCaptureButton": "Quick capture",
+  "@quickCaptureButton": {
+    "description": "Button label to open the quick capture circular dialog"
+  },
+  "quickCaptureShortcutTooltip": "Quick capture ({shortcut})",
+  "@quickCaptureShortcutTooltip": {
+    "description": "Tooltip showing Quick capture action and keyboard shortcut",
+    "placeholders": {
+      "shortcut": {
+        "type": "String"
+      }
+    }
+  },
+  "quickCaptureDialogTitle": "Quick capture",
+  "@quickCaptureDialogTitle": {
+    "description": "Title of quick capture glass dialog"
+  },
+  "quickCaptureDialogSubtitle": "Paste a circular link now and fill in the rest later from your Inbox.",
+  "@quickCaptureDialogSubtitle": {
+    "description": "Subtitle inside quick capture dialog"
+  },
+  "quickCaptureLinkLabel": "Circular link",
+  "@quickCaptureLinkLabel": {
+    "description": "Label for required link field in quick capture dialog"
+  },
+  "quickCaptureLinkHint": "https://...",
+  "@quickCaptureLinkHint": {
+    "description": "Placeholder hint for required link field in quick capture dialog"
+  },
+  "quickCaptureLinkRequired": "Please enter the circular link.",
+  "@quickCaptureLinkRequired": {
+    "description": "Validation error when circular link is empty in quick capture"
+  },
+  "quickCaptureTitleLabel": "Title (optional)",
+  "@quickCaptureTitleLabel": {
+    "description": "Label for optional title field in quick capture dialog"
+  },
+  "quickCaptureTitleHint": "Optional — uses website name if left blank",
+  "@quickCaptureTitleHint": {
+    "description": "Placeholder hint for optional title field in quick capture dialog"
+  },
+  "quickCaptureDeadlineLabel": "Deadline (optional)",
+  "@quickCaptureDeadlineLabel": {
+    "description": "Label for optional deadline field in quick capture dialog"
+  },
+  "quickCaptureSaveAction": "Save to Inbox",
+  "@quickCaptureSaveAction": {
+    "description": "Primary submit button label inside quick capture dialog"
+  },
+  "quickCaptureSavingAction": "Saving...",
+  "@quickCaptureSavingAction": {
+    "description": "Loading button label inside quick capture dialog"
+  },
+  "quickCaptureSavedSnackbar": "Saved \"{title}\" to Inbox.",
+  "@quickCaptureSavedSnackbar": {
+    "description": "Snackbar shown after saving a quick-captured circular",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "quickCaptureViewInboxAction": "View Inbox",
+  "@quickCaptureViewInboxAction": {
+    "description": "Snackbar action navigating directly to the Inbox screen"
+  },
+  "inboxTitle": "Inbox",
+  "@inboxTitle": {
+    "description": "Heading of the Inbox triage screen"
+  },
+  "inboxCount": "{count, plural, =0{No quick-captured items waiting} =1{1 quick-captured item waiting} other{{formattedCount} quick-captured items waiting}}",
+  "@inboxCount": {
+    "description": "Subtitle displaying total quick-captured items in Inbox",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "inboxEmptyTitle": "Your Inbox is clear",
+  "@inboxEmptyTitle": {
+    "description": "Empty state heading when no circulars remain in Inbox"
+  },
+  "inboxEmptyMessage": "Use Quick capture (or press Alt+Q on web) from any screen to drop a circular link here for later triage.",
+  "@inboxEmptyMessage": {
+    "description": "Empty state guidance explaining how to use Quick capture"
+  },
+  "inboxCapturedOn": "Captured {formattedDate}",
+  "@inboxCapturedOn": {
+    "description": "Metadata text showing when an item was quick-captured",
+    "placeholders": {
+      "formattedDate": {
+        "type": "String"
+      }
+    }
+  },
+  "inboxCompleteDetailsAction": "Complete details",
+  "@inboxCompleteDetailsAction": {
+    "description": "Primary action opening full circular edit form from an Inbox item"
+  },
+  "inboxSkipAction": "Skip",
+  "@inboxSkipAction": {
+    "description": "Action dismissing an Inbox item to archive without deleting"
+  },
+  "inboxDeleteAction": "Delete",
+  "@inboxDeleteAction": {
+    "description": "Action permanently deleting an Inbox item"
+  },
+  "inboxRefreshTooltip": "Refresh inbox",
+  "@inboxRefreshTooltip": {
+    "description": "Tooltip for Inbox manual refresh button"
+  },
+  "inboxActionSkipped": "Moved \"{title}\" out of Inbox.",
+  "@inboxActionSkipped": {
+    "description": "Feedback shown after skipping an Inbox circular",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "inboxActionDeleted": "Deleted \"{title}\".",
+  "@inboxActionDeleted": {
+    "description": "Feedback shown after deleting an Inbox circular",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "circularDetailBackTooltip": "Back to circulars",
+  "@circularDetailBackTooltip": {
+    "description": "Tooltip on back button in mobile/full-screen circular detail view"
+  },
+  "circularDetailCloseTooltip": "Close details",
+  "@circularDetailCloseTooltip": {
+    "description": "Tooltip on close button in desktop master-detail pane"
+  },
+  "circularDetailEditAction": "Edit",
+  "@circularDetailEditAction": {
+    "description": "Action opening the edit circular form from detail screen"
+  },
+  "circularDetailDeleteAction": "Delete",
+  "@circularDetailDeleteAction": {
+    "description": "Action deleting the circular from detail screen"
+  },
+  "circularDetailDeleteTitle": "Delete this circular?",
+  "@circularDetailDeleteTitle": {
+    "description": "Confirmation dialog title before deleting a circular"
+  },
+  "circularDetailDeleteMessage": "\"{title}\" and any scheduled exam dates will be removed permanently.",
+  "@circularDetailDeleteMessage": {
+    "description": "Confirmation dialog body before deleting a circular",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "circularDetailQuickCaptureBadge": "Quick captured",
+  "@circularDetailQuickCaptureBadge": {
+    "description": "Subtle badge shown on circulars created through Quick Capture"
+  },
+  "circularDetailLaunchFailed": "Unable to open this link right now.",
+  "@circularDetailLaunchFailed": {
+    "description": "Error snackbar shown when launching an external circular link fails"
+  },
+  "circularDetailQuickActionsTitle": "Quick status & checklist",
+  "@circularDetailQuickActionsTitle": {
+    "description": "Section title for quick status selectors and application checklist"
+  },
+  "circularDetailChecklistTitle": "Application checklist",
+  "@circularDetailChecklistTitle": {
+    "description": "Heading above application milestone checkboxes"
+  },
+  "circularDetailChecklistProgress": "{formattedDone} of {formattedTotal} done",
+  "@circularDetailChecklistProgress": {
+    "description": "Completion progress label above checklist progress bar",
+    "placeholders": {
+      "formattedDone": {
+        "type": "String"
+      },
+      "formattedTotal": {
+        "type": "String"
+      }
+    }
+  },
+  "checklistPhoto": "Photo prepared",
+  "@checklistPhoto": {
+    "description": "Checklist item for scanned/printed photo preparation"
+  },
+  "checklistCertificates": "Certificates ready",
+  "@checklistCertificates": {
+    "description": "Checklist item for academic and supporting certificates"
+  },
+  "checklistFeePaid": "Fee paid",
+  "@checklistFeePaid": {
+    "description": "Checklist item for completing application fee payment"
+  },
+  "checklistSubmitted": "Submitted",
+  "@checklistSubmitted": {
+    "description": "Checklist item for submitting the application form"
+  },
+  "checklistAdmitCardDownloaded": "Admit card downloaded",
+  "@checklistAdmitCardDownloaded": {
+    "description": "Checklist item for downloading the admit card"
+  },
+  "circularDetailLinksTitle": "Official links",
+  "@circularDetailLinksTitle": {
+    "description": "Section title for external circular, application portal, and organization links"
+  },
+  "circularDetailOpenCircularLink": "Original circular link",
+  "@circularDetailOpenCircularLink": {
+    "description": "Button opening the original circular announcement URL"
+  },
+  "circularDetailOpenApplicationPortal": "Application portal",
+  "@circularDetailOpenApplicationPortal": {
+    "description": "Button opening the online application portal URL"
+  },
+  "circularDetailOpenOrgWebsite": "Organization website",
+  "@circularDetailOpenOrgWebsite": {
+    "description": "Button opening the recruiting organization's website URL"
+  },
+  "circularDetailLinkMissing": "Not provided",
+  "@circularDetailLinkMissing": {
+    "description": "Subtitle shown when an optional external URL is empty"
+  },
+  "circularDetailOverviewTitle": "Overview & compensation",
+  "@circularDetailOverviewTitle": {
+    "description": "Section title for circular metadata, dates, salary, and fee fields"
+  },
+  "circularDetailFieldDeadline": "Deadline",
+  "@circularDetailFieldDeadline": {
+    "description": "Overview label for application deadline"
+  },
+  "circularDetailFieldVacancies": "Vacancies",
+  "@circularDetailFieldVacancies": {
+    "description": "Overview label for advertised vacancy count"
+  },
+  "circularDetailFieldSalary": "Salary range",
+  "@circularDetailFieldSalary": {
+    "description": "Overview label for salary minimum/maximum"
+  },
+  "circularDetailFieldSalaryNote": "Salary note",
+  "@circularDetailFieldSalaryNote": {
+    "description": "Overview label for pay scale benefits note"
+  },
+  "circularDetailFieldFee": "Application fee",
+  "@circularDetailFieldFee": {
+    "description": "Overview label for application fee amount"
+  },
+  "circularDetailFieldFeeNote": "Fee note",
+  "@circularDetailFieldFeeNote": {
+    "description": "Overview label for application fee exemption or payment note"
+  },
+  "circularDetailFieldCreated": "Added on",
+  "@circularDetailFieldCreated": {
+    "description": "Overview label for creation date"
+  },
+  "circularDetailFieldUpdated": "Last updated",
+  "@circularDetailFieldUpdated": {
+    "description": "Overview label for last update date"
+  },
+  "circularDetailNotProvided": "Not specified",
+  "@circularDetailNotProvided": {
+    "description": "Placeholder text when an optional field has no value"
+  },
+  "circularDetailSalaryRange": "{min} - {max}",
+  "@circularDetailSalaryRange": {
+    "description": "Formatted salary range between minimum and maximum",
+    "placeholders": {
+      "min": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "circularDetailSalaryFrom": "From {min}",
+  "@circularDetailSalaryFrom": {
+    "description": "Formatted salary when only minimum is specified",
+    "placeholders": {
+      "min": {
+        "type": "String"
+      }
+    }
+  },
+  "circularDetailSalaryUpTo": "Up to {max}",
+  "@circularDetailSalaryUpTo": {
+    "description": "Formatted salary when only maximum is specified",
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "circularDetailExamDatesTitle": "Exam dates",
+  "@circularDetailExamDatesTitle": {
+    "description": "Section heading for scheduled exam dates"
+  },
+  "examDateAddAction": "Add exam date",
+  "@examDateAddAction": {
+    "description": "Button opening the add exam date dialog"
+  },
+  "examDateUpcomingHeading": "Upcoming exams",
+  "@examDateUpcomingHeading": {
+    "description": "Subheading above future or today's exam dates ordered chronologically"
+  },
+  "examDatePastHeading": "Past exams",
+  "@examDatePastHeading": {
+    "description": "Subheading above completed or past exam dates"
+  },
+  "examDateEmptyMessage": "No exam dates added yet. Track preliminary, written, viva, or practical stages here.",
+  "@examDateEmptyMessage": {
+    "description": "Empty state copy inside Exam Dates section"
+  },
+  "examDateStageLabel": "Exam stage",
+  "@examDateStageLabel": {
+    "description": "Field label for exam stage dropdown"
+  },
+  "examDateStagePreliminary": "Preliminary",
+  "@examDateStagePreliminary": {
+    "description": "Preliminary exam stage label"
+  },
+  "examDateStageWritten": "Written",
+  "@examDateStageWritten": {
+    "description": "Written exam stage label"
+  },
+  "examDateStageViva": "Viva",
+  "@examDateStageViva": {
+    "description": "Viva / oral interview stage label"
+  },
+  "examDateStagePractical": "Practical",
+  "@examDateStagePractical": {
+    "description": "Practical skill test stage label"
+  },
+  "examDateStageOther": "Other",
+  "@examDateStageOther": {
+    "description": "Other exam stage label"
+  },
+  "examDateDateLabel": "Exam date & time",
+  "@examDateDateLabel": {
+    "description": "Label for scheduled date and time picker controls"
+  },
+  "examDatePickDateAction": "Change date",
+  "@examDatePickDateAction": {
+    "description": "Button changing the scheduled exam date"
+  },
+  "examDatePickTimeAction": "Change time",
+  "@examDatePickTimeAction": {
+    "description": "Button changing the scheduled exam time"
+  },
+  "examDateVenueLabel": "Venue (optional)",
+  "@examDateVenueLabel": {
+    "description": "Input label for exam venue"
+  },
+  "examDateVenueHint": "e.g. Dhaka College / BPSC HQ",
+  "@examDateVenueHint": {
+    "description": "Input hint for exam venue"
+  },
+  "examDateNotesLabel": "Notes (optional)",
+  "@examDateNotesLabel": {
+    "description": "Input label for exam stage notes"
+  },
+  "examDateNotesHint": "Reporting time, seat plan, documents...",
+  "@examDateNotesHint": {
+    "description": "Input hint for exam stage notes"
+  },
+  "examDateDialogAddTitle": "Add exam date",
+  "@examDateDialogAddTitle": {
+    "description": "Dialog heading when creating an exam date"
+  },
+  "examDateDialogEditTitle": "Edit exam date",
+  "@examDateDialogEditTitle": {
+    "description": "Dialog heading when editing an existing exam date"
+  },
+  "examDateEditTooltip": "Edit exam date",
+  "@examDateEditTooltip": {
+    "description": "Tooltip on edit exam date button"
+  },
+  "examDateDeleteTooltip": "Delete exam date",
+  "@examDateDeleteTooltip": {
+    "description": "Tooltip on delete exam date button"
+  },
+  "circularDetailNotesTitle": "Instructions, notes & syllabus",
+  "@circularDetailNotesTitle": {
+    "description": "Section title for circular instructions, personal notes, and syllabus"
+  },
+  "circularFilesTitle": "Files & attachments",
+  "@circularFilesTitle": {
+    "description": "Section title for circular attachments and uploaded files"
+  },
+  "circularFilesAllowedHelper": "PDF, PNG, JPG, WEBP • Max {maxSize} (large images are resized)",
+  "@circularFilesAllowedHelper": {
+    "description": "Helper showing allowed attachment types and maximum file size",
+    "placeholders": {
+      "maxSize": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesUploadButton": "Upload file",
+  "@circularFilesUploadButton": {
+    "description": "Button label to pick and upload a circular attachment"
+  },
+  "circularFilesUploading": "Uploading {fileName} ({percent}%)",
+  "@circularFilesUploading": {
+    "description": "Progress text while uploading an attachment",
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesEmpty": "No files attached yet. Upload a circular PDF, admit card, or image.",
+  "@circularFilesEmpty": {
+    "description": "Empty state copy when a circular has no uploaded attachments"
+  },
+  "circularFilesLoadError": "Could not load attachments right now.",
+  "@circularFilesLoadError": {
+    "description": "Error message when circular attachments fail to load"
+  },
+  "circularFilesRetry": "Retry",
+  "@circularFilesRetry": {
+    "description": "Retry button label in attachments section"
+  },
+  "circularFilesPreviewAction": "Preview",
+  "@circularFilesPreviewAction": {
+    "description": "Action label and tooltip to preview an attached file"
+  },
+  "circularFilesDownloadAction": "Download",
+  "@circularFilesDownloadAction": {
+    "description": "Action label and tooltip to download an attached file"
+  },
+  "circularFilesDeleteAction": "Delete",
+  "@circularFilesDeleteAction": {
+    "description": "Action label and tooltip to delete an attached file"
+  },
+  "circularFilesPreviewTitle": "File preview",
+  "@circularFilesPreviewTitle": {
+    "description": "Title of the file preview dialog"
+  },
+  "circularFilesPreviewPdfMessage": "PDF files open with a temporary signed link in your browser or PDF viewer.",
+  "@circularFilesPreviewPdfMessage": {
+    "description": "Explanation shown when previewing a PDF attachment via signed URL"
+  },
+  "circularFilesOpenSignedLink": "Open signed link",
+  "@circularFilesOpenSignedLink": {
+    "description": "Button label to open the signed URL externally"
+  },
+  "circularFilesPreviewLoadError": "Could not display preview inline. Open the temporary signed link instead.",
+  "@circularFilesPreviewLoadError": {
+    "description": "Fallback message when an image preview cannot be rendered inline"
+  },
+  "circularFilesCloseAction": "Close",
+  "@circularFilesCloseAction": {
+    "description": "Button label to close the file preview dialog"
+  },
+  "circularFilesSignedUrlSecurityNote": "Protected with a temporary signed URL (never public).",
+  "@circularFilesSignedUrlSecurityNote": {
+    "description": "Security note reminding that files use temporary signed URLs"
+  },
+  "circularFilesDeleteConfirmTitle": "Delete attachment?",
+  "@circularFilesDeleteConfirmTitle": {
+    "description": "Confirmation dialog title when deleting an attachment"
+  },
+  "circularFilesDeleteConfirmBody": "Remove \"{fileName}\" permanently from this circular?",
+  "@circularFilesDeleteConfirmBody": {
+    "description": "Confirmation dialog body before deleting a file",
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesCancelAction": "Cancel",
+  "@circularFilesCancelAction": {
+    "description": "Cancel button label in delete attachment confirmation dialog"
+  },
+  "circularFilesConfirmDeleteAction": "Delete",
+  "@circularFilesConfirmDeleteAction": {
+    "description": "Confirm delete button label in delete attachment confirmation dialog"
+  },
+  "circularFilesErrorUnsupportedType": "Only PDF, PNG, JPG, JPEG, and WEBP files are supported.",
+  "@circularFilesErrorUnsupportedType": {
+    "description": "Validation error when an unsupported file extension or MIME type is chosen"
+  },
+  "circularFilesErrorEmptyFile": "The selected file is empty.",
+  "@circularFilesErrorEmptyFile": {
+    "description": "Validation error when a zero-byte file is selected"
+  },
+  "circularFilesErrorFileTooLarge": "File exceeds the {maxSize} limit.",
+  "@circularFilesErrorFileTooLarge": {
+    "description": "Validation error when a file exceeds the allowed upload size limit",
+    "placeholders": {
+      "maxSize": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesErrorRawImageTooLarge": "Image is too large to process (max {maxSize}).",
+  "@circularFilesErrorRawImageTooLarge": {
+    "description": "Validation error when a raw image exceeds the pre-resize safety limit",
+    "placeholders": {
+      "maxSize": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesErrorOpenLinkFailed": "Could not open the signed file link.",
+  "@circularFilesErrorOpenLinkFailed": {
+    "description": "Error shown when launching a signed file URL fails"
+  },
+  "circularFilesSizeBytes": "{count} B",
+  "@circularFilesSizeBytes": {
+    "description": "Formatted file size in bytes",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesSizeKb": "{count} KB",
+  "@circularFilesSizeKb": {
+    "description": "Formatted file size in kilobytes",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesSizeMb": "{count} MB",
+  "@circularFilesSizeMb": {
+    "description": "Formatted file size in megabytes",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesCount": "{count, plural, =0{0 files} =1{1 file} other{{formattedCount} files}}",
+  "@circularFilesCount": {
+    "description": "Pluralized count of attached files",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesTypePdf": "PDF",
+  "@circularFilesTypePdf": {
+    "description": "Badge label for PDF file"
+  },
+  "circularFilesTypeImage": "Image",
+  "@circularFilesTypeImage": {
+    "description": "Badge label for image file"
+  },
+  "calendarPreviousMonthTooltip": "Previous month",
+  "@calendarPreviousMonthTooltip": {
+    "description": "Tooltip for navigating to the previous month on calendar"
+  },
+  "calendarNextMonthTooltip": "Next month",
+  "@calendarNextMonthTooltip": {
+    "description": "Tooltip for navigating to the next month on calendar"
+  },
+  "calendarTodayButton": "Today",
+  "@calendarTodayButton": {
+    "description": "Button label jumping calendar selection to today's date"
+  },
+  "calendarEventDeadline": "Deadline",
+  "@calendarEventDeadline": {
+    "description": "Legend and badge label for application deadline events"
+  },
+  "calendarEventPreliminary": "Preliminary",
+  "@calendarEventPreliminary": {
+    "description": "Legend and badge label for preliminary exam events"
+  },
+  "calendarEventWritten": "Written",
+  "@calendarEventWritten": {
+    "description": "Legend and badge label for written exam events"
+  },
+  "calendarEventViva": "Viva",
+  "@calendarEventViva": {
+    "description": "Legend and badge label for viva exam events"
+  },
+  "calendarEventPractical": "Practical",
+  "@calendarEventPractical": {
+    "description": "Legend and badge label for practical exam events"
+  },
+  "calendarEventOther": "Other exam",
+  "@calendarEventOther": {
+    "description": "Legend and badge label for other exam events"
+  },
+  "calendarLegendTitle": "Color legend",
+  "@calendarLegendTitle": {
+    "description": "Heading for calendar event color legend"
+  },
+  "calendarAgendaCount": "{count, plural, =0{No events} =1{1 event} other{{formattedCount} events}}",
+  "@calendarAgendaCount": {
+    "description": "Pluralized count of calendar events for the selected day",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "calendarAgendaEmptyDay": "No deadlines or exam dates on this day.",
+  "@calendarAgendaEmptyDay": {
+    "description": "Empty state copy when selected day has no scheduled calendar events"
+  },
+  "calendarEmptyMonthHint": "Add deadlines or exam dates to your circulars to track them on this calendar.",
+  "@calendarEmptyMonthHint": {
+    "description": "Subtle guidance shown when the displayed month has no scheduled events"
+  },
+  "calendarLoadError": "Could not load your schedule right now.",
+  "@calendarLoadError": {
+    "description": "Error banner message when circulars fail to load on Calendar screen"
+  },
+  "calendarRetry": "Retry",
+  "@calendarRetry": {
+    "description": "Retry button label on Calendar screen"
+  },
+  "calendarOpenCircularAction": "Open circular",
+  "@calendarOpenCircularAction": {
+    "description": "Accessible action hint on calendar agenda tiles"
+  },
+  "calendarMoreEvents": "+{formattedCount}",
+  "@calendarMoreEvents": {
+    "description": "Overflow indicator count when a calendar day has additional events",
+    "placeholders": {
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "calendarWeekStartsNote": "Week starts on {dayName}",
+  "@calendarWeekStartsNote": {
+    "description": "Helper showing the locale-determined starting day of week",
+    "placeholders": {
+      "dayName": {
+        "type": "String"
+      }
+    }
+  },
+  "prepSubjectsSectionTitle": "Subjects",
+  "@prepSubjectsSectionTitle": {
+    "description": "Header for the subjects list in Preparation manager"
+  },
+  "prepOverallProgressLabel": "Overall progress",
+  "@prepOverallProgressLabel": {
+    "description": "Label above overall preparation progress ring and summary"
+  },
+  "prepSubjectCount": "{count, plural, =0{No subjects} =1{1 subject} other{{formattedCount} subjects}}",
+  "@prepSubjectCount": {
+    "description": "Pluralized count of subjects",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMaterialCount": "{count, plural, =0{No materials} =1{1 material} other{{formattedCount} materials}}",
+  "@prepMaterialCount": {
+    "description": "Pluralized count of materials",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAddSubjectButton": "Add subject",
+  "@prepAddSubjectButton": {
+    "description": "Primary button label to create a new subject"
+  },
+  "prepAddMaterialButton": "Add material",
+  "@prepAddMaterialButton": {
+    "description": "Primary button label to add a study material to a subject"
+  },
+  "prepRefreshTooltip": "Refresh subjects and materials",
+  "@prepRefreshTooltip": {
+    "description": "Tooltip for refreshing prep data"
+  },
+  "prepLoadError": "Could not load preparation subjects right now.",
+  "@prepLoadError": {
+    "description": "Error banner when loading prep subjects fails"
+  },
+  "prepSelectSubjectPrompt": "Select a subject from the list to view and manage its study materials.",
+  "@prepSelectSubjectPrompt": {
+    "description": "Desktop detail pane prompt when no subject is selected"
+  },
+  "prepEmptySubjectsTitle": "No subjects yet",
+  "@prepEmptySubjectsTitle": {
+    "description": "Empty state title when the user has created zero subjects"
+  },
+  "prepEmptySubjectsBody": "Create subjects for your target career or exam track, then add books, courses, notes, or question banks inside each.",
+  "@prepEmptySubjectsBody": {
+    "description": "Empty state body explaining user-defined subjects"
+  },
+  "prepEmptyMaterialsTitle": "No materials in {subjectName}",
+  "@prepEmptyMaterialsTitle": {
+    "description": "Empty state title inside a subject with zero materials",
+    "placeholders": {
+      "subjectName": {
+        "type": "String"
+      }
+    }
+  },
+  "prepEmptyMaterialsBody": "Add books, lecture sheets, video courses, or mock tests with any unit label you prefer.",
+  "@prepEmptyMaterialsBody": {
+    "description": "Empty state body explaining user-defined materials"
+  },
+  "prepBackToSubjects": "Back to subjects",
+  "@prepBackToSubjects": {
+    "description": "Back action label on mobile subject detail screen"
+  },
+  "prepCreateSubjectTitle": "New subject",
+  "@prepCreateSubjectTitle": {
+    "description": "Dialog title for creating a new subject"
+  },
+  "prepEditSubjectTitle": "Edit subject",
+  "@prepEditSubjectTitle": {
+    "description": "Dialog title for editing an existing subject"
+  },
+  "prepSubjectNameLabel": "Subject name",
+  "@prepSubjectNameLabel": {
+    "description": "Input label for subject name"
+  },
+  "prepSubjectNameHint": "e.g. English Grammar, Anatomy, Data Structures",
+  "@prepSubjectNameHint": {
+    "description": "Hint showing career-agnostic subject names"
+  },
+  "prepSubjectNameRequired": "Subject name is required.",
+  "@prepSubjectNameRequired": {
+    "description": "Validation error when subject name is blank"
+  },
+  "prepExamTypeLabel": "Exam or career track",
+  "@prepExamTypeLabel": {
+    "description": "Input label for user-defined exam or career track"
+  },
+  "prepExamTypeHint": "Type any track or pick a suggestion below",
+  "@prepExamTypeHint": {
+    "description": "Hint for free-form exam type field"
+  },
+  "prepExamTypeRequired": "Exam or career track is required.",
+  "@prepExamTypeRequired": {
+    "description": "Validation error when exam type is blank"
+  },
+  "prepExamTrackGeneral": "General",
+  "@prepExamTrackGeneral": {
+    "description": "Quick suggestion chip for general preparation"
+  },
+  "prepExamTrackBcs": "BCS",
+  "@prepExamTrackBcs": {
+    "description": "Quick suggestion chip for BCS"
+  },
+  "prepExamTrackBank": "Bank",
+  "@prepExamTrackBank": {
+    "description": "Quick suggestion chip for bank recruitment"
+  },
+  "prepExamTrackGovt": "Govt Job",
+  "@prepExamTrackGovt": {
+    "description": "Quick suggestion chip for government jobs"
+  },
+  "prepExamTrackMedical": "Medical",
+  "@prepExamTrackMedical": {
+    "description": "Quick suggestion chip for medical track"
+  },
+  "prepExamTrackEngineering": "Engineering",
+  "@prepExamTrackEngineering": {
+    "description": "Quick suggestion chip for engineering track"
+  },
+  "prepExamTrackIelts": "IELTS",
+  "@prepExamTrackIelts": {
+    "description": "Quick suggestion chip for IELTS"
+  },
+  "prepSubjectColorLabel": "Color",
+  "@prepSubjectColorLabel": {
+    "description": "Section label for picking subject color"
+  },
+  "prepColorGold": "Gold",
+  "@prepColorGold": {
+    "description": "Accessible label for gold subject color"
+  },
+  "prepColorInfo": "Sky Blue",
+  "@prepColorInfo": {
+    "description": "Accessible label for sky blue subject color"
+  },
+  "prepColorSuccess": "Emerald",
+  "@prepColorSuccess": {
+    "description": "Accessible label for emerald subject color"
+  },
+  "prepColorWarning": "Amber",
+  "@prepColorWarning": {
+    "description": "Accessible label for amber subject color"
+  },
+  "prepColorDanger": "Coral Red",
+  "@prepColorDanger": {
+    "description": "Accessible label for red subject color"
+  },
+  "prepColorAccentSecondary": "Violet",
+  "@prepColorAccentSecondary": {
+    "description": "Accessible label for violet subject color"
+  },
+  "prepSubjectIconLabel": "Icon",
+  "@prepSubjectIconLabel": {
+    "description": "Section label for picking subject icon"
+  },
+  "prepIconMenuBook": "Book",
+  "@prepIconMenuBook": {
+    "description": "Label for book icon option"
+  },
+  "prepIconCalculate": "Math",
+  "@prepIconCalculate": {
+    "description": "Label for math icon option"
+  },
+  "prepIconLanguage": "Language",
+  "@prepIconLanguage": {
+    "description": "Label for language icon option"
+  },
+  "prepIconPublic": "Global / GK",
+  "@prepIconPublic": {
+    "description": "Label for global studies icon option"
+  },
+  "prepIconScience": "Science",
+  "@prepIconScience": {
+    "description": "Label for science icon option"
+  },
+  "prepIconComputer": "Computing",
+  "@prepIconComputer": {
+    "description": "Label for computing icon option"
+  },
+  "prepIconAccountBalance": "Finance / Law",
+  "@prepIconAccountBalance": {
+    "description": "Label for finance and governance icon option"
+  },
+  "prepIconPsychology": "Aptitude",
+  "@prepIconPsychology": {
+    "description": "Label for mental ability icon option"
+  },
+  "prepIconGavel": "Constitution",
+  "@prepIconGavel": {
+    "description": "Label for law/constitution icon option"
+  },
+  "prepIconQuiz": "Quiz / Mock",
+  "@prepIconQuiz": {
+    "description": "Label for quiz/practice icon option"
+  },
+  "prepSaveButton": "Save",
+  "@prepSaveButton": {
+    "description": "Save action label in prep dialogs"
+  },
+  "prepCancelButton": "Cancel",
+  "@prepCancelButton": {
+    "description": "Cancel action label in prep dialogs"
+  },
+  "prepEditAction": "Edit",
+  "@prepEditAction": {
+    "description": "Edit tooltip or button label in prep manager"
+  },
+  "prepDeleteAction": "Delete",
+  "@prepDeleteAction": {
+    "description": "Delete tooltip or button label in prep manager"
+  },
+  "prepMoveUpTooltip": "Move subject up",
+  "@prepMoveUpTooltip": {
+    "description": "Tooltip for moving a subject higher in order"
+  },
+  "prepMoveDownTooltip": "Move subject down",
+  "@prepMoveDownTooltip": {
+    "description": "Tooltip for moving a subject lower in order"
+  },
+  "prepDragReorderTooltip": "Drag to reorder",
+  "@prepDragReorderTooltip": {
+    "description": "Tooltip for drag reorder handle on subject rows"
+  },
+  "prepCreateMaterialTitle": "New material",
+  "@prepCreateMaterialTitle": {
+    "description": "Dialog title for creating a new study material"
+  },
+  "prepEditMaterialTitle": "Edit material",
+  "@prepEditMaterialTitle": {
+    "description": "Dialog title for editing a study material"
+  },
+  "prepMaterialTitleLabel": "Material title",
+  "@prepMaterialTitleLabel": {
+    "description": "Input label for material title"
+  },
+  "prepMaterialTitleHint": "e.g. Official Guide, Clinical Handbook, System Design",
+  "@prepMaterialTitleHint": {
+    "description": "Hint showing example material titles"
+  },
+  "prepMaterialTitleRequired": "Material title is required.",
+  "@prepMaterialTitleRequired": {
+    "description": "Validation error when material title is blank"
+  },
+  "prepMaterialKindLabel": "Type",
+  "@prepMaterialKindLabel": {
+    "description": "Section label for material kind selector"
+  },
+  "prepMaterialKindBook": "Book",
+  "@prepMaterialKindBook": {
+    "description": "Material kind label for Book"
+  },
+  "prepMaterialKindVideoCourse": "Video course",
+  "@prepMaterialKindVideoCourse": {
+    "description": "Material kind label for Video course"
+  },
+  "prepMaterialKindLectureSheet": "Lecture sheet",
+  "@prepMaterialKindLectureSheet": {
+    "description": "Material kind label for Lecture sheet"
+  },
+  "prepMaterialKindQuestionBank": "Question bank",
+  "@prepMaterialKindQuestionBank": {
+    "description": "Material kind label for Question bank"
+  },
+  "prepMaterialKindNotes": "Notes",
+  "@prepMaterialKindNotes": {
+    "description": "Material kind label for Notes"
+  },
+  "prepMaterialKindMockTest": "Mock test",
+  "@prepMaterialKindMockTest": {
+    "description": "Material kind label for Mock test"
+  },
+  "prepMaterialKindOther": "Other",
+  "@prepMaterialKindOther": {
+    "description": "Material kind label for Other"
+  },
+  "prepUnitLabelFieldLabel": "Unit label",
+  "@prepUnitLabelFieldLabel": {
+    "description": "Input label for material unit label"
+  },
+  "prepUnitLabelHint": "e.g. pages, lectures, chapters, sets",
+  "@prepUnitLabelHint": {
+    "description": "Hint for free-form unit label input"
+  },
+  "prepUnitLabelRequired": "Unit label is required.",
+  "@prepUnitLabelRequired": {
+    "description": "Validation error when unit label is blank"
+  },
+  "prepUnitPresetPages": "pages",
+  "@prepUnitPresetPages": {
+    "description": "Quick preset chip for pages"
+  },
+  "prepUnitPresetChapters": "chapters",
+  "@prepUnitPresetChapters": {
+    "description": "Quick preset chip for chapters"
+  },
+  "prepUnitPresetLectures": "lectures",
+  "@prepUnitPresetLectures": {
+    "description": "Quick preset chip for lectures"
+  },
+  "prepUnitPresetVideos": "videos",
+  "@prepUnitPresetVideos": {
+    "description": "Quick preset chip for videos"
+  },
+  "prepUnitPresetQuestions": "questions",
+  "@prepUnitPresetQuestions": {
+    "description": "Quick preset chip for questions"
+  },
+  "prepUnitPresetTests": "tests",
+  "@prepUnitPresetTests": {
+    "description": "Quick preset chip for tests"
+  },
+  "prepTotalUnitsLabel": "Total units",
+  "@prepTotalUnitsLabel": {
+    "description": "Input label for total unit count"
+  },
+  "prepTotalUnitsHint": "e.g. 300",
+  "@prepTotalUnitsHint": {
+    "description": "Hint for total units numeric input"
+  },
+  "prepTotalUnitsInvalid": "Enter a whole number greater than or equal to 0.",
+  "@prepTotalUnitsInvalid": {
+    "description": "Validation error when total units is invalid or negative"
+  },
+  "prepMaterialProgressSummary": "{completed} / {total} {unitLabel}",
+  "@prepMaterialProgressSummary": {
+    "description": "Completed over total units display for a study material",
+    "placeholders": {
+      "completed": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "prepPercentComplete": "{percent}% complete",
+  "@prepPercentComplete": {
+    "description": "Percentage completion label",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "prepCoverSectionLabel": "Cover image (optional)",
+  "@prepCoverSectionLabel": {
+    "description": "Section header for cover upload or image link"
+  },
+  "prepCoverModeNone": "None",
+  "@prepCoverModeNone": {
+    "description": "Cover mode toggle indicating no cover image"
+  },
+  "prepCoverModeUpload": "Upload photo",
+  "@prepCoverModeUpload": {
+    "description": "Cover mode toggle to upload a photo file"
+  },
+  "prepCoverModeUrl": "Paste link",
+  "@prepCoverModeUrl": {
+    "description": "Cover mode toggle to paste an external image link"
+  },
+  "prepCoverPickButton": "Choose JPG, PNG or WEBP",
+  "@prepCoverPickButton": {
+    "description": "Button to open file picker for cover image"
+  },
+  "prepCoverReplaceButton": "Replace photo",
+  "@prepCoverReplaceButton": {
+    "description": "Button to choose a replacement cover photo"
+  },
+  "prepCoverRemoveButton": "Remove cover",
+  "@prepCoverRemoveButton": {
+    "description": "Button to remove current cover photo"
+  },
+  "prepCoverResizedNote": "Resized to {formattedWidth} px wide for upload.",
+  "@prepCoverResizedNote": {
+    "description": "Note shown when selected image was scaled to max ~600 px width",
+    "placeholders": {
+      "formattedWidth": {
+        "type": "String"
+      }
+    }
+  },
+  "prepCoverUrlLabel": "Image URL",
+  "@prepCoverUrlLabel": {
+    "description": "Text field label for pasting an external image URL"
+  },
+  "prepCoverUrlHint": "https://example.com/cover.jpg",
+  "@prepCoverUrlHint": {
+    "description": "Placeholder hint for cover image URL"
+  },
+  "prepCoverPlaceholderHint": "Without a cover image, a glass initial badge is displayed automatically.",
+  "@prepCoverPlaceholderHint": {
+    "description": "Helper explaining glass placeholder when no cover is chosen"
+  },
+  "prepCoverErrorUnsupportedType": "Only JPG, PNG, and WEBP images are supported.",
+  "@prepCoverErrorUnsupportedType": {
+    "description": "Validation error for unsupported cover image file types"
+  },
+  "prepCoverErrorEmptyFile": "The selected cover image is empty.",
+  "@prepCoverErrorEmptyFile": {
+    "description": "Validation error when selected cover file has zero bytes"
+  },
+  "prepCoverErrorTooLarge": "Cover image exceeds the {maxSize} limit.",
+  "@prepCoverErrorTooLarge": {
+    "description": "Validation error when cover exceeds upload size limit",
+    "placeholders": {
+      "maxSize": {
+        "type": "String"
+      }
+    }
+  },
+  "prepCoverErrorRawTooLarge": "Image is too large to process (max {maxSize}).",
+  "@prepCoverErrorRawTooLarge": {
+    "description": "Validation error when raw image before resize exceeds memory cap",
+    "placeholders": {
+      "maxSize": {
+        "type": "String"
+      }
+    }
+  },
+  "prepCoverErrorInvalidUrl": "Enter a valid http:// or https:// image URL.",
+  "@prepCoverErrorInvalidUrl": {
+    "description": "Validation error for malformed cover image URL"
+  },
+  "prepCoverUploadProgress": "Resizing and uploading cover...",
+  "@prepCoverUploadProgress": {
+    "description": "Status message while resizing and uploading cover photo"
+  },
+  "prepDeleteSubjectTitle": "Delete \"{subjectName}\"?",
+  "@prepDeleteSubjectTitle": {
+    "description": "Confirmation dialog title when deleting a subject",
+    "placeholders": {
+      "subjectName": {
+        "type": "String"
+      }
+    }
+  },
+  "prepDeleteSubjectBody": "This will remove the subject and all materials inside it.",
+  "@prepDeleteSubjectBody": {
+    "description": "Confirmation body for deleting a subject"
+  },
+  "prepDeleteSubjectProgressWarning": "Warning: this subject has logged progress ({formattedUnits} completed units across materials). Deleting it will permanently remove that progress.",
+  "@prepDeleteSubjectProgressWarning": {
+    "description": "Warning displayed before deleting a subject that has logged progress",
+    "placeholders": {
+      "formattedUnits": {
+        "type": "String"
+      }
+    }
+  },
+  "prepDeleteMaterialTitle": "Delete \"{materialTitle}\"?",
+  "@prepDeleteMaterialTitle": {
+    "description": "Confirmation dialog title when deleting a material",
+    "placeholders": {
+      "materialTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "prepDeleteMaterialBody": "Are you sure you want to remove this material from the subject?",
+  "@prepDeleteMaterialBody": {
+    "description": "Confirmation body for deleting a material"
+  },
+  "prepDeleteMaterialProgressWarning": "Warning: you have already logged {formattedCompleted} of {formattedTotal} {unitLabel} ({percent}% complete). Deleting this material will also remove its logged progress.",
+  "@prepDeleteMaterialProgressWarning": {
+    "description": "Warning displayed before deleting a material that has logged progress",
+    "placeholders": {
+      "formattedCompleted": {
+        "type": "String"
+      },
+      "formattedTotal": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "prepDeleteConfirmButton": "Delete",
+  "@prepDeleteConfirmButton": {
+    "description": "Confirm button label in delete dialog"
+  },
+  "prepErrorPermission": "You do not have permission to update this preparation item.",
+  "@prepErrorPermission": {
+    "description": "Error banner for PrepPermissionFailure"
+  },
+  "prepErrorNetwork": "Network issue while saving. Please try again.",
+  "@prepErrorNetwork": {
+    "description": "Error banner for PrepNetworkFailure"
+  },
+  "prepErrorNotFound": "That preparation item could not be found.",
+  "@prepErrorNotFound": {
+    "description": "Error banner for PrepNotFoundFailure"
+  },
+  "prepErrorUnknown": "Something went wrong while updating preparation data.",
+  "@prepErrorUnknown": {
+    "description": "Fallback error banner for prep errors"
+  },
+  "prepOverallUnitsSummary": "{formattedCompleted} / {formattedTotal} total units",
+  "@prepOverallUnitsSummary": {
+    "description": "Total completed over planned units across all prep materials",
+    "placeholders": {
+      "formattedCompleted": {
+        "type": "String"
+      },
+      "formattedTotal": {
+        "type": "String"
+      }
+    }
+  },
+  "prepQuickLogPlus": "+{formattedAmount}",
+  "@prepQuickLogPlus": {
+    "description": "Quick log button label for fixed increment like +10, +20, +50",
+    "placeholders": {
+      "formattedAmount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepLogButton": "Log",
+  "@prepLogButton": {
+    "description": "Button opening custom study log and history dialog for a material"
+  },
+  "prepLogDialogTitle": "Log progress",
+  "@prepLogDialogTitle": {
+    "description": "Dialog header for logging or managing study progress logs"
+  },
+  "prepCustomUnitsLabel": "Units completed",
+  "@prepCustomUnitsLabel": {
+    "description": "Numeric field label for custom progress log units"
+  },
+  "prepCustomUnitsHint": "e.g. 25",
+  "@prepCustomUnitsHint": {
+    "description": "Hint for custom progress log units"
+  },
+  "prepCustomUnitsInvalid": "Enter a whole number greater than 0.",
+  "@prepCustomUnitsInvalid": {
+    "description": "Validation error when custom log units is not positive"
+  },
+  "prepLogDateLabel": "Date",
+  "@prepLogDateLabel": {
+    "description": "Date selector label inside progress log dialog"
+  },
+  "prepLogNoteLabel": "Note (optional)",
+  "@prepLogNoteLabel": {
+    "description": "Optional note text field label inside progress log dialog"
+  },
+  "prepLogNoteHint": "e.g. Chapters 1-3, revision set",
+  "@prepLogNoteHint": {
+    "description": "Hint for optional study session note"
+  },
+  "prepLogSaveButton": "Save log",
+  "@prepLogSaveButton": {
+    "description": "Primary submit button to add a new progress log"
+  },
+  "prepLogUpdateButton": "Update log",
+  "@prepLogUpdateButton": {
+    "description": "Primary submit button when editing an existing progress log"
+  },
+  "prepLogCancelEditButton": "Cancel edit",
+  "@prepLogCancelEditButton": {
+    "description": "Cancels editing an existing progress log"
+  },
+  "prepEditingLogBanner": "Editing existing log entry",
+  "@prepEditingLogBanner": {
+    "description": "Banner indicating the log form is currently editing a past log"
+  },
+  "prepPastLogsTitle": "Past study logs",
+  "@prepPastLogsTitle": {
+    "description": "Section title above past logs list for a material"
+  },
+  "prepNoPastLogs": "No study logs recorded for this material yet.",
+  "@prepNoPastLogs": {
+    "description": "Empty message when a material has zero logged study entries"
+  },
+  "prepLogUnitsSummary": "+{formattedUnits} {unitLabel}",
+  "@prepLogUnitsSummary": {
+    "description": "Displayed unit delta inside a past log tile",
+    "placeholders": {
+      "formattedUnits": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTemplatesTitle": "Start quickly with a template",
+  "@prepTemplatesTitle": {
+    "description": "Header inside empty prep state offering starter templates"
+  },
+  "prepTemplatesSubtitle": "Apply a preset study plan you can freely customize, reorder, or delete anytime.",
+  "@prepTemplatesSubtitle": {
+    "description": "Subtitle explaining starter prep templates"
+  },
+  "prepApplyTemplateButton": "Apply template",
+  "@prepApplyTemplateButton": {
+    "description": "Button label on each starter template card"
+  },
+  "prepTemplatesOpenButton": "Templates",
+  "@prepTemplatesOpenButton": {
+    "description": "Header button label opening starter and personal templates"
+  },
+  "prepTemplatesDialogTitle": "Study Templates",
+  "@prepTemplatesDialogTitle": {
+    "description": "Dialog heading listing starter packs and personal templates"
+  },
+  "prepTemplatesSystemSection": "Starter packs",
+  "@prepTemplatesSystemSection": {
+    "description": "Section heading for seeded read-only template packs"
+  },
+  "prepTemplatesPersonalSection": "Your personal templates",
+  "@prepTemplatesPersonalSection": {
+    "description": "Section heading for user-saved reusable templates"
+  },
+  "prepTemplatesPersonalEmpty": "Save your current subjects as a personal template so you can reuse or share your plan anytime.",
+  "@prepTemplatesPersonalEmpty": {
+    "description": "Empty guidance text when user has not saved any personal templates"
+  },
+  "prepTemplateSystemBadge": "Starter pack",
+  "@prepTemplateSystemBadge": {
+    "description": "Badge identifying a read-only system starter pack"
+  },
+  "prepTemplatePersonalBadge": "Personal",
+  "@prepTemplatePersonalBadge": {
+    "description": "Badge identifying a user-created personal template"
+  },
+  "prepTemplateAppliedBadge": "Applied",
+  "@prepTemplateAppliedBadge": {
+    "description": "Badge shown when all subjects and materials of a template already exist"
+  },
+  "prepTemplateCustomizeButton": "Edit units",
+  "@prepTemplateCustomizeButton": {
+    "description": "Button opening preview dialog where users adjust template unit counts before copying"
+  },
+  "prepTemplateApplyAgainButton": "Re-apply",
+  "@prepTemplateApplyAgainButton": {
+    "description": "Button label when template items are already in user plan"
+  },
+  "prepTemplateApplyConfirmTitle": "Customize & apply \"{title}\"",
+  "@prepTemplateApplyConfirmTitle": {
+    "description": "Title of preview modal allowing unit customization before applying template",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTemplateApplyConfirmSubtitle": "Adjust unit counts below before copying into your own prep subjects. Everything remains fully editable afterward.",
+  "@prepTemplateApplyConfirmSubtitle": {
+    "description": "Subtitle explaining unit adjustments and post-copy editability"
+  },
+  "prepTemplateConfirmApplyAction": "Copy to my prep plan",
+  "@prepTemplateConfirmApplyAction": {
+    "description": "Primary confirm button inside template customize dialog"
+  },
+  "prepTemplateAppliedSnackbar": "Copied {subjectCount, plural, =0{0 subjects} =1{1 subject} other{{formattedSubjects} subjects}} and {materialCount, plural, =0{0 materials} =1{1 material} other{{formattedMaterials} materials}} from \"{title}\".",
+  "@prepTemplateAppliedSnackbar": {
+    "description": "Snackbar confirmation showing count of copied subjects and materials",
+    "placeholders": {
+      "subjectCount": {
+        "type": "int"
+      },
+      "formattedSubjects": {
+        "type": "String"
+      },
+      "materialCount": {
+        "type": "int"
+      },
+      "formattedMaterials": {
+        "type": "String"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTemplateAlreadyAppliedSnackbar": "All subjects and materials from \"{title}\" are already in your plan (no duplicates created).",
+  "@prepTemplateAlreadyAppliedSnackbar": {
+    "description": "Snackbar message when applying a template that is already present",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepSaveAsTemplateButton": "Save as template",
+  "@prepSaveAsTemplateButton": {
+    "description": "Button label opening dialog to save current subjects as a personal template"
+  },
+  "prepSaveTemplateDialogTitle": "Save personal template",
+  "@prepSaveTemplateDialogTitle": {
+    "description": "Heading of dialog for saving current user subjects as a template"
+  },
+  "prepSaveTemplateTitleLabel": "Template name",
+  "@prepSaveTemplateTitleLabel": {
+    "description": "Text field label for personal template name"
+  },
+  "prepSaveTemplateTitleHint": "e.g. 48th BCS Core Plan",
+  "@prepSaveTemplateTitleHint": {
+    "description": "Hint text for personal template name field"
+  },
+  "prepSaveTemplateTitleRequired": "Please enter a template name.",
+  "@prepSaveTemplateTitleRequired": {
+    "description": "Validation error when personal template title is blank"
+  },
+  "prepSaveTemplateDescLabel": "Description (optional)",
+  "@prepSaveTemplateDescLabel": {
+    "description": "Text field label for optional template description"
+  },
+  "prepSaveTemplateDescHint": "Short summary of subjects and target role",
+  "@prepSaveTemplateDescHint": {
+    "description": "Hint text for optional personal template description"
+  },
+  "prepSaveTemplateExamLabel": "Career or exam track",
+  "@prepSaveTemplateExamLabel": {
+    "description": "Text field label for personal template career/exam track"
+  },
+  "prepSaveTemplatePreviewSummary": "Copies {formattedSubjects} subjects and {formattedMaterials} materials into this reusable template",
+  "@prepSaveTemplatePreviewSummary": {
+    "description": "Summary inside save-personal-template dialog showing snapshot size",
+    "placeholders": {
+      "formattedSubjects": {
+        "type": "String"
+      },
+      "formattedMaterials": {
+        "type": "String"
+      }
+    }
+  },
+  "prepSaveTemplateSaveAction": "Save template",
+  "@prepSaveTemplateSaveAction": {
+    "description": "Primary button saving a personal prep template"
+  },
+  "prepSaveTemplateSavedSnackbar": "Saved personal template \"{title}\".",
+  "@prepSaveTemplateSavedSnackbar": {
+    "description": "Snackbar shown after saving a personal template",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepDeleteTemplateTitle": "Delete personal template?",
+  "@prepDeleteTemplateTitle": {
+    "description": "Confirmation dialog heading before deleting a personal template"
+  },
+  "prepDeleteTemplateMessage": "Delete \"{title}\"? Any subjects and materials already copied into your prep dashboard stay untouched.",
+  "@prepDeleteTemplateMessage": {
+    "description": "Confirmation message before deleting a personal template",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepDeleteTemplateDeletedSnackbar": "Deleted personal template \"{title}\".",
+  "@prepDeleteTemplateDeletedSnackbar": {
+    "description": "Snackbar shown after deleting a personal template",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTemplateUnitsInvalid": "Enter zero or a positive whole number.",
+  "@prepTemplateUnitsInvalid": {
+    "description": "Validation error inside template customization dialog for invalid unit count"
+  },
+  "prepSeededGovJobTitle": "Government Job",
+  "@prepSeededGovJobTitle": {
+    "description": "Localized title for seeded Government Job pack"
+  },
+  "prepSeededGovJobSubtitle": "Bengali, English, General Knowledge, Mathematics, Analytical Reasoning, and Computer with customizable materials.",
+  "@prepSeededGovJobSubtitle": {
+    "description": "Localized summary for seeded Government Job pack"
+  },
+  "prepSeededSweTitle": "Software Engineer",
+  "@prepSeededSweTitle": {
+    "description": "Localized title for seeded Software Engineer pack"
+  },
+  "prepSeededSweSubtitle": "Data Structures & Algorithms, Database Systems, OOP, Web Development, and Software Quality Assurance.",
+  "@prepSeededSweSubtitle": {
+    "description": "Localized summary for seeded Software Engineer pack"
   }
 }

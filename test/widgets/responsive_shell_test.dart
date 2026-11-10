@@ -80,6 +80,7 @@ void main() {
         expect(find.text('Prep'), findsOneWidget);
         expect(find.text('Calendar'), findsOneWidget);
         expect(find.text('Settings'), findsOneWidget);
+        expect(find.text('Inbox'), findsOneWidget);
       },
     );
 
@@ -99,6 +100,7 @@ void main() {
         expect(find.text('Prep'), findsOneWidget);
         expect(find.text('Calendar'), findsOneWidget);
         expect(find.text('Settings'), findsOneWidget);
+        expect(find.text('Inbox'), findsOneWidget);
       },
     );
 
@@ -119,6 +121,7 @@ void main() {
         expect(find.text('Alt+3'), findsOneWidget);
         expect(find.text('Alt+4'), findsOneWidget);
         expect(find.text('Alt+5'), findsOneWidget);
+        expect(find.text('Alt+6'), findsOneWidget);
 
         // Content constraint check (1200 px max width)
         final constrainedBoxes = tester.widgetList<ConstrainedBox>(
@@ -290,6 +293,7 @@ void main() {
         expect(find.text('প্রস্তুতি'), findsOneWidget);
         expect(find.text('ক্যালেন্ডার'), findsOneWidget);
         expect(find.text('সেটিংস'), findsOneWidget);
+        expect(find.text('ইনবক্স'), findsOneWidget);
       },
     );
   });

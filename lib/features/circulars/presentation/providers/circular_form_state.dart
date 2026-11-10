@@ -82,7 +82,9 @@ class CircularFormState {
       applicationStatus: existing.applicationStatus,
       admitCardStatus: existing.admitCardStatus,
       priority: existing.priority,
-      workflowStatus: existing.workflowStatus,
+      workflowStatus: existing.workflowStatus == CircularWorkflowStatus.inbox
+          ? CircularWorkflowStatus.saved
+          : existing.workflowStatus,
       instructions: existing.instructions ?? '',
       notes: existing.notes ?? '',
       syllabus: existing.syllabus ?? '',

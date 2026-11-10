@@ -19,6 +19,8 @@ class AppColorsToken {
     required this.success,
     required this.warning,
     required this.danger,
+    this.info = const Color(0xFF38BDF8),
+    this.accentSecondary = const Color(0xFFA78BFA),
   });
 
   /// Dark mode palette (deep navy & refined gold).
@@ -59,6 +61,8 @@ class AppColorsToken {
       success: Color(0xFF059669),
       warning: Color(0xFFD97706),
       danger: Color(0xFFDC2626),
+      info: Color(0xFF0284C7),
+      accentSecondary: Color(0xFF7C3AED),
     );
   }
 
@@ -104,6 +108,12 @@ class AppColorsToken {
   /// Semantic danger / error state color.
   final Color danger;
 
+  /// Semantic informational / written-exam accent color.
+  final Color info;
+
+  /// Secondary violet accent color (distinct from gold, blue, green, red).
+  final Color accentSecondary;
+
   /// Linearly interpolates with another [AppColorsToken].
   AppColorsToken lerp(AppColorsToken? other, double t) {
     if (other == null) return this;
@@ -123,6 +133,8 @@ class AppColorsToken {
       success: Color.lerp(success, other.success, t)!,
       warning: Color.lerp(warning, other.warning, t)!,
       danger: Color.lerp(danger, other.danger, t)!,
+      info: Color.lerp(info, other.info, t)!,
+      accentSecondary: Color.lerp(accentSecondary, other.accentSecondary, t)!,
     );
   }
 }

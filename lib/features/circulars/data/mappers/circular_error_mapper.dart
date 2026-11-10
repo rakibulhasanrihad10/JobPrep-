@@ -38,6 +38,10 @@ abstract final class CircularErrorMapper {
       );
     }
 
+    if (error is supabase.StorageException) {
+      return _mapStorageException(error);
+    }
+
     if (error is supabase.PostgrestException) {
       return _mapPostgrestException(error);
     }
@@ -94,6 +98,55 @@ abstract final class CircularErrorMapper {
     return UnknownCircularFailure(
       message: error.message,
       code: code,
+    );
+  }
+
+  static CircularFailure _mapStorageException(
+    supabase.StorageException error,
+  ) {
+    final status = error.statusCode?.trim();
+    final msgLower = error.message.toLowerCase();
+
+    if (status == '401' ||
+        status == '403' ||
+        msgLower.contains('unauthorized') ||
+        msgLower.contains('row-level security') ||
+        msgLower.contains('permission')) {
+      return CircularPermissionFailure(
+        message: error.message,
+        code: status,
+      );
+    }
+
+    if (status == '404' || msgLower.contains('not found')) {
+      return CircularNotFoundFailure(
+        message: error.message,
+        code: status,
+      );
+    }
+
+    if (status == '413' ||
+        status == '415' ||
+        status == '400' ||
+        msgLower.contains('payload too large') ||
+        msgLower.contains('exceeded') ||
+        msgLower.contains('mime')) {
+      return CircularValidationFailure(
+        message: error.message,
+        code: status,
+      );
+    }
+
+    if (_looksLikeNetworkMessage(msgLower)) {
+      return CircularNetworkFailure(
+        message: error.message,
+        code: status,
+      );
+    }
+
+    return UnknownCircularFailure(
+      message: error.message,
+      code: status,
     );
   }
 

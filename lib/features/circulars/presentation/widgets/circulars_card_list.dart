@@ -16,6 +16,7 @@ class CircularsCardList extends ConsumerWidget {
     required this.circulars,
     super.key,
     this.onTapCircular,
+    this.selectedCircularId,
   });
 
   /// Circulars to display in order.
@@ -23,6 +24,9 @@ class CircularsCardList extends ConsumerWidget {
 
   /// Optional callback invoked when a card is tapped.
   final ValueChanged<Circular>? onTapCircular;
+
+  /// Optional selected circular ID highlighted in master-detail desktop view.
+  final String? selectedCircularId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -43,6 +47,7 @@ class CircularsCardList extends ConsumerWidget {
           index: index,
           locale: locale,
           useBanglaDigits: useBanglaDigits,
+          isSelected: selectedCircularId == circular.id,
           onTap: onTapCircular != null ? () => onTapCircular!(circular) : null,
         );
       },
@@ -56,6 +61,7 @@ class _CircularMobileCard extends StatelessWidget {
     required this.index,
     required this.locale,
     required this.useBanglaDigits,
+    required this.isSelected,
     this.onTap,
   });
 
@@ -63,6 +69,7 @@ class _CircularMobileCard extends StatelessWidget {
   final int index;
   final Locale locale;
   final bool useBanglaDigits;
+  final bool isSelected;
   final VoidCallback? onTap;
 
   @override
@@ -81,9 +88,11 @@ class _CircularMobileCard extends StatelessWidget {
     return Container(
       key: ValueKey('circular-card-${circular.id}'),
       decoration: BoxDecoration(
-        color: colors.glassFillSolid,
+        color: isSelected ? colors.goldAccentSubtle : colors.glassFillSolid,
         borderRadius: tokens.radii.cardRadius,
-        border: Border.all(color: colors.glassBorder),
+        border: Border.all(
+          color: isSelected ? colors.goldAccent : colors.glassBorder,
+        ),
       ),
       child: Material(
         color: Colors.transparent,

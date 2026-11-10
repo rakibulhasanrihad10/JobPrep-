@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
+import 'package:job_prep/core/localization/formatters.dart';
+import 'package:job_prep/core/localization/locale_controller.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
+import 'package:job_prep/core/widgets/app_nav_badge.dart';
 import 'package:job_prep/core/widgets/app_nav_item.dart';
+import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_sidebar.dart';
 
 /// Permanent glass sidebar navigation for expanded / desktop viewports (> 1024 px).
@@ -12,6 +17,8 @@ class AppSidebarNav extends StatelessWidget {
     required this.onSelect,
     super.key,
     this.width = 260.0,
+    this.inboxCount = 0,
+    this.onQuickCapture,
   });
 
   /// Currently selected navigation destination.
@@ -23,6 +30,12 @@ class AppSidebarNav extends StatelessWidget {
   /// Sidebar width.
   final double width;
 
+  /// Pending quick-captured items waiting in Inbox.
+  final int inboxCount;
+
+  /// Optional callback opening the Quick Capture dialog.
+  final VoidCallback? onQuickCapture;
+
   @override
   Widget build(BuildContext context) {
     final tokens = context.tokens;
@@ -33,36 +46,61 @@ class AppSidebarNav extends StatelessWidget {
 
     return GlassSidebar(
       width: width,
-      header: Row(
+      header: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: colors.goldAccentSubtle,
-              borderRadius: tokens.radii.buttonRadius,
-              border: Border.all(color: colors.glassBorder),
-            ),
-            child: Center(
-              child: Icon(
-                Icons.auto_stories_rounded,
-                color: colors.goldAccent,
-                size: 20,
+          Row(
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: colors.goldAccentSubtle,
+                  borderRadius: tokens.radii.buttonRadius,
+                  border: Border.all(color: colors.glassBorder),
+                ),
+                child: Center(
+                  child: Icon(
+                    Icons.auto_stories_rounded,
+                    color: colors.goldAccent,
+                    size: 20,
+                  ),
+                ),
+              ),
+              SizedBox(width: spacing.sm),
+              Expanded(
+                child: Text(
+                  l10n.appTitle,
+                  style: textStyles.titleLarge.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: colors.textPrimary,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+          if (onQuickCapture != null) ...[
+            SizedBox(height: spacing.md),
+            Tooltip(
+              message: l10n.quickCaptureShortcutTooltip(
+                l10n.navShortcutBadge('Q'),
+              ),
+              child: GlassButton(
+                key: const ValueKey('shell-quick-capture-btn'),
+                variant: GlassButtonVariant.primary,
+                width: double.infinity,
+                onPressed: onQuickCapture,
+                leading: Icon(Icons.add_link_rounded, size: spacing.lg),
+                child: Text(
+                  l10n.quickCaptureButton,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
-          ),
-          SizedBox(width: spacing.sm),
-          Expanded(
-            child: Text(
-              l10n.appTitle,
-              style: textStyles.titleLarge.copyWith(
-                fontWeight: FontWeight.w700,
-                color: colors.textPrimary,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
+          ],
         ],
       ),
       children: AppNavItem.values.map((item) {
@@ -71,6 +109,7 @@ class AppSidebarNav extends StatelessWidget {
           child: _SidebarNavTile(
             item: item,
             isSelected: item == currentItem,
+            badgeCount: item == AppNavItem.inbox ? inboxCount : 0,
             onTap: () => onSelect(item),
           ),
         );
@@ -79,22 +118,24 @@ class AppSidebarNav extends StatelessWidget {
   }
 }
 
-class _SidebarNavTile extends StatefulWidget {
+class _SidebarNavTile extends ConsumerStatefulWidget {
   const _SidebarNavTile({
     required this.item,
     required this.isSelected,
+    required this.badgeCount,
     required this.onTap,
   });
 
   final AppNavItem item;
   final bool isSelected;
+  final int badgeCount;
   final VoidCallback onTap;
 
   @override
-  State<_SidebarNavTile> createState() => _SidebarNavTileState();
+  ConsumerState<_SidebarNavTile> createState() => _SidebarNavTileState();
 }
 
-class _SidebarNavTileState extends State<_SidebarNavTile> {
+class _SidebarNavTileState extends ConsumerState<_SidebarNavTile> {
   bool _isHovered = false;
 
   @override
@@ -106,6 +147,8 @@ class _SidebarNavTileState extends State<_SidebarNavTile> {
     final textStyles = tokens.textStyles;
     final durations = tokens.durations;
     final l10n = context.l10n;
+    final locale = ref.watch(localeProvider);
+    final useBanglaDigits = ref.watch(useBanglaDigitsProvider);
 
     final activeColor = widget.isSelected
         ? colors.goldAccent
@@ -118,6 +161,17 @@ class _SidebarNavTileState extends State<_SidebarNavTile> {
     final borderColor =
         widget.isSelected ? colors.glassBorder : Colors.transparent;
 
+    final semanticLabel = widget.badgeCount > 0
+        ? l10n.navInboxCountSemantic(
+            widget.item.label(l10n),
+            AppFormatters.formatNumber(
+              widget.badgeCount,
+              locale: locale,
+              useBanglaDigits: useBanglaDigits,
+            ),
+          )
+        : widget.item.label(l10n);
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _isHovered = true),
@@ -125,7 +179,7 @@ class _SidebarNavTileState extends State<_SidebarNavTile> {
       child: Semantics(
         button: true,
         selected: widget.isSelected,
-        label: widget.item.label(l10n),
+        label: semanticLabel,
         child: InkWell(
           onTap: widget.onTap,
           borderRadius: radii.buttonRadius,
@@ -162,6 +216,10 @@ class _SidebarNavTileState extends State<_SidebarNavTile> {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
+                if (widget.badgeCount > 0) ...[
+                  NavInboxCountBadge(count: widget.badgeCount),
+                  SizedBox(width: spacing.xs),
+                ],
                 Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: spacing.xs,

@@ -810,4 +810,1076 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get circularDiscardConfirm => 'Discard changes';
+
+  @override
+  String get navInbox => 'Inbox';
+
+  @override
+  String navInboxCountSemantic(String label, String formattedCount) {
+    return '$label, $formattedCount waiting';
+  }
+
+  @override
+  String get circularWorkflowInbox => 'Inbox';
+
+  @override
+  String get quickCaptureButton => 'Quick capture';
+
+  @override
+  String quickCaptureShortcutTooltip(String shortcut) {
+    return 'Quick capture ($shortcut)';
+  }
+
+  @override
+  String get quickCaptureDialogTitle => 'Quick capture';
+
+  @override
+  String get quickCaptureDialogSubtitle =>
+      'Paste a circular link now and fill in the rest later from your Inbox.';
+
+  @override
+  String get quickCaptureLinkLabel => 'Circular link';
+
+  @override
+  String get quickCaptureLinkHint => 'https://...';
+
+  @override
+  String get quickCaptureLinkRequired => 'Please enter the circular link.';
+
+  @override
+  String get quickCaptureTitleLabel => 'Title (optional)';
+
+  @override
+  String get quickCaptureTitleHint =>
+      'Optional — uses website name if left blank';
+
+  @override
+  String get quickCaptureDeadlineLabel => 'Deadline (optional)';
+
+  @override
+  String get quickCaptureSaveAction => 'Save to Inbox';
+
+  @override
+  String get quickCaptureSavingAction => 'Saving...';
+
+  @override
+  String quickCaptureSavedSnackbar(String title) {
+    return 'Saved \"$title\" to Inbox.';
+  }
+
+  @override
+  String get quickCaptureViewInboxAction => 'View Inbox';
+
+  @override
+  String get inboxTitle => 'Inbox';
+
+  @override
+  String inboxCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount quick-captured items waiting',
+      one: '1 quick-captured item waiting',
+      zero: 'No quick-captured items waiting',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get inboxEmptyTitle => 'Your Inbox is clear';
+
+  @override
+  String get inboxEmptyMessage =>
+      'Use Quick capture (or press Alt+Q on web) from any screen to drop a circular link here for later triage.';
+
+  @override
+  String inboxCapturedOn(String formattedDate) {
+    return 'Captured $formattedDate';
+  }
+
+  @override
+  String get inboxCompleteDetailsAction => 'Complete details';
+
+  @override
+  String get inboxSkipAction => 'Skip';
+
+  @override
+  String get inboxDeleteAction => 'Delete';
+
+  @override
+  String get inboxRefreshTooltip => 'Refresh inbox';
+
+  @override
+  String inboxActionSkipped(String title) {
+    return 'Moved \"$title\" out of Inbox.';
+  }
+
+  @override
+  String inboxActionDeleted(String title) {
+    return 'Deleted \"$title\".';
+  }
+
+  @override
+  String get circularDetailBackTooltip => 'Back to circulars';
+
+  @override
+  String get circularDetailCloseTooltip => 'Close details';
+
+  @override
+  String get circularDetailEditAction => 'Edit';
+
+  @override
+  String get circularDetailDeleteAction => 'Delete';
+
+  @override
+  String get circularDetailDeleteTitle => 'Delete this circular?';
+
+  @override
+  String circularDetailDeleteMessage(String title) {
+    return '\"$title\" and any scheduled exam dates will be removed permanently.';
+  }
+
+  @override
+  String get circularDetailQuickCaptureBadge => 'Quick captured';
+
+  @override
+  String get circularDetailLaunchFailed =>
+      'Unable to open this link right now.';
+
+  @override
+  String get circularDetailQuickActionsTitle => 'Quick status & checklist';
+
+  @override
+  String get circularDetailChecklistTitle => 'Application checklist';
+
+  @override
+  String circularDetailChecklistProgress(
+      String formattedDone, String formattedTotal) {
+    return '$formattedDone of $formattedTotal done';
+  }
+
+  @override
+  String get checklistPhoto => 'Photo prepared';
+
+  @override
+  String get checklistCertificates => 'Certificates ready';
+
+  @override
+  String get checklistFeePaid => 'Fee paid';
+
+  @override
+  String get checklistSubmitted => 'Submitted';
+
+  @override
+  String get checklistAdmitCardDownloaded => 'Admit card downloaded';
+
+  @override
+  String get circularDetailLinksTitle => 'Official links';
+
+  @override
+  String get circularDetailOpenCircularLink => 'Original circular link';
+
+  @override
+  String get circularDetailOpenApplicationPortal => 'Application portal';
+
+  @override
+  String get circularDetailOpenOrgWebsite => 'Organization website';
+
+  @override
+  String get circularDetailLinkMissing => 'Not provided';
+
+  @override
+  String get circularDetailOverviewTitle => 'Overview & compensation';
+
+  @override
+  String get circularDetailFieldDeadline => 'Deadline';
+
+  @override
+  String get circularDetailFieldVacancies => 'Vacancies';
+
+  @override
+  String get circularDetailFieldSalary => 'Salary range';
+
+  @override
+  String get circularDetailFieldSalaryNote => 'Salary note';
+
+  @override
+  String get circularDetailFieldFee => 'Application fee';
+
+  @override
+  String get circularDetailFieldFeeNote => 'Fee note';
+
+  @override
+  String get circularDetailFieldCreated => 'Added on';
+
+  @override
+  String get circularDetailFieldUpdated => 'Last updated';
+
+  @override
+  String get circularDetailNotProvided => 'Not specified';
+
+  @override
+  String circularDetailSalaryRange(String min, String max) {
+    return '$min - $max';
+  }
+
+  @override
+  String circularDetailSalaryFrom(String min) {
+    return 'From $min';
+  }
+
+  @override
+  String circularDetailSalaryUpTo(String max) {
+    return 'Up to $max';
+  }
+
+  @override
+  String get circularDetailExamDatesTitle => 'Exam dates';
+
+  @override
+  String get examDateAddAction => 'Add exam date';
+
+  @override
+  String get examDateUpcomingHeading => 'Upcoming exams';
+
+  @override
+  String get examDatePastHeading => 'Past exams';
+
+  @override
+  String get examDateEmptyMessage =>
+      'No exam dates added yet. Track preliminary, written, viva, or practical stages here.';
+
+  @override
+  String get examDateStageLabel => 'Exam stage';
+
+  @override
+  String get examDateStagePreliminary => 'Preliminary';
+
+  @override
+  String get examDateStageWritten => 'Written';
+
+  @override
+  String get examDateStageViva => 'Viva';
+
+  @override
+  String get examDateStagePractical => 'Practical';
+
+  @override
+  String get examDateStageOther => 'Other';
+
+  @override
+  String get examDateDateLabel => 'Exam date & time';
+
+  @override
+  String get examDatePickDateAction => 'Change date';
+
+  @override
+  String get examDatePickTimeAction => 'Change time';
+
+  @override
+  String get examDateVenueLabel => 'Venue (optional)';
+
+  @override
+  String get examDateVenueHint => 'e.g. Dhaka College / BPSC HQ';
+
+  @override
+  String get examDateNotesLabel => 'Notes (optional)';
+
+  @override
+  String get examDateNotesHint => 'Reporting time, seat plan, documents...';
+
+  @override
+  String get examDateDialogAddTitle => 'Add exam date';
+
+  @override
+  String get examDateDialogEditTitle => 'Edit exam date';
+
+  @override
+  String get examDateEditTooltip => 'Edit exam date';
+
+  @override
+  String get examDateDeleteTooltip => 'Delete exam date';
+
+  @override
+  String get circularDetailNotesTitle => 'Instructions, notes & syllabus';
+
+  @override
+  String get circularFilesTitle => 'Files & attachments';
+
+  @override
+  String circularFilesAllowedHelper(String maxSize) {
+    return 'PDF, PNG, JPG, WEBP • Max $maxSize (large images are resized)';
+  }
+
+  @override
+  String get circularFilesUploadButton => 'Upload file';
+
+  @override
+  String circularFilesUploading(String fileName, String percent) {
+    return 'Uploading $fileName ($percent%)';
+  }
+
+  @override
+  String get circularFilesEmpty =>
+      'No files attached yet. Upload a circular PDF, admit card, or image.';
+
+  @override
+  String get circularFilesLoadError => 'Could not load attachments right now.';
+
+  @override
+  String get circularFilesRetry => 'Retry';
+
+  @override
+  String get circularFilesPreviewAction => 'Preview';
+
+  @override
+  String get circularFilesDownloadAction => 'Download';
+
+  @override
+  String get circularFilesDeleteAction => 'Delete';
+
+  @override
+  String get circularFilesPreviewTitle => 'File preview';
+
+  @override
+  String get circularFilesPreviewPdfMessage =>
+      'PDF files open with a temporary signed link in your browser or PDF viewer.';
+
+  @override
+  String get circularFilesOpenSignedLink => 'Open signed link';
+
+  @override
+  String get circularFilesPreviewLoadError =>
+      'Could not display preview inline. Open the temporary signed link instead.';
+
+  @override
+  String get circularFilesCloseAction => 'Close';
+
+  @override
+  String get circularFilesSignedUrlSecurityNote =>
+      'Protected with a temporary signed URL (never public).';
+
+  @override
+  String get circularFilesDeleteConfirmTitle => 'Delete attachment?';
+
+  @override
+  String circularFilesDeleteConfirmBody(String fileName) {
+    return 'Remove \"$fileName\" permanently from this circular?';
+  }
+
+  @override
+  String get circularFilesCancelAction => 'Cancel';
+
+  @override
+  String get circularFilesConfirmDeleteAction => 'Delete';
+
+  @override
+  String get circularFilesErrorUnsupportedType =>
+      'Only PDF, PNG, JPG, JPEG, and WEBP files are supported.';
+
+  @override
+  String get circularFilesErrorEmptyFile => 'The selected file is empty.';
+
+  @override
+  String circularFilesErrorFileTooLarge(String maxSize) {
+    return 'File exceeds the $maxSize limit.';
+  }
+
+  @override
+  String circularFilesErrorRawImageTooLarge(String maxSize) {
+    return 'Image is too large to process (max $maxSize).';
+  }
+
+  @override
+  String get circularFilesErrorOpenLinkFailed =>
+      'Could not open the signed file link.';
+
+  @override
+  String circularFilesSizeBytes(String count) {
+    return '$count B';
+  }
+
+  @override
+  String circularFilesSizeKb(String count) {
+    return '$count KB';
+  }
+
+  @override
+  String circularFilesSizeMb(String count) {
+    return '$count MB';
+  }
+
+  @override
+  String circularFilesCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount files',
+      one: '1 file',
+      zero: '0 files',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get circularFilesTypePdf => 'PDF';
+
+  @override
+  String get circularFilesTypeImage => 'Image';
+
+  @override
+  String get calendarPreviousMonthTooltip => 'Previous month';
+
+  @override
+  String get calendarNextMonthTooltip => 'Next month';
+
+  @override
+  String get calendarTodayButton => 'Today';
+
+  @override
+  String get calendarEventDeadline => 'Deadline';
+
+  @override
+  String get calendarEventPreliminary => 'Preliminary';
+
+  @override
+  String get calendarEventWritten => 'Written';
+
+  @override
+  String get calendarEventViva => 'Viva';
+
+  @override
+  String get calendarEventPractical => 'Practical';
+
+  @override
+  String get calendarEventOther => 'Other exam';
+
+  @override
+  String get calendarLegendTitle => 'Color legend';
+
+  @override
+  String calendarAgendaCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount events',
+      one: '1 event',
+      zero: 'No events',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get calendarAgendaEmptyDay =>
+      'No deadlines or exam dates on this day.';
+
+  @override
+  String get calendarEmptyMonthHint =>
+      'Add deadlines or exam dates to your circulars to track them on this calendar.';
+
+  @override
+  String get calendarLoadError => 'Could not load your schedule right now.';
+
+  @override
+  String get calendarRetry => 'Retry';
+
+  @override
+  String get calendarOpenCircularAction => 'Open circular';
+
+  @override
+  String calendarMoreEvents(String formattedCount) {
+    return '+$formattedCount';
+  }
+
+  @override
+  String calendarWeekStartsNote(String dayName) {
+    return 'Week starts on $dayName';
+  }
+
+  @override
+  String get prepSubjectsSectionTitle => 'Subjects';
+
+  @override
+  String get prepOverallProgressLabel => 'Overall progress';
+
+  @override
+  String prepSubjectCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount subjects',
+      one: '1 subject',
+      zero: 'No subjects',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepMaterialCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount materials',
+      one: '1 material',
+      zero: 'No materials',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAddSubjectButton => 'Add subject';
+
+  @override
+  String get prepAddMaterialButton => 'Add material';
+
+  @override
+  String get prepRefreshTooltip => 'Refresh subjects and materials';
+
+  @override
+  String get prepLoadError => 'Could not load preparation subjects right now.';
+
+  @override
+  String get prepSelectSubjectPrompt =>
+      'Select a subject from the list to view and manage its study materials.';
+
+  @override
+  String get prepEmptySubjectsTitle => 'No subjects yet';
+
+  @override
+  String get prepEmptySubjectsBody =>
+      'Create subjects for your target career or exam track, then add books, courses, notes, or question banks inside each.';
+
+  @override
+  String prepEmptyMaterialsTitle(String subjectName) {
+    return 'No materials in $subjectName';
+  }
+
+  @override
+  String get prepEmptyMaterialsBody =>
+      'Add books, lecture sheets, video courses, or mock tests with any unit label you prefer.';
+
+  @override
+  String get prepBackToSubjects => 'Back to subjects';
+
+  @override
+  String get prepCreateSubjectTitle => 'New subject';
+
+  @override
+  String get prepEditSubjectTitle => 'Edit subject';
+
+  @override
+  String get prepSubjectNameLabel => 'Subject name';
+
+  @override
+  String get prepSubjectNameHint =>
+      'e.g. English Grammar, Anatomy, Data Structures';
+
+  @override
+  String get prepSubjectNameRequired => 'Subject name is required.';
+
+  @override
+  String get prepExamTypeLabel => 'Exam or career track';
+
+  @override
+  String get prepExamTypeHint => 'Type any track or pick a suggestion below';
+
+  @override
+  String get prepExamTypeRequired => 'Exam or career track is required.';
+
+  @override
+  String get prepExamTrackGeneral => 'General';
+
+  @override
+  String get prepExamTrackBcs => 'BCS';
+
+  @override
+  String get prepExamTrackBank => 'Bank';
+
+  @override
+  String get prepExamTrackGovt => 'Govt Job';
+
+  @override
+  String get prepExamTrackMedical => 'Medical';
+
+  @override
+  String get prepExamTrackEngineering => 'Engineering';
+
+  @override
+  String get prepExamTrackIelts => 'IELTS';
+
+  @override
+  String get prepSubjectColorLabel => 'Color';
+
+  @override
+  String get prepColorGold => 'Gold';
+
+  @override
+  String get prepColorInfo => 'Sky Blue';
+
+  @override
+  String get prepColorSuccess => 'Emerald';
+
+  @override
+  String get prepColorWarning => 'Amber';
+
+  @override
+  String get prepColorDanger => 'Coral Red';
+
+  @override
+  String get prepColorAccentSecondary => 'Violet';
+
+  @override
+  String get prepSubjectIconLabel => 'Icon';
+
+  @override
+  String get prepIconMenuBook => 'Book';
+
+  @override
+  String get prepIconCalculate => 'Math';
+
+  @override
+  String get prepIconLanguage => 'Language';
+
+  @override
+  String get prepIconPublic => 'Global / GK';
+
+  @override
+  String get prepIconScience => 'Science';
+
+  @override
+  String get prepIconComputer => 'Computing';
+
+  @override
+  String get prepIconAccountBalance => 'Finance / Law';
+
+  @override
+  String get prepIconPsychology => 'Aptitude';
+
+  @override
+  String get prepIconGavel => 'Constitution';
+
+  @override
+  String get prepIconQuiz => 'Quiz / Mock';
+
+  @override
+  String get prepSaveButton => 'Save';
+
+  @override
+  String get prepCancelButton => 'Cancel';
+
+  @override
+  String get prepEditAction => 'Edit';
+
+  @override
+  String get prepDeleteAction => 'Delete';
+
+  @override
+  String get prepMoveUpTooltip => 'Move subject up';
+
+  @override
+  String get prepMoveDownTooltip => 'Move subject down';
+
+  @override
+  String get prepDragReorderTooltip => 'Drag to reorder';
+
+  @override
+  String get prepCreateMaterialTitle => 'New material';
+
+  @override
+  String get prepEditMaterialTitle => 'Edit material';
+
+  @override
+  String get prepMaterialTitleLabel => 'Material title';
+
+  @override
+  String get prepMaterialTitleHint =>
+      'e.g. Official Guide, Clinical Handbook, System Design';
+
+  @override
+  String get prepMaterialTitleRequired => 'Material title is required.';
+
+  @override
+  String get prepMaterialKindLabel => 'Type';
+
+  @override
+  String get prepMaterialKindBook => 'Book';
+
+  @override
+  String get prepMaterialKindVideoCourse => 'Video course';
+
+  @override
+  String get prepMaterialKindLectureSheet => 'Lecture sheet';
+
+  @override
+  String get prepMaterialKindQuestionBank => 'Question bank';
+
+  @override
+  String get prepMaterialKindNotes => 'Notes';
+
+  @override
+  String get prepMaterialKindMockTest => 'Mock test';
+
+  @override
+  String get prepMaterialKindOther => 'Other';
+
+  @override
+  String get prepUnitLabelFieldLabel => 'Unit label';
+
+  @override
+  String get prepUnitLabelHint => 'e.g. pages, lectures, chapters, sets';
+
+  @override
+  String get prepUnitLabelRequired => 'Unit label is required.';
+
+  @override
+  String get prepUnitPresetPages => 'pages';
+
+  @override
+  String get prepUnitPresetChapters => 'chapters';
+
+  @override
+  String get prepUnitPresetLectures => 'lectures';
+
+  @override
+  String get prepUnitPresetVideos => 'videos';
+
+  @override
+  String get prepUnitPresetQuestions => 'questions';
+
+  @override
+  String get prepUnitPresetTests => 'tests';
+
+  @override
+  String get prepTotalUnitsLabel => 'Total units';
+
+  @override
+  String get prepTotalUnitsHint => 'e.g. 300';
+
+  @override
+  String get prepTotalUnitsInvalid =>
+      'Enter a whole number greater than or equal to 0.';
+
+  @override
+  String prepMaterialProgressSummary(
+      String completed, String total, String unitLabel) {
+    return '$completed / $total $unitLabel';
+  }
+
+  @override
+  String prepPercentComplete(String percent) {
+    return '$percent% complete';
+  }
+
+  @override
+  String get prepCoverSectionLabel => 'Cover image (optional)';
+
+  @override
+  String get prepCoverModeNone => 'None';
+
+  @override
+  String get prepCoverModeUpload => 'Upload photo';
+
+  @override
+  String get prepCoverModeUrl => 'Paste link';
+
+  @override
+  String get prepCoverPickButton => 'Choose JPG, PNG or WEBP';
+
+  @override
+  String get prepCoverReplaceButton => 'Replace photo';
+
+  @override
+  String get prepCoverRemoveButton => 'Remove cover';
+
+  @override
+  String prepCoverResizedNote(String formattedWidth) {
+    return 'Resized to $formattedWidth px wide for upload.';
+  }
+
+  @override
+  String get prepCoverUrlLabel => 'Image URL';
+
+  @override
+  String get prepCoverUrlHint => 'https://example.com/cover.jpg';
+
+  @override
+  String get prepCoverPlaceholderHint =>
+      'Without a cover image, a glass initial badge is displayed automatically.';
+
+  @override
+  String get prepCoverErrorUnsupportedType =>
+      'Only JPG, PNG, and WEBP images are supported.';
+
+  @override
+  String get prepCoverErrorEmptyFile => 'The selected cover image is empty.';
+
+  @override
+  String prepCoverErrorTooLarge(String maxSize) {
+    return 'Cover image exceeds the $maxSize limit.';
+  }
+
+  @override
+  String prepCoverErrorRawTooLarge(String maxSize) {
+    return 'Image is too large to process (max $maxSize).';
+  }
+
+  @override
+  String get prepCoverErrorInvalidUrl =>
+      'Enter a valid http:// or https:// image URL.';
+
+  @override
+  String get prepCoverUploadProgress => 'Resizing and uploading cover...';
+
+  @override
+  String prepDeleteSubjectTitle(String subjectName) {
+    return 'Delete \"$subjectName\"?';
+  }
+
+  @override
+  String get prepDeleteSubjectBody =>
+      'This will remove the subject and all materials inside it.';
+
+  @override
+  String prepDeleteSubjectProgressWarning(String formattedUnits) {
+    return 'Warning: this subject has logged progress ($formattedUnits completed units across materials). Deleting it will permanently remove that progress.';
+  }
+
+  @override
+  String prepDeleteMaterialTitle(String materialTitle) {
+    return 'Delete \"$materialTitle\"?';
+  }
+
+  @override
+  String get prepDeleteMaterialBody =>
+      'Are you sure you want to remove this material from the subject?';
+
+  @override
+  String prepDeleteMaterialProgressWarning(String formattedCompleted,
+      String formattedTotal, String unitLabel, String percent) {
+    return 'Warning: you have already logged $formattedCompleted of $formattedTotal $unitLabel ($percent% complete). Deleting this material will also remove its logged progress.';
+  }
+
+  @override
+  String get prepDeleteConfirmButton => 'Delete';
+
+  @override
+  String get prepErrorPermission =>
+      'You do not have permission to update this preparation item.';
+
+  @override
+  String get prepErrorNetwork =>
+      'Network issue while saving. Please try again.';
+
+  @override
+  String get prepErrorNotFound => 'That preparation item could not be found.';
+
+  @override
+  String get prepErrorUnknown =>
+      'Something went wrong while updating preparation data.';
+
+  @override
+  String prepOverallUnitsSummary(
+      String formattedCompleted, String formattedTotal) {
+    return '$formattedCompleted / $formattedTotal total units';
+  }
+
+  @override
+  String prepQuickLogPlus(String formattedAmount) {
+    return '+$formattedAmount';
+  }
+
+  @override
+  String get prepLogButton => 'Log';
+
+  @override
+  String get prepLogDialogTitle => 'Log progress';
+
+  @override
+  String get prepCustomUnitsLabel => 'Units completed';
+
+  @override
+  String get prepCustomUnitsHint => 'e.g. 25';
+
+  @override
+  String get prepCustomUnitsInvalid => 'Enter a whole number greater than 0.';
+
+  @override
+  String get prepLogDateLabel => 'Date';
+
+  @override
+  String get prepLogNoteLabel => 'Note (optional)';
+
+  @override
+  String get prepLogNoteHint => 'e.g. Chapters 1-3, revision set';
+
+  @override
+  String get prepLogSaveButton => 'Save log';
+
+  @override
+  String get prepLogUpdateButton => 'Update log';
+
+  @override
+  String get prepLogCancelEditButton => 'Cancel edit';
+
+  @override
+  String get prepEditingLogBanner => 'Editing existing log entry';
+
+  @override
+  String get prepPastLogsTitle => 'Past study logs';
+
+  @override
+  String get prepNoPastLogs => 'No study logs recorded for this material yet.';
+
+  @override
+  String prepLogUnitsSummary(String formattedUnits, String unitLabel) {
+    return '+$formattedUnits $unitLabel';
+  }
+
+  @override
+  String get prepTemplatesTitle => 'Start quickly with a template';
+
+  @override
+  String get prepTemplatesSubtitle =>
+      'Apply a preset study plan you can freely customize, reorder, or delete anytime.';
+
+  @override
+  String get prepApplyTemplateButton => 'Apply template';
+
+  @override
+  String get prepTemplatesOpenButton => 'Templates';
+
+  @override
+  String get prepTemplatesDialogTitle => 'Study Templates';
+
+  @override
+  String get prepTemplatesSystemSection => 'Starter packs';
+
+  @override
+  String get prepTemplatesPersonalSection => 'Your personal templates';
+
+  @override
+  String get prepTemplatesPersonalEmpty =>
+      'Save your current subjects as a personal template so you can reuse or share your plan anytime.';
+
+  @override
+  String get prepTemplateSystemBadge => 'Starter pack';
+
+  @override
+  String get prepTemplatePersonalBadge => 'Personal';
+
+  @override
+  String get prepTemplateAppliedBadge => 'Applied';
+
+  @override
+  String get prepTemplateCustomizeButton => 'Edit units';
+
+  @override
+  String get prepTemplateApplyAgainButton => 'Re-apply';
+
+  @override
+  String prepTemplateApplyConfirmTitle(String title) {
+    return 'Customize & apply \"$title\"';
+  }
+
+  @override
+  String get prepTemplateApplyConfirmSubtitle =>
+      'Adjust unit counts below before copying into your own prep subjects. Everything remains fully editable afterward.';
+
+  @override
+  String get prepTemplateConfirmApplyAction => 'Copy to my prep plan';
+
+  @override
+  String prepTemplateAppliedSnackbar(int subjectCount, String formattedSubjects,
+      int materialCount, String formattedMaterials, String title) {
+    String _temp0 = intl.Intl.pluralLogic(
+      subjectCount,
+      locale: localeName,
+      other: '$formattedSubjects subjects',
+      one: '1 subject',
+      zero: '0 subjects',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      materialCount,
+      locale: localeName,
+      other: '$formattedMaterials materials',
+      one: '1 material',
+      zero: '0 materials',
+    );
+    return 'Copied $_temp0 and $_temp1 from \"$title\".';
+  }
+
+  @override
+  String prepTemplateAlreadyAppliedSnackbar(String title) {
+    return 'All subjects and materials from \"$title\" are already in your plan (no duplicates created).';
+  }
+
+  @override
+  String get prepSaveAsTemplateButton => 'Save as template';
+
+  @override
+  String get prepSaveTemplateDialogTitle => 'Save personal template';
+
+  @override
+  String get prepSaveTemplateTitleLabel => 'Template name';
+
+  @override
+  String get prepSaveTemplateTitleHint => 'e.g. 48th BCS Core Plan';
+
+  @override
+  String get prepSaveTemplateTitleRequired => 'Please enter a template name.';
+
+  @override
+  String get prepSaveTemplateDescLabel => 'Description (optional)';
+
+  @override
+  String get prepSaveTemplateDescHint =>
+      'Short summary of subjects and target role';
+
+  @override
+  String get prepSaveTemplateExamLabel => 'Career or exam track';
+
+  @override
+  String prepSaveTemplatePreviewSummary(
+      String formattedSubjects, String formattedMaterials) {
+    return 'Copies $formattedSubjects subjects and $formattedMaterials materials into this reusable template';
+  }
+
+  @override
+  String get prepSaveTemplateSaveAction => 'Save template';
+
+  @override
+  String prepSaveTemplateSavedSnackbar(String title) {
+    return 'Saved personal template \"$title\".';
+  }
+
+  @override
+  String get prepDeleteTemplateTitle => 'Delete personal template?';
+
+  @override
+  String prepDeleteTemplateMessage(String title) {
+    return 'Delete \"$title\"? Any subjects and materials already copied into your prep dashboard stay untouched.';
+  }
+
+  @override
+  String prepDeleteTemplateDeletedSnackbar(String title) {
+    return 'Deleted personal template \"$title\".';
+  }
+
+  @override
+  String get prepTemplateUnitsInvalid =>
+      'Enter zero or a positive whole number.';
+
+  @override
+  String get prepSeededGovJobTitle => 'Government Job';
+
+  @override
+  String get prepSeededGovJobSubtitle =>
+      'Bengali, English, General Knowledge, Mathematics, Analytical Reasoning, and Computer with customizable materials.';
+
+  @override
+  String get prepSeededSweTitle => 'Software Engineer';
+
+  @override
+  String get prepSeededSweSubtitle =>
+      'Data Structures & Algorithms, Database Systems, OOP, Web Development, and Software Quality Assurance.';
 }

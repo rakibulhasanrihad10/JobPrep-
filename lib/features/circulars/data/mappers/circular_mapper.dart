@@ -1,6 +1,7 @@
 import 'package:job_prep/features/circulars/data/mappers/circular_exam_date_mapper.dart';
 import 'package:job_prep/features/circulars/data/mappers/circular_file_mapper.dart';
 import 'package:job_prep/features/circulars/data/mappers/circular_json_helpers.dart';
+import 'package:job_prep/features/circulars/domain/entities/application_checklist.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_enums.dart';
 
@@ -74,6 +75,19 @@ abstract final class CircularMapper {
         json,
         'is_quick_capture',
       ),
+      checklist: ApplicationChecklist(
+        photo: CircularJsonHelpers.readBool(json, 'checklist_photo'),
+        certificates: CircularJsonHelpers.readBool(
+          json,
+          'checklist_certificates',
+        ),
+        feePaid: CircularJsonHelpers.readBool(json, 'checklist_fee_paid'),
+        submitted: CircularJsonHelpers.readBool(json, 'checklist_submitted'),
+        admitCardDownloaded: CircularJsonHelpers.readBool(
+          json,
+          'checklist_admit_card_downloaded',
+        ),
+      ),
       createdAt: CircularJsonHelpers.readOptionalDateTime(json, 'created_at'),
       updatedAt: CircularJsonHelpers.readOptionalDateTime(json, 'updated_at'),
       examDates: CircularExamDateMapper.fromJsonList(examDateRows),
@@ -138,6 +152,11 @@ abstract final class CircularMapper {
       'notes': circular.notes,
       'syllabus': circular.syllabus,
       'is_quick_capture': circular.isQuickCapture,
+      'checklist_photo': circular.checklist.photo,
+      'checklist_certificates': circular.checklist.certificates,
+      'checklist_fee_paid': circular.checklist.feePaid,
+      'checklist_submitted': circular.checklist.submitted,
+      'checklist_admit_card_downloaded': circular.checklist.admitCardDownloaded,
     };
   }
 }

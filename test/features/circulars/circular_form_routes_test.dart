@@ -85,8 +85,16 @@ void main() {
     // Returns to circulars list showing created item
     expect(find.text('Newly Routed Circular'), findsOneWidget);
 
-    // Tap existing row -> /circulars/c-1/edit
+    // Tap existing row -> opens master-detail view /circulars/c-1,
+    // then tapping Edit navigates to /circulars/c-1/edit
     await tester.tap(find.byKey(const ValueKey('circular-row-c-1')));
+    await tester.pumpAndSettle();
+    expect(
+      find.byKey(const ValueKey('circular-detail-pane-c-1')),
+      findsOneWidget,
+    );
+
+    await tester.tap(find.byKey(const ValueKey('circular-detail-edit-btn')));
     await tester.pumpAndSettle();
     expect(find.text('Edit Job Circular'), findsOneWidget);
     expect(find.text('Initial BCS Circular'), findsOneWidget);

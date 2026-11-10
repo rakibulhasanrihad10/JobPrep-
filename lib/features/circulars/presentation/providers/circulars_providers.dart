@@ -189,3 +189,20 @@ final filteredCircularsProvider = Provider<AsyncValue<List<Circular>>>((ref) {
     (circulars) => filter.apply(circulars, now: now),
   );
 });
+
+/// Provides quick-captured circulars waiting in the Inbox, sorted newest
+/// captured first.
+final inboxCircularsProvider = Provider<AsyncValue<List<Circular>>>((ref) {
+  final circularsAsync = ref.watch(circularsListProvider);
+  return circularsAsync.whenData(
+    (circulars) => const CircularFilter(
+      workflowStatuses: {CircularWorkflowStatus.inbox},
+      sortBy: CircularSortOption.createdDesc,
+    ).apply(circulars),
+  );
+});
+
+/// Live count of quick-captured circulars currently waiting in the Inbox.
+final inboxCountProvider = Provider<int>((ref) {
+  return ref.watch(inboxCircularsProvider).asData?.value.length ?? 0;
+});

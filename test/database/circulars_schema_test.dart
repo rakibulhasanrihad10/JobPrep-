@@ -165,5 +165,92 @@ void main() {
       expect(ciYaml, contains('supabase db reset'));
       expect(ciYaml, contains('supabase test db'));
     });
+
+    test('Phase 3E inbox workflow_status migration and pgTAP tests exist', () {
+      final migration = File(
+        'supabase/migrations/20261110010000_add_inbox_workflow_status.sql',
+      );
+      expect(migration.existsSync(), isTrue);
+      final migrationSql = migration.readAsStringSync();
+      expect(migrationSql, isNot(contains('\r\n')));
+      expect(
+        migrationSql,
+        contains('DROP CONSTRAINT circulars_workflow_status_check'),
+      );
+      expect(migrationSql, contains("'inbox'"));
+
+      final inboxTest = File(
+        'supabase/tests/02_inbox_workflow_status_test.sql',
+      );
+      expect(inboxTest.existsSync(), isTrue);
+      final testSql = inboxTest.readAsStringSync();
+      expect(testSql, isNot(contains('\r\n')));
+      expect(testSql, contains('SELECT plan(9);'));
+      expect(testSql, contains('User B cannot read User A inbox circular'));
+      expect(testSql, contains('SELECT * FROM finish();'));
+      expect(testSql, contains('ROLLBACK;'));
+    });
+
+    test(
+      'Phase 3F checklist migration and exam date pgTAP tests exist',
+      () {
+        final migration = File(
+          'supabase/migrations/20261110020000_add_application_checklist.sql',
+        );
+        expect(migration.existsSync(), isTrue);
+        final migrationSql = migration.readAsStringSync();
+        expect(migrationSql, isNot(contains('\r\n')));
+        expect(migrationSql, contains('checklist_photo'));
+        expect(migrationSql, contains('checklist_certificates'));
+        expect(migrationSql, contains('checklist_fee_paid'));
+        expect(migrationSql, contains('checklist_submitted'));
+        expect(migrationSql, contains('checklist_admit_card_downloaded'));
+
+        final examTest = File(
+          'supabase/tests/03_exam_dates_and_checklist_test.sql',
+        );
+        expect(examTest.existsSync(), isTrue);
+        final testSql = examTest.readAsStringSync();
+        expect(testSql, isNot(contains('\r\n')));
+        expect(testSql, contains('SELECT plan(10);'));
+        expect(
+          testSql,
+          contains('User B cannot view User A circular_exam_dates'),
+        );
+        expect(testSql, contains('SELECT * FROM finish();'));
+        expect(testSql, contains('ROLLBACK;'));
+      },
+    );
+
+    test(
+      'Phase 3G private Storage bucket migration and pgTAP RLS tests exist',
+      () {
+        final migration = File(
+          'supabase/migrations/20261110030000_storage_circular_files_bucket.sql',
+        );
+        expect(migration.existsSync(), isTrue);
+        final sql = migration.readAsStringSync();
+        expect(sql, isNot(contains('\r\n')));
+        expect(sql, contains("'circular-files'"));
+        expect(sql, contains('false'));
+        expect(sql, contains("split_part(name, '/', 1) = auth.uid()::text"));
+
+        final storageTest = File(
+          'supabase/tests/04_storage_circular_files_bucket_test.sql',
+        );
+        expect(storageTest.existsSync(), isTrue);
+        final testSql = storageTest.readAsStringSync();
+        expect(testSql, isNot(contains('\r\n')));
+        expect(testSql, isNot(contains('DELETE FROM storage.objects')));
+        expect(testSql, contains('pg_catalog.pg_policies'));
+        expect(testSql, contains('SELECT plan(12);'));
+        expect(
+          testSql,
+          contains('User B cannot read User A file in circular-files bucket'),
+        );
+        expect(testSql, contains('SELECT * FROM finish();'));
+        expect(testSql, contains('ROLLBACK;'));
+      },
+    );
   });
 }

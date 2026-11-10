@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:job_prep/core/widgets/app_scaffold.dart';
 import 'package:job_prep/features/auth/domain/entities/auth_session_state.dart';
 import 'package:job_prep/features/auth/presentation/navigation/auth_redirect.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
@@ -9,11 +8,19 @@ import 'package:job_prep/features/auth/presentation/screens/login_screen.dart';
 import 'package:job_prep/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:job_prep/features/calendar/presentation/screens/calendar_screen.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular.dart';
+import 'package:job_prep/features/circulars/domain/utils/quick_capture_helpers.dart';
+import 'package:job_prep/features/circulars/presentation/screens/circular_detail_screen.dart';
 import 'package:job_prep/features/circulars/presentation/screens/circular_form_screen.dart';
 import 'package:job_prep/features/circulars/presentation/screens/circulars_screen.dart';
+import 'package:job_prep/features/circulars/presentation/screens/inbox_screen.dart';
+import 'package:job_prep/features/circulars/presentation/widgets/quick_capture_shell.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
+import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_screen.dart';
 import 'package:job_prep/features/settings/presentation/screens/settings_screen.dart';
+
+/// Optional initial location override used in widget and deep-link tests.
+final initialRouteLocationProvider = Provider<String?>((ref) => null);
 
 class _AuthRouterRefreshListenable extends ChangeNotifier {
   _AuthRouterRefreshListenable(this._ref) {
@@ -42,20 +49,38 @@ class _AuthRouterRefreshListenable extends ChangeNotifier {
 final routerProvider = Provider<GoRouter>((ref) {
   final refreshListenable = _AuthRouterRefreshListenable(ref);
   ref.onDispose(refreshListenable.dispose);
+  final initialLocationOverride = ref.watch(initialRouteLocationProvider);
 
   final router = GoRouter(
-    initialLocation: AppRoutePaths.dashboard,
+    initialLocation: initialLocationOverride ?? AppRoutePaths.dashboard,
+    overridePlatformDefaultLocation: initialLocationOverride != null,
     refreshListenable: refreshListenable,
     redirect: (context, state) {
-      return resolveAuthRedirect(
+      final targetPath = resolveAuthRedirect(
         authState: ref.read(authSessionProvider),
         location: state.uri.path,
       );
+      if (targetPath == null) return null;
+      if (targetPath == AppRoutePaths.login ||
+          targetPath == AppRoutePaths.dashboard) {
+        return buildLocationWithCapture(targetPath, sourceUri: state.uri);
+      }
+      return targetPath;
     },
     routes: [
       GoRoute(
         path: AppRoutePaths.root,
-        redirect: (context, state) => AppRoutePaths.dashboard,
+        redirect: (context, state) => buildLocationWithCapture(
+          AppRoutePaths.dashboard,
+          sourceUri: state.uri,
+        ),
+      ),
+      GoRoute(
+        path: '/capture',
+        redirect: (context, state) => buildLocationWithCapture(
+          AppRoutePaths.inbox,
+          sourceUri: state.uri,
+        ),
       ),
       GoRoute(
         path: AppRoutePaths.login,
@@ -73,8 +98,8 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       ShellRoute(
         builder: (context, state, child) {
-          return AppScaffold(
-            currentPath: state.uri.path,
+          return QuickCaptureShell(
+            currentUri: state.uri,
             child: child,
           );
         },
@@ -101,20 +126,43 @@ final routerProvider = Provider<GoRouter>((ref) {
                 ),
               ),
               GoRoute(
-                path: ':id/edit',
-                name: 'circular_edit',
+                path: ':id',
+                name: 'circular_detail',
                 pageBuilder: (context, state) {
-                  final circularId = state.pathParameters['id'];
+                  final circularId = state.pathParameters['id']!;
                   final extra = state.extra;
                   return NoTransitionPage(
-                    child: CircularFormScreen(
+                    child: CircularDetailScreen(
                       circularId: circularId,
                       initialCircular: extra is Circular ? extra : null,
                     ),
                   );
                 },
+                routes: [
+                  GoRoute(
+                    path: 'edit',
+                    name: 'circular_edit',
+                    pageBuilder: (context, state) {
+                      final circularId = state.pathParameters['id'];
+                      final extra = state.extra;
+                      return NoTransitionPage(
+                        child: CircularFormScreen(
+                          circularId: circularId,
+                          initialCircular: extra is Circular ? extra : null,
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
+          ),
+          GoRoute(
+            path: AppRoutePaths.inbox,
+            name: 'inbox',
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: InboxScreen(),
+            ),
           ),
           GoRoute(
             path: '/prep',
@@ -122,6 +170,18 @@ final routerProvider = Provider<GoRouter>((ref) {
             pageBuilder: (context, state) => const NoTransitionPage(
               child: PrepScreen(),
             ),
+            routes: [
+              GoRoute(
+                path: ':subjectId',
+                name: 'prep_subject',
+                pageBuilder: (context, state) {
+                  final subjectId = state.pathParameters['subjectId']!;
+                  return NoTransitionPage(
+                    child: PrepSubjectDetailScreen(subjectId: subjectId),
+                  );
+                },
+              ),
+            ],
           ),
           GoRoute(
             path: '/calendar',

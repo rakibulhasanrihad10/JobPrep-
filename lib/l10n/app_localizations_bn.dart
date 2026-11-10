@@ -811,4 +811,1062 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get circularDiscardConfirm => 'পরিবর্তন বাতিল করুন';
+
+  @override
+  String get navInbox => 'ইনবক্স';
+
+  @override
+  String navInboxCountSemantic(String label, String formattedCount) {
+    return '$label, $formattedCountটি অপেক্ষমাণ';
+  }
+
+  @override
+  String get circularWorkflowInbox => 'ইনবক্স';
+
+  @override
+  String get quickCaptureButton => 'দ্রুত সংরক্ষণ';
+
+  @override
+  String quickCaptureShortcutTooltip(String shortcut) {
+    return 'দ্রুত সংরক্ষণ ($shortcut)';
+  }
+
+  @override
+  String get quickCaptureDialogTitle => 'দ্রুত সংরক্ষণ';
+
+  @override
+  String get quickCaptureDialogSubtitle =>
+      'এখনই সার্কুলার লিংক রাখুন এবং পরে ইনবক্স থেকে বিস্তারিত পূরণ করুন।';
+
+  @override
+  String get quickCaptureLinkLabel => 'সার্কুলারের লিংক';
+
+  @override
+  String get quickCaptureLinkHint => 'https://...';
+
+  @override
+  String get quickCaptureLinkRequired => 'অনুগ্রহ করে সার্কুলারের লিংক লিখুন।';
+
+  @override
+  String get quickCaptureTitleLabel => 'শিরোনাম (ঐচ্ছিক)';
+
+  @override
+  String get quickCaptureTitleHint =>
+      'ঐচ্ছিক — খালি রাখলে ওয়েবসাইটের নাম ব্যবহার হবে';
+
+  @override
+  String get quickCaptureDeadlineLabel => 'আবেদনের শেষ তারিখ (ঐচ্ছিক)';
+
+  @override
+  String get quickCaptureSaveAction => 'ইনবক্সে রাখুন';
+
+  @override
+  String get quickCaptureSavingAction => 'সংরক্ষণ হচ্ছে...';
+
+  @override
+  String quickCaptureSavedSnackbar(String title) {
+    return '\"$title\" ইনবক্সে সংরক্ষিত হয়েছে।';
+  }
+
+  @override
+  String get quickCaptureViewInboxAction => 'ইনবক্স দেখুন';
+
+  @override
+  String get inboxTitle => 'ইনবক্স';
+
+  @override
+  String inboxCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি দ্রুত-সংরক্ষিত আইটেম অপেক্ষমাণ',
+      one: '১টি দ্রুত-সংরক্ষিত আইটেম অপেক্ষমাণ',
+      zero: 'অপেক্ষমাণ কোনো দ্রুত-সংরক্ষিত আইটেম নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get inboxEmptyTitle => 'ইনবক্স সম্পূর্ণ খালি';
+
+  @override
+  String get inboxEmptyMessage =>
+      'যেকোনো স্ক্রিন থেকে দ্রুত সংরক্ষণ ব্যবহার করুন (অথবা ওয়েবে Alt+Q চাপুন) পরে যাচাই করার জন্য সার্কুলার লিংক জমা রাখতে।';
+
+  @override
+  String inboxCapturedOn(String formattedDate) {
+    return 'সংরক্ষিত $formattedDate';
+  }
+
+  @override
+  String get inboxCompleteDetailsAction => 'বিস্তারিত পূরণ করুন';
+
+  @override
+  String get inboxSkipAction => 'এড়িয়ে যান';
+
+  @override
+  String get inboxDeleteAction => 'মুছে ফেলুন';
+
+  @override
+  String get inboxRefreshTooltip => 'ইনবক্স রিফ্রেশ করুন';
+
+  @override
+  String inboxActionSkipped(String title) {
+    return '\"$title\" ইনবক্স থেকে সরানো হয়েছে।';
+  }
+
+  @override
+  String inboxActionDeleted(String title) {
+    return '\"$title\" মুছে ফেলা হয়েছে।';
+  }
+
+  @override
+  String get circularDetailBackTooltip => 'সার্কুলার তালিকায় ফিরুন';
+
+  @override
+  String get circularDetailCloseTooltip => 'বিস্তারিত বন্ধ করুন';
+
+  @override
+  String get circularDetailEditAction => 'সম্পাদনা';
+
+  @override
+  String get circularDetailDeleteAction => 'মুছে ফেলুন';
+
+  @override
+  String get circularDetailDeleteTitle => 'সার্কুলারটি মুছে ফেলবেন?';
+
+  @override
+  String circularDetailDeleteMessage(String title) {
+    return '\"$title\" এবং এর নির্ধারিত পরীক্ষার তারিখগুলো স্থায়ীভাবে মুছে ফেলা হবে।';
+  }
+
+  @override
+  String get circularDetailQuickCaptureBadge => 'দ্রুত সংরক্ষিত';
+
+  @override
+  String get circularDetailLaunchFailed => 'এই লিংকটি এখন খোলা যাচ্ছে না।';
+
+  @override
+  String get circularDetailQuickActionsTitle => 'দ্রুত অবস্থা ও চেকলিস্ট';
+
+  @override
+  String get circularDetailChecklistTitle => 'আবেদন চেকলিস্ট';
+
+  @override
+  String circularDetailChecklistProgress(
+      String formattedDone, String formattedTotal) {
+    return '$formattedTotalটির মধ্যে $formattedDoneটি সম্পন্ন';
+  }
+
+  @override
+  String get checklistPhoto => 'ছবি প্রস্তুত';
+
+  @override
+  String get checklistCertificates => 'সনদপত্র প্রস্তুত';
+
+  @override
+  String get checklistFeePaid => 'আবেদন ফি পরিশোধিত';
+
+  @override
+  String get checklistSubmitted => 'আবেদন জমা দেওয়া হয়েছে';
+
+  @override
+  String get checklistAdmitCardDownloaded => 'প্রবেশপত্র ডাউনলোড সম্পন্ন';
+
+  @override
+  String get circularDetailLinksTitle => 'অফিসিয়াল লিংক';
+
+  @override
+  String get circularDetailOpenCircularLink => 'মূল সার্কুলার লিংক';
+
+  @override
+  String get circularDetailOpenApplicationPortal => 'আবেদন পোর্টাল';
+
+  @override
+  String get circularDetailOpenOrgWebsite => 'প্রতিষ্ঠানের ওয়েবসাইট';
+
+  @override
+  String get circularDetailLinkMissing => 'দেওয়া হয়নি';
+
+  @override
+  String get circularDetailOverviewTitle => 'সারসংক্ষেপ ও বেতন-ভাতা';
+
+  @override
+  String get circularDetailFieldDeadline => 'আবেদনের শেষ সময়';
+
+  @override
+  String get circularDetailFieldVacancies => 'শূন্যপদ';
+
+  @override
+  String get circularDetailFieldSalary => 'বেতন সীমা';
+
+  @override
+  String get circularDetailFieldSalaryNote => 'বেতন নোট';
+
+  @override
+  String get circularDetailFieldFee => 'আবেদন ফি';
+
+  @override
+  String get circularDetailFieldFeeNote => 'ফি সংক্রান্ত নোট';
+
+  @override
+  String get circularDetailFieldCreated => 'যোগ করা হয়েছে';
+
+  @override
+  String get circularDetailFieldUpdated => 'সর্বশেষ হালনাগাদ';
+
+  @override
+  String get circularDetailNotProvided => 'উল্লেখ নেই';
+
+  @override
+  String circularDetailSalaryRange(String min, String max) {
+    return '$min - $max';
+  }
+
+  @override
+  String circularDetailSalaryFrom(String min) {
+    return '$min থেকে';
+  }
+
+  @override
+  String circularDetailSalaryUpTo(String max) {
+    return 'সর্বোচ্চ $max';
+  }
+
+  @override
+  String get circularDetailExamDatesTitle => 'পরীক্ষার তারিখ';
+
+  @override
+  String get examDateAddAction => 'পরীক্ষার তারিখ যোগ করুন';
+
+  @override
+  String get examDateUpcomingHeading => 'আসন্ন পরীক্ষাসমূহ';
+
+  @override
+  String get examDatePastHeading => 'অতীত পরীক্ষাসমূহ';
+
+  @override
+  String get examDateEmptyMessage =>
+      'এখনো কোনো পরীক্ষার তারিখ যোগ করা হয়নি। প্রিলিমিনারি, লিখিত, মৌখিক বা ব্যবহারিক ধাপ এখানে ট্র্যাক করুন।';
+
+  @override
+  String get examDateStageLabel => 'পরীক্ষার ধাপ';
+
+  @override
+  String get examDateStagePreliminary => 'প্রিলিমিনারি';
+
+  @override
+  String get examDateStageWritten => 'লিখিত';
+
+  @override
+  String get examDateStageViva => 'মৌখিক (ভাইভা)';
+
+  @override
+  String get examDateStagePractical => 'ব্যবহারিক';
+
+  @override
+  String get examDateStageOther => 'অন্যান্য';
+
+  @override
+  String get examDateDateLabel => 'পরীক্ষার তারিখ ও সময়';
+
+  @override
+  String get examDatePickDateAction => 'তারিখ পরিবর্তন';
+
+  @override
+  String get examDatePickTimeAction => 'সময় পরিবর্তন';
+
+  @override
+  String get examDateVenueLabel => 'ভেন্যু / কেন্দ্র (ঐচ্ছিক)';
+
+  @override
+  String get examDateVenueHint => 'যেমন: ঢাকা কলেজ / বিপিএসসি সদর দপ্তর';
+
+  @override
+  String get examDateNotesLabel => 'নোট (ঐচ্ছিক)';
+
+  @override
+  String get examDateNotesHint =>
+      'রিপোর্টিং সময়, আসন বিন্যাস, প্রয়োজনীয় কাগজপত্র...';
+
+  @override
+  String get examDateDialogAddTitle => 'পরীক্ষার তারিখ যোগ করুন';
+
+  @override
+  String get examDateDialogEditTitle => 'পরীক্ষার তারিখ সম্পাদনা';
+
+  @override
+  String get examDateEditTooltip => 'পরীক্ষার তারিখ সম্পাদনা করুন';
+
+  @override
+  String get examDateDeleteTooltip => 'পরীক্ষার তারিখ মুছে ফেলুন';
+
+  @override
+  String get circularDetailNotesTitle => 'নির্দেশনা, নোট ও সিলেবাস';
+
+  @override
+  String get circularFilesTitle => 'ফাইল ও সংযুক্তি';
+
+  @override
+  String circularFilesAllowedHelper(String maxSize) {
+    return 'PDF, PNG, JPG, WEBP • সর্বোচ্চ $maxSize (বড় ছবি রিসাইজ করা হয়)';
+  }
+
+  @override
+  String get circularFilesUploadButton => 'ফাইল আপলোড করুন';
+
+  @override
+  String circularFilesUploading(String fileName, String percent) {
+    return '$fileName আপলোড হচ্ছে ($percent%)';
+  }
+
+  @override
+  String get circularFilesEmpty =>
+      'এখনো কোনো ফাইল যুক্ত নেই। সার্কুলারের PDF, প্রবেশপত্র বা ছবি আপলোড করুন।';
+
+  @override
+  String get circularFilesLoadError =>
+      'এই মুহূর্তে সংযুক্ত ফাইলগুলো লোড করা যায়নি।';
+
+  @override
+  String get circularFilesRetry => 'আবার চেষ্টা করুন';
+
+  @override
+  String get circularFilesPreviewAction => 'প্রিভিউ';
+
+  @override
+  String get circularFilesDownloadAction => 'ডাউনলোড';
+
+  @override
+  String get circularFilesDeleteAction => 'মুছে ফেলুন';
+
+  @override
+  String get circularFilesPreviewTitle => 'ফাইল প্রিভিউ';
+
+  @override
+  String get circularFilesPreviewPdfMessage =>
+      'PDF ফাইল আপনার ব্রাউজার বা পিডিএফ ভিউয়ারে অস্থায়ী স্বাক্ষরিত লিংকের মাধ্যমে খুলবে।';
+
+  @override
+  String get circularFilesOpenSignedLink => 'স্বাক্ষরিত লিংক খুলুন';
+
+  @override
+  String get circularFilesPreviewLoadError =>
+      'এখানে প্রিভিউ দেখানো যায়নি। পরিবর্তে অস্থায়ী স্বাক্ষরিত লিংক খুলুন।';
+
+  @override
+  String get circularFilesCloseAction => 'বন্ধ করুন';
+
+  @override
+  String get circularFilesSignedUrlSecurityNote =>
+      'অস্থায়ী স্বাক্ষরিত লিংকে সুরক্ষিত (কখনো পাবলিক নয়)।';
+
+  @override
+  String get circularFilesDeleteConfirmTitle => 'সংযুক্ত ফাইল মুছে ফেলবেন?';
+
+  @override
+  String circularFilesDeleteConfirmBody(String fileName) {
+    return 'এই সার্কুলার থেকে \"$fileName\" স্থায়ীভাবে মুছে ফেলতে চান?';
+  }
+
+  @override
+  String get circularFilesCancelAction => 'বাতিল';
+
+  @override
+  String get circularFilesConfirmDeleteAction => 'মুছে ফেলুন';
+
+  @override
+  String get circularFilesErrorUnsupportedType =>
+      'শুধুমাত্র PDF, PNG, JPG, JPEG এবং WEBP ফাইল অনুমোদিত।';
+
+  @override
+  String get circularFilesErrorEmptyFile => 'নির্বাচিত ফাইলটি খালি।';
+
+  @override
+  String circularFilesErrorFileTooLarge(String maxSize) {
+    return 'ফাইলটি $maxSize সীমা ছাড়িয়ে গেছে।';
+  }
+
+  @override
+  String circularFilesErrorRawImageTooLarge(String maxSize) {
+    return 'ছবিটি প্রসেস করার জন্য অতিরিক্ত বড় (সর্বোচ্চ $maxSize)।';
+  }
+
+  @override
+  String get circularFilesErrorOpenLinkFailed =>
+      'স্বাক্ষরিত ফাইলের লিংক খোলা যায়নি।';
+
+  @override
+  String circularFilesSizeBytes(String count) {
+    return '$count বাইট';
+  }
+
+  @override
+  String circularFilesSizeKb(String count) {
+    return '$count কে.বি.';
+  }
+
+  @override
+  String circularFilesSizeMb(String count) {
+    return '$count মে.বা.';
+  }
+
+  @override
+  String circularFilesCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি ফাইল',
+      one: '১টি ফাইল',
+      zero: '০টি ফাইল',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get circularFilesTypePdf => 'PDF';
+
+  @override
+  String get circularFilesTypeImage => 'ছবি';
+
+  @override
+  String get calendarPreviousMonthTooltip => 'পূর্ববর্তী মাস';
+
+  @override
+  String get calendarNextMonthTooltip => 'পরবর্তী মাস';
+
+  @override
+  String get calendarTodayButton => 'আজ';
+
+  @override
+  String get calendarEventDeadline => 'আবেদনের শেষ দিন';
+
+  @override
+  String get calendarEventPreliminary => 'প্রিলিমিনারি';
+
+  @override
+  String get calendarEventWritten => 'লিখিত';
+
+  @override
+  String get calendarEventViva => 'মৌখিক (ভাইভা)';
+
+  @override
+  String get calendarEventPractical => 'ব্যবহারিক';
+
+  @override
+  String get calendarEventOther => 'অন্যান্য পরীক্ষা';
+
+  @override
+  String get calendarLegendTitle => 'রঙের সূচক';
+
+  @override
+  String calendarAgendaCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি ইভেন্ট',
+      one: '১টি ইভেন্ট',
+      zero: 'কোনো ইভেন্ট নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get calendarAgendaEmptyDay =>
+      'এই তারিখে কোনো আবেদনের শেষ সময় বা পরীক্ষার তারিখ নেই।';
+
+  @override
+  String get calendarEmptyMonthHint =>
+      'এই ক্যালেন্ডারে দেখতে আপনার সার্কুলারগুলোতে আবেদনের শেষ দিন বা পরীক্ষার তারিখ যোগ করুন।';
+
+  @override
+  String get calendarLoadError => 'এই মুহূর্তে আপনার সময়সূচি লোড করা যায়নি।';
+
+  @override
+  String get calendarRetry => 'আবার চেষ্টা করুন';
+
+  @override
+  String get calendarOpenCircularAction => 'সার্কুলার দেখুন';
+
+  @override
+  String calendarMoreEvents(String formattedCount) {
+    return '+$formattedCount';
+  }
+
+  @override
+  String calendarWeekStartsNote(String dayName) {
+    return 'সপ্তাহ শুরু: $dayName';
+  }
+
+  @override
+  String get prepSubjectsSectionTitle => 'বিষয়সমূহ';
+
+  @override
+  String get prepOverallProgressLabel => 'সামগ্রিক অগ্রগতি';
+
+  @override
+  String prepSubjectCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি বিষয়',
+      one: '১টি বিষয়',
+      zero: 'কোনো বিষয় নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepMaterialCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি উপকরণ',
+      one: '১টি উপকরণ',
+      zero: 'কোনো উপকরণ নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAddSubjectButton => 'বিষয় যোগ করুন';
+
+  @override
+  String get prepAddMaterialButton => 'উপকরণ যোগ করুন';
+
+  @override
+  String get prepRefreshTooltip => 'বিষয় ও উপকরণ রিফ্রেশ করুন';
+
+  @override
+  String get prepLoadError =>
+      'এই মুহূর্তে প্রস্তুতির বিষয়সমূহ লোড করা যায়নি।';
+
+  @override
+  String get prepSelectSubjectPrompt =>
+      'পড়ার উপকরণ দেখতে ও পরিচালনা করতে তালিকা থেকে একটি বিষয় নির্বাচন করুন।';
+
+  @override
+  String get prepEmptySubjectsTitle => 'এখনো কোনো বিষয় নেই';
+
+  @override
+  String get prepEmptySubjectsBody =>
+      'আপনার কাঙ্ক্ষিত ক্যারিয়ার বা পরীক্ষার জন্য বিষয় তৈরি করুন, এবং প্রতিটি বিষয়ের ভেতরে বই, কোর্স, নোট বা প্রশ্নব্যাংক যোগ করুন।';
+
+  @override
+  String prepEmptyMaterialsTitle(String subjectName) {
+    return '$subjectName বিষয়ে কোনো উপকরণ নেই';
+  }
+
+  @override
+  String get prepEmptyMaterialsBody =>
+      'আপনার পছন্দমতো একক সহ বই, লেকচার শিট, ভিডিও কোর্স বা মক টেস্ট যোগ করুন।';
+
+  @override
+  String get prepBackToSubjects => 'বিষয় তালিকায় ফিরুন';
+
+  @override
+  String get prepCreateSubjectTitle => 'নতুন বিষয়';
+
+  @override
+  String get prepEditSubjectTitle => 'বিষয় সম্পাদনা';
+
+  @override
+  String get prepSubjectNameLabel => 'বিষয়ের নাম';
+
+  @override
+  String get prepSubjectNameHint =>
+      'যেমন: ইংরেজি, সাধারণ জ্ঞান, ডেটা স্ট্রাকচার্স';
+
+  @override
+  String get prepSubjectNameRequired => 'বিষয়ের নাম আবশ্যক।';
+
+  @override
+  String get prepExamTypeLabel => 'পরীক্ষা বা ক্যারিয়ার ট্র্যাক';
+
+  @override
+  String get prepExamTypeHint => 'যেকোনো ট্র্যাক লিখুন বা নিচ থেকে বাছাই করুন';
+
+  @override
+  String get prepExamTypeRequired => 'পরীক্ষা বা ক্যারিয়ার ট্র্যাক আবশ্যক।';
+
+  @override
+  String get prepExamTrackGeneral => 'সাধারণ';
+
+  @override
+  String get prepExamTrackBcs => 'বিসিএস';
+
+  @override
+  String get prepExamTrackBank => 'ব্যাংক';
+
+  @override
+  String get prepExamTrackGovt => 'সরকারি চাকরি';
+
+  @override
+  String get prepExamTrackMedical => 'মেডিকেল';
+
+  @override
+  String get prepExamTrackEngineering => 'প্রকৌশল';
+
+  @override
+  String get prepExamTrackIelts => 'আইইএলটিএস';
+
+  @override
+  String get prepSubjectColorLabel => 'রঙ';
+
+  @override
+  String get prepColorGold => 'সোনালি';
+
+  @override
+  String get prepColorInfo => 'আকাশি';
+
+  @override
+  String get prepColorSuccess => 'সবুজ';
+
+  @override
+  String get prepColorWarning => 'হলদে-কমলা';
+
+  @override
+  String get prepColorDanger => 'লাল';
+
+  @override
+  String get prepColorAccentSecondary => 'বেগুনি';
+
+  @override
+  String get prepSubjectIconLabel => 'আইকন';
+
+  @override
+  String get prepIconMenuBook => 'বই';
+
+  @override
+  String get prepIconCalculate => 'গণিত';
+
+  @override
+  String get prepIconLanguage => 'ভাষা';
+
+  @override
+  String get prepIconPublic => 'বিশ্ব / সাধারণ জ্ঞান';
+
+  @override
+  String get prepIconScience => 'বিজ্ঞান';
+
+  @override
+  String get prepIconComputer => 'কম্পিউটার';
+
+  @override
+  String get prepIconAccountBalance => 'অর্থ / আইন';
+
+  @override
+  String get prepIconPsychology => 'মানসিক দক্ষতা';
+
+  @override
+  String get prepIconGavel => 'সংবিধান';
+
+  @override
+  String get prepIconQuiz => 'কুইজ / মক';
+
+  @override
+  String get prepSaveButton => 'সংরক্ষণ করুন';
+
+  @override
+  String get prepCancelButton => 'বাতিল করুন';
+
+  @override
+  String get prepEditAction => 'সম্পাদনা';
+
+  @override
+  String get prepDeleteAction => 'মুছে ফেলুন';
+
+  @override
+  String get prepMoveUpTooltip => 'বিষয়টি উপরে নিন';
+
+  @override
+  String get prepMoveDownTooltip => 'বিষয়টি নিচে নিন';
+
+  @override
+  String get prepDragReorderTooltip => 'সাজাতে টেনে আনুন';
+
+  @override
+  String get prepCreateMaterialTitle => 'নতুন উপকরণ';
+
+  @override
+  String get prepEditMaterialTitle => 'উপকরণ সম্পাদনা';
+
+  @override
+  String get prepMaterialTitleLabel => 'উপকরণের শিরোনাম';
+
+  @override
+  String get prepMaterialTitleHint => 'যেমন: বাংলা সাহিত্য, অফিশিয়াল গাইড';
+
+  @override
+  String get prepMaterialTitleRequired => 'উপকরণের শিরোনাম আবশ্যক।';
+
+  @override
+  String get prepMaterialKindLabel => 'ধরন';
+
+  @override
+  String get prepMaterialKindBook => 'বই';
+
+  @override
+  String get prepMaterialKindVideoCourse => 'ভিডিও কোর্স';
+
+  @override
+  String get prepMaterialKindLectureSheet => 'লেকচার শিট';
+
+  @override
+  String get prepMaterialKindQuestionBank => 'প্রশ্নব্যাংক';
+
+  @override
+  String get prepMaterialKindNotes => 'নোট';
+
+  @override
+  String get prepMaterialKindMockTest => 'মক টেস্ট';
+
+  @override
+  String get prepMaterialKindOther => 'অন্যান্য';
+
+  @override
+  String get prepUnitLabelFieldLabel => 'এককের নাম';
+
+  @override
+  String get prepUnitLabelHint => 'যেমন: পৃষ্ঠা, লেকচার, অধ্যায়';
+
+  @override
+  String get prepUnitLabelRequired => 'এককের নাম আবশ্যক।';
+
+  @override
+  String get prepUnitPresetPages => 'পৃষ্ঠা';
+
+  @override
+  String get prepUnitPresetChapters => 'অধ্যায়';
+
+  @override
+  String get prepUnitPresetLectures => 'লেকচার';
+
+  @override
+  String get prepUnitPresetVideos => 'ভিডিও';
+
+  @override
+  String get prepUnitPresetQuestions => 'প্রশ্ন';
+
+  @override
+  String get prepUnitPresetTests => 'টেস্ট';
+
+  @override
+  String get prepTotalUnitsLabel => 'মোট একক';
+
+  @override
+  String get prepTotalUnitsHint => 'যেমন: ৩০০';
+
+  @override
+  String get prepTotalUnitsInvalid => '০ বা তার বড় একটি পূর্ণসংখ্যা লিখুন।';
+
+  @override
+  String prepMaterialProgressSummary(
+      String completed, String total, String unitLabel) {
+    return '$completed / $total $unitLabel';
+  }
+
+  @override
+  String prepPercentComplete(String percent) {
+    return '$percent% সম্পন্ন';
+  }
+
+  @override
+  String get prepCoverSectionLabel => 'কভার ছবি (ঐচ্ছিক)';
+
+  @override
+  String get prepCoverModeNone => 'নেই';
+
+  @override
+  String get prepCoverModeUpload => 'ছবি আপলোড';
+
+  @override
+  String get prepCoverModeUrl => 'লিংক দিন';
+
+  @override
+  String get prepCoverPickButton => 'JPG, PNG বা WEBP বাছাই করুন';
+
+  @override
+  String get prepCoverReplaceButton => 'ছবি পরিবর্তন করুন';
+
+  @override
+  String get prepCoverRemoveButton => 'কভার সরান';
+
+  @override
+  String prepCoverResizedNote(String formattedWidth) {
+    return 'আপলোডের জন্য $formattedWidth পিক্সেল প্রস্থে রিসাইজ করা হয়েছে।';
+  }
+
+  @override
+  String get prepCoverUrlLabel => 'ছবির লিংক';
+
+  @override
+  String get prepCoverUrlHint => 'https://example.com/cover.jpg';
+
+  @override
+  String get prepCoverPlaceholderHint =>
+      'কভার ছবি না থাকলে স্বয়ংক্রিয়ভাবে গ্লাস অক্ষর ব্যাজ দেখানো হবে।';
+
+  @override
+  String get prepCoverErrorUnsupportedType =>
+      'শুধুমাত্র JPG, PNG এবং WEBP ছবি সমর্থিত।';
+
+  @override
+  String get prepCoverErrorEmptyFile => 'নির্বাচিত কভার ছবিটি খালি।';
+
+  @override
+  String prepCoverErrorTooLarge(String maxSize) {
+    return 'কভার ছবিটি $maxSize সীমা ছাড়িয়ে গেছে।';
+  }
+
+  @override
+  String prepCoverErrorRawTooLarge(String maxSize) {
+    return 'ছবিটি প্রসেস করার জন্য অতিরিক্ত বড় (সর্বোচ্চ $maxSize)।';
+  }
+
+  @override
+  String get prepCoverErrorInvalidUrl =>
+      'সঠিক http:// বা https:// ছবির লিংক লিখুন।';
+
+  @override
+  String get prepCoverUploadProgress => 'কভার রিসাইজ ও আপলোড হচ্ছে...';
+
+  @override
+  String prepDeleteSubjectTitle(String subjectName) {
+    return '\"$subjectName\" মুছে ফেলবেন?';
+  }
+
+  @override
+  String get prepDeleteSubjectBody =>
+      'এতে এই বিষয়টি এবং এর ভেতরের সব উপকরণ মুছে যাবে।';
+
+  @override
+  String prepDeleteSubjectProgressWarning(String formattedUnits) {
+    return 'সতর্কতা: এই বিষয়ে সংরক্ষিত অগ্রগতি রয়েছে (উপকরণগুলোতে $formattedUnits একক সম্পন্ন হয়েছে)। মুছে ফেললে সেই অগ্রগতি স্থায়ীভাবে হারিয়ে যাবে।';
+  }
+
+  @override
+  String prepDeleteMaterialTitle(String materialTitle) {
+    return '\"$materialTitle\" মুছে ফেলবেন?';
+  }
+
+  @override
+  String get prepDeleteMaterialBody =>
+      'আপনি কি নিশ্চিত যে এই উপকরণটি বিষয় থেকে মুছে ফেলতে চান?';
+
+  @override
+  String prepDeleteMaterialProgressWarning(String formattedCompleted,
+      String formattedTotal, String unitLabel, String percent) {
+    return 'সতর্কতা: আপনি ইতিমধ্যেই $formattedTotal $unitLabel-এর মধ্যে $formattedCompleted $unitLabel ($percent% সম্পন্ন) লগ করেছেন। উপকরণটি মুছে ফেললে এর অগ্রগতিও মুছে যাবে।';
+  }
+
+  @override
+  String get prepDeleteConfirmButton => 'মুছে ফেলুন';
+
+  @override
+  String get prepErrorPermission =>
+      'এই প্রস্তুতি আইটেম পরিবর্তন করার অনুমতি আপনার নেই।';
+
+  @override
+  String get prepErrorNetwork =>
+      'সংরক্ষণের সময় নেটওয়ার্ক সমস্যা হয়েছে। আবার চেষ্টা করুন।';
+
+  @override
+  String get prepErrorNotFound => 'প্রস্তুতির সেই আইটেমটি খুঁজে পাওয়া যায়নি।';
+
+  @override
+  String get prepErrorUnknown =>
+      'প্রস্তুতির তথ্য হালনাগাদ করার সময় সমস্যা হয়েছে।';
+
+  @override
+  String prepOverallUnitsSummary(
+      String formattedCompleted, String formattedTotal) {
+    return '$formattedCompleted / $formattedTotal মোট একক';
+  }
+
+  @override
+  String prepQuickLogPlus(String formattedAmount) {
+    return '+$formattedAmount';
+  }
+
+  @override
+  String get prepLogButton => 'লগ';
+
+  @override
+  String get prepLogDialogTitle => 'অগ্রগতি লগ করুন';
+
+  @override
+  String get prepCustomUnitsLabel => 'সম্পন্ন একক';
+
+  @override
+  String get prepCustomUnitsHint => 'যেমন: ২৫';
+
+  @override
+  String get prepCustomUnitsInvalid => '০-এর চেয়ে বড় একটি পূর্ণসংখ্যা লিখুন।';
+
+  @override
+  String get prepLogDateLabel => 'তারিখ';
+
+  @override
+  String get prepLogNoteLabel => 'নোট (ঐচ্ছিক)';
+
+  @override
+  String get prepLogNoteHint => 'যেমন: অধ্যায় ১-৩, রিভিশন';
+
+  @override
+  String get prepLogSaveButton => 'লগ সংরক্ষণ';
+
+  @override
+  String get prepLogUpdateButton => 'লগ হালনাগাদ';
+
+  @override
+  String get prepLogCancelEditButton => 'সম্পাদনা বাতিল';
+
+  @override
+  String get prepEditingLogBanner => 'পূর্ববর্তী লগ সম্পাদনা চলছে';
+
+  @override
+  String get prepPastLogsTitle => 'পূর্ববর্তী পাঠ লগসমূহ';
+
+  @override
+  String get prepNoPastLogs => 'এই উপকরণে এখনো কোনো পাঠ লগ করা হয়নি।';
+
+  @override
+  String prepLogUnitsSummary(String formattedUnits, String unitLabel) {
+    return '+$formattedUnits $unitLabel';
+  }
+
+  @override
+  String get prepTemplatesTitle => 'টেমপ্লেট দিয়ে দ্রুত শুরু করুন';
+
+  @override
+  String get prepTemplatesSubtitle =>
+      'একটি প্রস্তুত পরিকল্পনা বেছে নিন; পরে যেকোনো সময় পরিবর্তন বা মুছে ফেলতে পারবেন।';
+
+  @override
+  String get prepApplyTemplateButton => 'টেমপ্লেট প্রয়োগ করুন';
+
+  @override
+  String get prepTemplatesOpenButton => 'টেমপ্লেটসমূহ';
+
+  @override
+  String get prepTemplatesDialogTitle => 'প্রস্তুতি টেমপ্লেটসমূহ';
+
+  @override
+  String get prepTemplatesSystemSection => 'স্টার্টার প্যাক';
+
+  @override
+  String get prepTemplatesPersonalSection => 'আপনার ব্যক্তিগত টেমপ্লেট';
+
+  @override
+  String get prepTemplatesPersonalEmpty =>
+      'আপনার বর্তমান বিষয়গুলো একটি ব্যক্তিগত টেমপ্লেট হিসেবে সংরক্ষণ করুন যাতে যেকোনো সময় পুনরায় ব্যবহার করতে পারেন।';
+
+  @override
+  String get prepTemplateSystemBadge => 'স্টার্টার প্যাক';
+
+  @override
+  String get prepTemplatePersonalBadge => 'ব্যক্তিগত';
+
+  @override
+  String get prepTemplateAppliedBadge => 'প্রয়োগ করা হয়েছে';
+
+  @override
+  String get prepTemplateCustomizeButton => 'একক পরিবর্তন';
+
+  @override
+  String get prepTemplateApplyAgainButton => 'পুনরায় প্রয়োগ';
+
+  @override
+  String prepTemplateApplyConfirmTitle(String title) {
+    return '\"$title\" কাস্টমাইজ ও প্রয়োগ করুন';
+  }
+
+  @override
+  String get prepTemplateApplyConfirmSubtitle =>
+      'আপনার প্রস্তুতি বিষয়ে কপি করার আগে নিচে একক সংখ্যা পরিবর্তন করতে পারেন। পরে যেকোনো সময় সবকিছু সম্পাদনা বা মুছে ফেলতে পারবেন।';
+
+  @override
+  String get prepTemplateConfirmApplyAction => 'আমার প্রস্তুতিতে কপি করুন';
+
+  @override
+  String prepTemplateAppliedSnackbar(int subjectCount, String formattedSubjects,
+      int materialCount, String formattedMaterials, String title) {
+    return '\"$title\" থেকে $formattedSubjectsটি বিষয় এবং $formattedMaterialsটি উপকরণ যোগ করা হয়েছে।';
+  }
+
+  @override
+  String prepTemplateAlreadyAppliedSnackbar(String title) {
+    return '\"$title\" টেমপ্লেটের সব বিষয় ও উপকরণ ইতিমধ্যেই আপনার পরিকল্পনায় রয়েছে (কোনো ডুপ্লিকেট তৈরি হয়নি)।';
+  }
+
+  @override
+  String get prepSaveAsTemplateButton => 'টেমপ্লেট হিসেবে সংরক্ষণ';
+
+  @override
+  String get prepSaveTemplateDialogTitle => 'ব্যক্তিগত টেমপ্লেট সংরক্ষণ';
+
+  @override
+  String get prepSaveTemplateTitleLabel => 'টেমপ্লেটের নাম';
+
+  @override
+  String get prepSaveTemplateTitleHint => 'যেমন: ৪৮তম বিসিএস মূল পরিকল্পনা';
+
+  @override
+  String get prepSaveTemplateTitleRequired =>
+      'অনুগ্রহ করে টেমপ্লেটের একটি নাম লিখুন।';
+
+  @override
+  String get prepSaveTemplateDescLabel => 'বিবরণ (ঐচ্ছিক)';
+
+  @override
+  String get prepSaveTemplateDescHint =>
+      'বিষয় এবং লক্ষ্য চাকরি সম্পর্কে সংক্ষিপ্ত নোট';
+
+  @override
+  String get prepSaveTemplateExamLabel => 'ক্যারিয়ার বা পরীক্ষার ধরন';
+
+  @override
+  String prepSaveTemplatePreviewSummary(
+      String formattedSubjects, String formattedMaterials) {
+    return '$formattedSubjectsটি বিষয় এবং $formattedMaterialsটি উপকরণ এই টেমপ্লেটে সংরক্ষণ করা হবে';
+  }
+
+  @override
+  String get prepSaveTemplateSaveAction => 'টেমপ্লেট সংরক্ষণ করুন';
+
+  @override
+  String prepSaveTemplateSavedSnackbar(String title) {
+    return 'ব্যক্তিগত টেমপ্লেট \"$title\" সংরক্ষণ করা হয়েছে।';
+  }
+
+  @override
+  String get prepDeleteTemplateTitle => 'ব্যক্তিগত টেমপ্লেট মুছবেন?';
+
+  @override
+  String prepDeleteTemplateMessage(String title) {
+    return '\"$title\" মুছে ফেলতে চান? আপনার ড্যাশবোর্ডে ইতিমধ্যে কপি করা বিষয় ও উপকরণ অপরিবর্তিত থাকবে।';
+  }
+
+  @override
+  String prepDeleteTemplateDeletedSnackbar(String title) {
+    return 'ব্যক্তিগত টেমপ্লেট \"$title\" মুছে ফেলা হয়েছে।';
+  }
+
+  @override
+  String get prepTemplateUnitsInvalid => '০ বা তার বড় পূর্ণসংখ্যা লিখুন।';
+
+  @override
+  String get prepSeededGovJobTitle => 'সরকারি চাকরি';
+
+  @override
+  String get prepSeededGovJobSubtitle =>
+      'বাংলা, ইংরেজি, সাধারণ জ্ঞান, গণিত, বিশ্লেষণাত্মক যুক্তি ও কম্পিউটার — পরিবর্তনযোগ্য স্টার্টার উপকরণসহ।';
+
+  @override
+  String get prepSeededSweTitle => 'সফটওয়্যার ইঞ্জিনিয়ার';
+
+  @override
+  String get prepSeededSweSubtitle =>
+      'ডেটা স্ট্রাকচার ও অ্যালগরিদম, ডেটাবেস সিস্টেম, ওওপি, ওয়েব ডেভেলপমেন্ট এবং সফটওয়্যার কোয়ালিটি অ্যাসুরেন্স।';
 }
