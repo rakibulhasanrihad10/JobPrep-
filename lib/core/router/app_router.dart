@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:job_prep/core/localization/app_localizations_extension.dart';
-import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/app_scaffold.dart';
 import 'package:job_prep/features/auth/domain/entities/auth_session_state.dart';
 import 'package:job_prep/features/auth/presentation/navigation/auth_redirect.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/auth/presentation/screens/login_screen.dart';
+import 'package:job_prep/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:job_prep/features/calendar/presentation/screens/calendar_screen.dart';
 import 'package:job_prep/features/circulars/presentation/screens/circulars_screen.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
@@ -35,34 +35,6 @@ class _AuthRouterRefreshListenable extends ChangeNotifier {
   }
 }
 
-class _AuthRoutePlaceholderScaffold extends StatelessWidget {
-  const _AuthRoutePlaceholderScaffold({
-    required this.isResetPassword,
-    super.key,
-  });
-
-  final bool isResetPassword;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    final textStyles = context.textStyles;
-    final l10n = context.l10n;
-
-    return Scaffold(
-      backgroundColor: colors.background,
-      body: Center(
-        child: Text(
-          isResetPassword
-              ? l10n.authResetPasswordRouteTitle
-              : l10n.authLoginRouteTitle,
-          style: textStyles.headlineMedium,
-        ),
-      ),
-    );
-  }
-}
-
 /// Provider for application routing using [GoRouter] configured with
 /// [ShellRoute] and reactive auth redirects.
 final routerProvider = Provider<GoRouter>((ref) {
@@ -87,20 +59,14 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: AppRoutePaths.login,
         name: 'login',
         pageBuilder: (context, state) => const NoTransitionPage(
-          child: _AuthRoutePlaceholderScaffold(
-            key: ValueKey('login_route_placeholder'),
-            isResetPassword: false,
-          ),
+          child: LoginScreen(),
         ),
       ),
       GoRoute(
         path: AppRoutePaths.resetPassword,
         name: 'reset_password',
         pageBuilder: (context, state) => const NoTransitionPage(
-          child: _AuthRoutePlaceholderScaffold(
-            key: ValueKey('reset_password_route_placeholder'),
-            isResetPassword: true,
-          ),
+          child: ResetPasswordScreen(),
         ),
       ),
       ShellRoute(

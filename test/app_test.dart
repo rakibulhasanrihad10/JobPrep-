@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:job_prep/core/theme/theme_controller.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/auth/presentation/screens/login_screen.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:job_prep/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -36,7 +36,7 @@ void main() {
   );
 
   testWidgets(
-    'JobPrepApp redirects to login placeholder when signed out',
+    'JobPrepApp redirects to LoginScreen when signed out',
     (tester) async {
       SharedPreferences.setMockInitialValues({});
       final prefs = await SharedPreferences.getInstance();
@@ -54,10 +54,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(
-        find.byKey(const ValueKey('login_route_placeholder')),
-        findsOneWidget,
-      );
+      expect(find.byType(LoginScreen), findsOneWidget);
       expect(find.byType(DashboardScreen), findsNothing);
     },
   );

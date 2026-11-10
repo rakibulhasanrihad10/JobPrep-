@@ -201,5 +201,219 @@
   "authResetPasswordRouteTitle": "Reset Password",
   "@authResetPasswordRouteTitle": {
     "description": "Title on the reset password route placeholder"
+  },
+  "authSignInTitle": "Welcome back",
+  "@authSignInTitle": {
+    "description": "Heading for sign-in mode on login screen"
+  },
+  "authSignInSubtitle": "Sign in to manage your job circulars and exam prep",
+  "@authSignInSubtitle": {
+    "description": "Subtitle for sign-in mode on login screen"
+  },
+  "authSignUpTitle": "Create your account",
+  "@authSignUpTitle": {
+    "description": "Heading for sign-up mode on login screen"
+  },
+  "authSignUpSubtitle": "Start tracking circulars and study progress securely",
+  "@authSignUpSubtitle": {
+    "description": "Subtitle for sign-up mode on login screen"
+  },
+  "authForgotPasswordTitle": "Reset your password",
+  "@authForgotPasswordTitle": {
+    "description": "Heading for forgot password mode"
+  },
+  "authForgotPasswordSubtitle": "Enter your email and we will send a password reset link",
+  "@authForgotPasswordSubtitle": {
+    "description": "Subtitle for forgot password mode"
+  },
+  "authResetPasswordTitle": "Set a new password",
+  "@authResetPasswordTitle": {
+    "description": "Heading for /reset-password screen"
+  },
+  "authResetPasswordSubtitle": "Choose a strong password of at least 8 characters",
+  "@authResetPasswordSubtitle": {
+    "description": "Subtitle for /reset-password screen"
+  },
+  "authEmailLabel": "Email address",
+  "@authEmailLabel": {
+    "description": "Label for email input field"
+  },
+  "authEmailHint": "you@example.com",
+  "@authEmailHint": {
+    "description": "Hint for email input field"
+  },
+  "authPasswordLabel": "Password",
+  "@authPasswordLabel": {
+    "description": "Label for password input field"
+  },
+  "authPasswordHint": "Enter your password",
+  "@authPasswordHint": {
+    "description": "Hint for password input field"
+  },
+  "authNewPasswordLabel": "New password",
+  "@authNewPasswordLabel": {
+    "description": "Label for new password field on reset password screen"
+  },
+  "authNewPasswordHint": "At least 8 characters",
+  "@authNewPasswordHint": {
+    "description": "Hint for new password field"
+  },
+  "authConfirmPasswordLabel": "Confirm new password",
+  "@authConfirmPasswordLabel": {
+    "description": "Label for confirm new password field"
+  },
+  "authConfirmPasswordHint": "Re-enter your new password",
+  "@authConfirmPasswordHint": {
+    "description": "Hint for confirm new password field"
+  },
+  "authPasswordMinLengthHelper": "Must be at least 8 characters",
+  "@authPasswordMinLengthHelper": {
+    "description": "Helper text showing minimum 8 character requirement"
+  },
+  "authShowPasswordTooltip": "Show password",
+  "@authShowPasswordTooltip": {
+    "description": "Tooltip for revealing obscured password"
+  },
+  "authHidePasswordTooltip": "Hide password",
+  "@authHidePasswordTooltip": {
+    "description": "Tooltip for hiding visible password"
+  },
+  "authSignInButton": "Sign in",
+  "@authSignInButton": {
+    "description": "Primary button label for sign in"
+  },
+  "authCreateAccountButton": "Create account",
+  "@authCreateAccountButton": {
+    "description": "Primary button label for sign up"
+  },
+  "authSendResetLinkButton": "Send reset link",
+  "@authSendResetLinkButton": {
+    "description": "Primary button label for sending password reset email"
+  },
+  "authUpdatePasswordButton": "Update password",
+  "@authUpdatePasswordButton": {
+    "description": "Primary button label for saving new password"
+  },
+  "authContinueWithGoogle": "Continue with Google",
+  "@authContinueWithGoogle": {
+    "description": "Google OAuth button label"
+  },
+  "authOrDivider": "or",
+  "@authOrDivider": {
+    "description": "Short separator label between email auth and OAuth"
+  },
+  "authForgotPasswordLink": "Forgot password?",
+  "@authForgotPasswordLink": {
+    "description": "Link label to enter forgot password flow"
+  },
+  "authBackToSignIn": "Back to sign in",
+  "@authBackToSignIn": {
+    "description": "Button or link label to return to sign in"
+  },
+  "authNoAccountPrompt": "Don't have an account?",
+  "@authNoAccountPrompt": {
+    "description": "Prompt preceding create account toggle"
+  },
+  "authAlreadyHaveAccountPrompt": "Already have an account?",
+  "@authAlreadyHaveAccountPrompt": {
+    "description": "Prompt preceding sign in toggle"
+  },
+  "authSwitchToSignUp": "Create account",
+  "@authSwitchToSignUp": {
+    "description": "Toggle link text switching to sign up mode"
+  },
+  "authSwitchToSignIn": "Sign in",
+  "@authSwitchToSignIn": {
+    "description": "Toggle link text switching to sign in mode"
+  },
+  "authCheckEmailTitle": "Check your email",
+  "@authCheckEmailTitle": {
+    "description": "Success title shown after sign up"
+  },
+  "authCheckEmailMessage": "We sent a confirmation link to {email}. Open the link in your inbox to confirm your account before signing in.",
+  "@authCheckEmailMessage": {
+    "description": "Success body shown after sign up",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "authResetLinkSentTitle": "Reset link sent",
+  "@authResetLinkSentTitle": {
+    "description": "Success title shown after sending password reset email"
+  },
+  "authResetLinkSentMessage": "If an account exists for {email}, we sent instructions to reset your password.",
+  "@authResetLinkSentMessage": {
+    "description": "Success body shown after sending password reset email",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "authPasswordUpdatedTitle": "Password updated",
+  "@authPasswordUpdatedTitle": {
+    "description": "Success title shown after updating password"
+  },
+  "authPasswordUpdatedMessage": "Your password has been updated successfully. You can now continue to your dashboard.",
+  "@authPasswordUpdatedMessage": {
+    "description": "Success body shown after updating password"
+  },
+  "authContinueToDashboard": "Continue to dashboard",
+  "@authContinueToDashboard": {
+    "description": "Button label after password update completes"
+  },
+  "authValidationEmailRequired": "Please enter your email address.",
+  "@authValidationEmailRequired": {
+    "description": "Validation error when email is empty"
+  },
+  "authValidationEmailInvalid": "Please enter a valid email address.",
+  "@authValidationEmailInvalid": {
+    "description": "Validation error when email format is invalid"
+  },
+  "authValidationPasswordRequired": "Please enter your password.",
+  "@authValidationPasswordRequired": {
+    "description": "Validation error when password is empty"
+  },
+  "authValidationPasswordTooShort": "Password must be at least 8 characters.",
+  "@authValidationPasswordTooShort": {
+    "description": "Validation error when password is fewer than 8 characters"
+  },
+  "authValidationConfirmPasswordRequired": "Please confirm your new password.",
+  "@authValidationConfirmPasswordRequired": {
+    "description": "Validation error when confirm password is empty"
+  },
+  "authValidationPasswordsDoNotMatch": "Passwords do not match.",
+  "@authValidationPasswordsDoNotMatch": {
+    "description": "Validation error when password confirmation does not match"
+  },
+  "authErrorInvalidCredentials": "Invalid email or password. Please check your details and try again.",
+  "@authErrorInvalidCredentials": {
+    "description": "Localized message for InvalidCredentialsFailure"
+  },
+  "authErrorEmailNotConfirmed": "Please confirm your email address before signing in. Check your inbox for the verification link.",
+  "@authErrorEmailNotConfirmed": {
+    "description": "Localized message for EmailNotConfirmedFailure"
+  },
+  "authErrorAccountAlreadyExists": "An account with this email already exists. Try signing in instead.",
+  "@authErrorAccountAlreadyExists": {
+    "description": "Localized message for AccountAlreadyExistsFailure"
+  },
+  "authErrorTooManyRequests": "Too many attempts. Please wait a moment and try again.",
+  "@authErrorTooManyRequests": {
+    "description": "Localized message for TooManyRequestsFailure"
+  },
+  "authErrorNetwork": "Network error. Please check your internet connection and try again.",
+  "@authErrorNetwork": {
+    "description": "Localized message for NetworkFailure"
+  },
+  "authErrorWeakPassword": "Your password is too weak. Use at least 8 characters with letters and numbers.",
+  "@authErrorWeakPassword": {
+    "description": "Localized message for WeakPasswordFailure"
+  },
+  "authErrorUnknown": "Something went wrong during authentication. Please try again.",
+  "@authErrorUnknown": {
+    "description": "Localized message for UnknownAuthFailure"
   }
 }

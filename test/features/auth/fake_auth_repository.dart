@@ -10,6 +10,7 @@ class FakeAuthRepository implements AuthRepository {
   /// Creates a [FakeAuthRepository] starting with [initialSession].
   FakeAuthRepository({
     AuthSessionState? initialSession,
+    this.autoConfirmOnSignUp = false,
   }) : _currentSession = initialSession ?? const AuthSessionState.signedOut();
 
   /// Convenience factory for a repository with a signed-in test user.
@@ -27,6 +28,9 @@ class FakeAuthRepository implements AuthRepository {
     emailConfirmed: true,
   );
 
+  /// Whether [signUpWithEmail] immediately promotes the session to signed-in.
+  final bool autoConfirmOnSignUp;
+
   AuthSessionState _currentSession;
   final StreamController<AuthSessionState> _controller =
       StreamController<AuthSessionState>.broadcast();
@@ -34,11 +38,20 @@ class FakeAuthRepository implements AuthRepository {
   /// Optional failure to throw on the next repository call.
   AuthFailure? nextFailure;
 
+  /// Optional blocker allowing tests to pause async requests in loading state.
+  Completer<void>? pendingGate;
+
   /// Last `redirectTo` passed to [sendPasswordReset].
   String? lastPasswordResetRedirectTo;
 
   /// Last `redirectTo` passed to [signInWithGoogle].
   String? lastOAuthRedirectTo;
+
+  /// Last email passed to [signInWithEmail] or [signUpWithEmail].
+  String? lastEmail;
+
+  /// Last password passed to [updatePassword].
+  String? lastUpdatedPassword;
 
   /// Number of times [signOut] was called.
   int signOutCallCount = 0;
@@ -74,13 +87,17 @@ class FakeAuthRepository implements AuthRepository {
     String? displayName,
     String? emailRedirectTo,
   }) async {
-    _throwIfConfigured();
+    lastEmail = email;
+    await _awaitGateAndThrowIfConfigured();
     final user = AuthUser(
       id: 'new-user-id',
       email: email,
       displayName: displayName,
+      emailConfirmed: autoConfirmOnSignUp,
     );
-    emitSession(AuthSessionState.signedIn(user));
+    if (autoConfirmOnSignUp) {
+      emitSession(AuthSessionState.signedIn(user));
+    }
     return user;
   }
 
@@ -89,7 +106,8 @@ class FakeAuthRepository implements AuthRepository {
     required String email,
     required String password,
   }) async {
-    _throwIfConfigured();
+    lastEmail = email;
+    await _awaitGateAndThrowIfConfigured();
     final user = AuthUser(
       id: 'signed-in-id',
       email: email,
@@ -102,7 +120,7 @@ class FakeAuthRepository implements AuthRepository {
   @override
   Future<void> signInWithGoogle({String? redirectTo}) async {
     lastOAuthRedirectTo = redirectTo;
-    _throwIfConfigured();
+    await _awaitGateAndThrowIfConfigured();
     emitSession(const AuthSessionState.signedIn(defaultTestUser));
   }
 
@@ -111,13 +129,15 @@ class FakeAuthRepository implements AuthRepository {
     required String email,
     String? redirectTo,
   }) async {
+    lastEmail = email;
     lastPasswordResetRedirectTo = redirectTo;
-    _throwIfConfigured();
+    await _awaitGateAndThrowIfConfigured();
   }
 
   @override
   Future<AuthUser> updatePassword({required String newPassword}) async {
-    _throwIfConfigured();
+    lastUpdatedPassword = newPassword;
+    await _awaitGateAndThrowIfConfigured();
     final updatedUser = _currentSession.user ?? defaultTestUser;
     emitSession(AuthSessionState.signedIn(updatedUser));
     return updatedUser;
@@ -126,11 +146,15 @@ class FakeAuthRepository implements AuthRepository {
   @override
   Future<void> signOut() async {
     signOutCallCount++;
-    _throwIfConfigured();
+    await _awaitGateAndThrowIfConfigured();
     emitSession(const AuthSessionState.signedOut());
   }
 
-  void _throwIfConfigured() {
+  Future<void> _awaitGateAndThrowIfConfigured() async {
+    final gate = pendingGate;
+    if (gate != null) {
+      await gate.future;
+    }
     final failure = nextFailure;
     if (failure != null) {
       nextFailure = null;

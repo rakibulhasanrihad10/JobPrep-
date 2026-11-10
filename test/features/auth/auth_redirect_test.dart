@@ -6,6 +6,8 @@ import 'package:job_prep/core/theme/theme_controller.dart';
 import 'package:job_prep/features/auth/domain/entities/auth_session_state.dart';
 import 'package:job_prep/features/auth/presentation/navigation/auth_redirect.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/auth/presentation/screens/login_screen.dart';
+import 'package:job_prep/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:job_prep/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -175,11 +177,8 @@ void main() {
         );
         await tester.pumpAndSettle();
 
-        // Starts signed out -> redirected to /login placeholder.
-        expect(
-          find.byKey(const ValueKey('login_route_placeholder')),
-          findsOneWidget,
-        );
+        // Starts signed out -> redirected to /login.
+        expect(find.byType(LoginScreen), findsOneWidget);
         expect(find.byType(DashboardScreen), findsNothing);
 
         // User signs in -> redirected away from /login to /dashboard.
@@ -189,10 +188,7 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(find.byType(DashboardScreen), findsOneWidget);
-        expect(
-          find.byKey(const ValueKey('login_route_placeholder')),
-          findsNothing,
-        );
+        expect(find.byType(LoginScreen), findsNothing);
 
         // Password recovery session arrives -> redirected to /reset-password.
         fakeRepo.emitSession(
@@ -202,10 +198,7 @@ void main() {
         );
         await tester.pumpAndSettle();
 
-        expect(
-          find.byKey(const ValueKey('reset_password_route_placeholder')),
-          findsOneWidget,
-        );
+        expect(find.byType(ResetPasswordScreen), findsOneWidget);
         expect(find.byType(DashboardScreen), findsNothing);
 
         // Completing password update yields signedIn so dashboard loads.
@@ -224,10 +217,7 @@ void main() {
         await fakeRepo.signOut();
         await tester.pumpAndSettle();
 
-        expect(
-          find.byKey(const ValueKey('login_route_placeholder')),
-          findsOneWidget,
-        );
+        expect(find.byType(LoginScreen), findsOneWidget);
       },
     );
   });

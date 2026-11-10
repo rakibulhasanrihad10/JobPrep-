@@ -165,4 +165,176 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authResetPasswordRouteTitle => 'Reset Password';
+
+  @override
+  String get authSignInTitle => 'Welcome back';
+
+  @override
+  String get authSignInSubtitle =>
+      'Sign in to manage your job circulars and exam prep';
+
+  @override
+  String get authSignUpTitle => 'Create your account';
+
+  @override
+  String get authSignUpSubtitle =>
+      'Start tracking circulars and study progress securely';
+
+  @override
+  String get authForgotPasswordTitle => 'Reset your password';
+
+  @override
+  String get authForgotPasswordSubtitle =>
+      'Enter your email and we will send a password reset link';
+
+  @override
+  String get authResetPasswordTitle => 'Set a new password';
+
+  @override
+  String get authResetPasswordSubtitle =>
+      'Choose a strong password of at least 8 characters';
+
+  @override
+  String get authEmailLabel => 'Email address';
+
+  @override
+  String get authEmailHint => 'you@example.com';
+
+  @override
+  String get authPasswordLabel => 'Password';
+
+  @override
+  String get authPasswordHint => 'Enter your password';
+
+  @override
+  String get authNewPasswordLabel => 'New password';
+
+  @override
+  String get authNewPasswordHint => 'At least 8 characters';
+
+  @override
+  String get authConfirmPasswordLabel => 'Confirm new password';
+
+  @override
+  String get authConfirmPasswordHint => 'Re-enter your new password';
+
+  @override
+  String get authPasswordMinLengthHelper => 'Must be at least 8 characters';
+
+  @override
+  String get authShowPasswordTooltip => 'Show password';
+
+  @override
+  String get authHidePasswordTooltip => 'Hide password';
+
+  @override
+  String get authSignInButton => 'Sign in';
+
+  @override
+  String get authCreateAccountButton => 'Create account';
+
+  @override
+  String get authSendResetLinkButton => 'Send reset link';
+
+  @override
+  String get authUpdatePasswordButton => 'Update password';
+
+  @override
+  String get authContinueWithGoogle => 'Continue with Google';
+
+  @override
+  String get authOrDivider => 'or';
+
+  @override
+  String get authForgotPasswordLink => 'Forgot password?';
+
+  @override
+  String get authBackToSignIn => 'Back to sign in';
+
+  @override
+  String get authNoAccountPrompt => 'Don\'t have an account?';
+
+  @override
+  String get authAlreadyHaveAccountPrompt => 'Already have an account?';
+
+  @override
+  String get authSwitchToSignUp => 'Create account';
+
+  @override
+  String get authSwitchToSignIn => 'Sign in';
+
+  @override
+  String get authCheckEmailTitle => 'Check your email';
+
+  @override
+  String authCheckEmailMessage(String email) {
+    return 'We sent a confirmation link to $email. Open the link in your inbox to confirm your account before signing in.';
+  }
+
+  @override
+  String get authResetLinkSentTitle => 'Reset link sent';
+
+  @override
+  String authResetLinkSentMessage(String email) {
+    return 'If an account exists for $email, we sent instructions to reset your password.';
+  }
+
+  @override
+  String get authPasswordUpdatedTitle => 'Password updated';
+
+  @override
+  String get authPasswordUpdatedMessage =>
+      'Your password has been updated successfully. You can now continue to your dashboard.';
+
+  @override
+  String get authContinueToDashboard => 'Continue to dashboard';
+
+  @override
+  String get authValidationEmailRequired => 'Please enter your email address.';
+
+  @override
+  String get authValidationEmailInvalid =>
+      'Please enter a valid email address.';
+
+  @override
+  String get authValidationPasswordRequired => 'Please enter your password.';
+
+  @override
+  String get authValidationPasswordTooShort =>
+      'Password must be at least 8 characters.';
+
+  @override
+  String get authValidationConfirmPasswordRequired =>
+      'Please confirm your new password.';
+
+  @override
+  String get authValidationPasswordsDoNotMatch => 'Passwords do not match.';
+
+  @override
+  String get authErrorInvalidCredentials =>
+      'Invalid email or password. Please check your details and try again.';
+
+  @override
+  String get authErrorEmailNotConfirmed =>
+      'Please confirm your email address before signing in. Check your inbox for the verification link.';
+
+  @override
+  String get authErrorAccountAlreadyExists =>
+      'An account with this email already exists. Try signing in instead.';
+
+  @override
+  String get authErrorTooManyRequests =>
+      'Too many attempts. Please wait a moment and try again.';
+
+  @override
+  String get authErrorNetwork =>
+      'Network error. Please check your internet connection and try again.';
+
+  @override
+  String get authErrorWeakPassword =>
+      'Your password is too weak. Use at least 8 characters with letters and numbers.';
+
+  @override
+  String get authErrorUnknown =>
+      'Something went wrong during authentication. Please try again.';
 }

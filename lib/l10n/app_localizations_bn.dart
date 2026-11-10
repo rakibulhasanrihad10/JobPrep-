@@ -163,4 +163,178 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get authResetPasswordRouteTitle => 'পাসওয়ার্ড রিসেট';
+
+  @override
+  String get authSignInTitle => 'স্বাগতম';
+
+  @override
+  String get authSignInSubtitle =>
+      'চাকরির সার্কুলার ও পরীক্ষার প্রস্তুতি পরিচালনা করতে সাইন ইন করুন';
+
+  @override
+  String get authSignUpTitle => 'নতুন অ্যাকাউন্ট তৈরি করুন';
+
+  @override
+  String get authSignUpSubtitle =>
+      'সার্কুলার ও পড়াশোনার অগ্রগতি নিরাপদে ট্র্যাক করুন';
+
+  @override
+  String get authForgotPasswordTitle => 'পাসওয়ার্ড রিসেট করুন';
+
+  @override
+  String get authForgotPasswordSubtitle =>
+      'আপনার ইমেইল লিখুন, আমরা পাসওয়ার্ড রিসেট লিংক পাঠাব';
+
+  @override
+  String get authResetPasswordTitle => 'নতুন পাসওয়ার্ড সেট করুন';
+
+  @override
+  String get authResetPasswordSubtitle =>
+      'কমপক্ষে ৮ অক্ষরের একটি শক্তিশালী পাসওয়ার্ড দিন';
+
+  @override
+  String get authEmailLabel => 'ইমেইল ঠিকানা';
+
+  @override
+  String get authEmailHint => 'you@example.com';
+
+  @override
+  String get authPasswordLabel => 'পাসওয়ার্ড';
+
+  @override
+  String get authPasswordHint => 'আপনার পাসওয়ার্ড লিখুন';
+
+  @override
+  String get authNewPasswordLabel => 'নতুন পাসওয়ার্ড';
+
+  @override
+  String get authNewPasswordHint => 'কমপক্ষে ৮ অক্ষর';
+
+  @override
+  String get authConfirmPasswordLabel => 'নতুন পাসওয়ার্ড নিশ্চিত করুন';
+
+  @override
+  String get authConfirmPasswordHint => 'নতুন পাসওয়ার্ডটি আবার লিখুন';
+
+  @override
+  String get authPasswordMinLengthHelper => 'কমপক্ষে ৮ অক্ষরের হতে হবে';
+
+  @override
+  String get authShowPasswordTooltip => 'পাসওয়ার্ড দেখুন';
+
+  @override
+  String get authHidePasswordTooltip => 'পাসওয়ার্ড লুকান';
+
+  @override
+  String get authSignInButton => 'সাইন ইন';
+
+  @override
+  String get authCreateAccountButton => 'অ্যাকাউন্ট তৈরি করুন';
+
+  @override
+  String get authSendResetLinkButton => 'রিসেট লিংক পাঠান';
+
+  @override
+  String get authUpdatePasswordButton => 'পাসওয়ার্ড আপডেট করুন';
+
+  @override
+  String get authContinueWithGoogle => 'Google দিয়ে চালিয়ে যান';
+
+  @override
+  String get authOrDivider => 'অথবা';
+
+  @override
+  String get authForgotPasswordLink => 'পাসওয়ার্ড ভুলে গেছেন?';
+
+  @override
+  String get authBackToSignIn => 'সাইন ইনে ফিরে যান';
+
+  @override
+  String get authNoAccountPrompt => 'অ্যাকাউন্ট নেই?';
+
+  @override
+  String get authAlreadyHaveAccountPrompt => 'ইতিমধ্যেই অ্যাকাউন্ট আছে?';
+
+  @override
+  String get authSwitchToSignUp => 'অ্যাকাউন্ট তৈরি করুন';
+
+  @override
+  String get authSwitchToSignIn => 'সাইন ইন করুন';
+
+  @override
+  String get authCheckEmailTitle => 'আপনার ইমেইল চেক করুন';
+
+  @override
+  String authCheckEmailMessage(String email) {
+    return 'আমরা $email ঠিকানায় একটি কনফার্মেশন লিংক পাঠিয়েছি। সাইন ইন করার আগে ইনবক্স থেকে অ্যাকাউন্টটি নিশ্চিত করুন।';
+  }
+
+  @override
+  String get authResetLinkSentTitle => 'রিসেট লিংক পাঠানো হয়েছে';
+
+  @override
+  String authResetLinkSentMessage(String email) {
+    return '$email ঠিকানায় কোনো অ্যাকাউন্ট থাকলে পাসওয়ার্ড রিসেট নির্দেশনা পাঠানো হয়েছে।';
+  }
+
+  @override
+  String get authPasswordUpdatedTitle => 'পাসওয়ার্ড আপডেট হয়েছে';
+
+  @override
+  String get authPasswordUpdatedMessage =>
+      'আপনার পাসওয়ার্ড সফলভাবে পরিবর্তন হয়েছে। এখন ড্যাশবোর্ডে যেতে পারেন।';
+
+  @override
+  String get authContinueToDashboard => 'ড্যাশবোর্ডে যান';
+
+  @override
+  String get authValidationEmailRequired =>
+      'অনুগ্রহ করে আপনার ইমেইল ঠিকানা লিখুন।';
+
+  @override
+  String get authValidationEmailInvalid =>
+      'অনুগ্রহ করে একটি সঠিক ইমেইল ঠিকানা লিখুন।';
+
+  @override
+  String get authValidationPasswordRequired =>
+      'অনুগ্রহ করে আপনার পাসওয়ার্ড লিখুন।';
+
+  @override
+  String get authValidationPasswordTooShort =>
+      'পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে।';
+
+  @override
+  String get authValidationConfirmPasswordRequired =>
+      'অনুগ্রহ করে নতুন পাসওয়ার্ডটি নিশ্চিত করুন।';
+
+  @override
+  String get authValidationPasswordsDoNotMatch => 'পাসওয়ার্ড দুটি মিলছে না।';
+
+  @override
+  String get authErrorInvalidCredentials =>
+      'ইমেইল বা পাসওয়ার্ড সঠিক নয়। তথ্য যাচাই করে আবার চেষ্টা করুন।';
+
+  @override
+  String get authErrorEmailNotConfirmed =>
+      'সাইন ইন করার আগে আপনার ইমেইল নিশ্চিত করুন। ইনবক্সে পাঠানো ভেরিফিকেশন লিংক দেখুন।';
+
+  @override
+  String get authErrorAccountAlreadyExists =>
+      'এই ইমেইল দিয়ে ইতিমধ্যেই অ্যাকাউন্ট রয়েছে। সাইন ইন করার চেষ্টা করুন।';
+
+  @override
+  String get authErrorTooManyRequests =>
+      'অতিরিক্ত প্রচেষ্টা করা হয়েছে। কিছুক্ষণ অপেক্ষা করে আবার চেষ্টা করুন।';
+
+  @override
+  String get authErrorNetwork =>
+      'নেটওয়ার্ক ত্রুটি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।';
+
+  @override
+  String get authErrorWeakPassword =>
+      'পাসওয়ার্ডটি দুর্বল। অক্ষর ও সংখ্যাসহ কমপক্ষে ৮ অক্ষরের পাসওয়ার্ড দিন।';
+
+  @override
+  String get authErrorUnknown =>
+      'প্রমাণীকরণের সময় একটি ত্রুটি হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।';
 }

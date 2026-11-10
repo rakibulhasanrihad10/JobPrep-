@@ -343,6 +343,312 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reset Password'**
   String get authResetPasswordRouteTitle;
+
+  /// Heading for sign-in mode on login screen
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back'**
+  String get authSignInTitle;
+
+  /// Subtitle for sign-in mode on login screen
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to manage your job circulars and exam prep'**
+  String get authSignInSubtitle;
+
+  /// Heading for sign-up mode on login screen
+  ///
+  /// In en, this message translates to:
+  /// **'Create your account'**
+  String get authSignUpTitle;
+
+  /// Subtitle for sign-up mode on login screen
+  ///
+  /// In en, this message translates to:
+  /// **'Start tracking circulars and study progress securely'**
+  String get authSignUpSubtitle;
+
+  /// Heading for forgot password mode
+  ///
+  /// In en, this message translates to:
+  /// **'Reset your password'**
+  String get authForgotPasswordTitle;
+
+  /// Subtitle for forgot password mode
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email and we will send a password reset link'**
+  String get authForgotPasswordSubtitle;
+
+  /// Heading for /reset-password screen
+  ///
+  /// In en, this message translates to:
+  /// **'Set a new password'**
+  String get authResetPasswordTitle;
+
+  /// Subtitle for /reset-password screen
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a strong password of at least 8 characters'**
+  String get authResetPasswordSubtitle;
+
+  /// Label for email input field
+  ///
+  /// In en, this message translates to:
+  /// **'Email address'**
+  String get authEmailLabel;
+
+  /// Hint for email input field
+  ///
+  /// In en, this message translates to:
+  /// **'you@example.com'**
+  String get authEmailHint;
+
+  /// Label for password input field
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get authPasswordLabel;
+
+  /// Hint for password input field
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your password'**
+  String get authPasswordHint;
+
+  /// Label for new password field on reset password screen
+  ///
+  /// In en, this message translates to:
+  /// **'New password'**
+  String get authNewPasswordLabel;
+
+  /// Hint for new password field
+  ///
+  /// In en, this message translates to:
+  /// **'At least 8 characters'**
+  String get authNewPasswordHint;
+
+  /// Label for confirm new password field
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm new password'**
+  String get authConfirmPasswordLabel;
+
+  /// Hint for confirm new password field
+  ///
+  /// In en, this message translates to:
+  /// **'Re-enter your new password'**
+  String get authConfirmPasswordHint;
+
+  /// Helper text showing minimum 8 character requirement
+  ///
+  /// In en, this message translates to:
+  /// **'Must be at least 8 characters'**
+  String get authPasswordMinLengthHelper;
+
+  /// Tooltip for revealing obscured password
+  ///
+  /// In en, this message translates to:
+  /// **'Show password'**
+  String get authShowPasswordTooltip;
+
+  /// Tooltip for hiding visible password
+  ///
+  /// In en, this message translates to:
+  /// **'Hide password'**
+  String get authHidePasswordTooltip;
+
+  /// Primary button label for sign in
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get authSignInButton;
+
+  /// Primary button label for sign up
+  ///
+  /// In en, this message translates to:
+  /// **'Create account'**
+  String get authCreateAccountButton;
+
+  /// Primary button label for sending password reset email
+  ///
+  /// In en, this message translates to:
+  /// **'Send reset link'**
+  String get authSendResetLinkButton;
+
+  /// Primary button label for saving new password
+  ///
+  /// In en, this message translates to:
+  /// **'Update password'**
+  String get authUpdatePasswordButton;
+
+  /// Google OAuth button label
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get authContinueWithGoogle;
+
+  /// Short separator label between email auth and OAuth
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get authOrDivider;
+
+  /// Link label to enter forgot password flow
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get authForgotPasswordLink;
+
+  /// Button or link label to return to sign in
+  ///
+  /// In en, this message translates to:
+  /// **'Back to sign in'**
+  String get authBackToSignIn;
+
+  /// Prompt preceding create account toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get authNoAccountPrompt;
+
+  /// Prompt preceding sign in toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get authAlreadyHaveAccountPrompt;
+
+  /// Toggle link text switching to sign up mode
+  ///
+  /// In en, this message translates to:
+  /// **'Create account'**
+  String get authSwitchToSignUp;
+
+  /// Toggle link text switching to sign in mode
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get authSwitchToSignIn;
+
+  /// Success title shown after sign up
+  ///
+  /// In en, this message translates to:
+  /// **'Check your email'**
+  String get authCheckEmailTitle;
+
+  /// Success body shown after sign up
+  ///
+  /// In en, this message translates to:
+  /// **'We sent a confirmation link to {email}. Open the link in your inbox to confirm your account before signing in.'**
+  String authCheckEmailMessage(String email);
+
+  /// Success title shown after sending password reset email
+  ///
+  /// In en, this message translates to:
+  /// **'Reset link sent'**
+  String get authResetLinkSentTitle;
+
+  /// Success body shown after sending password reset email
+  ///
+  /// In en, this message translates to:
+  /// **'If an account exists for {email}, we sent instructions to reset your password.'**
+  String authResetLinkSentMessage(String email);
+
+  /// Success title shown after updating password
+  ///
+  /// In en, this message translates to:
+  /// **'Password updated'**
+  String get authPasswordUpdatedTitle;
+
+  /// Success body shown after updating password
+  ///
+  /// In en, this message translates to:
+  /// **'Your password has been updated successfully. You can now continue to your dashboard.'**
+  String get authPasswordUpdatedMessage;
+
+  /// Button label after password update completes
+  ///
+  /// In en, this message translates to:
+  /// **'Continue to dashboard'**
+  String get authContinueToDashboard;
+
+  /// Validation error when email is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email address.'**
+  String get authValidationEmailRequired;
+
+  /// Validation error when email format is invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address.'**
+  String get authValidationEmailInvalid;
+
+  /// Validation error when password is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your password.'**
+  String get authValidationPasswordRequired;
+
+  /// Validation error when password is fewer than 8 characters
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters.'**
+  String get authValidationPasswordTooShort;
+
+  /// Validation error when confirm password is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm your new password.'**
+  String get authValidationConfirmPasswordRequired;
+
+  /// Validation error when password confirmation does not match
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match.'**
+  String get authValidationPasswordsDoNotMatch;
+
+  /// Localized message for InvalidCredentialsFailure
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email or password. Please check your details and try again.'**
+  String get authErrorInvalidCredentials;
+
+  /// Localized message for EmailNotConfirmedFailure
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm your email address before signing in. Check your inbox for the verification link.'**
+  String get authErrorEmailNotConfirmed;
+
+  /// Localized message for AccountAlreadyExistsFailure
+  ///
+  /// In en, this message translates to:
+  /// **'An account with this email already exists. Try signing in instead.'**
+  String get authErrorAccountAlreadyExists;
+
+  /// Localized message for TooManyRequestsFailure
+  ///
+  /// In en, this message translates to:
+  /// **'Too many attempts. Please wait a moment and try again.'**
+  String get authErrorTooManyRequests;
+
+  /// Localized message for NetworkFailure
+  ///
+  /// In en, this message translates to:
+  /// **'Network error. Please check your internet connection and try again.'**
+  String get authErrorNetwork;
+
+  /// Localized message for WeakPasswordFailure
+  ///
+  /// In en, this message translates to:
+  /// **'Your password is too weak. Use at least 8 characters with letters and numbers.'**
+  String get authErrorWeakPassword;
+
+  /// Localized message for UnknownAuthFailure
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong during authentication. Please try again.'**
+  String get authErrorUnknown;
 }
 
 class _AppLocalizationsDelegate

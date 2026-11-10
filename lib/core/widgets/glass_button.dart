@@ -143,7 +143,7 @@ class _GlassButtonState extends ConsumerState<GlassButton> {
               widget.leading!,
               SizedBox(width: spacing.sm),
             ],
-            widget.child,
+            Flexible(child: widget.child),
             if (widget.trailing != null) ...[
               SizedBox(width: spacing.sm),
               widget.trailing!,
