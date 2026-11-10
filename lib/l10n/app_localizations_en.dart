@@ -337,4 +337,260 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get authErrorUnknown =>
       'Something went wrong during authentication. Please try again.';
+
+  @override
+  String circularsCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount circulars',
+      one: '$formattedCount circular',
+      zero: 'No circulars',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get circularsSearchHint => 'Search by title or organization...';
+
+  @override
+  String get circularsClearSearchTooltip => 'Clear search';
+
+  @override
+  String get circularsFilterToggle => 'Filters';
+
+  @override
+  String get circularsClearFilters => 'Clear filters';
+
+  @override
+  String get circularsSortLabel => 'Sort by';
+
+  @override
+  String get circularsRefreshTooltip => 'Refresh circulars';
+
+  @override
+  String get circularsSortDeadline => 'Deadline (soonest)';
+
+  @override
+  String get circularsSortPriority => 'Priority (highest)';
+
+  @override
+  String get circularsSortCreated => 'Created date (newest)';
+
+  @override
+  String get circularsSortUpdated => 'Recently updated';
+
+  @override
+  String get circularsSortTitle => 'Title (A-Z)';
+
+  @override
+  String get circularsFilterSector => 'Sector';
+
+  @override
+  String get circularsFilterApplicationStatus => 'Application Status';
+
+  @override
+  String get circularsFilterPriority => 'Priority';
+
+  @override
+  String get circularsFilterWorkflowStatus => 'Workflow Status';
+
+  @override
+  String get circularsFilterDeadlineRange => 'Deadline Range';
+
+  @override
+  String get circularsDeadlineRangeAll => 'All deadlines';
+
+  @override
+  String get circularsDeadlineRangeUnder3OrOverdue => 'Under 3 days / Overdue';
+
+  @override
+  String get circularsDeadlineRange3To7Days => '3 to 7 days';
+
+  @override
+  String get circularsDeadlineRangeOver7Days => 'Above 7 days';
+
+  @override
+  String get circularsDeadlineRangeNext30Days => 'Next 30 days';
+
+  @override
+  String get circularsDeadlineFromLabel => 'From';
+
+  @override
+  String get circularsDeadlineToLabel => 'To';
+
+  @override
+  String get circularsClearDatesTooltip => 'Clear date range';
+
+  @override
+  String get circularsColumnTitle => 'Circular & Organization';
+
+  @override
+  String get circularsColumnSector => 'Sector';
+
+  @override
+  String get circularsColumnDeadline => 'Deadline';
+
+  @override
+  String get circularsColumnVacancies => 'Vacancies';
+
+  @override
+  String get circularsColumnStatus => 'Status';
+
+  @override
+  String circularsVacanciesCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount posts',
+      one: '$formattedCount post',
+      zero: 'No vacancies',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get circularsVacanciesUnspecified => 'Not specified';
+
+  @override
+  String get circularsOrganizationUnspecified => 'Organization not specified';
+
+  @override
+  String get circularsCountdownNoDeadline => 'No deadline';
+
+  @override
+  String get circularsCountdownToday => 'Due today';
+
+  @override
+  String circularsCountdownDaysLeft(int days, String formattedDays) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$formattedDays days left',
+      one: '$formattedDays day left',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String circularsCountdownOverdueDays(int days, String formattedDays) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$formattedDays days overdue',
+      one: '$formattedDays day overdue',
+      zero: 'Expired today',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get circularSectorGovernment => 'Government';
+
+  @override
+  String get circularSectorBcs => 'BCS';
+
+  @override
+  String get circularSectorBank => 'Bank';
+
+  @override
+  String get circularSectorAutonomous => 'Autonomous';
+
+  @override
+  String get circularSectorPrivate => 'Private';
+
+  @override
+  String get circularSectorNgo => 'NGO';
+
+  @override
+  String get circularSectorDefense => 'Defense';
+
+  @override
+  String get circularSectorOther => 'Other';
+
+  @override
+  String get circularAppStatusNotApplied => 'Not applied';
+
+  @override
+  String get circularAppStatusInProgress => 'In progress';
+
+  @override
+  String get circularAppStatusApplied => 'Applied';
+
+  @override
+  String get circularAppStatusFeePaid => 'Fee paid';
+
+  @override
+  String get circularAppStatusExempt => 'Fee exempt';
+
+  @override
+  String get circularAppStatusMissed => 'Missed';
+
+  @override
+  String get circularAppStatusNotApplicable => 'N/A';
+
+  @override
+  String get circularPriorityLow => 'Low';
+
+  @override
+  String get circularPriorityMedium => 'Medium';
+
+  @override
+  String get circularPriorityHigh => 'High';
+
+  @override
+  String get circularPriorityUrgent => 'Urgent';
+
+  @override
+  String get circularWorkflowSaved => 'Saved';
+
+  @override
+  String get circularWorkflowPreparing => 'Preparing';
+
+  @override
+  String get circularWorkflowApplied => 'Applied';
+
+  @override
+  String get circularWorkflowExamUpcoming => 'Exam upcoming';
+
+  @override
+  String get circularWorkflowResultAwaited => 'Result awaited';
+
+  @override
+  String get circularWorkflowArchived => 'Archived';
+
+  @override
+  String get circularsLoadingMessage => 'Loading job circulars...';
+
+  @override
+  String get circularsEmptyTitle => 'No job circulars yet';
+
+  @override
+  String get circularsEmptyMessage =>
+      'Tracked job circulars will appear here once added.';
+
+  @override
+  String get circularsFilteredEmptyTitle => 'No matching circulars';
+
+  @override
+  String get circularsFilteredEmptyMessage =>
+      'Try adjusting your search query or clearing active filters.';
+
+  @override
+  String get circularsErrorTitle => 'Unable to load circulars';
+
+  @override
+  String get circularsRetryButton => 'Retry';
+
+  @override
+  String get circularsErrorPermission =>
+      'You do not have permission to view these circulars.';
+
+  @override
+  String get circularsErrorNetwork =>
+      'Network error while loading circulars. Check your connection and try again.';
+
+  @override
+  String get circularsErrorUnknown =>
+      'Something went wrong while loading circulars. Please try again.';
 }

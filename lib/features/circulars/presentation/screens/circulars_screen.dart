@@ -1,64 +1,136 @@
-import 'package:flutter/material.dart';
-import 'package:job_prep/core/localization/app_localizations_extension.dart';
-import 'package:job_prep/core/theme/app_theme_tokens.dart';
-import 'package:job_prep/core/widgets/fade_slide_in.dart';
-import 'package:job_prep/core/widgets/glass_card.dart';
+import 'dart:async' show unawaited;
 
-/// Screen for tracking government and private job circulars.
-class CircularsScreen extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/theme/app_theme_tokens.dart';
+import 'package:job_prep/features/circulars/domain/entities/circular.dart';
+import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
+import 'package:job_prep/features/circulars/presentation/widgets/circulars_card_list.dart';
+import 'package:job_prep/features/circulars/presentation/widgets/circulars_states.dart';
+import 'package:job_prep/features/circulars/presentation/widgets/circulars_table_view.dart';
+import 'package:job_prep/features/circulars/presentation/widgets/circulars_toolbar.dart';
+
+/// Main job circulars directory screen with responsive desktop table vs mobile
+/// card list, search, multi-criteria filtering, and sorting.
+class CircularsScreen extends ConsumerStatefulWidget {
   /// Creates a [CircularsScreen].
-  const CircularsScreen({super.key});
+  const CircularsScreen({
+    super.key,
+    this.onTapCircular,
+  });
+
+  /// Optional callback invoked when a circular row or card is tapped.
+  final ValueChanged<Circular>? onTapCircular;
+
+  @override
+  ConsumerState<CircularsScreen> createState() => _CircularsScreenState();
+}
+
+class _CircularsScreenState extends ConsumerState<CircularsScreen> {
+  late final TextEditingController _searchController;
+  late final AppLifecycleListener _lifecycleListener;
+  bool _filtersExpanded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController(
+      text: ref.read(circularSearchQueryProvider),
+    );
+    _lifecycleListener = AppLifecycleListener(
+      onResume: () {
+        if (mounted) {
+          setState(() {});
+        }
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _lifecycleListener.dispose();
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _clearAllFilters() {
+    _searchController.clear();
+    ref.read(circularSearchQueryProvider.notifier).clear();
+    ref.read(circularFilterProvider.notifier).reset();
+  }
+
+  void _refresh() {
+    unawaited(ref.read(circularsListProvider.notifier).refresh());
+  }
 
   @override
   Widget build(BuildContext context) {
     final tokens = context.tokens;
     final spacing = tokens.spacing;
-    final textStyles = tokens.textStyles;
-    final l10n = context.l10n;
+    final breakpoints = tokens.breakpoints;
+
+    final rawListAsync = ref.watch(circularsListProvider);
+    final filteredAsync = ref.watch(filteredCircularsProvider);
+    final effectiveFilter = ref.watch(effectiveCircularFilterProvider);
+    final viewportWidth = MediaQuery.sizeOf(context).width;
+
+    final visibleCount = filteredAsync.asData?.value.length ?? 0;
 
     return SingleChildScrollView(
       padding: spacing.insetsAllXl,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          FadeSlideIn(
-            child: Text(
-              l10n.circularsTitle,
-              style: textStyles.headlineMedium,
-            ),
-          ),
-          SizedBox(height: spacing.xs),
-          FadeSlideIn(
-            index: 1,
-            child: Text(
-              l10n.circularsSubtitle,
-              style: textStyles.bodyMedium,
-            ),
-          ),
-          SizedBox(height: spacing.xl),
-          FadeSlideIn(
-            index: 2,
-            child: GlassCard(
-              padding: spacing.insetsAllLg,
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.work_outline,
-                    color: tokens.colors.goldAccent,
-                    size: 28,
-                  ),
-                  SizedBox(width: spacing.md),
-                  Expanded(
-                    child: Text(
-                      l10n.circularsSubtitle,
-                      style: textStyles.bodyMedium,
-                    ),
-                  ),
-                ],
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final useDesktopTable = breakpoints.isExpanded(viewportWidth) &&
+              !breakpoints.isCompact(constraints.maxWidth);
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              CircularsToolbar(
+                searchController: _searchController,
+                visibleCount: visibleCount,
+                filter: effectiveFilter,
+                filtersExpanded: _filtersExpanded,
+                onToggleFilters: () {
+                  setState(() => _filtersExpanded = !_filtersExpanded);
+                },
+                onClearAllFilters: _clearAllFilters,
+                onRefresh: _refresh,
               ),
-            ),
-          ),
-        ],
+              SizedBox(height: spacing.lg),
+              filteredAsync.when(
+                loading: () => const CircularsLoadingState(),
+                error: (error, _) => CircularsErrorState(
+                  error: error,
+                  onRetry: _refresh,
+                ),
+                data: (circulars) {
+                  if (circulars.isEmpty) {
+                    final hasRawItems =
+                        rawListAsync.asData?.value.isNotEmpty ?? false;
+                    return CircularsEmptyState(
+                      isFiltered:
+                          hasRawItems || effectiveFilter.hasActiveFilters,
+                      onClearFilters: _clearAllFilters,
+                    );
+                  }
+
+                  if (useDesktopTable) {
+                    return CircularsTableView(
+                      circulars: circulars,
+                      onTapCircular: widget.onTapCircular,
+                    );
+                  }
+
+                  return CircularsCardList(
+                    circulars: circulars,
+                    onTapCircular: widget.onTapCircular,
+                  );
+                },
+              ),
+            ],
+          );
+        },
       ),
     );
   }

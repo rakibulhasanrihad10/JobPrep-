@@ -14,6 +14,8 @@ class CircularFilter {
     this.applicationStatuses = const {},
     this.priorities = const {},
     this.deadlineBand,
+    this.deadlineFrom,
+    this.deadlineTo,
     this.onlyQuickCapture,
     this.includeArchived = true,
     this.sortBy = CircularSortOption.deadlineAsc,
@@ -39,6 +41,12 @@ class CircularFilter {
   /// Optional urgency band filter derived from deadline countdown.
   final DeadlineColorBand? deadlineBand;
 
+  /// Optional inclusive lower bound calendar date for deadlines.
+  final DateTime? deadlineFrom;
+
+  /// Optional inclusive upper bound calendar date for deadlines.
+  final DateTime? deadlineTo;
+
   /// When non-null, restricts results to matching quick-capture flag.
   final bool? onlyQuickCapture;
 
@@ -56,6 +64,8 @@ class CircularFilter {
       applicationStatuses.isNotEmpty ||
       priorities.isNotEmpty ||
       deadlineBand != null ||
+      deadlineFrom != null ||
+      deadlineTo != null ||
       onlyQuickCapture != null ||
       !includeArchived;
 
@@ -67,6 +77,8 @@ class CircularFilter {
     Set<ApplicationStatus>? applicationStatuses,
     Set<CircularPriority>? priorities,
     Object? deadlineBand = _unset,
+    Object? deadlineFrom = _unset,
+    Object? deadlineTo = _unset,
     Object? onlyQuickCapture = _unset,
     bool? includeArchived,
     CircularSortOption? sortBy,
@@ -85,6 +97,12 @@ class CircularFilter {
       deadlineBand: identical(deadlineBand, _unset)
           ? this.deadlineBand
           : deadlineBand as DeadlineColorBand?,
+      deadlineFrom: identical(deadlineFrom, _unset)
+          ? this.deadlineFrom
+          : deadlineFrom as DateTime?,
+      deadlineTo: identical(deadlineTo, _unset)
+          ? this.deadlineTo
+          : deadlineTo as DateTime?,
       onlyQuickCapture: identical(onlyQuickCapture, _unset)
           ? this.onlyQuickCapture
           : onlyQuickCapture as bool?,
@@ -129,6 +147,9 @@ class CircularFilter {
           return false;
         }
       }
+      if (!_matchesDateRange(circular.deadline, now: now)) {
+        return false;
+      }
       if (normalizedQuery.isNotEmpty &&
           !_matchesQuery(circular, normalizedQuery)) {
         return false;
@@ -137,6 +158,35 @@ class CircularFilter {
     }).toList();
 
     return List.unmodifiable(filtered..sort(_comparator));
+  }
+
+  bool _matchesDateRange(DateTime? deadline, {DateTime? now}) {
+    if (deadlineFrom == null && deadlineTo == null) return true;
+    if (deadline == null) return false;
+
+    final referenceNow = now ?? DateTime.now();
+    final aligned = referenceNow.isUtc ? deadline.toUtc() : deadline.toLocal();
+    final target = DateTime.utc(aligned.year, aligned.month, aligned.day);
+
+    if (deadlineFrom != null) {
+      final from = DateTime.utc(
+        deadlineFrom!.year,
+        deadlineFrom!.month,
+        deadlineFrom!.day,
+      );
+      if (target.isBefore(from)) return false;
+    }
+
+    if (deadlineTo != null) {
+      final to = DateTime.utc(
+        deadlineTo!.year,
+        deadlineTo!.month,
+        deadlineTo!.day,
+      );
+      if (target.isAfter(to)) return false;
+    }
+
+    return true;
   }
 
   bool _matchesQuery(Circular circular, String query) {
@@ -158,6 +208,7 @@ class CircularFilter {
   int _comparator(Circular a, Circular b) {
     return switch (sortBy) {
       CircularSortOption.deadlineAsc => _compareDeadlineAsc(a, b),
+      CircularSortOption.createdDesc => _compareCreatedDesc(a, b),
       CircularSortOption.updatedDesc => _compareUpdatedDesc(a, b),
       CircularSortOption.priorityDesc => _comparePriorityDesc(a, b),
       CircularSortOption.titleAsc =>
@@ -175,6 +226,19 @@ class CircularFilter {
     if (bDeadline == null) return -1;
     final result = aDeadline.compareTo(bDeadline);
     if (result != 0) return result;
+    return a.title.toLowerCase().compareTo(b.title.toLowerCase());
+  }
+
+  int _compareCreatedDesc(Circular a, Circular b) {
+    final aTime = a.createdAt ?? a.updatedAt;
+    final bTime = b.createdAt ?? b.updatedAt;
+    if (aTime == null && bTime == null) {
+      return a.title.toLowerCase().compareTo(b.title.toLowerCase());
+    }
+    if (aTime == null) return 1;
+    if (bTime == null) return -1;
+    final diff = bTime.compareTo(aTime);
+    if (diff != 0) return diff;
     return a.title.toLowerCase().compareTo(b.title.toLowerCase());
   }
 
@@ -205,6 +269,8 @@ class CircularFilter {
         setEquals(other.applicationStatuses, applicationStatuses) &&
         setEquals(other.priorities, priorities) &&
         other.deadlineBand == deadlineBand &&
+        other.deadlineFrom == deadlineFrom &&
+        other.deadlineTo == deadlineTo &&
         other.onlyQuickCapture == onlyQuickCapture &&
         other.includeArchived == includeArchived &&
         other.sortBy == sortBy;
@@ -218,6 +284,8 @@ class CircularFilter {
         Object.hashAllUnordered(applicationStatuses),
         Object.hashAllUnordered(priorities),
         deadlineBand,
+        deadlineFrom,
+        deadlineTo,
         onlyQuickCapture,
         includeArchived,
         sortBy,

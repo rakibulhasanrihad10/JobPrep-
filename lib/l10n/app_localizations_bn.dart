@@ -337,4 +337,261 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get authErrorUnknown =>
       'প্রমাণীকরণের সময় একটি ত্রুটি হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।';
+
+  @override
+  String circularsCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি সার্কুলার',
+      one: '$formattedCountটি সার্কুলার',
+      zero: 'কোনো সার্কুলার নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get circularsSearchHint => 'শিরোনাম বা প্রতিষ্ঠান দিয়ে খুঁজুন...';
+
+  @override
+  String get circularsClearSearchTooltip => 'অনুসন্ধান মুছুন';
+
+  @override
+  String get circularsFilterToggle => 'ফিল্টার';
+
+  @override
+  String get circularsClearFilters => 'ফিল্টার মুছুন';
+
+  @override
+  String get circularsSortLabel => 'সাজান';
+
+  @override
+  String get circularsRefreshTooltip => 'সার্কুলার রিফ্রেশ করুন';
+
+  @override
+  String get circularsSortDeadline => 'শেষ তারিখ (আগে)';
+
+  @override
+  String get circularsSortPriority => 'অগ্রাধিকার (সর্বোচ্চ)';
+
+  @override
+  String get circularsSortCreated => 'তৈরির তারিখ (নতুন)';
+
+  @override
+  String get circularsSortUpdated => 'সর্বশেষ আপডেট';
+
+  @override
+  String get circularsSortTitle => 'শিরোনাম (A-Z)';
+
+  @override
+  String get circularsFilterSector => 'খাত';
+
+  @override
+  String get circularsFilterApplicationStatus => 'আবেদনের অবস্থা';
+
+  @override
+  String get circularsFilterPriority => 'অগ্রাধিকার';
+
+  @override
+  String get circularsFilterWorkflowStatus => 'কার্যপ্রবাহ';
+
+  @override
+  String get circularsFilterDeadlineRange => 'সময়সীমা';
+
+  @override
+  String get circularsDeadlineRangeAll => 'সব সময়সীমা';
+
+  @override
+  String get circularsDeadlineRangeUnder3OrOverdue =>
+      '৩ দিনের কম / মেয়াদোত্তীর্ণ';
+
+  @override
+  String get circularsDeadlineRange3To7Days => '৩ থেকে ৭ দিন';
+
+  @override
+  String get circularsDeadlineRangeOver7Days => '৭ দিনের বেশি';
+
+  @override
+  String get circularsDeadlineRangeNext30Days => 'আগামী ৩০ দিন';
+
+  @override
+  String get circularsDeadlineFromLabel => 'শুরু';
+
+  @override
+  String get circularsDeadlineToLabel => 'শেষ';
+
+  @override
+  String get circularsClearDatesTooltip => 'তারিখের পরিসর মুছুন';
+
+  @override
+  String get circularsColumnTitle => 'সার্কুলার ও প্রতিষ্ঠান';
+
+  @override
+  String get circularsColumnSector => 'খাত';
+
+  @override
+  String get circularsColumnDeadline => 'শেষ তারিখ';
+
+  @override
+  String get circularsColumnVacancies => 'শূন্যপদ';
+
+  @override
+  String get circularsColumnStatus => 'অবস্থা';
+
+  @override
+  String circularsVacanciesCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি পদ',
+      one: '$formattedCountটি পদ',
+      zero: 'শূন্যপদ নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get circularsVacanciesUnspecified => 'উল্লেখ নেই';
+
+  @override
+  String get circularsOrganizationUnspecified => 'প্রতিষ্ঠান উল্লেখ নেই';
+
+  @override
+  String get circularsCountdownNoDeadline => 'শেষ তারিখ নেই';
+
+  @override
+  String get circularsCountdownToday => 'আজই শেষ দিন';
+
+  @override
+  String circularsCountdownDaysLeft(int days, String formattedDays) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$formattedDays দিন বাকি',
+      one: '$formattedDays দিন বাকি',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String circularsCountdownOverdueDays(int days, String formattedDays) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$formattedDays দিন মেয়াদোত্তীর্ণ',
+      one: '$formattedDays দিন মেয়াদোত্তীর্ণ',
+      zero: 'আজ মেয়াদ শেষ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get circularSectorGovernment => 'সরকারি';
+
+  @override
+  String get circularSectorBcs => 'বিসিএস';
+
+  @override
+  String get circularSectorBank => 'ব্যাংক';
+
+  @override
+  String get circularSectorAutonomous => 'স্বায়ত্তশাসিত';
+
+  @override
+  String get circularSectorPrivate => 'বেসরকারি';
+
+  @override
+  String get circularSectorNgo => 'এনজিও';
+
+  @override
+  String get circularSectorDefense => 'প্রতিরক্ষা';
+
+  @override
+  String get circularSectorOther => 'অন্যান্য';
+
+  @override
+  String get circularAppStatusNotApplied => 'আবেদন করা হয়নি';
+
+  @override
+  String get circularAppStatusInProgress => 'চলমান';
+
+  @override
+  String get circularAppStatusApplied => 'আবেদিত';
+
+  @override
+  String get circularAppStatusFeePaid => 'ফি পরিশোধিত';
+
+  @override
+  String get circularAppStatusExempt => 'ফি মওকুফ';
+
+  @override
+  String get circularAppStatusMissed => 'সময় শেষ';
+
+  @override
+  String get circularAppStatusNotApplicable => 'প্রযোজ্য নয়';
+
+  @override
+  String get circularPriorityLow => 'নিম্ন';
+
+  @override
+  String get circularPriorityMedium => 'মাঝারি';
+
+  @override
+  String get circularPriorityHigh => 'উচ্চ';
+
+  @override
+  String get circularPriorityUrgent => 'জরুরি';
+
+  @override
+  String get circularWorkflowSaved => 'সংরক্ষিত';
+
+  @override
+  String get circularWorkflowPreparing => 'প্রস্তুতি চলছে';
+
+  @override
+  String get circularWorkflowApplied => 'আবেদিত';
+
+  @override
+  String get circularWorkflowExamUpcoming => 'পরীক্ষা আসন্ন';
+
+  @override
+  String get circularWorkflowResultAwaited => 'ফলাফলের অপেক্ষায়';
+
+  @override
+  String get circularWorkflowArchived => 'আর্কাইভড';
+
+  @override
+  String get circularsLoadingMessage => 'চাকরির সার্কুলার লোড হচ্ছে...';
+
+  @override
+  String get circularsEmptyTitle => 'এখনো কোনো সার্কুলার নেই';
+
+  @override
+  String get circularsEmptyMessage =>
+      'ট্র্যাক করা চাকরির সার্কুলারগুলো যোগ করার পর এখানে দেখা যাবে।';
+
+  @override
+  String get circularsFilteredEmptyTitle => 'মিল পাওয়া কোনো সার্কুলার নেই';
+
+  @override
+  String get circularsFilteredEmptyMessage =>
+      'অনুসন্ধানের শব্দ পরিবর্তন করুন অথবা সক্রিয় ফিল্টারগুলো মুছুন।';
+
+  @override
+  String get circularsErrorTitle => 'সার্কুলার লোড করা যায়নি';
+
+  @override
+  String get circularsRetryButton => 'আবার চেষ্টা করুন';
+
+  @override
+  String get circularsErrorPermission =>
+      'এই সার্কুলারগুলো দেখার অনুমতি আপনার নেই।';
+
+  @override
+  String get circularsErrorNetwork =>
+      'সার্কুলার লোড করার সময় নেটওয়ার্ক ত্রুটি হয়েছে। সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।';
+
+  @override
+  String get circularsErrorUnknown =>
+      'সার্কুলার লোড করতে একটি সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।';
 }

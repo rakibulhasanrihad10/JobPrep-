@@ -415,5 +415,325 @@
   "authErrorUnknown": "Something went wrong during authentication. Please try again.",
   "@authErrorUnknown": {
     "description": "Localized message for UnknownAuthFailure"
+  },
+  "circularsCount": "{count, plural, =0{No circulars} =1{{formattedCount} circular} other{{formattedCount} circulars}}",
+  "@circularsCount": {
+    "description": "Pluralized count of visible job circulars",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "circularsSearchHint": "Search by title or organization...",
+  "@circularsSearchHint": {
+    "description": "Placeholder text for circular search input"
+  },
+  "circularsClearSearchTooltip": "Clear search",
+  "@circularsClearSearchTooltip": {
+    "description": "Tooltip on search clear button"
+  },
+  "circularsFilterToggle": "Filters",
+  "@circularsFilterToggle": {
+    "description": "Button label to expand or collapse filter controls"
+  },
+  "circularsClearFilters": "Clear filters",
+  "@circularsClearFilters": {
+    "description": "Button label to clear active filters and search"
+  },
+  "circularsSortLabel": "Sort by",
+  "@circularsSortLabel": {
+    "description": "Label prefix for circular sort dropdown"
+  },
+  "circularsRefreshTooltip": "Refresh circulars",
+  "@circularsRefreshTooltip": {
+    "description": "Tooltip on circular list refresh action"
+  },
+  "circularsSortDeadline": "Deadline (soonest)",
+  "@circularsSortDeadline": {
+    "description": "Sort option ordering soonest deadlines first"
+  },
+  "circularsSortPriority": "Priority (highest)",
+  "@circularsSortPriority": {
+    "description": "Sort option ordering highest priority first"
+  },
+  "circularsSortCreated": "Created date (newest)",
+  "@circularsSortCreated": {
+    "description": "Sort option ordering newest created circulars first"
+  },
+  "circularsSortUpdated": "Recently updated",
+  "@circularsSortUpdated": {
+    "description": "Sort option ordering recently updated circulars first"
+  },
+  "circularsSortTitle": "Title (A-Z)",
+  "@circularsSortTitle": {
+    "description": "Sort option ordering titles alphabetically"
+  },
+  "circularsFilterSector": "Sector",
+  "@circularsFilterSector": {
+    "description": "Filter group header for employment sector"
+  },
+  "circularsFilterApplicationStatus": "Application Status",
+  "@circularsFilterApplicationStatus": {
+    "description": "Filter group header for application status"
+  },
+  "circularsFilterPriority": "Priority",
+  "@circularsFilterPriority": {
+    "description": "Filter group header for circular priority"
+  },
+  "circularsFilterWorkflowStatus": "Workflow Status",
+  "@circularsFilterWorkflowStatus": {
+    "description": "Filter group header for workflow status"
+  },
+  "circularsFilterDeadlineRange": "Deadline Range",
+  "@circularsFilterDeadlineRange": {
+    "description": "Filter group header for deadline range and urgency"
+  },
+  "circularsDeadlineRangeAll": "All deadlines",
+  "@circularsDeadlineRangeAll": {
+    "description": "Preset chip clearing deadline filter"
+  },
+  "circularsDeadlineRangeUnder3OrOverdue": "Under 3 days / Overdue",
+  "@circularsDeadlineRangeUnder3OrOverdue": {
+    "description": "Preset chip for red band circulars"
+  },
+  "circularsDeadlineRange3To7Days": "3 to 7 days",
+  "@circularsDeadlineRange3To7Days": {
+    "description": "Preset chip for amber band circulars"
+  },
+  "circularsDeadlineRangeOver7Days": "Above 7 days",
+  "@circularsDeadlineRangeOver7Days": {
+    "description": "Preset chip for green band circulars"
+  },
+  "circularsDeadlineRangeNext30Days": "Next 30 days",
+  "@circularsDeadlineRangeNext30Days": {
+    "description": "Preset chip filtering deadlines in the next 30 calendar days"
+  },
+  "circularsDeadlineFromLabel": "From",
+  "@circularsDeadlineFromLabel": {
+    "description": "Start date picker button label"
+  },
+  "circularsDeadlineToLabel": "To",
+  "@circularsDeadlineToLabel": {
+    "description": "End date picker button label"
+  },
+  "circularsClearDatesTooltip": "Clear date range",
+  "@circularsClearDatesTooltip": {
+    "description": "Tooltip to clear selected custom deadline dates"
+  },
+  "circularsColumnTitle": "Circular & Organization",
+  "@circularsColumnTitle": {
+    "description": "Desktop table column header for title and organization"
+  },
+  "circularsColumnSector": "Sector",
+  "@circularsColumnSector": {
+    "description": "Desktop table column header for sector"
+  },
+  "circularsColumnDeadline": "Deadline",
+  "@circularsColumnDeadline": {
+    "description": "Desktop table column header for deadline countdown"
+  },
+  "circularsColumnVacancies": "Vacancies",
+  "@circularsColumnVacancies": {
+    "description": "Desktop table column header for vacancy count"
+  },
+  "circularsColumnStatus": "Status",
+  "@circularsColumnStatus": {
+    "description": "Desktop table column header for circular status"
+  },
+  "circularsVacanciesCount": "{count, plural, =0{No vacancies} =1{{formattedCount} post} other{{formattedCount} posts}}",
+  "@circularsVacanciesCount": {
+    "description": "Pluralized vacancy post count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "circularsVacanciesUnspecified": "Not specified",
+  "@circularsVacanciesUnspecified": {
+    "description": "Fallback when vacancy count is unset"
+  },
+  "circularsOrganizationUnspecified": "Organization not specified",
+  "@circularsOrganizationUnspecified": {
+    "description": "Fallback when organization name is unset"
+  },
+  "circularsCountdownNoDeadline": "No deadline",
+  "@circularsCountdownNoDeadline": {
+    "description": "Countdown label when circular has no deadline"
+  },
+  "circularsCountdownToday": "Due today",
+  "@circularsCountdownToday": {
+    "description": "Countdown label when deadline is later today"
+  },
+  "circularsCountdownDaysLeft": "{days, plural, =1{{formattedDays} day left} other{{formattedDays} days left}}",
+  "@circularsCountdownDaysLeft": {
+    "description": "Pluralized days remaining until deadline",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "formattedDays": {
+        "type": "String"
+      }
+    }
+  },
+  "circularsCountdownOverdueDays": "{days, plural, =0{Expired today} =1{{formattedDays} day overdue} other{{formattedDays} days overdue}}",
+  "@circularsCountdownOverdueDays": {
+    "description": "Pluralized overdue countdown label",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "formattedDays": {
+        "type": "String"
+      }
+    }
+  },
+  "circularSectorGovernment": "Government",
+  "@circularSectorGovernment": {
+    "description": "Label for government sector"
+  },
+  "circularSectorBcs": "BCS",
+  "@circularSectorBcs": {
+    "description": "Label for BCS sector"
+  },
+  "circularSectorBank": "Bank",
+  "@circularSectorBank": {
+    "description": "Label for bank sector"
+  },
+  "circularSectorAutonomous": "Autonomous",
+  "@circularSectorAutonomous": {
+    "description": "Label for autonomous sector"
+  },
+  "circularSectorPrivate": "Private",
+  "@circularSectorPrivate": {
+    "description": "Label for private sector"
+  },
+  "circularSectorNgo": "NGO",
+  "@circularSectorNgo": {
+    "description": "Label for NGO sector"
+  },
+  "circularSectorDefense": "Defense",
+  "@circularSectorDefense": {
+    "description": "Label for defense sector"
+  },
+  "circularSectorOther": "Other",
+  "@circularSectorOther": {
+    "description": "Label for other sector"
+  },
+  "circularAppStatusNotApplied": "Not applied",
+  "@circularAppStatusNotApplied": {
+    "description": "Label for not_applied application status"
+  },
+  "circularAppStatusInProgress": "In progress",
+  "@circularAppStatusInProgress": {
+    "description": "Label for in_progress application status"
+  },
+  "circularAppStatusApplied": "Applied",
+  "@circularAppStatusApplied": {
+    "description": "Label for applied application status"
+  },
+  "circularAppStatusFeePaid": "Fee paid",
+  "@circularAppStatusFeePaid": {
+    "description": "Label for fee_paid application status"
+  },
+  "circularAppStatusExempt": "Fee exempt",
+  "@circularAppStatusExempt": {
+    "description": "Label for exempt application status"
+  },
+  "circularAppStatusMissed": "Missed",
+  "@circularAppStatusMissed": {
+    "description": "Label for missed application status"
+  },
+  "circularAppStatusNotApplicable": "N/A",
+  "@circularAppStatusNotApplicable": {
+    "description": "Label for not_applicable application status"
+  },
+  "circularPriorityLow": "Low",
+  "@circularPriorityLow": {
+    "description": "Label for low circular priority"
+  },
+  "circularPriorityMedium": "Medium",
+  "@circularPriorityMedium": {
+    "description": "Label for medium circular priority"
+  },
+  "circularPriorityHigh": "High",
+  "@circularPriorityHigh": {
+    "description": "Label for high circular priority"
+  },
+  "circularPriorityUrgent": "Urgent",
+  "@circularPriorityUrgent": {
+    "description": "Label for urgent circular priority"
+  },
+  "circularWorkflowSaved": "Saved",
+  "@circularWorkflowSaved": {
+    "description": "Label for saved workflow status"
+  },
+  "circularWorkflowPreparing": "Preparing",
+  "@circularWorkflowPreparing": {
+    "description": "Label for preparing workflow status"
+  },
+  "circularWorkflowApplied": "Applied",
+  "@circularWorkflowApplied": {
+    "description": "Label for applied workflow status"
+  },
+  "circularWorkflowExamUpcoming": "Exam upcoming",
+  "@circularWorkflowExamUpcoming": {
+    "description": "Label for exam_upcoming workflow status"
+  },
+  "circularWorkflowResultAwaited": "Result awaited",
+  "@circularWorkflowResultAwaited": {
+    "description": "Label for result_awaited workflow status"
+  },
+  "circularWorkflowArchived": "Archived",
+  "@circularWorkflowArchived": {
+    "description": "Label for archived workflow status"
+  },
+  "circularsLoadingMessage": "Loading job circulars...",
+  "@circularsLoadingMessage": {
+    "description": "Message displayed while circulars are loading"
+  },
+  "circularsEmptyTitle": "No job circulars yet",
+  "@circularsEmptyTitle": {
+    "description": "Title shown when the circular list has no entries"
+  },
+  "circularsEmptyMessage": "Tracked job circulars will appear here once added.",
+  "@circularsEmptyMessage": {
+    "description": "Body shown when the circular list has no entries"
+  },
+  "circularsFilteredEmptyTitle": "No matching circulars",
+  "@circularsFilteredEmptyTitle": {
+    "description": "Title shown when active search or filters return zero matches"
+  },
+  "circularsFilteredEmptyMessage": "Try adjusting your search query or clearing active filters.",
+  "@circularsFilteredEmptyMessage": {
+    "description": "Body shown when active search or filters return zero matches"
+  },
+  "circularsErrorTitle": "Unable to load circulars",
+  "@circularsErrorTitle": {
+    "description": "Heading shown when loading circulars fails"
+  },
+  "circularsRetryButton": "Retry",
+  "@circularsRetryButton": {
+    "description": "Retry action button label on circular load failure"
+  },
+  "circularsErrorPermission": "You do not have permission to view these circulars.",
+  "@circularsErrorPermission": {
+    "description": "Localized error when permission is denied"
+  },
+  "circularsErrorNetwork": "Network error while loading circulars. Check your connection and try again.",
+  "@circularsErrorNetwork": {
+    "description": "Localized error when network request fails"
+  },
+  "circularsErrorUnknown": "Something went wrong while loading circulars. Please try again.",
+  "@circularsErrorUnknown": {
+    "description": "Fallback localized error message for circular list failure"
   }
 }

@@ -44,21 +44,27 @@ class CircularsListNotifier extends AsyncNotifier<List<Circular>> {
   }
 }
 
+Duration? _noRetry(int retryCount, Object error) => null;
+
 /// Provides the full list of circulars for the active user.
 final circularsListProvider =
     AsyncNotifierProvider<CircularsListNotifier, List<Circular>>(
   CircularsListNotifier.new,
+  retry: _noRetry,
 );
 
 /// Fetches a single [Circular] by its identifier, including nested exam dates
 /// and attached file metadata.
 final FutureProviderFamily<Circular?, String> circularByIdProvider =
-    FutureProvider.family<Circular?, String>((ref, id) {
-  ref.watch(currentUserProvider.select((user) => user?.id));
-  if (id.trim().isEmpty) return Future<Circular?>.value();
-  final repository = ref.watch(circularRepositoryProvider);
-  return repository.getCircularById(id);
-});
+    FutureProvider.family<Circular?, String>(
+  (ref, id) {
+    ref.watch(currentUserProvider.select((user) => user?.id));
+    if (id.trim().isEmpty) return Future<Circular?>.value();
+    final repository = ref.watch(circularRepositoryProvider);
+    return repository.getCircularById(id);
+  },
+  retry: _noRetry,
+);
 
 /// Notifier holding the active circular search query text.
 class CircularSearchQueryNotifier extends Notifier<String> {
@@ -117,6 +123,11 @@ class CircularFilterNotifier extends Notifier<CircularFilter> {
   /// Filters circulars by deadline urgency [band], or clears when `null`.
   void setDeadlineBand(DeadlineColorBand? band) {
     state = state.copyWith(deadlineBand: band);
+  }
+
+  /// Sets an inclusive calendar date range (`from`..`to`) for deadlines.
+  void setDeadlineRange({DateTime? from, DateTime? to}) {
+    state = state.copyWith(deadlineFrom: from, deadlineTo: to);
   }
 
   /// Filters by quick-capture status when non-null, or clears when `null`.

@@ -649,6 +649,438 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Something went wrong during authentication. Please try again.'**
   String get authErrorUnknown;
+
+  /// Pluralized count of visible job circulars
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No circulars} =1{{formattedCount} circular} other{{formattedCount} circulars}}'**
+  String circularsCount(int count, String formattedCount);
+
+  /// Placeholder text for circular search input
+  ///
+  /// In en, this message translates to:
+  /// **'Search by title or organization...'**
+  String get circularsSearchHint;
+
+  /// Tooltip on search clear button
+  ///
+  /// In en, this message translates to:
+  /// **'Clear search'**
+  String get circularsClearSearchTooltip;
+
+  /// Button label to expand or collapse filter controls
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get circularsFilterToggle;
+
+  /// Button label to clear active filters and search
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filters'**
+  String get circularsClearFilters;
+
+  /// Label prefix for circular sort dropdown
+  ///
+  /// In en, this message translates to:
+  /// **'Sort by'**
+  String get circularsSortLabel;
+
+  /// Tooltip on circular list refresh action
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh circulars'**
+  String get circularsRefreshTooltip;
+
+  /// Sort option ordering soonest deadlines first
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline (soonest)'**
+  String get circularsSortDeadline;
+
+  /// Sort option ordering highest priority first
+  ///
+  /// In en, this message translates to:
+  /// **'Priority (highest)'**
+  String get circularsSortPriority;
+
+  /// Sort option ordering newest created circulars first
+  ///
+  /// In en, this message translates to:
+  /// **'Created date (newest)'**
+  String get circularsSortCreated;
+
+  /// Sort option ordering recently updated circulars first
+  ///
+  /// In en, this message translates to:
+  /// **'Recently updated'**
+  String get circularsSortUpdated;
+
+  /// Sort option ordering titles alphabetically
+  ///
+  /// In en, this message translates to:
+  /// **'Title (A-Z)'**
+  String get circularsSortTitle;
+
+  /// Filter group header for employment sector
+  ///
+  /// In en, this message translates to:
+  /// **'Sector'**
+  String get circularsFilterSector;
+
+  /// Filter group header for application status
+  ///
+  /// In en, this message translates to:
+  /// **'Application Status'**
+  String get circularsFilterApplicationStatus;
+
+  /// Filter group header for circular priority
+  ///
+  /// In en, this message translates to:
+  /// **'Priority'**
+  String get circularsFilterPriority;
+
+  /// Filter group header for workflow status
+  ///
+  /// In en, this message translates to:
+  /// **'Workflow Status'**
+  String get circularsFilterWorkflowStatus;
+
+  /// Filter group header for deadline range and urgency
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline Range'**
+  String get circularsFilterDeadlineRange;
+
+  /// Preset chip clearing deadline filter
+  ///
+  /// In en, this message translates to:
+  /// **'All deadlines'**
+  String get circularsDeadlineRangeAll;
+
+  /// Preset chip for red band circulars
+  ///
+  /// In en, this message translates to:
+  /// **'Under 3 days / Overdue'**
+  String get circularsDeadlineRangeUnder3OrOverdue;
+
+  /// Preset chip for amber band circulars
+  ///
+  /// In en, this message translates to:
+  /// **'3 to 7 days'**
+  String get circularsDeadlineRange3To7Days;
+
+  /// Preset chip for green band circulars
+  ///
+  /// In en, this message translates to:
+  /// **'Above 7 days'**
+  String get circularsDeadlineRangeOver7Days;
+
+  /// Preset chip filtering deadlines in the next 30 calendar days
+  ///
+  /// In en, this message translates to:
+  /// **'Next 30 days'**
+  String get circularsDeadlineRangeNext30Days;
+
+  /// Start date picker button label
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get circularsDeadlineFromLabel;
+
+  /// End date picker button label
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get circularsDeadlineToLabel;
+
+  /// Tooltip to clear selected custom deadline dates
+  ///
+  /// In en, this message translates to:
+  /// **'Clear date range'**
+  String get circularsClearDatesTooltip;
+
+  /// Desktop table column header for title and organization
+  ///
+  /// In en, this message translates to:
+  /// **'Circular & Organization'**
+  String get circularsColumnTitle;
+
+  /// Desktop table column header for sector
+  ///
+  /// In en, this message translates to:
+  /// **'Sector'**
+  String get circularsColumnSector;
+
+  /// Desktop table column header for deadline countdown
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline'**
+  String get circularsColumnDeadline;
+
+  /// Desktop table column header for vacancy count
+  ///
+  /// In en, this message translates to:
+  /// **'Vacancies'**
+  String get circularsColumnVacancies;
+
+  /// Desktop table column header for circular status
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get circularsColumnStatus;
+
+  /// Pluralized vacancy post count
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No vacancies} =1{{formattedCount} post} other{{formattedCount} posts}}'**
+  String circularsVacanciesCount(int count, String formattedCount);
+
+  /// Fallback when vacancy count is unset
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get circularsVacanciesUnspecified;
+
+  /// Fallback when organization name is unset
+  ///
+  /// In en, this message translates to:
+  /// **'Organization not specified'**
+  String get circularsOrganizationUnspecified;
+
+  /// Countdown label when circular has no deadline
+  ///
+  /// In en, this message translates to:
+  /// **'No deadline'**
+  String get circularsCountdownNoDeadline;
+
+  /// Countdown label when deadline is later today
+  ///
+  /// In en, this message translates to:
+  /// **'Due today'**
+  String get circularsCountdownToday;
+
+  /// Pluralized days remaining until deadline
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{{formattedDays} day left} other{{formattedDays} days left}}'**
+  String circularsCountdownDaysLeft(int days, String formattedDays);
+
+  /// Pluralized overdue countdown label
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =0{Expired today} =1{{formattedDays} day overdue} other{{formattedDays} days overdue}}'**
+  String circularsCountdownOverdueDays(int days, String formattedDays);
+
+  /// Label for government sector
+  ///
+  /// In en, this message translates to:
+  /// **'Government'**
+  String get circularSectorGovernment;
+
+  /// Label for BCS sector
+  ///
+  /// In en, this message translates to:
+  /// **'BCS'**
+  String get circularSectorBcs;
+
+  /// Label for bank sector
+  ///
+  /// In en, this message translates to:
+  /// **'Bank'**
+  String get circularSectorBank;
+
+  /// Label for autonomous sector
+  ///
+  /// In en, this message translates to:
+  /// **'Autonomous'**
+  String get circularSectorAutonomous;
+
+  /// Label for private sector
+  ///
+  /// In en, this message translates to:
+  /// **'Private'**
+  String get circularSectorPrivate;
+
+  /// Label for NGO sector
+  ///
+  /// In en, this message translates to:
+  /// **'NGO'**
+  String get circularSectorNgo;
+
+  /// Label for defense sector
+  ///
+  /// In en, this message translates to:
+  /// **'Defense'**
+  String get circularSectorDefense;
+
+  /// Label for other sector
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get circularSectorOther;
+
+  /// Label for not_applied application status
+  ///
+  /// In en, this message translates to:
+  /// **'Not applied'**
+  String get circularAppStatusNotApplied;
+
+  /// Label for in_progress application status
+  ///
+  /// In en, this message translates to:
+  /// **'In progress'**
+  String get circularAppStatusInProgress;
+
+  /// Label for applied application status
+  ///
+  /// In en, this message translates to:
+  /// **'Applied'**
+  String get circularAppStatusApplied;
+
+  /// Label for fee_paid application status
+  ///
+  /// In en, this message translates to:
+  /// **'Fee paid'**
+  String get circularAppStatusFeePaid;
+
+  /// Label for exempt application status
+  ///
+  /// In en, this message translates to:
+  /// **'Fee exempt'**
+  String get circularAppStatusExempt;
+
+  /// Label for missed application status
+  ///
+  /// In en, this message translates to:
+  /// **'Missed'**
+  String get circularAppStatusMissed;
+
+  /// Label for not_applicable application status
+  ///
+  /// In en, this message translates to:
+  /// **'N/A'**
+  String get circularAppStatusNotApplicable;
+
+  /// Label for low circular priority
+  ///
+  /// In en, this message translates to:
+  /// **'Low'**
+  String get circularPriorityLow;
+
+  /// Label for medium circular priority
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
+  String get circularPriorityMedium;
+
+  /// Label for high circular priority
+  ///
+  /// In en, this message translates to:
+  /// **'High'**
+  String get circularPriorityHigh;
+
+  /// Label for urgent circular priority
+  ///
+  /// In en, this message translates to:
+  /// **'Urgent'**
+  String get circularPriorityUrgent;
+
+  /// Label for saved workflow status
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get circularWorkflowSaved;
+
+  /// Label for preparing workflow status
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing'**
+  String get circularWorkflowPreparing;
+
+  /// Label for applied workflow status
+  ///
+  /// In en, this message translates to:
+  /// **'Applied'**
+  String get circularWorkflowApplied;
+
+  /// Label for exam_upcoming workflow status
+  ///
+  /// In en, this message translates to:
+  /// **'Exam upcoming'**
+  String get circularWorkflowExamUpcoming;
+
+  /// Label for result_awaited workflow status
+  ///
+  /// In en, this message translates to:
+  /// **'Result awaited'**
+  String get circularWorkflowResultAwaited;
+
+  /// Label for archived workflow status
+  ///
+  /// In en, this message translates to:
+  /// **'Archived'**
+  String get circularWorkflowArchived;
+
+  /// Message displayed while circulars are loading
+  ///
+  /// In en, this message translates to:
+  /// **'Loading job circulars...'**
+  String get circularsLoadingMessage;
+
+  /// Title shown when the circular list has no entries
+  ///
+  /// In en, this message translates to:
+  /// **'No job circulars yet'**
+  String get circularsEmptyTitle;
+
+  /// Body shown when the circular list has no entries
+  ///
+  /// In en, this message translates to:
+  /// **'Tracked job circulars will appear here once added.'**
+  String get circularsEmptyMessage;
+
+  /// Title shown when active search or filters return zero matches
+  ///
+  /// In en, this message translates to:
+  /// **'No matching circulars'**
+  String get circularsFilteredEmptyTitle;
+
+  /// Body shown when active search or filters return zero matches
+  ///
+  /// In en, this message translates to:
+  /// **'Try adjusting your search query or clearing active filters.'**
+  String get circularsFilteredEmptyMessage;
+
+  /// Heading shown when loading circulars fails
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load circulars'**
+  String get circularsErrorTitle;
+
+  /// Retry action button label on circular load failure
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get circularsRetryButton;
+
+  /// Localized error when permission is denied
+  ///
+  /// In en, this message translates to:
+  /// **'You do not have permission to view these circulars.'**
+  String get circularsErrorPermission;
+
+  /// Localized error when network request fails
+  ///
+  /// In en, this message translates to:
+  /// **'Network error while loading circulars. Check your connection and try again.'**
+  String get circularsErrorNetwork;
+
+  /// Fallback localized error message for circular list failure
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong while loading circulars. Please try again.'**
+  String get circularsErrorUnknown;
 }
 
 class _AppLocalizationsDelegate

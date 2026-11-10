@@ -24,6 +24,7 @@ void main() {
         workflowStatus: CircularWorkflowStatus.preparing,
         applicationStatus: ApplicationStatus.applied,
         notes: 'Focus on Constitution and Liberation War',
+        createdAt: DateTime.utc(2026, 11, 1, 9),
         updatedAt: DateTime.utc(2026, 11, 9, 10),
       ),
       Circular(
@@ -36,6 +37,7 @@ void main() {
         priority: CircularPriority.high,
         syllabus: 'Analytical ability and quantitative aptitude',
         isQuickCapture: true,
+        createdAt: DateTime.utc(2026, 11, 5, 9),
         updatedAt: DateTime.utc(2026, 11, 10, 8),
       ),
       Circular(
@@ -48,6 +50,7 @@ void main() {
         workflowStatus: CircularWorkflowStatus.archived,
         applicationStatus: ApplicationStatus.exempt,
         instructions: 'Send portfolio link with CV',
+        createdAt: DateTime.utc(2026, 11, 3, 9),
         updatedAt: DateTime.utc(2026, 11, 8, 9),
       ),
       Circular(
@@ -56,6 +59,7 @@ void main() {
         title: 'Rolling Fellowship',
         sector: CircularSector.ngo,
         organizationName: 'BRAC',
+        createdAt: DateTime.utc(2026, 11, 10, 10),
         updatedAt: DateTime.utc(2026, 11, 10, 11), // no deadline -> none band
       ),
     ];
@@ -192,6 +196,17 @@ void main() {
       );
       container.read(circularFilterProvider.notifier).setDeadlineBand(null);
 
+      // Inclusive calendar date range (Nov 13..Nov 20 matches c-2)
+      container.read(circularFilterProvider.notifier).setDeadlineRange(
+            from: DateTime.utc(2026, 11, 13),
+            to: DateTime.utc(2026, 11, 20),
+          );
+      expect(
+        container.read(filteredCircularsProvider).requireValue.map((c) => c.id),
+        equals(['c-2']),
+      );
+      container.read(circularFilterProvider.notifier).setDeadlineRange();
+
       // Quick capture & archive exclusion
       container
           .read(circularFilterProvider.notifier)
@@ -234,6 +249,12 @@ void main() {
       expect(
         container.read(filteredCircularsProvider).requireValue.map((c) => c.id),
         equals(['c-1', 'c-2', 'c-3', 'c-4']),
+      );
+
+      filterNotifier.setSortBy(CircularSortOption.createdDesc);
+      expect(
+        container.read(filteredCircularsProvider).requireValue.map((c) => c.id),
+        equals(['c-4', 'c-2', 'c-3', 'c-1']),
       );
 
       filterNotifier.setSortBy(CircularSortOption.updatedDesc);

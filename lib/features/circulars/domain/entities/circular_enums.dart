@@ -163,6 +163,7 @@ enum CircularWorkflowStatus {
 /// Sorting options supported by circular list views and filters.
 enum CircularSortOption {
   deadlineAsc,
+  createdDesc,
   updatedDesc,
   priorityDesc,
   titleAsc,
