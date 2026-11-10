@@ -74,6 +74,9 @@ jobs:
       - name: Verify clean database reset and migrations
         run: supabase db reset
 
+      - name: Run pgTAP database and RLS tests
+        run: supabase test db
+
       - name: Stop Supabase instance
         if: always()
         run: supabase stop

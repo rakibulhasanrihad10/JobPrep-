@@ -50,7 +50,8 @@ void main() {
           .listSync()
           .whereType<File>()
           .where((f) => f.path.endsWith('.sql'))
-          .toList();
+          .toList()
+        ..sort((a, b) => a.path.compareTo(b.path));
 
       expect(
         sqlFiles,
