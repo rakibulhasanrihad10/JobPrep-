@@ -193,5 +193,13 @@
         "type": "String"
       }
     }
+  },
+  "authLoginRouteTitle": "Sign In",
+  "@authLoginRouteTitle": {
+    "description": "Title on the login route placeholder"
+  },
+  "authResetPasswordRouteTitle": "Reset Password",
+  "@authResetPasswordRouteTitle": {
+    "description": "Title on the reset password route placeholder"
   }
 }

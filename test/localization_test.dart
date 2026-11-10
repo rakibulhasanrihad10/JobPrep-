@@ -7,10 +7,12 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:job_prep/core/localization/formatters.dart';
 import 'package:job_prep/core/localization/locale_controller.dart';
 import 'package:job_prep/core/storage/preferences_provider.dart';
+import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../scripts/check_hardcoded_strings.dart';
+import 'features/auth/fake_auth_repository.dart';
 
 void main() {
   setUpAll(() async {
@@ -175,11 +177,14 @@ void main() {
         kLocaleStorageKey: 'en',
       });
       final prefs = await SharedPreferences.getInstance();
+      final authRepo = FakeAuthRepository.authenticated();
+      addTearDown(authRepo.dispose);
 
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
+            authRepositoryProvider.overrideWithValue(authRepo),
           ],
           child: const JobPrepApp(),
         ),
@@ -215,11 +220,14 @@ void main() {
         kLocaleStorageKey: 'bn',
       });
       final prefs = await SharedPreferences.getInstance();
+      final authRepo = FakeAuthRepository.authenticated();
+      addTearDown(authRepo.dispose);
 
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
+            authRepositoryProvider.overrideWithValue(authRepo),
           ],
           child: const JobPrepApp(),
         ),
@@ -255,11 +263,14 @@ void main() {
         kLocaleStorageKey: 'en',
       });
       final prefs = await SharedPreferences.getInstance();
+      final authRepo = FakeAuthRepository.authenticated();
+      addTearDown(authRepo.dispose);
 
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
+            authRepositoryProvider.overrideWithValue(authRepo),
           ],
           child: const JobPrepApp(),
         ),

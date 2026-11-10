@@ -15,3 +15,18 @@ final supabaseClientProvider = Provider<SupabaseClient>((ref) {
   }
   return Supabase.instance.client;
 });
+
+/// Nullable provider that returns [SupabaseClient] when configured or
+/// overridden in tests, or `null` when running without backend credentials.
+final optionalSupabaseClientProvider = Provider<SupabaseClient?>((ref) {
+  try {
+    return ref.watch(supabaseClientProvider);
+  } on Object catch (error) {
+    if (!EnvConfig.isSupabaseConfigured &&
+        (error is StateError ||
+            error.toString().contains('Supabase is not configured'))) {
+      return null;
+    }
+    rethrow;
+  }
+});

@@ -38,5 +38,7 @@
   "settingsTitle": "সেটিংস",
   "settingsSubtitle": "অ্যাপের পছন্দসমূহ, উপস্থিতি ও কনফিগারেশন",
   "navShortcutTooltip": "শর্টকাট: {shortcut}",
-  "navShortcutBadge": "Alt+{digit}"
+  "navShortcutBadge": "Alt+{digit}",
+  "authLoginRouteTitle": "সাইন ইন",
+  "authResetPasswordRouteTitle": "পাসওয়ার্ড রিসেট"
 }

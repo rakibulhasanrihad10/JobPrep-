@@ -10,6 +10,7 @@ import 'package:job_prep/core/theme/theme_controller.dart';
 import 'package:job_prep/core/widgets/app_bottom_nav_bar.dart';
 import 'package:job_prep/core/widgets/app_nav_rail.dart';
 import 'package:job_prep/core/widgets/app_sidebar_nav.dart';
+import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/features/calendar/presentation/screens/calendar_screen.dart';
 import 'package:job_prep/features/circulars/presentation/screens/circulars_screen.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
@@ -17,6 +18,8 @@ import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
 import 'package:job_prep/features/settings/presentation/screens/settings_screen.dart';
 import 'package:job_prep/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../features/auth/fake_auth_repository.dart';
 
 void main() {
   late SharedPreferences prefs;
@@ -46,10 +49,14 @@ void main() {
       await prefs.remove(kLocaleStorageKey);
     }
 
+    final authRepo = FakeAuthRepository.authenticated();
+    addTearDown(authRepo.dispose);
+
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
           sharedPreferencesProvider.overrideWithValue(prefs),
+          authRepositoryProvider.overrideWithValue(authRepo),
         ],
         child: const JobPrepApp(),
       ),

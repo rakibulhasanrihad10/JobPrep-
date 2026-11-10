@@ -169,6 +169,49 @@ Pass your project credentials at build or runtime using `--dart-define`:
 
 ---
 
+### 4. Authentication Providers & Redirect URLs
+
+Configure authentication providers and allowed redirect URLs in the **Supabase Dashboard** before testing Email or Google sign-in:
+
+#### Email Provider Setup
+1. Open your Supabase project dashboard and go to **Authentication** > **Providers** > **Email**.
+2. Ensure **Enable Email provider** is toggled on.
+3. Configure **Confirm email**:
+   - **Recommended for staging/prod**: Keep **Confirm email** enabled so new users confirm ownership before signing in.
+   - **Local dev**: `supabase/config.toml` captures outbound confirmation and password-reset emails in local Inbucket (`http://127.0.0.1:54324`).
+4. Ensure password policy requirements match your environment (e.g., minimum password length of 8+ characters).
+
+#### Google OAuth Provider Setup
+1. Open [Google Cloud Console](https://console.cloud.google.com/) and select or create a project.
+2. Navigate to **APIs & Services** > **OAuth consent screen** and configure the app name, support email, and scopes (`openid`, `email`, `profile`).
+3. Navigate to **APIs & Services** > **Credentials** > **Create Credentials** > **OAuth client ID** (**Web application**).
+4. Under **Authorized JavaScript origins**, add your web app origins:
+   - Local dev: `http://localhost:3000`, `http://127.0.0.1:3000` (or the port used by `flutter run`)
+   - Production: `https://<your-production-domain>`
+5. Under **Authorized redirect URIs**, add the Supabase OAuth callback URL shown in your Supabase dashboard:
+   - `https://<your-project-id>.supabase.co/auth/v1/callback`
+6. Copy the generated **Client ID** and **Client Secret**.
+7. In the **Supabase Dashboard**, go to **Authentication** > **Providers** > **Google**:
+   - Enable the **Google** provider.
+   - Paste the **Client ID** and **Client Secret**, then click **Save**.
+
+#### URL Configuration & Redirect URLs
+1. In the **Supabase Dashboard**, go to **Authentication** > **URL Configuration**.
+2. Set **Site URL** to your primary web application URL:
+   - Production: `https://<your-production-domain>`
+   - Local testing: `http://127.0.0.1:3000` (or fixed `--web-port` if using `flutter run -d chrome --web-port=3000`)
+3. Under **Redirect URLs**, add every allowed post-auth and password-recovery destination:
+   - `http://localhost:3000/**`
+   - `http://127.0.0.1:3000/**`
+   - `https://<your-production-domain>/`
+   - `https://<your-production-domain>/reset-password`
+   - Mobile deep links (for future Android builds): `io.supabase.jobprep://login-callback` and `io.supabase.jobprep://reset-password`
+
+> [!TIP]
+> When running Flutter Web locally with `flutter run`, pass `--web-port=3000` so the local browser origin stays deterministic and matches Supabase's allow-listed Redirect URLs (`http://localhost:3000/reset-password` and `http://localhost:3000`).
+
+---
+
 ## Git Workflow & Conventions
 
 - **Branches**:

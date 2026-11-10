@@ -1,21 +1,29 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:job_prep/core/theme/theme_controller.dart';
+import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:job_prep/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'features/auth/fake_auth_repository.dart';
+
 void main() {
   testWidgets(
-    'JobPrepApp initializes with ProviderScope and renders Dashboard',
+    'JobPrepApp initializes with ProviderScope and renders Dashboard when '
+    'authenticated',
     (tester) async {
       SharedPreferences.setMockInitialValues({});
       final prefs = await SharedPreferences.getInstance();
+      final authRepo = FakeAuthRepository.authenticated();
+      addTearDown(authRepo.dispose);
 
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
+            authRepositoryProvider.overrideWithValue(authRepo),
           ],
           child: const JobPrepApp(),
         ),
@@ -24,6 +32,33 @@ void main() {
 
       expect(find.byType(DashboardScreen), findsOneWidget);
       expect(find.text('JobPrep Dashboard'), findsOneWidget);
+    },
+  );
+
+  testWidgets(
+    'JobPrepApp redirects to login placeholder when signed out',
+    (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      final prefs = await SharedPreferences.getInstance();
+      final authRepo = FakeAuthRepository();
+      addTearDown(authRepo.dispose);
+
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            sharedPreferencesProvider.overrideWithValue(prefs),
+            authRepositoryProvider.overrideWithValue(authRepo),
+          ],
+          child: const JobPrepApp(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(
+        find.byKey(const ValueKey('login_route_placeholder')),
+        findsOneWidget,
+      );
+      expect(find.byType(DashboardScreen), findsNothing);
     },
   );
 }

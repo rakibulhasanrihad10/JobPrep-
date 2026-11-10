@@ -157,4 +157,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String navShortcutBadge(String digit) {
     return 'Alt+$digit';
   }
+
+  @override
+  String get authLoginRouteTitle => 'সাইন ইন';
+
+  @override
+  String get authResetPasswordRouteTitle => 'পাসওয়ার্ড রিসেট';
 }

@@ -159,4 +159,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String navShortcutBadge(String digit) {
     return 'Alt+$digit';
   }
+
+  @override
+  String get authLoginRouteTitle => 'Sign In';
+
+  @override
+  String get authResetPasswordRouteTitle => 'Reset Password';
 }

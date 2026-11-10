@@ -1,21 +1,107 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:job_prep/core/localization/app_localizations_extension.dart';
+import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/app_scaffold.dart';
+import 'package:job_prep/features/auth/domain/entities/auth_session_state.dart';
+import 'package:job_prep/features/auth/presentation/navigation/auth_redirect.dart';
+import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/features/calendar/presentation/screens/calendar_screen.dart';
 import 'package:job_prep/features/circulars/presentation/screens/circulars_screen.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
 import 'package:job_prep/features/settings/presentation/screens/settings_screen.dart';
 
+class _AuthRouterRefreshListenable extends ChangeNotifier {
+  _AuthRouterRefreshListenable(this._ref) {
+    _subscription = _ref.listen<AuthSessionState>(
+      authSessionProvider,
+      (previous, next) {
+        if (previous != next) {
+          notifyListeners();
+        }
+      },
+    );
+  }
+
+  final Ref _ref;
+  late final ProviderSubscription<AuthSessionState> _subscription;
+
+  @override
+  void dispose() {
+    _subscription.close();
+    super.dispose();
+  }
+}
+
+class _AuthRoutePlaceholderScaffold extends StatelessWidget {
+  const _AuthRoutePlaceholderScaffold({
+    required this.isResetPassword,
+    super.key,
+  });
+
+  final bool isResetPassword;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final textStyles = context.textStyles;
+    final l10n = context.l10n;
+
+    return Scaffold(
+      backgroundColor: colors.background,
+      body: Center(
+        child: Text(
+          isResetPassword
+              ? l10n.authResetPasswordRouteTitle
+              : l10n.authLoginRouteTitle,
+          style: textStyles.headlineMedium,
+        ),
+      ),
+    );
+  }
+}
+
 /// Provider for application routing using [GoRouter] configured with
-/// [ShellRoute].
+/// [ShellRoute] and reactive auth redirects.
 final routerProvider = Provider<GoRouter>((ref) {
-  return GoRouter(
-    initialLocation: '/dashboard',
+  final refreshListenable = _AuthRouterRefreshListenable(ref);
+  ref.onDispose(refreshListenable.dispose);
+
+  final router = GoRouter(
+    initialLocation: AppRoutePaths.dashboard,
+    refreshListenable: refreshListenable,
+    redirect: (context, state) {
+      return resolveAuthRedirect(
+        authState: ref.read(authSessionProvider),
+        location: state.uri.path,
+      );
+    },
     routes: [
       GoRoute(
-        path: '/',
-        redirect: (context, state) => '/dashboard',
+        path: AppRoutePaths.root,
+        redirect: (context, state) => AppRoutePaths.dashboard,
+      ),
+      GoRoute(
+        path: AppRoutePaths.login,
+        name: 'login',
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: _AuthRoutePlaceholderScaffold(
+            key: ValueKey('login_route_placeholder'),
+            isResetPassword: false,
+          ),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutePaths.resetPassword,
+        name: 'reset_password',
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: _AuthRoutePlaceholderScaffold(
+            key: ValueKey('reset_password_route_placeholder'),
+            isResetPassword: true,
+          ),
+        ),
       ),
       ShellRoute(
         builder: (context, state, child) {
@@ -26,7 +112,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         },
         routes: [
           GoRoute(
-            path: '/dashboard',
+            path: AppRoutePaths.dashboard,
             name: 'dashboard',
             pageBuilder: (context, state) => const NoTransitionPage(
               child: DashboardScreen(),
@@ -64,4 +150,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
     ],
   );
+
+  ref.onDispose(router.dispose);
+  return router;
 });

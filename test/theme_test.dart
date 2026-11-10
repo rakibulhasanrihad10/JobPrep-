@@ -7,9 +7,12 @@ import 'package:job_prep/core/theme/app_radii.dart';
 import 'package:job_prep/core/theme/app_theme.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/theme/theme_controller.dart';
+import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:job_prep/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'features/auth/fake_auth_repository.dart';
 
 void main() {
   group('Theme System - Tokens & Extension', () {
@@ -85,11 +88,14 @@ void main() {
         kThemeModeStorageKey: 'light',
       });
       final prefs = await SharedPreferences.getInstance();
+      final authRepo = FakeAuthRepository.authenticated();
+      addTearDown(authRepo.dispose);
 
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
+            authRepositoryProvider.overrideWithValue(authRepo),
           ],
           child: const JobPrepApp(),
         ),
@@ -109,11 +115,14 @@ void main() {
         kThemeModeStorageKey: 'dark',
       });
       final prefs = await SharedPreferences.getInstance();
+      final authRepo = FakeAuthRepository.authenticated();
+      addTearDown(authRepo.dispose);
 
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
+            authRepositoryProvider.overrideWithValue(authRepo),
           ],
           child: const JobPrepApp(),
         ),
@@ -131,11 +140,14 @@ void main() {
         (tester) async {
       SharedPreferences.setMockInitialValues({});
       final prefs = await SharedPreferences.getInstance();
+      final authRepo = FakeAuthRepository.authenticated();
+      addTearDown(authRepo.dispose);
 
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
+            authRepositoryProvider.overrideWithValue(authRepo),
           ],
           child: const JobPrepApp(),
         ),

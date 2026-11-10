@@ -331,6 +331,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Alt+{digit}'**
   String navShortcutBadge(String digit);
+
+  /// Title on the login route placeholder
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get authLoginRouteTitle;
+
+  /// Title on the reset password route placeholder
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get authResetPasswordRouteTitle;
 }
 
 class _AppLocalizationsDelegate
