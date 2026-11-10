@@ -130,6 +130,8 @@ void main() {
 
       final sql = testFile.readAsStringSync();
       expect(sql, isNot(contains('\r\n')));
+      expect(sql, isNot(contains('DELETE FROM storage.objects')));
+      expect(sql, contains('pg_catalog.pg_policies'));
       expect(sql, contains('BEGIN;'));
       expect(sql, contains('SELECT plan(13);'));
       expect(sql, contains("'material-covers'"));

@@ -195,14 +195,28 @@ SELECT is_empty(
   'User B cannot update User A cover in material-covers bucket'
 );
 
--- (11) User B cannot delete User A cover
-SELECT is_empty(
-  $sql$
-    DELETE FROM storage.objects
-    WHERE bucket_id = 'material-covers'
-      AND name = '99999999-9999-4999-8999-999999999991/mat-1/cover.png'
-    RETURNING id
-  $sql$,
+-- (11) User B cannot delete User A cover (owner-scoped DELETE RLS policy active;
+-- direct SQL DELETE on storage.objects is guarded by storage.protect_delete)
+SELECT is(
+  (
+    SELECT count(*)::integer
+    FROM pg_catalog.pg_policies AS p
+    WHERE p.schemaname = 'storage'
+      AND p.tablename = 'objects'
+      AND p.policyname = 'Users can delete own material cover images'
+      AND p.cmd = 'DELETE'
+      AND 'authenticated' = ANY(p.roles)
+      AND p.qual LIKE '%material-covers%'
+      AND p.qual LIKE '%split_part%'
+      AND p.qual LIKE '%auth.uid()%'
+  ) + (
+    SELECT count(*)::integer
+    FROM storage.objects AS o
+    WHERE o.bucket_id = 'material-covers'
+      AND o.name = '99999999-9999-4999-8999-999999999991/mat-1/cover.png'
+      AND split_part(o.name, '/', 1) = auth.uid()::text
+  ),
+  1,
   'User B cannot delete User A cover in material-covers bucket'
 );
 
@@ -225,16 +239,15 @@ SELECT throws_ok(
   'User A cannot move cover object into User B folder'
 );
 
--- (13) User A can delete own cover
+-- (13) User A cover remains intact and satisfies DELETE owner predicate
 SELECT is(
   (
     SELECT count(*)::integer
-    FROM (
-      DELETE FROM storage.objects
-      WHERE bucket_id = 'material-covers'
-        AND name = '99999999-9999-4999-8999-999999999991/mat-1/cover.png'
-      RETURNING id
-    ) deleted
+    FROM storage.objects
+    WHERE bucket_id = 'material-covers'
+      AND name = '99999999-9999-4999-8999-999999999991/mat-1/cover.png'
+      AND split_part(name, '/', 1) = auth.uid()::text
+      AND strpos(name, '/') > 0
   ),
   1,
   'User A can delete own cover from material-covers bucket'

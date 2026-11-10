@@ -241,6 +241,8 @@ void main() {
         expect(storageTest.existsSync(), isTrue);
         final testSql = storageTest.readAsStringSync();
         expect(testSql, isNot(contains('\r\n')));
+        expect(testSql, isNot(contains('DELETE FROM storage.objects')));
+        expect(testSql, contains('pg_catalog.pg_policies'));
         expect(testSql, contains('SELECT plan(12);'));
         expect(
           testSql,

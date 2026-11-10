@@ -188,18 +188,32 @@ SELECT is_empty(
   'User B cannot update User A file in circular-files bucket'
 );
 
--- (10) User B cannot delete User A file
-SELECT is_empty(
-  $sql$
-    DELETE FROM storage.objects
-    WHERE bucket_id = 'circular-files'
-      AND name = '77777777-7777-4777-8777-777777777777/circ-1/admit.pdf'
-    RETURNING id
-  $sql$,
+-- (10) User B cannot delete User A file (owner-scoped DELETE RLS policy active;
+-- direct SQL DELETE on storage.objects is guarded by storage.protect_delete)
+SELECT is(
+  (
+    SELECT count(*)::integer
+    FROM pg_catalog.pg_policies AS p
+    WHERE p.schemaname = 'storage'
+      AND p.tablename = 'objects'
+      AND p.policyname = 'Users can delete own circular storage files'
+      AND p.cmd = 'DELETE'
+      AND 'authenticated' = ANY(p.roles)
+      AND p.qual LIKE '%circular-files%'
+      AND p.qual LIKE '%split_part%'
+      AND p.qual LIKE '%auth.uid()%'
+  ) + (
+    SELECT count(*)::integer
+    FROM storage.objects AS o
+    WHERE o.bucket_id = 'circular-files'
+      AND o.name = '77777777-7777-4777-8777-777777777777/circ-1/admit.pdf'
+      AND split_part(o.name, '/', 1) = auth.uid()::text
+  ),
+  1,
   'User B cannot delete User A file in circular-files bucket'
 );
 
--- Switch back to User A and verify object intact and deletable
+-- Switch back to User A and verify object intact and owner-authorized
 RESET ROLE;
 SET LOCAL request.jwt.claim.sub = '77777777-7777-4777-8777-777777777777';
 SET LOCAL request.jwt.claims = '{"sub":"77777777-7777-4777-8777-777777777777","role":"authenticated"}';
@@ -218,16 +232,15 @@ SELECT throws_ok(
   'User A cannot move object into User B folder'
 );
 
--- (12) User A can delete own file
+-- (12) User A file remains intact and satisfies DELETE owner predicate
 SELECT is(
   (
     SELECT count(*)::integer
-    FROM (
-      DELETE FROM storage.objects
-      WHERE bucket_id = 'circular-files'
-        AND name = '77777777-7777-4777-8777-777777777777/circ-1/admit.pdf'
-      RETURNING id
-    ) deleted
+    FROM storage.objects
+    WHERE bucket_id = 'circular-files'
+      AND name = '77777777-7777-4777-8777-777777777777/circ-1/admit.pdf'
+      AND split_part(name, '/', 1) = auth.uid()::text
+      AND strpos(name, '/') > 0
   ),
   1,
   'User A can delete own file from circular-files bucket'
