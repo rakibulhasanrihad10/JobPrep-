@@ -1,3 +1,7 @@
+export 'animated_counter.dart';
+export 'animated_progress_bar.dart';
+export 'animated_progress_ring.dart';
+export 'fade_slide_in.dart';
 export 'glass_button.dart';
 export 'glass_card.dart';
 export 'glass_chip.dart';
