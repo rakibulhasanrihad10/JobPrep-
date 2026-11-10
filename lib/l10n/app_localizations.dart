@@ -1994,6 +1994,192 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Instructions, notes & syllabus'**
   String get circularDetailNotesTitle;
+
+  /// Section title for circular attachments and uploaded files
+  ///
+  /// In en, this message translates to:
+  /// **'Files & attachments'**
+  String get circularFilesTitle;
+
+  /// Helper showing allowed attachment types and maximum file size
+  ///
+  /// In en, this message translates to:
+  /// **'PDF, PNG, JPG, WEBP • Max {maxSize} (large images are resized)'**
+  String circularFilesAllowedHelper(String maxSize);
+
+  /// Button label to pick and upload a circular attachment
+  ///
+  /// In en, this message translates to:
+  /// **'Upload file'**
+  String get circularFilesUploadButton;
+
+  /// Progress text while uploading an attachment
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading {fileName} ({percent}%)'**
+  String circularFilesUploading(String fileName, String percent);
+
+  /// Empty state copy when a circular has no uploaded attachments
+  ///
+  /// In en, this message translates to:
+  /// **'No files attached yet. Upload a circular PDF, admit card, or image.'**
+  String get circularFilesEmpty;
+
+  /// Error message when circular attachments fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load attachments right now.'**
+  String get circularFilesLoadError;
+
+  /// Retry button label in attachments section
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get circularFilesRetry;
+
+  /// Action label and tooltip to preview an attached file
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
+  String get circularFilesPreviewAction;
+
+  /// Action label and tooltip to download an attached file
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get circularFilesDownloadAction;
+
+  /// Action label and tooltip to delete an attached file
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get circularFilesDeleteAction;
+
+  /// Title of the file preview dialog
+  ///
+  /// In en, this message translates to:
+  /// **'File preview'**
+  String get circularFilesPreviewTitle;
+
+  /// Explanation shown when previewing a PDF attachment via signed URL
+  ///
+  /// In en, this message translates to:
+  /// **'PDF files open with a temporary signed link in your browser or PDF viewer.'**
+  String get circularFilesPreviewPdfMessage;
+
+  /// Button label to open the signed URL externally
+  ///
+  /// In en, this message translates to:
+  /// **'Open signed link'**
+  String get circularFilesOpenSignedLink;
+
+  /// Fallback message when an image preview cannot be rendered inline
+  ///
+  /// In en, this message translates to:
+  /// **'Could not display preview inline. Open the temporary signed link instead.'**
+  String get circularFilesPreviewLoadError;
+
+  /// Button label to close the file preview dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get circularFilesCloseAction;
+
+  /// Security note reminding that files use temporary signed URLs
+  ///
+  /// In en, this message translates to:
+  /// **'Protected with a temporary signed URL (never public).'**
+  String get circularFilesSignedUrlSecurityNote;
+
+  /// Confirmation dialog title when deleting an attachment
+  ///
+  /// In en, this message translates to:
+  /// **'Delete attachment?'**
+  String get circularFilesDeleteConfirmTitle;
+
+  /// Confirmation dialog body before deleting a file
+  ///
+  /// In en, this message translates to:
+  /// **'Remove \"{fileName}\" permanently from this circular?'**
+  String circularFilesDeleteConfirmBody(String fileName);
+
+  /// Cancel button label in delete attachment confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get circularFilesCancelAction;
+
+  /// Confirm delete button label in delete attachment confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get circularFilesConfirmDeleteAction;
+
+  /// Validation error when an unsupported file extension or MIME type is chosen
+  ///
+  /// In en, this message translates to:
+  /// **'Only PDF, PNG, JPG, JPEG, and WEBP files are supported.'**
+  String get circularFilesErrorUnsupportedType;
+
+  /// Validation error when a zero-byte file is selected
+  ///
+  /// In en, this message translates to:
+  /// **'The selected file is empty.'**
+  String get circularFilesErrorEmptyFile;
+
+  /// Validation error when a file exceeds the allowed upload size limit
+  ///
+  /// In en, this message translates to:
+  /// **'File exceeds the {maxSize} limit.'**
+  String circularFilesErrorFileTooLarge(String maxSize);
+
+  /// Validation error when a raw image exceeds the pre-resize safety limit
+  ///
+  /// In en, this message translates to:
+  /// **'Image is too large to process (max {maxSize}).'**
+  String circularFilesErrorRawImageTooLarge(String maxSize);
+
+  /// Error shown when launching a signed file URL fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open the signed file link.'**
+  String get circularFilesErrorOpenLinkFailed;
+
+  /// Formatted file size in bytes
+  ///
+  /// In en, this message translates to:
+  /// **'{count} B'**
+  String circularFilesSizeBytes(String count);
+
+  /// Formatted file size in kilobytes
+  ///
+  /// In en, this message translates to:
+  /// **'{count} KB'**
+  String circularFilesSizeKb(String count);
+
+  /// Formatted file size in megabytes
+  ///
+  /// In en, this message translates to:
+  /// **'{count} MB'**
+  String circularFilesSizeMb(String count);
+
+  /// Pluralized count of attached files
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{0 files} =1{1 file} other{{formattedCount} files}}'**
+  String circularFilesCount(int count, String formattedCount);
+
+  /// Badge label for PDF file
+  ///
+  /// In en, this message translates to:
+  /// **'PDF'**
+  String get circularFilesTypePdf;
+
+  /// Badge label for image file
+  ///
+  /// In en, this message translates to:
+  /// **'Image'**
+  String get circularFilesTypeImage;
 }
 
 class _AppLocalizationsDelegate

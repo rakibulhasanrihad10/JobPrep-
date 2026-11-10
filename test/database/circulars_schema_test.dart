@@ -221,5 +221,34 @@ void main() {
         expect(testSql, contains('ROLLBACK;'));
       },
     );
+
+    test(
+      'Phase 3G private Storage bucket migration and pgTAP RLS tests exist',
+      () {
+        final migration = File(
+          'supabase/migrations/20261110030000_storage_circular_files_bucket.sql',
+        );
+        expect(migration.existsSync(), isTrue);
+        final sql = migration.readAsStringSync();
+        expect(sql, isNot(contains('\r\n')));
+        expect(sql, contains("'circular-files'"));
+        expect(sql, contains('false'));
+        expect(sql, contains("split_part(name, '/', 1) = auth.uid()::text"));
+
+        final storageTest = File(
+          'supabase/tests/04_storage_circular_files_bucket_test.sql',
+        );
+        expect(storageTest.existsSync(), isTrue);
+        final testSql = storageTest.readAsStringSync();
+        expect(testSql, isNot(contains('\r\n')));
+        expect(testSql, contains('SELECT plan(12);'));
+        expect(
+          testSql,
+          contains('User B cannot read User A file in circular-files bucket'),
+        );
+        expect(testSql, contains('SELECT * FROM finish();'));
+        expect(testSql, contains('ROLLBACK;'));
+      },
+    );
   });
 }

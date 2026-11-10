@@ -1420,5 +1420,180 @@
   "circularDetailNotesTitle": "Instructions, notes & syllabus",
   "@circularDetailNotesTitle": {
     "description": "Section title for circular instructions, personal notes, and syllabus"
+  },
+  "circularFilesTitle": "Files & attachments",
+  "@circularFilesTitle": {
+    "description": "Section title for circular attachments and uploaded files"
+  },
+  "circularFilesAllowedHelper": "PDF, PNG, JPG, WEBP • Max {maxSize} (large images are resized)",
+  "@circularFilesAllowedHelper": {
+    "description": "Helper showing allowed attachment types and maximum file size",
+    "placeholders": {
+      "maxSize": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesUploadButton": "Upload file",
+  "@circularFilesUploadButton": {
+    "description": "Button label to pick and upload a circular attachment"
+  },
+  "circularFilesUploading": "Uploading {fileName} ({percent}%)",
+  "@circularFilesUploading": {
+    "description": "Progress text while uploading an attachment",
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesEmpty": "No files attached yet. Upload a circular PDF, admit card, or image.",
+  "@circularFilesEmpty": {
+    "description": "Empty state copy when a circular has no uploaded attachments"
+  },
+  "circularFilesLoadError": "Could not load attachments right now.",
+  "@circularFilesLoadError": {
+    "description": "Error message when circular attachments fail to load"
+  },
+  "circularFilesRetry": "Retry",
+  "@circularFilesRetry": {
+    "description": "Retry button label in attachments section"
+  },
+  "circularFilesPreviewAction": "Preview",
+  "@circularFilesPreviewAction": {
+    "description": "Action label and tooltip to preview an attached file"
+  },
+  "circularFilesDownloadAction": "Download",
+  "@circularFilesDownloadAction": {
+    "description": "Action label and tooltip to download an attached file"
+  },
+  "circularFilesDeleteAction": "Delete",
+  "@circularFilesDeleteAction": {
+    "description": "Action label and tooltip to delete an attached file"
+  },
+  "circularFilesPreviewTitle": "File preview",
+  "@circularFilesPreviewTitle": {
+    "description": "Title of the file preview dialog"
+  },
+  "circularFilesPreviewPdfMessage": "PDF files open with a temporary signed link in your browser or PDF viewer.",
+  "@circularFilesPreviewPdfMessage": {
+    "description": "Explanation shown when previewing a PDF attachment via signed URL"
+  },
+  "circularFilesOpenSignedLink": "Open signed link",
+  "@circularFilesOpenSignedLink": {
+    "description": "Button label to open the signed URL externally"
+  },
+  "circularFilesPreviewLoadError": "Could not display preview inline. Open the temporary signed link instead.",
+  "@circularFilesPreviewLoadError": {
+    "description": "Fallback message when an image preview cannot be rendered inline"
+  },
+  "circularFilesCloseAction": "Close",
+  "@circularFilesCloseAction": {
+    "description": "Button label to close the file preview dialog"
+  },
+  "circularFilesSignedUrlSecurityNote": "Protected with a temporary signed URL (never public).",
+  "@circularFilesSignedUrlSecurityNote": {
+    "description": "Security note reminding that files use temporary signed URLs"
+  },
+  "circularFilesDeleteConfirmTitle": "Delete attachment?",
+  "@circularFilesDeleteConfirmTitle": {
+    "description": "Confirmation dialog title when deleting an attachment"
+  },
+  "circularFilesDeleteConfirmBody": "Remove \"{fileName}\" permanently from this circular?",
+  "@circularFilesDeleteConfirmBody": {
+    "description": "Confirmation dialog body before deleting a file",
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesCancelAction": "Cancel",
+  "@circularFilesCancelAction": {
+    "description": "Cancel button label in delete attachment confirmation dialog"
+  },
+  "circularFilesConfirmDeleteAction": "Delete",
+  "@circularFilesConfirmDeleteAction": {
+    "description": "Confirm delete button label in delete attachment confirmation dialog"
+  },
+  "circularFilesErrorUnsupportedType": "Only PDF, PNG, JPG, JPEG, and WEBP files are supported.",
+  "@circularFilesErrorUnsupportedType": {
+    "description": "Validation error when an unsupported file extension or MIME type is chosen"
+  },
+  "circularFilesErrorEmptyFile": "The selected file is empty.",
+  "@circularFilesErrorEmptyFile": {
+    "description": "Validation error when a zero-byte file is selected"
+  },
+  "circularFilesErrorFileTooLarge": "File exceeds the {maxSize} limit.",
+  "@circularFilesErrorFileTooLarge": {
+    "description": "Validation error when a file exceeds the allowed upload size limit",
+    "placeholders": {
+      "maxSize": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesErrorRawImageTooLarge": "Image is too large to process (max {maxSize}).",
+  "@circularFilesErrorRawImageTooLarge": {
+    "description": "Validation error when a raw image exceeds the pre-resize safety limit",
+    "placeholders": {
+      "maxSize": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesErrorOpenLinkFailed": "Could not open the signed file link.",
+  "@circularFilesErrorOpenLinkFailed": {
+    "description": "Error shown when launching a signed file URL fails"
+  },
+  "circularFilesSizeBytes": "{count} B",
+  "@circularFilesSizeBytes": {
+    "description": "Formatted file size in bytes",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesSizeKb": "{count} KB",
+  "@circularFilesSizeKb": {
+    "description": "Formatted file size in kilobytes",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesSizeMb": "{count} MB",
+  "@circularFilesSizeMb": {
+    "description": "Formatted file size in megabytes",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesCount": "{count, plural, =0{0 files} =1{1 file} other{{formattedCount} files}}",
+  "@circularFilesCount": {
+    "description": "Pluralized count of attached files",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFilesTypePdf": "PDF",
+  "@circularFilesTypePdf": {
+    "description": "Badge label for PDF file"
+  },
+  "circularFilesTypeImage": "Image",
+  "@circularFilesTypeImage": {
+    "description": "Badge label for image file"
   }
 }

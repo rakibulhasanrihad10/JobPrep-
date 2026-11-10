@@ -16,6 +16,7 @@ import 'package:job_prep/features/circulars/presentation/widgets/circular_detail
 import 'package:job_prep/features/circulars/presentation/widgets/circular_detail_quick_actions.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/circular_detail_text_card.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/circular_exam_dates_section.dart';
+import 'package:job_prep/features/circulars/presentation/widgets/circular_files_section.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/circular_form_chrome.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/circulars_states.dart';
 
@@ -142,6 +143,8 @@ class CircularDetailView extends ConsumerWidget {
           CircularExamDatesSection(circular: circular),
           SizedBox(height: spacing.lg),
           CircularDetailTextCard(circular: circular),
+          SizedBox(height: spacing.lg),
+          CircularFilesSection(circular: circular),
         ],
       );
     }

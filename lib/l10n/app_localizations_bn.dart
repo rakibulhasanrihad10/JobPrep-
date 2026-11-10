@@ -1103,4 +1103,129 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get circularDetailNotesTitle => 'নির্দেশনা, নোট ও সিলেবাস';
+
+  @override
+  String get circularFilesTitle => 'ফাইল ও সংযুক্তি';
+
+  @override
+  String circularFilesAllowedHelper(String maxSize) {
+    return 'PDF, PNG, JPG, WEBP • সর্বোচ্চ $maxSize (বড় ছবি রিসাইজ করা হয়)';
+  }
+
+  @override
+  String get circularFilesUploadButton => 'ফাইল আপলোড করুন';
+
+  @override
+  String circularFilesUploading(String fileName, String percent) {
+    return '$fileName আপলোড হচ্ছে ($percent%)';
+  }
+
+  @override
+  String get circularFilesEmpty =>
+      'এখনো কোনো ফাইল যুক্ত নেই। সার্কুলারের PDF, প্রবেশপত্র বা ছবি আপলোড করুন।';
+
+  @override
+  String get circularFilesLoadError =>
+      'এই মুহূর্তে সংযুক্ত ফাইলগুলো লোড করা যায়নি।';
+
+  @override
+  String get circularFilesRetry => 'আবার চেষ্টা করুন';
+
+  @override
+  String get circularFilesPreviewAction => 'প্রিভিউ';
+
+  @override
+  String get circularFilesDownloadAction => 'ডাউনলোড';
+
+  @override
+  String get circularFilesDeleteAction => 'মুছে ফেলুন';
+
+  @override
+  String get circularFilesPreviewTitle => 'ফাইল প্রিভিউ';
+
+  @override
+  String get circularFilesPreviewPdfMessage =>
+      'PDF ফাইল আপনার ব্রাউজার বা পিডিএফ ভিউয়ারে অস্থায়ী স্বাক্ষরিত লিংকের মাধ্যমে খুলবে।';
+
+  @override
+  String get circularFilesOpenSignedLink => 'স্বাক্ষরিত লিংক খুলুন';
+
+  @override
+  String get circularFilesPreviewLoadError =>
+      'এখানে প্রিভিউ দেখানো যায়নি। পরিবর্তে অস্থায়ী স্বাক্ষরিত লিংক খুলুন।';
+
+  @override
+  String get circularFilesCloseAction => 'বন্ধ করুন';
+
+  @override
+  String get circularFilesSignedUrlSecurityNote =>
+      'অস্থায়ী স্বাক্ষরিত লিংকে সুরক্ষিত (কখনো পাবলিক নয়)।';
+
+  @override
+  String get circularFilesDeleteConfirmTitle => 'সংযুক্ত ফাইল মুছে ফেলবেন?';
+
+  @override
+  String circularFilesDeleteConfirmBody(String fileName) {
+    return 'এই সার্কুলার থেকে \"$fileName\" স্থায়ীভাবে মুছে ফেলতে চান?';
+  }
+
+  @override
+  String get circularFilesCancelAction => 'বাতিল';
+
+  @override
+  String get circularFilesConfirmDeleteAction => 'মুছে ফেলুন';
+
+  @override
+  String get circularFilesErrorUnsupportedType =>
+      'শুধুমাত্র PDF, PNG, JPG, JPEG এবং WEBP ফাইল অনুমোদিত।';
+
+  @override
+  String get circularFilesErrorEmptyFile => 'নির্বাচিত ফাইলটি খালি।';
+
+  @override
+  String circularFilesErrorFileTooLarge(String maxSize) {
+    return 'ফাইলটি $maxSize সীমা ছাড়িয়ে গেছে।';
+  }
+
+  @override
+  String circularFilesErrorRawImageTooLarge(String maxSize) {
+    return 'ছবিটি প্রসেস করার জন্য অতিরিক্ত বড় (সর্বোচ্চ $maxSize)।';
+  }
+
+  @override
+  String get circularFilesErrorOpenLinkFailed =>
+      'স্বাক্ষরিত ফাইলের লিংক খোলা যায়নি।';
+
+  @override
+  String circularFilesSizeBytes(String count) {
+    return '$count বাইট';
+  }
+
+  @override
+  String circularFilesSizeKb(String count) {
+    return '$count কে.বি.';
+  }
+
+  @override
+  String circularFilesSizeMb(String count) {
+    return '$count মে.বা.';
+  }
+
+  @override
+  String circularFilesCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি ফাইল',
+      one: '১টি ফাইল',
+      zero: '০টি ফাইল',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get circularFilesTypePdf => 'PDF';
+
+  @override
+  String get circularFilesTypeImage => 'ছবি';
 }

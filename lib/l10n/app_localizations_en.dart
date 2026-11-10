@@ -1102,4 +1102,128 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get circularDetailNotesTitle => 'Instructions, notes & syllabus';
+
+  @override
+  String get circularFilesTitle => 'Files & attachments';
+
+  @override
+  String circularFilesAllowedHelper(String maxSize) {
+    return 'PDF, PNG, JPG, WEBP • Max $maxSize (large images are resized)';
+  }
+
+  @override
+  String get circularFilesUploadButton => 'Upload file';
+
+  @override
+  String circularFilesUploading(String fileName, String percent) {
+    return 'Uploading $fileName ($percent%)';
+  }
+
+  @override
+  String get circularFilesEmpty =>
+      'No files attached yet. Upload a circular PDF, admit card, or image.';
+
+  @override
+  String get circularFilesLoadError => 'Could not load attachments right now.';
+
+  @override
+  String get circularFilesRetry => 'Retry';
+
+  @override
+  String get circularFilesPreviewAction => 'Preview';
+
+  @override
+  String get circularFilesDownloadAction => 'Download';
+
+  @override
+  String get circularFilesDeleteAction => 'Delete';
+
+  @override
+  String get circularFilesPreviewTitle => 'File preview';
+
+  @override
+  String get circularFilesPreviewPdfMessage =>
+      'PDF files open with a temporary signed link in your browser or PDF viewer.';
+
+  @override
+  String get circularFilesOpenSignedLink => 'Open signed link';
+
+  @override
+  String get circularFilesPreviewLoadError =>
+      'Could not display preview inline. Open the temporary signed link instead.';
+
+  @override
+  String get circularFilesCloseAction => 'Close';
+
+  @override
+  String get circularFilesSignedUrlSecurityNote =>
+      'Protected with a temporary signed URL (never public).';
+
+  @override
+  String get circularFilesDeleteConfirmTitle => 'Delete attachment?';
+
+  @override
+  String circularFilesDeleteConfirmBody(String fileName) {
+    return 'Remove \"$fileName\" permanently from this circular?';
+  }
+
+  @override
+  String get circularFilesCancelAction => 'Cancel';
+
+  @override
+  String get circularFilesConfirmDeleteAction => 'Delete';
+
+  @override
+  String get circularFilesErrorUnsupportedType =>
+      'Only PDF, PNG, JPG, JPEG, and WEBP files are supported.';
+
+  @override
+  String get circularFilesErrorEmptyFile => 'The selected file is empty.';
+
+  @override
+  String circularFilesErrorFileTooLarge(String maxSize) {
+    return 'File exceeds the $maxSize limit.';
+  }
+
+  @override
+  String circularFilesErrorRawImageTooLarge(String maxSize) {
+    return 'Image is too large to process (max $maxSize).';
+  }
+
+  @override
+  String get circularFilesErrorOpenLinkFailed =>
+      'Could not open the signed file link.';
+
+  @override
+  String circularFilesSizeBytes(String count) {
+    return '$count B';
+  }
+
+  @override
+  String circularFilesSizeKb(String count) {
+    return '$count KB';
+  }
+
+  @override
+  String circularFilesSizeMb(String count) {
+    return '$count MB';
+  }
+
+  @override
+  String circularFilesCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount files',
+      one: '1 file',
+      zero: '0 files',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get circularFilesTypePdf => 'PDF';
+
+  @override
+  String get circularFilesTypeImage => 'Image';
 }
