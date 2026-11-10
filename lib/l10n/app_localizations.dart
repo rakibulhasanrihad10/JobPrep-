@@ -1081,6 +1081,408 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Something went wrong while loading circulars. Please try again.'**
   String get circularsErrorUnknown;
+
+  /// Button label on Circulars list toolbar to open create form
+  ///
+  /// In en, this message translates to:
+  /// **'Add circular'**
+  String get circularsAddButton;
+
+  /// Page title when creating a new circular
+  ///
+  /// In en, this message translates to:
+  /// **'Add Job Circular'**
+  String get circularFormAddTitle;
+
+  /// Page subtitle when creating a new circular
+  ///
+  /// In en, this message translates to:
+  /// **'Save deadlines, fees, links, and status details for a job circular.'**
+  String get circularFormAddSubtitle;
+
+  /// Page title when editing an existing circular
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Job Circular'**
+  String get circularFormEditTitle;
+
+  /// Page subtitle when editing an existing circular
+  ///
+  /// In en, this message translates to:
+  /// **'Update circular details, tracking status, or personal notes.'**
+  String get circularFormEditSubtitle;
+
+  /// Submit button label when creating a circular
+  ///
+  /// In en, this message translates to:
+  /// **'Save circular'**
+  String get circularFormSaveButton;
+
+  /// Submit button label when saving edits to a circular
+  ///
+  /// In en, this message translates to:
+  /// **'Save changes'**
+  String get circularFormUpdateButton;
+
+  /// Cancel button label on circular form
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get circularFormCancelButton;
+
+  /// Heading shown when editing a circular id that cannot be found
+  ///
+  /// In en, this message translates to:
+  /// **'Circular not found'**
+  String get circularFormNotFoundTitle;
+
+  /// Message shown when requested circular for editing is missing
+  ///
+  /// In en, this message translates to:
+  /// **'This job circular may have been deleted or is no longer available.'**
+  String get circularFormNotFoundMessage;
+
+  /// Button navigating back to the circulars list
+  ///
+  /// In en, this message translates to:
+  /// **'Back to circulars'**
+  String get circularFormBackToList;
+
+  /// Section title for title, sector, and organization info
+  ///
+  /// In en, this message translates to:
+  /// **'Basics'**
+  String get circularFormSectionBasics;
+
+  /// Section title for circular and application links
+  ///
+  /// In en, this message translates to:
+  /// **'Links'**
+  String get circularFormSectionLinks;
+
+  /// Section title for deadline, vacancies, salary, and fees
+  ///
+  /// In en, this message translates to:
+  /// **'Dates & Numbers'**
+  String get circularFormSectionDatesAndNumbers;
+
+  /// Section title for workflow, application, admit card, and priority
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get circularFormSectionStatus;
+
+  /// Section title for instructions, personal notes, and syllabus
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions & Notes'**
+  String get circularFormSectionText;
+
+  /// Label for required circular title field
+  ///
+  /// In en, this message translates to:
+  /// **'Circular title'**
+  String get circularFieldTitleLabel;
+
+  /// Hint text for circular title field
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 47th BCS General Cadre'**
+  String get circularFieldTitleHint;
+
+  /// Label for circular sector dropdown
+  ///
+  /// In en, this message translates to:
+  /// **'Sector'**
+  String get circularFieldSectorLabel;
+
+  /// Label for organization name field
+  ///
+  /// In en, this message translates to:
+  /// **'Organization name'**
+  String get circularFieldOrgNameLabel;
+
+  /// Hint text for organization name field
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Bangladesh Public Service Commission'**
+  String get circularFieldOrgNameHint;
+
+  /// Label for organization website URL field
+  ///
+  /// In en, this message translates to:
+  /// **'Organization website'**
+  String get circularFieldOrgWebsiteLabel;
+
+  /// Hint text for organization website URL field
+  ///
+  /// In en, this message translates to:
+  /// **'https://example.gov.bd'**
+  String get circularFieldOrgWebsiteHint;
+
+  /// Label for original circular announcement link
+  ///
+  /// In en, this message translates to:
+  /// **'Original circular link'**
+  String get circularFieldCircularUrlLabel;
+
+  /// Hint text for original circular link
+  ///
+  /// In en, this message translates to:
+  /// **'https://example.gov.bd/circular'**
+  String get circularFieldCircularUrlHint;
+
+  /// Label for online application portal link
+  ///
+  /// In en, this message translates to:
+  /// **'Application portal link'**
+  String get circularFieldApplicationUrlLabel;
+
+  /// Hint text for application portal link
+  ///
+  /// In en, this message translates to:
+  /// **'https://apply.example.gov.bd'**
+  String get circularFieldApplicationUrlHint;
+
+  /// Label for circular deadline date picker
+  ///
+  /// In en, this message translates to:
+  /// **'Application deadline'**
+  String get circularFieldDeadlineLabel;
+
+  /// Placeholder text when no deadline date is chosen
+  ///
+  /// In en, this message translates to:
+  /// **'Select deadline date'**
+  String get circularFieldDeadlineNone;
+
+  /// Tooltip on button clearing selected deadline
+  ///
+  /// In en, this message translates to:
+  /// **'Clear deadline'**
+  String get circularFieldClearDeadlineTooltip;
+
+  /// Label for vacancy count numeric field
+  ///
+  /// In en, this message translates to:
+  /// **'Vacancies'**
+  String get circularFieldVacanciesLabel;
+
+  /// Hint text for vacancies field
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 150'**
+  String get circularFieldVacanciesHint;
+
+  /// Label for minimum salary input
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum salary'**
+  String get circularFieldSalaryMinLabel;
+
+  /// Hint text for minimum salary
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 22000'**
+  String get circularFieldSalaryMinHint;
+
+  /// Label for maximum salary input
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum salary'**
+  String get circularFieldSalaryMaxLabel;
+
+  /// Hint text for maximum salary
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 53060'**
+  String get circularFieldSalaryMaxHint;
+
+  /// Label for pay scale or benefits note
+  ///
+  /// In en, this message translates to:
+  /// **'Salary & benefits note'**
+  String get circularFieldSalaryNoteLabel;
+
+  /// Hint text for salary note
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Grade 9 National Pay Scale'**
+  String get circularFieldSalaryNoteHint;
+
+  /// Label for application fee input
+  ///
+  /// In en, this message translates to:
+  /// **'Application fee'**
+  String get circularFieldFeeLabel;
+
+  /// Hint text for application fee
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 200'**
+  String get circularFieldFeeHint;
+
+  /// Label for fee payment note
+  ///
+  /// In en, this message translates to:
+  /// **'Fee note'**
+  String get circularFieldFeeNoteLabel;
+
+  /// Hint text for fee note
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Payable via Teletalk / bKash'**
+  String get circularFieldFeeNoteHint;
+
+  /// Label for application status dropdown
+  ///
+  /// In en, this message translates to:
+  /// **'Application status'**
+  String get circularFieldAppStatusLabel;
+
+  /// Label for admit card status dropdown
+  ///
+  /// In en, this message translates to:
+  /// **'Admit card status'**
+  String get circularFieldAdmitStatusLabel;
+
+  /// Label for priority dropdown
+  ///
+  /// In en, this message translates to:
+  /// **'Priority'**
+  String get circularFieldPriorityLabel;
+
+  /// Label for workflow status dropdown
+  ///
+  /// In en, this message translates to:
+  /// **'Workflow status'**
+  String get circularFieldWorkflowStatusLabel;
+
+  /// Label for instructions multiline field
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions'**
+  String get circularFieldInstructionsLabel;
+
+  /// Hint text for instructions field
+  ///
+  /// In en, this message translates to:
+  /// **'Eligibility criteria, required documents, photo dimensions...'**
+  String get circularFieldInstructionsHint;
+
+  /// Label for personal notes multiline field
+  ///
+  /// In en, this message translates to:
+  /// **'Personal notes'**
+  String get circularFieldNotesLabel;
+
+  /// Hint text for personal notes field
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders, preparation ideas, tracking notes...'**
+  String get circularFieldNotesHint;
+
+  /// Label for syllabus multiline field
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus'**
+  String get circularFieldSyllabusLabel;
+
+  /// Hint text for syllabus field
+  ///
+  /// In en, this message translates to:
+  /// **'Exam subjects, mark distribution, key topics...'**
+  String get circularFieldSyllabusHint;
+
+  /// Label for not_available admit card status
+  ///
+  /// In en, this message translates to:
+  /// **'Not available'**
+  String get circularAdmitStatusNotAvailable;
+
+  /// Label for available admit card status
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get circularAdmitStatusAvailable;
+
+  /// Label for downloaded admit card status
+  ///
+  /// In en, this message translates to:
+  /// **'Downloaded'**
+  String get circularAdmitStatusDownloaded;
+
+  /// Label for not_applicable admit card status
+  ///
+  /// In en, this message translates to:
+  /// **'N/A'**
+  String get circularAdmitStatusNotApplicable;
+
+  /// Validation error when title is blank
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a circular title.'**
+  String get circularValidationTitleRequired;
+
+  /// Validation error for malformed URL inputs
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid URL starting with http:// or https://.'**
+  String get circularValidationInvalidUrl;
+
+  /// Validation error for non-integer or negative vacancies
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a whole number (0 or greater).'**
+  String get circularValidationInvalidInt;
+
+  /// Validation error for negative or malformed monetary amount
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid number (0 or greater).'**
+  String get circularValidationInvalidNumber;
+
+  /// Validation error when salaryMax < salaryMin
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum salary cannot be lower than minimum salary.'**
+  String get circularValidationSalaryRange;
+
+  /// Warning banner when another saved circular shares the same circular link
+  ///
+  /// In en, this message translates to:
+  /// **'Warning: \"{title}\" already uses this circular link.'**
+  String circularDuplicateLinkWarning(String title);
+
+  /// Error banner message for server-side validation failures
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted circular details failed validation checks.'**
+  String get circularFormErrorValidation;
+
+  /// Confirmation dialog title before discarding dirty circular form
+  ///
+  /// In en, this message translates to:
+  /// **'Discard unsaved changes?'**
+  String get circularDiscardDialogTitle;
+
+  /// Confirmation dialog body before discarding unsaved edits
+  ///
+  /// In en, this message translates to:
+  /// **'You have unsaved changes on this circular. Leaving now will discard them.'**
+  String get circularDiscardDialogMessage;
+
+  /// Cancel button in discard confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Keep editing'**
+  String get circularDiscardKeepEditing;
+
+  /// Confirm button in discard confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Discard changes'**
+  String get circularDiscardConfirm;
 }
 
 class _AppLocalizationsDelegate

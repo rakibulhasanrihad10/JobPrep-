@@ -8,6 +8,8 @@ import 'package:job_prep/features/auth/presentation/providers/auth_providers.dar
 import 'package:job_prep/features/auth/presentation/screens/login_screen.dart';
 import 'package:job_prep/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:job_prep/features/calendar/presentation/screens/calendar_screen.dart';
+import 'package:job_prep/features/circulars/domain/entities/circular.dart';
+import 'package:job_prep/features/circulars/presentation/screens/circular_form_screen.dart';
 import 'package:job_prep/features/circulars/presentation/screens/circulars_screen.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
@@ -90,6 +92,29 @@ final routerProvider = Provider<GoRouter>((ref) {
             pageBuilder: (context, state) => const NoTransitionPage(
               child: CircularsScreen(),
             ),
+            routes: [
+              GoRoute(
+                path: 'new',
+                name: 'circular_new',
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: CircularFormScreen(),
+                ),
+              ),
+              GoRoute(
+                path: ':id/edit',
+                name: 'circular_edit',
+                pageBuilder: (context, state) {
+                  final circularId = state.pathParameters['id'];
+                  final extra = state.extra;
+                  return NoTransitionPage(
+                    child: CircularFormScreen(
+                      circularId: circularId,
+                      initialCircular: extra is Circular ? extra : null,
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
           GoRoute(
             path: '/prep',

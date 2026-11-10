@@ -593,4 +593,221 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get circularsErrorUnknown =>
       'Something went wrong while loading circulars. Please try again.';
+
+  @override
+  String get circularsAddButton => 'Add circular';
+
+  @override
+  String get circularFormAddTitle => 'Add Job Circular';
+
+  @override
+  String get circularFormAddSubtitle =>
+      'Save deadlines, fees, links, and status details for a job circular.';
+
+  @override
+  String get circularFormEditTitle => 'Edit Job Circular';
+
+  @override
+  String get circularFormEditSubtitle =>
+      'Update circular details, tracking status, or personal notes.';
+
+  @override
+  String get circularFormSaveButton => 'Save circular';
+
+  @override
+  String get circularFormUpdateButton => 'Save changes';
+
+  @override
+  String get circularFormCancelButton => 'Cancel';
+
+  @override
+  String get circularFormNotFoundTitle => 'Circular not found';
+
+  @override
+  String get circularFormNotFoundMessage =>
+      'This job circular may have been deleted or is no longer available.';
+
+  @override
+  String get circularFormBackToList => 'Back to circulars';
+
+  @override
+  String get circularFormSectionBasics => 'Basics';
+
+  @override
+  String get circularFormSectionLinks => 'Links';
+
+  @override
+  String get circularFormSectionDatesAndNumbers => 'Dates & Numbers';
+
+  @override
+  String get circularFormSectionStatus => 'Status';
+
+  @override
+  String get circularFormSectionText => 'Instructions & Notes';
+
+  @override
+  String get circularFieldTitleLabel => 'Circular title';
+
+  @override
+  String get circularFieldTitleHint => 'e.g. 47th BCS General Cadre';
+
+  @override
+  String get circularFieldSectorLabel => 'Sector';
+
+  @override
+  String get circularFieldOrgNameLabel => 'Organization name';
+
+  @override
+  String get circularFieldOrgNameHint =>
+      'e.g. Bangladesh Public Service Commission';
+
+  @override
+  String get circularFieldOrgWebsiteLabel => 'Organization website';
+
+  @override
+  String get circularFieldOrgWebsiteHint => 'https://example.gov.bd';
+
+  @override
+  String get circularFieldCircularUrlLabel => 'Original circular link';
+
+  @override
+  String get circularFieldCircularUrlHint => 'https://example.gov.bd/circular';
+
+  @override
+  String get circularFieldApplicationUrlLabel => 'Application portal link';
+
+  @override
+  String get circularFieldApplicationUrlHint => 'https://apply.example.gov.bd';
+
+  @override
+  String get circularFieldDeadlineLabel => 'Application deadline';
+
+  @override
+  String get circularFieldDeadlineNone => 'Select deadline date';
+
+  @override
+  String get circularFieldClearDeadlineTooltip => 'Clear deadline';
+
+  @override
+  String get circularFieldVacanciesLabel => 'Vacancies';
+
+  @override
+  String get circularFieldVacanciesHint => 'e.g. 150';
+
+  @override
+  String get circularFieldSalaryMinLabel => 'Minimum salary';
+
+  @override
+  String get circularFieldSalaryMinHint => 'e.g. 22000';
+
+  @override
+  String get circularFieldSalaryMaxLabel => 'Maximum salary';
+
+  @override
+  String get circularFieldSalaryMaxHint => 'e.g. 53060';
+
+  @override
+  String get circularFieldSalaryNoteLabel => 'Salary & benefits note';
+
+  @override
+  String get circularFieldSalaryNoteHint => 'e.g. Grade 9 National Pay Scale';
+
+  @override
+  String get circularFieldFeeLabel => 'Application fee';
+
+  @override
+  String get circularFieldFeeHint => 'e.g. 200';
+
+  @override
+  String get circularFieldFeeNoteLabel => 'Fee note';
+
+  @override
+  String get circularFieldFeeNoteHint => 'e.g. Payable via Teletalk / bKash';
+
+  @override
+  String get circularFieldAppStatusLabel => 'Application status';
+
+  @override
+  String get circularFieldAdmitStatusLabel => 'Admit card status';
+
+  @override
+  String get circularFieldPriorityLabel => 'Priority';
+
+  @override
+  String get circularFieldWorkflowStatusLabel => 'Workflow status';
+
+  @override
+  String get circularFieldInstructionsLabel => 'Instructions';
+
+  @override
+  String get circularFieldInstructionsHint =>
+      'Eligibility criteria, required documents, photo dimensions...';
+
+  @override
+  String get circularFieldNotesLabel => 'Personal notes';
+
+  @override
+  String get circularFieldNotesHint =>
+      'Reminders, preparation ideas, tracking notes...';
+
+  @override
+  String get circularFieldSyllabusLabel => 'Syllabus';
+
+  @override
+  String get circularFieldSyllabusHint =>
+      'Exam subjects, mark distribution, key topics...';
+
+  @override
+  String get circularAdmitStatusNotAvailable => 'Not available';
+
+  @override
+  String get circularAdmitStatusAvailable => 'Available';
+
+  @override
+  String get circularAdmitStatusDownloaded => 'Downloaded';
+
+  @override
+  String get circularAdmitStatusNotApplicable => 'N/A';
+
+  @override
+  String get circularValidationTitleRequired =>
+      'Please enter a circular title.';
+
+  @override
+  String get circularValidationInvalidUrl =>
+      'Enter a valid URL starting with http:// or https://.';
+
+  @override
+  String get circularValidationInvalidInt =>
+      'Enter a whole number (0 or greater).';
+
+  @override
+  String get circularValidationInvalidNumber =>
+      'Enter a valid number (0 or greater).';
+
+  @override
+  String get circularValidationSalaryRange =>
+      'Maximum salary cannot be lower than minimum salary.';
+
+  @override
+  String circularDuplicateLinkWarning(String title) {
+    return 'Warning: \"$title\" already uses this circular link.';
+  }
+
+  @override
+  String get circularFormErrorValidation =>
+      'Submitted circular details failed validation checks.';
+
+  @override
+  String get circularDiscardDialogTitle => 'Discard unsaved changes?';
+
+  @override
+  String get circularDiscardDialogMessage =>
+      'You have unsaved changes on this circular. Leaving now will discard them.';
+
+  @override
+  String get circularDiscardKeepEditing => 'Keep editing';
+
+  @override
+  String get circularDiscardConfirm => 'Discard changes';
 }

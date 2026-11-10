@@ -735,5 +735,278 @@
   "circularsErrorUnknown": "Something went wrong while loading circulars. Please try again.",
   "@circularsErrorUnknown": {
     "description": "Fallback localized error message for circular list failure"
+  },
+  "circularsAddButton": "Add circular",
+  "@circularsAddButton": {
+    "description": "Button label on Circulars list toolbar to open create form"
+  },
+  "circularFormAddTitle": "Add Job Circular",
+  "@circularFormAddTitle": {
+    "description": "Page title when creating a new circular"
+  },
+  "circularFormAddSubtitle": "Save deadlines, fees, links, and status details for a job circular.",
+  "@circularFormAddSubtitle": {
+    "description": "Page subtitle when creating a new circular"
+  },
+  "circularFormEditTitle": "Edit Job Circular",
+  "@circularFormEditTitle": {
+    "description": "Page title when editing an existing circular"
+  },
+  "circularFormEditSubtitle": "Update circular details, tracking status, or personal notes.",
+  "@circularFormEditSubtitle": {
+    "description": "Page subtitle when editing an existing circular"
+  },
+  "circularFormSaveButton": "Save circular",
+  "@circularFormSaveButton": {
+    "description": "Submit button label when creating a circular"
+  },
+  "circularFormUpdateButton": "Save changes",
+  "@circularFormUpdateButton": {
+    "description": "Submit button label when saving edits to a circular"
+  },
+  "circularFormCancelButton": "Cancel",
+  "@circularFormCancelButton": {
+    "description": "Cancel button label on circular form"
+  },
+  "circularFormNotFoundTitle": "Circular not found",
+  "@circularFormNotFoundTitle": {
+    "description": "Heading shown when editing a circular id that cannot be found"
+  },
+  "circularFormNotFoundMessage": "This job circular may have been deleted or is no longer available.",
+  "@circularFormNotFoundMessage": {
+    "description": "Message shown when requested circular for editing is missing"
+  },
+  "circularFormBackToList": "Back to circulars",
+  "@circularFormBackToList": {
+    "description": "Button navigating back to the circulars list"
+  },
+  "circularFormSectionBasics": "Basics",
+  "@circularFormSectionBasics": {
+    "description": "Section title for title, sector, and organization info"
+  },
+  "circularFormSectionLinks": "Links",
+  "@circularFormSectionLinks": {
+    "description": "Section title for circular and application links"
+  },
+  "circularFormSectionDatesAndNumbers": "Dates & Numbers",
+  "@circularFormSectionDatesAndNumbers": {
+    "description": "Section title for deadline, vacancies, salary, and fees"
+  },
+  "circularFormSectionStatus": "Status",
+  "@circularFormSectionStatus": {
+    "description": "Section title for workflow, application, admit card, and priority"
+  },
+  "circularFormSectionText": "Instructions & Notes",
+  "@circularFormSectionText": {
+    "description": "Section title for instructions, personal notes, and syllabus"
+  },
+  "circularFieldTitleLabel": "Circular title",
+  "@circularFieldTitleLabel": {
+    "description": "Label for required circular title field"
+  },
+  "circularFieldTitleHint": "e.g. 47th BCS General Cadre",
+  "@circularFieldTitleHint": {
+    "description": "Hint text for circular title field"
+  },
+  "circularFieldSectorLabel": "Sector",
+  "@circularFieldSectorLabel": {
+    "description": "Label for circular sector dropdown"
+  },
+  "circularFieldOrgNameLabel": "Organization name",
+  "@circularFieldOrgNameLabel": {
+    "description": "Label for organization name field"
+  },
+  "circularFieldOrgNameHint": "e.g. Bangladesh Public Service Commission",
+  "@circularFieldOrgNameHint": {
+    "description": "Hint text for organization name field"
+  },
+  "circularFieldOrgWebsiteLabel": "Organization website",
+  "@circularFieldOrgWebsiteLabel": {
+    "description": "Label for organization website URL field"
+  },
+  "circularFieldOrgWebsiteHint": "https://example.gov.bd",
+  "@circularFieldOrgWebsiteHint": {
+    "description": "Hint text for organization website URL field"
+  },
+  "circularFieldCircularUrlLabel": "Original circular link",
+  "@circularFieldCircularUrlLabel": {
+    "description": "Label for original circular announcement link"
+  },
+  "circularFieldCircularUrlHint": "https://example.gov.bd/circular",
+  "@circularFieldCircularUrlHint": {
+    "description": "Hint text for original circular link"
+  },
+  "circularFieldApplicationUrlLabel": "Application portal link",
+  "@circularFieldApplicationUrlLabel": {
+    "description": "Label for online application portal link"
+  },
+  "circularFieldApplicationUrlHint": "https://apply.example.gov.bd",
+  "@circularFieldApplicationUrlHint": {
+    "description": "Hint text for application portal link"
+  },
+  "circularFieldDeadlineLabel": "Application deadline",
+  "@circularFieldDeadlineLabel": {
+    "description": "Label for circular deadline date picker"
+  },
+  "circularFieldDeadlineNone": "Select deadline date",
+  "@circularFieldDeadlineNone": {
+    "description": "Placeholder text when no deadline date is chosen"
+  },
+  "circularFieldClearDeadlineTooltip": "Clear deadline",
+  "@circularFieldClearDeadlineTooltip": {
+    "description": "Tooltip on button clearing selected deadline"
+  },
+  "circularFieldVacanciesLabel": "Vacancies",
+  "@circularFieldVacanciesLabel": {
+    "description": "Label for vacancy count numeric field"
+  },
+  "circularFieldVacanciesHint": "e.g. 150",
+  "@circularFieldVacanciesHint": {
+    "description": "Hint text for vacancies field"
+  },
+  "circularFieldSalaryMinLabel": "Minimum salary",
+  "@circularFieldSalaryMinLabel": {
+    "description": "Label for minimum salary input"
+  },
+  "circularFieldSalaryMinHint": "e.g. 22000",
+  "@circularFieldSalaryMinHint": {
+    "description": "Hint text for minimum salary"
+  },
+  "circularFieldSalaryMaxLabel": "Maximum salary",
+  "@circularFieldSalaryMaxLabel": {
+    "description": "Label for maximum salary input"
+  },
+  "circularFieldSalaryMaxHint": "e.g. 53060",
+  "@circularFieldSalaryMaxHint": {
+    "description": "Hint text for maximum salary"
+  },
+  "circularFieldSalaryNoteLabel": "Salary & benefits note",
+  "@circularFieldSalaryNoteLabel": {
+    "description": "Label for pay scale or benefits note"
+  },
+  "circularFieldSalaryNoteHint": "e.g. Grade 9 National Pay Scale",
+  "@circularFieldSalaryNoteHint": {
+    "description": "Hint text for salary note"
+  },
+  "circularFieldFeeLabel": "Application fee",
+  "@circularFieldFeeLabel": {
+    "description": "Label for application fee input"
+  },
+  "circularFieldFeeHint": "e.g. 200",
+  "@circularFieldFeeHint": {
+    "description": "Hint text for application fee"
+  },
+  "circularFieldFeeNoteLabel": "Fee note",
+  "@circularFieldFeeNoteLabel": {
+    "description": "Label for fee payment note"
+  },
+  "circularFieldFeeNoteHint": "e.g. Payable via Teletalk / bKash",
+  "@circularFieldFeeNoteHint": {
+    "description": "Hint text for fee note"
+  },
+  "circularFieldAppStatusLabel": "Application status",
+  "@circularFieldAppStatusLabel": {
+    "description": "Label for application status dropdown"
+  },
+  "circularFieldAdmitStatusLabel": "Admit card status",
+  "@circularFieldAdmitStatusLabel": {
+    "description": "Label for admit card status dropdown"
+  },
+  "circularFieldPriorityLabel": "Priority",
+  "@circularFieldPriorityLabel": {
+    "description": "Label for priority dropdown"
+  },
+  "circularFieldWorkflowStatusLabel": "Workflow status",
+  "@circularFieldWorkflowStatusLabel": {
+    "description": "Label for workflow status dropdown"
+  },
+  "circularFieldInstructionsLabel": "Instructions",
+  "@circularFieldInstructionsLabel": {
+    "description": "Label for instructions multiline field"
+  },
+  "circularFieldInstructionsHint": "Eligibility criteria, required documents, photo dimensions...",
+  "@circularFieldInstructionsHint": {
+    "description": "Hint text for instructions field"
+  },
+  "circularFieldNotesLabel": "Personal notes",
+  "@circularFieldNotesLabel": {
+    "description": "Label for personal notes multiline field"
+  },
+  "circularFieldNotesHint": "Reminders, preparation ideas, tracking notes...",
+  "@circularFieldNotesHint": {
+    "description": "Hint text for personal notes field"
+  },
+  "circularFieldSyllabusLabel": "Syllabus",
+  "@circularFieldSyllabusLabel": {
+    "description": "Label for syllabus multiline field"
+  },
+  "circularFieldSyllabusHint": "Exam subjects, mark distribution, key topics...",
+  "@circularFieldSyllabusHint": {
+    "description": "Hint text for syllabus field"
+  },
+  "circularAdmitStatusNotAvailable": "Not available",
+  "@circularAdmitStatusNotAvailable": {
+    "description": "Label for not_available admit card status"
+  },
+  "circularAdmitStatusAvailable": "Available",
+  "@circularAdmitStatusAvailable": {
+    "description": "Label for available admit card status"
+  },
+  "circularAdmitStatusDownloaded": "Downloaded",
+  "@circularAdmitStatusDownloaded": {
+    "description": "Label for downloaded admit card status"
+  },
+  "circularAdmitStatusNotApplicable": "N/A",
+  "@circularAdmitStatusNotApplicable": {
+    "description": "Label for not_applicable admit card status"
+  },
+  "circularValidationTitleRequired": "Please enter a circular title.",
+  "@circularValidationTitleRequired": {
+    "description": "Validation error when title is blank"
+  },
+  "circularValidationInvalidUrl": "Enter a valid URL starting with http:// or https://.",
+  "@circularValidationInvalidUrl": {
+    "description": "Validation error for malformed URL inputs"
+  },
+  "circularValidationInvalidInt": "Enter a whole number (0 or greater).",
+  "@circularValidationInvalidInt": {
+    "description": "Validation error for non-integer or negative vacancies"
+  },
+  "circularValidationInvalidNumber": "Enter a valid number (0 or greater).",
+  "@circularValidationInvalidNumber": {
+    "description": "Validation error for negative or malformed monetary amount"
+  },
+  "circularValidationSalaryRange": "Maximum salary cannot be lower than minimum salary.",
+  "@circularValidationSalaryRange": {
+    "description": "Validation error when salaryMax < salaryMin"
+  },
+  "circularDuplicateLinkWarning": "Warning: \"{title}\" already uses this circular link.",
+  "@circularDuplicateLinkWarning": {
+    "description": "Warning banner when another saved circular shares the same circular link",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFormErrorValidation": "Submitted circular details failed validation checks.",
+  "@circularFormErrorValidation": {
+    "description": "Error banner message for server-side validation failures"
+  },
+  "circularDiscardDialogTitle": "Discard unsaved changes?",
+  "@circularDiscardDialogTitle": {
+    "description": "Confirmation dialog title before discarding dirty circular form"
+  },
+  "circularDiscardDialogMessage": "You have unsaved changes on this circular. Leaving now will discard them.",
+  "@circularDiscardDialogMessage": {
+    "description": "Confirmation dialog body before discarding unsaved edits"
+  },
+  "circularDiscardKeepEditing": "Keep editing",
+  "@circularDiscardKeepEditing": {
+    "description": "Cancel button in discard confirmation dialog"
+  },
+  "circularDiscardConfirm": "Discard changes",
+  "@circularDiscardConfirm": {
+    "description": "Confirm button in discard confirmation dialog"
   }
 }

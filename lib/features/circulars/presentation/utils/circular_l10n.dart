@@ -4,6 +4,7 @@ import 'package:job_prep/core/theme/app_colors.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_enums.dart';
 import 'package:job_prep/features/circulars/domain/errors/circular_failure.dart';
 import 'package:job_prep/features/circulars/domain/utils/deadline_countdown.dart';
+import 'package:job_prep/features/circulars/domain/validators/circular_form_validators.dart';
 import 'package:job_prep/l10n/app_localizations.dart';
 
 /// Localization and design-token color helpers for circular presentation
@@ -149,6 +150,9 @@ abstract final class CircularL10n {
 
   /// Maps circular repository errors to localized user-facing copy.
   static String circularErrorMessage(Object error, AppLocalizations l10n) {
+    if (error is CircularValidationFailure) {
+      return l10n.circularFormErrorValidation;
+    }
     if (error is CircularPermissionFailure) {
       return l10n.circularsErrorPermission;
     }
@@ -156,5 +160,68 @@ abstract final class CircularL10n {
       return l10n.circularsErrorNetwork;
     }
     return l10n.circularsErrorUnknown;
+  }
+
+  /// Localized display label for [status].
+  static String admitCardStatusLabel(
+    AdmitCardStatus status,
+    AppLocalizations l10n,
+  ) {
+    return switch (status) {
+      AdmitCardStatus.notAvailable => l10n.circularAdmitStatusNotAvailable,
+      AdmitCardStatus.available => l10n.circularAdmitStatusAvailable,
+      AdmitCardStatus.downloaded => l10n.circularAdmitStatusDownloaded,
+      AdmitCardStatus.notApplicable => l10n.circularAdmitStatusNotApplicable,
+    };
+  }
+
+  /// Localized validation error text for circular title.
+  static String? titleValidationMessage(
+    CircularTitleValidationError? error,
+    AppLocalizations l10n,
+  ) {
+    if (error == null) return null;
+    return switch (error) {
+      CircularTitleValidationError.required =>
+        l10n.circularValidationTitleRequired,
+    };
+  }
+
+  /// Localized validation error text for optional URL fields.
+  static String? urlValidationMessage(
+    CircularUrlValidationError? error,
+    AppLocalizations l10n,
+  ) {
+    if (error == null) return null;
+    return switch (error) {
+      CircularUrlValidationError.invalidFormat =>
+        l10n.circularValidationInvalidUrl,
+    };
+  }
+
+  /// Localized validation error text for numeric inputs.
+  static String? numberValidationMessage(
+    CircularNumberValidationError? error,
+    AppLocalizations l10n,
+  ) {
+    if (error == null) return null;
+    return switch (error) {
+      CircularNumberValidationError.invalidNonNegativeInt =>
+        l10n.circularValidationInvalidInt,
+      CircularNumberValidationError.invalidNonNegativeAmount =>
+        l10n.circularValidationInvalidNumber,
+    };
+  }
+
+  /// Localized validation error text for salary range (`max >= min`).
+  static String? salaryRangeValidationMessage(
+    CircularSalaryRangeValidationError? error,
+    AppLocalizations l10n,
+  ) {
+    if (error == null) return null;
+    return switch (error) {
+      CircularSalaryRangeValidationError.maxBelowMin =>
+        l10n.circularValidationSalaryRange,
+    };
   }
 }

@@ -26,6 +26,7 @@ class CircularsToolbar extends ConsumerWidget {
     required this.onToggleFilters,
     required this.onClearAllFilters,
     required this.onRefresh,
+    this.onAddCircular,
     super.key,
   });
 
@@ -49,6 +50,9 @@ class CircularsToolbar extends ConsumerWidget {
 
   /// Callback triggering a manual list reload.
   final VoidCallback onRefresh;
+
+  /// Optional callback opening the add-circular form.
+  final VoidCallback? onAddCircular;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -186,6 +190,17 @@ class CircularsToolbar extends ConsumerWidget {
                       ),
                       child: Text(l10n.circularsFilterToggle),
                     ),
+                    if (onAddCircular != null)
+                      GlassButton(
+                        key: const ValueKey('circulars-add-btn'),
+                        variant: GlassButtonVariant.primary,
+                        onPressed: onAddCircular,
+                        leading: Icon(
+                          Icons.add_rounded,
+                          size: spacing.lg,
+                        ),
+                        child: Text(l10n.circularsAddButton),
+                      ),
                   ],
                 ),
               ],

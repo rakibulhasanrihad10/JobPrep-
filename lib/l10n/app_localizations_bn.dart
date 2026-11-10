@@ -594,4 +594,221 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get circularsErrorUnknown =>
       'সার্কুলার লোড করতে একটি সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।';
+
+  @override
+  String get circularsAddButton => 'সার্কুলার যোগ করুন';
+
+  @override
+  String get circularFormAddTitle => 'নতুন সার্কুলার যোগ করুন';
+
+  @override
+  String get circularFormAddSubtitle =>
+      'চাকরির সার্কুলারের শেষ তারিখ, আবেদন ফি ও ট্র্যাকিং তথ্য সংরক্ষণ করুন।';
+
+  @override
+  String get circularFormEditTitle => 'সার্কুলার সম্পাদনা করুন';
+
+  @override
+  String get circularFormEditSubtitle =>
+      'সার্কুলারের তথ্য, আবেদনের অবস্থা বা ব্যক্তিগত নোট হালনাগাদ করুন।';
+
+  @override
+  String get circularFormSaveButton => 'সার্কুলার সংরক্ষণ করুন';
+
+  @override
+  String get circularFormUpdateButton => 'পরিবর্তন সংরক্ষণ করুন';
+
+  @override
+  String get circularFormCancelButton => 'বাতিল';
+
+  @override
+  String get circularFormNotFoundTitle => 'সার্কুলারটি পাওয়া যায়নি';
+
+  @override
+  String get circularFormNotFoundMessage =>
+      'এই সার্কুলারটি মুছে ফেলা হয়ে থাকতে পারে অথবা আর পাওয়া যাচ্ছে না।';
+
+  @override
+  String get circularFormBackToList => 'সার্কুলার তালিকায় ফিরে যান';
+
+  @override
+  String get circularFormSectionBasics => 'মৌলিক তথ্য';
+
+  @override
+  String get circularFormSectionLinks => 'লিংকসমূহ';
+
+  @override
+  String get circularFormSectionDatesAndNumbers => 'তারিখ ও সংখ্যা';
+
+  @override
+  String get circularFormSectionStatus => 'অবস্থা';
+
+  @override
+  String get circularFormSectionText => 'নির্দেশনা ও নোট';
+
+  @override
+  String get circularFieldTitleLabel => 'সার্কুলারের শিরোনাম';
+
+  @override
+  String get circularFieldTitleHint => 'যেমন: ৪৭তম বিসিএস সাধারণ ক্যাডার';
+
+  @override
+  String get circularFieldSectorLabel => 'খাত';
+
+  @override
+  String get circularFieldOrgNameLabel => 'প্রতিষ্ঠানের নাম';
+
+  @override
+  String get circularFieldOrgNameHint => 'যেমন: বাংলাদেশ সরকারি কর্ম কমিশন';
+
+  @override
+  String get circularFieldOrgWebsiteLabel => 'প্রতিষ্ঠানের ওয়েবসাইট';
+
+  @override
+  String get circularFieldOrgWebsiteHint => 'https://example.gov.bd';
+
+  @override
+  String get circularFieldCircularUrlLabel => 'মূল সার্কুলারের লিংক';
+
+  @override
+  String get circularFieldCircularUrlHint => 'https://example.gov.bd/circular';
+
+  @override
+  String get circularFieldApplicationUrlLabel => 'আবেদন পোর্টালের লিংক';
+
+  @override
+  String get circularFieldApplicationUrlHint => 'https://apply.example.gov.bd';
+
+  @override
+  String get circularFieldDeadlineLabel => 'আবেদনের শেষ তারিখ';
+
+  @override
+  String get circularFieldDeadlineNone => 'শেষ তারিখ নির্বাচন করুন';
+
+  @override
+  String get circularFieldClearDeadlineTooltip => 'শেষ তারিখ মুছুন';
+
+  @override
+  String get circularFieldVacanciesLabel => 'শূন্যপদ সংখ্যা';
+
+  @override
+  String get circularFieldVacanciesHint => 'যেমন: ১৫০';
+
+  @override
+  String get circularFieldSalaryMinLabel => 'সর্বনিম্ন বেতন';
+
+  @override
+  String get circularFieldSalaryMinHint => 'যেমন: ২২০০০';
+
+  @override
+  String get circularFieldSalaryMaxLabel => 'সর্বোচ্চ বেতন';
+
+  @override
+  String get circularFieldSalaryMaxHint => 'যেমন: ৫৩০৬০';
+
+  @override
+  String get circularFieldSalaryNoteLabel => 'বেতন ও সুবিধার নোট';
+
+  @override
+  String get circularFieldSalaryNoteHint => 'যেমন: ৯ম গ্রেড জাতীয় বেতন স্কেল';
+
+  @override
+  String get circularFieldFeeLabel => 'আবেদন ফি';
+
+  @override
+  String get circularFieldFeeHint => 'যেমন: ২০০';
+
+  @override
+  String get circularFieldFeeNoteLabel => 'ফি সংক্রান্ত নোট';
+
+  @override
+  String get circularFieldFeeNoteHint =>
+      'যেমন: টেলিটক বা বিকাশের মাধ্যমে পরিশোধযোগ্য';
+
+  @override
+  String get circularFieldAppStatusLabel => 'আবেদনের অবস্থা';
+
+  @override
+  String get circularFieldAdmitStatusLabel => 'প্রবেশপত্রের অবস্থা';
+
+  @override
+  String get circularFieldPriorityLabel => 'অগ্রাধিকার';
+
+  @override
+  String get circularFieldWorkflowStatusLabel => 'কার্যপ্রবাহ';
+
+  @override
+  String get circularFieldInstructionsLabel => 'নির্দেশনা';
+
+  @override
+  String get circularFieldInstructionsHint =>
+      'যোগ্যতার শর্ত, প্রয়োজনীয় কাগজপত্র, ছবির মাপ...';
+
+  @override
+  String get circularFieldNotesLabel => 'ব্যক্তিগত নোট';
+
+  @override
+  String get circularFieldNotesHint =>
+      'মনে রাখার বিষয়, প্রস্তুতির পরিকল্পনা...';
+
+  @override
+  String get circularFieldSyllabusLabel => 'সিলেবাস';
+
+  @override
+  String get circularFieldSyllabusHint =>
+      'পরীক্ষার বিষয়, মানবণ্টন ও গুরুত্বপূর্ণ টপিক...';
+
+  @override
+  String get circularAdmitStatusNotAvailable => 'প্রকাশিত হয়নি';
+
+  @override
+  String get circularAdmitStatusAvailable => 'উপলব্ধ';
+
+  @override
+  String get circularAdmitStatusDownloaded => 'ডাউনলোড সম্পন্ন';
+
+  @override
+  String get circularAdmitStatusNotApplicable => 'প্রযোজ্য নয়';
+
+  @override
+  String get circularValidationTitleRequired =>
+      'অনুগ্রহ করে সার্কুলারের শিরোনাম লিখুন।';
+
+  @override
+  String get circularValidationInvalidUrl =>
+      'http:// বা https:// দিয়ে শুরু সঠিক লিংক লিখুন।';
+
+  @override
+  String get circularValidationInvalidInt =>
+      'শূন্য বা তার বেশি সঠিক পূর্ণসংখ্যা লিখুন।';
+
+  @override
+  String get circularValidationInvalidNumber =>
+      'শূন্য বা তার বেশি সঠিক সংখ্যা লিখুন।';
+
+  @override
+  String get circularValidationSalaryRange =>
+      'সর্বোচ্চ বেতন সর্বনিম্ন বেতনের চেয়ে কম হতে পারবে না।';
+
+  @override
+  String circularDuplicateLinkWarning(String title) {
+    return 'সতর্কতা: \"$title\" সার্কুলারে ইতিমধ্যেই এই লিংকটি ব্যবহার করা হয়েছে।';
+  }
+
+  @override
+  String get circularFormErrorValidation =>
+      'জমা দেওয়া তথ্য যাচাইকরণে ত্রুটি পাওয়া গেছে।';
+
+  @override
+  String get circularDiscardDialogTitle => 'অসংরক্ষিত পরিবর্তন বাতিল করবেন?';
+
+  @override
+  String get circularDiscardDialogMessage =>
+      'এই সার্কুলারে অসংরক্ষিত পরিবর্তন রয়েছে। এখন ফিরে গেলে সেগুলো হারিয়ে যাবে।';
+
+  @override
+  String get circularDiscardKeepEditing => 'সম্পাদনা চালিয়ে যান';
+
+  @override
+  String get circularDiscardConfirm => 'পরিবর্তন বাতিল করুন';
 }

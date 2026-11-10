@@ -103,14 +103,11 @@ class GlassDialog extends ConsumerWidget {
           ],
           if (actions != null && actions!.isNotEmpty) ...[
             SizedBox(height: spacing.xl),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                for (var i = 0; i < actions!.length; i++) ...[
-                  if (i > 0) SizedBox(width: spacing.sm),
-                  actions![i],
-                ],
-              ],
+            Wrap(
+              alignment: WrapAlignment.end,
+              spacing: spacing.sm,
+              runSpacing: spacing.sm,
+              children: actions!,
             ),
           ],
         ],
