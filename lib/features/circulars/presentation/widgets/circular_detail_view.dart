@@ -80,7 +80,11 @@ class CircularDetailView extends ConsumerWidget {
       }
       final router = GoRouter.maybeOf(context);
       if (router != null) {
-        router.go('/circulars');
+        if (router.canPop()) {
+          router.pop();
+        } else {
+          router.go('/circulars');
+        }
       } else {
         Navigator.of(context).maybePop();
       }
@@ -107,7 +111,11 @@ class CircularDetailView extends ConsumerWidget {
       }
       final router = GoRouter.maybeOf(context);
       if (router != null) {
-        router.go('/circulars');
+        if (router.canPop()) {
+          router.pop();
+        } else {
+          router.go('/circulars');
+        }
       } else {
         Navigator.of(context).maybePop();
       }

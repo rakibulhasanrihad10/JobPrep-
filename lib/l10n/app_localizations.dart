@@ -2180,6 +2180,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Image'**
   String get circularFilesTypeImage;
+
+  /// Tooltip for navigating to the previous month on calendar
+  ///
+  /// In en, this message translates to:
+  /// **'Previous month'**
+  String get calendarPreviousMonthTooltip;
+
+  /// Tooltip for navigating to the next month on calendar
+  ///
+  /// In en, this message translates to:
+  /// **'Next month'**
+  String get calendarNextMonthTooltip;
+
+  /// Button label jumping calendar selection to today's date
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get calendarTodayButton;
+
+  /// Legend and badge label for application deadline events
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline'**
+  String get calendarEventDeadline;
+
+  /// Legend and badge label for preliminary exam events
+  ///
+  /// In en, this message translates to:
+  /// **'Preliminary'**
+  String get calendarEventPreliminary;
+
+  /// Legend and badge label for written exam events
+  ///
+  /// In en, this message translates to:
+  /// **'Written'**
+  String get calendarEventWritten;
+
+  /// Legend and badge label for viva exam events
+  ///
+  /// In en, this message translates to:
+  /// **'Viva'**
+  String get calendarEventViva;
+
+  /// Legend and badge label for practical exam events
+  ///
+  /// In en, this message translates to:
+  /// **'Practical'**
+  String get calendarEventPractical;
+
+  /// Legend and badge label for other exam events
+  ///
+  /// In en, this message translates to:
+  /// **'Other exam'**
+  String get calendarEventOther;
+
+  /// Heading for calendar event color legend
+  ///
+  /// In en, this message translates to:
+  /// **'Color legend'**
+  String get calendarLegendTitle;
+
+  /// Pluralized count of calendar events for the selected day
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No events} =1{1 event} other{{formattedCount} events}}'**
+  String calendarAgendaCount(int count, String formattedCount);
+
+  /// Empty state copy when selected day has no scheduled calendar events
+  ///
+  /// In en, this message translates to:
+  /// **'No deadlines or exam dates on this day.'**
+  String get calendarAgendaEmptyDay;
+
+  /// Subtle guidance shown when the displayed month has no scheduled events
+  ///
+  /// In en, this message translates to:
+  /// **'Add deadlines or exam dates to your circulars to track them on this calendar.'**
+  String get calendarEmptyMonthHint;
+
+  /// Error banner message when circulars fail to load on Calendar screen
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load your schedule right now.'**
+  String get calendarLoadError;
+
+  /// Retry button label on Calendar screen
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get calendarRetry;
+
+  /// Accessible action hint on calendar agenda tiles
+  ///
+  /// In en, this message translates to:
+  /// **'Open circular'**
+  String get calendarOpenCircularAction;
+
+  /// Overflow indicator count when a calendar day has additional events
+  ///
+  /// In en, this message translates to:
+  /// **'+{formattedCount}'**
+  String calendarMoreEvents(String formattedCount);
+
+  /// Helper showing the locale-determined starting day of week
+  ///
+  /// In en, this message translates to:
+  /// **'Week starts on {dayName}'**
+  String calendarWeekStartsNote(String dayName);
 }
 
 class _AppLocalizationsDelegate

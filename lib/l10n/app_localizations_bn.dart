@@ -1228,4 +1228,73 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get circularFilesTypeImage => 'ছবি';
+
+  @override
+  String get calendarPreviousMonthTooltip => 'পূর্ববর্তী মাস';
+
+  @override
+  String get calendarNextMonthTooltip => 'পরবর্তী মাস';
+
+  @override
+  String get calendarTodayButton => 'আজ';
+
+  @override
+  String get calendarEventDeadline => 'আবেদনের শেষ দিন';
+
+  @override
+  String get calendarEventPreliminary => 'প্রিলিমিনারি';
+
+  @override
+  String get calendarEventWritten => 'লিখিত';
+
+  @override
+  String get calendarEventViva => 'মৌখিক (ভাইভা)';
+
+  @override
+  String get calendarEventPractical => 'ব্যবহারিক';
+
+  @override
+  String get calendarEventOther => 'অন্যান্য পরীক্ষা';
+
+  @override
+  String get calendarLegendTitle => 'রঙের সূচক';
+
+  @override
+  String calendarAgendaCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি ইভেন্ট',
+      one: '১টি ইভেন্ট',
+      zero: 'কোনো ইভেন্ট নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get calendarAgendaEmptyDay =>
+      'এই তারিখে কোনো আবেদনের শেষ সময় বা পরীক্ষার তারিখ নেই।';
+
+  @override
+  String get calendarEmptyMonthHint =>
+      'এই ক্যালেন্ডারে দেখতে আপনার সার্কুলারগুলোতে আবেদনের শেষ দিন বা পরীক্ষার তারিখ যোগ করুন।';
+
+  @override
+  String get calendarLoadError => 'এই মুহূর্তে আপনার সময়সূচি লোড করা যায়নি।';
+
+  @override
+  String get calendarRetry => 'আবার চেষ্টা করুন';
+
+  @override
+  String get calendarOpenCircularAction => 'সার্কুলার দেখুন';
+
+  @override
+  String calendarMoreEvents(String formattedCount) {
+    return '+$formattedCount';
+  }
+
+  @override
+  String calendarWeekStartsNote(String dayName) {
+    return 'সপ্তাহ শুরু: $dayName';
+  }
 }

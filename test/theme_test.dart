@@ -49,6 +49,8 @@ void main() {
       expect(darkColors.background, equals(const Color(0xFF0A0E1A)));
       expect(darkColors.goldAccent, equals(const Color(0xFFE5A93C)));
       expect(darkColors.surface, equals(const Color(0xFF12182B)));
+      expect(darkColors.info, equals(const Color(0xFF38BDF8)));
+      expect(darkColors.accentSecondary, equals(const Color(0xFFA78BFA)));
     });
 
     test('AppColorsToken.light has light background and gold accent', () {
@@ -56,6 +58,8 @@ void main() {
       expect(lightColors.background, equals(const Color(0xFFF4F6FB)));
       expect(lightColors.goldAccent, equals(const Color(0xFFC59128)));
       expect(lightColors.surface, equals(const Color(0xFFFFFFFF)));
+      expect(lightColors.info, equals(const Color(0xFF0284C7)));
+      expect(lightColors.accentSecondary, equals(const Color(0xFF7C3AED)));
     });
 
     test('AppThemeTokens copyWith and lerp produce valid transitions', () {

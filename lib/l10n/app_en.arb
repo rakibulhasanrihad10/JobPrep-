@@ -1595,5 +1595,95 @@
   "circularFilesTypeImage": "Image",
   "@circularFilesTypeImage": {
     "description": "Badge label for image file"
+  },
+  "calendarPreviousMonthTooltip": "Previous month",
+  "@calendarPreviousMonthTooltip": {
+    "description": "Tooltip for navigating to the previous month on calendar"
+  },
+  "calendarNextMonthTooltip": "Next month",
+  "@calendarNextMonthTooltip": {
+    "description": "Tooltip for navigating to the next month on calendar"
+  },
+  "calendarTodayButton": "Today",
+  "@calendarTodayButton": {
+    "description": "Button label jumping calendar selection to today's date"
+  },
+  "calendarEventDeadline": "Deadline",
+  "@calendarEventDeadline": {
+    "description": "Legend and badge label for application deadline events"
+  },
+  "calendarEventPreliminary": "Preliminary",
+  "@calendarEventPreliminary": {
+    "description": "Legend and badge label for preliminary exam events"
+  },
+  "calendarEventWritten": "Written",
+  "@calendarEventWritten": {
+    "description": "Legend and badge label for written exam events"
+  },
+  "calendarEventViva": "Viva",
+  "@calendarEventViva": {
+    "description": "Legend and badge label for viva exam events"
+  },
+  "calendarEventPractical": "Practical",
+  "@calendarEventPractical": {
+    "description": "Legend and badge label for practical exam events"
+  },
+  "calendarEventOther": "Other exam",
+  "@calendarEventOther": {
+    "description": "Legend and badge label for other exam events"
+  },
+  "calendarLegendTitle": "Color legend",
+  "@calendarLegendTitle": {
+    "description": "Heading for calendar event color legend"
+  },
+  "calendarAgendaCount": "{count, plural, =0{No events} =1{1 event} other{{formattedCount} events}}",
+  "@calendarAgendaCount": {
+    "description": "Pluralized count of calendar events for the selected day",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "calendarAgendaEmptyDay": "No deadlines or exam dates on this day.",
+  "@calendarAgendaEmptyDay": {
+    "description": "Empty state copy when selected day has no scheduled calendar events"
+  },
+  "calendarEmptyMonthHint": "Add deadlines or exam dates to your circulars to track them on this calendar.",
+  "@calendarEmptyMonthHint": {
+    "description": "Subtle guidance shown when the displayed month has no scheduled events"
+  },
+  "calendarLoadError": "Could not load your schedule right now.",
+  "@calendarLoadError": {
+    "description": "Error banner message when circulars fail to load on Calendar screen"
+  },
+  "calendarRetry": "Retry",
+  "@calendarRetry": {
+    "description": "Retry button label on Calendar screen"
+  },
+  "calendarOpenCircularAction": "Open circular",
+  "@calendarOpenCircularAction": {
+    "description": "Accessible action hint on calendar agenda tiles"
+  },
+  "calendarMoreEvents": "+{formattedCount}",
+  "@calendarMoreEvents": {
+    "description": "Overflow indicator count when a calendar day has additional events",
+    "placeholders": {
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "calendarWeekStartsNote": "Week starts on {dayName}",
+  "@calendarWeekStartsNote": {
+    "description": "Helper showing the locale-determined starting day of week",
+    "placeholders": {
+      "dayName": {
+        "type": "String"
+      }
+    }
   }
 }

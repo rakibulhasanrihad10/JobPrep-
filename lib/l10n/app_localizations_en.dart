@@ -1226,4 +1226,73 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get circularFilesTypeImage => 'Image';
+
+  @override
+  String get calendarPreviousMonthTooltip => 'Previous month';
+
+  @override
+  String get calendarNextMonthTooltip => 'Next month';
+
+  @override
+  String get calendarTodayButton => 'Today';
+
+  @override
+  String get calendarEventDeadline => 'Deadline';
+
+  @override
+  String get calendarEventPreliminary => 'Preliminary';
+
+  @override
+  String get calendarEventWritten => 'Written';
+
+  @override
+  String get calendarEventViva => 'Viva';
+
+  @override
+  String get calendarEventPractical => 'Practical';
+
+  @override
+  String get calendarEventOther => 'Other exam';
+
+  @override
+  String get calendarLegendTitle => 'Color legend';
+
+  @override
+  String calendarAgendaCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount events',
+      one: '1 event',
+      zero: 'No events',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get calendarAgendaEmptyDay =>
+      'No deadlines or exam dates on this day.';
+
+  @override
+  String get calendarEmptyMonthHint =>
+      'Add deadlines or exam dates to your circulars to track them on this calendar.';
+
+  @override
+  String get calendarLoadError => 'Could not load your schedule right now.';
+
+  @override
+  String get calendarRetry => 'Retry';
+
+  @override
+  String get calendarOpenCircularAction => 'Open circular';
+
+  @override
+  String calendarMoreEvents(String formattedCount) {
+    return '+$formattedCount';
+  }
+
+  @override
+  String calendarWeekStartsNote(String dayName) {
+    return 'Week starts on $dayName';
+  }
 }
