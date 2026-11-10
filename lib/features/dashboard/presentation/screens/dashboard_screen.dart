@@ -15,43 +15,39 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = context.tokens;
-    final colors = tokens.colors;
     final spacing = tokens.spacing;
     final textStyles = tokens.textStyles;
     final l10n = context.l10n;
 
-    return Scaffold(
-      backgroundColor: colors.background,
-      body: Center(
-        child: SingleChildScrollView(
-          padding: spacing.insetsAllXl,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 600),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  l10n.dashboardTitle,
-                  style: textStyles.headlineMedium,
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: spacing.sm),
-                Text(
-                  l10n.dashboardSubtitle,
-                  style: textStyles.bodyMedium,
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: spacing.xl),
-                const ThemeSwitcherCard(),
-                SizedBox(height: spacing.lg),
-                const LanguageSwitcherCard(),
-                SizedBox(height: spacing.lg),
-                const TokensPreviewCard(),
-                SizedBox(height: spacing.lg),
-                const FormattersPreviewCard(),
-              ],
-            ),
+    return Center(
+      child: SingleChildScrollView(
+        padding: spacing.insetsAllXl,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                l10n.dashboardTitle,
+                style: textStyles.headlineMedium,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: spacing.sm),
+              Text(
+                l10n.dashboardSubtitle,
+                style: textStyles.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: spacing.xl),
+              const ThemeSwitcherCard(),
+              SizedBox(height: spacing.lg),
+              const LanguageSwitcherCard(),
+              SizedBox(height: spacing.lg),
+              const TokensPreviewCard(),
+              SizedBox(height: spacing.lg),
+              const FormattersPreviewCard(),
+            ],
           ),
         ),
       ),

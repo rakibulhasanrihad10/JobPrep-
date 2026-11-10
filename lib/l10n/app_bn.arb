@@ -23,5 +23,20 @@
   "sampleDate": "পরীক্ষার তারিখ: {formattedDate}",
   "pageProgress": "পৃষ্ঠা {current} / {total}",
   "booksCompleted": "{count, plural, =0{কোনো বই সমাপ্ত হয়নি} =1{১টি বই সমাপ্ত হয়েছে} other{{count}টি বই সমাপ্ত হয়েছে}}",
-  "deadlineDaysRemaining": "{days, plural, =0{আবেদনের শেষ তারিখ আজ} =1{আবেদন শেষ হতে ১ দিন বাকি} other{আবেদন শেষ হতে {days} দিন বাকি}}"
+  "deadlineDaysRemaining": "{days, plural, =0{আবেদনের শেষ তারিখ আজ} =1{আবেদন শেষ হতে ১ দিন বাকি} other{আবেদন শেষ হতে {days} দিন বাকি}}",
+  "navDashboard": "ড্যাশবোর্ড",
+  "navCirculars": "সার্কুলার",
+  "navPrep": "প্রস্তুতি",
+  "navCalendar": "ক্যালেন্ডার",
+  "navSettings": "সেটিংস",
+  "circularsTitle": "চাকরির সার্কুলার",
+  "circularsSubtitle": "চলমান সার্কুলার, সময়সীমা ও প্রয়োজনীয় তথ্য ট্র্যাক করুন",
+  "prepTitle": "পরীক্ষার প্রস্তুতি",
+  "prepSubtitle": "বিষয়ভিত্তিক সিলেবাস, পড়ার লক্ষ্য ও বই ট্র্যাকিং",
+  "calendarTitle": "পরীক্ষার ক্যালেন্ডার",
+  "calendarSubtitle": "আসন্ন আবেদনের শেষ তারিখ ও পরীক্ষার সময়সূচি",
+  "settingsTitle": "সেটিংস",
+  "settingsSubtitle": "অ্যাপের পছন্দসমূহ, উপস্থিতি ও কনফিগারেশন",
+  "navShortcutTooltip": "শর্টকাট: {shortcut}",
+  "navShortcutBadge": "Alt+{digit}"
 }

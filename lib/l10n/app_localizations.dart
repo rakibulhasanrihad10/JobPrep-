@@ -241,6 +241,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{days, plural, =0{Application deadline is today} =1{1 day remaining until deadline} other{{days} days remaining until deadline}}'**
   String deadlineDaysRemaining(int days);
+
+  /// Navigation label for Dashboard tab
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get navDashboard;
+
+  /// Navigation label for Circulars tab
+  ///
+  /// In en, this message translates to:
+  /// **'Circulars'**
+  String get navCirculars;
+
+  /// Navigation label for Prep tab
+  ///
+  /// In en, this message translates to:
+  /// **'Prep'**
+  String get navPrep;
+
+  /// Navigation label for Calendar tab
+  ///
+  /// In en, this message translates to:
+  /// **'Calendar'**
+  String get navCalendar;
+
+  /// Navigation label for Settings tab
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get navSettings;
+
+  /// Title on Circulars screen
+  ///
+  /// In en, this message translates to:
+  /// **'Job Circulars'**
+  String get circularsTitle;
+
+  /// Subtitle on Circulars screen
+  ///
+  /// In en, this message translates to:
+  /// **'Track active job circulars, deadlines, and requirements'**
+  String get circularsSubtitle;
+
+  /// Title on Prep screen
+  ///
+  /// In en, this message translates to:
+  /// **'Exam Preparation'**
+  String get prepTitle;
+
+  /// Subtitle on Prep screen
+  ///
+  /// In en, this message translates to:
+  /// **'Subject-wise syllabus, targets, and book tracking'**
+  String get prepSubtitle;
+
+  /// Title on Calendar screen
+  ///
+  /// In en, this message translates to:
+  /// **'Exam Calendar'**
+  String get calendarTitle;
+
+  /// Subtitle on Calendar screen
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming application deadlines and exam schedules'**
+  String get calendarSubtitle;
+
+  /// Title on Settings screen
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
+
+  /// Subtitle on Settings screen
+  ///
+  /// In en, this message translates to:
+  /// **'App preferences, appearance, and configurations'**
+  String get settingsSubtitle;
+
+  /// Tooltip showing navigation keyboard shortcut
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut: {shortcut}'**
+  String navShortcutTooltip(String shortcut);
+
+  /// Keyboard shortcut badge
+  ///
+  /// In en, this message translates to:
+  /// **'Alt+{digit}'**
+  String navShortcutBadge(String digit);
 }
 
 class _AppLocalizationsDelegate

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:job_prep/core/theme/app_breakpoints.dart';
 import 'package:job_prep/core/theme/app_colors.dart';
 import 'package:job_prep/core/theme/app_radii.dart';
 import 'package:job_prep/core/theme/app_theme.dart';
@@ -12,6 +13,26 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   group('Theme System - Tokens & Extension', () {
+    test(
+      'AppBreakpointsToken has 600 compact, 1024 medium, 1200 max content',
+      () {
+        const breakpoints = AppBreakpointsToken();
+        expect(breakpoints.compact, equals(600.0));
+        expect(breakpoints.medium, equals(1024.0));
+        expect(breakpoints.maxContentWidth, equals(1200.0));
+
+        expect(breakpoints.isCompact(599), isTrue);
+        expect(breakpoints.isCompact(600), isFalse);
+
+        expect(breakpoints.isMedium(600), isTrue);
+        expect(breakpoints.isMedium(1024), isTrue);
+        expect(breakpoints.isMedium(1025), isFalse);
+
+        expect(breakpoints.isExpanded(1025), isTrue);
+        expect(breakpoints.isExpanded(1024), isFalse);
+      },
+    );
+
     test('AppRadiiToken adheres to strict 12px cards and 8px buttons', () {
       const radii = AppRadiiToken();
       expect(radii.card, equals(12.0));

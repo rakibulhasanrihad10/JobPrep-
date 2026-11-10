@@ -106,4 +106,57 @@ class AppLocalizationsEn extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get navDashboard => 'Dashboard';
+
+  @override
+  String get navCirculars => 'Circulars';
+
+  @override
+  String get navPrep => 'Prep';
+
+  @override
+  String get navCalendar => 'Calendar';
+
+  @override
+  String get navSettings => 'Settings';
+
+  @override
+  String get circularsTitle => 'Job Circulars';
+
+  @override
+  String get circularsSubtitle =>
+      'Track active job circulars, deadlines, and requirements';
+
+  @override
+  String get prepTitle => 'Exam Preparation';
+
+  @override
+  String get prepSubtitle =>
+      'Subject-wise syllabus, targets, and book tracking';
+
+  @override
+  String get calendarTitle => 'Exam Calendar';
+
+  @override
+  String get calendarSubtitle =>
+      'Upcoming application deadlines and exam schedules';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get settingsSubtitle =>
+      'App preferences, appearance, and configurations';
+
+  @override
+  String navShortcutTooltip(String shortcut) {
+    return 'Shortcut: $shortcut';
+  }
+
+  @override
+  String navShortcutBadge(String digit) {
+    return 'Alt+$digit';
+  }
 }

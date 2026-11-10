@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_prep/core/theme/app_breakpoints.dart';
 import 'package:job_prep/core/theme/app_colors.dart';
 import 'package:job_prep/core/theme/app_durations.dart';
 import 'package:job_prep/core/theme/app_radii.dart';
@@ -15,6 +16,7 @@ class AppThemeTokens extends ThemeExtension<AppThemeTokens> {
     required this.radii,
     required this.durations,
     required this.textStyles,
+    this.breakpoints = const AppBreakpointsToken(),
   });
 
   /// Factory for dark mode design tokens.
@@ -64,6 +66,9 @@ class AppThemeTokens extends ThemeExtension<AppThemeTokens> {
   /// Typography tokens using Inter.
   final AppTextStylesToken textStyles;
 
+  /// Responsive layout breakpoints.
+  final AppBreakpointsToken breakpoints;
+
   @override
   AppThemeTokens copyWith({
     AppColorsToken? colors,
@@ -71,6 +76,7 @@ class AppThemeTokens extends ThemeExtension<AppThemeTokens> {
     AppRadiiToken? radii,
     AppDurationsToken? durations,
     AppTextStylesToken? textStyles,
+    AppBreakpointsToken? breakpoints,
   }) {
     return AppThemeTokens(
       colors: colors ?? this.colors,
@@ -78,6 +84,7 @@ class AppThemeTokens extends ThemeExtension<AppThemeTokens> {
       radii: radii ?? this.radii,
       durations: durations ?? this.durations,
       textStyles: textStyles ?? this.textStyles,
+      breakpoints: breakpoints ?? this.breakpoints,
     );
   }
 
@@ -93,6 +100,7 @@ class AppThemeTokens extends ThemeExtension<AppThemeTokens> {
       radii: radii.lerp(other.radii, t),
       durations: durations.lerp(other.durations, t),
       textStyles: textStyles.lerp(other.textStyles, t),
+      breakpoints: breakpoints.lerp(other.breakpoints, t),
     );
   }
 }
@@ -116,4 +124,7 @@ extension ThemeTokensContextX on BuildContext {
 
   /// Access typography design tokens.
   AppTextStylesToken get textStyles => tokens.textStyles;
+
+  /// Access responsive layout breakpoints.
+  AppBreakpointsToken get breakpoints => tokens.breakpoints;
 }

@@ -106,4 +106,55 @@ class AppLocalizationsBn extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get navDashboard => 'ড্যাশবোর্ড';
+
+  @override
+  String get navCirculars => 'সার্কুলার';
+
+  @override
+  String get navPrep => 'প্রস্তুতি';
+
+  @override
+  String get navCalendar => 'ক্যালেন্ডার';
+
+  @override
+  String get navSettings => 'সেটিংস';
+
+  @override
+  String get circularsTitle => 'চাকরির সার্কুলার';
+
+  @override
+  String get circularsSubtitle =>
+      'চলমান সার্কুলার, সময়সীমা ও প্রয়োজনীয় তথ্য ট্র্যাক করুন';
+
+  @override
+  String get prepTitle => 'পরীক্ষার প্রস্তুতি';
+
+  @override
+  String get prepSubtitle =>
+      'বিষয়ভিত্তিক সিলেবাস, পড়ার লক্ষ্য ও বই ট্র্যাকিং';
+
+  @override
+  String get calendarTitle => 'পরীক্ষার ক্যালেন্ডার';
+
+  @override
+  String get calendarSubtitle => 'আসন্ন আবেদনের শেষ তারিখ ও পরীক্ষার সময়সূচি';
+
+  @override
+  String get settingsTitle => 'সেটিংস';
+
+  @override
+  String get settingsSubtitle => 'অ্যাপের পছন্দসমূহ, উপস্থিতি ও কনফিগারেশন';
+
+  @override
+  String navShortcutTooltip(String shortcut) {
+    return 'শর্টকাট: $shortcut';
+  }
+
+  @override
+  String navShortcutBadge(String digit) {
+    return 'Alt+$digit';
+  }
 }

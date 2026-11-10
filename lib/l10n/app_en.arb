@@ -123,5 +123,75 @@
         "type": "int"
       }
     }
+  },
+  "navDashboard": "Dashboard",
+  "@navDashboard": {
+    "description": "Navigation label for Dashboard tab"
+  },
+  "navCirculars": "Circulars",
+  "@navCirculars": {
+    "description": "Navigation label for Circulars tab"
+  },
+  "navPrep": "Prep",
+  "@navPrep": {
+    "description": "Navigation label for Prep tab"
+  },
+  "navCalendar": "Calendar",
+  "@navCalendar": {
+    "description": "Navigation label for Calendar tab"
+  },
+  "navSettings": "Settings",
+  "@navSettings": {
+    "description": "Navigation label for Settings tab"
+  },
+  "circularsTitle": "Job Circulars",
+  "@circularsTitle": {
+    "description": "Title on Circulars screen"
+  },
+  "circularsSubtitle": "Track active job circulars, deadlines, and requirements",
+  "@circularsSubtitle": {
+    "description": "Subtitle on Circulars screen"
+  },
+  "prepTitle": "Exam Preparation",
+  "@prepTitle": {
+    "description": "Title on Prep screen"
+  },
+  "prepSubtitle": "Subject-wise syllabus, targets, and book tracking",
+  "@prepSubtitle": {
+    "description": "Subtitle on Prep screen"
+  },
+  "calendarTitle": "Exam Calendar",
+  "@calendarTitle": {
+    "description": "Title on Calendar screen"
+  },
+  "calendarSubtitle": "Upcoming application deadlines and exam schedules",
+  "@calendarSubtitle": {
+    "description": "Subtitle on Calendar screen"
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Title on Settings screen"
+  },
+  "settingsSubtitle": "App preferences, appearance, and configurations",
+  "@settingsSubtitle": {
+    "description": "Subtitle on Settings screen"
+  },
+  "navShortcutTooltip": "Shortcut: {shortcut}",
+  "@navShortcutTooltip": {
+    "description": "Tooltip showing navigation keyboard shortcut",
+    "placeholders": {
+      "shortcut": {
+        "type": "String"
+      }
+    }
+  },
+  "navShortcutBadge": "Alt+{digit}",
+  "@navShortcutBadge": {
+    "description": "Keyboard shortcut badge",
+    "placeholders": {
+      "digit": {
+        "type": "String"
+      }
+    }
   }
 }

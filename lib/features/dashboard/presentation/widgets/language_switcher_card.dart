@@ -108,10 +108,12 @@ class _LanguageOptionTile extends StatelessWidget {
               activeColor: colors.goldAccent,
             ),
             SizedBox(width: spacing.sm),
-            Text(
-              label,
-              style: textStyles.bodyMedium.copyWith(
-                color: colors.textPrimary,
+            Expanded(
+              child: Text(
+                label,
+                style: textStyles.bodyMedium.copyWith(
+                  color: colors.textPrimary,
+                ),
               ),
             ),
           ],
