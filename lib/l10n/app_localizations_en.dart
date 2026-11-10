@@ -1295,4 +1295,385 @@ class AppLocalizationsEn extends AppLocalizations {
   String calendarWeekStartsNote(String dayName) {
     return 'Week starts on $dayName';
   }
+
+  @override
+  String get prepSubjectsSectionTitle => 'Subjects';
+
+  @override
+  String get prepOverallProgressLabel => 'Overall progress';
+
+  @override
+  String prepSubjectCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount subjects',
+      one: '1 subject',
+      zero: 'No subjects',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepMaterialCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount materials',
+      one: '1 material',
+      zero: 'No materials',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAddSubjectButton => 'Add subject';
+
+  @override
+  String get prepAddMaterialButton => 'Add material';
+
+  @override
+  String get prepRefreshTooltip => 'Refresh subjects and materials';
+
+  @override
+  String get prepLoadError => 'Could not load preparation subjects right now.';
+
+  @override
+  String get prepSelectSubjectPrompt =>
+      'Select a subject from the list to view and manage its study materials.';
+
+  @override
+  String get prepEmptySubjectsTitle => 'No subjects yet';
+
+  @override
+  String get prepEmptySubjectsBody =>
+      'Create subjects for your target career or exam track, then add books, courses, notes, or question banks inside each.';
+
+  @override
+  String prepEmptyMaterialsTitle(String subjectName) {
+    return 'No materials in $subjectName';
+  }
+
+  @override
+  String get prepEmptyMaterialsBody =>
+      'Add books, lecture sheets, video courses, or mock tests with any unit label you prefer.';
+
+  @override
+  String get prepBackToSubjects => 'Back to subjects';
+
+  @override
+  String get prepCreateSubjectTitle => 'New subject';
+
+  @override
+  String get prepEditSubjectTitle => 'Edit subject';
+
+  @override
+  String get prepSubjectNameLabel => 'Subject name';
+
+  @override
+  String get prepSubjectNameHint =>
+      'e.g. English Grammar, Anatomy, Data Structures';
+
+  @override
+  String get prepSubjectNameRequired => 'Subject name is required.';
+
+  @override
+  String get prepExamTypeLabel => 'Exam or career track';
+
+  @override
+  String get prepExamTypeHint => 'Type any track or pick a suggestion below';
+
+  @override
+  String get prepExamTypeRequired => 'Exam or career track is required.';
+
+  @override
+  String get prepExamTrackGeneral => 'General';
+
+  @override
+  String get prepExamTrackBcs => 'BCS';
+
+  @override
+  String get prepExamTrackBank => 'Bank';
+
+  @override
+  String get prepExamTrackGovt => 'Govt Job';
+
+  @override
+  String get prepExamTrackMedical => 'Medical';
+
+  @override
+  String get prepExamTrackEngineering => 'Engineering';
+
+  @override
+  String get prepExamTrackIelts => 'IELTS';
+
+  @override
+  String get prepSubjectColorLabel => 'Color';
+
+  @override
+  String get prepColorGold => 'Gold';
+
+  @override
+  String get prepColorInfo => 'Sky Blue';
+
+  @override
+  String get prepColorSuccess => 'Emerald';
+
+  @override
+  String get prepColorWarning => 'Amber';
+
+  @override
+  String get prepColorDanger => 'Coral Red';
+
+  @override
+  String get prepColorAccentSecondary => 'Violet';
+
+  @override
+  String get prepSubjectIconLabel => 'Icon';
+
+  @override
+  String get prepIconMenuBook => 'Book';
+
+  @override
+  String get prepIconCalculate => 'Math';
+
+  @override
+  String get prepIconLanguage => 'Language';
+
+  @override
+  String get prepIconPublic => 'Global / GK';
+
+  @override
+  String get prepIconScience => 'Science';
+
+  @override
+  String get prepIconComputer => 'Computing';
+
+  @override
+  String get prepIconAccountBalance => 'Finance / Law';
+
+  @override
+  String get prepIconPsychology => 'Aptitude';
+
+  @override
+  String get prepIconGavel => 'Constitution';
+
+  @override
+  String get prepIconQuiz => 'Quiz / Mock';
+
+  @override
+  String get prepSaveButton => 'Save';
+
+  @override
+  String get prepCancelButton => 'Cancel';
+
+  @override
+  String get prepEditAction => 'Edit';
+
+  @override
+  String get prepDeleteAction => 'Delete';
+
+  @override
+  String get prepMoveUpTooltip => 'Move subject up';
+
+  @override
+  String get prepMoveDownTooltip => 'Move subject down';
+
+  @override
+  String get prepDragReorderTooltip => 'Drag to reorder';
+
+  @override
+  String get prepCreateMaterialTitle => 'New material';
+
+  @override
+  String get prepEditMaterialTitle => 'Edit material';
+
+  @override
+  String get prepMaterialTitleLabel => 'Material title';
+
+  @override
+  String get prepMaterialTitleHint =>
+      'e.g. Official Guide, Clinical Handbook, System Design';
+
+  @override
+  String get prepMaterialTitleRequired => 'Material title is required.';
+
+  @override
+  String get prepMaterialKindLabel => 'Type';
+
+  @override
+  String get prepMaterialKindBook => 'Book';
+
+  @override
+  String get prepMaterialKindVideoCourse => 'Video course';
+
+  @override
+  String get prepMaterialKindLectureSheet => 'Lecture sheet';
+
+  @override
+  String get prepMaterialKindQuestionBank => 'Question bank';
+
+  @override
+  String get prepMaterialKindNotes => 'Notes';
+
+  @override
+  String get prepMaterialKindMockTest => 'Mock test';
+
+  @override
+  String get prepMaterialKindOther => 'Other';
+
+  @override
+  String get prepUnitLabelFieldLabel => 'Unit label';
+
+  @override
+  String get prepUnitLabelHint => 'e.g. pages, lectures, chapters, sets';
+
+  @override
+  String get prepUnitLabelRequired => 'Unit label is required.';
+
+  @override
+  String get prepUnitPresetPages => 'pages';
+
+  @override
+  String get prepUnitPresetChapters => 'chapters';
+
+  @override
+  String get prepUnitPresetLectures => 'lectures';
+
+  @override
+  String get prepUnitPresetVideos => 'videos';
+
+  @override
+  String get prepUnitPresetQuestions => 'questions';
+
+  @override
+  String get prepUnitPresetTests => 'tests';
+
+  @override
+  String get prepTotalUnitsLabel => 'Total units';
+
+  @override
+  String get prepTotalUnitsHint => 'e.g. 300';
+
+  @override
+  String get prepTotalUnitsInvalid =>
+      'Enter a whole number greater than or equal to 0.';
+
+  @override
+  String prepMaterialProgressSummary(
+      String completed, String total, String unitLabel) {
+    return '$completed / $total $unitLabel';
+  }
+
+  @override
+  String prepPercentComplete(String percent) {
+    return '$percent% complete';
+  }
+
+  @override
+  String get prepCoverSectionLabel => 'Cover image (optional)';
+
+  @override
+  String get prepCoverModeNone => 'None';
+
+  @override
+  String get prepCoverModeUpload => 'Upload photo';
+
+  @override
+  String get prepCoverModeUrl => 'Paste link';
+
+  @override
+  String get prepCoverPickButton => 'Choose JPG, PNG or WEBP';
+
+  @override
+  String get prepCoverReplaceButton => 'Replace photo';
+
+  @override
+  String get prepCoverRemoveButton => 'Remove cover';
+
+  @override
+  String prepCoverResizedNote(String formattedWidth) {
+    return 'Resized to $formattedWidth px wide for upload.';
+  }
+
+  @override
+  String get prepCoverUrlLabel => 'Image URL';
+
+  @override
+  String get prepCoverUrlHint => 'https://example.com/cover.jpg';
+
+  @override
+  String get prepCoverPlaceholderHint =>
+      'Without a cover image, a glass initial badge is displayed automatically.';
+
+  @override
+  String get prepCoverErrorUnsupportedType =>
+      'Only JPG, PNG, and WEBP images are supported.';
+
+  @override
+  String get prepCoverErrorEmptyFile => 'The selected cover image is empty.';
+
+  @override
+  String prepCoverErrorTooLarge(String maxSize) {
+    return 'Cover image exceeds the $maxSize limit.';
+  }
+
+  @override
+  String prepCoverErrorRawTooLarge(String maxSize) {
+    return 'Image is too large to process (max $maxSize).';
+  }
+
+  @override
+  String get prepCoverErrorInvalidUrl =>
+      'Enter a valid http:// or https:// image URL.';
+
+  @override
+  String get prepCoverUploadProgress => 'Resizing and uploading cover...';
+
+  @override
+  String prepDeleteSubjectTitle(String subjectName) {
+    return 'Delete \"$subjectName\"?';
+  }
+
+  @override
+  String get prepDeleteSubjectBody =>
+      'This will remove the subject and all materials inside it.';
+
+  @override
+  String prepDeleteSubjectProgressWarning(String formattedUnits) {
+    return 'Warning: this subject has logged progress ($formattedUnits completed units across materials). Deleting it will permanently remove that progress.';
+  }
+
+  @override
+  String prepDeleteMaterialTitle(String materialTitle) {
+    return 'Delete \"$materialTitle\"?';
+  }
+
+  @override
+  String get prepDeleteMaterialBody =>
+      'Are you sure you want to remove this material from the subject?';
+
+  @override
+  String prepDeleteMaterialProgressWarning(String formattedCompleted,
+      String formattedTotal, String unitLabel, String percent) {
+    return 'Warning: you have already logged $formattedCompleted of $formattedTotal $unitLabel ($percent% complete). Deleting this material will also remove its logged progress.';
+  }
+
+  @override
+  String get prepDeleteConfirmButton => 'Delete';
+
+  @override
+  String get prepErrorPermission =>
+      'You do not have permission to update this preparation item.';
+
+  @override
+  String get prepErrorNetwork =>
+      'Network issue while saving. Please try again.';
+
+  @override
+  String get prepErrorNotFound => 'That preparation item could not be found.';
+
+  @override
+  String get prepErrorUnknown =>
+      'Something went wrong while updating preparation data.';
 }

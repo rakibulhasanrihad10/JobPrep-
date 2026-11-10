@@ -1297,4 +1297,384 @@ class AppLocalizationsBn extends AppLocalizations {
   String calendarWeekStartsNote(String dayName) {
     return 'সপ্তাহ শুরু: $dayName';
   }
+
+  @override
+  String get prepSubjectsSectionTitle => 'বিষয়সমূহ';
+
+  @override
+  String get prepOverallProgressLabel => 'সামগ্রিক অগ্রগতি';
+
+  @override
+  String prepSubjectCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি বিষয়',
+      one: '১টি বিষয়',
+      zero: 'কোনো বিষয় নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepMaterialCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি উপকরণ',
+      one: '১টি উপকরণ',
+      zero: 'কোনো উপকরণ নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAddSubjectButton => 'বিষয় যোগ করুন';
+
+  @override
+  String get prepAddMaterialButton => 'উপকরণ যোগ করুন';
+
+  @override
+  String get prepRefreshTooltip => 'বিষয় ও উপকরণ রিফ্রেশ করুন';
+
+  @override
+  String get prepLoadError =>
+      'এই মুহূর্তে প্রস্তুতির বিষয়সমূহ লোড করা যায়নি।';
+
+  @override
+  String get prepSelectSubjectPrompt =>
+      'পড়ার উপকরণ দেখতে ও পরিচালনা করতে তালিকা থেকে একটি বিষয় নির্বাচন করুন।';
+
+  @override
+  String get prepEmptySubjectsTitle => 'এখনো কোনো বিষয় নেই';
+
+  @override
+  String get prepEmptySubjectsBody =>
+      'আপনার কাঙ্ক্ষিত ক্যারিয়ার বা পরীক্ষার জন্য বিষয় তৈরি করুন, এবং প্রতিটি বিষয়ের ভেতরে বই, কোর্স, নোট বা প্রশ্নব্যাংক যোগ করুন।';
+
+  @override
+  String prepEmptyMaterialsTitle(String subjectName) {
+    return '$subjectName বিষয়ে কোনো উপকরণ নেই';
+  }
+
+  @override
+  String get prepEmptyMaterialsBody =>
+      'আপনার পছন্দমতো একক সহ বই, লেকচার শিট, ভিডিও কোর্স বা মক টেস্ট যোগ করুন।';
+
+  @override
+  String get prepBackToSubjects => 'বিষয় তালিকায় ফিরুন';
+
+  @override
+  String get prepCreateSubjectTitle => 'নতুন বিষয়';
+
+  @override
+  String get prepEditSubjectTitle => 'বিষয় সম্পাদনা';
+
+  @override
+  String get prepSubjectNameLabel => 'বিষয়ের নাম';
+
+  @override
+  String get prepSubjectNameHint =>
+      'যেমন: ইংরেজি, সাধারণ জ্ঞান, ডেটা স্ট্রাকচার্স';
+
+  @override
+  String get prepSubjectNameRequired => 'বিষয়ের নাম আবশ্যক।';
+
+  @override
+  String get prepExamTypeLabel => 'পরীক্ষা বা ক্যারিয়ার ট্র্যাক';
+
+  @override
+  String get prepExamTypeHint => 'যেকোনো ট্র্যাক লিখুন বা নিচ থেকে বাছাই করুন';
+
+  @override
+  String get prepExamTypeRequired => 'পরীক্ষা বা ক্যারিয়ার ট্র্যাক আবশ্যক।';
+
+  @override
+  String get prepExamTrackGeneral => 'সাধারণ';
+
+  @override
+  String get prepExamTrackBcs => 'বিসিএস';
+
+  @override
+  String get prepExamTrackBank => 'ব্যাংক';
+
+  @override
+  String get prepExamTrackGovt => 'সরকারি চাকরি';
+
+  @override
+  String get prepExamTrackMedical => 'মেডিকেল';
+
+  @override
+  String get prepExamTrackEngineering => 'প্রকৌশল';
+
+  @override
+  String get prepExamTrackIelts => 'আইইএলটিএস';
+
+  @override
+  String get prepSubjectColorLabel => 'রঙ';
+
+  @override
+  String get prepColorGold => 'সোনালি';
+
+  @override
+  String get prepColorInfo => 'আকাশি';
+
+  @override
+  String get prepColorSuccess => 'সবুজ';
+
+  @override
+  String get prepColorWarning => 'হলদে-কমলা';
+
+  @override
+  String get prepColorDanger => 'লাল';
+
+  @override
+  String get prepColorAccentSecondary => 'বেগুনি';
+
+  @override
+  String get prepSubjectIconLabel => 'আইকন';
+
+  @override
+  String get prepIconMenuBook => 'বই';
+
+  @override
+  String get prepIconCalculate => 'গণিত';
+
+  @override
+  String get prepIconLanguage => 'ভাষা';
+
+  @override
+  String get prepIconPublic => 'বিশ্ব / সাধারণ জ্ঞান';
+
+  @override
+  String get prepIconScience => 'বিজ্ঞান';
+
+  @override
+  String get prepIconComputer => 'কম্পিউটার';
+
+  @override
+  String get prepIconAccountBalance => 'অর্থ / আইন';
+
+  @override
+  String get prepIconPsychology => 'মানসিক দক্ষতা';
+
+  @override
+  String get prepIconGavel => 'সংবিধান';
+
+  @override
+  String get prepIconQuiz => 'কুইজ / মক';
+
+  @override
+  String get prepSaveButton => 'সংরক্ষণ করুন';
+
+  @override
+  String get prepCancelButton => 'বাতিল করুন';
+
+  @override
+  String get prepEditAction => 'সম্পাদনা';
+
+  @override
+  String get prepDeleteAction => 'মুছে ফেলুন';
+
+  @override
+  String get prepMoveUpTooltip => 'বিষয়টি উপরে নিন';
+
+  @override
+  String get prepMoveDownTooltip => 'বিষয়টি নিচে নিন';
+
+  @override
+  String get prepDragReorderTooltip => 'সাজাতে টেনে আনুন';
+
+  @override
+  String get prepCreateMaterialTitle => 'নতুন উপকরণ';
+
+  @override
+  String get prepEditMaterialTitle => 'উপকরণ সম্পাদনা';
+
+  @override
+  String get prepMaterialTitleLabel => 'উপকরণের শিরোনাম';
+
+  @override
+  String get prepMaterialTitleHint => 'যেমন: বাংলা সাহিত্য, অফিশিয়াল গাইড';
+
+  @override
+  String get prepMaterialTitleRequired => 'উপকরণের শিরোনাম আবশ্যক।';
+
+  @override
+  String get prepMaterialKindLabel => 'ধরন';
+
+  @override
+  String get prepMaterialKindBook => 'বই';
+
+  @override
+  String get prepMaterialKindVideoCourse => 'ভিডিও কোর্স';
+
+  @override
+  String get prepMaterialKindLectureSheet => 'লেকচার শিট';
+
+  @override
+  String get prepMaterialKindQuestionBank => 'প্রশ্নব্যাংক';
+
+  @override
+  String get prepMaterialKindNotes => 'নোট';
+
+  @override
+  String get prepMaterialKindMockTest => 'মক টেস্ট';
+
+  @override
+  String get prepMaterialKindOther => 'অন্যান্য';
+
+  @override
+  String get prepUnitLabelFieldLabel => 'এককের নাম';
+
+  @override
+  String get prepUnitLabelHint => 'যেমন: পৃষ্ঠা, লেকচার, অধ্যায়';
+
+  @override
+  String get prepUnitLabelRequired => 'এককের নাম আবশ্যক।';
+
+  @override
+  String get prepUnitPresetPages => 'পৃষ্ঠা';
+
+  @override
+  String get prepUnitPresetChapters => 'অধ্যায়';
+
+  @override
+  String get prepUnitPresetLectures => 'লেকচার';
+
+  @override
+  String get prepUnitPresetVideos => 'ভিডিও';
+
+  @override
+  String get prepUnitPresetQuestions => 'প্রশ্ন';
+
+  @override
+  String get prepUnitPresetTests => 'টেস্ট';
+
+  @override
+  String get prepTotalUnitsLabel => 'মোট একক';
+
+  @override
+  String get prepTotalUnitsHint => 'যেমন: ৩০০';
+
+  @override
+  String get prepTotalUnitsInvalid => '০ বা তার বড় একটি পূর্ণসংখ্যা লিখুন।';
+
+  @override
+  String prepMaterialProgressSummary(
+      String completed, String total, String unitLabel) {
+    return '$completed / $total $unitLabel';
+  }
+
+  @override
+  String prepPercentComplete(String percent) {
+    return '$percent% সম্পন্ন';
+  }
+
+  @override
+  String get prepCoverSectionLabel => 'কভার ছবি (ঐচ্ছিক)';
+
+  @override
+  String get prepCoverModeNone => 'নেই';
+
+  @override
+  String get prepCoverModeUpload => 'ছবি আপলোড';
+
+  @override
+  String get prepCoverModeUrl => 'লিংক দিন';
+
+  @override
+  String get prepCoverPickButton => 'JPG, PNG বা WEBP বাছাই করুন';
+
+  @override
+  String get prepCoverReplaceButton => 'ছবি পরিবর্তন করুন';
+
+  @override
+  String get prepCoverRemoveButton => 'কভার সরান';
+
+  @override
+  String prepCoverResizedNote(String formattedWidth) {
+    return 'আপলোডের জন্য $formattedWidth পিক্সেল প্রস্থে রিসাইজ করা হয়েছে।';
+  }
+
+  @override
+  String get prepCoverUrlLabel => 'ছবির লিংক';
+
+  @override
+  String get prepCoverUrlHint => 'https://example.com/cover.jpg';
+
+  @override
+  String get prepCoverPlaceholderHint =>
+      'কভার ছবি না থাকলে স্বয়ংক্রিয়ভাবে গ্লাস অক্ষর ব্যাজ দেখানো হবে।';
+
+  @override
+  String get prepCoverErrorUnsupportedType =>
+      'শুধুমাত্র JPG, PNG এবং WEBP ছবি সমর্থিত।';
+
+  @override
+  String get prepCoverErrorEmptyFile => 'নির্বাচিত কভার ছবিটি খালি।';
+
+  @override
+  String prepCoverErrorTooLarge(String maxSize) {
+    return 'কভার ছবিটি $maxSize সীমা ছাড়িয়ে গেছে।';
+  }
+
+  @override
+  String prepCoverErrorRawTooLarge(String maxSize) {
+    return 'ছবিটি প্রসেস করার জন্য অতিরিক্ত বড় (সর্বোচ্চ $maxSize)।';
+  }
+
+  @override
+  String get prepCoverErrorInvalidUrl =>
+      'সঠিক http:// বা https:// ছবির লিংক লিখুন।';
+
+  @override
+  String get prepCoverUploadProgress => 'কভার রিসাইজ ও আপলোড হচ্ছে...';
+
+  @override
+  String prepDeleteSubjectTitle(String subjectName) {
+    return '\"$subjectName\" মুছে ফেলবেন?';
+  }
+
+  @override
+  String get prepDeleteSubjectBody =>
+      'এতে এই বিষয়টি এবং এর ভেতরের সব উপকরণ মুছে যাবে।';
+
+  @override
+  String prepDeleteSubjectProgressWarning(String formattedUnits) {
+    return 'সতর্কতা: এই বিষয়ে সংরক্ষিত অগ্রগতি রয়েছে (উপকরণগুলোতে $formattedUnits একক সম্পন্ন হয়েছে)। মুছে ফেললে সেই অগ্রগতি স্থায়ীভাবে হারিয়ে যাবে।';
+  }
+
+  @override
+  String prepDeleteMaterialTitle(String materialTitle) {
+    return '\"$materialTitle\" মুছে ফেলবেন?';
+  }
+
+  @override
+  String get prepDeleteMaterialBody =>
+      'আপনি কি নিশ্চিত যে এই উপকরণটি বিষয় থেকে মুছে ফেলতে চান?';
+
+  @override
+  String prepDeleteMaterialProgressWarning(String formattedCompleted,
+      String formattedTotal, String unitLabel, String percent) {
+    return 'সতর্কতা: আপনি ইতিমধ্যেই $formattedTotal $unitLabel-এর মধ্যে $formattedCompleted $unitLabel ($percent% সম্পন্ন) লগ করেছেন। উপকরণটি মুছে ফেললে এর অগ্রগতিও মুছে যাবে।';
+  }
+
+  @override
+  String get prepDeleteConfirmButton => 'মুছে ফেলুন';
+
+  @override
+  String get prepErrorPermission =>
+      'এই প্রস্তুতি আইটেম পরিবর্তন করার অনুমতি আপনার নেই।';
+
+  @override
+  String get prepErrorNetwork =>
+      'সংরক্ষণের সময় নেটওয়ার্ক সমস্যা হয়েছে। আবার চেষ্টা করুন।';
+
+  @override
+  String get prepErrorNotFound => 'প্রস্তুতির সেই আইটেমটি খুঁজে পাওয়া যায়নি।';
+
+  @override
+  String get prepErrorUnknown =>
+      'প্রস্তুতির তথ্য হালনাগাদ করার সময় সমস্যা হয়েছে।';
 }

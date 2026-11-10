@@ -2288,6 +2288,662 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Week starts on {dayName}'**
   String calendarWeekStartsNote(String dayName);
+
+  /// Header for the subjects list in Preparation manager
+  ///
+  /// In en, this message translates to:
+  /// **'Subjects'**
+  String get prepSubjectsSectionTitle;
+
+  /// Label above overall preparation progress ring and summary
+  ///
+  /// In en, this message translates to:
+  /// **'Overall progress'**
+  String get prepOverallProgressLabel;
+
+  /// Pluralized count of subjects
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No subjects} =1{1 subject} other{{formattedCount} subjects}}'**
+  String prepSubjectCount(int count, String formattedCount);
+
+  /// Pluralized count of materials
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No materials} =1{1 material} other{{formattedCount} materials}}'**
+  String prepMaterialCount(int count, String formattedCount);
+
+  /// Primary button label to create a new subject
+  ///
+  /// In en, this message translates to:
+  /// **'Add subject'**
+  String get prepAddSubjectButton;
+
+  /// Primary button label to add a study material to a subject
+  ///
+  /// In en, this message translates to:
+  /// **'Add material'**
+  String get prepAddMaterialButton;
+
+  /// Tooltip for refreshing prep data
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh subjects and materials'**
+  String get prepRefreshTooltip;
+
+  /// Error banner when loading prep subjects fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load preparation subjects right now.'**
+  String get prepLoadError;
+
+  /// Desktop detail pane prompt when no subject is selected
+  ///
+  /// In en, this message translates to:
+  /// **'Select a subject from the list to view and manage its study materials.'**
+  String get prepSelectSubjectPrompt;
+
+  /// Empty state title when the user has created zero subjects
+  ///
+  /// In en, this message translates to:
+  /// **'No subjects yet'**
+  String get prepEmptySubjectsTitle;
+
+  /// Empty state body explaining user-defined subjects
+  ///
+  /// In en, this message translates to:
+  /// **'Create subjects for your target career or exam track, then add books, courses, notes, or question banks inside each.'**
+  String get prepEmptySubjectsBody;
+
+  /// Empty state title inside a subject with zero materials
+  ///
+  /// In en, this message translates to:
+  /// **'No materials in {subjectName}'**
+  String prepEmptyMaterialsTitle(String subjectName);
+
+  /// Empty state body explaining user-defined materials
+  ///
+  /// In en, this message translates to:
+  /// **'Add books, lecture sheets, video courses, or mock tests with any unit label you prefer.'**
+  String get prepEmptyMaterialsBody;
+
+  /// Back action label on mobile subject detail screen
+  ///
+  /// In en, this message translates to:
+  /// **'Back to subjects'**
+  String get prepBackToSubjects;
+
+  /// Dialog title for creating a new subject
+  ///
+  /// In en, this message translates to:
+  /// **'New subject'**
+  String get prepCreateSubjectTitle;
+
+  /// Dialog title for editing an existing subject
+  ///
+  /// In en, this message translates to:
+  /// **'Edit subject'**
+  String get prepEditSubjectTitle;
+
+  /// Input label for subject name
+  ///
+  /// In en, this message translates to:
+  /// **'Subject name'**
+  String get prepSubjectNameLabel;
+
+  /// Hint showing career-agnostic subject names
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. English Grammar, Anatomy, Data Structures'**
+  String get prepSubjectNameHint;
+
+  /// Validation error when subject name is blank
+  ///
+  /// In en, this message translates to:
+  /// **'Subject name is required.'**
+  String get prepSubjectNameRequired;
+
+  /// Input label for user-defined exam or career track
+  ///
+  /// In en, this message translates to:
+  /// **'Exam or career track'**
+  String get prepExamTypeLabel;
+
+  /// Hint for free-form exam type field
+  ///
+  /// In en, this message translates to:
+  /// **'Type any track or pick a suggestion below'**
+  String get prepExamTypeHint;
+
+  /// Validation error when exam type is blank
+  ///
+  /// In en, this message translates to:
+  /// **'Exam or career track is required.'**
+  String get prepExamTypeRequired;
+
+  /// Quick suggestion chip for general preparation
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get prepExamTrackGeneral;
+
+  /// Quick suggestion chip for BCS
+  ///
+  /// In en, this message translates to:
+  /// **'BCS'**
+  String get prepExamTrackBcs;
+
+  /// Quick suggestion chip for bank recruitment
+  ///
+  /// In en, this message translates to:
+  /// **'Bank'**
+  String get prepExamTrackBank;
+
+  /// Quick suggestion chip for government jobs
+  ///
+  /// In en, this message translates to:
+  /// **'Govt Job'**
+  String get prepExamTrackGovt;
+
+  /// Quick suggestion chip for medical track
+  ///
+  /// In en, this message translates to:
+  /// **'Medical'**
+  String get prepExamTrackMedical;
+
+  /// Quick suggestion chip for engineering track
+  ///
+  /// In en, this message translates to:
+  /// **'Engineering'**
+  String get prepExamTrackEngineering;
+
+  /// Quick suggestion chip for IELTS
+  ///
+  /// In en, this message translates to:
+  /// **'IELTS'**
+  String get prepExamTrackIelts;
+
+  /// Section label for picking subject color
+  ///
+  /// In en, this message translates to:
+  /// **'Color'**
+  String get prepSubjectColorLabel;
+
+  /// Accessible label for gold subject color
+  ///
+  /// In en, this message translates to:
+  /// **'Gold'**
+  String get prepColorGold;
+
+  /// Accessible label for sky blue subject color
+  ///
+  /// In en, this message translates to:
+  /// **'Sky Blue'**
+  String get prepColorInfo;
+
+  /// Accessible label for emerald subject color
+  ///
+  /// In en, this message translates to:
+  /// **'Emerald'**
+  String get prepColorSuccess;
+
+  /// Accessible label for amber subject color
+  ///
+  /// In en, this message translates to:
+  /// **'Amber'**
+  String get prepColorWarning;
+
+  /// Accessible label for red subject color
+  ///
+  /// In en, this message translates to:
+  /// **'Coral Red'**
+  String get prepColorDanger;
+
+  /// Accessible label for violet subject color
+  ///
+  /// In en, this message translates to:
+  /// **'Violet'**
+  String get prepColorAccentSecondary;
+
+  /// Section label for picking subject icon
+  ///
+  /// In en, this message translates to:
+  /// **'Icon'**
+  String get prepSubjectIconLabel;
+
+  /// Label for book icon option
+  ///
+  /// In en, this message translates to:
+  /// **'Book'**
+  String get prepIconMenuBook;
+
+  /// Label for math icon option
+  ///
+  /// In en, this message translates to:
+  /// **'Math'**
+  String get prepIconCalculate;
+
+  /// Label for language icon option
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get prepIconLanguage;
+
+  /// Label for global studies icon option
+  ///
+  /// In en, this message translates to:
+  /// **'Global / GK'**
+  String get prepIconPublic;
+
+  /// Label for science icon option
+  ///
+  /// In en, this message translates to:
+  /// **'Science'**
+  String get prepIconScience;
+
+  /// Label for computing icon option
+  ///
+  /// In en, this message translates to:
+  /// **'Computing'**
+  String get prepIconComputer;
+
+  /// Label for finance and governance icon option
+  ///
+  /// In en, this message translates to:
+  /// **'Finance / Law'**
+  String get prepIconAccountBalance;
+
+  /// Label for mental ability icon option
+  ///
+  /// In en, this message translates to:
+  /// **'Aptitude'**
+  String get prepIconPsychology;
+
+  /// Label for law/constitution icon option
+  ///
+  /// In en, this message translates to:
+  /// **'Constitution'**
+  String get prepIconGavel;
+
+  /// Label for quiz/practice icon option
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz / Mock'**
+  String get prepIconQuiz;
+
+  /// Save action label in prep dialogs
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get prepSaveButton;
+
+  /// Cancel action label in prep dialogs
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get prepCancelButton;
+
+  /// Edit tooltip or button label in prep manager
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get prepEditAction;
+
+  /// Delete tooltip or button label in prep manager
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get prepDeleteAction;
+
+  /// Tooltip for moving a subject higher in order
+  ///
+  /// In en, this message translates to:
+  /// **'Move subject up'**
+  String get prepMoveUpTooltip;
+
+  /// Tooltip for moving a subject lower in order
+  ///
+  /// In en, this message translates to:
+  /// **'Move subject down'**
+  String get prepMoveDownTooltip;
+
+  /// Tooltip for drag reorder handle on subject rows
+  ///
+  /// In en, this message translates to:
+  /// **'Drag to reorder'**
+  String get prepDragReorderTooltip;
+
+  /// Dialog title for creating a new study material
+  ///
+  /// In en, this message translates to:
+  /// **'New material'**
+  String get prepCreateMaterialTitle;
+
+  /// Dialog title for editing a study material
+  ///
+  /// In en, this message translates to:
+  /// **'Edit material'**
+  String get prepEditMaterialTitle;
+
+  /// Input label for material title
+  ///
+  /// In en, this message translates to:
+  /// **'Material title'**
+  String get prepMaterialTitleLabel;
+
+  /// Hint showing example material titles
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Official Guide, Clinical Handbook, System Design'**
+  String get prepMaterialTitleHint;
+
+  /// Validation error when material title is blank
+  ///
+  /// In en, this message translates to:
+  /// **'Material title is required.'**
+  String get prepMaterialTitleRequired;
+
+  /// Section label for material kind selector
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get prepMaterialKindLabel;
+
+  /// Material kind label for Book
+  ///
+  /// In en, this message translates to:
+  /// **'Book'**
+  String get prepMaterialKindBook;
+
+  /// Material kind label for Video course
+  ///
+  /// In en, this message translates to:
+  /// **'Video course'**
+  String get prepMaterialKindVideoCourse;
+
+  /// Material kind label for Lecture sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Lecture sheet'**
+  String get prepMaterialKindLectureSheet;
+
+  /// Material kind label for Question bank
+  ///
+  /// In en, this message translates to:
+  /// **'Question bank'**
+  String get prepMaterialKindQuestionBank;
+
+  /// Material kind label for Notes
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get prepMaterialKindNotes;
+
+  /// Material kind label for Mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Mock test'**
+  String get prepMaterialKindMockTest;
+
+  /// Material kind label for Other
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get prepMaterialKindOther;
+
+  /// Input label for material unit label
+  ///
+  /// In en, this message translates to:
+  /// **'Unit label'**
+  String get prepUnitLabelFieldLabel;
+
+  /// Hint for free-form unit label input
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. pages, lectures, chapters, sets'**
+  String get prepUnitLabelHint;
+
+  /// Validation error when unit label is blank
+  ///
+  /// In en, this message translates to:
+  /// **'Unit label is required.'**
+  String get prepUnitLabelRequired;
+
+  /// Quick preset chip for pages
+  ///
+  /// In en, this message translates to:
+  /// **'pages'**
+  String get prepUnitPresetPages;
+
+  /// Quick preset chip for chapters
+  ///
+  /// In en, this message translates to:
+  /// **'chapters'**
+  String get prepUnitPresetChapters;
+
+  /// Quick preset chip for lectures
+  ///
+  /// In en, this message translates to:
+  /// **'lectures'**
+  String get prepUnitPresetLectures;
+
+  /// Quick preset chip for videos
+  ///
+  /// In en, this message translates to:
+  /// **'videos'**
+  String get prepUnitPresetVideos;
+
+  /// Quick preset chip for questions
+  ///
+  /// In en, this message translates to:
+  /// **'questions'**
+  String get prepUnitPresetQuestions;
+
+  /// Quick preset chip for tests
+  ///
+  /// In en, this message translates to:
+  /// **'tests'**
+  String get prepUnitPresetTests;
+
+  /// Input label for total unit count
+  ///
+  /// In en, this message translates to:
+  /// **'Total units'**
+  String get prepTotalUnitsLabel;
+
+  /// Hint for total units numeric input
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 300'**
+  String get prepTotalUnitsHint;
+
+  /// Validation error when total units is invalid or negative
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a whole number greater than or equal to 0.'**
+  String get prepTotalUnitsInvalid;
+
+  /// Completed over total units display for a study material
+  ///
+  /// In en, this message translates to:
+  /// **'{completed} / {total} {unitLabel}'**
+  String prepMaterialProgressSummary(
+      String completed, String total, String unitLabel);
+
+  /// Percentage completion label
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% complete'**
+  String prepPercentComplete(String percent);
+
+  /// Section header for cover upload or image link
+  ///
+  /// In en, this message translates to:
+  /// **'Cover image (optional)'**
+  String get prepCoverSectionLabel;
+
+  /// Cover mode toggle indicating no cover image
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get prepCoverModeNone;
+
+  /// Cover mode toggle to upload a photo file
+  ///
+  /// In en, this message translates to:
+  /// **'Upload photo'**
+  String get prepCoverModeUpload;
+
+  /// Cover mode toggle to paste an external image link
+  ///
+  /// In en, this message translates to:
+  /// **'Paste link'**
+  String get prepCoverModeUrl;
+
+  /// Button to open file picker for cover image
+  ///
+  /// In en, this message translates to:
+  /// **'Choose JPG, PNG or WEBP'**
+  String get prepCoverPickButton;
+
+  /// Button to choose a replacement cover photo
+  ///
+  /// In en, this message translates to:
+  /// **'Replace photo'**
+  String get prepCoverReplaceButton;
+
+  /// Button to remove current cover photo
+  ///
+  /// In en, this message translates to:
+  /// **'Remove cover'**
+  String get prepCoverRemoveButton;
+
+  /// Note shown when selected image was scaled to max ~600 px width
+  ///
+  /// In en, this message translates to:
+  /// **'Resized to {formattedWidth} px wide for upload.'**
+  String prepCoverResizedNote(String formattedWidth);
+
+  /// Text field label for pasting an external image URL
+  ///
+  /// In en, this message translates to:
+  /// **'Image URL'**
+  String get prepCoverUrlLabel;
+
+  /// Placeholder hint for cover image URL
+  ///
+  /// In en, this message translates to:
+  /// **'https://example.com/cover.jpg'**
+  String get prepCoverUrlHint;
+
+  /// Helper explaining glass placeholder when no cover is chosen
+  ///
+  /// In en, this message translates to:
+  /// **'Without a cover image, a glass initial badge is displayed automatically.'**
+  String get prepCoverPlaceholderHint;
+
+  /// Validation error for unsupported cover image file types
+  ///
+  /// In en, this message translates to:
+  /// **'Only JPG, PNG, and WEBP images are supported.'**
+  String get prepCoverErrorUnsupportedType;
+
+  /// Validation error when selected cover file has zero bytes
+  ///
+  /// In en, this message translates to:
+  /// **'The selected cover image is empty.'**
+  String get prepCoverErrorEmptyFile;
+
+  /// Validation error when cover exceeds upload size limit
+  ///
+  /// In en, this message translates to:
+  /// **'Cover image exceeds the {maxSize} limit.'**
+  String prepCoverErrorTooLarge(String maxSize);
+
+  /// Validation error when raw image before resize exceeds memory cap
+  ///
+  /// In en, this message translates to:
+  /// **'Image is too large to process (max {maxSize}).'**
+  String prepCoverErrorRawTooLarge(String maxSize);
+
+  /// Validation error for malformed cover image URL
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid http:// or https:// image URL.'**
+  String get prepCoverErrorInvalidUrl;
+
+  /// Status message while resizing and uploading cover photo
+  ///
+  /// In en, this message translates to:
+  /// **'Resizing and uploading cover...'**
+  String get prepCoverUploadProgress;
+
+  /// Confirmation dialog title when deleting a subject
+  ///
+  /// In en, this message translates to:
+  /// **'Delete \"{subjectName}\"?'**
+  String prepDeleteSubjectTitle(String subjectName);
+
+  /// Confirmation body for deleting a subject
+  ///
+  /// In en, this message translates to:
+  /// **'This will remove the subject and all materials inside it.'**
+  String get prepDeleteSubjectBody;
+
+  /// Warning displayed before deleting a subject that has logged progress
+  ///
+  /// In en, this message translates to:
+  /// **'Warning: this subject has logged progress ({formattedUnits} completed units across materials). Deleting it will permanently remove that progress.'**
+  String prepDeleteSubjectProgressWarning(String formattedUnits);
+
+  /// Confirmation dialog title when deleting a material
+  ///
+  /// In en, this message translates to:
+  /// **'Delete \"{materialTitle}\"?'**
+  String prepDeleteMaterialTitle(String materialTitle);
+
+  /// Confirmation body for deleting a material
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to remove this material from the subject?'**
+  String get prepDeleteMaterialBody;
+
+  /// Warning displayed before deleting a material that has logged progress
+  ///
+  /// In en, this message translates to:
+  /// **'Warning: you have already logged {formattedCompleted} of {formattedTotal} {unitLabel} ({percent}% complete). Deleting this material will also remove its logged progress.'**
+  String prepDeleteMaterialProgressWarning(String formattedCompleted,
+      String formattedTotal, String unitLabel, String percent);
+
+  /// Confirm button label in delete dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get prepDeleteConfirmButton;
+
+  /// Error banner for PrepPermissionFailure
+  ///
+  /// In en, this message translates to:
+  /// **'You do not have permission to update this preparation item.'**
+  String get prepErrorPermission;
+
+  /// Error banner for PrepNetworkFailure
+  ///
+  /// In en, this message translates to:
+  /// **'Network issue while saving. Please try again.'**
+  String get prepErrorNetwork;
+
+  /// Error banner for PrepNotFoundFailure
+  ///
+  /// In en, this message translates to:
+  /// **'That preparation item could not be found.'**
+  String get prepErrorNotFound;
+
+  /// Fallback error banner for prep errors
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong while updating preparation data.'**
+  String get prepErrorUnknown;
 }
 
 class _AppLocalizationsDelegate

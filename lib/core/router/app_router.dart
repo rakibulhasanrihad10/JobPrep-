@@ -16,6 +16,7 @@ import 'package:job_prep/features/circulars/presentation/screens/inbox_screen.da
 import 'package:job_prep/features/circulars/presentation/widgets/quick_capture_shell.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
+import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_screen.dart';
 import 'package:job_prep/features/settings/presentation/screens/settings_screen.dart';
 
 /// Optional initial location override used in widget and deep-link tests.
@@ -169,6 +170,18 @@ final routerProvider = Provider<GoRouter>((ref) {
             pageBuilder: (context, state) => const NoTransitionPage(
               child: PrepScreen(),
             ),
+            routes: [
+              GoRoute(
+                path: ':subjectId',
+                name: 'prep_subject',
+                pageBuilder: (context, state) {
+                  final subjectId = state.pathParameters['subjectId']!;
+                  return NoTransitionPage(
+                    child: PrepSubjectDetailScreen(subjectId: subjectId),
+                  );
+                },
+              ),
+            ],
           ),
           GoRoute(
             path: '/calendar',

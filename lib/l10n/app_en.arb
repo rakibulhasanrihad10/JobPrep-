@@ -1685,5 +1685,522 @@
         "type": "String"
       }
     }
+  },
+  "prepSubjectsSectionTitle": "Subjects",
+  "@prepSubjectsSectionTitle": {
+    "description": "Header for the subjects list in Preparation manager"
+  },
+  "prepOverallProgressLabel": "Overall progress",
+  "@prepOverallProgressLabel": {
+    "description": "Label above overall preparation progress ring and summary"
+  },
+  "prepSubjectCount": "{count, plural, =0{No subjects} =1{1 subject} other{{formattedCount} subjects}}",
+  "@prepSubjectCount": {
+    "description": "Pluralized count of subjects",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMaterialCount": "{count, plural, =0{No materials} =1{1 material} other{{formattedCount} materials}}",
+  "@prepMaterialCount": {
+    "description": "Pluralized count of materials",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAddSubjectButton": "Add subject",
+  "@prepAddSubjectButton": {
+    "description": "Primary button label to create a new subject"
+  },
+  "prepAddMaterialButton": "Add material",
+  "@prepAddMaterialButton": {
+    "description": "Primary button label to add a study material to a subject"
+  },
+  "prepRefreshTooltip": "Refresh subjects and materials",
+  "@prepRefreshTooltip": {
+    "description": "Tooltip for refreshing prep data"
+  },
+  "prepLoadError": "Could not load preparation subjects right now.",
+  "@prepLoadError": {
+    "description": "Error banner when loading prep subjects fails"
+  },
+  "prepSelectSubjectPrompt": "Select a subject from the list to view and manage its study materials.",
+  "@prepSelectSubjectPrompt": {
+    "description": "Desktop detail pane prompt when no subject is selected"
+  },
+  "prepEmptySubjectsTitle": "No subjects yet",
+  "@prepEmptySubjectsTitle": {
+    "description": "Empty state title when the user has created zero subjects"
+  },
+  "prepEmptySubjectsBody": "Create subjects for your target career or exam track, then add books, courses, notes, or question banks inside each.",
+  "@prepEmptySubjectsBody": {
+    "description": "Empty state body explaining user-defined subjects"
+  },
+  "prepEmptyMaterialsTitle": "No materials in {subjectName}",
+  "@prepEmptyMaterialsTitle": {
+    "description": "Empty state title inside a subject with zero materials",
+    "placeholders": {
+      "subjectName": {
+        "type": "String"
+      }
+    }
+  },
+  "prepEmptyMaterialsBody": "Add books, lecture sheets, video courses, or mock tests with any unit label you prefer.",
+  "@prepEmptyMaterialsBody": {
+    "description": "Empty state body explaining user-defined materials"
+  },
+  "prepBackToSubjects": "Back to subjects",
+  "@prepBackToSubjects": {
+    "description": "Back action label on mobile subject detail screen"
+  },
+  "prepCreateSubjectTitle": "New subject",
+  "@prepCreateSubjectTitle": {
+    "description": "Dialog title for creating a new subject"
+  },
+  "prepEditSubjectTitle": "Edit subject",
+  "@prepEditSubjectTitle": {
+    "description": "Dialog title for editing an existing subject"
+  },
+  "prepSubjectNameLabel": "Subject name",
+  "@prepSubjectNameLabel": {
+    "description": "Input label for subject name"
+  },
+  "prepSubjectNameHint": "e.g. English Grammar, Anatomy, Data Structures",
+  "@prepSubjectNameHint": {
+    "description": "Hint showing career-agnostic subject names"
+  },
+  "prepSubjectNameRequired": "Subject name is required.",
+  "@prepSubjectNameRequired": {
+    "description": "Validation error when subject name is blank"
+  },
+  "prepExamTypeLabel": "Exam or career track",
+  "@prepExamTypeLabel": {
+    "description": "Input label for user-defined exam or career track"
+  },
+  "prepExamTypeHint": "Type any track or pick a suggestion below",
+  "@prepExamTypeHint": {
+    "description": "Hint for free-form exam type field"
+  },
+  "prepExamTypeRequired": "Exam or career track is required.",
+  "@prepExamTypeRequired": {
+    "description": "Validation error when exam type is blank"
+  },
+  "prepExamTrackGeneral": "General",
+  "@prepExamTrackGeneral": {
+    "description": "Quick suggestion chip for general preparation"
+  },
+  "prepExamTrackBcs": "BCS",
+  "@prepExamTrackBcs": {
+    "description": "Quick suggestion chip for BCS"
+  },
+  "prepExamTrackBank": "Bank",
+  "@prepExamTrackBank": {
+    "description": "Quick suggestion chip for bank recruitment"
+  },
+  "prepExamTrackGovt": "Govt Job",
+  "@prepExamTrackGovt": {
+    "description": "Quick suggestion chip for government jobs"
+  },
+  "prepExamTrackMedical": "Medical",
+  "@prepExamTrackMedical": {
+    "description": "Quick suggestion chip for medical track"
+  },
+  "prepExamTrackEngineering": "Engineering",
+  "@prepExamTrackEngineering": {
+    "description": "Quick suggestion chip for engineering track"
+  },
+  "prepExamTrackIelts": "IELTS",
+  "@prepExamTrackIelts": {
+    "description": "Quick suggestion chip for IELTS"
+  },
+  "prepSubjectColorLabel": "Color",
+  "@prepSubjectColorLabel": {
+    "description": "Section label for picking subject color"
+  },
+  "prepColorGold": "Gold",
+  "@prepColorGold": {
+    "description": "Accessible label for gold subject color"
+  },
+  "prepColorInfo": "Sky Blue",
+  "@prepColorInfo": {
+    "description": "Accessible label for sky blue subject color"
+  },
+  "prepColorSuccess": "Emerald",
+  "@prepColorSuccess": {
+    "description": "Accessible label for emerald subject color"
+  },
+  "prepColorWarning": "Amber",
+  "@prepColorWarning": {
+    "description": "Accessible label for amber subject color"
+  },
+  "prepColorDanger": "Coral Red",
+  "@prepColorDanger": {
+    "description": "Accessible label for red subject color"
+  },
+  "prepColorAccentSecondary": "Violet",
+  "@prepColorAccentSecondary": {
+    "description": "Accessible label for violet subject color"
+  },
+  "prepSubjectIconLabel": "Icon",
+  "@prepSubjectIconLabel": {
+    "description": "Section label for picking subject icon"
+  },
+  "prepIconMenuBook": "Book",
+  "@prepIconMenuBook": {
+    "description": "Label for book icon option"
+  },
+  "prepIconCalculate": "Math",
+  "@prepIconCalculate": {
+    "description": "Label for math icon option"
+  },
+  "prepIconLanguage": "Language",
+  "@prepIconLanguage": {
+    "description": "Label for language icon option"
+  },
+  "prepIconPublic": "Global / GK",
+  "@prepIconPublic": {
+    "description": "Label for global studies icon option"
+  },
+  "prepIconScience": "Science",
+  "@prepIconScience": {
+    "description": "Label for science icon option"
+  },
+  "prepIconComputer": "Computing",
+  "@prepIconComputer": {
+    "description": "Label for computing icon option"
+  },
+  "prepIconAccountBalance": "Finance / Law",
+  "@prepIconAccountBalance": {
+    "description": "Label for finance and governance icon option"
+  },
+  "prepIconPsychology": "Aptitude",
+  "@prepIconPsychology": {
+    "description": "Label for mental ability icon option"
+  },
+  "prepIconGavel": "Constitution",
+  "@prepIconGavel": {
+    "description": "Label for law/constitution icon option"
+  },
+  "prepIconQuiz": "Quiz / Mock",
+  "@prepIconQuiz": {
+    "description": "Label for quiz/practice icon option"
+  },
+  "prepSaveButton": "Save",
+  "@prepSaveButton": {
+    "description": "Save action label in prep dialogs"
+  },
+  "prepCancelButton": "Cancel",
+  "@prepCancelButton": {
+    "description": "Cancel action label in prep dialogs"
+  },
+  "prepEditAction": "Edit",
+  "@prepEditAction": {
+    "description": "Edit tooltip or button label in prep manager"
+  },
+  "prepDeleteAction": "Delete",
+  "@prepDeleteAction": {
+    "description": "Delete tooltip or button label in prep manager"
+  },
+  "prepMoveUpTooltip": "Move subject up",
+  "@prepMoveUpTooltip": {
+    "description": "Tooltip for moving a subject higher in order"
+  },
+  "prepMoveDownTooltip": "Move subject down",
+  "@prepMoveDownTooltip": {
+    "description": "Tooltip for moving a subject lower in order"
+  },
+  "prepDragReorderTooltip": "Drag to reorder",
+  "@prepDragReorderTooltip": {
+    "description": "Tooltip for drag reorder handle on subject rows"
+  },
+  "prepCreateMaterialTitle": "New material",
+  "@prepCreateMaterialTitle": {
+    "description": "Dialog title for creating a new study material"
+  },
+  "prepEditMaterialTitle": "Edit material",
+  "@prepEditMaterialTitle": {
+    "description": "Dialog title for editing a study material"
+  },
+  "prepMaterialTitleLabel": "Material title",
+  "@prepMaterialTitleLabel": {
+    "description": "Input label for material title"
+  },
+  "prepMaterialTitleHint": "e.g. Official Guide, Clinical Handbook, System Design",
+  "@prepMaterialTitleHint": {
+    "description": "Hint showing example material titles"
+  },
+  "prepMaterialTitleRequired": "Material title is required.",
+  "@prepMaterialTitleRequired": {
+    "description": "Validation error when material title is blank"
+  },
+  "prepMaterialKindLabel": "Type",
+  "@prepMaterialKindLabel": {
+    "description": "Section label for material kind selector"
+  },
+  "prepMaterialKindBook": "Book",
+  "@prepMaterialKindBook": {
+    "description": "Material kind label for Book"
+  },
+  "prepMaterialKindVideoCourse": "Video course",
+  "@prepMaterialKindVideoCourse": {
+    "description": "Material kind label for Video course"
+  },
+  "prepMaterialKindLectureSheet": "Lecture sheet",
+  "@prepMaterialKindLectureSheet": {
+    "description": "Material kind label for Lecture sheet"
+  },
+  "prepMaterialKindQuestionBank": "Question bank",
+  "@prepMaterialKindQuestionBank": {
+    "description": "Material kind label for Question bank"
+  },
+  "prepMaterialKindNotes": "Notes",
+  "@prepMaterialKindNotes": {
+    "description": "Material kind label for Notes"
+  },
+  "prepMaterialKindMockTest": "Mock test",
+  "@prepMaterialKindMockTest": {
+    "description": "Material kind label for Mock test"
+  },
+  "prepMaterialKindOther": "Other",
+  "@prepMaterialKindOther": {
+    "description": "Material kind label for Other"
+  },
+  "prepUnitLabelFieldLabel": "Unit label",
+  "@prepUnitLabelFieldLabel": {
+    "description": "Input label for material unit label"
+  },
+  "prepUnitLabelHint": "e.g. pages, lectures, chapters, sets",
+  "@prepUnitLabelHint": {
+    "description": "Hint for free-form unit label input"
+  },
+  "prepUnitLabelRequired": "Unit label is required.",
+  "@prepUnitLabelRequired": {
+    "description": "Validation error when unit label is blank"
+  },
+  "prepUnitPresetPages": "pages",
+  "@prepUnitPresetPages": {
+    "description": "Quick preset chip for pages"
+  },
+  "prepUnitPresetChapters": "chapters",
+  "@prepUnitPresetChapters": {
+    "description": "Quick preset chip for chapters"
+  },
+  "prepUnitPresetLectures": "lectures",
+  "@prepUnitPresetLectures": {
+    "description": "Quick preset chip for lectures"
+  },
+  "prepUnitPresetVideos": "videos",
+  "@prepUnitPresetVideos": {
+    "description": "Quick preset chip for videos"
+  },
+  "prepUnitPresetQuestions": "questions",
+  "@prepUnitPresetQuestions": {
+    "description": "Quick preset chip for questions"
+  },
+  "prepUnitPresetTests": "tests",
+  "@prepUnitPresetTests": {
+    "description": "Quick preset chip for tests"
+  },
+  "prepTotalUnitsLabel": "Total units",
+  "@prepTotalUnitsLabel": {
+    "description": "Input label for total unit count"
+  },
+  "prepTotalUnitsHint": "e.g. 300",
+  "@prepTotalUnitsHint": {
+    "description": "Hint for total units numeric input"
+  },
+  "prepTotalUnitsInvalid": "Enter a whole number greater than or equal to 0.",
+  "@prepTotalUnitsInvalid": {
+    "description": "Validation error when total units is invalid or negative"
+  },
+  "prepMaterialProgressSummary": "{completed} / {total} {unitLabel}",
+  "@prepMaterialProgressSummary": {
+    "description": "Completed over total units display for a study material",
+    "placeholders": {
+      "completed": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "prepPercentComplete": "{percent}% complete",
+  "@prepPercentComplete": {
+    "description": "Percentage completion label",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "prepCoverSectionLabel": "Cover image (optional)",
+  "@prepCoverSectionLabel": {
+    "description": "Section header for cover upload or image link"
+  },
+  "prepCoverModeNone": "None",
+  "@prepCoverModeNone": {
+    "description": "Cover mode toggle indicating no cover image"
+  },
+  "prepCoverModeUpload": "Upload photo",
+  "@prepCoverModeUpload": {
+    "description": "Cover mode toggle to upload a photo file"
+  },
+  "prepCoverModeUrl": "Paste link",
+  "@prepCoverModeUrl": {
+    "description": "Cover mode toggle to paste an external image link"
+  },
+  "prepCoverPickButton": "Choose JPG, PNG or WEBP",
+  "@prepCoverPickButton": {
+    "description": "Button to open file picker for cover image"
+  },
+  "prepCoverReplaceButton": "Replace photo",
+  "@prepCoverReplaceButton": {
+    "description": "Button to choose a replacement cover photo"
+  },
+  "prepCoverRemoveButton": "Remove cover",
+  "@prepCoverRemoveButton": {
+    "description": "Button to remove current cover photo"
+  },
+  "prepCoverResizedNote": "Resized to {formattedWidth} px wide for upload.",
+  "@prepCoverResizedNote": {
+    "description": "Note shown when selected image was scaled to max ~600 px width",
+    "placeholders": {
+      "formattedWidth": {
+        "type": "String"
+      }
+    }
+  },
+  "prepCoverUrlLabel": "Image URL",
+  "@prepCoverUrlLabel": {
+    "description": "Text field label for pasting an external image URL"
+  },
+  "prepCoverUrlHint": "https://example.com/cover.jpg",
+  "@prepCoverUrlHint": {
+    "description": "Placeholder hint for cover image URL"
+  },
+  "prepCoverPlaceholderHint": "Without a cover image, a glass initial badge is displayed automatically.",
+  "@prepCoverPlaceholderHint": {
+    "description": "Helper explaining glass placeholder when no cover is chosen"
+  },
+  "prepCoverErrorUnsupportedType": "Only JPG, PNG, and WEBP images are supported.",
+  "@prepCoverErrorUnsupportedType": {
+    "description": "Validation error for unsupported cover image file types"
+  },
+  "prepCoverErrorEmptyFile": "The selected cover image is empty.",
+  "@prepCoverErrorEmptyFile": {
+    "description": "Validation error when selected cover file has zero bytes"
+  },
+  "prepCoverErrorTooLarge": "Cover image exceeds the {maxSize} limit.",
+  "@prepCoverErrorTooLarge": {
+    "description": "Validation error when cover exceeds upload size limit",
+    "placeholders": {
+      "maxSize": {
+        "type": "String"
+      }
+    }
+  },
+  "prepCoverErrorRawTooLarge": "Image is too large to process (max {maxSize}).",
+  "@prepCoverErrorRawTooLarge": {
+    "description": "Validation error when raw image before resize exceeds memory cap",
+    "placeholders": {
+      "maxSize": {
+        "type": "String"
+      }
+    }
+  },
+  "prepCoverErrorInvalidUrl": "Enter a valid http:// or https:// image URL.",
+  "@prepCoverErrorInvalidUrl": {
+    "description": "Validation error for malformed cover image URL"
+  },
+  "prepCoverUploadProgress": "Resizing and uploading cover...",
+  "@prepCoverUploadProgress": {
+    "description": "Status message while resizing and uploading cover photo"
+  },
+  "prepDeleteSubjectTitle": "Delete \"{subjectName}\"?",
+  "@prepDeleteSubjectTitle": {
+    "description": "Confirmation dialog title when deleting a subject",
+    "placeholders": {
+      "subjectName": {
+        "type": "String"
+      }
+    }
+  },
+  "prepDeleteSubjectBody": "This will remove the subject and all materials inside it.",
+  "@prepDeleteSubjectBody": {
+    "description": "Confirmation body for deleting a subject"
+  },
+  "prepDeleteSubjectProgressWarning": "Warning: this subject has logged progress ({formattedUnits} completed units across materials). Deleting it will permanently remove that progress.",
+  "@prepDeleteSubjectProgressWarning": {
+    "description": "Warning displayed before deleting a subject that has logged progress",
+    "placeholders": {
+      "formattedUnits": {
+        "type": "String"
+      }
+    }
+  },
+  "prepDeleteMaterialTitle": "Delete \"{materialTitle}\"?",
+  "@prepDeleteMaterialTitle": {
+    "description": "Confirmation dialog title when deleting a material",
+    "placeholders": {
+      "materialTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "prepDeleteMaterialBody": "Are you sure you want to remove this material from the subject?",
+  "@prepDeleteMaterialBody": {
+    "description": "Confirmation body for deleting a material"
+  },
+  "prepDeleteMaterialProgressWarning": "Warning: you have already logged {formattedCompleted} of {formattedTotal} {unitLabel} ({percent}% complete). Deleting this material will also remove its logged progress.",
+  "@prepDeleteMaterialProgressWarning": {
+    "description": "Warning displayed before deleting a material that has logged progress",
+    "placeholders": {
+      "formattedCompleted": {
+        "type": "String"
+      },
+      "formattedTotal": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "prepDeleteConfirmButton": "Delete",
+  "@prepDeleteConfirmButton": {
+    "description": "Confirm button label in delete dialog"
+  },
+  "prepErrorPermission": "You do not have permission to update this preparation item.",
+  "@prepErrorPermission": {
+    "description": "Error banner for PrepPermissionFailure"
+  },
+  "prepErrorNetwork": "Network issue while saving. Please try again.",
+  "@prepErrorNetwork": {
+    "description": "Error banner for PrepNetworkFailure"
+  },
+  "prepErrorNotFound": "That preparation item could not be found.",
+  "@prepErrorNotFound": {
+    "description": "Error banner for PrepNotFoundFailure"
+  },
+  "prepErrorUnknown": "Something went wrong while updating preparation data.",
+  "@prepErrorUnknown": {
+    "description": "Fallback error banner for prep errors"
   }
 }

@@ -94,4 +94,56 @@ void main() {
       );
     });
   });
+
+  group('Phase 4C - Material Covers Private Storage Migration & pgTAP Tests',
+      () {
+    test('storage migration defines private material-covers bucket and RLS',
+        () {
+      final migration = File(
+        'supabase/migrations/20261110050000_storage_material_covers_bucket.sql',
+      );
+      expect(migration.existsSync(), isTrue);
+
+      final sql = migration.readAsStringSync();
+      expect(sql, isNot(contains('\r\n')));
+      expect(sql, contains("'material-covers'"));
+      expect(sql, contains('false'));
+      expect(sql, contains('5242880'));
+      expect(sql, contains("'image/jpeg'"));
+      expect(sql, contains("'image/png'"));
+      expect(sql, contains("'image/webp'"));
+      expect(sql, contains('ON storage.objects'));
+      expect(sql, contains("split_part(name, '/', 1) = auth.uid()::text"));
+      expect(sql, contains("strpos(name, '/') > 0"));
+      expect(sql, contains('FOR SELECT'));
+      expect(sql, contains('FOR INSERT'));
+      expect(sql, contains('FOR UPDATE'));
+      expect(sql, contains('FOR DELETE'));
+    });
+
+    test('pgTAP test verifies private cover bucket and cross-user isolation',
+        () {
+      final testFile = File(
+        'supabase/tests/06_storage_material_covers_bucket_test.sql',
+      );
+      expect(testFile.existsSync(), isTrue);
+
+      final sql = testFile.readAsStringSync();
+      expect(sql, isNot(contains('\r\n')));
+      expect(sql, contains('BEGIN;'));
+      expect(sql, contains('SELECT plan(13);'));
+      expect(sql, contains("'material-covers'"));
+      expect(
+        sql,
+        contains(
+          'User A can upload material cover into own user_id folder',
+        ),
+      );
+      expect(sql, contains('User B cannot read User A cover'));
+      expect(sql, contains('User B cannot update User A cover'));
+      expect(sql, contains('User B cannot delete User A cover'));
+      expect(sql, contains('SELECT * FROM finish();'));
+      expect(sql, contains('ROLLBACK;'));
+    });
+  });
 }
