@@ -1,0 +1,12 @@
+# Gitleaks configuration for JobPrep
+# Extends default rule set with project-specific allowlists.
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Ignore test fixtures and automated proof scripts"
+paths = [
+  '''test/.*''',
+  '''scripts/test_quality_gates\..*'''
+]

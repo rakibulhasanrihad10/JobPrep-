@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Git commit-msg hook for JobPrep
+# Validates commit messages follow the Conventional Commits specification.
+
+set -e
+
+COMMIT_MSG_FILE="$1"
+if [ ! -f "$COMMIT_MSG_FILE" ]; then
+  echo "❌ Error: Commit message file '$COMMIT_MSG_FILE' not found." >&2
+  exit 1
+fi
+
+COMMIT_MSG=$(head -n 1 "$COMMIT_MSG_FILE")
+
+# Allow merge, initial, or automated revert messages
+if echo "$COMMIT_MSG" | grep -Eq "^(Merge branch|Merge pull request|Initial commit|Revert \")"; then
+  exit 0
+fi
+
+# Conventional Commits regex pattern:
+# <type>(<optional-scope>): <description>
+PATTERN="^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-zA-Z0-9_\-\.\/]+\))?!?: [A-Za-z0-9].+"
+
+if ! echo "$COMMIT_MSG" | grep -Eq "$PATTERN"; then
+  echo "=================================================================" >&2
+  echo "❌ Conventional Commits Quality Gate Failed!" >&2
+  echo "   Provided commit message: \"$COMMIT_MSG\"" >&2
+  echo "" >&2
+  echo "Commit messages must follow Conventional Commits format:" >&2
+  echo "  <type>(<optional scope>): <subject>" >&2
+  echo "" >&2
+  echo "Valid types:" >&2
+  echo "  feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert" >&2
+  echo "" >&2
+  echo "Examples:" >&2
+  echo "  chore: setup repo scaffolding for Phase 0A" >&2
+  echo "  feat(auth): add email and password authentication" >&2
+  echo "  fix(vault): fix aes encryption key derivation" >&2
+  echo "  test(math): add progress calculation test" >&2
+  echo "=================================================================" >&2
+  exit 1
+fi
+
+echo "✅ Commit message conforms to Conventional Commits: \"$COMMIT_MSG\""
+exit 0

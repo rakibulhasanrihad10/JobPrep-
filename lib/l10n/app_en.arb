@@ -1,0 +1,1012 @@
+{
+  "@@locale": "en",
+  "appTitle": "JobPrep",
+  "@appTitle": {
+    "description": "Application title"
+  },
+  "dashboardTitle": "JobPrep Dashboard",
+  "@dashboardTitle": {
+    "description": "Main title on dashboard"
+  },
+  "dashboardSubtitle": "Job Circular Tracker & Exam Prep Foundations",
+  "@dashboardSubtitle": {
+    "description": "Subtitle on dashboard"
+  },
+  "themeSwitcherTitle": "Theme Mode Switcher",
+  "@themeSwitcherTitle": {
+    "description": "Header for theme settings card"
+  },
+  "themeSwitcherSubtitle": "Choose an appearance mode (persisted with SharedPreferences)",
+  "@themeSwitcherSubtitle": {
+    "description": "Description for theme settings card"
+  },
+  "systemTheme": "System Theme",
+  "@systemTheme": {
+    "description": "System theme option label"
+  },
+  "lightTheme": "Light Theme (Navy & Gold)",
+  "@lightTheme": {
+    "description": "Light theme option label"
+  },
+  "darkTheme": "Dark Theme (Deep Navy & Gold)",
+  "@darkTheme": {
+    "description": "Dark theme option label"
+  },
+  "languageSwitcherTitle": "Language Switcher",
+  "@languageSwitcherTitle": {
+    "description": "Header for language settings card"
+  },
+  "languageSwitcherSubtitle": "Choose an interface language (persisted with SharedPreferences)",
+  "@languageSwitcherSubtitle": {
+    "description": "Description for language settings card"
+  },
+  "languageEnglish": "English",
+  "@languageEnglish": {
+    "description": "English language option"
+  },
+  "languageBangla": "বাংলা (Bangla)",
+  "@languageBangla": {
+    "description": "Bangla language option"
+  },
+  "tokensPreviewTitle": "Design Tokens Preview",
+  "@tokensPreviewTitle": {
+    "description": "Header for tokens preview card"
+  },
+  "goldAccentButton": "Gold Accent Button",
+  "@goldAccentButton": {
+    "description": "Label for gold accent button"
+  },
+  "outlinedButton": "Outlined Button",
+  "@outlinedButton": {
+    "description": "Label for outlined button"
+  },
+  "statusSuccess": "Success",
+  "@statusSuccess": {
+    "description": "Status badge label for success"
+  },
+  "statusWarning": "Warning",
+  "@statusWarning": {
+    "description": "Status badge label for warning"
+  },
+  "statusDanger": "Danger",
+  "@statusDanger": {
+    "description": "Status badge label for danger"
+  },
+  "formattersTitle": "Locale Formatters & Plurals Preview",
+  "@formattersTitle": {
+    "description": "Header for formatters showcase card"
+  },
+  "sampleCurrency": "Application Fee: {formattedAmount}",
+  "@sampleCurrency": {
+    "description": "Sample localized currency",
+    "placeholders": {
+      "formattedAmount": {
+        "type": "String"
+      }
+    }
+  },
+  "sampleDate": "Exam Date: {formattedDate}",
+  "@sampleDate": {
+    "description": "Sample localized date",
+    "placeholders": {
+      "formattedDate": {
+        "type": "String"
+      }
+    }
+  },
+  "pageProgress": "Page {current} of {total}",
+  "@pageProgress": {
+    "description": "Progress display with placeholders",
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "booksCompleted": "{count, plural, =0{No books completed yet} =1{1 book completed} other{{count} books completed}}",
+  "@booksCompleted": {
+    "description": "Pluralized count of completed study books",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "deadlineDaysRemaining": "{days, plural, =0{Application deadline is today} =1{1 day remaining until deadline} other{{days} days remaining until deadline}}",
+  "@deadlineDaysRemaining": {
+    "description": "Pluralized days remaining until application deadline",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "navDashboard": "Dashboard",
+  "@navDashboard": {
+    "description": "Navigation label for Dashboard tab"
+  },
+  "navCirculars": "Circulars",
+  "@navCirculars": {
+    "description": "Navigation label for Circulars tab"
+  },
+  "navPrep": "Prep",
+  "@navPrep": {
+    "description": "Navigation label for Prep tab"
+  },
+  "navCalendar": "Calendar",
+  "@navCalendar": {
+    "description": "Navigation label for Calendar tab"
+  },
+  "navSettings": "Settings",
+  "@navSettings": {
+    "description": "Navigation label for Settings tab"
+  },
+  "circularsTitle": "Job Circulars",
+  "@circularsTitle": {
+    "description": "Title on Circulars screen"
+  },
+  "circularsSubtitle": "Track active job circulars, deadlines, and requirements",
+  "@circularsSubtitle": {
+    "description": "Subtitle on Circulars screen"
+  },
+  "prepTitle": "Exam Preparation",
+  "@prepTitle": {
+    "description": "Title on Prep screen"
+  },
+  "prepSubtitle": "Subject-wise syllabus, targets, and book tracking",
+  "@prepSubtitle": {
+    "description": "Subtitle on Prep screen"
+  },
+  "calendarTitle": "Exam Calendar",
+  "@calendarTitle": {
+    "description": "Title on Calendar screen"
+  },
+  "calendarSubtitle": "Upcoming application deadlines and exam schedules",
+  "@calendarSubtitle": {
+    "description": "Subtitle on Calendar screen"
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Title on Settings screen"
+  },
+  "settingsSubtitle": "App preferences, appearance, and configurations",
+  "@settingsSubtitle": {
+    "description": "Subtitle on Settings screen"
+  },
+  "navShortcutTooltip": "Shortcut: {shortcut}",
+  "@navShortcutTooltip": {
+    "description": "Tooltip showing navigation keyboard shortcut",
+    "placeholders": {
+      "shortcut": {
+        "type": "String"
+      }
+    }
+  },
+  "navShortcutBadge": "Alt+{digit}",
+  "@navShortcutBadge": {
+    "description": "Keyboard shortcut badge",
+    "placeholders": {
+      "digit": {
+        "type": "String"
+      }
+    }
+  },
+  "authLoginRouteTitle": "Sign In",
+  "@authLoginRouteTitle": {
+    "description": "Title on the login route placeholder"
+  },
+  "authResetPasswordRouteTitle": "Reset Password",
+  "@authResetPasswordRouteTitle": {
+    "description": "Title on the reset password route placeholder"
+  },
+  "authSignInTitle": "Welcome back",
+  "@authSignInTitle": {
+    "description": "Heading for sign-in mode on login screen"
+  },
+  "authSignInSubtitle": "Sign in to manage your job circulars and exam prep",
+  "@authSignInSubtitle": {
+    "description": "Subtitle for sign-in mode on login screen"
+  },
+  "authSignUpTitle": "Create your account",
+  "@authSignUpTitle": {
+    "description": "Heading for sign-up mode on login screen"
+  },
+  "authSignUpSubtitle": "Start tracking circulars and study progress securely",
+  "@authSignUpSubtitle": {
+    "description": "Subtitle for sign-up mode on login screen"
+  },
+  "authForgotPasswordTitle": "Reset your password",
+  "@authForgotPasswordTitle": {
+    "description": "Heading for forgot password mode"
+  },
+  "authForgotPasswordSubtitle": "Enter your email and we will send a password reset link",
+  "@authForgotPasswordSubtitle": {
+    "description": "Subtitle for forgot password mode"
+  },
+  "authResetPasswordTitle": "Set a new password",
+  "@authResetPasswordTitle": {
+    "description": "Heading for /reset-password screen"
+  },
+  "authResetPasswordSubtitle": "Choose a strong password of at least 8 characters",
+  "@authResetPasswordSubtitle": {
+    "description": "Subtitle for /reset-password screen"
+  },
+  "authEmailLabel": "Email address",
+  "@authEmailLabel": {
+    "description": "Label for email input field"
+  },
+  "authEmailHint": "you@example.com",
+  "@authEmailHint": {
+    "description": "Hint for email input field"
+  },
+  "authPasswordLabel": "Password",
+  "@authPasswordLabel": {
+    "description": "Label for password input field"
+  },
+  "authPasswordHint": "Enter your password",
+  "@authPasswordHint": {
+    "description": "Hint for password input field"
+  },
+  "authNewPasswordLabel": "New password",
+  "@authNewPasswordLabel": {
+    "description": "Label for new password field on reset password screen"
+  },
+  "authNewPasswordHint": "At least 8 characters",
+  "@authNewPasswordHint": {
+    "description": "Hint for new password field"
+  },
+  "authConfirmPasswordLabel": "Confirm new password",
+  "@authConfirmPasswordLabel": {
+    "description": "Label for confirm new password field"
+  },
+  "authConfirmPasswordHint": "Re-enter your new password",
+  "@authConfirmPasswordHint": {
+    "description": "Hint for confirm new password field"
+  },
+  "authPasswordMinLengthHelper": "Must be at least 8 characters",
+  "@authPasswordMinLengthHelper": {
+    "description": "Helper text showing minimum 8 character requirement"
+  },
+  "authShowPasswordTooltip": "Show password",
+  "@authShowPasswordTooltip": {
+    "description": "Tooltip for revealing obscured password"
+  },
+  "authHidePasswordTooltip": "Hide password",
+  "@authHidePasswordTooltip": {
+    "description": "Tooltip for hiding visible password"
+  },
+  "authSignInButton": "Sign in",
+  "@authSignInButton": {
+    "description": "Primary button label for sign in"
+  },
+  "authCreateAccountButton": "Create account",
+  "@authCreateAccountButton": {
+    "description": "Primary button label for sign up"
+  },
+  "authSendResetLinkButton": "Send reset link",
+  "@authSendResetLinkButton": {
+    "description": "Primary button label for sending password reset email"
+  },
+  "authUpdatePasswordButton": "Update password",
+  "@authUpdatePasswordButton": {
+    "description": "Primary button label for saving new password"
+  },
+  "authContinueWithGoogle": "Continue with Google",
+  "@authContinueWithGoogle": {
+    "description": "Google OAuth button label"
+  },
+  "authOrDivider": "or",
+  "@authOrDivider": {
+    "description": "Short separator label between email auth and OAuth"
+  },
+  "authForgotPasswordLink": "Forgot password?",
+  "@authForgotPasswordLink": {
+    "description": "Link label to enter forgot password flow"
+  },
+  "authBackToSignIn": "Back to sign in",
+  "@authBackToSignIn": {
+    "description": "Button or link label to return to sign in"
+  },
+  "authNoAccountPrompt": "Don't have an account?",
+  "@authNoAccountPrompt": {
+    "description": "Prompt preceding create account toggle"
+  },
+  "authAlreadyHaveAccountPrompt": "Already have an account?",
+  "@authAlreadyHaveAccountPrompt": {
+    "description": "Prompt preceding sign in toggle"
+  },
+  "authSwitchToSignUp": "Create account",
+  "@authSwitchToSignUp": {
+    "description": "Toggle link text switching to sign up mode"
+  },
+  "authSwitchToSignIn": "Sign in",
+  "@authSwitchToSignIn": {
+    "description": "Toggle link text switching to sign in mode"
+  },
+  "authCheckEmailTitle": "Check your email",
+  "@authCheckEmailTitle": {
+    "description": "Success title shown after sign up"
+  },
+  "authCheckEmailMessage": "We sent a confirmation link to {email}. Open the link in your inbox to confirm your account before signing in.",
+  "@authCheckEmailMessage": {
+    "description": "Success body shown after sign up",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "authResetLinkSentTitle": "Reset link sent",
+  "@authResetLinkSentTitle": {
+    "description": "Success title shown after sending password reset email"
+  },
+  "authResetLinkSentMessage": "If an account exists for {email}, we sent instructions to reset your password.",
+  "@authResetLinkSentMessage": {
+    "description": "Success body shown after sending password reset email",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "authPasswordUpdatedTitle": "Password updated",
+  "@authPasswordUpdatedTitle": {
+    "description": "Success title shown after updating password"
+  },
+  "authPasswordUpdatedMessage": "Your password has been updated successfully. You can now continue to your dashboard.",
+  "@authPasswordUpdatedMessage": {
+    "description": "Success body shown after updating password"
+  },
+  "authContinueToDashboard": "Continue to dashboard",
+  "@authContinueToDashboard": {
+    "description": "Button label after password update completes"
+  },
+  "authValidationEmailRequired": "Please enter your email address.",
+  "@authValidationEmailRequired": {
+    "description": "Validation error when email is empty"
+  },
+  "authValidationEmailInvalid": "Please enter a valid email address.",
+  "@authValidationEmailInvalid": {
+    "description": "Validation error when email format is invalid"
+  },
+  "authValidationPasswordRequired": "Please enter your password.",
+  "@authValidationPasswordRequired": {
+    "description": "Validation error when password is empty"
+  },
+  "authValidationPasswordTooShort": "Password must be at least 8 characters.",
+  "@authValidationPasswordTooShort": {
+    "description": "Validation error when password is fewer than 8 characters"
+  },
+  "authValidationConfirmPasswordRequired": "Please confirm your new password.",
+  "@authValidationConfirmPasswordRequired": {
+    "description": "Validation error when confirm password is empty"
+  },
+  "authValidationPasswordsDoNotMatch": "Passwords do not match.",
+  "@authValidationPasswordsDoNotMatch": {
+    "description": "Validation error when password confirmation does not match"
+  },
+  "authErrorInvalidCredentials": "Invalid email or password. Please check your details and try again.",
+  "@authErrorInvalidCredentials": {
+    "description": "Localized message for InvalidCredentialsFailure"
+  },
+  "authErrorEmailNotConfirmed": "Please confirm your email address before signing in. Check your inbox for the verification link.",
+  "@authErrorEmailNotConfirmed": {
+    "description": "Localized message for EmailNotConfirmedFailure"
+  },
+  "authErrorAccountAlreadyExists": "An account with this email already exists. Try signing in instead.",
+  "@authErrorAccountAlreadyExists": {
+    "description": "Localized message for AccountAlreadyExistsFailure"
+  },
+  "authErrorTooManyRequests": "Too many attempts. Please wait a moment and try again.",
+  "@authErrorTooManyRequests": {
+    "description": "Localized message for TooManyRequestsFailure"
+  },
+  "authErrorNetwork": "Network error. Please check your internet connection and try again.",
+  "@authErrorNetwork": {
+    "description": "Localized message for NetworkFailure"
+  },
+  "authErrorWeakPassword": "Your password is too weak. Use at least 8 characters with letters and numbers.",
+  "@authErrorWeakPassword": {
+    "description": "Localized message for WeakPasswordFailure"
+  },
+  "authErrorUnknown": "Something went wrong during authentication. Please try again.",
+  "@authErrorUnknown": {
+    "description": "Localized message for UnknownAuthFailure"
+  },
+  "circularsCount": "{count, plural, =0{No circulars} =1{{formattedCount} circular} other{{formattedCount} circulars}}",
+  "@circularsCount": {
+    "description": "Pluralized count of visible job circulars",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "circularsSearchHint": "Search by title or organization...",
+  "@circularsSearchHint": {
+    "description": "Placeholder text for circular search input"
+  },
+  "circularsClearSearchTooltip": "Clear search",
+  "@circularsClearSearchTooltip": {
+    "description": "Tooltip on search clear button"
+  },
+  "circularsFilterToggle": "Filters",
+  "@circularsFilterToggle": {
+    "description": "Button label to expand or collapse filter controls"
+  },
+  "circularsClearFilters": "Clear filters",
+  "@circularsClearFilters": {
+    "description": "Button label to clear active filters and search"
+  },
+  "circularsSortLabel": "Sort by",
+  "@circularsSortLabel": {
+    "description": "Label prefix for circular sort dropdown"
+  },
+  "circularsRefreshTooltip": "Refresh circulars",
+  "@circularsRefreshTooltip": {
+    "description": "Tooltip on circular list refresh action"
+  },
+  "circularsSortDeadline": "Deadline (soonest)",
+  "@circularsSortDeadline": {
+    "description": "Sort option ordering soonest deadlines first"
+  },
+  "circularsSortPriority": "Priority (highest)",
+  "@circularsSortPriority": {
+    "description": "Sort option ordering highest priority first"
+  },
+  "circularsSortCreated": "Created date (newest)",
+  "@circularsSortCreated": {
+    "description": "Sort option ordering newest created circulars first"
+  },
+  "circularsSortUpdated": "Recently updated",
+  "@circularsSortUpdated": {
+    "description": "Sort option ordering recently updated circulars first"
+  },
+  "circularsSortTitle": "Title (A-Z)",
+  "@circularsSortTitle": {
+    "description": "Sort option ordering titles alphabetically"
+  },
+  "circularsFilterSector": "Sector",
+  "@circularsFilterSector": {
+    "description": "Filter group header for employment sector"
+  },
+  "circularsFilterApplicationStatus": "Application Status",
+  "@circularsFilterApplicationStatus": {
+    "description": "Filter group header for application status"
+  },
+  "circularsFilterPriority": "Priority",
+  "@circularsFilterPriority": {
+    "description": "Filter group header for circular priority"
+  },
+  "circularsFilterWorkflowStatus": "Workflow Status",
+  "@circularsFilterWorkflowStatus": {
+    "description": "Filter group header for workflow status"
+  },
+  "circularsFilterDeadlineRange": "Deadline Range",
+  "@circularsFilterDeadlineRange": {
+    "description": "Filter group header for deadline range and urgency"
+  },
+  "circularsDeadlineRangeAll": "All deadlines",
+  "@circularsDeadlineRangeAll": {
+    "description": "Preset chip clearing deadline filter"
+  },
+  "circularsDeadlineRangeUnder3OrOverdue": "Under 3 days / Overdue",
+  "@circularsDeadlineRangeUnder3OrOverdue": {
+    "description": "Preset chip for red band circulars"
+  },
+  "circularsDeadlineRange3To7Days": "3 to 7 days",
+  "@circularsDeadlineRange3To7Days": {
+    "description": "Preset chip for amber band circulars"
+  },
+  "circularsDeadlineRangeOver7Days": "Above 7 days",
+  "@circularsDeadlineRangeOver7Days": {
+    "description": "Preset chip for green band circulars"
+  },
+  "circularsDeadlineRangeNext30Days": "Next 30 days",
+  "@circularsDeadlineRangeNext30Days": {
+    "description": "Preset chip filtering deadlines in the next 30 calendar days"
+  },
+  "circularsDeadlineFromLabel": "From",
+  "@circularsDeadlineFromLabel": {
+    "description": "Start date picker button label"
+  },
+  "circularsDeadlineToLabel": "To",
+  "@circularsDeadlineToLabel": {
+    "description": "End date picker button label"
+  },
+  "circularsClearDatesTooltip": "Clear date range",
+  "@circularsClearDatesTooltip": {
+    "description": "Tooltip to clear selected custom deadline dates"
+  },
+  "circularsColumnTitle": "Circular & Organization",
+  "@circularsColumnTitle": {
+    "description": "Desktop table column header for title and organization"
+  },
+  "circularsColumnSector": "Sector",
+  "@circularsColumnSector": {
+    "description": "Desktop table column header for sector"
+  },
+  "circularsColumnDeadline": "Deadline",
+  "@circularsColumnDeadline": {
+    "description": "Desktop table column header for deadline countdown"
+  },
+  "circularsColumnVacancies": "Vacancies",
+  "@circularsColumnVacancies": {
+    "description": "Desktop table column header for vacancy count"
+  },
+  "circularsColumnStatus": "Status",
+  "@circularsColumnStatus": {
+    "description": "Desktop table column header for circular status"
+  },
+  "circularsVacanciesCount": "{count, plural, =0{No vacancies} =1{{formattedCount} post} other{{formattedCount} posts}}",
+  "@circularsVacanciesCount": {
+    "description": "Pluralized vacancy post count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "circularsVacanciesUnspecified": "Not specified",
+  "@circularsVacanciesUnspecified": {
+    "description": "Fallback when vacancy count is unset"
+  },
+  "circularsOrganizationUnspecified": "Organization not specified",
+  "@circularsOrganizationUnspecified": {
+    "description": "Fallback when organization name is unset"
+  },
+  "circularsCountdownNoDeadline": "No deadline",
+  "@circularsCountdownNoDeadline": {
+    "description": "Countdown label when circular has no deadline"
+  },
+  "circularsCountdownToday": "Due today",
+  "@circularsCountdownToday": {
+    "description": "Countdown label when deadline is later today"
+  },
+  "circularsCountdownDaysLeft": "{days, plural, =1{{formattedDays} day left} other{{formattedDays} days left}}",
+  "@circularsCountdownDaysLeft": {
+    "description": "Pluralized days remaining until deadline",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "formattedDays": {
+        "type": "String"
+      }
+    }
+  },
+  "circularsCountdownOverdueDays": "{days, plural, =0{Expired today} =1{{formattedDays} day overdue} other{{formattedDays} days overdue}}",
+  "@circularsCountdownOverdueDays": {
+    "description": "Pluralized overdue countdown label",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "formattedDays": {
+        "type": "String"
+      }
+    }
+  },
+  "circularSectorGovernment": "Government",
+  "@circularSectorGovernment": {
+    "description": "Label for government sector"
+  },
+  "circularSectorBcs": "BCS",
+  "@circularSectorBcs": {
+    "description": "Label for BCS sector"
+  },
+  "circularSectorBank": "Bank",
+  "@circularSectorBank": {
+    "description": "Label for bank sector"
+  },
+  "circularSectorAutonomous": "Autonomous",
+  "@circularSectorAutonomous": {
+    "description": "Label for autonomous sector"
+  },
+  "circularSectorPrivate": "Private",
+  "@circularSectorPrivate": {
+    "description": "Label for private sector"
+  },
+  "circularSectorNgo": "NGO",
+  "@circularSectorNgo": {
+    "description": "Label for NGO sector"
+  },
+  "circularSectorDefense": "Defense",
+  "@circularSectorDefense": {
+    "description": "Label for defense sector"
+  },
+  "circularSectorOther": "Other",
+  "@circularSectorOther": {
+    "description": "Label for other sector"
+  },
+  "circularAppStatusNotApplied": "Not applied",
+  "@circularAppStatusNotApplied": {
+    "description": "Label for not_applied application status"
+  },
+  "circularAppStatusInProgress": "In progress",
+  "@circularAppStatusInProgress": {
+    "description": "Label for in_progress application status"
+  },
+  "circularAppStatusApplied": "Applied",
+  "@circularAppStatusApplied": {
+    "description": "Label for applied application status"
+  },
+  "circularAppStatusFeePaid": "Fee paid",
+  "@circularAppStatusFeePaid": {
+    "description": "Label for fee_paid application status"
+  },
+  "circularAppStatusExempt": "Fee exempt",
+  "@circularAppStatusExempt": {
+    "description": "Label for exempt application status"
+  },
+  "circularAppStatusMissed": "Missed",
+  "@circularAppStatusMissed": {
+    "description": "Label for missed application status"
+  },
+  "circularAppStatusNotApplicable": "N/A",
+  "@circularAppStatusNotApplicable": {
+    "description": "Label for not_applicable application status"
+  },
+  "circularPriorityLow": "Low",
+  "@circularPriorityLow": {
+    "description": "Label for low circular priority"
+  },
+  "circularPriorityMedium": "Medium",
+  "@circularPriorityMedium": {
+    "description": "Label for medium circular priority"
+  },
+  "circularPriorityHigh": "High",
+  "@circularPriorityHigh": {
+    "description": "Label for high circular priority"
+  },
+  "circularPriorityUrgent": "Urgent",
+  "@circularPriorityUrgent": {
+    "description": "Label for urgent circular priority"
+  },
+  "circularWorkflowSaved": "Saved",
+  "@circularWorkflowSaved": {
+    "description": "Label for saved workflow status"
+  },
+  "circularWorkflowPreparing": "Preparing",
+  "@circularWorkflowPreparing": {
+    "description": "Label for preparing workflow status"
+  },
+  "circularWorkflowApplied": "Applied",
+  "@circularWorkflowApplied": {
+    "description": "Label for applied workflow status"
+  },
+  "circularWorkflowExamUpcoming": "Exam upcoming",
+  "@circularWorkflowExamUpcoming": {
+    "description": "Label for exam_upcoming workflow status"
+  },
+  "circularWorkflowResultAwaited": "Result awaited",
+  "@circularWorkflowResultAwaited": {
+    "description": "Label for result_awaited workflow status"
+  },
+  "circularWorkflowArchived": "Archived",
+  "@circularWorkflowArchived": {
+    "description": "Label for archived workflow status"
+  },
+  "circularsLoadingMessage": "Loading job circulars...",
+  "@circularsLoadingMessage": {
+    "description": "Message displayed while circulars are loading"
+  },
+  "circularsEmptyTitle": "No job circulars yet",
+  "@circularsEmptyTitle": {
+    "description": "Title shown when the circular list has no entries"
+  },
+  "circularsEmptyMessage": "Tracked job circulars will appear here once added.",
+  "@circularsEmptyMessage": {
+    "description": "Body shown when the circular list has no entries"
+  },
+  "circularsFilteredEmptyTitle": "No matching circulars",
+  "@circularsFilteredEmptyTitle": {
+    "description": "Title shown when active search or filters return zero matches"
+  },
+  "circularsFilteredEmptyMessage": "Try adjusting your search query or clearing active filters.",
+  "@circularsFilteredEmptyMessage": {
+    "description": "Body shown when active search or filters return zero matches"
+  },
+  "circularsErrorTitle": "Unable to load circulars",
+  "@circularsErrorTitle": {
+    "description": "Heading shown when loading circulars fails"
+  },
+  "circularsRetryButton": "Retry",
+  "@circularsRetryButton": {
+    "description": "Retry action button label on circular load failure"
+  },
+  "circularsErrorPermission": "You do not have permission to view these circulars.",
+  "@circularsErrorPermission": {
+    "description": "Localized error when permission is denied"
+  },
+  "circularsErrorNetwork": "Network error while loading circulars. Check your connection and try again.",
+  "@circularsErrorNetwork": {
+    "description": "Localized error when network request fails"
+  },
+  "circularsErrorUnknown": "Something went wrong while loading circulars. Please try again.",
+  "@circularsErrorUnknown": {
+    "description": "Fallback localized error message for circular list failure"
+  },
+  "circularsAddButton": "Add circular",
+  "@circularsAddButton": {
+    "description": "Button label on Circulars list toolbar to open create form"
+  },
+  "circularFormAddTitle": "Add Job Circular",
+  "@circularFormAddTitle": {
+    "description": "Page title when creating a new circular"
+  },
+  "circularFormAddSubtitle": "Save deadlines, fees, links, and status details for a job circular.",
+  "@circularFormAddSubtitle": {
+    "description": "Page subtitle when creating a new circular"
+  },
+  "circularFormEditTitle": "Edit Job Circular",
+  "@circularFormEditTitle": {
+    "description": "Page title when editing an existing circular"
+  },
+  "circularFormEditSubtitle": "Update circular details, tracking status, or personal notes.",
+  "@circularFormEditSubtitle": {
+    "description": "Page subtitle when editing an existing circular"
+  },
+  "circularFormSaveButton": "Save circular",
+  "@circularFormSaveButton": {
+    "description": "Submit button label when creating a circular"
+  },
+  "circularFormUpdateButton": "Save changes",
+  "@circularFormUpdateButton": {
+    "description": "Submit button label when saving edits to a circular"
+  },
+  "circularFormCancelButton": "Cancel",
+  "@circularFormCancelButton": {
+    "description": "Cancel button label on circular form"
+  },
+  "circularFormNotFoundTitle": "Circular not found",
+  "@circularFormNotFoundTitle": {
+    "description": "Heading shown when editing a circular id that cannot be found"
+  },
+  "circularFormNotFoundMessage": "This job circular may have been deleted or is no longer available.",
+  "@circularFormNotFoundMessage": {
+    "description": "Message shown when requested circular for editing is missing"
+  },
+  "circularFormBackToList": "Back to circulars",
+  "@circularFormBackToList": {
+    "description": "Button navigating back to the circulars list"
+  },
+  "circularFormSectionBasics": "Basics",
+  "@circularFormSectionBasics": {
+    "description": "Section title for title, sector, and organization info"
+  },
+  "circularFormSectionLinks": "Links",
+  "@circularFormSectionLinks": {
+    "description": "Section title for circular and application links"
+  },
+  "circularFormSectionDatesAndNumbers": "Dates & Numbers",
+  "@circularFormSectionDatesAndNumbers": {
+    "description": "Section title for deadline, vacancies, salary, and fees"
+  },
+  "circularFormSectionStatus": "Status",
+  "@circularFormSectionStatus": {
+    "description": "Section title for workflow, application, admit card, and priority"
+  },
+  "circularFormSectionText": "Instructions & Notes",
+  "@circularFormSectionText": {
+    "description": "Section title for instructions, personal notes, and syllabus"
+  },
+  "circularFieldTitleLabel": "Circular title",
+  "@circularFieldTitleLabel": {
+    "description": "Label for required circular title field"
+  },
+  "circularFieldTitleHint": "e.g. 47th BCS General Cadre",
+  "@circularFieldTitleHint": {
+    "description": "Hint text for circular title field"
+  },
+  "circularFieldSectorLabel": "Sector",
+  "@circularFieldSectorLabel": {
+    "description": "Label for circular sector dropdown"
+  },
+  "circularFieldOrgNameLabel": "Organization name",
+  "@circularFieldOrgNameLabel": {
+    "description": "Label for organization name field"
+  },
+  "circularFieldOrgNameHint": "e.g. Bangladesh Public Service Commission",
+  "@circularFieldOrgNameHint": {
+    "description": "Hint text for organization name field"
+  },
+  "circularFieldOrgWebsiteLabel": "Organization website",
+  "@circularFieldOrgWebsiteLabel": {
+    "description": "Label for organization website URL field"
+  },
+  "circularFieldOrgWebsiteHint": "https://example.gov.bd",
+  "@circularFieldOrgWebsiteHint": {
+    "description": "Hint text for organization website URL field"
+  },
+  "circularFieldCircularUrlLabel": "Original circular link",
+  "@circularFieldCircularUrlLabel": {
+    "description": "Label for original circular announcement link"
+  },
+  "circularFieldCircularUrlHint": "https://example.gov.bd/circular",
+  "@circularFieldCircularUrlHint": {
+    "description": "Hint text for original circular link"
+  },
+  "circularFieldApplicationUrlLabel": "Application portal link",
+  "@circularFieldApplicationUrlLabel": {
+    "description": "Label for online application portal link"
+  },
+  "circularFieldApplicationUrlHint": "https://apply.example.gov.bd",
+  "@circularFieldApplicationUrlHint": {
+    "description": "Hint text for application portal link"
+  },
+  "circularFieldDeadlineLabel": "Application deadline",
+  "@circularFieldDeadlineLabel": {
+    "description": "Label for circular deadline date picker"
+  },
+  "circularFieldDeadlineNone": "Select deadline date",
+  "@circularFieldDeadlineNone": {
+    "description": "Placeholder text when no deadline date is chosen"
+  },
+  "circularFieldClearDeadlineTooltip": "Clear deadline",
+  "@circularFieldClearDeadlineTooltip": {
+    "description": "Tooltip on button clearing selected deadline"
+  },
+  "circularFieldVacanciesLabel": "Vacancies",
+  "@circularFieldVacanciesLabel": {
+    "description": "Label for vacancy count numeric field"
+  },
+  "circularFieldVacanciesHint": "e.g. 150",
+  "@circularFieldVacanciesHint": {
+    "description": "Hint text for vacancies field"
+  },
+  "circularFieldSalaryMinLabel": "Minimum salary",
+  "@circularFieldSalaryMinLabel": {
+    "description": "Label for minimum salary input"
+  },
+  "circularFieldSalaryMinHint": "e.g. 22000",
+  "@circularFieldSalaryMinHint": {
+    "description": "Hint text for minimum salary"
+  },
+  "circularFieldSalaryMaxLabel": "Maximum salary",
+  "@circularFieldSalaryMaxLabel": {
+    "description": "Label for maximum salary input"
+  },
+  "circularFieldSalaryMaxHint": "e.g. 53060",
+  "@circularFieldSalaryMaxHint": {
+    "description": "Hint text for maximum salary"
+  },
+  "circularFieldSalaryNoteLabel": "Salary & benefits note",
+  "@circularFieldSalaryNoteLabel": {
+    "description": "Label for pay scale or benefits note"
+  },
+  "circularFieldSalaryNoteHint": "e.g. Grade 9 National Pay Scale",
+  "@circularFieldSalaryNoteHint": {
+    "description": "Hint text for salary note"
+  },
+  "circularFieldFeeLabel": "Application fee",
+  "@circularFieldFeeLabel": {
+    "description": "Label for application fee input"
+  },
+  "circularFieldFeeHint": "e.g. 200",
+  "@circularFieldFeeHint": {
+    "description": "Hint text for application fee"
+  },
+  "circularFieldFeeNoteLabel": "Fee note",
+  "@circularFieldFeeNoteLabel": {
+    "description": "Label for fee payment note"
+  },
+  "circularFieldFeeNoteHint": "e.g. Payable via Teletalk / bKash",
+  "@circularFieldFeeNoteHint": {
+    "description": "Hint text for fee note"
+  },
+  "circularFieldAppStatusLabel": "Application status",
+  "@circularFieldAppStatusLabel": {
+    "description": "Label for application status dropdown"
+  },
+  "circularFieldAdmitStatusLabel": "Admit card status",
+  "@circularFieldAdmitStatusLabel": {
+    "description": "Label for admit card status dropdown"
+  },
+  "circularFieldPriorityLabel": "Priority",
+  "@circularFieldPriorityLabel": {
+    "description": "Label for priority dropdown"
+  },
+  "circularFieldWorkflowStatusLabel": "Workflow status",
+  "@circularFieldWorkflowStatusLabel": {
+    "description": "Label for workflow status dropdown"
+  },
+  "circularFieldInstructionsLabel": "Instructions",
+  "@circularFieldInstructionsLabel": {
+    "description": "Label for instructions multiline field"
+  },
+  "circularFieldInstructionsHint": "Eligibility criteria, required documents, photo dimensions...",
+  "@circularFieldInstructionsHint": {
+    "description": "Hint text for instructions field"
+  },
+  "circularFieldNotesLabel": "Personal notes",
+  "@circularFieldNotesLabel": {
+    "description": "Label for personal notes multiline field"
+  },
+  "circularFieldNotesHint": "Reminders, preparation ideas, tracking notes...",
+  "@circularFieldNotesHint": {
+    "description": "Hint text for personal notes field"
+  },
+  "circularFieldSyllabusLabel": "Syllabus",
+  "@circularFieldSyllabusLabel": {
+    "description": "Label for syllabus multiline field"
+  },
+  "circularFieldSyllabusHint": "Exam subjects, mark distribution, key topics...",
+  "@circularFieldSyllabusHint": {
+    "description": "Hint text for syllabus field"
+  },
+  "circularAdmitStatusNotAvailable": "Not available",
+  "@circularAdmitStatusNotAvailable": {
+    "description": "Label for not_available admit card status"
+  },
+  "circularAdmitStatusAvailable": "Available",
+  "@circularAdmitStatusAvailable": {
+    "description": "Label for available admit card status"
+  },
+  "circularAdmitStatusDownloaded": "Downloaded",
+  "@circularAdmitStatusDownloaded": {
+    "description": "Label for downloaded admit card status"
+  },
+  "circularAdmitStatusNotApplicable": "N/A",
+  "@circularAdmitStatusNotApplicable": {
+    "description": "Label for not_applicable admit card status"
+  },
+  "circularValidationTitleRequired": "Please enter a circular title.",
+  "@circularValidationTitleRequired": {
+    "description": "Validation error when title is blank"
+  },
+  "circularValidationInvalidUrl": "Enter a valid URL starting with http:// or https://.",
+  "@circularValidationInvalidUrl": {
+    "description": "Validation error for malformed URL inputs"
+  },
+  "circularValidationInvalidInt": "Enter a whole number (0 or greater).",
+  "@circularValidationInvalidInt": {
+    "description": "Validation error for non-integer or negative vacancies"
+  },
+  "circularValidationInvalidNumber": "Enter a valid number (0 or greater).",
+  "@circularValidationInvalidNumber": {
+    "description": "Validation error for negative or malformed monetary amount"
+  },
+  "circularValidationSalaryRange": "Maximum salary cannot be lower than minimum salary.",
+  "@circularValidationSalaryRange": {
+    "description": "Validation error when salaryMax < salaryMin"
+  },
+  "circularDuplicateLinkWarning": "Warning: \"{title}\" already uses this circular link.",
+  "@circularDuplicateLinkWarning": {
+    "description": "Warning banner when another saved circular shares the same circular link",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "circularFormErrorValidation": "Submitted circular details failed validation checks.",
+  "@circularFormErrorValidation": {
+    "description": "Error banner message for server-side validation failures"
+  },
+  "circularDiscardDialogTitle": "Discard unsaved changes?",
+  "@circularDiscardDialogTitle": {
+    "description": "Confirmation dialog title before discarding dirty circular form"
+  },
+  "circularDiscardDialogMessage": "You have unsaved changes on this circular. Leaving now will discard them.",
+  "@circularDiscardDialogMessage": {
+    "description": "Confirmation dialog body before discarding unsaved edits"
+  },
+  "circularDiscardKeepEditing": "Keep editing",
+  "@circularDiscardKeepEditing": {
+    "description": "Cancel button in discard confirmation dialog"
+  },
+  "circularDiscardConfirm": "Discard changes",
+  "@circularDiscardConfirm": {
+    "description": "Confirm button in discard confirmation dialog"
+  }
+}

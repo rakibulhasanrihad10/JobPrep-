@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+# Git pre-commit hook for JobPrep
+# Runs format check, static analyzer, fast tests, and secrets scan.
+
+set -e
+
+echo "=========================================="
+echo "🛡️  Running JobPrep Pre-commit Quality Gates"
+echo "=========================================="
+
+# 1. Format Check
+echo "🔍 [1/5] Checking code formatting..."
+dart format --output=none --set-exit-if-changed .
+if [ $? -ne 0 ]; then
+  echo "❌ Code formatting check failed! Run 'dart format .' to fix formatting." >&2
+  exit 1
+fi
+echo "✅ Code formatting check passed."
+
+# 2. Strict Analyzer Check
+echo "🔍 [2/5] Running strict static analyzer..."
+dart analyze --fatal-warnings --fatal-infos
+if [ $? -ne 0 ]; then
+  echo "❌ Dart analysis failed with warnings or errors!" >&2
+  exit 1
+fi
+echo "✅ Static analysis passed with 0 warnings and 0 errors."
+
+# 3. Hardcoded User-Facing Strings Check
+echo "🔍 [3/5] Checking for hardcoded user-facing strings in widgets..."
+dart run scripts/check_hardcoded_strings.dart
+if [ $? -ne 0 ]; then
+  echo "❌ Hardcoded strings check failed! Use ARB localizations instead." >&2
+  exit 1
+fi
+echo "✅ Hardcoded strings check passed."
+
+# 4. Fast Tests
+echo "🔍 [4/5] Running fast test suite..."
+flutter test
+if [ $? -ne 0 ]; then
+  echo "❌ Automated test suite failed!" >&2
+  exit 1
+fi
+echo "✅ Fast test suite passed."
+
+# 5. Secrets Scan (gitleaks)
+echo "🔍 [5/5] Scanning staged changes for secrets..."
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks protect --staged -v
+  if [ $? -ne 0 ]; then
+    echo "❌ Gitleaks detected secrets or credentials staged for commit!" >&2
+    echo "   Remove secrets before committing." >&2
+    exit 1
+  fi
+  echo "✅ Gitleaks secrets scan passed."
+else
+  echo "⚠️  gitleaks command not found in PATH; performing diff scan fallback..."
+  DIFF=$(git diff --cached)
+  if echo "$DIFF" | grep -Ei "(BEGIN PRIVATE KEY|service_role|supabase_service_role|[a-zA-Z0-9_-]{20,}:[a-zA-Z0-9_-]{35,})"; then
+    echo "❌ Potential secret detected in staged changes!" >&2
+    exit 1
+  fi
+  echo "✅ Fallback secrets scan passed."
+fi
+
+echo "=========================================="
+echo "🎉 All pre-commit quality gates passed!"
+echo "=========================================="
+exit 0
