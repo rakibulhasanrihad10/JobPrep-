@@ -8,12 +8,14 @@ import 'package:job_prep/core/widgets/fade_slide_in.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
 import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
+import 'package:job_prep/features/onboarding/presentation/providers/onboarding_status_provider.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/revision_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_session_providers.dart';
 import 'package:job_prep/features/today/domain/entities/today_summary.dart';
 import 'package:job_prep/features/today/presentation/providers/today_providers.dart';
+import 'package:job_prep/features/today/presentation/widgets/onboarding_tips_card.dart';
 import 'package:job_prep/features/today/presentation/widgets/today_catch_up_card.dart';
 import 'package:job_prep/features/today/presentation/widgets/today_deadlines_card.dart';
 import 'package:job_prep/features/today/presentation/widgets/today_do_next_card.dart';
@@ -102,6 +104,11 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
         data: (summary) => _TodayOrderedBody(
           summary: summary,
           visitId: _visitId,
+          showTips: ref.watch(
+            onboardingStatusProvider.select(
+              (async) => async.asData?.value.showTodayTips ?? false,
+            ),
+          ),
           onRefresh: _refreshAll,
         ),
       ),
@@ -113,11 +120,13 @@ class _TodayOrderedBody extends StatelessWidget {
   const _TodayOrderedBody({
     required this.summary,
     required this.visitId,
+    required this.showTips,
     required this.onRefresh,
   });
 
   final TodaySummary summary;
   final int visitId;
+  final bool showTips;
   final VoidCallback onRefresh;
 
   @override
@@ -127,6 +136,12 @@ class _TodayOrderedBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        if (showTips) ...[
+          const FadeSlideIn(
+            child: OnboardingTodayTipsCard(),
+          ),
+          SizedBox(height: spacing.lg),
+        ],
         FadeSlideIn(
           child: TodayHeaderCard(
             summary: summary,

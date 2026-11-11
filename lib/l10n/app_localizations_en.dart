@@ -4046,4 +4046,269 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get weeklyReviewBackToToday => 'Back to Today';
+
+  @override
+  String onboardingStepProgress(String step, String total) {
+    return 'Step $step of $total';
+  }
+
+  @override
+  String get onboardingBackButton => 'Back';
+
+  @override
+  String get onboardingNextButton => 'Continue';
+
+  @override
+  String get onboardingSkipButton => 'Skip';
+
+  @override
+  String get onboardingFinishButton => 'Finish setup';
+
+  @override
+  String get onboardingWelcomeTitle => 'Welcome to JobPrep';
+
+  @override
+  String get onboardingWelcomeSubtitle =>
+      'Set up your language, theme, syllabus, and weekly pace in a minute. We never ask for phone numbers, addresses, or age.';
+
+  @override
+  String get onboardingLanguageHeading => 'App language';
+
+  @override
+  String get onboardingThemeHeading => 'Appearance';
+
+  @override
+  String get onboardingTrackTitle => 'What are you preparing for?';
+
+  @override
+  String get onboardingTrackSubtitle =>
+      'Pick a starting syllabus template you can customize on the next step, or start completely blank.';
+
+  @override
+  String get onboardingTrackGovernmentTitle => 'Government job exams';
+
+  @override
+  String get onboardingTrackGovernmentDesc =>
+      'Bengali, English, General Knowledge, Math, Analytical Reasoning & Computer starter materials.';
+
+  @override
+  String get onboardingTrackSoftwareTitle => 'Private software jobs';
+
+  @override
+  String get onboardingTrackSoftwareDesc =>
+      'Data Structures & Algorithms, System Design, OOP/SQL & Interview Prep materials.';
+
+  @override
+  String get onboardingTrackBlankTitle => 'Something else (Blank start)';
+
+  @override
+  String get onboardingTrackBlankDesc =>
+      'Add your own custom subjects and materials for any exam, fellowship, or career path.';
+
+  @override
+  String get onboardingSubjectsTitle => 'Customize your subjects & materials';
+
+  @override
+  String get onboardingSubjectsSubtitle =>
+      'Enable or disable subjects, rename them, edit total units, or add your own.';
+
+  @override
+  String get onboardingSubjectsEmptyBlankNote =>
+      'No subjects yet. Tap Add subject to build your custom track, or continue and add them later.';
+
+  @override
+  String get onboardingSubjectNameLabel => 'Subject name';
+
+  @override
+  String get onboardingMaterialTitleLabel => 'Material title';
+
+  @override
+  String get onboardingMaterialUnitsLabel => 'Total units';
+
+  @override
+  String get onboardingAddSubjectButton => 'Add subject';
+
+  @override
+  String get onboardingAddSubjectDialogTitle => 'New Subject';
+
+  @override
+  String get onboardingAddMaterialButton => 'Add material';
+
+  @override
+  String get onboardingAddMaterialDialogTitle => 'New Material';
+
+  @override
+  String get onboardingRemoveMaterialTooltip => 'Remove material';
+
+  @override
+  String get onboardingValidationEmptySubject =>
+      'Every enabled subject needs a name.';
+
+  @override
+  String get onboardingValidationDuplicateSubject =>
+      'Two enabled subjects cannot share the same name.';
+
+  @override
+  String get onboardingValidationEmptyMaterial =>
+      'Every material under an enabled subject needs a title.';
+
+  @override
+  String get onboardingValidationInvalidUnits =>
+      'Every material must have at least 1 unit.';
+
+  @override
+  String get onboardingScheduleTitle => 'Set your exam timeline & weekly pace';
+
+  @override
+  String get onboardingScheduleSubtitle =>
+      'Your study plan calculates daily unit targets automatically with a 7-day buffer before exam day.';
+
+  @override
+  String get onboardingExamDateLabel => 'Target exam date';
+
+  @override
+  String get onboardingExamDatePickButton => 'Choose exam date';
+
+  @override
+  String get onboardingExamDateUnknownToggle =>
+      'I don\'t know my exam date yet';
+
+  @override
+  String get onboardingExamDateUnknownNote =>
+      'No problem — you can attach an exam date later from Prep > Study Plan.';
+
+  @override
+  String get onboardingStudyDaysLabel => 'Study days per week';
+
+  @override
+  String onboardingStudyDaysCount(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formatted days / week',
+      one: '$formatted day / week',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get onboardingRestDaysLabel => 'Which days are your rest days?';
+
+  @override
+  String get onboardingMaxPaceLabel => 'Maximum daily pace (optional)';
+
+  @override
+  String get onboardingMaxPaceHint => 'e.g. 50 units/day';
+
+  @override
+  String get onboardingValidationMissingExamDate =>
+      'Choose a target exam date or turn on \"I don\'t know yet\".';
+
+  @override
+  String get onboardingValidationPastExamDate =>
+      'Choose today or a future exam date.';
+
+  @override
+  String get onboardingValidationNoStudyDays =>
+      'Keep at least 1 study day per week.';
+
+  @override
+  String get onboardingValidationInvalidMaxPace =>
+      'Maximum daily pace must be a whole number above 0.';
+
+  @override
+  String get onboardingCircularTitle => 'Save your first circular (optional)';
+
+  @override
+  String get onboardingCircularSubtitle =>
+      'Paste an application link to save your first job circular into Inbox right away, or leave blank to skip.';
+
+  @override
+  String get onboardingCircularOptionalNote =>
+      'Leaving the link empty cleanly skips this step.';
+
+  @override
+  String get onboardingValidationInvalidUrl =>
+      'Enter a valid web link starting with http:// or https://, or leave it blank.';
+
+  @override
+  String get onboardingFinishTitle => 'Ready to launch your study space';
+
+  @override
+  String get onboardingFinishSubtitle =>
+      'Review your choices below. Applying setup again later never creates duplicates.';
+
+  @override
+  String get onboardingSummaryTrackLabel => 'Preparation track';
+
+  @override
+  String onboardingSummarySubjectsValue(
+      int subjectsCount, String formattedSubjects, String formattedMaterials) {
+    String _temp0 = intl.Intl.pluralLogic(
+      subjectsCount,
+      locale: localeName,
+      other: '$formattedSubjects subjects · $formattedMaterials materials',
+      one: '1 subject · $formattedMaterials materials',
+      zero: 'Blank start (no subjects staged)',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String onboardingSummaryScheduleExam(String examDate, String studyDays) {
+    return 'Exam: $examDate · $studyDays';
+  }
+
+  @override
+  String onboardingSummaryScheduleUnknown(String studyDays) {
+    return 'Exam date undecided · $studyDays';
+  }
+
+  @override
+  String onboardingSummaryPaceLabel(String formattedPace) {
+    return 'Max pace: $formattedPace / day';
+  }
+
+  @override
+  String onboardingSummaryCircularPending(String target) {
+    return 'Inbox capture: $target';
+  }
+
+  @override
+  String get onboardingSummaryCircularSkipped => 'No circular staged yet';
+
+  @override
+  String get onboardingApplyError =>
+      'Could not complete setup. Check your connection and try again.';
+
+  @override
+  String get onboardingTodayTipsTitle => 'Quick tips to get started';
+
+  @override
+  String get onboardingTodayTip1 =>
+      'Log pages or minutes right from Today\'s targets to keep your study plan accurate.';
+
+  @override
+  String get onboardingTodayTip2 =>
+      'Flag tricky pages while logging progress to grow your spaced Revision queue.';
+
+  @override
+  String get onboardingTodayTip3 =>
+      'Check the notification bell for deadline countdowns and your weekly Sunday review.';
+
+  @override
+  String get onboardingTodayTipsDismissAll => 'Dismiss tips';
+
+  @override
+  String get onboardingTodayTipDismissTooltip => 'Dismiss tip';
+
+  @override
+  String get settingsSetupCardTitle => 'Setup Wizard';
+
+  @override
+  String get settingsSetupCardSubtitle =>
+      'Revisit track templates, customize subjects, or update your baseline schedule safely without creating duplicates.';
+
+  @override
+  String get settingsRunSetupAgainButton => 'Run setup again';
 }

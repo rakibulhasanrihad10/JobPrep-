@@ -6,6 +6,7 @@ import 'package:job_prep/features/dashboard/presentation/widgets/language_switch
 import 'package:job_prep/features/dashboard/presentation/widgets/theme_switcher_card.dart';
 import 'package:job_prep/features/settings/presentation/widgets/email_reminders_card.dart';
 import 'package:job_prep/features/settings/presentation/widgets/in_app_notifications_card.dart';
+import 'package:job_prep/features/settings/presentation/widgets/setup_wizard_settings_card.dart';
 import 'package:job_prep/features/vault/presentation/widgets/vault_security_card.dart';
 
 /// Screen for managing application settings, theme, and language.
@@ -63,6 +64,11 @@ class SettingsScreen extends StatelessWidget {
           const FadeSlideIn(
             index: 6,
             child: InAppNotificationsCard(),
+          ),
+          SizedBox(height: spacing.lg),
+          const FadeSlideIn(
+            index: 7,
+            child: SetupWizardSettingsCard(),
           ),
         ],
       ),

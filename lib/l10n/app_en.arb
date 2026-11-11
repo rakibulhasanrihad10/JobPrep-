@@ -5590,5 +5590,335 @@
   "weeklyReviewBackToToday": "Back to Today",
   "@weeklyReviewBackToToday": {
     "description": "Action navigating from Weekly Review back to Today"
+  },
+  "onboardingStepProgress": "Step {step} of {total}",
+  "@onboardingStepProgress": {
+    "description": "Step progress label shown in onboarding wizard header",
+    "placeholders": {
+      "step": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingBackButton": "Back",
+  "@onboardingBackButton": {
+    "description": "Back action on each onboarding wizard step"
+  },
+  "onboardingNextButton": "Continue",
+  "@onboardingNextButton": {
+    "description": "Continue action advancing onboarding wizard step"
+  },
+  "onboardingSkipButton": "Skip",
+  "@onboardingSkipButton": {
+    "description": "Skip setup action available on every onboarding step"
+  },
+  "onboardingFinishButton": "Finish setup",
+  "@onboardingFinishButton": {
+    "description": "Final CTA applying setup configuration and opening Today"
+  },
+  "onboardingWelcomeTitle": "Welcome to JobPrep",
+  "@onboardingWelcomeTitle": {
+    "description": "Step 1 heading greeting a new user"
+  },
+  "onboardingWelcomeSubtitle": "Set up your language, theme, syllabus, and weekly pace in a minute. We never ask for phone numbers, addresses, or age.",
+  "@onboardingWelcomeSubtitle": {
+    "description": "Step 1 reassuring explanation of minimal setup"
+  },
+  "onboardingLanguageHeading": "App language",
+  "@onboardingLanguageHeading": {
+    "description": "Section title for language selection inside Step 1"
+  },
+  "onboardingThemeHeading": "Appearance",
+  "@onboardingThemeHeading": {
+    "description": "Section title for theme selection inside Step 1"
+  },
+  "onboardingTrackTitle": "What are you preparing for?",
+  "@onboardingTrackTitle": {
+    "description": "Step 2 heading selecting a prep starter pack or blank start"
+  },
+  "onboardingTrackSubtitle": "Pick a starting syllabus template you can customize on the next step, or start completely blank.",
+  "@onboardingTrackSubtitle": {
+    "description": "Step 2 subtitle explaining template tracks"
+  },
+  "onboardingTrackGovernmentTitle": "Government job exams",
+  "@onboardingTrackGovernmentTitle": {
+    "description": "Track card title for BCS/bank/government jobs"
+  },
+  "onboardingTrackGovernmentDesc": "Bengali, English, General Knowledge, Math, Analytical Reasoning & Computer starter materials.",
+  "@onboardingTrackGovernmentDesc": {
+    "description": "Track card description for government exam pack"
+  },
+  "onboardingTrackSoftwareTitle": "Private software jobs",
+  "@onboardingTrackSoftwareTitle": {
+    "description": "Track card title for software engineering interviews"
+  },
+  "onboardingTrackSoftwareDesc": "Data Structures & Algorithms, System Design, OOP/SQL & Interview Prep materials.",
+  "@onboardingTrackSoftwareDesc": {
+    "description": "Track card description for software job pack"
+  },
+  "onboardingTrackBlankTitle": "Something else (Blank start)",
+  "@onboardingTrackBlankTitle": {
+    "description": "Track card title starting without a predefined pack"
+  },
+  "onboardingTrackBlankDesc": "Add your own custom subjects and materials for any exam, fellowship, or career path.",
+  "@onboardingTrackBlankDesc": {
+    "description": "Track card description for custom blank start"
+  },
+  "onboardingSubjectsTitle": "Customize your subjects & materials",
+  "@onboardingSubjectsTitle": {
+    "description": "Step 3 heading for toggling, renaming, and editing starter subjects and materials"
+  },
+  "onboardingSubjectsSubtitle": "Enable or disable subjects, rename them, edit total units, or add your own.",
+  "@onboardingSubjectsSubtitle": {
+    "description": "Step 3 helper copy"
+  },
+  "onboardingSubjectsEmptyBlankNote": "No subjects yet. Tap Add subject to build your custom track, or continue and add them later.",
+  "@onboardingSubjectsEmptyBlankNote": {
+    "description": "Helper banner shown when blank start has zero subjects yet"
+  },
+  "onboardingSubjectNameLabel": "Subject name",
+  "@onboardingSubjectNameLabel": {
+    "description": "Input field label for renaming a draft subject"
+  },
+  "onboardingMaterialTitleLabel": "Material title",
+  "@onboardingMaterialTitleLabel": {
+    "description": "Input field label for a material title"
+  },
+  "onboardingMaterialUnitsLabel": "Total units",
+  "@onboardingMaterialUnitsLabel": {
+    "description": "Numeric input label for total units in a material"
+  },
+  "onboardingAddSubjectButton": "Add subject",
+  "@onboardingAddSubjectButton": {
+    "description": "Button opening custom subject dialog in Step 3"
+  },
+  "onboardingAddSubjectDialogTitle": "New Subject",
+  "@onboardingAddSubjectDialogTitle": {
+    "description": "Dialog heading when adding a custom subject in Step 3"
+  },
+  "onboardingAddMaterialButton": "Add material",
+  "@onboardingAddMaterialButton": {
+    "description": "Button adding a material inside a subject card in Step 3"
+  },
+  "onboardingAddMaterialDialogTitle": "New Material",
+  "@onboardingAddMaterialDialogTitle": {
+    "description": "Dialog heading when adding a material inside Step 3"
+  },
+  "onboardingRemoveMaterialTooltip": "Remove material",
+  "@onboardingRemoveMaterialTooltip": {
+    "description": "Tooltip for deleting a draft material item"
+  },
+  "onboardingValidationEmptySubject": "Every enabled subject needs a name.",
+  "@onboardingValidationEmptySubject": {
+    "description": "Validation error when an enabled subject name is empty"
+  },
+  "onboardingValidationDuplicateSubject": "Two enabled subjects cannot share the same name.",
+  "@onboardingValidationDuplicateSubject": {
+    "description": "Validation error for duplicate subject names in Step 3"
+  },
+  "onboardingValidationEmptyMaterial": "Every material under an enabled subject needs a title.",
+  "@onboardingValidationEmptyMaterial": {
+    "description": "Validation error when a material title is blank"
+  },
+  "onboardingValidationInvalidUnits": "Every material must have at least 1 unit.",
+  "@onboardingValidationInvalidUnits": {
+    "description": "Validation error when material total units is 0 or invalid"
+  },
+  "onboardingScheduleTitle": "Set your exam timeline & weekly pace",
+  "@onboardingScheduleTitle": {
+    "description": "Step 4 heading configuring exam date, study/rest days, and max pace"
+  },
+  "onboardingScheduleSubtitle": "Your study plan calculates daily unit targets automatically with a 7-day buffer before exam day.",
+  "@onboardingScheduleSubtitle": {
+    "description": "Step 4 subtitle explaining how study plan calculation uses exam date and rest days"
+  },
+  "onboardingExamDateLabel": "Target exam date",
+  "@onboardingExamDateLabel": {
+    "description": "Label above exam date selector"
+  },
+  "onboardingExamDatePickButton": "Choose exam date",
+  "@onboardingExamDatePickButton": {
+    "description": "Placeholder label before picking an exam date"
+  },
+  "onboardingExamDateUnknownToggle": "I don't know my exam date yet",
+  "@onboardingExamDateUnknownToggle": {
+    "description": "Switch allowing user to defer creating a dated study plan"
+  },
+  "onboardingExamDateUnknownNote": "No problem — you can attach an exam date later from Prep > Study Plan.",
+  "@onboardingExamDateUnknownNote": {
+    "description": "Note shown when I don't know yet is active"
+  },
+  "onboardingStudyDaysLabel": "Study days per week",
+  "@onboardingStudyDaysLabel": {
+    "description": "Label for how many days per week the user studies"
+  },
+  "onboardingStudyDaysCount": "{count, plural, =1{{formatted} day / week} other{{formatted} days / week}}",
+  "@onboardingStudyDaysCount": {
+    "description": "Formatted count of study days per week",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formatted": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingRestDaysLabel": "Which days are your rest days?",
+  "@onboardingRestDaysLabel": {
+    "description": "Label for selecting rest day weekdays"
+  },
+  "onboardingMaxPaceLabel": "Maximum daily pace (optional)",
+  "@onboardingMaxPaceLabel": {
+    "description": "Input label for optional max units/day cap"
+  },
+  "onboardingMaxPaceHint": "e.g. 50 units/day",
+  "@onboardingMaxPaceHint": {
+    "description": "Hint text inside optional max daily pace field"
+  },
+  "onboardingValidationMissingExamDate": "Choose a target exam date or turn on \"I don't know yet\".",
+  "@onboardingValidationMissingExamDate": {
+    "description": "Validation error when Step 4 lacks both an exam date and unknown toggle"
+  },
+  "onboardingValidationPastExamDate": "Choose today or a future exam date.",
+  "@onboardingValidationPastExamDate": {
+    "description": "Validation error when selected exam date is in the past"
+  },
+  "onboardingValidationNoStudyDays": "Keep at least 1 study day per week.",
+  "@onboardingValidationNoStudyDays": {
+    "description": "Validation error if all 7 days are marked as rest"
+  },
+  "onboardingValidationInvalidMaxPace": "Maximum daily pace must be a whole number above 0.",
+  "@onboardingValidationInvalidMaxPace": {
+    "description": "Validation error when optional max pace input is invalid or <= 0"
+  },
+  "onboardingCircularTitle": "Save your first circular (optional)",
+  "@onboardingCircularTitle": {
+    "description": "Step 5 heading for optional Quick Capture circular entry"
+  },
+  "onboardingCircularSubtitle": "Paste an application link to save your first job circular into Inbox right away, or leave blank to skip.",
+  "@onboardingCircularSubtitle": {
+    "description": "Step 5 subtitle explaining optional quick capture"
+  },
+  "onboardingCircularOptionalNote": "Leaving the link empty cleanly skips this step.",
+  "@onboardingCircularOptionalNote": {
+    "description": "Helper hint explaining Step 5 can be skipped by leaving empty or tapping Skip"
+  },
+  "onboardingValidationInvalidUrl": "Enter a valid web link starting with http:// or https://, or leave it blank.",
+  "@onboardingValidationInvalidUrl": {
+    "description": "Validation error when optional circular URL has invalid format"
+  },
+  "onboardingFinishTitle": "Ready to launch your study space",
+  "@onboardingFinishTitle": {
+    "description": "Step 6 summary heading"
+  },
+  "onboardingFinishSubtitle": "Review your choices below. Applying setup again later never creates duplicates.",
+  "@onboardingFinishSubtitle": {
+    "description": "Step 6 reassurance explaining idempotent application"
+  },
+  "onboardingSummaryTrackLabel": "Preparation track",
+  "@onboardingSummaryTrackLabel": {
+    "description": "Summary row label for selected track"
+  },
+  "onboardingSummarySubjectsValue": "{subjectsCount, plural, =0{Blank start (no subjects staged)} =1{1 subject · {formattedMaterials} materials} other{{formattedSubjects} subjects · {formattedMaterials} materials}}",
+  "@onboardingSummarySubjectsValue": {
+    "description": "Summary row text counting enabled subjects and materials",
+    "placeholders": {
+      "subjectsCount": {
+        "type": "int"
+      },
+      "formattedSubjects": {
+        "type": "String"
+      },
+      "formattedMaterials": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingSummaryScheduleExam": "Exam: {examDate} · {studyDays}",
+  "@onboardingSummaryScheduleExam": {
+    "description": "Summary schedule string with chosen exam date and weekly study days",
+    "placeholders": {
+      "examDate": {
+        "type": "String"
+      },
+      "studyDays": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingSummaryScheduleUnknown": "Exam date undecided · {studyDays}",
+  "@onboardingSummaryScheduleUnknown": {
+    "description": "Summary schedule string when user chose I don't know yet",
+    "placeholders": {
+      "studyDays": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingSummaryPaceLabel": "Max pace: {formattedPace} / day",
+  "@onboardingSummaryPaceLabel": {
+    "description": "Summary chip showing optional max daily pace limit",
+    "placeholders": {
+      "formattedPace": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingSummaryCircularPending": "Inbox capture: {target}",
+  "@onboardingSummaryCircularPending": {
+    "description": "Summary text when Step 5 staged a circular link",
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingSummaryCircularSkipped": "No circular staged yet",
+  "@onboardingSummaryCircularSkipped": {
+    "description": "Summary text when no circular URL was entered in Step 5"
+  },
+  "onboardingApplyError": "Could not complete setup. Check your connection and try again.",
+  "@onboardingApplyError": {
+    "description": "Inline error banner when saving or finishing onboarding fails"
+  },
+  "onboardingTodayTipsTitle": "Quick tips to get started",
+  "@onboardingTodayTipsTitle": {
+    "description": "Heading for the three dismissible onboarding tips card on Today screen"
+  },
+  "onboardingTodayTip1": "Log pages or minutes right from Today's targets to keep your study plan accurate.",
+  "@onboardingTodayTip1": {
+    "description": "First onboarding tip displayed on Today screen"
+  },
+  "onboardingTodayTip2": "Flag tricky pages while logging progress to grow your spaced Revision queue.",
+  "@onboardingTodayTip2": {
+    "description": "Second onboarding tip displayed on Today screen"
+  },
+  "onboardingTodayTip3": "Check the notification bell for deadline countdowns and your weekly Sunday review.",
+  "@onboardingTodayTip3": {
+    "description": "Third onboarding tip displayed on Today screen"
+  },
+  "onboardingTodayTipsDismissAll": "Dismiss tips",
+  "@onboardingTodayTipsDismissAll": {
+    "description": "Button dismissing all onboarding tips on Today screen"
+  },
+  "onboardingTodayTipDismissTooltip": "Dismiss tip",
+  "@onboardingTodayTipDismissTooltip": {
+    "description": "Tooltip for dismissing an individual tip row"
+  },
+  "settingsSetupCardTitle": "Setup Wizard",
+  "@settingsSetupCardTitle": {
+    "description": "Settings card heading for re-running the onboarding setup wizard"
+  },
+  "settingsSetupCardSubtitle": "Revisit track templates, customize subjects, or update your baseline schedule safely without creating duplicates.",
+  "@settingsSetupCardSubtitle": {
+    "description": "Settings card explanation for Run setup again"
+  },
+  "settingsRunSetupAgainButton": "Run setup again",
+  "@settingsRunSetupAgainButton": {
+    "description": "Button in Settings reopening the onboarding wizard"
   }
 }

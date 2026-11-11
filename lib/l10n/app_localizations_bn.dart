@@ -4039,4 +4039,270 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get weeklyReviewBackToToday => 'টুডে স্ক্রিনে ফিরুন';
+
+  @override
+  String onboardingStepProgress(String step, String total) {
+    return 'ধাপ $step / $total';
+  }
+
+  @override
+  String get onboardingBackButton => 'পেছনে';
+
+  @override
+  String get onboardingNextButton => 'পরবর্তী';
+
+  @override
+  String get onboardingSkipButton => 'এড়িয়ে যান';
+
+  @override
+  String get onboardingFinishButton => 'সেটআপ সম্পন্ন করুন';
+
+  @override
+  String get onboardingWelcomeTitle => 'জবপ্রেপ-এ স্বাগতম';
+
+  @override
+  String get onboardingWelcomeSubtitle =>
+      'এক মিনিটে আপনার ভাষা, থিম, পাঠ্যক্রম ও সাপ্তাহিক গতি নির্ধারণ করুন। আমরা কখনোই ফোন নম্বর, ঠিকানা বা বয়স চাই না।';
+
+  @override
+  String get onboardingLanguageHeading => 'অ্যাপের ভাষা';
+
+  @override
+  String get onboardingThemeHeading => 'অ্যাপিয়ারেন্স';
+
+  @override
+  String get onboardingTrackTitle => 'আপনি কিসের প্রস্তুতি নিচ্ছেন?';
+
+  @override
+  String get onboardingTrackSubtitle =>
+      'পরবর্তী ধাপে সম্পাদনার জন্য একটি শুরুর টেমপ্লেট বেছে নিন অথবা সম্পূর্ণ খালি থেকে শুরু করুন।';
+
+  @override
+  String get onboardingTrackGovernmentTitle => 'সরকারি চাকরি পরীক্ষা';
+
+  @override
+  String get onboardingTrackGovernmentDesc =>
+      'বাংলা, ইংরেজি, সাধারণ জ্ঞান, গণিত, মানসিক দক্ষতা ও কম্পিউটারের প্রাথমিক উপকরণ।';
+
+  @override
+  String get onboardingTrackSoftwareTitle => 'বেসরকারি সফটওয়্যার চাকরি';
+
+  @override
+  String get onboardingTrackSoftwareDesc =>
+      'ডেটা স্ট্রাকচার ও অ্যালগরিদম, সিস্টেম ডিজাইন, OOP/SQL এবং ইন্টারভিউ প্রস্তুতি।';
+
+  @override
+  String get onboardingTrackBlankTitle => 'অন্য কিছু (খালি থেকে শুরু)';
+
+  @override
+  String get onboardingTrackBlankDesc =>
+      'যেকোনো পরীক্ষা বা ক্যারিয়ারের জন্য নিজের মতো বিষয় ও উপকরণ যোগ করুন।';
+
+  @override
+  String get onboardingSubjectsTitle => 'বিষয় ও উপকরণ সম্পাদনা করুন';
+
+  @override
+  String get onboardingSubjectsSubtitle =>
+      'বিষয় চালু বা বন্ধ করুন, নাম বদলান, মোট ইউনিট ঠিক করুন অথবা নিজের বিষয় যোগ করুন।';
+
+  @override
+  String get onboardingSubjectsEmptyBlankNote =>
+      'এখনো কোনো বিষয় নেই। কাস্টম বিষয় যোগ করতে \"বিষয় যোগ করুন\" চাপুন অথবা পরে যোগ করতে এগিয়ে যান।';
+
+  @override
+  String get onboardingSubjectNameLabel => 'বিষয়ের নাম';
+
+  @override
+  String get onboardingMaterialTitleLabel => 'উপকরণের নাম';
+
+  @override
+  String get onboardingMaterialUnitsLabel => 'মোট ইউনিট';
+
+  @override
+  String get onboardingAddSubjectButton => 'বিষয় যোগ করুন';
+
+  @override
+  String get onboardingAddSubjectDialogTitle => 'নতুন বিষয়';
+
+  @override
+  String get onboardingAddMaterialButton => 'উপকরণ যোগ করুন';
+
+  @override
+  String get onboardingAddMaterialDialogTitle => 'নতুন উপকরণ';
+
+  @override
+  String get onboardingRemoveMaterialTooltip => 'উপকরণ সরান';
+
+  @override
+  String get onboardingValidationEmptySubject =>
+      'সক্রিয় প্রতিটি বিষয়ের নাম থাকা প্রয়োজন।';
+
+  @override
+  String get onboardingValidationDuplicateSubject =>
+      'সক্রিয় দুটি বিষয়ের নাম একই হতে পারবে না।';
+
+  @override
+  String get onboardingValidationEmptyMaterial =>
+      'সক্রিয় বিষয়ের প্রতিটি উপকরণের শিরোনাম থাকা প্রয়োজন।';
+
+  @override
+  String get onboardingValidationInvalidUnits =>
+      'প্রতিটি উপকরণে অন্তত ১টি ইউনিট থাকতে হবে।';
+
+  @override
+  String get onboardingScheduleTitle => 'পরীক্ষার সময়সূচি ও সাপ্তাহিক গতি';
+
+  @override
+  String get onboardingScheduleSubtitle =>
+      'পরীক্ষার ৭ দিন আগে শেষ করার বাফার রেখে আপনার দৈনিক লক্ষ্য স্বয়ংক্রিয়ভাবে হিসাব হবে।';
+
+  @override
+  String get onboardingExamDateLabel => 'সম্ভাব্য পরীক্ষার তারিখ';
+
+  @override
+  String get onboardingExamDatePickButton => 'পরীক্ষার তারিখ বেছে নিন';
+
+  @override
+  String get onboardingExamDateUnknownToggle =>
+      'আমি এখনো পরীক্ষার তারিখ জানি না';
+
+  @override
+  String get onboardingExamDateUnknownNote =>
+      'সমস্যা নেই — পরে প্রস্তুতি > স্টাডি প্ল্যান থেকে তারিখ যোগ করতে পারবেন।';
+
+  @override
+  String get onboardingStudyDaysLabel => 'সপ্তাহে কয়দিন পড়বেন';
+
+  @override
+  String onboardingStudyDaysCount(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'সপ্তাহে $formatted দিন',
+      one: 'সপ্তাহে $formatted দিন',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get onboardingRestDaysLabel => 'কোন দিনগুলো বিশ্রামের দিন?';
+
+  @override
+  String get onboardingMaxPaceLabel => 'সর্বোচ্চ দৈনিক লক্ষ্য (ঐচ্ছিক)';
+
+  @override
+  String get onboardingMaxPaceHint => 'যেমন ৫০ ইউনিট/দিন';
+
+  @override
+  String get onboardingValidationMissingExamDate =>
+      'পরীক্ষার তারিখ বেছে নিন অথবা \"আমি এখনো জানি না\" চালু করুন।';
+
+  @override
+  String get onboardingValidationPastExamDate =>
+      'আজ বা ভবিষ্যতের একটি পরীক্ষার তারিখ বেছে নিন।';
+
+  @override
+  String get onboardingValidationNoStudyDays =>
+      'সপ্তাহে অন্তত ১ দিন অধ্যয়নের জন্য রাখুন।';
+
+  @override
+  String get onboardingValidationInvalidMaxPace =>
+      'সর্বোচ্চ দৈনিক লক্ষ্য ০-এর বেশি পূর্ণসংখ্যা হতে হবে।';
+
+  @override
+  String get onboardingCircularTitle => 'প্রথম সার্কুলার সংরক্ষণ (ঐচ্ছিক)';
+
+  @override
+  String get onboardingCircularSubtitle =>
+      'ইনবক্সে প্রথম সার্কুলার রাখতে আবেদন লিংক দিন, অথবা এড়িয়ে যেতে খালি রাখুন।';
+
+  @override
+  String get onboardingCircularOptionalNote =>
+      'লিংক খালি রাখলে এই ধাপটি এড়িয়ে যাবে।';
+
+  @override
+  String get onboardingValidationInvalidUrl =>
+      'http:// বা https:// দিয়ে শুরু হওয়া সঠিক লিংক দিন অথবা খালি রাখুন।';
+
+  @override
+  String get onboardingFinishTitle => 'আপনার অধ্যয়নের জায়গা প্রস্তুত';
+
+  @override
+  String get onboardingFinishSubtitle =>
+      'নিচের পছন্দগুলো দেখে নিন। পরে আবার সেটআপ চালালে ডুপ্লিকেট তৈরি হবে না।';
+
+  @override
+  String get onboardingSummaryTrackLabel => 'প্রস্তুতির ট্র্যাক';
+
+  @override
+  String onboardingSummarySubjectsValue(
+      int subjectsCount, String formattedSubjects, String formattedMaterials) {
+    String _temp0 = intl.Intl.pluralLogic(
+      subjectsCount,
+      locale: localeName,
+      other: '$formattedSubjectsটি বিষয় · $formattedMaterialsটি উপকরণ',
+      one: '১টি বিষয় · $formattedMaterialsটি উপকরণ',
+      zero: 'খালি শুরু (এখনো বিষয় নেই)',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String onboardingSummaryScheduleExam(String examDate, String studyDays) {
+    return 'পরীক্ষা: $examDate · $studyDays';
+  }
+
+  @override
+  String onboardingSummaryScheduleUnknown(String studyDays) {
+    return 'তারিখ নির্ধারিত নয় · $studyDays';
+  }
+
+  @override
+  String onboardingSummaryPaceLabel(String formattedPace) {
+    return 'সর্বোচ্চ গতি: $formattedPace / দিন';
+  }
+
+  @override
+  String onboardingSummaryCircularPending(String target) {
+    return 'ইনবক্স ক্যাপচার: $target';
+  }
+
+  @override
+  String get onboardingSummaryCircularSkipped =>
+      'এখনো কোনো সার্কুলার যুক্ত হয়নি';
+
+  @override
+  String get onboardingApplyError =>
+      'সেটআপ সংরক্ষণ করা যায়নি। সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।';
+
+  @override
+  String get onboardingTodayTipsTitle => 'শুরু করার ৩টি দ্রুত পরামর্শ';
+
+  @override
+  String get onboardingTodayTip1 =>
+      'স্টাডি প্ল্যান ঠিক রাখতে টুডে লক্ষ্য থেকেই পড়া পৃষ্ঠা বা মিনিট লগ করুন।';
+
+  @override
+  String get onboardingTodayTip2 =>
+      'কঠিন অংশ ফ্ল্যাগ করে আপনার স্পেসড রিভিশন তালিকা তৈরি করুন।';
+
+  @override
+  String get onboardingTodayTip3 =>
+      'শেষ তারিখের কাউন্টডাউন এবং সাপ্তাহিক পর্যালোচনার জন্য নোটিফিকেশন বেল দেখুন।';
+
+  @override
+  String get onboardingTodayTipsDismissAll => 'পরামর্শ লুকান';
+
+  @override
+  String get onboardingTodayTipDismissTooltip => 'পরামর্শটি সরান';
+
+  @override
+  String get settingsSetupCardTitle => 'সেটআপ উইজার্ড';
+
+  @override
+  String get settingsSetupCardSubtitle =>
+      'ডুপ্লিকেট ছাড়াই আবার শুরুর টেমপ্লেট, বিষয় বা সময়সূচি পরিবর্তন করুন।';
+
+  @override
+  String get settingsRunSetupAgainButton => 'আবার সেটআপ চালান';
 }

@@ -6644,6 +6644,427 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back to Today'**
   String get weeklyReviewBackToToday;
+
+  /// Step progress label shown in onboarding wizard header
+  ///
+  /// In en, this message translates to:
+  /// **'Step {step} of {total}'**
+  String onboardingStepProgress(String step, String total);
+
+  /// Back action on each onboarding wizard step
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get onboardingBackButton;
+
+  /// Continue action advancing onboarding wizard step
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get onboardingNextButton;
+
+  /// Skip setup action available on every onboarding step
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get onboardingSkipButton;
+
+  /// Final CTA applying setup configuration and opening Today
+  ///
+  /// In en, this message translates to:
+  /// **'Finish setup'**
+  String get onboardingFinishButton;
+
+  /// Step 1 heading greeting a new user
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to JobPrep'**
+  String get onboardingWelcomeTitle;
+
+  /// Step 1 reassuring explanation of minimal setup
+  ///
+  /// In en, this message translates to:
+  /// **'Set up your language, theme, syllabus, and weekly pace in a minute. We never ask for phone numbers, addresses, or age.'**
+  String get onboardingWelcomeSubtitle;
+
+  /// Section title for language selection inside Step 1
+  ///
+  /// In en, this message translates to:
+  /// **'App language'**
+  String get onboardingLanguageHeading;
+
+  /// Section title for theme selection inside Step 1
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get onboardingThemeHeading;
+
+  /// Step 2 heading selecting a prep starter pack or blank start
+  ///
+  /// In en, this message translates to:
+  /// **'What are you preparing for?'**
+  String get onboardingTrackTitle;
+
+  /// Step 2 subtitle explaining template tracks
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a starting syllabus template you can customize on the next step, or start completely blank.'**
+  String get onboardingTrackSubtitle;
+
+  /// Track card title for BCS/bank/government jobs
+  ///
+  /// In en, this message translates to:
+  /// **'Government job exams'**
+  String get onboardingTrackGovernmentTitle;
+
+  /// Track card description for government exam pack
+  ///
+  /// In en, this message translates to:
+  /// **'Bengali, English, General Knowledge, Math, Analytical Reasoning & Computer starter materials.'**
+  String get onboardingTrackGovernmentDesc;
+
+  /// Track card title for software engineering interviews
+  ///
+  /// In en, this message translates to:
+  /// **'Private software jobs'**
+  String get onboardingTrackSoftwareTitle;
+
+  /// Track card description for software job pack
+  ///
+  /// In en, this message translates to:
+  /// **'Data Structures & Algorithms, System Design, OOP/SQL & Interview Prep materials.'**
+  String get onboardingTrackSoftwareDesc;
+
+  /// Track card title starting without a predefined pack
+  ///
+  /// In en, this message translates to:
+  /// **'Something else (Blank start)'**
+  String get onboardingTrackBlankTitle;
+
+  /// Track card description for custom blank start
+  ///
+  /// In en, this message translates to:
+  /// **'Add your own custom subjects and materials for any exam, fellowship, or career path.'**
+  String get onboardingTrackBlankDesc;
+
+  /// Step 3 heading for toggling, renaming, and editing starter subjects and materials
+  ///
+  /// In en, this message translates to:
+  /// **'Customize your subjects & materials'**
+  String get onboardingSubjectsTitle;
+
+  /// Step 3 helper copy
+  ///
+  /// In en, this message translates to:
+  /// **'Enable or disable subjects, rename them, edit total units, or add your own.'**
+  String get onboardingSubjectsSubtitle;
+
+  /// Helper banner shown when blank start has zero subjects yet
+  ///
+  /// In en, this message translates to:
+  /// **'No subjects yet. Tap Add subject to build your custom track, or continue and add them later.'**
+  String get onboardingSubjectsEmptyBlankNote;
+
+  /// Input field label for renaming a draft subject
+  ///
+  /// In en, this message translates to:
+  /// **'Subject name'**
+  String get onboardingSubjectNameLabel;
+
+  /// Input field label for a material title
+  ///
+  /// In en, this message translates to:
+  /// **'Material title'**
+  String get onboardingMaterialTitleLabel;
+
+  /// Numeric input label for total units in a material
+  ///
+  /// In en, this message translates to:
+  /// **'Total units'**
+  String get onboardingMaterialUnitsLabel;
+
+  /// Button opening custom subject dialog in Step 3
+  ///
+  /// In en, this message translates to:
+  /// **'Add subject'**
+  String get onboardingAddSubjectButton;
+
+  /// Dialog heading when adding a custom subject in Step 3
+  ///
+  /// In en, this message translates to:
+  /// **'New Subject'**
+  String get onboardingAddSubjectDialogTitle;
+
+  /// Button adding a material inside a subject card in Step 3
+  ///
+  /// In en, this message translates to:
+  /// **'Add material'**
+  String get onboardingAddMaterialButton;
+
+  /// Dialog heading when adding a material inside Step 3
+  ///
+  /// In en, this message translates to:
+  /// **'New Material'**
+  String get onboardingAddMaterialDialogTitle;
+
+  /// Tooltip for deleting a draft material item
+  ///
+  /// In en, this message translates to:
+  /// **'Remove material'**
+  String get onboardingRemoveMaterialTooltip;
+
+  /// Validation error when an enabled subject name is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Every enabled subject needs a name.'**
+  String get onboardingValidationEmptySubject;
+
+  /// Validation error for duplicate subject names in Step 3
+  ///
+  /// In en, this message translates to:
+  /// **'Two enabled subjects cannot share the same name.'**
+  String get onboardingValidationDuplicateSubject;
+
+  /// Validation error when a material title is blank
+  ///
+  /// In en, this message translates to:
+  /// **'Every material under an enabled subject needs a title.'**
+  String get onboardingValidationEmptyMaterial;
+
+  /// Validation error when material total units is 0 or invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Every material must have at least 1 unit.'**
+  String get onboardingValidationInvalidUnits;
+
+  /// Step 4 heading configuring exam date, study/rest days, and max pace
+  ///
+  /// In en, this message translates to:
+  /// **'Set your exam timeline & weekly pace'**
+  String get onboardingScheduleTitle;
+
+  /// Step 4 subtitle explaining how study plan calculation uses exam date and rest days
+  ///
+  /// In en, this message translates to:
+  /// **'Your study plan calculates daily unit targets automatically with a 7-day buffer before exam day.'**
+  String get onboardingScheduleSubtitle;
+
+  /// Label above exam date selector
+  ///
+  /// In en, this message translates to:
+  /// **'Target exam date'**
+  String get onboardingExamDateLabel;
+
+  /// Placeholder label before picking an exam date
+  ///
+  /// In en, this message translates to:
+  /// **'Choose exam date'**
+  String get onboardingExamDatePickButton;
+
+  /// Switch allowing user to defer creating a dated study plan
+  ///
+  /// In en, this message translates to:
+  /// **'I don\'t know my exam date yet'**
+  String get onboardingExamDateUnknownToggle;
+
+  /// Note shown when I don't know yet is active
+  ///
+  /// In en, this message translates to:
+  /// **'No problem — you can attach an exam date later from Prep > Study Plan.'**
+  String get onboardingExamDateUnknownNote;
+
+  /// Label for how many days per week the user studies
+  ///
+  /// In en, this message translates to:
+  /// **'Study days per week'**
+  String get onboardingStudyDaysLabel;
+
+  /// Formatted count of study days per week
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formatted} day / week} other{{formatted} days / week}}'**
+  String onboardingStudyDaysCount(int count, String formatted);
+
+  /// Label for selecting rest day weekdays
+  ///
+  /// In en, this message translates to:
+  /// **'Which days are your rest days?'**
+  String get onboardingRestDaysLabel;
+
+  /// Input label for optional max units/day cap
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum daily pace (optional)'**
+  String get onboardingMaxPaceLabel;
+
+  /// Hint text inside optional max daily pace field
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 50 units/day'**
+  String get onboardingMaxPaceHint;
+
+  /// Validation error when Step 4 lacks both an exam date and unknown toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a target exam date or turn on \"I don\'t know yet\".'**
+  String get onboardingValidationMissingExamDate;
+
+  /// Validation error when selected exam date is in the past
+  ///
+  /// In en, this message translates to:
+  /// **'Choose today or a future exam date.'**
+  String get onboardingValidationPastExamDate;
+
+  /// Validation error if all 7 days are marked as rest
+  ///
+  /// In en, this message translates to:
+  /// **'Keep at least 1 study day per week.'**
+  String get onboardingValidationNoStudyDays;
+
+  /// Validation error when optional max pace input is invalid or <= 0
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum daily pace must be a whole number above 0.'**
+  String get onboardingValidationInvalidMaxPace;
+
+  /// Step 5 heading for optional Quick Capture circular entry
+  ///
+  /// In en, this message translates to:
+  /// **'Save your first circular (optional)'**
+  String get onboardingCircularTitle;
+
+  /// Step 5 subtitle explaining optional quick capture
+  ///
+  /// In en, this message translates to:
+  /// **'Paste an application link to save your first job circular into Inbox right away, or leave blank to skip.'**
+  String get onboardingCircularSubtitle;
+
+  /// Helper hint explaining Step 5 can be skipped by leaving empty or tapping Skip
+  ///
+  /// In en, this message translates to:
+  /// **'Leaving the link empty cleanly skips this step.'**
+  String get onboardingCircularOptionalNote;
+
+  /// Validation error when optional circular URL has invalid format
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid web link starting with http:// or https://, or leave it blank.'**
+  String get onboardingValidationInvalidUrl;
+
+  /// Step 6 summary heading
+  ///
+  /// In en, this message translates to:
+  /// **'Ready to launch your study space'**
+  String get onboardingFinishTitle;
+
+  /// Step 6 reassurance explaining idempotent application
+  ///
+  /// In en, this message translates to:
+  /// **'Review your choices below. Applying setup again later never creates duplicates.'**
+  String get onboardingFinishSubtitle;
+
+  /// Summary row label for selected track
+  ///
+  /// In en, this message translates to:
+  /// **'Preparation track'**
+  String get onboardingSummaryTrackLabel;
+
+  /// Summary row text counting enabled subjects and materials
+  ///
+  /// In en, this message translates to:
+  /// **'{subjectsCount, plural, =0{Blank start (no subjects staged)} =1{1 subject · {formattedMaterials} materials} other{{formattedSubjects} subjects · {formattedMaterials} materials}}'**
+  String onboardingSummarySubjectsValue(
+      int subjectsCount, String formattedSubjects, String formattedMaterials);
+
+  /// Summary schedule string with chosen exam date and weekly study days
+  ///
+  /// In en, this message translates to:
+  /// **'Exam: {examDate} · {studyDays}'**
+  String onboardingSummaryScheduleExam(String examDate, String studyDays);
+
+  /// Summary schedule string when user chose I don't know yet
+  ///
+  /// In en, this message translates to:
+  /// **'Exam date undecided · {studyDays}'**
+  String onboardingSummaryScheduleUnknown(String studyDays);
+
+  /// Summary chip showing optional max daily pace limit
+  ///
+  /// In en, this message translates to:
+  /// **'Max pace: {formattedPace} / day'**
+  String onboardingSummaryPaceLabel(String formattedPace);
+
+  /// Summary text when Step 5 staged a circular link
+  ///
+  /// In en, this message translates to:
+  /// **'Inbox capture: {target}'**
+  String onboardingSummaryCircularPending(String target);
+
+  /// Summary text when no circular URL was entered in Step 5
+  ///
+  /// In en, this message translates to:
+  /// **'No circular staged yet'**
+  String get onboardingSummaryCircularSkipped;
+
+  /// Inline error banner when saving or finishing onboarding fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not complete setup. Check your connection and try again.'**
+  String get onboardingApplyError;
+
+  /// Heading for the three dismissible onboarding tips card on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Quick tips to get started'**
+  String get onboardingTodayTipsTitle;
+
+  /// First onboarding tip displayed on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Log pages or minutes right from Today\'s targets to keep your study plan accurate.'**
+  String get onboardingTodayTip1;
+
+  /// Second onboarding tip displayed on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Flag tricky pages while logging progress to grow your spaced Revision queue.'**
+  String get onboardingTodayTip2;
+
+  /// Third onboarding tip displayed on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Check the notification bell for deadline countdowns and your weekly Sunday review.'**
+  String get onboardingTodayTip3;
+
+  /// Button dismissing all onboarding tips on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss tips'**
+  String get onboardingTodayTipsDismissAll;
+
+  /// Tooltip for dismissing an individual tip row
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss tip'**
+  String get onboardingTodayTipDismissTooltip;
+
+  /// Settings card heading for re-running the onboarding setup wizard
+  ///
+  /// In en, this message translates to:
+  /// **'Setup Wizard'**
+  String get settingsSetupCardTitle;
+
+  /// Settings card explanation for Run setup again
+  ///
+  /// In en, this message translates to:
+  /// **'Revisit track templates, customize subjects, or update your baseline schedule safely without creating duplicates.'**
+  String get settingsSetupCardSubtitle;
+
+  /// Button in Settings reopening the onboarding wizard
+  ///
+  /// In en, this message translates to:
+  /// **'Run setup again'**
+  String get settingsRunSetupAgainButton;
 }
 
 class _AppLocalizationsDelegate
