@@ -46,6 +46,12 @@ void main() {
         'user_id': 'u-1',
         'reminders_enabled': false,
         'email_language': 'bn',
+        'deadline_soon_enabled': true,
+        'exam_soon_enabled': false,
+        'revision_due_enabled': true,
+        'behind_schedule_enabled': false,
+        'weekly_review_enabled': true,
+        'weekly_review_day': 5,
         'created_at': '2026-11-11T02:00:00Z',
         'updated_at': '2026-11-11T03:00:00Z',
       });
@@ -54,6 +60,12 @@ void main() {
       expect(parsed.userId, 'u-1');
       expect(parsed.enabled, isFalse);
       expect(parsed.emailLanguage, ReminderEmailLanguage.bangla);
+      expect(parsed.deadlineSoonEnabled, isTrue);
+      expect(parsed.examSoonEnabled, isFalse);
+      expect(parsed.revisionDueEnabled, isTrue);
+      expect(parsed.behindScheduleEnabled, isFalse);
+      expect(parsed.weeklyReviewEnabled, isTrue);
+      expect(parsed.weeklyReviewDay, 5);
       expect(parsed.updatedAt, DateTime.utc(2026, 11, 11, 3));
 
       expect(
@@ -61,11 +73,15 @@ void main() {
           userId: 'u-1',
           enabled: true,
           emailLanguage: ReminderEmailLanguage.english,
+          examSoonEnabled: false,
+          weeklyReviewDay: 5,
         ),
         equals({
           'user_id': 'u-1',
           'reminders_enabled': true,
           'email_language': 'en',
+          'exam_soon_enabled': false,
+          'weekly_review_day': 5,
         }),
       );
     });
@@ -278,6 +294,35 @@ void main() {
     );
 
     testWidgets(
+      'toggles per-type in-app notifications and weekly review day selector',
+      (tester) async {
+        final repo = await pumpSettingsScreen(
+          tester,
+          size: const Size(1200, 1200),
+        );
+
+        expect(
+          find.byKey(const ValueKey('settings-in-app-notifications-card')),
+          findsOneWidget,
+        );
+
+        final examSwitch =
+            find.byKey(const ValueKey('settings-notif-switch-exam'));
+        await tester.ensureVisible(examSwitch);
+        await tester.tap(examSwitch);
+        await tester.pumpAndSettle();
+        expect(repo.currentSettings.examSoonEnabled, isFalse);
+
+        final fridayChip =
+            find.byKey(const ValueKey('settings-notif-review-day-5'));
+        await tester.ensureVisible(fridayChip);
+        await tester.tap(fridayChip);
+        await tester.pumpAndSettle();
+        expect(repo.currentSettings.weeklyReviewDay, 5);
+      },
+    );
+
+    testWidgets(
       'renders cleanly in Bangla light mode on 360x800 mobile without overflow',
       (tester) async {
         await pumpSettingsScreen(
@@ -290,6 +335,10 @@ void main() {
         expect(find.text('ইমেইল অনুস্মারক'), findsOneWidget);
         expect(find.text('দৈনিক ইমেইল অনুস্মারক চালু করুন'), findsOneWidget);
         expect(find.text('অনুস্মারক ইমেইলের ভাষা'), findsOneWidget);
+        expect(
+          find.text('বিজ্ঞপ্তির ধরন ও সাপ্তাহিক পর্যালোচনা'),
+          findsOneWidget,
+        );
         expect(tester.takeException(), isNull);
       },
     );

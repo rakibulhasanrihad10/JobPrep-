@@ -101,6 +101,8 @@ export interface ReminderStore {
   releaseReminderLogClaims(claimIds: ReadonlyArray<string>): Promise<void>;
 }
 
+import type { NotificationDispatchSummary } from "./notifications_types.ts";
+
 export interface ReminderRunSummary {
   nowIso: string;
   evaluatedUsers: number;
@@ -108,5 +110,6 @@ export interface ReminderRunSummary {
   sentEmails: number;
   loggedReminders: number;
   skippedDuplicates: number;
+  notifications?: NotificationDispatchSummary;
   errors: ReadonlyArray<string>;
 }

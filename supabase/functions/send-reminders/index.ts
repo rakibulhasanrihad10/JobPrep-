@@ -1,6 +1,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2.49.1";
 
 import { createReminderHandler } from "./handler.ts";
+import { SupabaseNotificationStore } from "./notifications_store.ts";
 import { ResendEmailSender } from "./resend_client.ts";
 import { SupabaseReminderStore } from "./supabase_store.ts";
 
@@ -37,6 +38,7 @@ Deno.serve((request: Request) => {
   const handler = createReminderHandler({
     cronSecret,
     store: new SupabaseReminderStore(adminClient),
+    notificationStore: new SupabaseNotificationStore(adminClient),
     emailSender: new ResendEmailSender({
       apiKey: resendApiKey,
       fromEmail,

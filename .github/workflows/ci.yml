@@ -97,5 +97,7 @@ jobs:
         run: deno check supabase/functions/send-reminders/*.ts
 
       - name: Run Edge Function unit and duplicate-protection tests
-        run: deno test --allow-env supabase/functions/send-reminders/selector_test.ts
+        run: |
+          deno test --allow-env supabase/functions/send-reminders/selector_test.ts
+          deno test --allow-env supabase/functions/send-reminders/notifications_selector_test.ts
 

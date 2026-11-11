@@ -22,6 +22,12 @@ class UnconfiguredReminderSettingsRepository
   Future<ReminderSettings> saveSettings({
     required bool enabled,
     required ReminderEmailLanguage emailLanguage,
+    bool? deadlineSoonEnabled,
+    bool? examSoonEnabled,
+    bool? revisionDueEnabled,
+    bool? behindScheduleEnabled,
+    bool? weeklyReviewEnabled,
+    int? weeklyReviewDay,
   }) =>
       Future.error(_notConfiguredError);
 }

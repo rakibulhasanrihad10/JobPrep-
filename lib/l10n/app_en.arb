@@ -5203,5 +5203,392 @@
         "type": "String"
       }
     }
+  },
+  "notificationsBellTooltip": "Notifications",
+  "@notificationsBellTooltip": {
+    "description": "Tooltip for the notification bell button in the app shell"
+  },
+  "notificationsBellUnreadSemantics": "Notifications ({formattedCount} unread)",
+  "@notificationsBellUnreadSemantics": {
+    "description": "Screen-reader label for notification bell with unread count",
+    "placeholders": {
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationsPanelTitle": "Notifications",
+  "@notificationsPanelTitle": {
+    "description": "Header title inside notifications panel and screen"
+  },
+  "notificationsInAppNotice": "Notifications appear here while the app is open; daily email reminders continue working when closed.",
+  "@notificationsInAppNotice": {
+    "description": "Banner explaining live in-app delivery alongside background email reminders"
+  },
+  "notificationsMarkAllReadButton": "Mark all read",
+  "@notificationsMarkAllReadButton": {
+    "description": "Button marking every unread notification as read"
+  },
+  "notificationsMarkReadTooltip": "Mark as read",
+  "@notificationsMarkReadTooltip": {
+    "description": "Tooltip for button marking one notification read"
+  },
+  "notificationsDeleteTooltip": "Delete notification",
+  "@notificationsDeleteTooltip": {
+    "description": "Tooltip for button removing one notification"
+  },
+  "notificationsEmptyTitle": "All caught up",
+  "@notificationsEmptyTitle": {
+    "description": "Empty state heading when there are no notifications"
+  },
+  "notificationsEmptyBody": "Deadline alerts, due revisions, behind-schedule warnings, and your weekly review will show up here.",
+  "@notificationsEmptyBody": {
+    "description": "Empty state body explaining what notifications appear in the inbox"
+  },
+  "notificationsUnreadBadge": "New",
+  "@notificationsUnreadBadge": {
+    "description": "Badge text on unread notifications"
+  },
+  "notificationsOpenWeeklyReviewChip": "Weekly review",
+  "@notificationsOpenWeeklyReviewChip": {
+    "description": "Quick action chip inside notifications panel to open the Weekly Review screen"
+  },
+  "notificationsSaveError": "Could not update notification. Please try again.",
+  "@notificationsSaveError": {
+    "description": "Inline or snackbar error when notification state mutation fails"
+  },
+  "notificationTypeDeadlineSoon": "Deadline",
+  "@notificationTypeDeadlineSoon": {
+    "description": "Type chip label for deadline_soon notification"
+  },
+  "notificationTypeExamSoon": "Exam",
+  "@notificationTypeExamSoon": {
+    "description": "Type chip label for exam_soon notification"
+  },
+  "notificationTypeRevisionDue": "Revision",
+  "@notificationTypeRevisionDue": {
+    "description": "Type chip label for revision_due notification"
+  },
+  "notificationTypeBehindSchedule": "Study pace",
+  "@notificationTypeBehindSchedule": {
+    "description": "Type chip label for behind_schedule notification"
+  },
+  "notificationTypeWeeklyReview": "Weekly review",
+  "@notificationTypeWeeklyReview": {
+    "description": "Type chip label for weekly_review notification"
+  },
+  "notificationMsgDeadlineSoon": "{days, plural, =1{{title} closes tomorrow ({targetDate}).} other{{title} closes in {formattedDays} days ({targetDate}).}}",
+  "@notificationMsgDeadlineSoon": {
+    "description": "Localized notification message for approaching circular deadlines",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      },
+      "formattedDays": {
+        "type": "String"
+      },
+      "targetDate": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationMsgExamSoon": "{days, plural, =1{{title} — {stage} exam is tomorrow ({targetDate}).} other{{title} — {stage} exam is in {formattedDays} days ({targetDate}).}}",
+  "@notificationMsgExamSoon": {
+    "description": "Localized notification message for upcoming circular exams",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      },
+      "stage": {
+        "type": "String"
+      },
+      "formattedDays": {
+        "type": "String"
+      },
+      "targetDate": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationMsgRevisionDue": "{count, plural, =1{You have 1 revision item due today.} other{You have {formattedCount} revision items due today.}}",
+  "@notificationMsgRevisionDue": {
+    "description": "Localized notification message for spaced revisions due today",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationMsgBehindScheduleSubject": "You are falling behind schedule in {subject}.",
+  "@notificationMsgBehindScheduleSubject": {
+    "description": "Localized notification message when a subject study plan is behind",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationMsgBehindScheduleAll": "Your overall study plan is behind schedule.",
+  "@notificationMsgBehindScheduleAll": {
+    "description": "Localized notification message when an all-subjects study plan is behind"
+  },
+  "notificationMsgWeeklyReview": "Your weekly review is ready. See how the past 7 days went.",
+  "@notificationMsgWeeklyReview": {
+    "description": "Localized notification message inviting the user to open Weekly Review"
+  },
+  "settingsInAppNotificationsTitle": "Notification Types & Weekly Review",
+  "@settingsInAppNotificationsTitle": {
+    "description": "Settings card title for per-type notification toggles"
+  },
+  "settingsInAppNotificationsSubtitle": "Choose which in-app notifications are created daily and pick your weekly review day.",
+  "@settingsInAppNotificationsSubtitle": {
+    "description": "Settings card subtitle explaining per-type toggles and weekly review day"
+  },
+  "settingsNotifDeadlineSoonTitle": "Circular deadlines (7, 3, 1 days)",
+  "@settingsNotifDeadlineSoonTitle": {
+    "description": "Toggle label for deadline_soon notifications"
+  },
+  "settingsNotifExamSoonTitle": "Exam dates (7, 3, 1 days)",
+  "@settingsNotifExamSoonTitle": {
+    "description": "Toggle label for exam_soon notifications"
+  },
+  "settingsNotifRevisionDueTitle": "Revision items due today",
+  "@settingsNotifRevisionDueTitle": {
+    "description": "Toggle label for revision_due notifications"
+  },
+  "settingsNotifBehindScheduleTitle": "Behind-schedule study plans",
+  "@settingsNotifBehindScheduleTitle": {
+    "description": "Toggle label for behind_schedule notifications"
+  },
+  "settingsNotifWeeklyReviewTitle": "Weekly review digest",
+  "@settingsNotifWeeklyReviewTitle": {
+    "description": "Toggle label for weekly_review notifications"
+  },
+  "settingsNotifWeeklyReviewDayLabel": "Weekly review day",
+  "@settingsNotifWeeklyReviewDayLabel": {
+    "description": "Section label for picking preferred weekday for weekly review"
+  },
+  "weeklyReviewTitle": "Weekly Review",
+  "@weeklyReviewTitle": {
+    "description": "Main title on the Weekly Review screen"
+  },
+  "weeklyReviewPeriodSubtitle": "Past 7 days ({startDate} – {endDate})",
+  "@weeklyReviewPeriodSubtitle": {
+    "description": "Date window subtitle on the Weekly Review screen",
+    "placeholders": {
+      "startDate": {
+        "type": "String"
+      },
+      "endDate": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewOpenButton": "Open Weekly Review",
+  "@weeklyReviewOpenButton": {
+    "description": "Action opening the Weekly Review screen"
+  },
+  "weeklyReviewUnitsTitle": "Units studied",
+  "@weeklyReviewUnitsTitle": {
+    "description": "Weekly Review card heading for studied units"
+  },
+  "weeklyReviewHoursTitle": "Hours studied",
+  "@weeklyReviewHoursTitle": {
+    "description": "Weekly Review card heading for hours studied"
+  },
+  "weeklyReviewHoursValue": "{formattedHours}h",
+  "@weeklyReviewHoursValue": {
+    "description": "Formatted hours studied value",
+    "placeholders": {
+      "formattedHours": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewConsistencyTitle": "Days studied",
+  "@weeklyReviewConsistencyTitle": {
+    "description": "Weekly Review card heading for days studied and missed days"
+  },
+  "weeklyReviewRevisionsClearedTitle": "Revisions cleared",
+  "@weeklyReviewRevisionsClearedTitle": {
+    "description": "Weekly Review metric heading for cleared revision marks"
+  },
+  "weeklyReviewMockAvgTitle": "Mock test average",
+  "@weeklyReviewMockAvgTitle": {
+    "description": "Weekly Review card heading for mock test percentage average"
+  },
+  "weeklyReviewMockPercent": "{formattedPercent}%",
+  "@weeklyReviewMockPercent": {
+    "description": "Mock test average formatted as percentage",
+    "placeholders": {
+      "formattedPercent": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewMockCountSubtitle": "{count, plural, =0{No mock tests this week} =1{1 mock test taken} other{{formattedCount} mock tests taken}}",
+  "@weeklyReviewMockCountSubtitle": {
+    "description": "Subtitle showing count of mock tests taken during the 7-day window",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewMockNoData": "No score yet",
+  "@weeklyReviewMockNoData": {
+    "description": "Fallback display when no mock tests were taken during the week"
+  },
+  "weeklyReviewDeltaSame": "Same as previous week",
+  "@weeklyReviewDeltaSame": {
+    "description": "Comparison subtitle when metric equals previous week"
+  },
+  "weeklyReviewDeltaUnits": "{sign}{formattedDelta} vs previous week",
+  "@weeklyReviewDeltaUnits": {
+    "description": "Unit delta compared against the prior 7-day window",
+    "placeholders": {
+      "sign": {
+        "type": "String"
+      },
+      "formattedDelta": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewDeltaHours": "{sign}{formattedHours}h vs previous week",
+  "@weeklyReviewDeltaHours": {
+    "description": "Hours delta compared against the prior 7-day window",
+    "placeholders": {
+      "sign": {
+        "type": "String"
+      },
+      "formattedHours": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewDeltaPoints": "{sign}{formattedPoints}% vs previous week",
+  "@weeklyReviewDeltaPoints": {
+    "description": "Mock score average percentage-point delta compared with prior week",
+    "placeholders": {
+      "sign": {
+        "type": "String"
+      },
+      "formattedPoints": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewDaysFraction": "{studied} / {total} days",
+  "@weeklyReviewDaysFraction": {
+    "description": "Fraction showing days studied out of 7",
+    "placeholders": {
+      "studied": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewMissedDaysNone": "Zero missed days this week.",
+  "@weeklyReviewMissedDaysNone": {
+    "description": "Subtitle when user studied on all 7 days"
+  },
+  "weeklyReviewMissedDaysCount": "{count, plural, =1{1 missed day} other{{formattedCount} missed days}}",
+  "@weeklyReviewMissedDaysCount": {
+    "description": "Subtitle showing count of missed study days this week",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewUpcomingTitle": "Next 7 days",
+  "@weeklyReviewUpcomingTitle": {
+    "description": "Section heading listing upcoming deadlines and exams in the next 7 days"
+  },
+  "weeklyReviewUpcomingEmptyTitle": "Clear week ahead",
+  "@weeklyReviewUpcomingEmptyTitle": {
+    "description": "Empty state title when no deadlines or exams occur in the next 7 days"
+  },
+  "weeklyReviewUpcomingEmptyBody": "No application deadlines or scheduled exams fall within the next 7 days.",
+  "@weeklyReviewUpcomingEmptyBody": {
+    "description": "Empty state body when the next 7 days have no events"
+  },
+  "weeklyReviewSuggestionTitle": "Suggestion for next week",
+  "@weeklyReviewSuggestionTitle": {
+    "description": "Card title highlighting the single coaching suggestion for next week"
+  },
+  "weeklyReviewSuggestionDeadline": "Prioritize your {title} application before its deadline closes in the next 3 days.",
+  "@weeklyReviewSuggestionDeadline": {
+    "description": "Coaching suggestion when a circular deadline closes within 3 days",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewSuggestionBehindSubject": "Add a short daily catch-up block for {subject} to bring its study plan back on pace.",
+  "@weeklyReviewSuggestionBehindSubject": {
+    "description": "Coaching suggestion when a subject study plan is behind schedule",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewSuggestionBehindAll": "Set a light catch-up target today to close the gap on your behind-schedule study plan.",
+  "@weeklyReviewSuggestionBehindAll": {
+    "description": "Coaching suggestion when an all-subjects study plan is behind schedule"
+  },
+  "weeklyReviewSuggestionStart": "Start light next week: log 15 minutes or 10 pages on day one to build momentum.",
+  "@weeklyReviewSuggestionStart": {
+    "description": "Coaching suggestion after a week with zero recorded study days"
+  },
+  "weeklyReviewSuggestionMissedDays": "You missed {formattedDays} days this week — try lowering your minimum daily floor so busy days still count.",
+  "@weeklyReviewSuggestionMissedDays": {
+    "description": "Coaching suggestion when 3 or more days were missed in the week",
+    "placeholders": {
+      "formattedDays": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewSuggestionMock": "Schedule one timed mock test next week and flag any weak topics directly to Revision.",
+  "@weeklyReviewSuggestionMock": {
+    "description": "Coaching suggestion when mock averages fell or exams near without mock practice"
+  },
+  "weeklyReviewSuggestionRevision": "Clear your {formattedCount} pending revision items early next week before adding heavy new reading.",
+  "@weeklyReviewSuggestionRevision": {
+    "description": "Coaching suggestion when revision backlog remains pending",
+    "placeholders": {
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewSuggestionMaintain": "Consistent week! Maintain this steady pace and keep a short daily slot reserved for revision.",
+  "@weeklyReviewSuggestionMaintain": {
+    "description": "Coaching suggestion when study consistency and pace are strong"
+  },
+  "weeklyReviewBackToToday": "Back to Today",
+  "@weeklyReviewBackToToday": {
+    "description": "Action navigating from Weekly Review back to Today"
   }
 }

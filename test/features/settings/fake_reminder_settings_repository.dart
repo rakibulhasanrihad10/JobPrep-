@@ -35,6 +35,12 @@ class FakeReminderSettingsRepository implements ReminderSettingsRepository {
   Future<ReminderSettings> saveSettings({
     required bool enabled,
     required ReminderEmailLanguage emailLanguage,
+    bool? deadlineSoonEnabled,
+    bool? examSoonEnabled,
+    bool? revisionDueEnabled,
+    bool? behindScheduleEnabled,
+    bool? weeklyReviewEnabled,
+    int? weeklyReviewDay,
   }) async {
     _consumeError();
     saveCalls += 1;
@@ -44,6 +50,14 @@ class FakeReminderSettingsRepository implements ReminderSettingsRepository {
       userId: _settings.userId.isEmpty ? defaultUserId : _settings.userId,
       enabled: enabled,
       emailLanguage: emailLanguage,
+      deadlineSoonEnabled: deadlineSoonEnabled ?? _settings.deadlineSoonEnabled,
+      examSoonEnabled: examSoonEnabled ?? _settings.examSoonEnabled,
+      revisionDueEnabled: revisionDueEnabled ?? _settings.revisionDueEnabled,
+      behindScheduleEnabled:
+          behindScheduleEnabled ?? _settings.behindScheduleEnabled,
+      weeklyReviewEnabled: weeklyReviewEnabled ?? _settings.weeklyReviewEnabled,
+      weeklyReviewDay:
+          (weeklyReviewDay ?? _settings.weeklyReviewDay).clamp(0, 6),
       createdAt: _settings.createdAt ?? now,
       updatedAt: now,
     );

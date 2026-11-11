@@ -15,6 +15,8 @@ import 'package:job_prep/features/circulars/presentation/screens/circulars_scree
 import 'package:job_prep/features/circulars/presentation/screens/inbox_screen.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/quick_capture_shell.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:job_prep/features/notifications/presentation/screens/notifications_screen.dart';
+import 'package:job_prep/features/notifications/presentation/screens/weekly_review_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_screen.dart';
 import 'package:job_prep/features/prep/presentation/widgets/books_shelf_view.dart';
@@ -245,6 +247,20 @@ final routerProvider = Provider<GoRouter>((ref) {
             name: 'calendar',
             pageBuilder: (context, state) => const NoTransitionPage(
               child: CalendarScreen(),
+            ),
+          ),
+          GoRoute(
+            path: '/notifications',
+            name: 'notifications',
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: NotificationsScreen(),
+            ),
+          ),
+          GoRoute(
+            path: '/weekly-review',
+            name: 'weekly_review',
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: WeeklyReviewScreen(),
             ),
           ),
           GoRoute(

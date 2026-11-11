@@ -7,9 +7,15 @@ abstract interface class ReminderSettingsRepository {
   /// no row has been persisted yet.
   Future<ReminderSettings> getSettings();
 
-  /// Persists the active user's reminder opt-in toggle and email language.
+  /// Persists the active user's email and in-app notification preferences.
   Future<ReminderSettings> saveSettings({
     required bool enabled,
     required ReminderEmailLanguage emailLanguage,
+    bool? deadlineSoonEnabled,
+    bool? examSoonEnabled,
+    bool? revisionDueEnabled,
+    bool? behindScheduleEnabled,
+    bool? weeklyReviewEnabled,
+    int? weeklyReviewDay,
   });
 }

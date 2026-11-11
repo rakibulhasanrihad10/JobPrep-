@@ -39,6 +39,12 @@ class ReminderSettings {
     this.userId = '',
     this.enabled = true,
     this.emailLanguage = ReminderEmailLanguage.english,
+    this.deadlineSoonEnabled = true,
+    this.examSoonEnabled = true,
+    this.revisionDueEnabled = true,
+    this.behindScheduleEnabled = true,
+    this.weeklyReviewEnabled = true,
+    this.weeklyReviewDay = 0,
     this.createdAt,
     this.updatedAt,
   });
@@ -57,6 +63,24 @@ class ReminderSettings {
   /// Selected email digest language (`en` or `bn`).
   final ReminderEmailLanguage emailLanguage;
 
+  /// Whether in-app circular deadline notifications (7, 3, 1 days) are enabled.
+  final bool deadlineSoonEnabled;
+
+  /// Whether in-app exam date notifications (7, 3, 1 days) are enabled.
+  final bool examSoonEnabled;
+
+  /// Whether daily revision-due notifications are enabled.
+  final bool revisionDueEnabled;
+
+  /// Whether behind-schedule study plan notifications are enabled.
+  final bool behindScheduleEnabled;
+
+  /// Whether weekly review notifications are generated on [weeklyReviewDay].
+  final bool weeklyReviewEnabled;
+
+  /// Preferred weekday (`0` = Sunday .. `6` = Saturday) for weekly reviews.
+  final int weeklyReviewDay;
+
   /// Creation timestamp managed by PostgreSQL.
   final DateTime? createdAt;
 
@@ -69,6 +93,12 @@ class ReminderSettings {
     String? userId,
     bool? enabled,
     ReminderEmailLanguage? emailLanguage,
+    bool? deadlineSoonEnabled,
+    bool? examSoonEnabled,
+    bool? revisionDueEnabled,
+    bool? behindScheduleEnabled,
+    bool? weeklyReviewEnabled,
+    int? weeklyReviewDay,
     Object? createdAt = _unset,
     Object? updatedAt = _unset,
   }) {
@@ -77,6 +107,13 @@ class ReminderSettings {
       userId: userId ?? this.userId,
       enabled: enabled ?? this.enabled,
       emailLanguage: emailLanguage ?? this.emailLanguage,
+      deadlineSoonEnabled: deadlineSoonEnabled ?? this.deadlineSoonEnabled,
+      examSoonEnabled: examSoonEnabled ?? this.examSoonEnabled,
+      revisionDueEnabled: revisionDueEnabled ?? this.revisionDueEnabled,
+      behindScheduleEnabled:
+          behindScheduleEnabled ?? this.behindScheduleEnabled,
+      weeklyReviewEnabled: weeklyReviewEnabled ?? this.weeklyReviewEnabled,
+      weeklyReviewDay: (weeklyReviewDay ?? this.weeklyReviewDay).clamp(0, 6),
       createdAt: identical(createdAt, _unset)
           ? this.createdAt
           : createdAt as DateTime?,
@@ -94,6 +131,12 @@ class ReminderSettings {
         other.userId == userId &&
         other.enabled == enabled &&
         other.emailLanguage == emailLanguage &&
+        other.deadlineSoonEnabled == deadlineSoonEnabled &&
+        other.examSoonEnabled == examSoonEnabled &&
+        other.revisionDueEnabled == revisionDueEnabled &&
+        other.behindScheduleEnabled == behindScheduleEnabled &&
+        other.weeklyReviewEnabled == weeklyReviewEnabled &&
+        other.weeklyReviewDay == weeklyReviewDay &&
         other.createdAt == createdAt &&
         other.updatedAt == updatedAt;
   }
@@ -104,6 +147,12 @@ class ReminderSettings {
         userId,
         enabled,
         emailLanguage,
+        deadlineSoonEnabled,
+        examSoonEnabled,
+        revisionDueEnabled,
+        behindScheduleEnabled,
+        weeklyReviewEnabled,
+        weeklyReviewDay,
         createdAt,
         updatedAt,
       );

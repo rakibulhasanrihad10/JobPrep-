@@ -3775,4 +3775,275 @@ class AppLocalizationsEn extends AppLocalizations {
   String todayQuickLogPresetChip(String units) {
     return '+$units';
   }
+
+  @override
+  String get notificationsBellTooltip => 'Notifications';
+
+  @override
+  String notificationsBellUnreadSemantics(String formattedCount) {
+    return 'Notifications ($formattedCount unread)';
+  }
+
+  @override
+  String get notificationsPanelTitle => 'Notifications';
+
+  @override
+  String get notificationsInAppNotice =>
+      'Notifications appear here while the app is open; daily email reminders continue working when closed.';
+
+  @override
+  String get notificationsMarkAllReadButton => 'Mark all read';
+
+  @override
+  String get notificationsMarkReadTooltip => 'Mark as read';
+
+  @override
+  String get notificationsDeleteTooltip => 'Delete notification';
+
+  @override
+  String get notificationsEmptyTitle => 'All caught up';
+
+  @override
+  String get notificationsEmptyBody =>
+      'Deadline alerts, due revisions, behind-schedule warnings, and your weekly review will show up here.';
+
+  @override
+  String get notificationsUnreadBadge => 'New';
+
+  @override
+  String get notificationsOpenWeeklyReviewChip => 'Weekly review';
+
+  @override
+  String get notificationsSaveError =>
+      'Could not update notification. Please try again.';
+
+  @override
+  String get notificationTypeDeadlineSoon => 'Deadline';
+
+  @override
+  String get notificationTypeExamSoon => 'Exam';
+
+  @override
+  String get notificationTypeRevisionDue => 'Revision';
+
+  @override
+  String get notificationTypeBehindSchedule => 'Study pace';
+
+  @override
+  String get notificationTypeWeeklyReview => 'Weekly review';
+
+  @override
+  String notificationMsgDeadlineSoon(
+      int days, String title, String formattedDays, String targetDate) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$title closes in $formattedDays days ($targetDate).',
+      one: '$title closes tomorrow ($targetDate).',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationMsgExamSoon(int days, String title, String stage,
+      String formattedDays, String targetDate) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$title — $stage exam is in $formattedDays days ($targetDate).',
+      one: '$title — $stage exam is tomorrow ($targetDate).',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationMsgRevisionDue(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'You have $formattedCount revision items due today.',
+      one: 'You have 1 revision item due today.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationMsgBehindScheduleSubject(String subject) {
+    return 'You are falling behind schedule in $subject.';
+  }
+
+  @override
+  String get notificationMsgBehindScheduleAll =>
+      'Your overall study plan is behind schedule.';
+
+  @override
+  String get notificationMsgWeeklyReview =>
+      'Your weekly review is ready. See how the past 7 days went.';
+
+  @override
+  String get settingsInAppNotificationsTitle =>
+      'Notification Types & Weekly Review';
+
+  @override
+  String get settingsInAppNotificationsSubtitle =>
+      'Choose which in-app notifications are created daily and pick your weekly review day.';
+
+  @override
+  String get settingsNotifDeadlineSoonTitle =>
+      'Circular deadlines (7, 3, 1 days)';
+
+  @override
+  String get settingsNotifExamSoonTitle => 'Exam dates (7, 3, 1 days)';
+
+  @override
+  String get settingsNotifRevisionDueTitle => 'Revision items due today';
+
+  @override
+  String get settingsNotifBehindScheduleTitle => 'Behind-schedule study plans';
+
+  @override
+  String get settingsNotifWeeklyReviewTitle => 'Weekly review digest';
+
+  @override
+  String get settingsNotifWeeklyReviewDayLabel => 'Weekly review day';
+
+  @override
+  String get weeklyReviewTitle => 'Weekly Review';
+
+  @override
+  String weeklyReviewPeriodSubtitle(String startDate, String endDate) {
+    return 'Past 7 days ($startDate – $endDate)';
+  }
+
+  @override
+  String get weeklyReviewOpenButton => 'Open Weekly Review';
+
+  @override
+  String get weeklyReviewUnitsTitle => 'Units studied';
+
+  @override
+  String get weeklyReviewHoursTitle => 'Hours studied';
+
+  @override
+  String weeklyReviewHoursValue(String formattedHours) {
+    return '${formattedHours}h';
+  }
+
+  @override
+  String get weeklyReviewConsistencyTitle => 'Days studied';
+
+  @override
+  String get weeklyReviewRevisionsClearedTitle => 'Revisions cleared';
+
+  @override
+  String get weeklyReviewMockAvgTitle => 'Mock test average';
+
+  @override
+  String weeklyReviewMockPercent(String formattedPercent) {
+    return '$formattedPercent%';
+  }
+
+  @override
+  String weeklyReviewMockCountSubtitle(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount mock tests taken',
+      one: '1 mock test taken',
+      zero: 'No mock tests this week',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weeklyReviewMockNoData => 'No score yet';
+
+  @override
+  String get weeklyReviewDeltaSame => 'Same as previous week';
+
+  @override
+  String weeklyReviewDeltaUnits(String sign, String formattedDelta) {
+    return '$sign$formattedDelta vs previous week';
+  }
+
+  @override
+  String weeklyReviewDeltaHours(String sign, String formattedHours) {
+    return '$sign${formattedHours}h vs previous week';
+  }
+
+  @override
+  String weeklyReviewDeltaPoints(String sign, String formattedPoints) {
+    return '$sign$formattedPoints% vs previous week';
+  }
+
+  @override
+  String weeklyReviewDaysFraction(String studied, String total) {
+    return '$studied / $total days';
+  }
+
+  @override
+  String get weeklyReviewMissedDaysNone => 'Zero missed days this week.';
+
+  @override
+  String weeklyReviewMissedDaysCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount missed days',
+      one: '1 missed day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weeklyReviewUpcomingTitle => 'Next 7 days';
+
+  @override
+  String get weeklyReviewUpcomingEmptyTitle => 'Clear week ahead';
+
+  @override
+  String get weeklyReviewUpcomingEmptyBody =>
+      'No application deadlines or scheduled exams fall within the next 7 days.';
+
+  @override
+  String get weeklyReviewSuggestionTitle => 'Suggestion for next week';
+
+  @override
+  String weeklyReviewSuggestionDeadline(String title) {
+    return 'Prioritize your $title application before its deadline closes in the next 3 days.';
+  }
+
+  @override
+  String weeklyReviewSuggestionBehindSubject(String subject) {
+    return 'Add a short daily catch-up block for $subject to bring its study plan back on pace.';
+  }
+
+  @override
+  String get weeklyReviewSuggestionBehindAll =>
+      'Set a light catch-up target today to close the gap on your behind-schedule study plan.';
+
+  @override
+  String get weeklyReviewSuggestionStart =>
+      'Start light next week: log 15 minutes or 10 pages on day one to build momentum.';
+
+  @override
+  String weeklyReviewSuggestionMissedDays(String formattedDays) {
+    return 'You missed $formattedDays days this week — try lowering your minimum daily floor so busy days still count.';
+  }
+
+  @override
+  String get weeklyReviewSuggestionMock =>
+      'Schedule one timed mock test next week and flag any weak topics directly to Revision.';
+
+  @override
+  String weeklyReviewSuggestionRevision(String formattedCount) {
+    return 'Clear your $formattedCount pending revision items early next week before adding heavy new reading.';
+  }
+
+  @override
+  String get weeklyReviewSuggestionMaintain =>
+      'Consistent week! Maintain this steady pace and keep a short daily slot reserved for revision.';
+
+  @override
+  String get weeklyReviewBackToToday => 'Back to Today';
 }

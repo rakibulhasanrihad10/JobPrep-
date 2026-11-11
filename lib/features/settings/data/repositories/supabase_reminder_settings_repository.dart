@@ -41,6 +41,12 @@ class SupabaseReminderSettingsRepository implements ReminderSettingsRepository {
   Future<ReminderSettings> saveSettings({
     required bool enabled,
     required ReminderEmailLanguage emailLanguage,
+    bool? deadlineSoonEnabled,
+    bool? examSoonEnabled,
+    bool? revisionDueEnabled,
+    bool? behindScheduleEnabled,
+    bool? weeklyReviewEnabled,
+    int? weeklyReviewDay,
   }) async {
     final userId = _client.auth.currentUser?.id;
     if (userId == null || userId.trim().isEmpty) {
@@ -52,6 +58,12 @@ class SupabaseReminderSettingsRepository implements ReminderSettingsRepository {
         userId: userId,
         enabled: enabled,
         emailLanguage: emailLanguage,
+        deadlineSoonEnabled: deadlineSoonEnabled,
+        examSoonEnabled: examSoonEnabled,
+        revisionDueEnabled: revisionDueEnabled,
+        behindScheduleEnabled: behindScheduleEnabled,
+        weeklyReviewEnabled: weeklyReviewEnabled,
+        weeklyReviewDay: weeklyReviewDay,
       );
 
       final row = await _client

@@ -10,6 +10,7 @@ import 'package:job_prep/core/theme/reduce_effects_controller.dart';
 import 'package:job_prep/core/widgets/app_nav_badge.dart';
 import 'package:job_prep/core/widgets/app_nav_item.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
+import 'package:job_prep/features/notifications/presentation/widgets/notifications_bell_button.dart';
 
 /// Glassmorphic navigation rail for medium / tablet viewports (600 - 1024 px).
 class AppNavRail extends ConsumerWidget {
@@ -95,6 +96,8 @@ class AppNavRail extends ConsumerWidget {
                 ),
               ),
             ],
+            SizedBox(height: spacing.sm),
+            const NotificationsBellButton(),
             SizedBox(height: spacing.lg),
             // Navigation destination items
             Expanded(

@@ -6264,6 +6264,386 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'+{units}'**
   String todayQuickLogPresetChip(String units);
+
+  /// Tooltip for the notification bell button in the app shell
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsBellTooltip;
+
+  /// Screen-reader label for notification bell with unread count
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications ({formattedCount} unread)'**
+  String notificationsBellUnreadSemantics(String formattedCount);
+
+  /// Header title inside notifications panel and screen
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsPanelTitle;
+
+  /// Banner explaining live in-app delivery alongside background email reminders
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications appear here while the app is open; daily email reminders continue working when closed.'**
+  String get notificationsInAppNotice;
+
+  /// Button marking every unread notification as read
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all read'**
+  String get notificationsMarkAllReadButton;
+
+  /// Tooltip for button marking one notification read
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as read'**
+  String get notificationsMarkReadTooltip;
+
+  /// Tooltip for button removing one notification
+  ///
+  /// In en, this message translates to:
+  /// **'Delete notification'**
+  String get notificationsDeleteTooltip;
+
+  /// Empty state heading when there are no notifications
+  ///
+  /// In en, this message translates to:
+  /// **'All caught up'**
+  String get notificationsEmptyTitle;
+
+  /// Empty state body explaining what notifications appear in the inbox
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline alerts, due revisions, behind-schedule warnings, and your weekly review will show up here.'**
+  String get notificationsEmptyBody;
+
+  /// Badge text on unread notifications
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get notificationsUnreadBadge;
+
+  /// Quick action chip inside notifications panel to open the Weekly Review screen
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly review'**
+  String get notificationsOpenWeeklyReviewChip;
+
+  /// Inline or snackbar error when notification state mutation fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not update notification. Please try again.'**
+  String get notificationsSaveError;
+
+  /// Type chip label for deadline_soon notification
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline'**
+  String get notificationTypeDeadlineSoon;
+
+  /// Type chip label for exam_soon notification
+  ///
+  /// In en, this message translates to:
+  /// **'Exam'**
+  String get notificationTypeExamSoon;
+
+  /// Type chip label for revision_due notification
+  ///
+  /// In en, this message translates to:
+  /// **'Revision'**
+  String get notificationTypeRevisionDue;
+
+  /// Type chip label for behind_schedule notification
+  ///
+  /// In en, this message translates to:
+  /// **'Study pace'**
+  String get notificationTypeBehindSchedule;
+
+  /// Type chip label for weekly_review notification
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly review'**
+  String get notificationTypeWeeklyReview;
+
+  /// Localized notification message for approaching circular deadlines
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{{title} closes tomorrow ({targetDate}).} other{{title} closes in {formattedDays} days ({targetDate}).}}'**
+  String notificationMsgDeadlineSoon(
+      int days, String title, String formattedDays, String targetDate);
+
+  /// Localized notification message for upcoming circular exams
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{{title} — {stage} exam is tomorrow ({targetDate}).} other{{title} — {stage} exam is in {formattedDays} days ({targetDate}).}}'**
+  String notificationMsgExamSoon(int days, String title, String stage,
+      String formattedDays, String targetDate);
+
+  /// Localized notification message for spaced revisions due today
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{You have 1 revision item due today.} other{You have {formattedCount} revision items due today.}}'**
+  String notificationMsgRevisionDue(int count, String formattedCount);
+
+  /// Localized notification message when a subject study plan is behind
+  ///
+  /// In en, this message translates to:
+  /// **'You are falling behind schedule in {subject}.'**
+  String notificationMsgBehindScheduleSubject(String subject);
+
+  /// Localized notification message when an all-subjects study plan is behind
+  ///
+  /// In en, this message translates to:
+  /// **'Your overall study plan is behind schedule.'**
+  String get notificationMsgBehindScheduleAll;
+
+  /// Localized notification message inviting the user to open Weekly Review
+  ///
+  /// In en, this message translates to:
+  /// **'Your weekly review is ready. See how the past 7 days went.'**
+  String get notificationMsgWeeklyReview;
+
+  /// Settings card title for per-type notification toggles
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Types & Weekly Review'**
+  String get settingsInAppNotificationsTitle;
+
+  /// Settings card subtitle explaining per-type toggles and weekly review day
+  ///
+  /// In en, this message translates to:
+  /// **'Choose which in-app notifications are created daily and pick your weekly review day.'**
+  String get settingsInAppNotificationsSubtitle;
+
+  /// Toggle label for deadline_soon notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Circular deadlines (7, 3, 1 days)'**
+  String get settingsNotifDeadlineSoonTitle;
+
+  /// Toggle label for exam_soon notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Exam dates (7, 3, 1 days)'**
+  String get settingsNotifExamSoonTitle;
+
+  /// Toggle label for revision_due notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Revision items due today'**
+  String get settingsNotifRevisionDueTitle;
+
+  /// Toggle label for behind_schedule notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Behind-schedule study plans'**
+  String get settingsNotifBehindScheduleTitle;
+
+  /// Toggle label for weekly_review notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly review digest'**
+  String get settingsNotifWeeklyReviewTitle;
+
+  /// Section label for picking preferred weekday for weekly review
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly review day'**
+  String get settingsNotifWeeklyReviewDayLabel;
+
+  /// Main title on the Weekly Review screen
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly Review'**
+  String get weeklyReviewTitle;
+
+  /// Date window subtitle on the Weekly Review screen
+  ///
+  /// In en, this message translates to:
+  /// **'Past 7 days ({startDate} – {endDate})'**
+  String weeklyReviewPeriodSubtitle(String startDate, String endDate);
+
+  /// Action opening the Weekly Review screen
+  ///
+  /// In en, this message translates to:
+  /// **'Open Weekly Review'**
+  String get weeklyReviewOpenButton;
+
+  /// Weekly Review card heading for studied units
+  ///
+  /// In en, this message translates to:
+  /// **'Units studied'**
+  String get weeklyReviewUnitsTitle;
+
+  /// Weekly Review card heading for hours studied
+  ///
+  /// In en, this message translates to:
+  /// **'Hours studied'**
+  String get weeklyReviewHoursTitle;
+
+  /// Formatted hours studied value
+  ///
+  /// In en, this message translates to:
+  /// **'{formattedHours}h'**
+  String weeklyReviewHoursValue(String formattedHours);
+
+  /// Weekly Review card heading for days studied and missed days
+  ///
+  /// In en, this message translates to:
+  /// **'Days studied'**
+  String get weeklyReviewConsistencyTitle;
+
+  /// Weekly Review metric heading for cleared revision marks
+  ///
+  /// In en, this message translates to:
+  /// **'Revisions cleared'**
+  String get weeklyReviewRevisionsClearedTitle;
+
+  /// Weekly Review card heading for mock test percentage average
+  ///
+  /// In en, this message translates to:
+  /// **'Mock test average'**
+  String get weeklyReviewMockAvgTitle;
+
+  /// Mock test average formatted as percentage
+  ///
+  /// In en, this message translates to:
+  /// **'{formattedPercent}%'**
+  String weeklyReviewMockPercent(String formattedPercent);
+
+  /// Subtitle showing count of mock tests taken during the 7-day window
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No mock tests this week} =1{1 mock test taken} other{{formattedCount} mock tests taken}}'**
+  String weeklyReviewMockCountSubtitle(int count, String formattedCount);
+
+  /// Fallback display when no mock tests were taken during the week
+  ///
+  /// In en, this message translates to:
+  /// **'No score yet'**
+  String get weeklyReviewMockNoData;
+
+  /// Comparison subtitle when metric equals previous week
+  ///
+  /// In en, this message translates to:
+  /// **'Same as previous week'**
+  String get weeklyReviewDeltaSame;
+
+  /// Unit delta compared against the prior 7-day window
+  ///
+  /// In en, this message translates to:
+  /// **'{sign}{formattedDelta} vs previous week'**
+  String weeklyReviewDeltaUnits(String sign, String formattedDelta);
+
+  /// Hours delta compared against the prior 7-day window
+  ///
+  /// In en, this message translates to:
+  /// **'{sign}{formattedHours}h vs previous week'**
+  String weeklyReviewDeltaHours(String sign, String formattedHours);
+
+  /// Mock score average percentage-point delta compared with prior week
+  ///
+  /// In en, this message translates to:
+  /// **'{sign}{formattedPoints}% vs previous week'**
+  String weeklyReviewDeltaPoints(String sign, String formattedPoints);
+
+  /// Fraction showing days studied out of 7
+  ///
+  /// In en, this message translates to:
+  /// **'{studied} / {total} days'**
+  String weeklyReviewDaysFraction(String studied, String total);
+
+  /// Subtitle when user studied on all 7 days
+  ///
+  /// In en, this message translates to:
+  /// **'Zero missed days this week.'**
+  String get weeklyReviewMissedDaysNone;
+
+  /// Subtitle showing count of missed study days this week
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 missed day} other{{formattedCount} missed days}}'**
+  String weeklyReviewMissedDaysCount(int count, String formattedCount);
+
+  /// Section heading listing upcoming deadlines and exams in the next 7 days
+  ///
+  /// In en, this message translates to:
+  /// **'Next 7 days'**
+  String get weeklyReviewUpcomingTitle;
+
+  /// Empty state title when no deadlines or exams occur in the next 7 days
+  ///
+  /// In en, this message translates to:
+  /// **'Clear week ahead'**
+  String get weeklyReviewUpcomingEmptyTitle;
+
+  /// Empty state body when the next 7 days have no events
+  ///
+  /// In en, this message translates to:
+  /// **'No application deadlines or scheduled exams fall within the next 7 days.'**
+  String get weeklyReviewUpcomingEmptyBody;
+
+  /// Card title highlighting the single coaching suggestion for next week
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestion for next week'**
+  String get weeklyReviewSuggestionTitle;
+
+  /// Coaching suggestion when a circular deadline closes within 3 days
+  ///
+  /// In en, this message translates to:
+  /// **'Prioritize your {title} application before its deadline closes in the next 3 days.'**
+  String weeklyReviewSuggestionDeadline(String title);
+
+  /// Coaching suggestion when a subject study plan is behind schedule
+  ///
+  /// In en, this message translates to:
+  /// **'Add a short daily catch-up block for {subject} to bring its study plan back on pace.'**
+  String weeklyReviewSuggestionBehindSubject(String subject);
+
+  /// Coaching suggestion when an all-subjects study plan is behind schedule
+  ///
+  /// In en, this message translates to:
+  /// **'Set a light catch-up target today to close the gap on your behind-schedule study plan.'**
+  String get weeklyReviewSuggestionBehindAll;
+
+  /// Coaching suggestion after a week with zero recorded study days
+  ///
+  /// In en, this message translates to:
+  /// **'Start light next week: log 15 minutes or 10 pages on day one to build momentum.'**
+  String get weeklyReviewSuggestionStart;
+
+  /// Coaching suggestion when 3 or more days were missed in the week
+  ///
+  /// In en, this message translates to:
+  /// **'You missed {formattedDays} days this week — try lowering your minimum daily floor so busy days still count.'**
+  String weeklyReviewSuggestionMissedDays(String formattedDays);
+
+  /// Coaching suggestion when mock averages fell or exams near without mock practice
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule one timed mock test next week and flag any weak topics directly to Revision.'**
+  String get weeklyReviewSuggestionMock;
+
+  /// Coaching suggestion when revision backlog remains pending
+  ///
+  /// In en, this message translates to:
+  /// **'Clear your {formattedCount} pending revision items early next week before adding heavy new reading.'**
+  String weeklyReviewSuggestionRevision(String formattedCount);
+
+  /// Coaching suggestion when study consistency and pace are strong
+  ///
+  /// In en, this message translates to:
+  /// **'Consistent week! Maintain this steady pace and keep a short daily slot reserved for revision.'**
+  String get weeklyReviewSuggestionMaintain;
+
+  /// Action navigating from Weekly Review back to Today
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Today'**
+  String get weeklyReviewBackToToday;
 }
 
 class _AppLocalizationsDelegate

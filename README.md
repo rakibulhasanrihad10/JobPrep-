@@ -255,7 +255,10 @@ SELECT * FROM net._http_response ORDER BY created DESC LIMIT 5;
 #### 4. Run Edge Function Unit & Duplicate-Protection Tests
 ```bash
 deno test --allow-env supabase/functions/send-reminders/selector_test.ts
+deno test --allow-env supabase/functions/send-reminders/notifications_selector_test.ts
 ```
+
+> Phase 6J extends `send-reminders` with pure daily/weekly in-app notification creation (`notifications_selector.ts` + `notifications` unique index `(user_id, dedupe_key)`), respecting per-type settings (`user_reminder_settings`) and preferred `weekly_review_day` (`0` Sunday .. `6` Saturday).
 
 ---
 

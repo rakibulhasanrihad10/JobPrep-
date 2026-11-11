@@ -43,31 +43,65 @@ class ReminderSettingsNotifier extends AsyncNotifier<ReminderSettings> {
     return _update(emailLanguage: emailLanguage);
   }
 
+  /// Updates per-type in-app notification preferences and/or the preferred
+  /// weekly review day (`0` = Sunday .. `6` = Saturday).
+  Future<bool> setNotificationPreferences({
+    bool? deadlineSoonEnabled,
+    bool? examSoonEnabled,
+    bool? revisionDueEnabled,
+    bool? behindScheduleEnabled,
+    bool? weeklyReviewEnabled,
+    int? weeklyReviewDay,
+  }) {
+    return _update(
+      deadlineSoonEnabled: deadlineSoonEnabled,
+      examSoonEnabled: examSoonEnabled,
+      revisionDueEnabled: revisionDueEnabled,
+      behindScheduleEnabled: behindScheduleEnabled,
+      weeklyReviewEnabled: weeklyReviewEnabled,
+      weeklyReviewDay: weeklyReviewDay,
+    );
+  }
+
   Future<bool> _update({
     bool? enabled,
     ReminderEmailLanguage? emailLanguage,
+    bool? deadlineSoonEnabled,
+    bool? examSoonEnabled,
+    bool? revisionDueEnabled,
+    bool? behindScheduleEnabled,
+    bool? weeklyReviewEnabled,
+    int? weeklyReviewDay,
   }) async {
     final current = state.asData?.value ?? const ReminderSettings();
-    final nextEnabled = enabled ?? current.enabled;
-    final nextLanguage = emailLanguage ?? current.emailLanguage;
+    final next = current.copyWith(
+      enabled: enabled,
+      emailLanguage: emailLanguage,
+      deadlineSoonEnabled: deadlineSoonEnabled,
+      examSoonEnabled: examSoonEnabled,
+      revisionDueEnabled: revisionDueEnabled,
+      behindScheduleEnabled: behindScheduleEnabled,
+      weeklyReviewEnabled: weeklyReviewEnabled,
+      weeklyReviewDay: weeklyReviewDay,
+    );
 
-    if (current.enabled == nextEnabled &&
-        current.emailLanguage == nextLanguage &&
-        state.hasValue) {
+    if (next == current && state.hasValue) {
       return true;
     }
 
-    final optimistic = current.copyWith(
-      enabled: nextEnabled,
-      emailLanguage: nextLanguage,
-    );
-    state = AsyncData<ReminderSettings>(optimistic);
+    state = AsyncData<ReminderSettings>(next);
 
     try {
       final saved =
           await ref.read(reminderSettingsRepositoryProvider).saveSettings(
-                enabled: nextEnabled,
-                emailLanguage: nextLanguage,
+                enabled: next.enabled,
+                emailLanguage: next.emailLanguage,
+                deadlineSoonEnabled: next.deadlineSoonEnabled,
+                examSoonEnabled: next.examSoonEnabled,
+                revisionDueEnabled: next.revisionDueEnabled,
+                behindScheduleEnabled: next.behindScheduleEnabled,
+                weeklyReviewEnabled: next.weeklyReviewEnabled,
+                weeklyReviewDay: next.weeklyReviewDay,
               );
       if (ref.mounted) {
         state = AsyncData<ReminderSettings>(saved);

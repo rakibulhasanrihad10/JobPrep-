@@ -3765,4 +3765,278 @@ class AppLocalizationsBn extends AppLocalizations {
   String todayQuickLogPresetChip(String units) {
     return '+$units';
   }
+
+  @override
+  String get notificationsBellTooltip => 'বিজ্ঞপ্তি';
+
+  @override
+  String notificationsBellUnreadSemantics(String formattedCount) {
+    return 'বিজ্ঞপ্তি ($formattedCountটি অপঠিত)';
+  }
+
+  @override
+  String get notificationsPanelTitle => 'বিজ্ঞপ্তি';
+
+  @override
+  String get notificationsInAppNotice =>
+      'অ্যাপ খোলা থাকলে এখানে বিজ্ঞপ্তি দেখা যাবে; অ্যাপ বন্ধ থাকলেও দৈনিক ইমেইল অনুস্মারক চালু থাকবে।';
+
+  @override
+  String get notificationsMarkAllReadButton => 'সব পড়া হয়েছে';
+
+  @override
+  String get notificationsMarkReadTooltip => 'পড়া হয়েছে চিহ্নিত করুন';
+
+  @override
+  String get notificationsDeleteTooltip => 'বিজ্ঞপ্তি মুছুন';
+
+  @override
+  String get notificationsEmptyTitle => 'সব পড়া হয়ে গেছে';
+
+  @override
+  String get notificationsEmptyBody =>
+      'আবেদনের শেষ তারিখ, রিভিশন তালিকা, পিছিয়ে পড়া পরিকল্পনা এবং সাপ্তাহিক পর্যালোচনার বিজ্ঞপ্তি এখানে দেখা যাবে।';
+
+  @override
+  String get notificationsUnreadBadge => 'নতুন';
+
+  @override
+  String get notificationsOpenWeeklyReviewChip => 'সাপ্তাহিক পর্যালোচনা';
+
+  @override
+  String get notificationsSaveError =>
+      'বিজ্ঞপ্তি আপডেট করা যায়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get notificationTypeDeadlineSoon => 'শেষ তারিখ';
+
+  @override
+  String get notificationTypeExamSoon => 'পরীক্ষা';
+
+  @override
+  String get notificationTypeRevisionDue => 'রিভিশন';
+
+  @override
+  String get notificationTypeBehindSchedule => 'অধ্যয়নের গতি';
+
+  @override
+  String get notificationTypeWeeklyReview => 'সাপ্তাহিক পর্যালোচনা';
+
+  @override
+  String notificationMsgDeadlineSoon(
+      int days, String title, String formattedDays, String targetDate) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$title আবেদনের আর $formattedDays দিন বাকি ($targetDate)।',
+      one: '$title আবেদনের শেষ দিন আগামীকাল ($targetDate)।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationMsgExamSoon(int days, String title, String stage,
+      String formattedDays, String targetDate) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$title — $stage পরীক্ষা আর $formattedDays দিন পর ($targetDate)।',
+      one: '$title — $stage পরীক্ষা আগামীকাল ($targetDate)।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationMsgRevisionDue(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'আজ রিভিশনের জন্য $formattedCountটি আইটেম বাকি আছে।',
+      one: 'আজ রিভিশনের জন্য ১টি আইটেম বাকি আছে।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationMsgBehindScheduleSubject(String subject) {
+    return '$subject বিষয়ের অধ্যয়ন পরিকল্পনায় আপনি কিছুটা পিছিয়ে আছেন।';
+  }
+
+  @override
+  String get notificationMsgBehindScheduleAll =>
+      'আপনার সামগ্রিক অধ্যয়ন পরিকল্পনা নির্ধারিত গতির চেয়ে পিছিয়ে আছে।';
+
+  @override
+  String get notificationMsgWeeklyReview =>
+      'আপনার সাপ্তাহিক পর্যালোচনা প্রস্তুত। গত ৭ দিনের অগ্রগতি দেখুন।';
+
+  @override
+  String get settingsInAppNotificationsTitle =>
+      'বিজ্ঞপ্তির ধরন ও সাপ্তাহিক পর্যালোচনা';
+
+  @override
+  String get settingsInAppNotificationsSubtitle =>
+      'প্রতিদিন কোন ধরনের অ্যাপ-অভ্যন্তরীণ বিজ্ঞপ্তি তৈরি হবে তা বেছে নিন এবং সাপ্তাহিক পর্যালোচনার দিন নির্ধারণ করুন।';
+
+  @override
+  String get settingsNotifDeadlineSoonTitle =>
+      'সার্কুলারের শেষ তারিখ (৭, ৩, ১ দিন)';
+
+  @override
+  String get settingsNotifExamSoonTitle => 'পরীক্ষার তারিখ (৭, ৩, ১ দিন)';
+
+  @override
+  String get settingsNotifRevisionDueTitle => 'আজকের রিভিশন তালিকা';
+
+  @override
+  String get settingsNotifBehindScheduleTitle =>
+      'পিছিয়ে পড়া অধ্যয়ন পরিকল্পনা';
+
+  @override
+  String get settingsNotifWeeklyReviewTitle => 'সাপ্তাহিক পর্যালোচনা বিজ্ঞপ্তি';
+
+  @override
+  String get settingsNotifWeeklyReviewDayLabel => 'সাপ্তাহিক পর্যালোচনার দিন';
+
+  @override
+  String get weeklyReviewTitle => 'সাপ্তাহিক পর্যালোচনা';
+
+  @override
+  String weeklyReviewPeriodSubtitle(String startDate, String endDate) {
+    return 'গত ৭ দিন ($startDate – $endDate)';
+  }
+
+  @override
+  String get weeklyReviewOpenButton => 'সাপ্তাহিক পর্যালোচনা খুলুন';
+
+  @override
+  String get weeklyReviewUnitsTitle => 'পঠিত ইউনিট';
+
+  @override
+  String get weeklyReviewHoursTitle => 'অধ্যয়নের ঘণ্টা';
+
+  @override
+  String weeklyReviewHoursValue(String formattedHours) {
+    return '$formattedHours ঘণ্টা';
+  }
+
+  @override
+  String get weeklyReviewConsistencyTitle => 'অধ্যয়নের দিন';
+
+  @override
+  String get weeklyReviewRevisionsClearedTitle => 'সম্পন্ন রিভিশন';
+
+  @override
+  String get weeklyReviewMockAvgTitle => 'মক টেস্ট গড়';
+
+  @override
+  String weeklyReviewMockPercent(String formattedPercent) {
+    return '$formattedPercent%';
+  }
+
+  @override
+  String weeklyReviewMockCountSubtitle(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি মক টেস্ট সম্পন্ন',
+      one: '১টি মক টেস্ট সম্পন্ন',
+      zero: 'এই সপ্তাহে কোনো মক টেস্ট দেওয়া হয়নি',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weeklyReviewMockNoData => 'এখনও স্কোর নেই';
+
+  @override
+  String get weeklyReviewDeltaSame => 'গত সপ্তাহের সমান';
+
+  @override
+  String weeklyReviewDeltaUnits(String sign, String formattedDelta) {
+    return 'গত সপ্তাহের তুলনায় $sign$formattedDelta';
+  }
+
+  @override
+  String weeklyReviewDeltaHours(String sign, String formattedHours) {
+    return 'গত সপ্তাহের তুলনায় $sign$formattedHours ঘণ্টা';
+  }
+
+  @override
+  String weeklyReviewDeltaPoints(String sign, String formattedPoints) {
+    return 'গত সপ্তাহের তুলনায় $sign$formattedPoints%';
+  }
+
+  @override
+  String weeklyReviewDaysFraction(String studied, String total) {
+    return '$studied / $total দিন';
+  }
+
+  @override
+  String get weeklyReviewMissedDaysNone =>
+      'এই সপ্তাহে কোনো দিন পড়া বাদ যায়নি।';
+
+  @override
+  String weeklyReviewMissedDaysCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount দিন বাদ পড়েছে',
+      one: '১ দিন বাদ পড়েছে',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weeklyReviewUpcomingTitle => 'আগামী ৭ দিন';
+
+  @override
+  String get weeklyReviewUpcomingEmptyTitle =>
+      'আগামী সপ্তাহে কোনো জরুরি তারিখ নেই';
+
+  @override
+  String get weeklyReviewUpcomingEmptyBody =>
+      'আগামী ৭ দিনে কোনো আবেদনের শেষ তারিখ বা পরীক্ষার তারিখ নির্ধারিত নেই।';
+
+  @override
+  String get weeklyReviewSuggestionTitle => 'আগামী সপ্তাহের পরামর্শ';
+
+  @override
+  String weeklyReviewSuggestionDeadline(String title) {
+    return 'সময় শেষ হওয়ার আগে আগামী ৩ দিনের মধ্যে $title আবেদনটি সম্পন্ন করুন।';
+  }
+
+  @override
+  String weeklyReviewSuggestionBehindSubject(String subject) {
+    return '$subject অধ্যয়ন পরিকল্পনায় পিছিয়ে থাকা অংশ পুষিয়ে নিতে প্রতিদিন সামান্য অতিরিক্ত সময় দিন।';
+  }
+
+  @override
+  String get weeklyReviewSuggestionBehindAll =>
+      'পিছিয়ে থাকা লক্ষ্য পূরণ শুরু করতে আজ হালকা একটি অধ্যয়ন সেশন সম্পন্ন করুন।';
+
+  @override
+  String get weeklyReviewSuggestionStart =>
+      'সহজভাবে শুরু করুন: ধারাবাহিকতা ফেরাতে প্রথম দিন ১৫ মিনিট বা ১০ পৃষ্ঠা লগ করুন।';
+
+  @override
+  String weeklyReviewSuggestionMissedDays(String formattedDays) {
+    return 'এই সপ্তাহে $formattedDays দিন পড়া বাদ পড়েছে — ব্যস্ত দিনেও লক্ষ্য ধরে রাখতে দৈনিক ন্যূনতম লক্ষ্য কিছুটা কম রাখুন।';
+  }
+
+  @override
+  String get weeklyReviewSuggestionMock =>
+      'আগামী সপ্তাহে অন্তত একটি সময়বদ্ধ মক টেস্ট দিন এবং দুর্বল টপিক রিভিশনে যোগ করুন।';
+
+  @override
+  String weeklyReviewSuggestionRevision(String formattedCount) {
+    return 'নতুন ভারী পড়া শুরু করার আগে অপেক্ষমাণ $formattedCountটি রিভিশন আইটেম সম্পন্ন করুন।';
+  }
+
+  @override
+  String get weeklyReviewSuggestionMaintain =>
+      'দারুণ সপ্তাহ! একই ধারাবাহিক গতি বজায় রাখুন এবং প্রতিদিন রিভিশনের জন্য একটু সময় রাখুন।';
+
+  @override
+  String get weeklyReviewBackToToday => 'টুডে স্ক্রিনে ফিরুন';
 }

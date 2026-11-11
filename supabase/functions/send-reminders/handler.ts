@@ -1,4 +1,9 @@
 import { renderReminderEmail } from "./email_templates.ts";
+import { dispatchDailyNotifications } from "./notifications_selector.ts";
+import type {
+  NotificationDispatchSummary,
+  NotificationStore,
+} from "./notifications_types.ts";
 import { filterUnsentReminders, selectDueReminders } from "./selector.ts";
 import type {
   EmailSender,
@@ -10,6 +15,7 @@ import type {
 
 export interface ProcessRemindersDeps {
   store: ReminderStore;
+  notificationStore?: NotificationStore;
   emailSender: EmailSender;
   now?: () => Date;
   timeZoneOffsetMinutes?: number;
@@ -57,88 +63,100 @@ export async function processReminders(
     deps.store.loadActiveCirculars(),
   ]);
 
+  const timeZoneOffsetMinutes = deps.timeZoneOffsetMinutes ?? 0;
   const candidates = selectDueReminders({
     users,
     circulars,
     nowIso,
-    timeZoneOffsetMinutes: deps.timeZoneOffsetMinutes ?? 0,
+    timeZoneOffsetMinutes,
   });
 
-  if (candidates.length === 0) {
-    return {
-      nowIso,
-      evaluatedUsers: users.length,
-      matchedCandidates: 0,
-      sentEmails: 0,
-      loggedReminders: 0,
-      skippedDuplicates: 0,
-      errors: [],
-    };
-  }
-
-  const targetDates = Array.from(new Set(candidates.map((c) => c.targetDate)));
-  const alreadySentKeys = await deps.store.loadSentDedupKeys(targetDates);
-  const { unsent, skippedDuplicates: preFilteredDuplicates } =
-    filterUnsentReminders(candidates, alreadySentKeys);
-
-  let skippedDuplicates = preFilteredDuplicates;
   let sentEmails = 0;
   let loggedReminders = 0;
+  let skippedDuplicates = 0;
   const errors: string[] = [];
 
-  const byUser = new Map<string, ReminderCandidate[]>();
-  for (const item of unsent) {
-    const group = byUser.get(item.userId);
-    if (group) {
-      group.push(item);
-    } else {
-      byUser.set(item.userId, [item]);
+  if (candidates.length > 0) {
+    const targetDates = Array.from(
+      new Set(candidates.map((c) => c.targetDate)),
+    );
+    const alreadySentKeys = await deps.store.loadSentDedupKeys(targetDates);
+    const filtered = filterUnsentReminders(candidates, alreadySentKeys);
+    skippedDuplicates = filtered.skippedDuplicates;
+
+    const byUser = new Map<string, ReminderCandidate[]>();
+    for (const item of filtered.unsent) {
+      const group = byUser.get(item.userId);
+      if (group) {
+        group.push(item);
+      } else {
+        byUser.set(item.userId, [item]);
+      }
+    }
+
+    for (const userItems of byUser.values()) {
+      const claims: NewReminderLogClaim[] = userItems.map((item) => ({
+        dedupKey: item.dedupKey,
+        userId: item.userId,
+        circularId: item.circularId,
+        examDateId: item.examDateId,
+        reminderKind: item.reminderKind,
+        daysBefore: item.daysBefore,
+        targetDate: item.targetDate,
+        recipientEmail: item.recipientEmail,
+        emailLanguage: item.emailLanguage,
+        provider: providerName,
+      }));
+
+      const claimResult = await deps.store.claimReminderLogs(claims);
+      skippedDuplicates += claimResult.duplicateKeys.length;
+
+      if (claimResult.claimed.length === 0) {
+        continue;
+      }
+
+      const claimedKeySet = new Set(claimResult.claimed.map((c) => c.dedupKey));
+      const claimedItems = userItems.filter((item) =>
+        claimedKeySet.has(item.dedupKey)
+      );
+      const claimIds = claimResult.claimed.map((c) => c.id);
+
+      const first = claimedItems[0];
+      const message = renderReminderEmail({
+        recipientEmail: first.recipientEmail,
+        language: first.emailLanguage,
+        items: claimedItems,
+      });
+
+      try {
+        const sendResult = await deps.emailSender.send(message);
+        await deps.store.markReminderLogsDelivered(
+          claimIds,
+          sendResult.messageId,
+        );
+        sentEmails += 1;
+        loggedReminders += claimIds.length;
+      } catch (error) {
+        const reason = error instanceof Error ? error.message : String(error);
+        errors.push(`User ${first.userId} delivery failed: ${reason}`);
+        await deps.store.releaseReminderLogClaims(claimIds);
+      }
     }
   }
 
-  for (const userItems of byUser.values()) {
-    const claims: NewReminderLogClaim[] = userItems.map((item) => ({
-      dedupKey: item.dedupKey,
-      userId: item.userId,
-      circularId: item.circularId,
-      examDateId: item.examDateId,
-      reminderKind: item.reminderKind,
-      daysBefore: item.daysBefore,
-      targetDate: item.targetDate,
-      recipientEmail: item.recipientEmail,
-      emailLanguage: item.emailLanguage,
-      provider: providerName,
-    }));
-
-    const claimResult = await deps.store.claimReminderLogs(claims);
-    skippedDuplicates += claimResult.duplicateKeys.length;
-
-    if (claimResult.claimed.length === 0) {
-      continue;
-    }
-
-    const claimedKeySet = new Set(claimResult.claimed.map((c) => c.dedupKey));
-    const claimedItems = userItems.filter((item) =>
-      claimedKeySet.has(item.dedupKey)
-    );
-    const claimIds = claimResult.claimed.map((c) => c.id);
-
-    const first = claimedItems[0];
-    const message = renderReminderEmail({
-      recipientEmail: first.recipientEmail,
-      language: first.emailLanguage,
-      items: claimedItems,
-    });
-
+  let notifications: NotificationDispatchSummary | undefined;
+  if (deps.notificationStore) {
     try {
-      const sendResult = await deps.emailSender.send(message);
-      await deps.store.markReminderLogsDelivered(claimIds, sendResult.messageId);
-      sentEmails += 1;
-      loggedReminders += claimIds.length;
+      notifications = await dispatchDailyNotifications({
+        notificationStore: deps.notificationStore,
+        userIds: Array.from(new Set(users.map((u) => u.userId))),
+        circulars,
+        nowIso,
+        timeZoneOffsetMinutes,
+      });
     } catch (error) {
       const reason = error instanceof Error ? error.message : String(error);
-      errors.push(`User ${first.userId} delivery failed: ${reason}`);
-      await deps.store.releaseReminderLogClaims(claimIds);
+      errors.push(`Notifications dispatch failed: ${reason}`);
     }
   }
 
@@ -149,6 +167,7 @@ export async function processReminders(
     sentEmails,
     loggedReminders,
     skippedDuplicates,
+    ...(notifications ? { notifications } : {}),
     errors,
   };
 }
