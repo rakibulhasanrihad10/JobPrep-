@@ -4851,5 +4851,357 @@
         "type": "String"
       }
     }
+  },
+  "navToday": "Today",
+  "@navToday": {
+    "description": "Navigation label for the focused Today screen"
+  },
+  "todayGreetingMorning": "Good morning",
+  "@todayGreetingMorning": {
+    "description": "Morning greeting shown at the top of Today screen"
+  },
+  "todayGreetingAfternoon": "Good afternoon",
+  "@todayGreetingAfternoon": {
+    "description": "Afternoon greeting shown at the top of Today screen"
+  },
+  "todayGreetingEvening": "Good evening",
+  "@todayGreetingEvening": {
+    "description": "Evening greeting shown at the top of Today screen"
+  },
+  "todayGreetingNamed": "{greeting}, {name}",
+  "@todayGreetingNamed": {
+    "description": "Personalized greeting combining time-of-day salutation and user name",
+    "placeholders": {
+      "greeting": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "todaySubtitle": "Your focused action plan for today",
+  "@todaySubtitle": {
+    "description": "Subtitle below the greeting and date on Today screen"
+  },
+  "todayRefreshTooltip": "Refresh today",
+  "@todayRefreshTooltip": {
+    "description": "Tooltip for manual refresh button on Today screen"
+  },
+  "todayLoadError": "Could not load your Today plan.",
+  "@todayLoadError": {
+    "description": "Error message when Today summary providers fail to load"
+  },
+  "todayProgressRingLabel": "{percent}%",
+  "@todayProgressRingLabel": {
+    "description": "Formatted percentage displayed inside the daily progress ring",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "todayProgressRingCaption": "Daily goal",
+  "@todayProgressRingCaption": {
+    "description": "Short caption beneath the daily progress percentage"
+  },
+  "todayDailyDoneOfTarget": "{done} / {target} units today",
+  "@todayDailyDoneOfTarget": {
+    "description": "Summary of total completed vs target units for today",
+    "placeholders": {
+      "done": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "todayNoPlanHeaderHint": "No study plan yet",
+  "@todayNoPlanHeaderHint": {
+    "description": "Short hint inside Today header when user has no active study plan"
+  },
+  "todayDoNextTitle": "Do this next",
+  "@todayDoNextTitle": {
+    "description": "Card title for top prioritized next action on Today screen"
+  },
+  "todayDoNextPriorityDeadline": "Urgent deadline",
+  "@todayDoNextPriorityDeadline": {
+    "description": "Priority badge when top action is a circular deadline within 2 days"
+  },
+  "todayDoNextPriorityRevision": "Overdue revision",
+  "@todayDoNextPriorityRevision": {
+    "description": "Priority badge when top action is an overdue revision item"
+  },
+  "todayDoNextPriorityStudy": "Biggest target today",
+  "@todayDoNextPriorityStudy": {
+    "description": "Priority badge when top action is the largest remaining study target"
+  },
+  "todayDoNextOpenCircularAction": "Review circular",
+  "@todayDoNextOpenCircularAction": {
+    "description": "Action button on Do this next card when a deadline is urgent"
+  },
+  "todayDoNextStartRevisionAction": "Start revision",
+  "@todayDoNextStartRevisionAction": {
+    "description": "Action button on Do this next card when revisions are overdue"
+  },
+  "todayDoNextStartStudyAction": "Start timer",
+  "@todayDoNextStartStudyAction": {
+    "description": "Action button on Do this next card to launch focus timer on target subject"
+  },
+  "todayDoNextOverdueSummary": "{count, plural, =1{{formattedCount} overdue item: {label}} other{{formattedCount} overdue items • Next: {label}}}",
+  "@todayDoNextOverdueSummary": {
+    "description": "Summary text inside Do this next card when overdue revisions take priority",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      },
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "todayDoNextStudySummary": "{remaining} units left today ({done} / {target} done)",
+  "@todayDoNextStudySummary": {
+    "description": "Summary text inside Do this next card for remaining daily study units",
+    "placeholders": {
+      "remaining": {
+        "type": "String"
+      },
+      "done": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "todayDoNextAllCaughtUpTitle": "All caught up for now",
+  "@todayDoNextAllCaughtUpTitle": {
+    "description": "Title inside Do this next card when nothing urgent remains"
+  },
+  "todayDoNextAllCaughtUpBody": "No deadlines in 2 days, no overdue revisions, and today's targets are complete.",
+  "@todayDoNextAllCaughtUpBody": {
+    "description": "Explanation shown when there is no urgent Do this next item"
+  },
+  "todayTargetsTitle": "Today's study targets",
+  "@todayTargetsTitle": {
+    "description": "Section title for per-subject daily study targets on Today screen"
+  },
+  "todayTargetsEmptyTitle": "No study plan yet",
+  "@todayTargetsEmptyTitle": {
+    "description": "Empty state heading when user has no active study plans"
+  },
+  "todayTargetsEmptyBody": "Create a study plan with an exam date to calculate daily subject targets.",
+  "@todayTargetsEmptyBody": {
+    "description": "Empty state body prompting user to create a study plan"
+  },
+  "todayTargetsCreatePlanButton": "Create study plan",
+  "@todayTargetsCreatePlanButton": {
+    "description": "Button label linking to study plan creation from Today screen"
+  },
+  "todayTargetRowDoneTarget": "{done} / {target} units",
+  "@todayTargetRowDoneTarget": {
+    "description": "Completed vs target units readout per study target row",
+    "placeholders": {
+      "done": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "todayTargetRowRemaining": "{remaining} remaining",
+  "@todayTargetRowRemaining": {
+    "description": "Remaining units today for a study plan target row",
+    "placeholders": {
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "todayTargetRowComplete": "Daily target complete",
+  "@todayTargetRowComplete": {
+    "description": "Status text when today's quota for a study target row is met"
+  },
+  "todayTargetQuickLogButton": "Quick log",
+  "@todayTargetQuickLogButton": {
+    "description": "Button label opening quick log dialog for a study target row"
+  },
+  "todayTargetStartTimerButton": "Start timer",
+  "@todayTargetStartTimerButton": {
+    "description": "Button label starting timer for a study target row's subject"
+  },
+  "todayCatchUpTitle": "Catch-up notice",
+  "@todayCatchUpTitle": {
+    "description": "Section header for missed-days catch-up messages on Today screen"
+  },
+  "todayCatchUpSubjectLine": "{subject}: {message}",
+  "@todayCatchUpSubjectLine": {
+    "description": "Subject-prefixed catch-up message line on Today screen",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "todayRevisionTitle": "Revision due today",
+  "@todayRevisionTitle": {
+    "description": "Section header for spaced revisions due today or overdue"
+  },
+  "todayRevisionCountBadge": "{formattedCount} due",
+  "@todayRevisionCountBadge": {
+    "description": "Compact count chip for revisions needing review today",
+    "placeholders": {
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "todayRevisionOverdueBreakdown": "{overdue} overdue · {today} due today",
+  "@todayRevisionOverdueBreakdown": {
+    "description": "Subline breaking down overdue and due-today revision counts",
+    "placeholders": {
+      "overdue": {
+        "type": "String"
+      },
+      "today": {
+        "type": "String"
+      }
+    }
+  },
+  "todayRevisionEmptyTitle": "Nothing due for revision today",
+  "@todayRevisionEmptyTitle": {
+    "description": "Empty state title when zero revisions are due or overdue"
+  },
+  "todayRevisionEmptyBody": "Flag tricky pages or mock mistakes during study to schedule them here automatically.",
+  "@todayRevisionEmptyBody": {
+    "description": "Empty state description inside Revision due today card"
+  },
+  "todayRevisionStartButton": "Start revision",
+  "@todayRevisionStartButton": {
+    "description": "Primary CTA button navigating to revision queue"
+  },
+  "todayDeadlinesTitle": "Deadlines in the next 7 days",
+  "@todayDeadlinesTitle": {
+    "description": "Section title for circulars closing within 7 days on Today screen"
+  },
+  "todayDeadlinesEmptyTitle": "No deadlines in the next 7 days",
+  "@todayDeadlinesEmptyTitle": {
+    "description": "Empty state title when no circular deadlines close within 7 days"
+  },
+  "todayDeadlinesEmptyBody": "Saved circulars closing within the coming week will appear here with urgency badges.",
+  "@todayDeadlinesEmptyBody": {
+    "description": "Empty state description when no 7-day deadlines are approaching"
+  },
+  "todayExamsTitle": "Exams in the next 14 days",
+  "@todayExamsTitle": {
+    "description": "Section title for exam dates within the next 14 days on Today screen"
+  },
+  "todayExamsEmptyTitle": "No exams in the next 14 days",
+  "@todayExamsEmptyTitle": {
+    "description": "Empty state title when zero exams are scheduled within 14 days"
+  },
+  "todayExamsEmptyBody": "Exam dates added to your saved circulars within the next two weeks will show up here.",
+  "@todayExamsEmptyBody": {
+    "description": "Empty state explanation when no 14-day exams exist"
+  },
+  "todayInboxTitle": "Inbox",
+  "@todayInboxTitle": {
+    "description": "Section title for Inbox summary card on Today screen"
+  },
+  "todayInboxWaitingSummary": "{count, plural, =0{Nothing waiting in Inbox} =1{{formattedCount} item waiting in Inbox} other{{formattedCount} items waiting in Inbox}}",
+  "@todayInboxWaitingSummary": {
+    "description": "Summary count of quick-captured circulars waiting to be triaged",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "todayReviewInboxButton": "Review inbox",
+  "@todayReviewInboxButton": {
+    "description": "CTA button navigating from Today screen to Inbox screen"
+  },
+  "todayTimeStudiedTitle": "Time studied today",
+  "@todayTimeStudiedTitle": {
+    "description": "Section title for total study session duration today on Today screen"
+  },
+  "todayTimeStudiedHoursMinutes": "{hours}h {minutes}m",
+  "@todayTimeStudiedHoursMinutes": {
+    "description": "Formatted duration with hours and minutes",
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "todayTimeStudiedMinutesOnly": "{minutes}m",
+  "@todayTimeStudiedMinutesOnly": {
+    "description": "Formatted duration under one hour in minutes",
+    "placeholders": {
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "todayTimeStudiedSessionsSummary": "{count, plural, =0{No study sessions recorded today yet} =1{{formattedCount} session today} other{{formattedCount} sessions today}}",
+  "@todayTimeStudiedSessionsSummary": {
+    "description": "Session count caption under Time studied today",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "todayTimeStudiedRunningNote": "Active session running",
+  "@todayTimeStudiedRunningNote": {
+    "description": "Badge note when a live timer session is currently running today"
+  },
+  "todayOpenTimerButton": "Open timer",
+  "@todayOpenTimerButton": {
+    "description": "Button navigating to the study timer tab"
+  },
+  "todayQuickLogTitle": "Quick log • {subject}",
+  "@todayQuickLogTitle": {
+    "description": "Dialog title for logging progress units from Today screen",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      }
+    }
+  },
+  "todayQuickLogNoMaterialsBody": "Add a book or material under this subject before logging units.",
+  "@todayQuickLogNoMaterialsBody": {
+    "description": "Message inside quick log dialog when chosen scope has no materials yet"
+  },
+  "todayQuickLogOpenSubjectButton": "Add material",
+  "@todayQuickLogOpenSubjectButton": {
+    "description": "CTA opening subject view to add a study material"
+  },
+  "todayQuickLogPresetChip": "+{units}",
+  "@todayQuickLogPresetChip": {
+    "description": "Preset unit chip label inside Today quick log dialog",
+    "placeholders": {
+      "units": {
+        "type": "String"
+      }
+    }
   }
 }

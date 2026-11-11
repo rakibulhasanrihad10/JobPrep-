@@ -3531,4 +3531,238 @@ class AppLocalizationsBn extends AppLocalizations {
   String prepAnalyticsSubjectHoursLegend(String subject, String hours) {
     return '$subject: $hours ঘণ্টা';
   }
+
+  @override
+  String get navToday => 'আজ';
+
+  @override
+  String get todayGreetingMorning => 'সুপ্রভাত';
+
+  @override
+  String get todayGreetingAfternoon => 'শুভ অপরাহ্ণ';
+
+  @override
+  String get todayGreetingEvening => 'শুভ সন্ধ্যা';
+
+  @override
+  String todayGreetingNamed(String greeting, String name) {
+    return '$greeting, $name';
+  }
+
+  @override
+  String get todaySubtitle => 'আজকের কাজের স্পষ্ট পরিকল্পনা';
+
+  @override
+  String get todayRefreshTooltip => 'আজকের তথ্য রিফ্রেশ';
+
+  @override
+  String get todayLoadError => 'আজকের পরিকল্পনা লোড করা যায়নি।';
+
+  @override
+  String todayProgressRingLabel(String percent) {
+    return '$percent%';
+  }
+
+  @override
+  String get todayProgressRingCaption => 'দৈনিক লক্ষ্য';
+
+  @override
+  String todayDailyDoneOfTarget(String done, String target) {
+    return 'আজ $done / $target ইউনিট';
+  }
+
+  @override
+  String get todayNoPlanHeaderHint => 'এখনও স্টাডি প্ল্যান নেই';
+
+  @override
+  String get todayDoNextTitle => 'এখনই করুন';
+
+  @override
+  String get todayDoNextPriorityDeadline => 'জরুরি শেষ তারিখ';
+
+  @override
+  String get todayDoNextPriorityRevision => 'বকেয়া রিভিশন';
+
+  @override
+  String get todayDoNextPriorityStudy => 'আজকের বড় লক্ষ্য';
+
+  @override
+  String get todayDoNextOpenCircularAction => 'সার্কুলার দেখুন';
+
+  @override
+  String get todayDoNextStartRevisionAction => 'রিভিশন শুরু করুন';
+
+  @override
+  String get todayDoNextStartStudyAction => 'টাইমার শুরু করুন';
+
+  @override
+  String todayDoNextOverdueSummary(
+      int count, String formattedCount, String label) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি বকেয়া রিভিশন • পরবর্তী: $label',
+      one: '$formattedCountটি বকেয়া রিভিশন: $label',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String todayDoNextStudySummary(String remaining, String done, String target) {
+    return 'আজ $remaining ইউনিট বাকি ($done / $target সম্পন্ন)';
+  }
+
+  @override
+  String get todayDoNextAllCaughtUpTitle => 'আজকের জরুরি সব কাজ সম্পন্ন';
+
+  @override
+  String get todayDoNextAllCaughtUpBody =>
+      'আগামী ২ দিনে কোনো শেষ তারিখ, বকেয়া রিভিশন বা বাকি লক্ষ্য নেই।';
+
+  @override
+  String get todayTargetsTitle => 'আজকের অধ্যয়নের লক্ষ্য';
+
+  @override
+  String get todayTargetsEmptyTitle => 'এখনও কোনো স্টাডি প্ল্যান নেই';
+
+  @override
+  String get todayTargetsEmptyBody =>
+      'দৈনিক বিষয়ভিত্তিক লক্ষ্য দেখতে পরীক্ষার তারিখসহ একটি স্টাডি প্ল্যান তৈরি করুন।';
+
+  @override
+  String get todayTargetsCreatePlanButton => 'স্টাডি প্ল্যান তৈরি করুন';
+
+  @override
+  String todayTargetRowDoneTarget(String done, String target) {
+    return '$done / $target ইউনিট';
+  }
+
+  @override
+  String todayTargetRowRemaining(String remaining) {
+    return 'আজ $remaining বাকি';
+  }
+
+  @override
+  String get todayTargetRowComplete => 'আজকের লক্ষ্য সম্পন্ন';
+
+  @override
+  String get todayTargetQuickLogButton => 'দ্রুত লগ';
+
+  @override
+  String get todayTargetStartTimerButton => 'টাইমার';
+
+  @override
+  String get todayCatchUpTitle => 'গতি সমন্বয় বার্তা';
+
+  @override
+  String todayCatchUpSubjectLine(String subject, String message) {
+    return '$subject: $message';
+  }
+
+  @override
+  String get todayRevisionTitle => 'আজকের রিভিশন';
+
+  @override
+  String todayRevisionCountBadge(String formattedCount) {
+    return '$formattedCountটি বাকি';
+  }
+
+  @override
+  String todayRevisionOverdueBreakdown(String overdue, String today) {
+    return '$overdueটি বকেয়া · $todayটি আজ';
+  }
+
+  @override
+  String get todayRevisionEmptyTitle => 'আজ রিভিশনের জন্য কিছু বাকি নেই';
+
+  @override
+  String get todayRevisionEmptyBody =>
+      'পড়ার সময় কঠিন অংশ চিহ্নিত করলে তা স্বয়ংক্রিয়ভাবে এখানে রিভিশনের জন্য আসবে।';
+
+  @override
+  String get todayRevisionStartButton => 'রিভিশন শুরু করুন';
+
+  @override
+  String get todayDeadlinesTitle => 'আগামী ৭ দিনের শেষ তারিখ';
+
+  @override
+  String get todayDeadlinesEmptyTitle => 'আগামী ৭ দিনে কোনো শেষ তারিখ নেই';
+
+  @override
+  String get todayDeadlinesEmptyBody =>
+      'আগামী সপ্তাহের মধ্যে শেষ হতে যাওয়া সংরক্ষিত সার্কুলার এখানে দেখা যাবে।';
+
+  @override
+  String get todayExamsTitle => 'আগামী ১৪ দিনের পরীক্ষা';
+
+  @override
+  String get todayExamsEmptyTitle => 'আগামী ১৪ দিনে কোনো পরীক্ষা নেই';
+
+  @override
+  String get todayExamsEmptyBody =>
+      'সংরক্ষিত সার্কুলারে আগামী দুই সপ্তাহের মধ্যে কোনো পরীক্ষার তারিখ থাকলে এখানে দেখাবে।';
+
+  @override
+  String get todayInboxTitle => 'ইনবক্স';
+
+  @override
+  String todayInboxWaitingSummary(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'ইনবক্সে $formattedCountটি আইটেম অপেক্ষা করছে',
+      zero: 'ইনবক্সে অপেক্ষমাণ কোনো আইটেম নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get todayReviewInboxButton => 'ইনবক্স পর্যালোচনা';
+
+  @override
+  String get todayTimeStudiedTitle => 'আজকের অধ্যয়নের সময়';
+
+  @override
+  String todayTimeStudiedHoursMinutes(String hours, String minutes) {
+    return '$hours ঘণ্টা $minutes মিনিট';
+  }
+
+  @override
+  String todayTimeStudiedMinutesOnly(String minutes) {
+    return '$minutes মিনিট';
+  }
+
+  @override
+  String todayTimeStudiedSessionsSummary(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'আজ $formattedCountটি সেশন',
+      zero: 'আজ এখনও কোনো সেশন রেকর্ড হয়নি',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get todayTimeStudiedRunningNote => 'সক্রিয় সেশন চলছে';
+
+  @override
+  String get todayOpenTimerButton => 'টাইমার খুলুন';
+
+  @override
+  String todayQuickLogTitle(String subject) {
+    return 'দ্রুত লগ • $subject';
+  }
+
+  @override
+  String get todayQuickLogNoMaterialsBody =>
+      'ইউনিট লগ করার আগে এই বিষয়ে একটি বই বা উপকরণ যোগ করুন।';
+
+  @override
+  String get todayQuickLogOpenSubjectButton => 'উপকরণ যোগ করুন';
+
+  @override
+  String todayQuickLogPresetChip(String units) {
+    return '+$units';
+  }
 }

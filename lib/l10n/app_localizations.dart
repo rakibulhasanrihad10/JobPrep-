@@ -5909,6 +5909,361 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{subject}: {hours}h'**
   String prepAnalyticsSubjectHoursLegend(String subject, String hours);
+
+  /// Navigation label for the focused Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get navToday;
+
+  /// Morning greeting shown at the top of Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get todayGreetingMorning;
+
+  /// Afternoon greeting shown at the top of Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Good afternoon'**
+  String get todayGreetingAfternoon;
+
+  /// Evening greeting shown at the top of Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Good evening'**
+  String get todayGreetingEvening;
+
+  /// Personalized greeting combining time-of-day salutation and user name
+  ///
+  /// In en, this message translates to:
+  /// **'{greeting}, {name}'**
+  String todayGreetingNamed(String greeting, String name);
+
+  /// Subtitle below the greeting and date on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Your focused action plan for today'**
+  String get todaySubtitle;
+
+  /// Tooltip for manual refresh button on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh today'**
+  String get todayRefreshTooltip;
+
+  /// Error message when Today summary providers fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load your Today plan.'**
+  String get todayLoadError;
+
+  /// Formatted percentage displayed inside the daily progress ring
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}%'**
+  String todayProgressRingLabel(String percent);
+
+  /// Short caption beneath the daily progress percentage
+  ///
+  /// In en, this message translates to:
+  /// **'Daily goal'**
+  String get todayProgressRingCaption;
+
+  /// Summary of total completed vs target units for today
+  ///
+  /// In en, this message translates to:
+  /// **'{done} / {target} units today'**
+  String todayDailyDoneOfTarget(String done, String target);
+
+  /// Short hint inside Today header when user has no active study plan
+  ///
+  /// In en, this message translates to:
+  /// **'No study plan yet'**
+  String get todayNoPlanHeaderHint;
+
+  /// Card title for top prioritized next action on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Do this next'**
+  String get todayDoNextTitle;
+
+  /// Priority badge when top action is a circular deadline within 2 days
+  ///
+  /// In en, this message translates to:
+  /// **'Urgent deadline'**
+  String get todayDoNextPriorityDeadline;
+
+  /// Priority badge when top action is an overdue revision item
+  ///
+  /// In en, this message translates to:
+  /// **'Overdue revision'**
+  String get todayDoNextPriorityRevision;
+
+  /// Priority badge when top action is the largest remaining study target
+  ///
+  /// In en, this message translates to:
+  /// **'Biggest target today'**
+  String get todayDoNextPriorityStudy;
+
+  /// Action button on Do this next card when a deadline is urgent
+  ///
+  /// In en, this message translates to:
+  /// **'Review circular'**
+  String get todayDoNextOpenCircularAction;
+
+  /// Action button on Do this next card when revisions are overdue
+  ///
+  /// In en, this message translates to:
+  /// **'Start revision'**
+  String get todayDoNextStartRevisionAction;
+
+  /// Action button on Do this next card to launch focus timer on target subject
+  ///
+  /// In en, this message translates to:
+  /// **'Start timer'**
+  String get todayDoNextStartStudyAction;
+
+  /// Summary text inside Do this next card when overdue revisions take priority
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formattedCount} overdue item: {label}} other{{formattedCount} overdue items • Next: {label}}}'**
+  String todayDoNextOverdueSummary(
+      int count, String formattedCount, String label);
+
+  /// Summary text inside Do this next card for remaining daily study units
+  ///
+  /// In en, this message translates to:
+  /// **'{remaining} units left today ({done} / {target} done)'**
+  String todayDoNextStudySummary(String remaining, String done, String target);
+
+  /// Title inside Do this next card when nothing urgent remains
+  ///
+  /// In en, this message translates to:
+  /// **'All caught up for now'**
+  String get todayDoNextAllCaughtUpTitle;
+
+  /// Explanation shown when there is no urgent Do this next item
+  ///
+  /// In en, this message translates to:
+  /// **'No deadlines in 2 days, no overdue revisions, and today\'s targets are complete.'**
+  String get todayDoNextAllCaughtUpBody;
+
+  /// Section title for per-subject daily study targets on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s study targets'**
+  String get todayTargetsTitle;
+
+  /// Empty state heading when user has no active study plans
+  ///
+  /// In en, this message translates to:
+  /// **'No study plan yet'**
+  String get todayTargetsEmptyTitle;
+
+  /// Empty state body prompting user to create a study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Create a study plan with an exam date to calculate daily subject targets.'**
+  String get todayTargetsEmptyBody;
+
+  /// Button label linking to study plan creation from Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Create study plan'**
+  String get todayTargetsCreatePlanButton;
+
+  /// Completed vs target units readout per study target row
+  ///
+  /// In en, this message translates to:
+  /// **'{done} / {target} units'**
+  String todayTargetRowDoneTarget(String done, String target);
+
+  /// Remaining units today for a study plan target row
+  ///
+  /// In en, this message translates to:
+  /// **'{remaining} remaining'**
+  String todayTargetRowRemaining(String remaining);
+
+  /// Status text when today's quota for a study target row is met
+  ///
+  /// In en, this message translates to:
+  /// **'Daily target complete'**
+  String get todayTargetRowComplete;
+
+  /// Button label opening quick log dialog for a study target row
+  ///
+  /// In en, this message translates to:
+  /// **'Quick log'**
+  String get todayTargetQuickLogButton;
+
+  /// Button label starting timer for a study target row's subject
+  ///
+  /// In en, this message translates to:
+  /// **'Start timer'**
+  String get todayTargetStartTimerButton;
+
+  /// Section header for missed-days catch-up messages on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Catch-up notice'**
+  String get todayCatchUpTitle;
+
+  /// Subject-prefixed catch-up message line on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'{subject}: {message}'**
+  String todayCatchUpSubjectLine(String subject, String message);
+
+  /// Section header for spaced revisions due today or overdue
+  ///
+  /// In en, this message translates to:
+  /// **'Revision due today'**
+  String get todayRevisionTitle;
+
+  /// Compact count chip for revisions needing review today
+  ///
+  /// In en, this message translates to:
+  /// **'{formattedCount} due'**
+  String todayRevisionCountBadge(String formattedCount);
+
+  /// Subline breaking down overdue and due-today revision counts
+  ///
+  /// In en, this message translates to:
+  /// **'{overdue} overdue · {today} due today'**
+  String todayRevisionOverdueBreakdown(String overdue, String today);
+
+  /// Empty state title when zero revisions are due or overdue
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing due for revision today'**
+  String get todayRevisionEmptyTitle;
+
+  /// Empty state description inside Revision due today card
+  ///
+  /// In en, this message translates to:
+  /// **'Flag tricky pages or mock mistakes during study to schedule them here automatically.'**
+  String get todayRevisionEmptyBody;
+
+  /// Primary CTA button navigating to revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'Start revision'**
+  String get todayRevisionStartButton;
+
+  /// Section title for circulars closing within 7 days on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Deadlines in the next 7 days'**
+  String get todayDeadlinesTitle;
+
+  /// Empty state title when no circular deadlines close within 7 days
+  ///
+  /// In en, this message translates to:
+  /// **'No deadlines in the next 7 days'**
+  String get todayDeadlinesEmptyTitle;
+
+  /// Empty state description when no 7-day deadlines are approaching
+  ///
+  /// In en, this message translates to:
+  /// **'Saved circulars closing within the coming week will appear here with urgency badges.'**
+  String get todayDeadlinesEmptyBody;
+
+  /// Section title for exam dates within the next 14 days on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Exams in the next 14 days'**
+  String get todayExamsTitle;
+
+  /// Empty state title when zero exams are scheduled within 14 days
+  ///
+  /// In en, this message translates to:
+  /// **'No exams in the next 14 days'**
+  String get todayExamsEmptyTitle;
+
+  /// Empty state explanation when no 14-day exams exist
+  ///
+  /// In en, this message translates to:
+  /// **'Exam dates added to your saved circulars within the next two weeks will show up here.'**
+  String get todayExamsEmptyBody;
+
+  /// Section title for Inbox summary card on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Inbox'**
+  String get todayInboxTitle;
+
+  /// Summary count of quick-captured circulars waiting to be triaged
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Nothing waiting in Inbox} =1{{formattedCount} item waiting in Inbox} other{{formattedCount} items waiting in Inbox}}'**
+  String todayInboxWaitingSummary(int count, String formattedCount);
+
+  /// CTA button navigating from Today screen to Inbox screen
+  ///
+  /// In en, this message translates to:
+  /// **'Review inbox'**
+  String get todayReviewInboxButton;
+
+  /// Section title for total study session duration today on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Time studied today'**
+  String get todayTimeStudiedTitle;
+
+  /// Formatted duration with hours and minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{hours}h {minutes}m'**
+  String todayTimeStudiedHoursMinutes(String hours, String minutes);
+
+  /// Formatted duration under one hour in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes}m'**
+  String todayTimeStudiedMinutesOnly(String minutes);
+
+  /// Session count caption under Time studied today
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No study sessions recorded today yet} =1{{formattedCount} session today} other{{formattedCount} sessions today}}'**
+  String todayTimeStudiedSessionsSummary(int count, String formattedCount);
+
+  /// Badge note when a live timer session is currently running today
+  ///
+  /// In en, this message translates to:
+  /// **'Active session running'**
+  String get todayTimeStudiedRunningNote;
+
+  /// Button navigating to the study timer tab
+  ///
+  /// In en, this message translates to:
+  /// **'Open timer'**
+  String get todayOpenTimerButton;
+
+  /// Dialog title for logging progress units from Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Quick log • {subject}'**
+  String todayQuickLogTitle(String subject);
+
+  /// Message inside quick log dialog when chosen scope has no materials yet
+  ///
+  /// In en, this message translates to:
+  /// **'Add a book or material under this subject before logging units.'**
+  String get todayQuickLogNoMaterialsBody;
+
+  /// CTA opening subject view to add a study material
+  ///
+  /// In en, this message translates to:
+  /// **'Add material'**
+  String get todayQuickLogOpenSubjectButton;
+
+  /// Preset unit chip label inside Today quick log dialog
+  ///
+  /// In en, this message translates to:
+  /// **'+{units}'**
+  String todayQuickLogPresetChip(String units);
 }
 
 class _AppLocalizationsDelegate

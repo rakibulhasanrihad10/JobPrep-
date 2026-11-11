@@ -11,7 +11,10 @@ abstract final class AppRoutePaths {
   /// Password recovery / reset route.
   static const String resetPassword = '/reset-password';
 
-  /// Main dashboard route.
+  /// Focused daily Today route (default signed-in home).
+  static const String today = '/today';
+
+  /// Overview Dashboard route.
   static const String dashboard = '/dashboard';
 
   /// Quick-capture Inbox triage route.
@@ -26,7 +29,7 @@ abstract final class AppRoutePaths {
 ///    `/reset-password`.
 /// 2. Signed-out users (`AuthStatus.signedOut`) are directed to `/login`.
 /// 3. Signed-in users (`AuthStatus.signedIn`) navigating to `/login` (or `/`)
-///    are redirected to `/dashboard`.
+///    are redirected to `/today`.
 String? resolveAuthRedirect({
   required AuthSessionState authState,
   required String location,
@@ -49,7 +52,7 @@ String? resolveAuthRedirect({
     case AuthStatus.signedIn:
       if (normalized == AppRoutePaths.login ||
           normalized == AppRoutePaths.root) {
-        return AppRoutePaths.dashboard;
+        return AppRoutePaths.today;
       }
       return null;
   }

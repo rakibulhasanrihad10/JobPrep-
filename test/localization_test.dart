@@ -186,6 +186,7 @@ void main() {
         ProviderScope(
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
+            initialRouteLocationProvider.overrideWithValue('/dashboard'),
             authRepositoryProvider.overrideWithValue(authRepo),
           ],
           child: const JobPrepApp(),
@@ -228,6 +229,7 @@ void main() {
         ProviderScope(
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
+            initialRouteLocationProvider.overrideWithValue('/dashboard'),
             authRepositoryProvider.overrideWithValue(authRepo),
           ],
           child: const JobPrepApp(),

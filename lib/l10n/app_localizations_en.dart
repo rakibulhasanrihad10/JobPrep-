@@ -3539,4 +3539,240 @@ class AppLocalizationsEn extends AppLocalizations {
   String prepAnalyticsSubjectHoursLegend(String subject, String hours) {
     return '$subject: ${hours}h';
   }
+
+  @override
+  String get navToday => 'Today';
+
+  @override
+  String get todayGreetingMorning => 'Good morning';
+
+  @override
+  String get todayGreetingAfternoon => 'Good afternoon';
+
+  @override
+  String get todayGreetingEvening => 'Good evening';
+
+  @override
+  String todayGreetingNamed(String greeting, String name) {
+    return '$greeting, $name';
+  }
+
+  @override
+  String get todaySubtitle => 'Your focused action plan for today';
+
+  @override
+  String get todayRefreshTooltip => 'Refresh today';
+
+  @override
+  String get todayLoadError => 'Could not load your Today plan.';
+
+  @override
+  String todayProgressRingLabel(String percent) {
+    return '$percent%';
+  }
+
+  @override
+  String get todayProgressRingCaption => 'Daily goal';
+
+  @override
+  String todayDailyDoneOfTarget(String done, String target) {
+    return '$done / $target units today';
+  }
+
+  @override
+  String get todayNoPlanHeaderHint => 'No study plan yet';
+
+  @override
+  String get todayDoNextTitle => 'Do this next';
+
+  @override
+  String get todayDoNextPriorityDeadline => 'Urgent deadline';
+
+  @override
+  String get todayDoNextPriorityRevision => 'Overdue revision';
+
+  @override
+  String get todayDoNextPriorityStudy => 'Biggest target today';
+
+  @override
+  String get todayDoNextOpenCircularAction => 'Review circular';
+
+  @override
+  String get todayDoNextStartRevisionAction => 'Start revision';
+
+  @override
+  String get todayDoNextStartStudyAction => 'Start timer';
+
+  @override
+  String todayDoNextOverdueSummary(
+      int count, String formattedCount, String label) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount overdue items • Next: $label',
+      one: '$formattedCount overdue item: $label',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String todayDoNextStudySummary(String remaining, String done, String target) {
+    return '$remaining units left today ($done / $target done)';
+  }
+
+  @override
+  String get todayDoNextAllCaughtUpTitle => 'All caught up for now';
+
+  @override
+  String get todayDoNextAllCaughtUpBody =>
+      'No deadlines in 2 days, no overdue revisions, and today\'s targets are complete.';
+
+  @override
+  String get todayTargetsTitle => 'Today\'s study targets';
+
+  @override
+  String get todayTargetsEmptyTitle => 'No study plan yet';
+
+  @override
+  String get todayTargetsEmptyBody =>
+      'Create a study plan with an exam date to calculate daily subject targets.';
+
+  @override
+  String get todayTargetsCreatePlanButton => 'Create study plan';
+
+  @override
+  String todayTargetRowDoneTarget(String done, String target) {
+    return '$done / $target units';
+  }
+
+  @override
+  String todayTargetRowRemaining(String remaining) {
+    return '$remaining remaining';
+  }
+
+  @override
+  String get todayTargetRowComplete => 'Daily target complete';
+
+  @override
+  String get todayTargetQuickLogButton => 'Quick log';
+
+  @override
+  String get todayTargetStartTimerButton => 'Start timer';
+
+  @override
+  String get todayCatchUpTitle => 'Catch-up notice';
+
+  @override
+  String todayCatchUpSubjectLine(String subject, String message) {
+    return '$subject: $message';
+  }
+
+  @override
+  String get todayRevisionTitle => 'Revision due today';
+
+  @override
+  String todayRevisionCountBadge(String formattedCount) {
+    return '$formattedCount due';
+  }
+
+  @override
+  String todayRevisionOverdueBreakdown(String overdue, String today) {
+    return '$overdue overdue · $today due today';
+  }
+
+  @override
+  String get todayRevisionEmptyTitle => 'Nothing due for revision today';
+
+  @override
+  String get todayRevisionEmptyBody =>
+      'Flag tricky pages or mock mistakes during study to schedule them here automatically.';
+
+  @override
+  String get todayRevisionStartButton => 'Start revision';
+
+  @override
+  String get todayDeadlinesTitle => 'Deadlines in the next 7 days';
+
+  @override
+  String get todayDeadlinesEmptyTitle => 'No deadlines in the next 7 days';
+
+  @override
+  String get todayDeadlinesEmptyBody =>
+      'Saved circulars closing within the coming week will appear here with urgency badges.';
+
+  @override
+  String get todayExamsTitle => 'Exams in the next 14 days';
+
+  @override
+  String get todayExamsEmptyTitle => 'No exams in the next 14 days';
+
+  @override
+  String get todayExamsEmptyBody =>
+      'Exam dates added to your saved circulars within the next two weeks will show up here.';
+
+  @override
+  String get todayInboxTitle => 'Inbox';
+
+  @override
+  String todayInboxWaitingSummary(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount items waiting in Inbox',
+      one: '$formattedCount item waiting in Inbox',
+      zero: 'Nothing waiting in Inbox',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get todayReviewInboxButton => 'Review inbox';
+
+  @override
+  String get todayTimeStudiedTitle => 'Time studied today';
+
+  @override
+  String todayTimeStudiedHoursMinutes(String hours, String minutes) {
+    return '${hours}h ${minutes}m';
+  }
+
+  @override
+  String todayTimeStudiedMinutesOnly(String minutes) {
+    return '${minutes}m';
+  }
+
+  @override
+  String todayTimeStudiedSessionsSummary(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount sessions today',
+      one: '$formattedCount session today',
+      zero: 'No study sessions recorded today yet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get todayTimeStudiedRunningNote => 'Active session running';
+
+  @override
+  String get todayOpenTimerButton => 'Open timer';
+
+  @override
+  String todayQuickLogTitle(String subject) {
+    return 'Quick log • $subject';
+  }
+
+  @override
+  String get todayQuickLogNoMaterialsBody =>
+      'Add a book or material under this subject before logging units.';
+
+  @override
+  String get todayQuickLogOpenSubjectButton => 'Add material';
+
+  @override
+  String todayQuickLogPresetChip(String units) {
+    return '+$units';
+  }
 }

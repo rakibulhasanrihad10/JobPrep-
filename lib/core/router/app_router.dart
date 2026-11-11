@@ -20,6 +20,7 @@ import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_
 import 'package:job_prep/features/prep/presentation/widgets/books_shelf_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_tab_switcher.dart';
 import 'package:job_prep/features/settings/presentation/screens/settings_screen.dart';
+import 'package:job_prep/features/today/presentation/screens/today_screen.dart';
 
 /// Optional initial location override used in widget and deep-link tests.
 final initialRouteLocationProvider = Provider<String?>((ref) => null);
@@ -54,7 +55,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   final initialLocationOverride = ref.watch(initialRouteLocationProvider);
 
   final router = GoRouter(
-    initialLocation: initialLocationOverride ?? AppRoutePaths.dashboard,
+    initialLocation: initialLocationOverride ?? AppRoutePaths.today,
     overridePlatformDefaultLocation: initialLocationOverride != null,
     refreshListenable: refreshListenable,
     redirect: (context, state) {
@@ -64,6 +65,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       );
       if (targetPath == null) return null;
       if (targetPath == AppRoutePaths.login ||
+          targetPath == AppRoutePaths.today ||
           targetPath == AppRoutePaths.dashboard) {
         return buildLocationWithCapture(targetPath, sourceUri: state.uri);
       }
@@ -73,7 +75,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutePaths.root,
         redirect: (context, state) => buildLocationWithCapture(
-          AppRoutePaths.dashboard,
+          AppRoutePaths.today,
           sourceUri: state.uri,
         ),
       ),
@@ -106,6 +108,13 @@ final routerProvider = Provider<GoRouter>((ref) {
           );
         },
         routes: [
+          GoRoute(
+            path: AppRoutePaths.today,
+            name: 'today',
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: TodayScreen(),
+            ),
+          ),
           GoRoute(
             path: AppRoutePaths.dashboard,
             name: 'dashboard',

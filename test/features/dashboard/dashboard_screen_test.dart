@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:job_prep/core/localization/locale_controller.dart';
+import 'package:job_prep/core/router/app_router.dart';
 import 'package:job_prep/core/storage/preferences_provider.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/theme/reduce_effects_controller.dart';
@@ -213,6 +214,7 @@ void main() {
       ProviderScope(
         overrides: [
           sharedPreferencesProvider.overrideWithValue(prefs),
+          initialRouteLocationProvider.overrideWithValue('/dashboard'),
           authRepositoryProvider.overrideWithValue(authRepo),
           circularNowProvider.overrideWithValue(() => fixedNow),
           circularRepositoryProvider.overrideWithValue(circularRepo),
@@ -324,7 +326,13 @@ void main() {
         expect(find.text('Preliminary'), findsOneWidget);
         expect(find.text('Written'), findsOneWidget);
         expect(find.text('Viva'), findsOneWidget);
-        expect(find.text('Today'), findsOneWidget);
+        expect(
+          find.descendant(
+            of: find.byKey(const ValueKey('dashboard-upcoming-exams-card')),
+            matching: find.text('Today'),
+          ),
+          findsOneWidget,
+        );
         expect(find.text('In 4 days'), findsOneWidget);
         expect(find.text('In 20 days'), findsOneWidget);
 
