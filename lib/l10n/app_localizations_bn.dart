@@ -2962,4 +2962,289 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get prepCloseButton => 'বন্ধ করুন';
+
+  @override
+  String get prepTabRevision => 'পুনরাবৃত্তি';
+
+  @override
+  String get prepRevisionTitle => 'পুনরাবৃত্তির তালিকা';
+
+  @override
+  String get prepRevisionSubtitle =>
+      'কঠিন পৃষ্ঠা, ভুল এবং দুর্বল বিষয়গুলো নির্দিষ্ট বিরতিতে আবার অনুশীলন করুন।';
+
+  @override
+  String get prepRevisionDueCountStat => 'আজ ও বকেয়া';
+
+  @override
+  String get prepRevisionMasteredStat => 'আয়ত্ত হয়েছে';
+
+  @override
+  String get prepRevisionFlagItemButton => 'ফ্ল্যাগ যোগ করুন';
+
+  @override
+  String prepRevisionTabDueToday(String count) {
+    return 'আজকের ($count)';
+  }
+
+  @override
+  String prepRevisionTabOverdue(String count) {
+    return 'বকেয়া ($count)';
+  }
+
+  @override
+  String prepRevisionTabUpcoming(String count) {
+    return 'আসন্ন ($count)';
+  }
+
+  @override
+  String prepRevisionTabDone(String count) {
+    return 'সম্পন্ন ($count)';
+  }
+
+  @override
+  String get prepRevisionAllSubjects => 'সব বিষয়';
+
+  @override
+  String get prepRevisionAllMaterials => 'সব উপকরণ';
+
+  @override
+  String get prepRevisionClearFilters => 'ফিল্টার মুছুন';
+
+  @override
+  String get prepRevisionReasonTricky => 'কঠিন';
+
+  @override
+  String get prepRevisionReasonForgot => 'ভুলে গেছি';
+
+  @override
+  String get prepRevisionReasonImportant => 'গুরুত্বপূর্ণ';
+
+  @override
+  String get prepRevisionReasonMistake => 'ভুল হয়েছে';
+
+  @override
+  String get prepRevisionSourceLog => 'স্টাডি লগ থেকে';
+
+  @override
+  String get prepRevisionSourceMockTest => 'মডেল টেস্ট থেকে';
+
+  @override
+  String get prepRevisionSourceManual => 'ম্যানুয়াল ফ্ল্যাগ';
+
+  @override
+  String get prepRevisionStatusMastered => 'আয়ত্তকৃত';
+
+  @override
+  String get prepRevisionStatusDismissed => 'বাদ দেওয়া হয়েছে';
+
+  @override
+  String get prepRevisionDueTodayLabel => 'আজ নির্ধারিত';
+
+  @override
+  String prepRevisionOverdueDaysLabel(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount দিন বকেয়া',
+      one: '$formattedCount দিন বকেয়া',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepRevisionDueInDaysLabel(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount দিন পর',
+      one: '$formattedCount দিন পর',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepRevisionDueDateLabel(String date) {
+    return 'নির্ধারিত: $date';
+  }
+
+  @override
+  String prepRevisionPageChip(String page) {
+    return 'পৃ. $page';
+  }
+
+  @override
+  String prepRevisionReviewCountChip(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount বার রিভিউ',
+      one: '$formattedCount বার রিভিউ',
+      zero: 'নতুন',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepRevisionActionEasy => 'সহজ';
+
+  @override
+  String prepRevisionActionEasyHint(String days) {
+    return '+$days দিন';
+  }
+
+  @override
+  String get prepRevisionActionEasyMasteredHint => 'আয়ত্ত';
+
+  @override
+  String get prepRevisionActionStillHard => 'এখনো কঠিন';
+
+  @override
+  String get prepRevisionActionSnooze => '১ দিন পেছান';
+
+  @override
+  String get prepRevisionActionDismiss => 'বাদ দিন';
+
+  @override
+  String get prepRevisionDeleteTooltip => 'রিভিশন মার্ক মুছুন';
+
+  @override
+  String get prepRevisionUndoButton => 'পূর্বাবস্থায় ফেরান';
+
+  @override
+  String get prepRevisionUndoDismissTooltip => 'বার্তা লুকান';
+
+  @override
+  String prepRevisionFeedbackEasyNext(String reference, String days) {
+    return '\"$reference\" সহজ হিসেবে চিহ্নিত — পরবর্তী রিভিশন $days দিন পর।';
+  }
+
+  @override
+  String prepRevisionFeedbackMastered(String reference) {
+    return '\"$reference\" আয়ত্ত হয়েছে! সম্পন্ন ট্যাবে সরানো হয়েছে।';
+  }
+
+  @override
+  String prepRevisionFeedbackStillHard(String reference) {
+    return '\"$reference\" এখনো কঠিন — আগামীকালের জন্য রিসেট হয়েছে।';
+  }
+
+  @override
+  String prepRevisionFeedbackSnoozed(String reference) {
+    return '\"$reference\" ১ দিন পিছিয়ে দেওয়া হয়েছে।';
+  }
+
+  @override
+  String prepRevisionFeedbackDismissed(String reference) {
+    return '\"$reference\" সম্পন্ন তালিকায় সরানো হয়েছে।';
+  }
+
+  @override
+  String get prepRevisionEmptyDueTitle => 'আজ রিভিশনের কিছু বাকি নেই';
+
+  @override
+  String get prepRevisionEmptyDueBody =>
+      'পড়া লগ করার সময় কঠিন অংশ ফ্ল্যাগ করুন বা বকেয়া ও আসন্ন ট্যাব দেখুন।';
+
+  @override
+  String get prepRevisionEmptyOverdueTitle => 'কোনো বকেয়া রিভিশন নেই';
+
+  @override
+  String get prepRevisionEmptyOverdueBody =>
+      'আপনার সব পূর্বনির্ধারিত রিভিশন হালনাগাদ রয়েছে।';
+
+  @override
+  String get prepRevisionEmptyUpcomingTitle =>
+      'সামনে কোনো নির্ধারিত রিভিশন নেই';
+
+  @override
+  String get prepRevisionEmptyUpcomingBody =>
+      'নতুন ফ্ল্যাগ ১ দিন পর এবং সহজ রিভিউ ৩, ৭, ১৪ ও ৩০ দিনের বিরতিতে এখানে দেখাবে।';
+
+  @override
+  String get prepRevisionEmptyDoneTitle => 'এখনো কোনো সম্পন্ন আইটেম নেই';
+
+  @override
+  String get prepRevisionEmptyDoneBody =>
+      'আয়ত্তকৃত বা বাদ দেওয়া আইটেম এখানে সংরক্ষিত থাকে।';
+
+  @override
+  String get prepRevisionEmptyFilteredBody =>
+      'নির্বাচিত বিষয় ও উপকরণ ফিল্টারের সাথে কোনো রিভিশন আইটেম মেলেনি।';
+
+  @override
+  String get prepRevisionMarkAction => 'রিভিশনের জন্য চিহ্নিত করুন';
+
+  @override
+  String get prepRevisionPostSavePrompt =>
+      'অগ্রগতি সংরক্ষিত! পরে রিভিশনের জন্য পৃষ্ঠা বা সমস্যা ফ্ল্যাগ করবেন?';
+
+  @override
+  String prepRevisionAddedCountChip(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি ফ্ল্যাগ যোগ হয়েছে',
+      one: '$formattedCountটি ফ্ল্যাগ যোগ হয়েছে',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepRevisionRefLabel => 'কী রিভিশন করবেন';
+
+  @override
+  String get prepRevisionRefHint => 'যেমন: পৃ. ১২৮ বা সমস্যা ১৪';
+
+  @override
+  String get prepRevisionRefError =>
+      'রিভিশনের জন্য পৃষ্ঠা, সমস্যা বা অধ্যায়ের নাম লিখুন।';
+
+  @override
+  String get prepRevisionPageLabel => 'পৃষ্ঠা নং (ঐচ্ছিক)';
+
+  @override
+  String get prepRevisionPageHint => '১২৮';
+
+  @override
+  String get prepRevisionReasonLabel => 'কারণ';
+
+  @override
+  String get prepRevisionNoteLabel => 'নোট (ঐচ্ছিক)';
+
+  @override
+  String get prepRevisionNoteHint => 'সূত্রের চিহ্ন বা শর্টকাটের নোট...';
+
+  @override
+  String get prepRevisionAddAnotherButton => 'ফ্ল্যাগ যোগ করুন';
+
+  @override
+  String get prepRevisionDoneFlaggingButton => 'ফ্ল্যাগার লুকান';
+
+  @override
+  String get prepRevisionFlagMaterialTooltip => 'রিভিশনের জন্য ফ্ল্যাগ করুন';
+
+  @override
+  String get prepRevisionDialogTitle => 'রিভিশনের জন্য চিহ্নিত করুন';
+
+  @override
+  String get prepRevisionSubjectLabel => 'বিষয়';
+
+  @override
+  String get prepRevisionMaterialOptionalLabel => 'উপকরণ (ঐচ্ছিক)';
+
+  @override
+  String get prepRevisionNoMaterialOption => 'বিষয়ভিত্তিক / নির্দিষ্ট বই নয়';
+
+  @override
+  String get prepRevisionWeakTopicsQuickFill =>
+      'দ্রুত পূরণ করতে দুর্বল টপিকে ট্যাপ করুন:';
+
+  @override
+  String prepRevisionAddAllWeakTopics(String count) {
+    return 'সবগুলো যোগ করুন ($count)';
+  }
+
+  @override
+  String get prepMockAddToRevisionButton => 'রিভিশনে যোগ করুন';
 }

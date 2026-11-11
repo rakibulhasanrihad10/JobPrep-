@@ -24,6 +24,7 @@ class MockTestListTile extends ConsumerWidget {
     this.circularTitle,
     this.materialTitle,
     this.topicTitle,
+    this.onAddWeakTopicsToRevision,
   });
 
   /// Mock test record being rendered.
@@ -52,6 +53,9 @@ class MockTestListTile extends ConsumerWidget {
 
   /// Optional linked syllabus topic name.
   final String? topicTitle;
+
+  /// Optional callback creating revision items from [MockTest.weakTopics].
+  final VoidCallback? onAddWeakTopicsToRevision;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -262,11 +266,54 @@ class MockTestListTile extends ConsumerWidget {
           if (test.weakTopics != null &&
               test.weakTopics!.trim().isNotEmpty) ...[
             SizedBox(height: spacing.sm),
-            Text(
-              l10n.prepMockWeakTopicsLabel(test.weakTopics!.trim()),
-              style: tokens.textStyles.bodySmall.copyWith(
-                color: colors.warning,
-              ),
+            Wrap(
+              spacing: spacing.sm,
+              runSpacing: spacing.xs,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Text(
+                  l10n.prepMockWeakTopicsLabel(test.weakTopics!.trim()),
+                  style: tokens.textStyles.bodySmall.copyWith(
+                    color: colors.warning,
+                  ),
+                ),
+                if (onAddWeakTopicsToRevision != null)
+                  InkWell(
+                    key: ValueKey('mock-add-to-revision-${test.id}'),
+                    borderRadius: tokens.radii.buttonRadius,
+                    onTap: isBusy ? null : onAddWeakTopicsToRevision,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: spacing.sm,
+                        vertical: spacing.xxs,
+                      ),
+                      decoration: BoxDecoration(
+                        color: colors.goldAccentSubtle,
+                        borderRadius: tokens.radii.buttonRadius,
+                        border: Border.all(
+                          color: colors.goldAccent.withValues(alpha: 0.65),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.flag_outlined,
+                            size: spacing.md,
+                            color: colors.goldAccent,
+                          ),
+                          SizedBox(width: spacing.xs),
+                          Text(
+                            l10n.prepMockAddToRevisionButton,
+                            style: tokens.textStyles.labelSmall.copyWith(
+                              color: colors.textPrimary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ],
           if (test.notes != null && test.notes!.trim().isNotEmpty) ...[

@@ -5007,6 +5007,438 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Close'**
   String get prepCloseButton;
+
+  /// Top-level Prep tab label for spaced-repetition revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'Revision'**
+  String get prepTabRevision;
+
+  /// Headline on the Revision tab
+  ///
+  /// In en, this message translates to:
+  /// **'Revision queue'**
+  String get prepRevisionTitle;
+
+  /// Subtitle on the Revision tab
+  ///
+  /// In en, this message translates to:
+  /// **'Revisit flagged pages, tricky problems, and weak topics on a spaced schedule.'**
+  String get prepRevisionSubtitle;
+
+  /// Metric card label counting active items due today or overdue
+  ///
+  /// In en, this message translates to:
+  /// **'Due & overdue'**
+  String get prepRevisionDueCountStat;
+
+  /// Metric card label counting items mastered after the full spacing ladder
+  ///
+  /// In en, this message translates to:
+  /// **'Mastered'**
+  String get prepRevisionMasteredStat;
+
+  /// Primary CTA button on Revision screen to manually create a revision flag
+  ///
+  /// In en, this message translates to:
+  /// **'Flag item'**
+  String get prepRevisionFlagItemButton;
+
+  /// Revision queue tab showing items scheduled due today
+  ///
+  /// In en, this message translates to:
+  /// **'Due today ({count})'**
+  String prepRevisionTabDueToday(String count);
+
+  /// Revision queue tab showing items past due date
+  ///
+  /// In en, this message translates to:
+  /// **'Overdue ({count})'**
+  String prepRevisionTabOverdue(String count);
+
+  /// Revision queue tab showing future scheduled items
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming ({count})'**
+  String prepRevisionTabUpcoming(String count);
+
+  /// Revision queue tab showing mastered or dismissed items
+  ///
+  /// In en, this message translates to:
+  /// **'Done ({count})'**
+  String prepRevisionTabDone(String count);
+
+  /// Default option in subject filter on Revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'All subjects'**
+  String get prepRevisionAllSubjects;
+
+  /// Default option in material filter on Revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'All materials'**
+  String get prepRevisionAllMaterials;
+
+  /// Button clearing subject and material filters on Revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filters'**
+  String get prepRevisionClearFilters;
+
+  /// Revision flag reason: tricky
+  ///
+  /// In en, this message translates to:
+  /// **'Tricky'**
+  String get prepRevisionReasonTricky;
+
+  /// Revision flag reason: forgot
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot'**
+  String get prepRevisionReasonForgot;
+
+  /// Revision flag reason: important
+  ///
+  /// In en, this message translates to:
+  /// **'Important'**
+  String get prepRevisionReasonImportant;
+
+  /// Revision flag reason: mistake
+  ///
+  /// In en, this message translates to:
+  /// **'Mistake'**
+  String get prepRevisionReasonMistake;
+
+  /// Origin chip indicating flag came from a study progress log
+  ///
+  /// In en, this message translates to:
+  /// **'From study log'**
+  String get prepRevisionSourceLog;
+
+  /// Origin chip indicating flag came from a mock test weak topic
+  ///
+  /// In en, this message translates to:
+  /// **'From mock test'**
+  String get prepRevisionSourceMockTest;
+
+  /// Origin chip indicating manual revision flag
+  ///
+  /// In en, this message translates to:
+  /// **'Manual flag'**
+  String get prepRevisionSourceManual;
+
+  /// Badge for mastered revision items
+  ///
+  /// In en, this message translates to:
+  /// **'Mastered'**
+  String get prepRevisionStatusMastered;
+
+  /// Badge for dismissed revision items
+  ///
+  /// In en, this message translates to:
+  /// **'Dismissed'**
+  String get prepRevisionStatusDismissed;
+
+  /// Schedule label on items due strictly today
+  ///
+  /// In en, this message translates to:
+  /// **'Due today'**
+  String get prepRevisionDueTodayLabel;
+
+  /// Schedule label showing how many days overdue an item is
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formattedCount} day overdue} other{{formattedCount} days overdue}}'**
+  String prepRevisionOverdueDaysLabel(int count, String formattedCount);
+
+  /// Schedule label showing remaining days until upcoming review
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{In {formattedCount} day} other{In {formattedCount} days}}'**
+  String prepRevisionDueInDaysLabel(int count, String formattedCount);
+
+  /// Formatted scheduled date caption on a revision card
+  ///
+  /// In en, this message translates to:
+  /// **'Due {date}'**
+  String prepRevisionDueDateLabel(String date);
+
+  /// Compact page number badge rendered on book/page revision cards
+  ///
+  /// In en, this message translates to:
+  /// **'p. {page}'**
+  String prepRevisionPageChip(String page);
+
+  /// Completed spaced review count badge
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{New} =1{{formattedCount} review} other{{formattedCount} reviews}}'**
+  String prepRevisionReviewCountChip(int count, String formattedCount);
+
+  /// Review action advancing the spaced repetition interval along 3, 7, 14, 30 days
+  ///
+  /// In en, this message translates to:
+  /// **'Easy'**
+  String get prepRevisionActionEasy;
+
+  /// Short day suffix shown alongside Easy button indicating the next gap
+  ///
+  /// In en, this message translates to:
+  /// **'+{days}d'**
+  String prepRevisionActionEasyHint(String days);
+
+  /// Hint shown beside Easy on the final 30-day step before becoming mastered
+  ///
+  /// In en, this message translates to:
+  /// **'Master'**
+  String get prepRevisionActionEasyMasteredHint;
+
+  /// Review action resetting the revision gap back to 1 day
+  ///
+  /// In en, this message translates to:
+  /// **'Still hard'**
+  String get prepRevisionActionStillHard;
+
+  /// Action deferring the due date by 1 day without changing review count
+  ///
+  /// In en, this message translates to:
+  /// **'Snooze +1d'**
+  String get prepRevisionActionSnooze;
+
+  /// Action dismissing an item from the active queue into Done
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get prepRevisionActionDismiss;
+
+  /// Tooltip for deleting a Done revision item
+  ///
+  /// In en, this message translates to:
+  /// **'Delete revision mark'**
+  String get prepRevisionDeleteTooltip;
+
+  /// Action reverting the latest Easy, Still hard, Snooze, or Dismiss action
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get prepRevisionUndoButton;
+
+  /// Tooltip closing the revision undo confirmation banner
+  ///
+  /// In en, this message translates to:
+  /// **'Hide undo banner'**
+  String get prepRevisionUndoDismissTooltip;
+
+  /// Undo banner feedback after scheduling the next Easy interval
+  ///
+  /// In en, this message translates to:
+  /// **'Marked \"{reference}\" as Easy — next review in {days} days.'**
+  String prepRevisionFeedbackEasyNext(String reference, String days);
+
+  /// Undo banner feedback when final Easy step promotes item to mastered
+  ///
+  /// In en, this message translates to:
+  /// **'Mastered \"{reference}\"! Moved to Done.'**
+  String prepRevisionFeedbackMastered(String reference);
+
+  /// Undo banner feedback after Still hard reset
+  ///
+  /// In en, this message translates to:
+  /// **'Marked \"{reference}\" as Still hard — reset to 1 day.'**
+  String prepRevisionFeedbackStillHard(String reference);
+
+  /// Undo banner feedback after snoozing an item
+  ///
+  /// In en, this message translates to:
+  /// **'Snoozed \"{reference}\" by 1 day.'**
+  String prepRevisionFeedbackSnoozed(String reference);
+
+  /// Undo banner feedback after dismissing an item
+  ///
+  /// In en, this message translates to:
+  /// **'Dismissed \"{reference}\" to Done.'**
+  String prepRevisionFeedbackDismissed(String reference);
+
+  /// Empty headline on Due today queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing due today'**
+  String get prepRevisionEmptyDueTitle;
+
+  /// Empty helper text on Due today queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'Flag tricky pages while logging study progress or check Overdue and Upcoming.'**
+  String get prepRevisionEmptyDueBody;
+
+  /// Empty headline on Overdue queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'No overdue revisions'**
+  String get prepRevisionEmptyOverdueTitle;
+
+  /// Empty helper text on Overdue queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'Every scheduled revision mark is up to date.'**
+  String get prepRevisionEmptyOverdueBody;
+
+  /// Empty headline on Upcoming queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'No upcoming revisions scheduled'**
+  String get prepRevisionEmptyUpcomingTitle;
+
+  /// Empty helper text on Upcoming queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'New flags are scheduled 1 day ahead, and Easy reviews space out along 3, 7, 14, and 30 days.'**
+  String get prepRevisionEmptyUpcomingBody;
+
+  /// Empty headline on Done queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'No completed items yet'**
+  String get prepRevisionEmptyDoneTitle;
+
+  /// Empty helper text on Done queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'Mastered and dismissed items are archived here.'**
+  String get prepRevisionEmptyDoneBody;
+
+  /// Empty helper text when queue filters hide all items
+  ///
+  /// In en, this message translates to:
+  /// **'No revision items match the active subject and material filters.'**
+  String get prepRevisionEmptyFilteredBody;
+
+  /// Button label opening inline revision flag composer during logging
+  ///
+  /// In en, this message translates to:
+  /// **'Mark for revision'**
+  String get prepRevisionMarkAction;
+
+  /// Banner shown immediately after saving progress to invite quick revision flagging
+  ///
+  /// In en, this message translates to:
+  /// **'Progress saved! Flag any page or problem to revise later without leaving?'**
+  String get prepRevisionPostSavePrompt;
+
+  /// Badge showing how many revision flags were added inside the current logging session
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formattedCount} flag added} other{{formattedCount} flags added}}'**
+  String prepRevisionAddedCountChip(int count, String formattedCount);
+
+  /// Text field label for revision item reference_label
+  ///
+  /// In en, this message translates to:
+  /// **'Reference (page, problem, or topic)'**
+  String get prepRevisionRefLabel;
+
+  /// Text field placeholder for revision item reference_label
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. p. 128 or Problem 14'**
+  String get prepRevisionRefHint;
+
+  /// Validation error when reference_label is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a page, problem, or topic to revise.'**
+  String get prepRevisionRefError;
+
+  /// Optional numeric page field shown when flagging book/material items
+  ///
+  /// In en, this message translates to:
+  /// **'Page # (optional)'**
+  String get prepRevisionPageLabel;
+
+  /// Hint text for optional page number input
+  ///
+  /// In en, this message translates to:
+  /// **'128'**
+  String get prepRevisionPageHint;
+
+  /// Chip selector heading for RevisionReason
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get prepRevisionReasonLabel;
+
+  /// Text field label for optional note on revision item
+  ///
+  /// In en, this message translates to:
+  /// **'Note (optional)'**
+  String get prepRevisionNoteLabel;
+
+  /// Placeholder text for optional revision note
+  ///
+  /// In en, this message translates to:
+  /// **'Sign mistake in derivation, review shortcut...'**
+  String get prepRevisionNoteHint;
+
+  /// Submit button adding a revision flag while keeping inline composer open
+  ///
+  /// In en, this message translates to:
+  /// **'Add flag'**
+  String get prepRevisionAddAnotherButton;
+
+  /// Collapse button hiding the inline revision composer
+  ///
+  /// In en, this message translates to:
+  /// **'Hide flagger'**
+  String get prepRevisionDoneFlaggingButton;
+
+  /// Tooltip on MaterialCard flag icon button
+  ///
+  /// In en, this message translates to:
+  /// **'Flag for revision'**
+  String get prepRevisionFlagMaterialTooltip;
+
+  /// Dialog heading when creating a manual or mock-test revision item
+  ///
+  /// In en, this message translates to:
+  /// **'Mark for revision'**
+  String get prepRevisionDialogTitle;
+
+  /// Subject dropdown label inside standalone revision dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get prepRevisionSubjectLabel;
+
+  /// Material dropdown label inside standalone revision dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Material (optional)'**
+  String get prepRevisionMaterialOptionalLabel;
+
+  /// Option representing no attached study material on a revision mark
+  ///
+  /// In en, this message translates to:
+  /// **'Subject-wide / No specific material'**
+  String get prepRevisionNoMaterialOption;
+
+  /// Prompt above parsed weak topic chips in mock-test revision dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a weak topic to prefill:'**
+  String get prepRevisionWeakTopicsQuickFill;
+
+  /// Quick action adding every parsed weak topic from a mock test at once
+  ///
+  /// In en, this message translates to:
+  /// **'Add all ({count})'**
+  String prepRevisionAddAllWeakTopics(String count);
+
+  /// Action button next to mock test weak topics sending them to the Revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'Add to revision'**
+  String get prepMockAddToRevisionButton;
 }
 
 class _AppLocalizationsDelegate

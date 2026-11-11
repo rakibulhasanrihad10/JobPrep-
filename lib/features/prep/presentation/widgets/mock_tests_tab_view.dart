@@ -23,6 +23,7 @@ import 'package:job_prep/features/prep/presentation/widgets/mock_test_state_card
 import 'package:job_prep/features/prep/presentation/widgets/mock_test_stats_grid.dart';
 import 'package:job_prep/features/prep/presentation/widgets/mock_test_trend_chart.dart';
 import 'package:job_prep/features/prep/presentation/widgets/mock_tests_filter_card.dart';
+import 'package:job_prep/features/prep/presentation/widgets/revision_flag_dialog.dart';
 
 /// Filterable Mock Tests tab view inside `PrepScreen`, showing subject & date
 /// filters, aggregate stats, score trend line chart, and logged test results.
@@ -242,6 +243,9 @@ class MockTestsTabView extends ConsumerWidget {
                       ),
                       onDelete: () => unawaited(
                         confirmAndDeleteMockTest(context, ref, tests[i]),
+                      ),
+                      onAddWeakTopicsToRevision: () => unawaited(
+                        showRevisionFlagDialog(context, fromMockTest: tests[i]),
                       ),
                     ),
                   ],

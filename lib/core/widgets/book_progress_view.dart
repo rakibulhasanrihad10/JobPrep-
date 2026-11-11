@@ -7,6 +7,7 @@ import 'package:job_prep/core/localization/formatters.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/book_position_controls.dart';
 import 'package:job_prep/core/widgets/book_progress_3d_canvas.dart';
+import 'package:job_prep/core/widgets/book_progress_3d_parts.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
 
 /// Interactive glassmorphic book progress view displaying a 3D cover with
@@ -28,6 +29,8 @@ class BookProgressView extends ConsumerStatefulWidget {
     this.isSaving = false,
     this.errorText,
     this.trailingAction,
+    this.flagMarkers = const <BookFlagMarker>[],
+    this.bottomSection,
   });
 
   /// Book title shown beside the 3D cover (and used for glass placeholder).
@@ -62,6 +65,13 @@ class BookProgressView extends ConsumerStatefulWidget {
 
   /// Optional action rendered alongside the position save controls.
   final Widget? trailingAction;
+
+  /// Flag markers shown at flagged pages along the bottom book edge.
+  final List<BookFlagMarker> flagMarkers;
+
+  /// Optional follow-up section (e.g. inline revision flag composer) rendered
+  /// smoothly below the book progress panel.
+  final Widget? bottomSection;
 
   /// Saves the requested `targetPage`; `isCorrection` is `true` only after the
   /// user confirmed moving backward below [completedUnits].
@@ -242,6 +252,8 @@ class _BookProgressViewState extends ConsumerState<BookProgressView> {
             replayKey: widget.replayKey,
             interactiveBookmark: !isBusy,
             bookmarkSemanticLabel: l10n.bookProgressBookmarkSemantics,
+            totalUnits: _safeTotal,
+            flagMarkers: widget.flagMarkers,
             onBookmarkDragUpdate: (nextFraction) {
               final nextPage = _pageFromFraction(nextFraction);
               setState(() {
@@ -283,11 +295,21 @@ class _BookProgressViewState extends ConsumerState<BookProgressView> {
           );
 
           if (isWide) {
-            return Row(
+            final row = Row(
               children: [
                 bookCanvas,
                 SizedBox(width: spacing.xl),
                 Expanded(child: controlsColumn),
+              ],
+            );
+            if (widget.bottomSection == null) return row;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                row,
+                SizedBox(height: spacing.lg),
+                widget.bottomSection!,
               ],
             );
           }
@@ -299,6 +321,10 @@ class _BookProgressViewState extends ConsumerState<BookProgressView> {
               Center(child: bookCanvas),
               SizedBox(height: spacing.lg),
               controlsColumn,
+              if (widget.bottomSection != null) ...[
+                SizedBox(height: spacing.lg),
+                widget.bottomSection!,
+              ],
             ],
           );
         },

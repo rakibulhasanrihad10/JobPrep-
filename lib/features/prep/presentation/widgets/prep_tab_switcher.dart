@@ -13,6 +13,10 @@ enum PrepSectionTab {
 
   /// Cross-subject study analytics, streaks, charts, and heatmap.
   analytics,
+
+  /// Spaced-repetition revision queue (`Due today`, `Overdue`, `Upcoming`,
+  /// `Done`).
+  revision,
 }
 
 /// Tokenized glass tab switcher bar for `PrepScreen`.
@@ -67,6 +71,14 @@ class PrepTabSwitcher extends StatelessWidget {
                 label: l10n.prepTabAnalytics,
                 isSelected: activeTab == PrepSectionTab.analytics,
                 onTap: () => onChanged(PrepSectionTab.analytics),
+              ),
+              SizedBox(width: spacing.xs),
+              _TabButton(
+                key: const ValueKey('prep-tab-revision'),
+                icon: Icons.flag_outlined,
+                label: l10n.prepTabRevision,
+                isSelected: activeTab == PrepSectionTab.revision,
+                onTap: () => onChanged(PrepSectionTab.revision),
               ),
             ],
           ),

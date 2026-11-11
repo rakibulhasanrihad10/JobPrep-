@@ -20,6 +20,7 @@ import 'package:job_prep/features/prep/presentation/widgets/material_logs_dialog
 import 'package:job_prep/features/prep/presentation/widgets/prep_delete_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_subject_detail_header_card.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_subject_materials_grid.dart';
+import 'package:job_prep/features/prep/presentation/widgets/revision_flag_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_plan_card.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_mock_tests_section.dart';
@@ -289,6 +290,17 @@ class _PrepSubjectDetailViewState extends ConsumerState<PrepSubjectDetailView> {
                 context,
                 material: book,
                 subjectColor: subjectColor,
+              ),
+            ),
+            onFlagRevision: (item) => unawaited(
+              showRevisionFlagDialog(
+                context,
+                subjectId: item.subjectId,
+                materialId: item.id,
+                initialPageNumber:
+                    item.kind == MaterialKind.book && item.completedUnits > 0
+                        ? item.completedUnits
+                        : null,
               ),
             ),
           ),

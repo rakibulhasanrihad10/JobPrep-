@@ -76,6 +76,23 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
     DateTime? loggedOn,
     String? note,
   }) async {
+    final created = await logUnitsAndReturn(
+      material: material,
+      units: units,
+      loggedOn: loggedOn,
+      note: note,
+    );
+    return created != null;
+  }
+
+  /// Logs [units] completed on [material] cleanly and returns the persisted
+  /// [ProgressLog] record (or `null` when validation/persistence fails).
+  Future<ProgressLog?> logUnitsAndReturn({
+    required PrepMaterial material,
+    required int units,
+    DateTime? loggedOn,
+    String? note,
+  }) async {
     if (units <= 0) {
       state = state.copyWith(
         error: const PrepValidationFailure(
@@ -83,7 +100,7 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
           message: 'Logged units must be greater than zero.',
         ),
       );
-      return false;
+      return null;
     }
 
     state = state.copyWith(
@@ -98,7 +115,7 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
       final effectiveDate = loggedOn ?? ref.read(prepNowProvider)();
       final trimmedNote = note?.trim();
 
-      await repo.createLog(
+      final saved = await repo.createLog(
         ProgressLog(
           materialId: material.id,
           unitsDone: units,
@@ -118,7 +135,7 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
         activeMaterialId: null,
         activeLogId: null,
       );
-      return true;
+      return saved;
     } on Object catch (error) {
       state = state.copyWith(
         isSaving: false,
@@ -126,7 +143,7 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
         activeLogId: null,
         error: error,
       );
-      return false;
+      return null;
     }
   }
 
@@ -200,6 +217,26 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
     DateTime? loggedOn,
     String? note,
   }) async {
+    final result = await setBookPositionAndReturn(
+      material: material,
+      targetPage: targetPage,
+      confirmCorrection: confirmCorrection,
+      loggedOn: loggedOn,
+      note: note,
+    );
+    return result?.change;
+  }
+
+  /// Like [setBookPosition], also returning the persisted [ProgressLog] when a
+  /// non-zero delta was recorded cleanly.
+  Future<({BookPositionChange change, ProgressLog? savedLog})?>
+      setBookPositionAndReturn({
+    required PrepMaterial material,
+    required int targetPage,
+    bool confirmCorrection = false,
+    DateTime? loggedOn,
+    String? note,
+  }) async {
     final safeTotal = material.totalUnits < 0 ? 0 : material.totalUnits;
     if (targetPage < 0 || targetPage > safeTotal) {
       state = state.copyWith(
@@ -218,7 +255,7 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
     );
     if (change.isNoOp) {
       clearError();
-      return change;
+      return (change: change, savedLog: null);
     }
 
     if (change.requiresConfirmation && !confirmCorrection) {
@@ -243,7 +280,7 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
       final effectiveDate = loggedOn ?? ref.read(prepNowProvider)();
       final trimmedNote = note?.trim();
 
-      await repo.createLog(
+      final savedLog = await repo.createLog(
         ProgressLog(
           materialId: material.id,
           unitsDone: change.delta,
@@ -264,7 +301,7 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
         activeMaterialId: null,
         activeLogId: null,
       );
-      return change;
+      return (change: change, savedLog: savedLog);
     } on Object catch (error) {
       state = state.copyWith(
         isSaving: false,

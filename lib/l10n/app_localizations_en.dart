@@ -2967,4 +2967,290 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get prepCloseButton => 'Close';
+
+  @override
+  String get prepTabRevision => 'Revision';
+
+  @override
+  String get prepRevisionTitle => 'Revision queue';
+
+  @override
+  String get prepRevisionSubtitle =>
+      'Revisit flagged pages, tricky problems, and weak topics on a spaced schedule.';
+
+  @override
+  String get prepRevisionDueCountStat => 'Due & overdue';
+
+  @override
+  String get prepRevisionMasteredStat => 'Mastered';
+
+  @override
+  String get prepRevisionFlagItemButton => 'Flag item';
+
+  @override
+  String prepRevisionTabDueToday(String count) {
+    return 'Due today ($count)';
+  }
+
+  @override
+  String prepRevisionTabOverdue(String count) {
+    return 'Overdue ($count)';
+  }
+
+  @override
+  String prepRevisionTabUpcoming(String count) {
+    return 'Upcoming ($count)';
+  }
+
+  @override
+  String prepRevisionTabDone(String count) {
+    return 'Done ($count)';
+  }
+
+  @override
+  String get prepRevisionAllSubjects => 'All subjects';
+
+  @override
+  String get prepRevisionAllMaterials => 'All materials';
+
+  @override
+  String get prepRevisionClearFilters => 'Clear filters';
+
+  @override
+  String get prepRevisionReasonTricky => 'Tricky';
+
+  @override
+  String get prepRevisionReasonForgot => 'Forgot';
+
+  @override
+  String get prepRevisionReasonImportant => 'Important';
+
+  @override
+  String get prepRevisionReasonMistake => 'Mistake';
+
+  @override
+  String get prepRevisionSourceLog => 'From study log';
+
+  @override
+  String get prepRevisionSourceMockTest => 'From mock test';
+
+  @override
+  String get prepRevisionSourceManual => 'Manual flag';
+
+  @override
+  String get prepRevisionStatusMastered => 'Mastered';
+
+  @override
+  String get prepRevisionStatusDismissed => 'Dismissed';
+
+  @override
+  String get prepRevisionDueTodayLabel => 'Due today';
+
+  @override
+  String prepRevisionOverdueDaysLabel(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount days overdue',
+      one: '$formattedCount day overdue',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepRevisionDueInDaysLabel(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'In $formattedCount days',
+      one: 'In $formattedCount day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepRevisionDueDateLabel(String date) {
+    return 'Due $date';
+  }
+
+  @override
+  String prepRevisionPageChip(String page) {
+    return 'p. $page';
+  }
+
+  @override
+  String prepRevisionReviewCountChip(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount reviews',
+      one: '$formattedCount review',
+      zero: 'New',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepRevisionActionEasy => 'Easy';
+
+  @override
+  String prepRevisionActionEasyHint(String days) {
+    return '+${days}d';
+  }
+
+  @override
+  String get prepRevisionActionEasyMasteredHint => 'Master';
+
+  @override
+  String get prepRevisionActionStillHard => 'Still hard';
+
+  @override
+  String get prepRevisionActionSnooze => 'Snooze +1d';
+
+  @override
+  String get prepRevisionActionDismiss => 'Dismiss';
+
+  @override
+  String get prepRevisionDeleteTooltip => 'Delete revision mark';
+
+  @override
+  String get prepRevisionUndoButton => 'Undo';
+
+  @override
+  String get prepRevisionUndoDismissTooltip => 'Hide undo banner';
+
+  @override
+  String prepRevisionFeedbackEasyNext(String reference, String days) {
+    return 'Marked \"$reference\" as Easy — next review in $days days.';
+  }
+
+  @override
+  String prepRevisionFeedbackMastered(String reference) {
+    return 'Mastered \"$reference\"! Moved to Done.';
+  }
+
+  @override
+  String prepRevisionFeedbackStillHard(String reference) {
+    return 'Marked \"$reference\" as Still hard — reset to 1 day.';
+  }
+
+  @override
+  String prepRevisionFeedbackSnoozed(String reference) {
+    return 'Snoozed \"$reference\" by 1 day.';
+  }
+
+  @override
+  String prepRevisionFeedbackDismissed(String reference) {
+    return 'Dismissed \"$reference\" to Done.';
+  }
+
+  @override
+  String get prepRevisionEmptyDueTitle => 'Nothing due today';
+
+  @override
+  String get prepRevisionEmptyDueBody =>
+      'Flag tricky pages while logging study progress or check Overdue and Upcoming.';
+
+  @override
+  String get prepRevisionEmptyOverdueTitle => 'No overdue revisions';
+
+  @override
+  String get prepRevisionEmptyOverdueBody =>
+      'Every scheduled revision mark is up to date.';
+
+  @override
+  String get prepRevisionEmptyUpcomingTitle =>
+      'No upcoming revisions scheduled';
+
+  @override
+  String get prepRevisionEmptyUpcomingBody =>
+      'New flags are scheduled 1 day ahead, and Easy reviews space out along 3, 7, 14, and 30 days.';
+
+  @override
+  String get prepRevisionEmptyDoneTitle => 'No completed items yet';
+
+  @override
+  String get prepRevisionEmptyDoneBody =>
+      'Mastered and dismissed items are archived here.';
+
+  @override
+  String get prepRevisionEmptyFilteredBody =>
+      'No revision items match the active subject and material filters.';
+
+  @override
+  String get prepRevisionMarkAction => 'Mark for revision';
+
+  @override
+  String get prepRevisionPostSavePrompt =>
+      'Progress saved! Flag any page or problem to revise later without leaving?';
+
+  @override
+  String prepRevisionAddedCountChip(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount flags added',
+      one: '$formattedCount flag added',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepRevisionRefLabel => 'Reference (page, problem, or topic)';
+
+  @override
+  String get prepRevisionRefHint => 'e.g. p. 128 or Problem 14';
+
+  @override
+  String get prepRevisionRefError =>
+      'Enter a page, problem, or topic to revise.';
+
+  @override
+  String get prepRevisionPageLabel => 'Page # (optional)';
+
+  @override
+  String get prepRevisionPageHint => '128';
+
+  @override
+  String get prepRevisionReasonLabel => 'Reason';
+
+  @override
+  String get prepRevisionNoteLabel => 'Note (optional)';
+
+  @override
+  String get prepRevisionNoteHint =>
+      'Sign mistake in derivation, review shortcut...';
+
+  @override
+  String get prepRevisionAddAnotherButton => 'Add flag';
+
+  @override
+  String get prepRevisionDoneFlaggingButton => 'Hide flagger';
+
+  @override
+  String get prepRevisionFlagMaterialTooltip => 'Flag for revision';
+
+  @override
+  String get prepRevisionDialogTitle => 'Mark for revision';
+
+  @override
+  String get prepRevisionSubjectLabel => 'Subject';
+
+  @override
+  String get prepRevisionMaterialOptionalLabel => 'Material (optional)';
+
+  @override
+  String get prepRevisionNoMaterialOption =>
+      'Subject-wide / No specific material';
+
+  @override
+  String get prepRevisionWeakTopicsQuickFill => 'Tap a weak topic to prefill:';
+
+  @override
+  String prepRevisionAddAllWeakTopics(String count) {
+    return 'Add all ($count)';
+  }
+
+  @override
+  String get prepMockAddToRevisionButton => 'Add to revision';
 }

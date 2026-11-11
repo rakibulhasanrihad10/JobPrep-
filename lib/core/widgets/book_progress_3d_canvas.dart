@@ -27,6 +27,8 @@ class BookProgress3dCanvas extends ConsumerStatefulWidget {
     this.replayKey,
     this.interactiveBookmark = false,
     this.bookmarkSemanticLabel,
+    this.totalUnits = 0,
+    this.flagMarkers = const <BookFlagMarker>[],
     this.onBookmarkDragUpdate,
     this.onBookmarkDragEnd,
   });
@@ -63,6 +65,12 @@ class BookProgress3dCanvas extends ConsumerStatefulWidget {
 
   /// Semantic label attached to the interactive bookmark handle.
   final String? bookmarkSemanticLabel;
+
+  /// Total book pages used to plot optional [flagMarkers].
+  final int totalUnits;
+
+  /// Small markers displayed along the page track at flagged pages.
+  final List<BookFlagMarker> flagMarkers;
 
   /// Invoked continuously while dragging the bookmark with normalized `[0..1]`.
   final ValueChanged<double>? onBookmarkDragUpdate;
@@ -262,6 +270,8 @@ class _BookProgress3dCanvasState extends ConsumerState<BookProgress3dCanvas>
                     compact: widget.compact,
                     interactive: widget.interactiveBookmark,
                     semanticLabel: widget.bookmarkSemanticLabel,
+                    totalUnits: widget.totalUnits,
+                    flagMarkers: widget.flagMarkers,
                     onDragStart: () {
                       setState(() => _activeDragFraction = displayFraction);
                     },

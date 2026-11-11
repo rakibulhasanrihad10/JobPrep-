@@ -21,6 +21,7 @@ import 'package:job_prep/features/prep/presentation/widgets/mock_test_list_tile.
 import 'package:job_prep/features/prep/presentation/widgets/mock_test_state_cards.dart';
 import 'package:job_prep/features/prep/presentation/widgets/mock_test_stats_grid.dart';
 import 'package:job_prep/features/prep/presentation/widgets/mock_test_trend_chart.dart';
+import 'package:job_prep/features/prep/presentation/widgets/revision_flag_dialog.dart';
 
 /// Displays Latest / Best / Average / Improvement cards, trend line chart with
 /// average reference line, and logged mock tests for a single [subject].
@@ -197,6 +198,9 @@ class SubjectMockTestsSection extends ConsumerWidget {
                     ),
                     onDelete: () => unawaited(
                       confirmAndDeleteMockTest(context, ref, tests[i]),
+                    ),
+                    onAddWeakTopicsToRevision: () => unawaited(
+                      showRevisionFlagDialog(context, fromMockTest: tests[i]),
                     ),
                   ),
                 ],

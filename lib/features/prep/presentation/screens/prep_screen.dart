@@ -12,6 +12,7 @@ import 'package:job_prep/features/prep/presentation/providers/mock_test_provider
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_subjects_controller.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_template_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/revision_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_screen.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_template_ui_helpers.dart';
@@ -24,6 +25,7 @@ import 'package:job_prep/features/prep/presentation/widgets/prep_subjects_body.d
 import 'package:job_prep/features/prep/presentation/widgets/prep_subjects_section.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_tab_switcher.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_templates_dialog.dart';
+import 'package:job_prep/features/prep/presentation/widgets/revision_queue_tab_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_analytics_tab_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_plan_form_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.dart';
@@ -59,13 +61,16 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
   static int _nextTabVisitId = 0;
   static int _nextMockVisitId = 0;
   static int _nextAnalyticsVisitId = 0;
+  static int _nextRevisionVisitId = 0;
 
   late int _tabVisitId;
   late int _mockVisitId;
   late int _analyticsVisitId;
+  late int _revisionVisitId;
   late PrepSectionTab _activeTab;
   bool _hasVisitedMockTab = false;
   bool _hasVisitedAnalyticsTab = false;
+  bool _hasVisitedRevisionTab = false;
   String? _localSelectedId;
 
   @override
@@ -74,9 +79,11 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     _tabVisitId = ++_nextTabVisitId;
     _mockVisitId = ++_nextMockVisitId;
     _analyticsVisitId = ++_nextAnalyticsVisitId;
+    _revisionVisitId = ++_nextRevisionVisitId;
     _activeTab = widget.initialTab;
     _hasVisitedMockTab = _activeTab == PrepSectionTab.mockTests;
     _hasVisitedAnalyticsTab = _activeTab == PrepSectionTab.analytics;
+    _hasVisitedRevisionTab = _activeTab == PrepSectionTab.revision;
     _localSelectedId = widget.selectedSubjectId;
   }
 
@@ -98,6 +105,8 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
         next == PrepSectionTab.mockTests && _hasVisitedMockTab;
     final shouldRefreshAnalytics =
         next == PrepSectionTab.analytics && _hasVisitedAnalyticsTab;
+    final shouldRefreshRevision =
+        next == PrepSectionTab.revision && _hasVisitedRevisionTab;
     setState(() {
       _activeTab = next;
       switch (next) {
@@ -109,6 +118,9 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
         case PrepSectionTab.analytics:
           _hasVisitedAnalyticsTab = true;
           _analyticsVisitId = ++_nextAnalyticsVisitId;
+        case PrepSectionTab.revision:
+          _hasVisitedRevisionTab = true;
+          _revisionVisitId = ++_nextRevisionVisitId;
       }
     });
     if (shouldRefreshMocks) {
@@ -116,6 +128,9 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     }
     if (shouldRefreshAnalytics) {
       ref.invalidate(analyticsProgressLogsProvider);
+    }
+    if (shouldRefreshRevision) {
+      unawaited(ref.read(revisionItemsProvider.notifier).refresh());
     }
   }
 
@@ -126,6 +141,7 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     unawaited(ref.read(prepTemplatesProvider.notifier).refresh());
     unawaited(ref.read(studyPlansProvider.notifier).refresh());
     unawaited(ref.read(mockTestsProvider.notifier).refresh());
+    unawaited(ref.read(revisionItemsProvider.notifier).refresh());
   }
 
   Future<void> _openCreateSubject({required bool selectCreated}) async {
@@ -328,6 +344,8 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
               visitId: _analyticsVisitId,
               onOpenSubjects: () => _switchTab(PrepSectionTab.subjects),
             )
+          else if (_activeTab == PrepSectionTab.revision)
+            RevisionQueueTabView(visitId: _revisionVisitId)
           else
             PrepSubjectsBody(
               isExpanded: isExpanded,

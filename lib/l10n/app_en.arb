@@ -4033,5 +4033,393 @@
   "prepCloseButton": "Close",
   "@prepCloseButton": {
     "description": "Generic close button label for dialogs"
+  },
+  "prepTabRevision": "Revision",
+  "@prepTabRevision": {
+    "description": "Top-level Prep tab label for spaced-repetition revision queue"
+  },
+  "prepRevisionTitle": "Revision queue",
+  "@prepRevisionTitle": {
+    "description": "Headline on the Revision tab"
+  },
+  "prepRevisionSubtitle": "Revisit flagged pages, tricky problems, and weak topics on a spaced schedule.",
+  "@prepRevisionSubtitle": {
+    "description": "Subtitle on the Revision tab"
+  },
+  "prepRevisionDueCountStat": "Due & overdue",
+  "@prepRevisionDueCountStat": {
+    "description": "Metric card label counting active items due today or overdue"
+  },
+  "prepRevisionMasteredStat": "Mastered",
+  "@prepRevisionMasteredStat": {
+    "description": "Metric card label counting items mastered after the full spacing ladder"
+  },
+  "prepRevisionFlagItemButton": "Flag item",
+  "@prepRevisionFlagItemButton": {
+    "description": "Primary CTA button on Revision screen to manually create a revision flag"
+  },
+  "prepRevisionTabDueToday": "Due today ({count})",
+  "@prepRevisionTabDueToday": {
+    "description": "Revision queue tab showing items scheduled due today",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionTabOverdue": "Overdue ({count})",
+  "@prepRevisionTabOverdue": {
+    "description": "Revision queue tab showing items past due date",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionTabUpcoming": "Upcoming ({count})",
+  "@prepRevisionTabUpcoming": {
+    "description": "Revision queue tab showing future scheduled items",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionTabDone": "Done ({count})",
+  "@prepRevisionTabDone": {
+    "description": "Revision queue tab showing mastered or dismissed items",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionAllSubjects": "All subjects",
+  "@prepRevisionAllSubjects": {
+    "description": "Default option in subject filter on Revision queue"
+  },
+  "prepRevisionAllMaterials": "All materials",
+  "@prepRevisionAllMaterials": {
+    "description": "Default option in material filter on Revision queue"
+  },
+  "prepRevisionClearFilters": "Clear filters",
+  "@prepRevisionClearFilters": {
+    "description": "Button clearing subject and material filters on Revision queue"
+  },
+  "prepRevisionReasonTricky": "Tricky",
+  "@prepRevisionReasonTricky": {
+    "description": "Revision flag reason: tricky"
+  },
+  "prepRevisionReasonForgot": "Forgot",
+  "@prepRevisionReasonForgot": {
+    "description": "Revision flag reason: forgot"
+  },
+  "prepRevisionReasonImportant": "Important",
+  "@prepRevisionReasonImportant": {
+    "description": "Revision flag reason: important"
+  },
+  "prepRevisionReasonMistake": "Mistake",
+  "@prepRevisionReasonMistake": {
+    "description": "Revision flag reason: mistake"
+  },
+  "prepRevisionSourceLog": "From study log",
+  "@prepRevisionSourceLog": {
+    "description": "Origin chip indicating flag came from a study progress log"
+  },
+  "prepRevisionSourceMockTest": "From mock test",
+  "@prepRevisionSourceMockTest": {
+    "description": "Origin chip indicating flag came from a mock test weak topic"
+  },
+  "prepRevisionSourceManual": "Manual flag",
+  "@prepRevisionSourceManual": {
+    "description": "Origin chip indicating manual revision flag"
+  },
+  "prepRevisionStatusMastered": "Mastered",
+  "@prepRevisionStatusMastered": {
+    "description": "Badge for mastered revision items"
+  },
+  "prepRevisionStatusDismissed": "Dismissed",
+  "@prepRevisionStatusDismissed": {
+    "description": "Badge for dismissed revision items"
+  },
+  "prepRevisionDueTodayLabel": "Due today",
+  "@prepRevisionDueTodayLabel": {
+    "description": "Schedule label on items due strictly today"
+  },
+  "prepRevisionOverdueDaysLabel": "{count, plural, =1{{formattedCount} day overdue} other{{formattedCount} days overdue}}",
+  "@prepRevisionOverdueDaysLabel": {
+    "description": "Schedule label showing how many days overdue an item is",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionDueInDaysLabel": "{count, plural, =1{In {formattedCount} day} other{In {formattedCount} days}}",
+  "@prepRevisionDueInDaysLabel": {
+    "description": "Schedule label showing remaining days until upcoming review",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionDueDateLabel": "Due {date}",
+  "@prepRevisionDueDateLabel": {
+    "description": "Formatted scheduled date caption on a revision card",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionPageChip": "p. {page}",
+  "@prepRevisionPageChip": {
+    "description": "Compact page number badge rendered on book/page revision cards",
+    "placeholders": {
+      "page": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionReviewCountChip": "{count, plural, =0{New} =1{{formattedCount} review} other{{formattedCount} reviews}}",
+  "@prepRevisionReviewCountChip": {
+    "description": "Completed spaced review count badge",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionActionEasy": "Easy",
+  "@prepRevisionActionEasy": {
+    "description": "Review action advancing the spaced repetition interval along 3, 7, 14, 30 days"
+  },
+  "prepRevisionActionEasyHint": "+{days}d",
+  "@prepRevisionActionEasyHint": {
+    "description": "Short day suffix shown alongside Easy button indicating the next gap",
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionActionEasyMasteredHint": "Master",
+  "@prepRevisionActionEasyMasteredHint": {
+    "description": "Hint shown beside Easy on the final 30-day step before becoming mastered"
+  },
+  "prepRevisionActionStillHard": "Still hard",
+  "@prepRevisionActionStillHard": {
+    "description": "Review action resetting the revision gap back to 1 day"
+  },
+  "prepRevisionActionSnooze": "Snooze +1d",
+  "@prepRevisionActionSnooze": {
+    "description": "Action deferring the due date by 1 day without changing review count"
+  },
+  "prepRevisionActionDismiss": "Dismiss",
+  "@prepRevisionActionDismiss": {
+    "description": "Action dismissing an item from the active queue into Done"
+  },
+  "prepRevisionDeleteTooltip": "Delete revision mark",
+  "@prepRevisionDeleteTooltip": {
+    "description": "Tooltip for deleting a Done revision item"
+  },
+  "prepRevisionUndoButton": "Undo",
+  "@prepRevisionUndoButton": {
+    "description": "Action reverting the latest Easy, Still hard, Snooze, or Dismiss action"
+  },
+  "prepRevisionUndoDismissTooltip": "Hide undo banner",
+  "@prepRevisionUndoDismissTooltip": {
+    "description": "Tooltip closing the revision undo confirmation banner"
+  },
+  "prepRevisionFeedbackEasyNext": "Marked \"{reference}\" as Easy — next review in {days} days.",
+  "@prepRevisionFeedbackEasyNext": {
+    "description": "Undo banner feedback after scheduling the next Easy interval",
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      },
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionFeedbackMastered": "Mastered \"{reference}\"! Moved to Done.",
+  "@prepRevisionFeedbackMastered": {
+    "description": "Undo banner feedback when final Easy step promotes item to mastered",
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionFeedbackStillHard": "Marked \"{reference}\" as Still hard — reset to 1 day.",
+  "@prepRevisionFeedbackStillHard": {
+    "description": "Undo banner feedback after Still hard reset",
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionFeedbackSnoozed": "Snoozed \"{reference}\" by 1 day.",
+  "@prepRevisionFeedbackSnoozed": {
+    "description": "Undo banner feedback after snoozing an item",
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionFeedbackDismissed": "Dismissed \"{reference}\" to Done.",
+  "@prepRevisionFeedbackDismissed": {
+    "description": "Undo banner feedback after dismissing an item",
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionEmptyDueTitle": "Nothing due today",
+  "@prepRevisionEmptyDueTitle": {
+    "description": "Empty headline on Due today queue tab"
+  },
+  "prepRevisionEmptyDueBody": "Flag tricky pages while logging study progress or check Overdue and Upcoming.",
+  "@prepRevisionEmptyDueBody": {
+    "description": "Empty helper text on Due today queue tab"
+  },
+  "prepRevisionEmptyOverdueTitle": "No overdue revisions",
+  "@prepRevisionEmptyOverdueTitle": {
+    "description": "Empty headline on Overdue queue tab"
+  },
+  "prepRevisionEmptyOverdueBody": "Every scheduled revision mark is up to date.",
+  "@prepRevisionEmptyOverdueBody": {
+    "description": "Empty helper text on Overdue queue tab"
+  },
+  "prepRevisionEmptyUpcomingTitle": "No upcoming revisions scheduled",
+  "@prepRevisionEmptyUpcomingTitle": {
+    "description": "Empty headline on Upcoming queue tab"
+  },
+  "prepRevisionEmptyUpcomingBody": "New flags are scheduled 1 day ahead, and Easy reviews space out along 3, 7, 14, and 30 days.",
+  "@prepRevisionEmptyUpcomingBody": {
+    "description": "Empty helper text on Upcoming queue tab"
+  },
+  "prepRevisionEmptyDoneTitle": "No completed items yet",
+  "@prepRevisionEmptyDoneTitle": {
+    "description": "Empty headline on Done queue tab"
+  },
+  "prepRevisionEmptyDoneBody": "Mastered and dismissed items are archived here.",
+  "@prepRevisionEmptyDoneBody": {
+    "description": "Empty helper text on Done queue tab"
+  },
+  "prepRevisionEmptyFilteredBody": "No revision items match the active subject and material filters.",
+  "@prepRevisionEmptyFilteredBody": {
+    "description": "Empty helper text when queue filters hide all items"
+  },
+  "prepRevisionMarkAction": "Mark for revision",
+  "@prepRevisionMarkAction": {
+    "description": "Button label opening inline revision flag composer during logging"
+  },
+  "prepRevisionPostSavePrompt": "Progress saved! Flag any page or problem to revise later without leaving?",
+  "@prepRevisionPostSavePrompt": {
+    "description": "Banner shown immediately after saving progress to invite quick revision flagging"
+  },
+  "prepRevisionAddedCountChip": "{count, plural, =1{{formattedCount} flag added} other{{formattedCount} flags added}}",
+  "@prepRevisionAddedCountChip": {
+    "description": "Badge showing how many revision flags were added inside the current logging session",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionRefLabel": "Reference (page, problem, or topic)",
+  "@prepRevisionRefLabel": {
+    "description": "Text field label for revision item reference_label"
+  },
+  "prepRevisionRefHint": "e.g. p. 128 or Problem 14",
+  "@prepRevisionRefHint": {
+    "description": "Text field placeholder for revision item reference_label"
+  },
+  "prepRevisionRefError": "Enter a page, problem, or topic to revise.",
+  "@prepRevisionRefError": {
+    "description": "Validation error when reference_label is empty"
+  },
+  "prepRevisionPageLabel": "Page # (optional)",
+  "@prepRevisionPageLabel": {
+    "description": "Optional numeric page field shown when flagging book/material items"
+  },
+  "prepRevisionPageHint": "128",
+  "@prepRevisionPageHint": {
+    "description": "Hint text for optional page number input"
+  },
+  "prepRevisionReasonLabel": "Reason",
+  "@prepRevisionReasonLabel": {
+    "description": "Chip selector heading for RevisionReason"
+  },
+  "prepRevisionNoteLabel": "Note (optional)",
+  "@prepRevisionNoteLabel": {
+    "description": "Text field label for optional note on revision item"
+  },
+  "prepRevisionNoteHint": "Sign mistake in derivation, review shortcut...",
+  "@prepRevisionNoteHint": {
+    "description": "Placeholder text for optional revision note"
+  },
+  "prepRevisionAddAnotherButton": "Add flag",
+  "@prepRevisionAddAnotherButton": {
+    "description": "Submit button adding a revision flag while keeping inline composer open"
+  },
+  "prepRevisionDoneFlaggingButton": "Hide flagger",
+  "@prepRevisionDoneFlaggingButton": {
+    "description": "Collapse button hiding the inline revision composer"
+  },
+  "prepRevisionFlagMaterialTooltip": "Flag for revision",
+  "@prepRevisionFlagMaterialTooltip": {
+    "description": "Tooltip on MaterialCard flag icon button"
+  },
+  "prepRevisionDialogTitle": "Mark for revision",
+  "@prepRevisionDialogTitle": {
+    "description": "Dialog heading when creating a manual or mock-test revision item"
+  },
+  "prepRevisionSubjectLabel": "Subject",
+  "@prepRevisionSubjectLabel": {
+    "description": "Subject dropdown label inside standalone revision dialog"
+  },
+  "prepRevisionMaterialOptionalLabel": "Material (optional)",
+  "@prepRevisionMaterialOptionalLabel": {
+    "description": "Material dropdown label inside standalone revision dialog"
+  },
+  "prepRevisionNoMaterialOption": "Subject-wide / No specific material",
+  "@prepRevisionNoMaterialOption": {
+    "description": "Option representing no attached study material on a revision mark"
+  },
+  "prepRevisionWeakTopicsQuickFill": "Tap a weak topic to prefill:",
+  "@prepRevisionWeakTopicsQuickFill": {
+    "description": "Prompt above parsed weak topic chips in mock-test revision dialog"
+  },
+  "prepRevisionAddAllWeakTopics": "Add all ({count})",
+  "@prepRevisionAddAllWeakTopics": {
+    "description": "Quick action adding every parsed weak topic from a mock test at once",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockAddToRevisionButton": "Add to revision",
+  "@prepMockAddToRevisionButton": {
+    "description": "Action button next to mock test weak topics sending them to the Revision queue"
   }
 }

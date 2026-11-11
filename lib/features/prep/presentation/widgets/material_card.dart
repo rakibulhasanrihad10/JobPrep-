@@ -23,6 +23,7 @@ class MaterialCard extends StatelessWidget {
     this.isLogging = false,
     this.replayKey,
     this.onOpenBookView,
+    this.onFlagRevision,
   });
 
   /// Material entity rendered by this cover card.
@@ -51,6 +52,9 @@ class MaterialCard extends StatelessWidget {
 
   /// Optional callback opening interactive 3D book view for books.
   final VoidCallback? onOpenBookView;
+
+  /// Optional callback opening Revision flagging dialog for this material.
+  final VoidCallback? onFlagRevision;
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +111,23 @@ class MaterialCard extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        if (onFlagRevision != null)
+                          Tooltip(
+                            message: l10n.prepRevisionFlagMaterialTooltip,
+                            child: InkWell(
+                              key: ValueKey('material-flag-${material.id}'),
+                              borderRadius: radii.buttonRadius,
+                              onTap: onFlagRevision,
+                              child: Padding(
+                                padding: spacing.insetsAllXs,
+                                child: Icon(
+                                  Icons.flag_outlined,
+                                  size: spacing.lg,
+                                  color: colors.goldAccent,
+                                ),
+                              ),
+                            ),
+                          ),
                         Tooltip(
                           message: l10n.prepEditAction,
                           child: InkWell(

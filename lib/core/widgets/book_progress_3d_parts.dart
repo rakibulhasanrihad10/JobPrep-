@@ -111,8 +111,25 @@ class BookFrontCoverFace extends StatelessWidget {
   }
 }
 
-/// Interactive horizontal ribbon track positioned along a book's bottom page
-/// edge, displaying a notched gold bookmark at [fraction].
+/// Small pin marker placed on the book's bottom page edge for a flagged page.
+@immutable
+class BookFlagMarker {
+  /// Creates a [BookFlagMarker].
+  const BookFlagMarker({
+    required this.page,
+    required this.label,
+  });
+
+  /// Flagged 0-based / 1-based page number along the book.
+  final int page;
+
+  /// Localized tooltip summary describing what was flagged at [page].
+  final String label;
+}
+
+/// Interactive horizontal ribbon track positioned along a book's bottom edge,
+/// displaying a notched gold bookmark at [fraction] and optional flag pins at
+/// flagged pages.
 class BookBookmarkTrack extends StatelessWidget {
   /// Creates a [BookBookmarkTrack].
   const BookBookmarkTrack({
@@ -126,6 +143,8 @@ class BookBookmarkTrack extends StatelessWidget {
     required this.onDragEnd,
     super.key,
     this.semanticLabel,
+    this.totalUnits = 0,
+    this.flagMarkers = const <BookFlagMarker>[],
   });
 
   /// Normalized bookmark position in `[0.0 .. 1.0]`.
@@ -145,6 +164,12 @@ class BookBookmarkTrack extends StatelessWidget {
 
   /// Accessibility label describing the bookmark slider.
   final String? semanticLabel;
+
+  /// Total book pages used to position optional [flagMarkers].
+  final int totalUnits;
+
+  /// Flag markers shown at flagged pages along the bottom page edge.
+  final List<BookFlagMarker> flagMarkers;
 
   /// Called when dragging begins.
   final VoidCallback onDragStart;
@@ -167,6 +192,17 @@ class BookBookmarkTrack extends StatelessWidget {
     final ribbonLeft = usableSpan * fraction;
     final handleLeft = (ribbonLeft + ribbonWidth / 2 - handleHitWidth / 2)
         .clamp(-spacing.sm, trackWidth - handleHitWidth + spacing.sm);
+
+    final pinSize = compact ? 10.0 : 13.0;
+    final groupedMarkers = <int, List<String>>{};
+    if (totalUnits > 0) {
+      for (final marker in flagMarkers) {
+        final safePage = marker.page.clamp(0, totalUnits);
+        groupedMarkers
+            .putIfAbsent(safePage, () => <String>[])
+            .add(marker.label);
+      }
+    }
 
     final trackBar = Stack(
       clipBehavior: Clip.none,
@@ -200,6 +236,21 @@ class BookBookmarkTrack extends StatelessWidget {
             ),
           ),
         ),
+        for (final entry in groupedMarkers.entries)
+          Positioned(
+            left: ((trackWidth - pinSize) * (entry.key / totalUnits))
+                .clamp(0, math.max(0, trackWidth - pinSize).toDouble()),
+            top: -spacing.xs,
+            child: Tooltip(
+              message: entry.value.join(' • '),
+              child: Icon(
+                Icons.flag_rounded,
+                key: ValueKey('book-flag-marker-${entry.key}'),
+                size: pinSize,
+                color: colors.warning,
+              ),
+            ),
+          ),
         Positioned(
           left: handleLeft,
           top: 0,

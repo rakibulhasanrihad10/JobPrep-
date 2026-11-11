@@ -27,6 +27,7 @@ class PrepSubjectMaterialsGrid extends StatelessWidget {
     required this.onQuickLog,
     required this.onOpenLogs,
     required this.onOpenBookView,
+    required this.onFlagRevision,
     super.key,
   });
 
@@ -65,6 +66,9 @@ class PrepSubjectMaterialsGrid extends StatelessWidget {
 
   /// Opens 3D interactive `BookProgressView` dialog for a book material.
   final ValueChanged<PrepMaterial> onOpenBookView;
+
+  /// Opens revision flag dialog for a material.
+  final ValueChanged<PrepMaterial> onFlagRevision;
 
   @override
   Widget build(BuildContext context) {
@@ -162,6 +166,8 @@ class PrepSubjectMaterialsGrid extends StatelessWidget {
                                     items[i + col].kind == MaterialKind.book
                                         ? () => onOpenBookView(items[i + col])
                                         : null,
+                                onFlagRevision: () =>
+                                    onFlagRevision(items[i + col]),
                               ),
                             )
                           else

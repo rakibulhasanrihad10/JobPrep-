@@ -181,6 +181,13 @@ final routerProvider = Provider<GoRouter>((ref) {
                 ),
               ),
               GoRoute(
+                path: 'revision',
+                name: 'prep_revision',
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: PrepScreen(initialTab: PrepSectionTab.revision),
+                ),
+              ),
+              GoRoute(
                 path: ':subjectId',
                 name: 'prep_subject',
                 pageBuilder: (context, state) {
