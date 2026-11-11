@@ -1988,4 +1988,40 @@ class AppLocalizationsEn extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get settingsRemindersTitle => 'Email Reminders';
+
+  @override
+  String get settingsRemindersSubtitle =>
+      'Receive daily alerts for circular deadlines and exam dates 7, 3, and 1 days ahead.';
+
+  @override
+  String get settingsRemindersToggleLabel => 'Enable daily email reminders';
+
+  @override
+  String get settingsRemindersToggleHintEnabled =>
+      'Reminders are sent once per milestone using your saved account email.';
+
+  @override
+  String get settingsRemindersToggleHintDisabled =>
+      'Email reminders are paused. Turn them on anytime without losing saved circulars.';
+
+  @override
+  String get settingsRemindersLanguageTitle => 'Reminder email language';
+
+  @override
+  String get settingsRemindersLanguageSubtitle =>
+      'Choose which language daily reminder emails are written in.';
+
+  @override
+  String get settingsRemindersSaveError =>
+      'Could not save reminder settings. Please try again.';
+
+  @override
+  String get settingsRemindersLoadError => 'Could not load reminder settings.';
+
+  @override
+  String get settingsRemindersOfflineHint =>
+      'Connect Supabase to persist email reminder preferences across devices.';
 }

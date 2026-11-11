@@ -3447,6 +3447,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count, plural, =1{In 1 day} other{In {formattedCount} days}}'**
   String dashboardExamInDays(int count, String formattedCount);
+
+  /// Heading for per-user daily email reminder settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Email Reminders'**
+  String get settingsRemindersTitle;
+
+  /// Description under email reminder settings heading
+  ///
+  /// In en, this message translates to:
+  /// **'Receive daily alerts for circular deadlines and exam dates 7, 3, and 1 days ahead.'**
+  String get settingsRemindersSubtitle;
+
+  /// Switch label turning daily email reminders on or off
+  ///
+  /// In en, this message translates to:
+  /// **'Enable daily email reminders'**
+  String get settingsRemindersToggleLabel;
+
+  /// Helper text shown when email reminders are enabled
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders are sent once per milestone using your saved account email.'**
+  String get settingsRemindersToggleHintEnabled;
+
+  /// Helper text shown when email reminders are turned off
+  ///
+  /// In en, this message translates to:
+  /// **'Email reminders are paused. Turn them on anytime without losing saved circulars.'**
+  String get settingsRemindersToggleHintDisabled;
+
+  /// Subheading above English/Bangla email language selector
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder email language'**
+  String get settingsRemindersLanguageTitle;
+
+  /// Description explaining email language selection
+  ///
+  /// In en, this message translates to:
+  /// **'Choose which language daily reminder emails are written in.'**
+  String get settingsRemindersLanguageSubtitle;
+
+  /// Snackbar or banner message when saving reminder settings fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save reminder settings. Please try again.'**
+  String get settingsRemindersSaveError;
+
+  /// Error banner shown when reminder settings fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load reminder settings.'**
+  String get settingsRemindersLoadError;
+
+  /// Notice shown when running without a connected Supabase backend
+  ///
+  /// In en, this message translates to:
+  /// **'Connect Supabase to persist email reminder preferences across devices.'**
+  String get settingsRemindersOfflineHint;
 }
 
 class _AppLocalizationsDelegate

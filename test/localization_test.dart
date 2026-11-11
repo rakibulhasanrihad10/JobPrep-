@@ -9,6 +9,7 @@ import 'package:job_prep/core/localization/locale_controller.dart';
 import 'package:job_prep/core/router/app_router.dart';
 import 'package:job_prep/core/storage/preferences_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/dashboard/presentation/widgets/language_switcher_card.dart';
 import 'package:job_prep/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -281,7 +282,12 @@ void main() {
       expect(find.text('Theme Mode Switcher'), findsOneWidget);
 
       // Tap Bangla radio option
-      await tester.tap(find.text('বাংলা (Bangla)'));
+      await tester.tap(
+        find.descendant(
+          of: find.byType(LanguageSwitcherCard),
+          matching: find.text('বাংলা (Bangla)'),
+        ),
+      );
       await tester.pumpAndSettle();
 
       // Verify UI updated to Bangla
@@ -290,7 +296,12 @@ void main() {
       expect(prefs.getString(kLocaleStorageKey), equals('bn'));
 
       // Tap English radio option
-      await tester.tap(find.text('English'));
+      await tester.tap(
+        find.descendant(
+          of: find.byType(LanguageSwitcherCard),
+          matching: find.text('English'),
+        ),
+      );
       await tester.pumpAndSettle();
 
       // Verify UI reverted to English

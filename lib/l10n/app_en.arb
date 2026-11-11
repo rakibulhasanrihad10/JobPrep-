@@ -2638,5 +2638,45 @@
         "type": "String"
       }
     }
+  },
+  "settingsRemindersTitle": "Email Reminders",
+  "@settingsRemindersTitle": {
+    "description": "Heading for per-user daily email reminder settings card"
+  },
+  "settingsRemindersSubtitle": "Receive daily alerts for circular deadlines and exam dates 7, 3, and 1 days ahead.",
+  "@settingsRemindersSubtitle": {
+    "description": "Description under email reminder settings heading"
+  },
+  "settingsRemindersToggleLabel": "Enable daily email reminders",
+  "@settingsRemindersToggleLabel": {
+    "description": "Switch label turning daily email reminders on or off"
+  },
+  "settingsRemindersToggleHintEnabled": "Reminders are sent once per milestone using your saved account email.",
+  "@settingsRemindersToggleHintEnabled": {
+    "description": "Helper text shown when email reminders are enabled"
+  },
+  "settingsRemindersToggleHintDisabled": "Email reminders are paused. Turn them on anytime without losing saved circulars.",
+  "@settingsRemindersToggleHintDisabled": {
+    "description": "Helper text shown when email reminders are turned off"
+  },
+  "settingsRemindersLanguageTitle": "Reminder email language",
+  "@settingsRemindersLanguageTitle": {
+    "description": "Subheading above English/Bangla email language selector"
+  },
+  "settingsRemindersLanguageSubtitle": "Choose which language daily reminder emails are written in.",
+  "@settingsRemindersLanguageSubtitle": {
+    "description": "Description explaining email language selection"
+  },
+  "settingsRemindersSaveError": "Could not save reminder settings. Please try again.",
+  "@settingsRemindersSaveError": {
+    "description": "Snackbar or banner message when saving reminder settings fails"
+  },
+  "settingsRemindersLoadError": "Could not load reminder settings.",
+  "@settingsRemindersLoadError": {
+    "description": "Error banner shown when reminder settings fail to load"
+  },
+  "settingsRemindersOfflineHint": "Connect Supabase to persist email reminder preferences across devices.",
+  "@settingsRemindersOfflineHint": {
+    "description": "Notice shown when running without a connected Supabase backend"
   }
 }

@@ -556,5 +556,15 @@
   "dashboardUpcomingExamsEmptyBody": "সার্কুলারের ভেতরে প্রিলি, লিখিত বা ভাইভার তারিখ যোগ করলে এখানে দেখাবে।",
   "dashboardOpenCalendarAction": "ক্যালেন্ডার খুলুন",
   "dashboardExamToday": "আজ",
-  "dashboardExamInDays": "{count, plural, =0{আজ} =1{১ দিন বাকি} other{{formattedCount} দিন বাকি}}"
+  "dashboardExamInDays": "{count, plural, =0{আজ} =1{১ দিন বাকি} other{{formattedCount} দিন বাকি}}",
+  "settingsRemindersTitle": "ইমেইল অনুস্মারক",
+  "settingsRemindersSubtitle": "সার্কুলারের শেষ তারিখ ও পরীক্ষার ৭, ৩ এবং ১ দিন আগে দৈনিক ইমেইল অনুস্মারক পান।",
+  "settingsRemindersToggleLabel": "দৈনিক ইমেইল অনুস্মারক চালু করুন",
+  "settingsRemindersToggleHintEnabled": "আপনার অ্যাকাউন্টের ইমেইলে প্রতিটি ধাপের জন্য একবার করে অনুস্মারক পাঠানো হবে।",
+  "settingsRemindersToggleHintDisabled": "ইমেইল অনুস্মারক বর্তমানে বন্ধ আছে। আপনার সার্কুলার অক্ষুণ্ণ রেখে যেকোনো সময় চালু করতে পারবেন।",
+  "settingsRemindersLanguageTitle": "অনুস্মারক ইমেইলের ভাষা",
+  "settingsRemindersLanguageSubtitle": "দৈনিক অনুস্মারক ইমেইল কোন ভাষায় পাঠানো হবে তা নির্বাচন করুন।",
+  "settingsRemindersSaveError": "অনুস্মারক সেটিংস সংরক্ষণ করা যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।",
+  "settingsRemindersLoadError": "অনুস্মারক সেটিংস লোড করা যায়নি।",
+  "settingsRemindersOfflineHint": "সব ডিভাইসে ইমেইল অনুস্মারক সংরক্ষণ করতে সুপাবেস সংযুক্ত করুন।"
 }

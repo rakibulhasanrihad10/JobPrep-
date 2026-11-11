@@ -1978,4 +1978,40 @@ class AppLocalizationsBn extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get settingsRemindersTitle => 'ইমেইল অনুস্মারক';
+
+  @override
+  String get settingsRemindersSubtitle =>
+      'সার্কুলারের শেষ তারিখ ও পরীক্ষার ৭, ৩ এবং ১ দিন আগে দৈনিক ইমেইল অনুস্মারক পান।';
+
+  @override
+  String get settingsRemindersToggleLabel => 'দৈনিক ইমেইল অনুস্মারক চালু করুন';
+
+  @override
+  String get settingsRemindersToggleHintEnabled =>
+      'আপনার অ্যাকাউন্টের ইমেইলে প্রতিটি ধাপের জন্য একবার করে অনুস্মারক পাঠানো হবে।';
+
+  @override
+  String get settingsRemindersToggleHintDisabled =>
+      'ইমেইল অনুস্মারক বর্তমানে বন্ধ আছে। আপনার সার্কুলার অক্ষুণ্ণ রেখে যেকোনো সময় চালু করতে পারবেন।';
+
+  @override
+  String get settingsRemindersLanguageTitle => 'অনুস্মারক ইমেইলের ভাষা';
+
+  @override
+  String get settingsRemindersLanguageSubtitle =>
+      'দৈনিক অনুস্মারক ইমেইল কোন ভাষায় পাঠানো হবে তা নির্বাচন করুন।';
+
+  @override
+  String get settingsRemindersSaveError =>
+      'অনুস্মারক সেটিংস সংরক্ষণ করা যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।';
+
+  @override
+  String get settingsRemindersLoadError => 'অনুস্মারক সেটিংস লোড করা যায়নি।';
+
+  @override
+  String get settingsRemindersOfflineHint =>
+      'সব ডিভাইসে ইমেইল অনুস্মারক সংরক্ষণ করতে সুপাবেস সংযুক্ত করুন।';
 }
