@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart' show immutable;
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 
 /// Immutable domain entity representing a study session progress log
 /// (`public.progress_logs`).
@@ -11,6 +12,7 @@ class ProgressLog {
     this.userId = '',
     this.materialId = '',
     this.unitsDone = 0,
+    this.entryType = ProgressLogEntryType.study,
     this.note,
     this.createdAt,
     this.updatedAt,
@@ -27,10 +29,13 @@ class ProgressLog {
   /// Parent material identifier (`progress_logs.material_id`).
   final String materialId;
 
-  /// Units completed (or delta adjustment) recorded in this log entry.
+  /// Units completed (or negative delta correction) recorded in this entry.
   final int unitsDone;
 
-  /// Calendar date (`progress_logs.logged_on`) when units were completed.
+  /// Whether this entry counts as `study` work or a `correction` adjustment.
+  final ProgressLogEntryType entryType;
+
+  /// Calendar date (`progress_logs.logged_on`) when units were logged.
   final DateTime loggedOn;
 
   /// Optional study note or chapter reference.
@@ -42,12 +47,20 @@ class ProgressLog {
   /// Last update timestamp managed by PostgreSQL.
   final DateTime? updatedAt;
 
+  /// Whether this log represents studied units (`entryType == study`).
+  bool get isStudy => entryType == ProgressLogEntryType.study;
+
+  /// Whether this log represents a position correction
+  /// (`entryType == correction`).
+  bool get isCorrection => entryType == ProgressLogEntryType.correction;
+
   /// Returns a copy of this [ProgressLog] with specified fields overridden.
   ProgressLog copyWith({
     String? id,
     String? userId,
     String? materialId,
     int? unitsDone,
+    ProgressLogEntryType? entryType,
     DateTime? loggedOn,
     Object? note = _unset,
     Object? createdAt = _unset,
@@ -58,6 +71,7 @@ class ProgressLog {
       userId: userId ?? this.userId,
       materialId: materialId ?? this.materialId,
       unitsDone: unitsDone ?? this.unitsDone,
+      entryType: entryType ?? this.entryType,
       loggedOn: loggedOn ?? this.loggedOn,
       note: identical(note, _unset) ? this.note : note as String?,
       createdAt: identical(createdAt, _unset)
@@ -77,6 +91,7 @@ class ProgressLog {
         other.userId == userId &&
         other.materialId == materialId &&
         other.unitsDone == unitsDone &&
+        other.entryType == entryType &&
         other.loggedOn == loggedOn &&
         other.note == note &&
         other.createdAt == createdAt &&
@@ -89,6 +104,7 @@ class ProgressLog {
         userId,
         materialId,
         unitsDone,
+        entryType,
         loggedOn,
         note,
         createdAt,

@@ -206,7 +206,7 @@ abstract final class DashboardMetricsCalculator {
       final subject = subjectById[material.subjectId];
       if (subject == null) continue;
 
-      if (log.unitsDone > 0) {
+      if (log.isStudy && log.unitsDone > 0) {
         return DashboardContinueStudying(
           subject: subject,
           material: material,
@@ -214,7 +214,9 @@ abstract final class DashboardMetricsCalculator {
           materialProgress: calculateMaterialProgress(material),
         );
       }
-      fallbackMatch ??= log;
+      if (log.isStudy) {
+        fallbackMatch ??= log;
+      }
     }
 
     if (fallbackMatch != null) {

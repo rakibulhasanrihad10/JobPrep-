@@ -4837,6 +4837,176 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'More'**
   String get prepAnalyticsHeatmapMore;
+
+  /// Toggle chip switching subject detail view to all materials
+  ///
+  /// In en, this message translates to:
+  /// **'All materials'**
+  String get prepSubjectViewAllMaterials;
+
+  /// Toggle chip switching subject detail view to the side-by-side books shelf
+  ///
+  /// In en, this message translates to:
+  /// **'Books shelf ({count})'**
+  String prepSubjectViewBooksShelf(String count);
+
+  /// Action button on a book card opening the interactive 3D book progress view
+  ///
+  /// In en, this message translates to:
+  /// **'Book view'**
+  String get prepOpenBookView;
+
+  /// Heading above the side-by-side grid of book covers for a subject
+  ///
+  /// In en, this message translates to:
+  /// **'Books shelf'**
+  String get prepBooksShelfTitle;
+
+  /// Helper text displayed on the Books shelf screen
+  ///
+  /// In en, this message translates to:
+  /// **'Tap any book to update your position with the bookmark or page field.'**
+  String get prepBooksShelfSubtitle;
+
+  /// Empty state headline on the Books shelf view when a subject has zero book materials
+  ///
+  /// In en, this message translates to:
+  /// **'No books in {subject} yet'**
+  String prepBooksShelfEmptyTitle(String subject);
+
+  /// Empty state body on the Books shelf view
+  ///
+  /// In en, this message translates to:
+  /// **'Add a study material with kind Book to arrange it on your shelf.'**
+  String get prepBooksShelfEmptyBody;
+
+  /// Button label inside the Books shelf empty state to add a book
+  ///
+  /// In en, this message translates to:
+  /// **'Add book'**
+  String get prepAddBookButton;
+
+  /// Leading label before the current page input field inside BookProgressView
+  ///
+  /// In en, this message translates to:
+  /// **'I am at page'**
+  String get bookProgressPositionPrefix;
+
+  /// Trailing label after the current page input field inside BookProgressView
+  ///
+  /// In en, this message translates to:
+  /// **'of {total}'**
+  String bookProgressPositionSuffix(String total);
+
+  /// Submit button saving the entered page position inside BookProgressView
+  ///
+  /// In en, this message translates to:
+  /// **'Save page'**
+  String get bookProgressSavePosition;
+
+  /// Completed and total units summary displayed with BookProgressView
+  ///
+  /// In en, this message translates to:
+  /// **'{current} / {total} {unitLabel}'**
+  String bookProgressUnitSummary(
+      String current, String total, String unitLabel);
+
+  /// Percentage readout rendered on a book progress badge
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}%'**
+  String bookProgressPercentLabel(String percent);
+
+  /// Last updated date label displayed cleanly on the book card
+  ///
+  /// In en, this message translates to:
+  /// **'Updated {date}'**
+  String bookProgressUpdatedOn(String date);
+
+  /// Caption guiding bookmark dragging and quick page entry
+  ///
+  /// In en, this message translates to:
+  /// **'Drag the bookmark or enter your page number'**
+  String get bookProgressDragHint;
+
+  /// Accessibility label for the draggable book ribbon bookmark
+  ///
+  /// In en, this message translates to:
+  /// **'Book position bookmark'**
+  String get bookProgressBookmarkSemantics;
+
+  /// Validation error shown when submitting an empty book page input
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a page number'**
+  String get bookProgressErrorEmpty;
+
+  /// Validation error shown when book page input is not a whole integer
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a whole page number'**
+  String get bookProgressErrorWholeNumber;
+
+  /// Validation error shown when book page input is below zero
+  ///
+  /// In en, this message translates to:
+  /// **'Page number cannot be negative'**
+  String get bookProgressErrorBelowZero;
+
+  /// Validation error shown when entered page is greater than total pages
+  ///
+  /// In en, this message translates to:
+  /// **'Page cannot exceed {total}'**
+  String bookProgressErrorExceedsTotal(String total);
+
+  /// Confirmation dialog title shown when entered page is below current position
+  ///
+  /// In en, this message translates to:
+  /// **'Save position correction?'**
+  String get bookProgressConfirmCorrectionTitle;
+
+  /// Explanation shown when lowering the current page position to confirm saving a correction log
+  ///
+  /// In en, this message translates to:
+  /// **'You are moving back from page {fromPage} to page {toPage} ({delta} {unitLabel}). This updates your book position without counting as studied units in your study plan or analytics.'**
+  String bookProgressConfirmCorrectionBody(
+      String fromPage, String toPage, String delta, String unitLabel);
+
+  /// Primary confirm button label for saving a downward position correction
+  ///
+  /// In en, this message translates to:
+  /// **'Save correction'**
+  String get bookProgressConfirmCorrectionAction;
+
+  /// Feedback banner shown after saving a downward book position correction
+  ///
+  /// In en, this message translates to:
+  /// **'Updated position to {page} (correction)'**
+  String bookProgressCorrectionSaved(String page);
+
+  /// Feedback banner shown after saving a forward page jump as a study log
+  ///
+  /// In en, this message translates to:
+  /// **'Logged +{delta} {unitLabel}'**
+  String bookProgressStudySaved(String delta, String unitLabel);
+
+  /// Action button inside book view opening full progress log history
+  ///
+  /// In en, this message translates to:
+  /// **'Log history'**
+  String get bookProgressHistoryButton;
+
+  /// Badge identifying correction entries inside past progress logs
+  ///
+  /// In en, this message translates to:
+  /// **'Correction'**
+  String get prepLogEntryTypeCorrectionBadge;
+
+  /// Generic close button label for dialogs
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get prepCloseButton;
 }
 
 class _AppLocalizationsDelegate

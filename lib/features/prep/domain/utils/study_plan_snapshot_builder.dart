@@ -51,6 +51,7 @@ StudyPlanSnapshot assembleStudyPlanSnapshot({
   var todayCompletedRaw = 0;
   for (final log in recentLogs) {
     if (!activeMaterialIds.contains(log.materialId)) continue;
+    if (!log.isStudy) continue;
     if (StudyPlanCalculator.normalizeUtcDate(log.loggedOn) == todayDay &&
         log.unitsDone > 0) {
       todayCompletedRaw += log.unitsDone;

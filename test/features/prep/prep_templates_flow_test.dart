@@ -135,7 +135,10 @@ void main() {
       expect(find.textContaining('0 / 320'), findsOneWidget);
 
       // Open Templates dialog and double-apply Software Engineer.
-      await tester.tap(find.byKey(const ValueKey('open-templates-button')));
+      final openTemplatesBtn =
+          find.byKey(const ValueKey('open-templates-button'));
+      await tester.ensureVisible(openTemplatesBtn);
+      await tester.tap(openTemplatesBtn);
       await tester.pumpAndSettle();
       final appliedBadge = find.byKey(
         const ValueKey('template-applied-badge-software_engineer'),

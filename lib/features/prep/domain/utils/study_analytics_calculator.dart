@@ -56,7 +56,7 @@ abstract final class StudyAnalyticsCalculator {
   }) {
     final totals = <DateTime, int>{};
     for (final log in logs) {
-      if (log.unitsDone <= 0) continue;
+      if (!log.isStudy || log.unitsDone <= 0) continue;
       final day = resolveLogLocalDate(log, localOffset: localOffset);
       totals[day] = (totals[day] ?? 0) + log.unitsDone;
     }

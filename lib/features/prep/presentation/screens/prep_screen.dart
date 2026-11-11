@@ -15,6 +15,7 @@ import 'package:job_prep/features/prep/presentation/providers/prep_template_prov
 import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_screen.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_template_ui_helpers.dart';
+import 'package:job_prep/features/prep/presentation/widgets/books_shelf_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/mock_tests_tab_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_delete_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_overview_header_card.dart';
@@ -35,6 +36,7 @@ class PrepScreen extends ConsumerStatefulWidget {
     this.selectedSubjectId,
     this.initialMaterialId,
     this.initialTab = PrepSectionTab.subjects,
+    this.initialSubjectViewMode = PrepSubjectViewMode.allMaterials,
   });
 
   /// Optional pre-selected subject displayed in desktop master-detail mode.
@@ -45,6 +47,9 @@ class PrepScreen extends ConsumerStatefulWidget {
 
   /// Initial section tab displayed when mounting [PrepScreen].
   final PrepSectionTab initialTab;
+
+  /// Initial view mode for the selected subject on desktop routes.
+  final PrepSubjectViewMode initialSubjectViewMode;
 
   @override
   ConsumerState<PrepScreen> createState() => _PrepScreenState();
@@ -331,6 +336,7 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
               selectedSubject: selectedSubject,
               routeSubjectId: widget.selectedSubjectId,
               initialMaterialId: widget.initialMaterialId,
+              initialViewMode: widget.initialSubjectViewMode,
               tabVisitId: _tabVisitId,
               headerCard: headerCard,
               plansSection: plansSection,

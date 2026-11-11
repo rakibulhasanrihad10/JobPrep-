@@ -2858,4 +2858,113 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get prepAnalyticsHeatmapMore => 'More';
+
+  @override
+  String get prepSubjectViewAllMaterials => 'All materials';
+
+  @override
+  String prepSubjectViewBooksShelf(String count) {
+    return 'Books shelf ($count)';
+  }
+
+  @override
+  String get prepOpenBookView => 'Book view';
+
+  @override
+  String get prepBooksShelfTitle => 'Books shelf';
+
+  @override
+  String get prepBooksShelfSubtitle =>
+      'Tap any book to update your position with the bookmark or page field.';
+
+  @override
+  String prepBooksShelfEmptyTitle(String subject) {
+    return 'No books in $subject yet';
+  }
+
+  @override
+  String get prepBooksShelfEmptyBody =>
+      'Add a study material with kind Book to arrange it on your shelf.';
+
+  @override
+  String get prepAddBookButton => 'Add book';
+
+  @override
+  String get bookProgressPositionPrefix => 'I am at page';
+
+  @override
+  String bookProgressPositionSuffix(String total) {
+    return 'of $total';
+  }
+
+  @override
+  String get bookProgressSavePosition => 'Save page';
+
+  @override
+  String bookProgressUnitSummary(
+      String current, String total, String unitLabel) {
+    return '$current / $total $unitLabel';
+  }
+
+  @override
+  String bookProgressPercentLabel(String percent) {
+    return '$percent%';
+  }
+
+  @override
+  String bookProgressUpdatedOn(String date) {
+    return 'Updated $date';
+  }
+
+  @override
+  String get bookProgressDragHint =>
+      'Drag the bookmark or enter your page number';
+
+  @override
+  String get bookProgressBookmarkSemantics => 'Book position bookmark';
+
+  @override
+  String get bookProgressErrorEmpty => 'Enter a page number';
+
+  @override
+  String get bookProgressErrorWholeNumber => 'Enter a whole page number';
+
+  @override
+  String get bookProgressErrorBelowZero => 'Page number cannot be negative';
+
+  @override
+  String bookProgressErrorExceedsTotal(String total) {
+    return 'Page cannot exceed $total';
+  }
+
+  @override
+  String get bookProgressConfirmCorrectionTitle => 'Save position correction?';
+
+  @override
+  String bookProgressConfirmCorrectionBody(
+      String fromPage, String toPage, String delta, String unitLabel) {
+    return 'You are moving back from page $fromPage to page $toPage ($delta $unitLabel). This updates your book position without counting as studied units in your study plan or analytics.';
+  }
+
+  @override
+  String get bookProgressConfirmCorrectionAction => 'Save correction';
+
+  @override
+  String bookProgressCorrectionSaved(String page) {
+    return 'Updated position to $page (correction)';
+  }
+
+  @override
+  String bookProgressStudySaved(String delta, String unitLabel) {
+    return 'Logged +$delta $unitLabel';
+  }
+
+  @override
+  String get bookProgressHistoryButton => 'Log history';
+
+  @override
+  String get prepLogEntryTypeCorrectionBadge => 'Correction';
+
+  @override
+  String get prepCloseButton => 'Close';
 }

@@ -22,6 +22,7 @@ class MaterialCard extends StatelessWidget {
     super.key,
     this.isLogging = false,
     this.replayKey,
+    this.onOpenBookView,
   });
 
   /// Material entity rendered by this cover card.
@@ -47,6 +48,9 @@ class MaterialCard extends StatelessWidget {
 
   /// Opens custom progress log & history dialog.
   final VoidCallback onOpenLogs;
+
+  /// Optional callback opening interactive 3D book view for books.
+  final VoidCallback? onOpenBookView;
 
   @override
   Widget build(BuildContext context) {
@@ -226,6 +230,46 @@ class MaterialCard extends StatelessWidget {
                   ),
                 ),
               ),
+              if (onOpenBookView != null)
+                InkWell(
+                  key: ValueKey('material-book-view-${material.id}'),
+                  borderRadius: radii.buttonRadius,
+                  onTap: isLogging ? null : onOpenBookView,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: spacing.sm,
+                      vertical: spacing.xs,
+                    ),
+                    decoration: BoxDecoration(
+                      color: colors.surfaceElevated,
+                      borderRadius: radii.buttonRadius,
+                      border: Border.all(
+                        color: colors.goldAccent.withValues(alpha: 0.60),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.menu_book_outlined,
+                          size: spacing.md,
+                          color: colors.goldAccent,
+                        ),
+                        SizedBox(width: spacing.xs),
+                        Flexible(
+                          child: Text(
+                            l10n.prepOpenBookView,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: tokens.textStyles.labelMedium.copyWith(
+                              color: colors.textPrimary,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
             ],
           ),
         ],

@@ -7,6 +7,8 @@ export 'app_nav_item.dart';
 export 'app_nav_rail.dart';
 export 'app_scaffold.dart';
 export 'app_sidebar_nav.dart';
+export 'book_progress_3d_canvas.dart';
+export 'book_progress_view.dart';
 export 'fade_slide_in.dart';
 export 'glass_button.dart';
 export 'glass_card.dart';

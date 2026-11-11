@@ -2852,4 +2852,114 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get prepAnalyticsHeatmapMore => 'বেশি';
+
+  @override
+  String get prepSubjectViewAllMaterials => 'সব উপকরণ';
+
+  @override
+  String prepSubjectViewBooksShelf(String count) {
+    return 'বইয়ের তাক ($count)';
+  }
+
+  @override
+  String get prepOpenBookView => 'বই দেখুন';
+
+  @override
+  String get prepBooksShelfTitle => 'বইয়ের তাক';
+
+  @override
+  String get prepBooksShelfSubtitle =>
+      'বুকমার্ক টেনে বা পৃষ্ঠা লিখে অগ্রগতি ঠিক করতে যেকোনো বইয়ে ট্যাপ করুন।';
+
+  @override
+  String prepBooksShelfEmptyTitle(String subject) {
+    return '$subject-এ এখনো কোনো বই নেই';
+  }
+
+  @override
+  String get prepBooksShelfEmptyBody =>
+      'শেল্ফে দেখতে \'বই\' ধরনের একটি স্টাডি উপকরণ যোগ করুন।';
+
+  @override
+  String get prepAddBookButton => 'বই যোগ করুন';
+
+  @override
+  String get bookProgressPositionPrefix => 'আমি আছি পৃষ্ঠা';
+
+  @override
+  String bookProgressPositionSuffix(String total) {
+    return '/ মোট $total';
+  }
+
+  @override
+  String get bookProgressSavePosition => 'সংরক্ষণ করুন';
+
+  @override
+  String bookProgressUnitSummary(
+      String current, String total, String unitLabel) {
+    return '$current / $total $unitLabel';
+  }
+
+  @override
+  String bookProgressPercentLabel(String percent) {
+    return '$percent%';
+  }
+
+  @override
+  String bookProgressUpdatedOn(String date) {
+    return 'আপডেট: $date';
+  }
+
+  @override
+  String get bookProgressDragHint => 'বুকমার্ক টানুন বা পৃষ্ঠা নম্বর লিখুন';
+
+  @override
+  String get bookProgressBookmarkSemantics => 'বইয়ের অবস্থান বুকমার্ক';
+
+  @override
+  String get bookProgressErrorEmpty => 'পৃষ্ঠা নম্বর লিখুন';
+
+  @override
+  String get bookProgressErrorWholeNumber =>
+      'পূর্ণ সংখ্যায় পৃষ্ঠা নম্বর লিখুন';
+
+  @override
+  String get bookProgressErrorBelowZero => 'পৃষ্ঠা নম্বর ঋণাত্মক হতে পারবে না';
+
+  @override
+  String bookProgressErrorExceedsTotal(String total) {
+    return 'পৃষ্ঠা $total-এর বেশি হতে পারবে না';
+  }
+
+  @override
+  String get bookProgressConfirmCorrectionTitle =>
+      'অবস্থান সংশোধন সংরক্ষণ করবেন?';
+
+  @override
+  String bookProgressConfirmCorrectionBody(
+      String fromPage, String toPage, String delta, String unitLabel) {
+    return 'আপনি পৃষ্ঠা $fromPage থেকে পৃষ্ঠা $toPage-এ ($delta $unitLabel) ফিরে যাচ্ছেন। এটি স্টাডি প্ল্যান বা অ্যানালিটিক্সে পড়া ইউনিট হিসেবে গণনা না করেই বইয়ের অবস্থান হালনাগাদ করবে।';
+  }
+
+  @override
+  String get bookProgressConfirmCorrectionAction => 'সংশোধন সংরক্ষণ';
+
+  @override
+  String bookProgressCorrectionSaved(String page) {
+    return '$page নং অবস্থানে সংশোধন সংরক্ষিত হয়েছে';
+  }
+
+  @override
+  String bookProgressStudySaved(String delta, String unitLabel) {
+    return '+$delta $unitLabel লগ করা হয়েছে';
+  }
+
+  @override
+  String get bookProgressHistoryButton => 'লগের ইতিহাস';
+
+  @override
+  String get prepLogEntryTypeCorrectionBadge => 'সংশোধন';
+
+  @override
+  String get prepCloseButton => 'বন্ধ করুন';
 }

@@ -3853,5 +3853,185 @@
   "prepAnalyticsHeatmapMore": "More",
   "@prepAnalyticsHeatmapMore": {
     "description": "Heatmap intensity legend high label"
+  },
+  "prepSubjectViewAllMaterials": "All materials",
+  "@prepSubjectViewAllMaterials": {
+    "description": "Toggle chip switching subject detail view to all materials"
+  },
+  "prepSubjectViewBooksShelf": "Books shelf ({count})",
+  "@prepSubjectViewBooksShelf": {
+    "description": "Toggle chip switching subject detail view to the side-by-side books shelf",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "prepOpenBookView": "Book view",
+  "@prepOpenBookView": {
+    "description": "Action button on a book card opening the interactive 3D book progress view"
+  },
+  "prepBooksShelfTitle": "Books shelf",
+  "@prepBooksShelfTitle": {
+    "description": "Heading above the side-by-side grid of book covers for a subject"
+  },
+  "prepBooksShelfSubtitle": "Tap any book to update your position with the bookmark or page field.",
+  "@prepBooksShelfSubtitle": {
+    "description": "Helper text displayed on the Books shelf screen"
+  },
+  "prepBooksShelfEmptyTitle": "No books in {subject} yet",
+  "@prepBooksShelfEmptyTitle": {
+    "description": "Empty state headline on the Books shelf view when a subject has zero book materials",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      }
+    }
+  },
+  "prepBooksShelfEmptyBody": "Add a study material with kind Book to arrange it on your shelf.",
+  "@prepBooksShelfEmptyBody": {
+    "description": "Empty state body on the Books shelf view"
+  },
+  "prepAddBookButton": "Add book",
+  "@prepAddBookButton": {
+    "description": "Button label inside the Books shelf empty state to add a book"
+  },
+  "bookProgressPositionPrefix": "I am at page",
+  "@bookProgressPositionPrefix": {
+    "description": "Leading label before the current page input field inside BookProgressView"
+  },
+  "bookProgressPositionSuffix": "of {total}",
+  "@bookProgressPositionSuffix": {
+    "description": "Trailing label after the current page input field inside BookProgressView",
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressSavePosition": "Save page",
+  "@bookProgressSavePosition": {
+    "description": "Submit button saving the entered page position inside BookProgressView"
+  },
+  "bookProgressUnitSummary": "{current} / {total} {unitLabel}",
+  "@bookProgressUnitSummary": {
+    "description": "Completed and total units summary displayed with BookProgressView",
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressPercentLabel": "{percent}%",
+  "@bookProgressPercentLabel": {
+    "description": "Percentage readout rendered on a book progress badge",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressUpdatedOn": "Updated {date}",
+  "@bookProgressUpdatedOn": {
+    "description": "Last updated date label displayed cleanly on the book card",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressDragHint": "Drag the bookmark or enter your page number",
+  "@bookProgressDragHint": {
+    "description": "Caption guiding bookmark dragging and quick page entry"
+  },
+  "bookProgressBookmarkSemantics": "Book position bookmark",
+  "@bookProgressBookmarkSemantics": {
+    "description": "Accessibility label for the draggable book ribbon bookmark"
+  },
+  "bookProgressErrorEmpty": "Enter a page number",
+  "@bookProgressErrorEmpty": {
+    "description": "Validation error shown when submitting an empty book page input"
+  },
+  "bookProgressErrorWholeNumber": "Enter a whole page number",
+  "@bookProgressErrorWholeNumber": {
+    "description": "Validation error shown when book page input is not a whole integer"
+  },
+  "bookProgressErrorBelowZero": "Page number cannot be negative",
+  "@bookProgressErrorBelowZero": {
+    "description": "Validation error shown when book page input is below zero"
+  },
+  "bookProgressErrorExceedsTotal": "Page cannot exceed {total}",
+  "@bookProgressErrorExceedsTotal": {
+    "description": "Validation error shown when entered page is greater than total pages",
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressConfirmCorrectionTitle": "Save position correction?",
+  "@bookProgressConfirmCorrectionTitle": {
+    "description": "Confirmation dialog title shown when entered page is below current position"
+  },
+  "bookProgressConfirmCorrectionBody": "You are moving back from page {fromPage} to page {toPage} ({delta} {unitLabel}). This updates your book position without counting as studied units in your study plan or analytics.",
+  "@bookProgressConfirmCorrectionBody": {
+    "description": "Explanation shown when lowering the current page position to confirm saving a correction log",
+    "placeholders": {
+      "fromPage": {
+        "type": "String"
+      },
+      "toPage": {
+        "type": "String"
+      },
+      "delta": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressConfirmCorrectionAction": "Save correction",
+  "@bookProgressConfirmCorrectionAction": {
+    "description": "Primary confirm button label for saving a downward position correction"
+  },
+  "bookProgressCorrectionSaved": "Updated position to {page} (correction)",
+  "@bookProgressCorrectionSaved": {
+    "description": "Feedback banner shown after saving a downward book position correction",
+    "placeholders": {
+      "page": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressStudySaved": "Logged +{delta} {unitLabel}",
+  "@bookProgressStudySaved": {
+    "description": "Feedback banner shown after saving a forward page jump as a study log",
+    "placeholders": {
+      "delta": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressHistoryButton": "Log history",
+  "@bookProgressHistoryButton": {
+    "description": "Action button inside book view opening full progress log history"
+  },
+  "prepLogEntryTypeCorrectionBadge": "Correction",
+  "@prepLogEntryTypeCorrectionBadge": {
+    "description": "Badge identifying correction entries inside past progress logs"
+  },
+  "prepCloseButton": "Close",
+  "@prepCloseButton": {
+    "description": "Generic close button label for dialogs"
   }
 }

@@ -17,6 +17,7 @@ import 'package:job_prep/features/circulars/presentation/widgets/quick_capture_s
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_screen.dart';
+import 'package:job_prep/features/prep/presentation/widgets/books_shelf_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_tab_switcher.dart';
 import 'package:job_prep/features/settings/presentation/screens/settings_screen.dart';
 
@@ -186,13 +187,33 @@ final routerProvider = Provider<GoRouter>((ref) {
                   final subjectId = state.pathParameters['subjectId']!;
                   final initialMaterialId =
                       state.uri.queryParameters['material'];
+                  final initialView =
+                      state.uri.queryParameters['view'] == 'books'
+                          ? PrepSubjectViewMode.booksShelf
+                          : PrepSubjectViewMode.allMaterials;
                   return NoTransitionPage(
                     child: PrepSubjectDetailScreen(
                       subjectId: subjectId,
                       initialMaterialId: initialMaterialId,
+                      initialViewMode: initialView,
                     ),
                   );
                 },
+                routes: [
+                  GoRoute(
+                    path: 'books',
+                    name: 'prep_subject_books',
+                    pageBuilder: (context, state) {
+                      final subjectId = state.pathParameters['subjectId']!;
+                      return NoTransitionPage(
+                        child: PrepSubjectDetailScreen(
+                          subjectId: subjectId,
+                          initialViewMode: PrepSubjectViewMode.booksShelf,
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
           ),

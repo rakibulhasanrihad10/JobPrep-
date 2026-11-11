@@ -7,9 +7,10 @@ import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
+import 'package:job_prep/features/prep/presentation/widgets/books_shelf_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_subject_detail_view.dart';
 
-/// Responsive route widget for `/prep/:subjectId`.
+/// Responsive route widget for `/prep/:subjectId` and `/prep/:subjectId/books`.
 ///
 /// Renders [PrepScreen] in a desktop master-detail split on expanded viewports
 /// (> 1024 px), and a full-screen scrollable materials showcase on mobile.
@@ -18,6 +19,7 @@ class PrepSubjectDetailScreen extends ConsumerStatefulWidget {
   const PrepSubjectDetailScreen({
     required this.subjectId,
     this.initialMaterialId,
+    this.initialViewMode = PrepSubjectViewMode.allMaterials,
     super.key,
   });
 
@@ -26,6 +28,9 @@ class PrepSubjectDetailScreen extends ConsumerStatefulWidget {
 
   /// Optional study material identifier to open immediately in the logs sheet.
   final String? initialMaterialId;
+
+  /// Initial materials vs Books shelf display mode.
+  final PrepSubjectViewMode initialViewMode;
 
   @override
   ConsumerState<PrepSubjectDetailScreen> createState() =>
@@ -67,6 +72,7 @@ class _PrepSubjectDetailScreenState
       return PrepScreen(
         selectedSubjectId: widget.subjectId,
         initialMaterialId: widget.initialMaterialId,
+        initialSubjectViewMode: widget.initialViewMode,
       );
     }
 
@@ -106,6 +112,7 @@ class _PrepSubjectDetailScreenState
           : PrepSubjectDetailView(
               subject: subject,
               initialMaterialId: widget.initialMaterialId,
+              initialViewMode: widget.initialViewMode,
               replayKey: 'mobile-detail-$_visitId-${widget.subjectId}',
               onBack: _navigateBack,
               onSubjectDeleted: _navigateBack,

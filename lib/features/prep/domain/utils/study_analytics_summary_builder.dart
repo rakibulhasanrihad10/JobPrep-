@@ -82,7 +82,7 @@ abstract final class StudyAnalyticsSummaryBuilder {
     var grandTotalUnits = 0;
 
     for (final log in logsInRange) {
-      if (log.unitsDone <= 0) continue;
+      if (!log.isStudy || log.unitsDone <= 0) continue;
       final subjectId = subjectByMaterialId[log.materialId];
       if (subjectId == null || subjectId.isEmpty) continue;
       unitsBySubject[subjectId] =
@@ -168,7 +168,7 @@ abstract final class StudyAnalyticsSummaryBuilder {
 
     final logsInRange = <ProgressLog>[
       for (final log in scopedLogs)
-        if (log.unitsDone > 0)
+        if (log.isStudy && log.unitsDone > 0)
           if (!_isOutsideRange(
             StudyAnalyticsCalculator.resolveLogLocalDate(
               log,

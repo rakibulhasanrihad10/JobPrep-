@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/fade_slide_in.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
+import 'package:job_prep/features/prep/presentation/widgets/books_shelf_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_subject_detail_view.dart';
 
 /// Responsive Subjects tab body inside `PrepScreen` supporting both expanded
@@ -21,6 +22,7 @@ class PrepSubjectsBody extends StatelessWidget {
     required this.subjectsSection,
     required this.onSubjectDeleted,
     super.key,
+    this.initialViewMode = PrepSubjectViewMode.allMaterials,
   });
 
   /// Whether expanded master-detail layout is active.
@@ -56,6 +58,9 @@ class PrepSubjectsBody extends StatelessWidget {
   /// Callback triggered when the inspected subject is deleted.
   final VoidCallback onSubjectDeleted;
 
+  /// Initial view mode applied to the selected subject on desktop routes.
+  final PrepSubjectViewMode initialViewMode;
+
   @override
   Widget build(BuildContext context) {
     final spacing = context.tokens.spacing;
@@ -89,6 +94,9 @@ class PrepSubjectsBody extends StatelessWidget {
                     initialMaterialId: detailSubject.id == routeSubjectId
                         ? initialMaterialId
                         : null,
+                    initialViewMode: detailSubject.id == routeSubjectId
+                        ? initialViewMode
+                        : PrepSubjectViewMode.allMaterials,
                     replayKey: 'detail-visit-$tabVisitId-${detailSubject.id}',
                     onSubjectDeleted: onSubjectDeleted,
                   ),

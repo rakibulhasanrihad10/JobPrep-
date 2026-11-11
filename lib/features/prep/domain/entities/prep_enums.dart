@@ -62,3 +62,33 @@ enum TopicStatus {
     return tryParse(raw) ?? fallback;
   }
 }
+
+/// Entry classification matching `public.progress_logs.entry_type` constraint.
+enum ProgressLogEntryType {
+  study('study'),
+  correction('correction');
+
+  const ProgressLogEntryType(this.value);
+
+  /// Database string value persisted in PostgreSQL.
+  final String value;
+
+  /// Parses [raw] into a [ProgressLogEntryType], or returns `null` when
+  /// unrecognized.
+  static ProgressLogEntryType? tryParse(String? raw) {
+    final normalized = raw?.trim().toLowerCase();
+    if (normalized == null || normalized.isEmpty) return null;
+    for (final item in ProgressLogEntryType.values) {
+      if (item.value == normalized) return item;
+    }
+    return null;
+  }
+
+  /// Parses [raw] into a [ProgressLogEntryType], falling back to [fallback].
+  static ProgressLogEntryType fromValue(
+    String? raw, {
+    ProgressLogEntryType fallback = ProgressLogEntryType.study,
+  }) {
+    return tryParse(raw) ?? fallback;
+  }
+}
