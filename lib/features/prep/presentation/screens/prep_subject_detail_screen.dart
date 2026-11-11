@@ -17,11 +17,15 @@ class PrepSubjectDetailScreen extends ConsumerStatefulWidget {
   /// Creates a [PrepSubjectDetailScreen].
   const PrepSubjectDetailScreen({
     required this.subjectId,
+    this.initialMaterialId,
     super.key,
   });
 
   /// Selected subject identifier.
   final String subjectId;
+
+  /// Optional study material identifier to open immediately in the logs sheet.
+  final String? initialMaterialId;
 
   @override
   ConsumerState<PrepSubjectDetailScreen> createState() =>
@@ -60,7 +64,10 @@ class _PrepSubjectDetailScreenState
     final viewportWidth = MediaQuery.sizeOf(context).width;
 
     if (breakpoints.isExpanded(viewportWidth)) {
-      return PrepScreen(selectedSubjectId: widget.subjectId);
+      return PrepScreen(
+        selectedSubjectId: widget.subjectId,
+        initialMaterialId: widget.initialMaterialId,
+      );
     }
 
     final horizontalPad =
@@ -98,6 +105,7 @@ class _PrepSubjectDetailScreenState
             )
           : PrepSubjectDetailView(
               subject: subject,
+              initialMaterialId: widget.initialMaterialId,
               replayKey: 'mobile-detail-$_visitId-${widget.subjectId}',
               onBack: _navigateBack,
               onSubjectDeleted: _navigateBack,

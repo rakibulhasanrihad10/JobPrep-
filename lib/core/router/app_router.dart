@@ -176,8 +176,13 @@ final routerProvider = Provider<GoRouter>((ref) {
                 name: 'prep_subject',
                 pageBuilder: (context, state) {
                   final subjectId = state.pathParameters['subjectId']!;
+                  final initialMaterialId =
+                      state.uri.queryParameters['material'];
                   return NoTransitionPage(
-                    child: PrepSubjectDetailScreen(subjectId: subjectId),
+                    child: PrepSubjectDetailScreen(
+                      subjectId: subjectId,
+                      initialMaterialId: initialMaterialId,
+                    ),
                   );
                 },
               ),

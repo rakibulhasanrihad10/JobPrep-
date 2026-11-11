@@ -24,11 +24,12 @@ import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.
 
 /// Displays header, progress ring, and responsive cover cards grid (3-up on
 /// desktop, 2-column on mobile) with quick & custom study progress logging.
-class PrepSubjectDetailView extends ConsumerWidget {
+class PrepSubjectDetailView extends ConsumerStatefulWidget {
   /// Creates a [PrepSubjectDetailView].
   const PrepSubjectDetailView({
     required this.subject,
     super.key,
+    this.initialMaterialId,
     this.onBack,
     this.onSubjectDeleted,
     this.replayKey,
@@ -36,6 +37,9 @@ class PrepSubjectDetailView extends ConsumerWidget {
 
   /// Subject currently inspected.
   final Subject subject;
+
+  /// Optional study material identifier to open automatically once loaded.
+  final String? initialMaterialId;
 
   /// Optional back action shown on compact mobile routes.
   final VoidCallback? onBack;
@@ -46,13 +50,47 @@ class PrepSubjectDetailView extends ConsumerWidget {
   /// Key controlling animation replay on tab switch or subject selection.
   final Object? replayKey;
 
+  @override
+  ConsumerState<PrepSubjectDetailView> createState() =>
+      _PrepSubjectDetailViewState();
+}
+
+class _PrepSubjectDetailViewState extends ConsumerState<PrepSubjectDetailView> {
+  String? _handledInitialMaterialId;
+
+  void _maybeOpenInitialMaterial({
+    required List<PrepMaterial> materials,
+    required Color subjectColor,
+  }) {
+    final targetId = widget.initialMaterialId?.trim();
+    if (targetId == null ||
+        targetId.isEmpty ||
+        _handledInitialMaterialId == targetId) {
+      return;
+    }
+    final match = materials.where((m) => m.id == targetId).firstOrNull;
+    if (match == null) return;
+
+    _handledInitialMaterialId = targetId;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      unawaited(
+        showMaterialLogsDialog(
+          context,
+          material: match,
+          subjectColor: subjectColor,
+        ),
+      );
+    });
+  }
+
   Future<void> _handleAddMaterial(
     BuildContext context,
     Color subjectColor,
   ) async {
     await showMaterialFormDialog(
       context,
-      subjectId: subject.id,
+      subjectId: widget.subject.id,
       subjectColor: subjectColor,
     );
   }
@@ -64,7 +102,7 @@ class PrepSubjectDetailView extends ConsumerWidget {
   ) async {
     await showMaterialFormDialog(
       context,
-      subjectId: subject.id,
+      subjectId: widget.subject.id,
       subjectColor: subjectColor,
       existing: material,
     );
@@ -72,14 +110,13 @@ class PrepSubjectDetailView extends ConsumerWidget {
 
   Future<void> _handleDeleteMaterial(
     BuildContext context,
-    WidgetRef ref,
     PrepMaterial material,
   ) async {
     final confirmed = await showDeleteMaterialDialog(
       context,
       material: material,
     );
-    if (!confirmed || !context.mounted) return;
+    if (!confirmed || !mounted) return;
     await ref
         .read(prepMaterialControllerProvider.notifier)
         .deleteMaterial(material);
@@ -87,29 +124,29 @@ class PrepSubjectDetailView extends ConsumerWidget {
 
   Future<void> _handleDeleteSubject(
     BuildContext context,
-    WidgetRef ref,
     List<PrepMaterial> materials,
   ) async {
     final confirmed = await showDeleteSubjectDialog(
       context,
-      subject: subject,
+      subject: widget.subject,
       subjectMaterials: materials,
     );
-    if (!confirmed || !context.mounted) return;
+    if (!confirmed || !mounted) return;
     final deleted = await ref
         .read(prepSubjectsControllerProvider.notifier)
-        .deleteSubject(subject);
+        .deleteSubject(widget.subject);
     if (deleted) {
-      onSubjectDeleted?.call();
+      widget.onSubjectDeleted?.call();
     }
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final tokens = context.tokens;
     final colors = tokens.colors;
     final spacing = tokens.spacing;
     final l10n = context.l10n;
+    final subject = widget.subject;
 
     final subjectColor = PrepStyleTokens.resolveSubjectColor(
       subject.color,
@@ -117,9 +154,13 @@ class PrepSubjectDetailView extends ConsumerWidget {
     );
     final materialsAsync = ref.watch(materialsForSubjectProvider(subject.id));
     final materials = materialsAsync.asData?.value ?? const <PrepMaterial>[];
+    _maybeOpenInitialMaterial(
+      materials: materials,
+      subjectColor: subjectColor,
+    );
     final subjectProgress = calculateSubjectProgress(materials);
     final logState = ref.watch(prepProgressLogControllerProvider);
-    final effectiveReplayKey = replayKey ?? 'detail-${subject.id}';
+    final effectiveReplayKey = widget.replayKey ?? 'detail-${subject.id}';
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -129,12 +170,12 @@ class PrepSubjectDetailView extends ConsumerWidget {
           subjectColor: subjectColor,
           subjectProgress: subjectProgress,
           materialCount: materials.length,
-          onBack: onBack,
+          onBack: widget.onBack,
           replayKey: effectiveReplayKey,
           onAddMaterial: () => _handleAddMaterial(context, subjectColor),
           onEditSubject: () =>
               showSubjectFormDialog(context, existing: subject),
-          onDeleteSubject: () => _handleDeleteSubject(context, ref, materials),
+          onDeleteSubject: () => _handleDeleteSubject(context, materials),
         ),
         SizedBox(height: spacing.lg),
         materialsAsync.when(
@@ -227,7 +268,6 @@ class PrepSubjectDetailView extends ConsumerWidget {
                                     ),
                                     onDelete: () => _handleDeleteMaterial(
                                       context,
-                                      ref,
                                       items[i + col],
                                     ),
                                     onQuickLog: (delta) => unawaited(

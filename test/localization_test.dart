@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:job_prep/core/localization/formatters.dart';
 import 'package:job_prep/core/localization/locale_controller.dart';
+import 'package:job_prep/core/router/app_router.dart';
 import 'package:job_prep/core/storage/preferences_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/main.dart';
@@ -193,17 +194,16 @@ void main() {
 
       expect(find.text('JobPrep Dashboard'), findsOneWidget);
       expect(
-        find.text('Job Circular Tracker & Exam Prep Foundations'),
+        find.text(
+          'Your job circulars, upcoming dates, and study momentum at a glance.',
+        ),
         findsOneWidget,
       );
-      expect(find.text('Theme Mode Switcher'), findsOneWidget);
-      expect(find.text('Language Switcher'), findsOneWidget);
-      expect(find.text('Locale Formatters & Plurals Preview'), findsOneWidget);
-      expect(find.text('Application Fee: ৳ 1,500'), findsOneWidget);
-      expect(find.text('Page 150 of 300'), findsOneWidget);
-      expect(find.text('1 book completed'), findsOneWidget);
-      expect(find.text('3 books completed'), findsOneWidget);
-      expect(find.text('5 days remaining until deadline'), findsOneWidget);
+      expect(find.text('Deadlines this week'), findsOneWidget);
+      expect(find.text('Inbox items'), findsOneWidget);
+      expect(find.text('Exams in 14 days'), findsOneWidget);
+      expect(find.text('Applications submitted'), findsOneWidget);
+      expect(find.text('Overall prep'), findsOneWidget);
     });
 
     testWidgets('renders Dashboard in Bangla when locale is bn', (
@@ -236,17 +236,16 @@ void main() {
 
       expect(find.text('জবপ্রেপ ড্যাশবোর্ড'), findsOneWidget);
       expect(
-        find.text('চাকরির সার্কুলার ট্র্যাকার ও পরীক্ষার প্রস্তুতি'),
+        find.text(
+          'আপনার সার্কুলার, আসন্ন তারিখ ও পড়াশোনার অগ্রগতির একনজর চিত্র।',
+        ),
         findsOneWidget,
       );
-      expect(find.text('থিম মোড পরিবর্তন'), findsOneWidget);
-      expect(find.text('ভাষা পরিবর্তন'), findsOneWidget);
-      expect(find.text('লোকেল ফরম্যাটার ও বহুবাচক প্রিভিউ'), findsOneWidget);
-      expect(find.text('আবেদন ফি: ৳ ১,৫০০'), findsOneWidget);
-      expect(find.text('পৃষ্ঠা ১৫০ / ৩০০'), findsOneWidget);
-      expect(find.text('১টি বই সমাপ্ত হয়েছে'), findsOneWidget);
-      expect(find.text('৩টি বই সমাপ্ত হয়েছে'), findsOneWidget);
-      expect(find.text('আবেদন শেষ হতে ৫ দিন বাকি'), findsOneWidget);
+      expect(find.text('এই সপ্তাহের শেষ তারিখ'), findsOneWidget);
+      expect(find.text('ইনবক্স আইটেম'), findsOneWidget);
+      expect(find.text('১৪ দিনের মধ্যে পরীক্ষা'), findsOneWidget);
+      expect(find.text('জমা দেওয়া আবেদন'), findsOneWidget);
+      expect(find.text('সামগ্রিক প্রস্তুতি'), findsOneWidget);
     });
 
     testWidgets('switching language updates UI and persists to storage', (
@@ -271,20 +270,23 @@ void main() {
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
             authRepositoryProvider.overrideWithValue(authRepo),
+            initialRouteLocationProvider.overrideWithValue('/settings'),
           ],
           child: const JobPrepApp(),
         ),
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('JobPrep Dashboard'), findsOneWidget);
+      expect(find.text('Language Switcher'), findsOneWidget);
+      expect(find.text('Theme Mode Switcher'), findsOneWidget);
 
       // Tap Bangla radio option
       await tester.tap(find.text('বাংলা (Bangla)'));
       await tester.pumpAndSettle();
 
       // Verify UI updated to Bangla
-      expect(find.text('জবপ্রেপ ড্যাশবোর্ড'), findsOneWidget);
+      expect(find.text('ভাষা পরিবর্তন'), findsOneWidget);
+      expect(find.text('থিম মোড পরিবর্তন'), findsOneWidget);
       expect(prefs.getString(kLocaleStorageKey), equals('bn'));
 
       // Tap English radio option
@@ -292,7 +294,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Verify UI reverted to English
-      expect(find.text('JobPrep Dashboard'), findsOneWidget);
+      expect(find.text('Language Switcher'), findsOneWidget);
       expect(prefs.getString(kLocaleStorageKey), equals('en'));
     });
   });

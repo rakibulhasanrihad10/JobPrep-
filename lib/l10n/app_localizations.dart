@@ -3271,6 +3271,182 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Data Structures & Algorithms, Database Systems, OOP, Web Development, and Software Quality Assurance.'**
   String get prepSeededSweSubtitle;
+
+  /// Subtitle on the Phase 5A home dashboard header
+  ///
+  /// In en, this message translates to:
+  /// **'Your job circulars, upcoming dates, and study momentum at a glance.'**
+  String get dashboardHomeSubtitle;
+
+  /// Tooltip for manual refresh icon on home dashboard
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh dashboard'**
+  String get dashboardRefreshTooltip;
+
+  /// Error banner message when dashboard queries fail
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load dashboard summary.'**
+  String get dashboardLoadError;
+
+  /// Onboarding card title shown to new users with no data yet
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to JobPrep'**
+  String get dashboardWelcomeTitle;
+
+  /// Onboarding card body shown to new users with no data yet
+  ///
+  /// In en, this message translates to:
+  /// **'Track job circulars, checklists, exam dates, and study progress in one calm workspace.'**
+  String get dashboardWelcomeBody;
+
+  /// CTA button in new-user welcome card to create a circular
+  ///
+  /// In en, this message translates to:
+  /// **'Add first circular'**
+  String get dashboardWelcomeAddCircular;
+
+  /// CTA button in new-user welcome card to open Prep screen
+  ///
+  /// In en, this message translates to:
+  /// **'Set up study plan'**
+  String get dashboardWelcomeSetupPrep;
+
+  /// Metric card label counting deadlines in the next 7 days
+  ///
+  /// In en, this message translates to:
+  /// **'Deadlines this week'**
+  String get dashboardMetricDeadlinesWeek;
+
+  /// Metric card label counting quick-captured inbox circulars
+  ///
+  /// In en, this message translates to:
+  /// **'Inbox items'**
+  String get dashboardMetricInbox;
+
+  /// Metric card label counting exam dates in the next 14 days
+  ///
+  /// In en, this message translates to:
+  /// **'Exams in 14 days'**
+  String get dashboardMetricExams14Days;
+
+  /// Metric card label counting submitted circular applications
+  ///
+  /// In en, this message translates to:
+  /// **'Applications submitted'**
+  String get dashboardMetricSubmitted;
+
+  /// Metric card label for animated overall preparation progress ring
+  ///
+  /// In en, this message translates to:
+  /// **'Overall prep'**
+  String get dashboardMetricOverallPrep;
+
+  /// Section card heading for the most recently logged study material shortcut
+  ///
+  /// In en, this message translates to:
+  /// **'Continue studying'**
+  String get dashboardContinueStudyingTitle;
+
+  /// Primary button opening the most recently logged material
+  ///
+  /// In en, this message translates to:
+  /// **'Continue studying'**
+  String get dashboardContinueStudyingAction;
+
+  /// Summary of the most recent study progress log
+  ///
+  /// In en, this message translates to:
+  /// **'+{formattedUnits} {unitLabel} on {formattedDate}'**
+  String dashboardContinueStudyingLastLogged(
+      String formattedUnits, String unitLabel, String formattedDate);
+
+  /// Material completion ratio and percentage line inside continue studying card
+  ///
+  /// In en, this message translates to:
+  /// **'{formattedCompleted} / {formattedTotal} {unitLabel} ({percent}%)'**
+  String dashboardMaterialProgressLine(String formattedCompleted,
+      String formattedTotal, String unitLabel, String percent);
+
+  /// Empty state title inside continue studying card
+  ///
+  /// In en, this message translates to:
+  /// **'No study logs yet'**
+  String get dashboardContinueStudyingEmptyTitle;
+
+  /// Empty state body inside continue studying card
+  ///
+  /// In en, this message translates to:
+  /// **'Log a study session in Prep and jump straight back into your book or course from here.'**
+  String get dashboardContinueStudyingEmptyBody;
+
+  /// CTA button opening Prep screen from empty continue studying state
+  ///
+  /// In en, this message translates to:
+  /// **'Open Prep'**
+  String get dashboardContinueStudyingEmptyAction;
+
+  /// Card heading for upcoming circular deadlines list
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming deadlines'**
+  String get dashboardUpcomingDeadlinesTitle;
+
+  /// Empty state title inside upcoming deadlines card
+  ///
+  /// In en, this message translates to:
+  /// **'No upcoming deadlines'**
+  String get dashboardUpcomingDeadlinesEmptyTitle;
+
+  /// Empty state body inside upcoming deadlines card
+  ///
+  /// In en, this message translates to:
+  /// **'Saved circulars with future deadlines will appear here with color-coded countdowns.'**
+  String get dashboardUpcomingDeadlinesEmptyBody;
+
+  /// Secondary button navigating from dashboard card to full list
+  ///
+  /// In en, this message translates to:
+  /// **'View all'**
+  String get dashboardViewAllAction;
+
+  /// Card heading for upcoming circular exam dates list
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming exams'**
+  String get dashboardUpcomingExamsTitle;
+
+  /// Empty state title inside upcoming exams card
+  ///
+  /// In en, this message translates to:
+  /// **'No upcoming exams scheduled'**
+  String get dashboardUpcomingExamsEmptyTitle;
+
+  /// Empty state body inside upcoming exams card
+  ///
+  /// In en, this message translates to:
+  /// **'Add Preliminary, Written, or Viva dates on a circular to keep track of upcoming sittings here.'**
+  String get dashboardUpcomingExamsEmptyBody;
+
+  /// Action button navigating from upcoming exams card to calendar screen
+  ///
+  /// In en, this message translates to:
+  /// **'Open calendar'**
+  String get dashboardOpenCalendarAction;
+
+  /// Countdown badge label when an exam takes place today
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get dashboardExamToday;
+
+  /// Countdown badge label for an exam scheduled N days from today
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{In 1 day} other{In {formattedCount} days}}'**
+  String dashboardExamInDays(int count, String formattedCount);
 }
 
 class _AppLocalizationsDelegate

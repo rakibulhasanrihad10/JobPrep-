@@ -1882,4 +1882,110 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get prepSeededSweSubtitle =>
       'Data Structures & Algorithms, Database Systems, OOP, Web Development, and Software Quality Assurance.';
+
+  @override
+  String get dashboardHomeSubtitle =>
+      'Your job circulars, upcoming dates, and study momentum at a glance.';
+
+  @override
+  String get dashboardRefreshTooltip => 'Refresh dashboard';
+
+  @override
+  String get dashboardLoadError => 'Could not load dashboard summary.';
+
+  @override
+  String get dashboardWelcomeTitle => 'Welcome to JobPrep';
+
+  @override
+  String get dashboardWelcomeBody =>
+      'Track job circulars, checklists, exam dates, and study progress in one calm workspace.';
+
+  @override
+  String get dashboardWelcomeAddCircular => 'Add first circular';
+
+  @override
+  String get dashboardWelcomeSetupPrep => 'Set up study plan';
+
+  @override
+  String get dashboardMetricDeadlinesWeek => 'Deadlines this week';
+
+  @override
+  String get dashboardMetricInbox => 'Inbox items';
+
+  @override
+  String get dashboardMetricExams14Days => 'Exams in 14 days';
+
+  @override
+  String get dashboardMetricSubmitted => 'Applications submitted';
+
+  @override
+  String get dashboardMetricOverallPrep => 'Overall prep';
+
+  @override
+  String get dashboardContinueStudyingTitle => 'Continue studying';
+
+  @override
+  String get dashboardContinueStudyingAction => 'Continue studying';
+
+  @override
+  String dashboardContinueStudyingLastLogged(
+      String formattedUnits, String unitLabel, String formattedDate) {
+    return '+$formattedUnits $unitLabel on $formattedDate';
+  }
+
+  @override
+  String dashboardMaterialProgressLine(String formattedCompleted,
+      String formattedTotal, String unitLabel, String percent) {
+    return '$formattedCompleted / $formattedTotal $unitLabel ($percent%)';
+  }
+
+  @override
+  String get dashboardContinueStudyingEmptyTitle => 'No study logs yet';
+
+  @override
+  String get dashboardContinueStudyingEmptyBody =>
+      'Log a study session in Prep and jump straight back into your book or course from here.';
+
+  @override
+  String get dashboardContinueStudyingEmptyAction => 'Open Prep';
+
+  @override
+  String get dashboardUpcomingDeadlinesTitle => 'Upcoming deadlines';
+
+  @override
+  String get dashboardUpcomingDeadlinesEmptyTitle => 'No upcoming deadlines';
+
+  @override
+  String get dashboardUpcomingDeadlinesEmptyBody =>
+      'Saved circulars with future deadlines will appear here with color-coded countdowns.';
+
+  @override
+  String get dashboardViewAllAction => 'View all';
+
+  @override
+  String get dashboardUpcomingExamsTitle => 'Upcoming exams';
+
+  @override
+  String get dashboardUpcomingExamsEmptyTitle => 'No upcoming exams scheduled';
+
+  @override
+  String get dashboardUpcomingExamsEmptyBody =>
+      'Add Preliminary, Written, or Viva dates on a circular to keep track of upcoming sittings here.';
+
+  @override
+  String get dashboardOpenCalendarAction => 'Open calendar';
+
+  @override
+  String get dashboardExamToday => 'Today';
+
+  @override
+  String dashboardExamInDays(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'In $formattedCount days',
+      one: 'In 1 day',
+    );
+    return '$_temp0';
+  }
 }

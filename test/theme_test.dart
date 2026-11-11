@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:job_prep/core/router/app_router.dart';
 import 'package:job_prep/core/theme/app_breakpoints.dart';
 import 'package:job_prep/core/theme/app_colors.dart';
 import 'package:job_prep/core/theme/app_radii.dart';
@@ -8,7 +9,7 @@ import 'package:job_prep/core/theme/app_theme.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/theme/theme_controller.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
-import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:job_prep/features/settings/presentation/screens/settings_screen.dart';
 import 'package:job_prep/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -100,6 +101,7 @@ void main() {
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
             authRepositoryProvider.overrideWithValue(authRepo),
+            initialRouteLocationProvider.overrideWithValue('/settings'),
           ],
           child: const JobPrepApp(),
         ),
@@ -109,7 +111,7 @@ void main() {
       final materialApp = tester.widget<MaterialApp>(find.byType(MaterialApp));
       expect(materialApp.themeMode, equals(ThemeMode.light));
 
-      expect(find.byType(DashboardScreen), findsOneWidget);
+      expect(find.byType(SettingsScreen), findsOneWidget);
       expect(find.text('Light Theme (Navy & Gold)'), findsOneWidget);
     });
 
@@ -127,6 +129,7 @@ void main() {
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
             authRepositoryProvider.overrideWithValue(authRepo),
+            initialRouteLocationProvider.overrideWithValue('/settings'),
           ],
           child: const JobPrepApp(),
         ),
@@ -136,7 +139,7 @@ void main() {
       final materialApp = tester.widget<MaterialApp>(find.byType(MaterialApp));
       expect(materialApp.themeMode, equals(ThemeMode.dark));
 
-      expect(find.byType(DashboardScreen), findsOneWidget);
+      expect(find.byType(SettingsScreen), findsOneWidget);
       expect(find.text('Dark Theme (Deep Navy & Gold)'), findsOneWidget);
     });
 
@@ -152,6 +155,7 @@ void main() {
           overrides: [
             sharedPreferencesProvider.overrideWithValue(prefs),
             authRepositoryProvider.overrideWithValue(authRepo),
+            initialRouteLocationProvider.overrideWithValue('/settings'),
           ],
           child: const JobPrepApp(),
         ),

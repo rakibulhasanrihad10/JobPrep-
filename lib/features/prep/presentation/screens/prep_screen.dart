@@ -24,10 +24,17 @@ import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.
 /// Main animated preparation dashboard and Subject & Material Manager screen.
 class PrepScreen extends ConsumerStatefulWidget {
   /// Creates a [PrepScreen].
-  const PrepScreen({super.key, this.selectedSubjectId});
+  const PrepScreen({
+    super.key,
+    this.selectedSubjectId,
+    this.initialMaterialId,
+  });
 
   /// Optional pre-selected subject displayed in desktop master-detail mode.
   final String? selectedSubjectId;
+
+  /// Optional material identifier to open immediately when focused.
+  final String? initialMaterialId;
 
   @override
   ConsumerState<PrepScreen> createState() => _PrepScreenState();
@@ -258,6 +265,10 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
                     flex: 8,
                     child: PrepSubjectDetailView(
                       subject: selectedSubject,
+                      initialMaterialId:
+                          selectedSubject.id == widget.selectedSubjectId
+                              ? widget.initialMaterialId
+                              : null,
                       replayKey:
                           'detail-visit-$_tabVisitId-${selectedSubject.id}',
                       onSubjectDeleted: () =>

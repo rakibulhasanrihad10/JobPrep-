@@ -2489,5 +2489,154 @@
   "prepSeededSweSubtitle": "Data Structures & Algorithms, Database Systems, OOP, Web Development, and Software Quality Assurance.",
   "@prepSeededSweSubtitle": {
     "description": "Localized summary for seeded Software Engineer pack"
+  },
+  "dashboardHomeSubtitle": "Your job circulars, upcoming dates, and study momentum at a glance.",
+  "@dashboardHomeSubtitle": {
+    "description": "Subtitle on the Phase 5A home dashboard header"
+  },
+  "dashboardRefreshTooltip": "Refresh dashboard",
+  "@dashboardRefreshTooltip": {
+    "description": "Tooltip for manual refresh icon on home dashboard"
+  },
+  "dashboardLoadError": "Could not load dashboard summary.",
+  "@dashboardLoadError": {
+    "description": "Error banner message when dashboard queries fail"
+  },
+  "dashboardWelcomeTitle": "Welcome to JobPrep",
+  "@dashboardWelcomeTitle": {
+    "description": "Onboarding card title shown to new users with no data yet"
+  },
+  "dashboardWelcomeBody": "Track job circulars, checklists, exam dates, and study progress in one calm workspace.",
+  "@dashboardWelcomeBody": {
+    "description": "Onboarding card body shown to new users with no data yet"
+  },
+  "dashboardWelcomeAddCircular": "Add first circular",
+  "@dashboardWelcomeAddCircular": {
+    "description": "CTA button in new-user welcome card to create a circular"
+  },
+  "dashboardWelcomeSetupPrep": "Set up study plan",
+  "@dashboardWelcomeSetupPrep": {
+    "description": "CTA button in new-user welcome card to open Prep screen"
+  },
+  "dashboardMetricDeadlinesWeek": "Deadlines this week",
+  "@dashboardMetricDeadlinesWeek": {
+    "description": "Metric card label counting deadlines in the next 7 days"
+  },
+  "dashboardMetricInbox": "Inbox items",
+  "@dashboardMetricInbox": {
+    "description": "Metric card label counting quick-captured inbox circulars"
+  },
+  "dashboardMetricExams14Days": "Exams in 14 days",
+  "@dashboardMetricExams14Days": {
+    "description": "Metric card label counting exam dates in the next 14 days"
+  },
+  "dashboardMetricSubmitted": "Applications submitted",
+  "@dashboardMetricSubmitted": {
+    "description": "Metric card label counting submitted circular applications"
+  },
+  "dashboardMetricOverallPrep": "Overall prep",
+  "@dashboardMetricOverallPrep": {
+    "description": "Metric card label for animated overall preparation progress ring"
+  },
+  "dashboardContinueStudyingTitle": "Continue studying",
+  "@dashboardContinueStudyingTitle": {
+    "description": "Section card heading for the most recently logged study material shortcut"
+  },
+  "dashboardContinueStudyingAction": "Continue studying",
+  "@dashboardContinueStudyingAction": {
+    "description": "Primary button opening the most recently logged material"
+  },
+  "dashboardContinueStudyingLastLogged": "+{formattedUnits} {unitLabel} on {formattedDate}",
+  "@dashboardContinueStudyingLastLogged": {
+    "description": "Summary of the most recent study progress log",
+    "placeholders": {
+      "formattedUnits": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      },
+      "formattedDate": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardMaterialProgressLine": "{formattedCompleted} / {formattedTotal} {unitLabel} ({percent}%)",
+  "@dashboardMaterialProgressLine": {
+    "description": "Material completion ratio and percentage line inside continue studying card",
+    "placeholders": {
+      "formattedCompleted": {
+        "type": "String"
+      },
+      "formattedTotal": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardContinueStudyingEmptyTitle": "No study logs yet",
+  "@dashboardContinueStudyingEmptyTitle": {
+    "description": "Empty state title inside continue studying card"
+  },
+  "dashboardContinueStudyingEmptyBody": "Log a study session in Prep and jump straight back into your book or course from here.",
+  "@dashboardContinueStudyingEmptyBody": {
+    "description": "Empty state body inside continue studying card"
+  },
+  "dashboardContinueStudyingEmptyAction": "Open Prep",
+  "@dashboardContinueStudyingEmptyAction": {
+    "description": "CTA button opening Prep screen from empty continue studying state"
+  },
+  "dashboardUpcomingDeadlinesTitle": "Upcoming deadlines",
+  "@dashboardUpcomingDeadlinesTitle": {
+    "description": "Card heading for upcoming circular deadlines list"
+  },
+  "dashboardUpcomingDeadlinesEmptyTitle": "No upcoming deadlines",
+  "@dashboardUpcomingDeadlinesEmptyTitle": {
+    "description": "Empty state title inside upcoming deadlines card"
+  },
+  "dashboardUpcomingDeadlinesEmptyBody": "Saved circulars with future deadlines will appear here with color-coded countdowns.",
+  "@dashboardUpcomingDeadlinesEmptyBody": {
+    "description": "Empty state body inside upcoming deadlines card"
+  },
+  "dashboardViewAllAction": "View all",
+  "@dashboardViewAllAction": {
+    "description": "Secondary button navigating from dashboard card to full list"
+  },
+  "dashboardUpcomingExamsTitle": "Upcoming exams",
+  "@dashboardUpcomingExamsTitle": {
+    "description": "Card heading for upcoming circular exam dates list"
+  },
+  "dashboardUpcomingExamsEmptyTitle": "No upcoming exams scheduled",
+  "@dashboardUpcomingExamsEmptyTitle": {
+    "description": "Empty state title inside upcoming exams card"
+  },
+  "dashboardUpcomingExamsEmptyBody": "Add Preliminary, Written, or Viva dates on a circular to keep track of upcoming sittings here.",
+  "@dashboardUpcomingExamsEmptyBody": {
+    "description": "Empty state body inside upcoming exams card"
+  },
+  "dashboardOpenCalendarAction": "Open calendar",
+  "@dashboardOpenCalendarAction": {
+    "description": "Action button navigating from upcoming exams card to calendar screen"
+  },
+  "dashboardExamToday": "Today",
+  "@dashboardExamToday": {
+    "description": "Countdown badge label when an exam takes place today"
+  },
+  "dashboardExamInDays": "{count, plural, =1{In 1 day} other{In {formattedCount} days}}",
+  "@dashboardExamInDays": {
+    "description": "Countdown badge label for an exam scheduled N days from today",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -1869,4 +1869,113 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get prepSeededSweSubtitle =>
       'ডেটা স্ট্রাকচার ও অ্যালগরিদম, ডেটাবেস সিস্টেম, ওওপি, ওয়েব ডেভেলপমেন্ট এবং সফটওয়্যার কোয়ালিটি অ্যাসুরেন্স।';
+
+  @override
+  String get dashboardHomeSubtitle =>
+      'আপনার সার্কুলার, আসন্ন তারিখ ও পড়াশোনার অগ্রগতির একনজর চিত্র।';
+
+  @override
+  String get dashboardRefreshTooltip => 'ড্যাশবোর্ড রিফ্রেশ করুন';
+
+  @override
+  String get dashboardLoadError => 'ড্যাশবোর্ডের তথ্য লোড করা যায়নি।';
+
+  @override
+  String get dashboardWelcomeTitle => 'JobPrep-এ স্বাগতম';
+
+  @override
+  String get dashboardWelcomeBody =>
+      'একই জায়গায় চাকরির সার্কুলার, আবেদনের চেকলিস্ট, পরীক্ষার তারিখ ও পড়াশোনার অগ্রগতি ট্র্যাক করুন।';
+
+  @override
+  String get dashboardWelcomeAddCircular => 'প্রথম সার্কুলার যোগ করুন';
+
+  @override
+  String get dashboardWelcomeSetupPrep => 'পড়ার পরিকল্পনা সাজান';
+
+  @override
+  String get dashboardMetricDeadlinesWeek => 'এই সপ্তাহের শেষ তারিখ';
+
+  @override
+  String get dashboardMetricInbox => 'ইনবক্স আইটেম';
+
+  @override
+  String get dashboardMetricExams14Days => '১৪ দিনের মধ্যে পরীক্ষা';
+
+  @override
+  String get dashboardMetricSubmitted => 'জমা দেওয়া আবেদন';
+
+  @override
+  String get dashboardMetricOverallPrep => 'সামগ্রিক প্রস্তুতি';
+
+  @override
+  String get dashboardContinueStudyingTitle => 'পড়াশোনা চালিয়ে যান';
+
+  @override
+  String get dashboardContinueStudyingAction => 'এখনই লগ করুন';
+
+  @override
+  String dashboardContinueStudyingLastLogged(
+      String formattedUnits, String unitLabel, String formattedDate) {
+    return '$formattedDate-এ +$formattedUnits $unitLabel';
+  }
+
+  @override
+  String dashboardMaterialProgressLine(String formattedCompleted,
+      String formattedTotal, String unitLabel, String percent) {
+    return '$formattedCompleted / $formattedTotal $unitLabel ($percent%)';
+  }
+
+  @override
+  String get dashboardContinueStudyingEmptyTitle =>
+      'এখনো কোনো পাঠ লগ করা হয়নি';
+
+  @override
+  String get dashboardContinueStudyingEmptyBody =>
+      'প্রস্তুতি বিভাগে একটি পাঠ লগ করলে এখান থেকেই সরাসরি চালিয়ে যেতে পারবেন।';
+
+  @override
+  String get dashboardContinueStudyingEmptyAction => 'প্রস্তুতিতে যান';
+
+  @override
+  String get dashboardUpcomingDeadlinesTitle => 'আসন্ন আবেদনের শেষ তারিখ';
+
+  @override
+  String get dashboardUpcomingDeadlinesEmptyTitle => 'কোনো আসন্ন শেষ তারিখ নেই';
+
+  @override
+  String get dashboardUpcomingDeadlinesEmptyBody =>
+      'ভবিষ্যৎ শেষ তারিখসহ সংরক্ষিত সার্কুলারগুলো রঙিন কাউন্টডাউনসহ এখানে দেখাবে।';
+
+  @override
+  String get dashboardViewAllAction => 'সব দেখুন';
+
+  @override
+  String get dashboardUpcomingExamsTitle => 'আসন্ন পরীক্ষাসমূহ';
+
+  @override
+  String get dashboardUpcomingExamsEmptyTitle =>
+      'কোনো আসন্ন পরীক্ষা নির্ধারিত নেই';
+
+  @override
+  String get dashboardUpcomingExamsEmptyBody =>
+      'সার্কুলারের ভেতরে প্রিলি, লিখিত বা ভাইভার তারিখ যোগ করলে এখানে দেখাবে।';
+
+  @override
+  String get dashboardOpenCalendarAction => 'ক্যালেন্ডার খুলুন';
+
+  @override
+  String get dashboardExamToday => 'আজ';
+
+  @override
+  String dashboardExamInDays(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount দিন বাকি',
+      one: '১ দিন বাকি',
+      zero: 'আজ',
+    );
+    return '$_temp0';
+  }
 }
