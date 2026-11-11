@@ -2168,4 +2168,218 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get portalLoadError => 'Could not load portal accounts.';
+
+  @override
+  String get prepStudyPlanSectionTitle => 'Study Plans';
+
+  @override
+  String get prepStudyPlanAddButton => 'Set study plan';
+
+  @override
+  String get prepStudyPlanCreateTitle => 'Create Study Plan';
+
+  @override
+  String get prepStudyPlanEditTitle => 'Edit Study Plan';
+
+  @override
+  String get prepStudyPlanScopeLabel => 'Plan scope';
+
+  @override
+  String get prepStudyPlanAllSubjectsLabel => 'All subjects (combined)';
+
+  @override
+  String get prepStudyPlanCircularLabel => 'Linked exam circular (optional)';
+
+  @override
+  String get prepStudyPlanNoCircularOption => 'No circular link (custom date)';
+
+  @override
+  String get prepStudyPlanExamStageLabel => 'Circular exam stage (optional)';
+
+  @override
+  String get prepStudyPlanStartDateLabel => 'Start date';
+
+  @override
+  String prepStudyPlanStartDateValue(String formattedDate) {
+    return 'Start date: $formattedDate';
+  }
+
+  @override
+  String get prepStudyPlanTargetDateLabel => 'Exam date';
+
+  @override
+  String prepStudyPlanTargetDateValue(String formattedDate) {
+    return 'Exam date: $formattedDate';
+  }
+
+  @override
+  String get prepStudyPlanBufferDaysLabel => 'Finish buffer (days before exam)';
+
+  @override
+  String get prepStudyPlanRestDaysLabel => 'Rest days per week';
+
+  @override
+  String get prepStudyPlanMaxPaceLabel =>
+      'Max daily pace limit (units/day, optional)';
+
+  @override
+  String get prepStudyPlanMaxPaceHint => 'Leave blank for no pace cap';
+
+  @override
+  String get prepStudyPlanSaveButton => 'Save plan';
+
+  @override
+  String get prepStudyPlanDeleteTitle => 'Delete study plan?';
+
+  @override
+  String get prepStudyPlanDeleteBody =>
+      'Remove this study plan? Your subjects, materials, and progress logs will stay untouched.';
+
+  @override
+  String get prepStudyPlanStatusAhead => 'Ahead';
+
+  @override
+  String get prepStudyPlanStatusOnTrack => 'On track';
+
+  @override
+  String get prepStudyPlanStatusBehind => 'Behind';
+
+  @override
+  String get prepStudyPlanRemainingLabel => 'Remaining';
+
+  @override
+  String get prepStudyPlanDaysLeftLabel => 'Study days left';
+
+  @override
+  String get prepStudyPlanTodayTargetLabel => 'Today\'s target';
+
+  @override
+  String prepStudyPlanUnitsCount(String formatted) {
+    return '$formatted units';
+  }
+
+  @override
+  String prepStudyPlanDaysCount(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formatted days',
+      one: '$formatted day',
+      zero: '0 days',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepStudyPlanTodayDoneOfTarget(String done, String target) {
+    return '$done / $target today';
+  }
+
+  @override
+  String prepStudyPlanBufferSummary(String formattedDays, String examDate) {
+    return 'Finishes ${formattedDays}d before exam ($examDate)';
+  }
+
+  @override
+  String get prepStudyPlanFinishedComplete =>
+      'Syllabus complete — today\'s target is 0.';
+
+  @override
+  String prepStudyPlanMissedRedistributed(int days, String formattedUnits,
+      String formattedDays, String formattedExtra) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other:
+          'You missed $formattedUnits units, they are now spread over the next $formattedDays days (+$formattedExtra/day).',
+      one:
+          'You missed $formattedUnits units, they are now spread over the next $formattedDays day (+$formattedExtra/day).',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepStudyPlanPastTargetNotice(String formattedUnits) {
+    return 'Study window before the finish buffer has ended with $formattedUnits units left.';
+  }
+
+  @override
+  String prepStudyPlanPaceWarning(
+      String formattedTarget, String formattedLimit) {
+    return 'Recalculated target ($formattedTarget/day) exceeds your pace limit ($formattedLimit/day).';
+  }
+
+  @override
+  String get prepStudyPlanActionConvertRest =>
+      'Turn a rest day into a study day';
+
+  @override
+  String get prepStudyPlanActionRaisePace => 'Raise pace limit';
+
+  @override
+  String get prepStudyPlanActionPostponeMaterial =>
+      'Postpone lower-priority material';
+
+  @override
+  String get prepStudyPlanRaisePaceTitle => 'Raise Daily Pace Limit';
+
+  @override
+  String get prepStudyPlanPostponeTitle => 'Postpone Material';
+
+  @override
+  String get prepStudyPlanPostponeSubtitle =>
+      'Excluding a material removes its remaining units from this plan\'s daily target without deleting your study progress.';
+
+  @override
+  String prepStudyPlanPostponedChip(String title) {
+    return 'Postponed: $title';
+  }
+
+  @override
+  String get prepStudyPlanRestoreTooltip => 'Restore to plan';
+
+  @override
+  String get prepStudyPlanEditTooltip => 'Edit study plan';
+
+  @override
+  String get prepStudyPlanDeleteTooltip => 'Delete study plan';
+
+  @override
+  String get prepStudyPlanValidationBuffer =>
+      'Finish buffer must be 0 days or greater.';
+
+  @override
+  String get prepStudyPlanValidationPace =>
+      'Pace limit must be greater than 0.';
+
+  @override
+  String get prepStudyPlanValidationDates =>
+      'Exam date must be on or after the start date.';
+
+  @override
+  String get dashboardTodayTargetTitle => 'Today\'s Target';
+
+  @override
+  String get dashboardTodayTargetEmptyTitle => 'No study plan configured yet';
+
+  @override
+  String get dashboardTodayTargetEmptyBody =>
+      'Set an exam date to calculate daily targets and automatic missed-day redistribution.';
+
+  @override
+  String get dashboardTodayTargetEmptyAction => 'Set study plan';
+
+  @override
+  String get dashboardTodayTargetManageAction => 'Open study plans';
+
+  @override
+  String dashboardTodayTargetPlansSummary(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formatted active plans',
+      one: '$formatted active plan',
+    );
+    return '$_temp0';
+  }
 }

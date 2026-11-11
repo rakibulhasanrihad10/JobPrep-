@@ -3765,6 +3765,326 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not load portal accounts.'**
   String get portalLoadError;
+
+  /// Heading for the combined and per-subject study plans section
+  ///
+  /// In en, this message translates to:
+  /// **'Study Plans'**
+  String get prepStudyPlanSectionTitle;
+
+  /// Button opening dialog to create a new study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Set study plan'**
+  String get prepStudyPlanAddButton;
+
+  /// Dialog title when creating a study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Create Study Plan'**
+  String get prepStudyPlanCreateTitle;
+
+  /// Dialog title when editing an existing study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Study Plan'**
+  String get prepStudyPlanEditTitle;
+
+  /// Label for selecting all subjects or a specific subject
+  ///
+  /// In en, this message translates to:
+  /// **'Plan scope'**
+  String get prepStudyPlanScopeLabel;
+
+  /// Label representing the combined all-subjects study plan
+  ///
+  /// In en, this message translates to:
+  /// **'All subjects (combined)'**
+  String get prepStudyPlanAllSubjectsLabel;
+
+  /// Label for optional circular dropdown in study plan form
+  ///
+  /// In en, this message translates to:
+  /// **'Linked exam circular (optional)'**
+  String get prepStudyPlanCircularLabel;
+
+  /// Option representing no linked circular on a study plan
+  ///
+  /// In en, this message translates to:
+  /// **'No circular link (custom date)'**
+  String get prepStudyPlanNoCircularOption;
+
+  /// Label for choosing a specific exam stage date from a linked circular
+  ///
+  /// In en, this message translates to:
+  /// **'Circular exam stage (optional)'**
+  String get prepStudyPlanExamStageLabel;
+
+  /// Label for study plan start date picker
+  ///
+  /// In en, this message translates to:
+  /// **'Start date'**
+  String get prepStudyPlanStartDateLabel;
+
+  /// Formatted button label displaying chosen plan start date
+  ///
+  /// In en, this message translates to:
+  /// **'Start date: {formattedDate}'**
+  String prepStudyPlanStartDateValue(String formattedDate);
+
+  /// Label for study plan target exam date picker
+  ///
+  /// In en, this message translates to:
+  /// **'Exam date'**
+  String get prepStudyPlanTargetDateLabel;
+
+  /// Formatted button label displaying chosen exam date
+  ///
+  /// In en, this message translates to:
+  /// **'Exam date: {formattedDate}'**
+  String prepStudyPlanTargetDateValue(String formattedDate);
+
+  /// Label for revision buffer days input
+  ///
+  /// In en, this message translates to:
+  /// **'Finish buffer (days before exam)'**
+  String get prepStudyPlanBufferDaysLabel;
+
+  /// Label for rest days per week selector
+  ///
+  /// In en, this message translates to:
+  /// **'Rest days per week'**
+  String get prepStudyPlanRestDaysLabel;
+
+  /// Label for maximum comfortable daily study pace limit
+  ///
+  /// In en, this message translates to:
+  /// **'Max daily pace limit (units/day, optional)'**
+  String get prepStudyPlanMaxPaceLabel;
+
+  /// Hint text for optional maximum daily pace limit field
+  ///
+  /// In en, this message translates to:
+  /// **'Leave blank for no pace cap'**
+  String get prepStudyPlanMaxPaceHint;
+
+  /// Submit button saving a study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Save plan'**
+  String get prepStudyPlanSaveButton;
+
+  /// Confirmation title before deleting a study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Delete study plan?'**
+  String get prepStudyPlanDeleteTitle;
+
+  /// Confirmation body before deleting a study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this study plan? Your subjects, materials, and progress logs will stay untouched.'**
+  String get prepStudyPlanDeleteBody;
+
+  /// Badge when progress is ahead of the ideal line
+  ///
+  /// In en, this message translates to:
+  /// **'Ahead'**
+  String get prepStudyPlanStatusAhead;
+
+  /// Badge when progress is on track with the ideal line
+  ///
+  /// In en, this message translates to:
+  /// **'On track'**
+  String get prepStudyPlanStatusOnTrack;
+
+  /// Badge when progress has fallen behind the ideal line
+  ///
+  /// In en, this message translates to:
+  /// **'Behind'**
+  String get prepStudyPlanStatusBehind;
+
+  /// Metric label for remaining study units
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining'**
+  String get prepStudyPlanRemainingLabel;
+
+  /// Metric label for remaining effective study days
+  ///
+  /// In en, this message translates to:
+  /// **'Study days left'**
+  String get prepStudyPlanDaysLeftLabel;
+
+  /// Metric label for today's study unit target
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s target'**
+  String get prepStudyPlanTodayTargetLabel;
+
+  /// Formatted count of study units
+  ///
+  /// In en, this message translates to:
+  /// **'{formatted} units'**
+  String prepStudyPlanUnitsCount(String formatted);
+
+  /// Pluralized count of remaining study days
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{0 days} =1{{formatted} day} other{{formatted} days}}'**
+  String prepStudyPlanDaysCount(int count, String formatted);
+
+  /// Compact progress label inside Today's progress ring or summary
+  ///
+  /// In en, this message translates to:
+  /// **'{done} / {target} today'**
+  String prepStudyPlanTodayDoneOfTarget(String done, String target);
+
+  /// Subtitle summarizing exam target date and finish buffer
+  ///
+  /// In en, this message translates to:
+  /// **'Finishes {formattedDays}d before exam ({examDate})'**
+  String prepStudyPlanBufferSummary(String formattedDays, String examDate);
+
+  /// Status message shown when all active syllabus units are finished
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus complete — today\'s target is 0.'**
+  String get prepStudyPlanFinishedComplete;
+
+  /// Automatic missed-day catch-up explanation message
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{You missed {formattedUnits} units, they are now spread over the next {formattedDays} day (+{formattedExtra}/day).} other{You missed {formattedUnits} units, they are now spread over the next {formattedDays} days (+{formattedExtra}/day).}}'**
+  String prepStudyPlanMissedRedistributed(int days, String formattedUnits,
+      String formattedDays, String formattedExtra);
+
+  /// Notice when today is inside the finish buffer or past exam date with work remaining
+  ///
+  /// In en, this message translates to:
+  /// **'Study window before the finish buffer has ended with {formattedUnits} units left.'**
+  String prepStudyPlanPastTargetNotice(String formattedUnits);
+
+  /// Warning shown when daily target exceeds max_daily_pace
+  ///
+  /// In en, this message translates to:
+  /// **'Recalculated target ({formattedTarget}/day) exceeds your pace limit ({formattedLimit}/day).'**
+  String prepStudyPlanPaceWarning(
+      String formattedTarget, String formattedLimit);
+
+  /// Pace recovery action converting one rest day into a study day
+  ///
+  /// In en, this message translates to:
+  /// **'Turn a rest day into a study day'**
+  String get prepStudyPlanActionConvertRest;
+
+  /// Pace recovery action raising max_daily_pace
+  ///
+  /// In en, this message translates to:
+  /// **'Raise pace limit'**
+  String get prepStudyPlanActionRaisePace;
+
+  /// Pace recovery action postponing a lower-priority material
+  ///
+  /// In en, this message translates to:
+  /// **'Postpone lower-priority material'**
+  String get prepStudyPlanActionPostponeMaterial;
+
+  /// Dialog title when raising the daily pace limit
+  ///
+  /// In en, this message translates to:
+  /// **'Raise Daily Pace Limit'**
+  String get prepStudyPlanRaisePaceTitle;
+
+  /// Dialog title when choosing a material to postpone from the plan
+  ///
+  /// In en, this message translates to:
+  /// **'Postpone Material'**
+  String get prepStudyPlanPostponeTitle;
+
+  /// Explanation shown inside the postpone material dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Excluding a material removes its remaining units from this plan\'s daily target without deleting your study progress.'**
+  String get prepStudyPlanPostponeSubtitle;
+
+  /// Chip label showing a postponed material that can be restored
+  ///
+  /// In en, this message translates to:
+  /// **'Postponed: {title}'**
+  String prepStudyPlanPostponedChip(String title);
+
+  /// Tooltip on postponed material chip delete/restore icon
+  ///
+  /// In en, this message translates to:
+  /// **'Restore to plan'**
+  String get prepStudyPlanRestoreTooltip;
+
+  /// Tooltip on study plan edit icon button
+  ///
+  /// In en, this message translates to:
+  /// **'Edit study plan'**
+  String get prepStudyPlanEditTooltip;
+
+  /// Tooltip on study plan delete icon button
+  ///
+  /// In en, this message translates to:
+  /// **'Delete study plan'**
+  String get prepStudyPlanDeleteTooltip;
+
+  /// Validation error for negative finish buffer
+  ///
+  /// In en, this message translates to:
+  /// **'Finish buffer must be 0 days or greater.'**
+  String get prepStudyPlanValidationBuffer;
+
+  /// Validation error for non-positive daily pace limit
+  ///
+  /// In en, this message translates to:
+  /// **'Pace limit must be greater than 0.'**
+  String get prepStudyPlanValidationPace;
+
+  /// Validation error when exam date precedes start date
+  ///
+  /// In en, this message translates to:
+  /// **'Exam date must be on or after the start date.'**
+  String get prepStudyPlanValidationDates;
+
+  /// Heading for Today's Target card on the Home Dashboard
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Target'**
+  String get dashboardTodayTargetTitle;
+
+  /// Empty state heading inside Dashboard Today's Target card
+  ///
+  /// In en, this message translates to:
+  /// **'No study plan configured yet'**
+  String get dashboardTodayTargetEmptyTitle;
+
+  /// Empty state explanation inside Dashboard Today's Target card
+  ///
+  /// In en, this message translates to:
+  /// **'Set an exam date to calculate daily targets and automatic missed-day redistribution.'**
+  String get dashboardTodayTargetEmptyBody;
+
+  /// CTA button in Dashboard Today's Target empty state
+  ///
+  /// In en, this message translates to:
+  /// **'Set study plan'**
+  String get dashboardTodayTargetEmptyAction;
+
+  /// Button navigating from Dashboard Today's Target card to Prep
+  ///
+  /// In en, this message translates to:
+  /// **'Open study plans'**
+  String get dashboardTodayTargetManageAction;
+
+  /// Summary count of configured study plans shown on Dashboard
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formatted} active plan} other{{formatted} active plans}}'**
+  String dashboardTodayTargetPlansSummary(int count, String formatted);
 }
 
 class _AppLocalizationsDelegate

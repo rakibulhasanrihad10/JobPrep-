@@ -2159,4 +2159,221 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get portalLoadError => 'পোর্টাল অ্যাকাউন্টগুলো লোড করা যায়নি।';
+
+  @override
+  String get prepStudyPlanSectionTitle => 'স্টাডি প্ল্যান';
+
+  @override
+  String get prepStudyPlanAddButton => 'স্টাডি প্ল্যান সেট করুন';
+
+  @override
+  String get prepStudyPlanCreateTitle => 'স্টাডি প্ল্যান তৈরি করুন';
+
+  @override
+  String get prepStudyPlanEditTitle => 'স্টাডি প্ল্যান সম্পাদনা করুন';
+
+  @override
+  String get prepStudyPlanScopeLabel => 'প্ল্যানের পরিধি';
+
+  @override
+  String get prepStudyPlanAllSubjectsLabel => 'সকল বিষয় (সম্মিলিত)';
+
+  @override
+  String get prepStudyPlanCircularLabel =>
+      'সংযুক্ত পরীক্ষার সার্কুলার (ঐচ্ছিক)';
+
+  @override
+  String get prepStudyPlanNoCircularOption =>
+      'কোনো সার্কুলার সংযুক্ত নয় (কাস্টম তারিখ)';
+
+  @override
+  String get prepStudyPlanExamStageLabel => 'সার্কুলার পরীক্ষার ধাপ (ঐচ্ছিক)';
+
+  @override
+  String get prepStudyPlanStartDateLabel => 'শুরুর তারিখ';
+
+  @override
+  String prepStudyPlanStartDateValue(String formattedDate) {
+    return 'শুরুর তারিখ: $formattedDate';
+  }
+
+  @override
+  String get prepStudyPlanTargetDateLabel => 'পরীক্ষার তারিখ';
+
+  @override
+  String prepStudyPlanTargetDateValue(String formattedDate) {
+    return 'পরীক্ষার তারিখ: $formattedDate';
+  }
+
+  @override
+  String get prepStudyPlanBufferDaysLabel =>
+      'প্রস্তুতি বাফার (পরীক্ষার আগে দিন)';
+
+  @override
+  String get prepStudyPlanRestDaysLabel => 'সপ্তাহে বিশ্রামের দিন';
+
+  @override
+  String get prepStudyPlanMaxPaceLabel =>
+      'সর্বোচ্চ দৈনিক সীমা (ইউনিট/দিন, ঐচ্ছিক)';
+
+  @override
+  String get prepStudyPlanMaxPaceHint => 'সীমা না রাখতে চাইলে ফাঁকা রাখুন';
+
+  @override
+  String get prepStudyPlanSaveButton => 'প্ল্যান সংরক্ষণ';
+
+  @override
+  String get prepStudyPlanDeleteTitle => 'স্টাডি প্ল্যান মুছবেন?';
+
+  @override
+  String get prepStudyPlanDeleteBody =>
+      'এই প্ল্যানটি মুছে ফেলবেন? আপনার বিষয়, উপকরণ এবং অগ্রগতির লগ অপরিবর্তিত থাকবে।';
+
+  @override
+  String get prepStudyPlanStatusAhead => 'এগিয়ে';
+
+  @override
+  String get prepStudyPlanStatusOnTrack => 'সঠিক পথে';
+
+  @override
+  String get prepStudyPlanStatusBehind => 'পিছিয়ে';
+
+  @override
+  String get prepStudyPlanRemainingLabel => 'বাকি';
+
+  @override
+  String get prepStudyPlanDaysLeftLabel => 'বাকি অধ্যয়নের দিন';
+
+  @override
+  String get prepStudyPlanTodayTargetLabel => 'আজকের লক্ষ্য';
+
+  @override
+  String prepStudyPlanUnitsCount(String formatted) {
+    return '$formatted ইউনিট';
+  }
+
+  @override
+  String prepStudyPlanDaysCount(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formatted দিন',
+      one: '$formatted দিন',
+      zero: '০ দিন',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepStudyPlanTodayDoneOfTarget(String done, String target) {
+    return 'আজ $target-এর মধ্যে $done';
+  }
+
+  @override
+  String prepStudyPlanBufferSummary(String formattedDays, String examDate) {
+    return 'পরীক্ষার $formattedDays দিন আগে শেষ হবে ($examDate)';
+  }
+
+  @override
+  String get prepStudyPlanFinishedComplete =>
+      'সিলেবাস সম্পন্ন — আজকের লক্ষ্য ০।';
+
+  @override
+  String prepStudyPlanMissedRedistributed(int days, String formattedUnits,
+      String formattedDays, String formattedExtra) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other:
+          'আপনি $formattedUnits ইউনিট মিস করেছেন, যা পরবর্তী $formattedDays দিনে ভাগ করে দেওয়া হয়েছে (+$formattedExtra/দিন)।',
+      one:
+          'আপনি $formattedUnits ইউনিট মিস করেছেন, যা পরবর্তী $formattedDays দিনে ভাগ করে দেওয়া হয়েছে (+$formattedExtra/দিন)।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepStudyPlanPastTargetNotice(String formattedUnits) {
+    return 'বাফারের আগের অধ্যয়নের সময় শেষ হয়েছে এবং এখনো $formattedUnits ইউনিট বাকি আছে।';
+  }
+
+  @override
+  String prepStudyPlanPaceWarning(
+      String formattedTarget, String formattedLimit) {
+    return 'পুনর্নির্ধারিত লক্ষ্য ($formattedTarget/দিন) আপনার নির্ধারিত সীমা ($formattedLimit/দিন) অতিক্রম করেছে।';
+  }
+
+  @override
+  String get prepStudyPlanActionConvertRest =>
+      'একটি বিশ্রামের দিন অধ্যয়নের দিন করুন';
+
+  @override
+  String get prepStudyPlanActionRaisePace => 'দৈনিক সীমা বাড়ান';
+
+  @override
+  String get prepStudyPlanActionPostponeMaterial =>
+      'কম গুরুত্বপূর্ণ উপকরণ স্থগিত করুন';
+
+  @override
+  String get prepStudyPlanRaisePaceTitle => 'দৈনিক লক্ষ্যের সীমা বাড়ান';
+
+  @override
+  String get prepStudyPlanPostponeTitle => 'উপকরণ স্থগিত করুন';
+
+  @override
+  String get prepStudyPlanPostponeSubtitle =>
+      'কোনো উপকরণ স্থগিত করলে আপনার সংরক্ষিত অগ্রগতি না মুছেই এই প্ল্যানের দৈনিক লক্ষ্য থেকে তার বাকি ইউনিট বাদ দেওয়া হবে।';
+
+  @override
+  String prepStudyPlanPostponedChip(String title) {
+    return 'স্থগিত: $title';
+  }
+
+  @override
+  String get prepStudyPlanRestoreTooltip => 'প্ল্যানে পুনরায় যুক্ত করুন';
+
+  @override
+  String get prepStudyPlanEditTooltip => 'স্টাডি প্ল্যান সম্পাদনা';
+
+  @override
+  String get prepStudyPlanDeleteTooltip => 'স্টাডি প্ল্যান মুছুন';
+
+  @override
+  String get prepStudyPlanValidationBuffer =>
+      'প্রস্তুতি বাফার ০ দিন বা তার বেশি হতে হবে।';
+
+  @override
+  String get prepStudyPlanValidationPace =>
+      'দৈনিক সীমা ০-এর চেয়ে বেশি হতে হবে।';
+
+  @override
+  String get prepStudyPlanValidationDates =>
+      'পরীক্ষার তারিখ শুরুর তারিখ বা তার পরে হতে হবে।';
+
+  @override
+  String get dashboardTodayTargetTitle => 'আজকের অধ্যয়নের লক্ষ্য';
+
+  @override
+  String get dashboardTodayTargetEmptyTitle => 'এখনো কোনো স্টাডি প্ল্যান নেই';
+
+  @override
+  String get dashboardTodayTargetEmptyBody =>
+      'প্রতিদিনের লক্ষ্য ও স্বয়ংক্রিয় ক্যাচ-আপ হিসাব পেতে একটি পরীক্ষার তারিখ নির্ধারণ করুন।';
+
+  @override
+  String get dashboardTodayTargetEmptyAction => 'স্টাডি প্ল্যান সেট করুন';
+
+  @override
+  String get dashboardTodayTargetManageAction => 'স্টাডি প্ল্যান দেখুন';
+
+  @override
+  String dashboardTodayTargetPlansSummary(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedটি সক্রিয় প্ল্যান',
+      one: '$formattedটি সক্রিয় প্ল্যান',
+    );
+    return '$_temp0';
+  }
 }

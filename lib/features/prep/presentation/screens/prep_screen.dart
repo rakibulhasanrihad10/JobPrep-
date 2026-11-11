@@ -12,13 +12,16 @@ import 'package:job_prep/features/prep/domain/utils/prep_template_planner.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_subjects_controller.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_template_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_screen.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_template_ui_helpers.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_delete_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_overview_header_card.dart';
+import 'package:job_prep/features/prep/presentation/widgets/prep_study_plans_section.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_subject_detail_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_subjects_section.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_templates_dialog.dart';
+import 'package:job_prep/features/prep/presentation/widgets/study_plan_form_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.dart';
 
 /// Main animated preparation dashboard and Subject & Material Manager screen.
@@ -65,6 +68,7 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     unawaited(ref.read(subjectsProvider.notifier).refresh());
     unawaited(ref.read(allMaterialsProvider.notifier).refresh());
     unawaited(ref.read(prepTemplatesProvider.notifier).refresh());
+    unawaited(ref.read(studyPlansProvider.notifier).refresh());
   }
 
   Future<void> _openCreateSubject({required bool selectCreated}) async {
@@ -146,6 +150,8 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     final overallProgress =
         ref.watch(overallPrepProgressProvider).asData?.value ?? 0.0;
     final templateActionState = ref.watch(prepTemplateActionControllerProvider);
+    final planSnapshots =
+        ref.watch(studyPlanSnapshotsProvider).asData?.value ?? const [];
 
     final subjects = List<Subject>.of(
       subjectsAsync.asData?.value ?? const <Subject>[],
@@ -197,6 +203,12 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
                   materials: materials,
                 ),
               ),
+      onCreateStudyPlan: () => unawaited(showStudyPlanFormDialog(context)),
+    );
+
+    final plansSection = PrepStudyPlansSection(
+      snapshots: planSnapshots,
+      visitId: _tabVisitId,
     );
 
     final subjectsSection = PrepSubjectsSection(
@@ -255,6 +267,10 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         headerCard,
+                        if (planSnapshots.isNotEmpty) ...[
+                          SizedBox(height: spacing.lg),
+                          plansSection,
+                        ],
                         SizedBox(height: spacing.lg),
                         subjectsSection,
                       ],
@@ -281,6 +297,10 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   headerCard,
+                  if (planSnapshots.isNotEmpty) ...[
+                    SizedBox(height: spacing.lg),
+                    plansSection,
+                  ],
                   SizedBox(height: spacing.lg),
                   subjectsSection,
                 ],

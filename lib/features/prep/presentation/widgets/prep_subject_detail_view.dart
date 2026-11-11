@@ -13,6 +13,7 @@ import 'package:job_prep/features/prep/presentation/providers/prep_material_cont
 import 'package:job_prep/features/prep/presentation/providers/prep_progress_log_controller.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_subjects_controller.dart';
+import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_l10n.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_style_tokens.dart';
 import 'package:job_prep/features/prep/presentation/widgets/material_card.dart';
@@ -20,6 +21,7 @@ import 'package:job_prep/features/prep/presentation/widgets/material_form_dialog
 import 'package:job_prep/features/prep/presentation/widgets/material_logs_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_delete_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_subject_detail_header_card.dart';
+import 'package:job_prep/features/prep/presentation/widgets/study_plan_card.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.dart';
 
 /// Displays header, progress ring, and responsive cover cards grid (3-up on
@@ -160,6 +162,7 @@ class _PrepSubjectDetailViewState extends ConsumerState<PrepSubjectDetailView> {
     );
     final subjectProgress = calculateSubjectProgress(materials);
     final logState = ref.watch(prepProgressLogControllerProvider);
+    final subjectPlan = ref.watch(studyPlanForSubjectProvider(subject.id));
     final effectiveReplayKey = widget.replayKey ?? 'detail-${subject.id}';
 
     return Column(
@@ -177,6 +180,13 @@ class _PrepSubjectDetailViewState extends ConsumerState<PrepSubjectDetailView> {
               showSubjectFormDialog(context, existing: subject),
           onDeleteSubject: () => _handleDeleteSubject(context, materials),
         ),
+        if (subjectPlan != null) ...[
+          SizedBox(height: spacing.lg),
+          StudyPlanCard(
+            snapshot: subjectPlan,
+            visitId: effectiveReplayKey.hashCode,
+          ),
+        ],
         SizedBox(height: spacing.lg),
         materialsAsync.when(
           loading: () => Padding(

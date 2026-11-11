@@ -11,10 +11,12 @@ import 'package:job_prep/features/circulars/presentation/providers/circulars_pro
 import 'package:job_prep/features/dashboard/presentation/providers/dashboard_providers.dart';
 import 'package:job_prep/features/dashboard/presentation/widgets/dashboard_continue_studying_card.dart';
 import 'package:job_prep/features/dashboard/presentation/widgets/dashboard_metrics_grid.dart';
+import 'package:job_prep/features/dashboard/presentation/widgets/dashboard_today_target_card.dart';
 import 'package:job_prep/features/dashboard/presentation/widgets/dashboard_upcoming_deadlines_card.dart';
 import 'package:job_prep/features/dashboard/presentation/widgets/dashboard_upcoming_exams_card.dart';
 import 'package:job_prep/features/dashboard/presentation/widgets/dashboard_welcome_card.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
 
 /// Home Dashboard summarizing deadlines, inbox items, upcoming exams,
 /// submitted applications, overall prep progress, and recent study focus.
@@ -40,6 +42,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
     unawaited(ref.read(circularsListProvider.notifier).refresh());
     unawaited(ref.read(subjectsProvider.notifier).refresh());
     unawaited(ref.read(allMaterialsProvider.notifier).refresh());
+    unawaited(ref.read(studyPlansProvider.notifier).refresh());
     ref.invalidate(recentProgressLogsProvider);
   }
 
@@ -156,14 +159,23 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                       SizedBox(width: spacing.lg),
                       Expanded(
                         flex: 5,
-                        child: DashboardContinueStudyingCard(
-                          target: summary.continueStudying,
-                          visitId: _visitId,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            DashboardTodayTargetCard(visitId: _visitId),
+                            SizedBox(height: spacing.lg),
+                            DashboardContinueStudyingCard(
+                              target: summary.continueStudying,
+                              visitId: _visitId,
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   )
                 else ...[
+                  DashboardTodayTargetCard(visitId: _visitId),
+                  SizedBox(height: spacing.lg),
                   DashboardContinueStudyingCard(
                     target: summary.continueStudying,
                     visitId: _visitId,

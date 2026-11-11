@@ -1,13 +1,15 @@
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 
-/// Injectable clock callback defaulting to `DateTime.now` for progress logs.
+/// Injectable clock callback defaulting to [circularNowProvider] so all
+/// Prep, Study Plan, Circular, and Dashboard tests share one freezeable clock.
 final Provider<DateTime Function()> prepNowProvider =
-    Provider<DateTime Function()>((ref) => DateTime.now);
+    Provider<DateTime Function()>((ref) => ref.watch(circularNowProvider));
 
 /// Immutable mutation status for logging, editing, or deleting study logs.
 @immutable

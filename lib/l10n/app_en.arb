@@ -2860,5 +2860,296 @@
   "portalLoadError": "Could not load portal accounts.",
   "@portalLoadError": {
     "description": "Error shown when loading or decrypting portal accounts fails"
+  },
+  "prepStudyPlanSectionTitle": "Study Plans",
+  "@prepStudyPlanSectionTitle": {
+    "description": "Heading for the combined and per-subject study plans section"
+  },
+  "prepStudyPlanAddButton": "Set study plan",
+  "@prepStudyPlanAddButton": {
+    "description": "Button opening dialog to create a new study plan"
+  },
+  "prepStudyPlanCreateTitle": "Create Study Plan",
+  "@prepStudyPlanCreateTitle": {
+    "description": "Dialog title when creating a study plan"
+  },
+  "prepStudyPlanEditTitle": "Edit Study Plan",
+  "@prepStudyPlanEditTitle": {
+    "description": "Dialog title when editing an existing study plan"
+  },
+  "prepStudyPlanScopeLabel": "Plan scope",
+  "@prepStudyPlanScopeLabel": {
+    "description": "Label for selecting all subjects or a specific subject"
+  },
+  "prepStudyPlanAllSubjectsLabel": "All subjects (combined)",
+  "@prepStudyPlanAllSubjectsLabel": {
+    "description": "Label representing the combined all-subjects study plan"
+  },
+  "prepStudyPlanCircularLabel": "Linked exam circular (optional)",
+  "@prepStudyPlanCircularLabel": {
+    "description": "Label for optional circular dropdown in study plan form"
+  },
+  "prepStudyPlanNoCircularOption": "No circular link (custom date)",
+  "@prepStudyPlanNoCircularOption": {
+    "description": "Option representing no linked circular on a study plan"
+  },
+  "prepStudyPlanExamStageLabel": "Circular exam stage (optional)",
+  "@prepStudyPlanExamStageLabel": {
+    "description": "Label for choosing a specific exam stage date from a linked circular"
+  },
+  "prepStudyPlanStartDateLabel": "Start date",
+  "@prepStudyPlanStartDateLabel": {
+    "description": "Label for study plan start date picker"
+  },
+  "prepStudyPlanStartDateValue": "Start date: {formattedDate}",
+  "@prepStudyPlanStartDateValue": {
+    "description": "Formatted button label displaying chosen plan start date",
+    "placeholders": {
+      "formattedDate": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanTargetDateLabel": "Exam date",
+  "@prepStudyPlanTargetDateLabel": {
+    "description": "Label for study plan target exam date picker"
+  },
+  "prepStudyPlanTargetDateValue": "Exam date: {formattedDate}",
+  "@prepStudyPlanTargetDateValue": {
+    "description": "Formatted button label displaying chosen exam date",
+    "placeholders": {
+      "formattedDate": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanBufferDaysLabel": "Finish buffer (days before exam)",
+  "@prepStudyPlanBufferDaysLabel": {
+    "description": "Label for revision buffer days input"
+  },
+  "prepStudyPlanRestDaysLabel": "Rest days per week",
+  "@prepStudyPlanRestDaysLabel": {
+    "description": "Label for rest days per week selector"
+  },
+  "prepStudyPlanMaxPaceLabel": "Max daily pace limit (units/day, optional)",
+  "@prepStudyPlanMaxPaceLabel": {
+    "description": "Label for maximum comfortable daily study pace limit"
+  },
+  "prepStudyPlanMaxPaceHint": "Leave blank for no pace cap",
+  "@prepStudyPlanMaxPaceHint": {
+    "description": "Hint text for optional maximum daily pace limit field"
+  },
+  "prepStudyPlanSaveButton": "Save plan",
+  "@prepStudyPlanSaveButton": {
+    "description": "Submit button saving a study plan"
+  },
+  "prepStudyPlanDeleteTitle": "Delete study plan?",
+  "@prepStudyPlanDeleteTitle": {
+    "description": "Confirmation title before deleting a study plan"
+  },
+  "prepStudyPlanDeleteBody": "Remove this study plan? Your subjects, materials, and progress logs will stay untouched.",
+  "@prepStudyPlanDeleteBody": {
+    "description": "Confirmation body before deleting a study plan"
+  },
+  "prepStudyPlanStatusAhead": "Ahead",
+  "@prepStudyPlanStatusAhead": {
+    "description": "Badge when progress is ahead of the ideal line"
+  },
+  "prepStudyPlanStatusOnTrack": "On track",
+  "@prepStudyPlanStatusOnTrack": {
+    "description": "Badge when progress is on track with the ideal line"
+  },
+  "prepStudyPlanStatusBehind": "Behind",
+  "@prepStudyPlanStatusBehind": {
+    "description": "Badge when progress has fallen behind the ideal line"
+  },
+  "prepStudyPlanRemainingLabel": "Remaining",
+  "@prepStudyPlanRemainingLabel": {
+    "description": "Metric label for remaining study units"
+  },
+  "prepStudyPlanDaysLeftLabel": "Study days left",
+  "@prepStudyPlanDaysLeftLabel": {
+    "description": "Metric label for remaining effective study days"
+  },
+  "prepStudyPlanTodayTargetLabel": "Today's target",
+  "@prepStudyPlanTodayTargetLabel": {
+    "description": "Metric label for today's study unit target"
+  },
+  "prepStudyPlanUnitsCount": "{formatted} units",
+  "@prepStudyPlanUnitsCount": {
+    "description": "Formatted count of study units",
+    "placeholders": {
+      "formatted": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanDaysCount": "{count, plural, =0{0 days} =1{{formatted} day} other{{formatted} days}}",
+  "@prepStudyPlanDaysCount": {
+    "description": "Pluralized count of remaining study days",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formatted": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanTodayDoneOfTarget": "{done} / {target} today",
+  "@prepStudyPlanTodayDoneOfTarget": {
+    "description": "Compact progress label inside Today's progress ring or summary",
+    "placeholders": {
+      "done": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanBufferSummary": "Finishes {formattedDays}d before exam ({examDate})",
+  "@prepStudyPlanBufferSummary": {
+    "description": "Subtitle summarizing exam target date and finish buffer",
+    "placeholders": {
+      "formattedDays": {
+        "type": "String"
+      },
+      "examDate": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanFinishedComplete": "Syllabus complete — today's target is 0.",
+  "@prepStudyPlanFinishedComplete": {
+    "description": "Status message shown when all active syllabus units are finished"
+  },
+  "prepStudyPlanMissedRedistributed": "{days, plural, =1{You missed {formattedUnits} units, they are now spread over the next {formattedDays} day (+{formattedExtra}/day).} other{You missed {formattedUnits} units, they are now spread over the next {formattedDays} days (+{formattedExtra}/day).}}",
+  "@prepStudyPlanMissedRedistributed": {
+    "description": "Automatic missed-day catch-up explanation message",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "formattedUnits": {
+        "type": "String"
+      },
+      "formattedDays": {
+        "type": "String"
+      },
+      "formattedExtra": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanPastTargetNotice": "Study window before the finish buffer has ended with {formattedUnits} units left.",
+  "@prepStudyPlanPastTargetNotice": {
+    "description": "Notice when today is inside the finish buffer or past exam date with work remaining",
+    "placeholders": {
+      "formattedUnits": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanPaceWarning": "Recalculated target ({formattedTarget}/day) exceeds your pace limit ({formattedLimit}/day).",
+  "@prepStudyPlanPaceWarning": {
+    "description": "Warning shown when daily target exceeds max_daily_pace",
+    "placeholders": {
+      "formattedTarget": {
+        "type": "String"
+      },
+      "formattedLimit": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanActionConvertRest": "Turn a rest day into a study day",
+  "@prepStudyPlanActionConvertRest": {
+    "description": "Pace recovery action converting one rest day into a study day"
+  },
+  "prepStudyPlanActionRaisePace": "Raise pace limit",
+  "@prepStudyPlanActionRaisePace": {
+    "description": "Pace recovery action raising max_daily_pace"
+  },
+  "prepStudyPlanActionPostponeMaterial": "Postpone lower-priority material",
+  "@prepStudyPlanActionPostponeMaterial": {
+    "description": "Pace recovery action postponing a lower-priority material"
+  },
+  "prepStudyPlanRaisePaceTitle": "Raise Daily Pace Limit",
+  "@prepStudyPlanRaisePaceTitle": {
+    "description": "Dialog title when raising the daily pace limit"
+  },
+  "prepStudyPlanPostponeTitle": "Postpone Material",
+  "@prepStudyPlanPostponeTitle": {
+    "description": "Dialog title when choosing a material to postpone from the plan"
+  },
+  "prepStudyPlanPostponeSubtitle": "Excluding a material removes its remaining units from this plan's daily target without deleting your study progress.",
+  "@prepStudyPlanPostponeSubtitle": {
+    "description": "Explanation shown inside the postpone material dialog"
+  },
+  "prepStudyPlanPostponedChip": "Postponed: {title}",
+  "@prepStudyPlanPostponedChip": {
+    "description": "Chip label showing a postponed material that can be restored",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanRestoreTooltip": "Restore to plan",
+  "@prepStudyPlanRestoreTooltip": {
+    "description": "Tooltip on postponed material chip delete/restore icon"
+  },
+  "prepStudyPlanEditTooltip": "Edit study plan",
+  "@prepStudyPlanEditTooltip": {
+    "description": "Tooltip on study plan edit icon button"
+  },
+  "prepStudyPlanDeleteTooltip": "Delete study plan",
+  "@prepStudyPlanDeleteTooltip": {
+    "description": "Tooltip on study plan delete icon button"
+  },
+  "prepStudyPlanValidationBuffer": "Finish buffer must be 0 days or greater.",
+  "@prepStudyPlanValidationBuffer": {
+    "description": "Validation error for negative finish buffer"
+  },
+  "prepStudyPlanValidationPace": "Pace limit must be greater than 0.",
+  "@prepStudyPlanValidationPace": {
+    "description": "Validation error for non-positive daily pace limit"
+  },
+  "prepStudyPlanValidationDates": "Exam date must be on or after the start date.",
+  "@prepStudyPlanValidationDates": {
+    "description": "Validation error when exam date precedes start date"
+  },
+  "dashboardTodayTargetTitle": "Today's Target",
+  "@dashboardTodayTargetTitle": {
+    "description": "Heading for Today's Target card on the Home Dashboard"
+  },
+  "dashboardTodayTargetEmptyTitle": "No study plan configured yet",
+  "@dashboardTodayTargetEmptyTitle": {
+    "description": "Empty state heading inside Dashboard Today's Target card"
+  },
+  "dashboardTodayTargetEmptyBody": "Set an exam date to calculate daily targets and automatic missed-day redistribution.",
+  "@dashboardTodayTargetEmptyBody": {
+    "description": "Empty state explanation inside Dashboard Today's Target card"
+  },
+  "dashboardTodayTargetEmptyAction": "Set study plan",
+  "@dashboardTodayTargetEmptyAction": {
+    "description": "CTA button in Dashboard Today's Target empty state"
+  },
+  "dashboardTodayTargetManageAction": "Open study plans",
+  "@dashboardTodayTargetManageAction": {
+    "description": "Button navigating from Dashboard Today's Target card to Prep"
+  },
+  "dashboardTodayTargetPlansSummary": "{count, plural, =1{{formatted} active plan} other{{formatted} active plans}}",
+  "@dashboardTodayTargetPlansSummary": {
+    "description": "Summary count of configured study plans shown on Dashboard",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formatted": {
+        "type": "String"
+      }
+    }
   }
 }
