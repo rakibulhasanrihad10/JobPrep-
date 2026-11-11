@@ -150,6 +150,17 @@ final FutureProvider<List<ProgressLog>> recentProgressLogsProvider =
   retry: _noRetry,
 );
 
+/// Fetches extended recent progress logs (`limit: 2000`) for Study Analytics
+/// date windows, streaks, and calendar heatmap calculations.
+final FutureProvider<List<ProgressLog>> analyticsProgressLogsProvider =
+    FutureProvider<List<ProgressLog>>(
+  (ref) {
+    ref.watch(currentUserProvider.select((user) => user?.id));
+    return ref.watch(progressLogRepositoryProvider).getRecentLogs(limit: 2000);
+  },
+  retry: _noRetry,
+);
+
 /// Fetches syllabus topics belonging to `subjectId`.
 final FutureProviderFamily<List<Topic>, String> topicsForSubjectProvider =
     FutureProvider.family<List<Topic>, String>(

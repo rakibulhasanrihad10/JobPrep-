@@ -2654,4 +2654,208 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get prepMockDeleteConfirm => 'Delete';
+
+  @override
+  String get prepTabAnalytics => 'Analytics';
+
+  @override
+  String get prepAnalyticsTitle => 'Study analytics';
+
+  @override
+  String get prepAnalyticsSubtitle =>
+      'Track daily consistency, study streaks, weekly volume, and subject focus.';
+
+  @override
+  String get prepAnalyticsLoadingLabel => 'Loading study analytics...';
+
+  @override
+  String get prepAnalyticsLoadErrorTitle => 'Could not load study analytics';
+
+  @override
+  String get prepAnalyticsEmptyTitle => 'No study activity logged yet';
+
+  @override
+  String get prepAnalyticsEmptyBody =>
+      'Log units on your study materials or set a study plan to unlock streaks, charts, and your consistency score.';
+
+  @override
+  String get prepAnalyticsEmptyAction => 'Open subjects';
+
+  @override
+  String get prepAnalyticsFilterRangeLabel => 'Date range';
+
+  @override
+  String get prepAnalyticsRange7Days => '7 days';
+
+  @override
+  String get prepAnalyticsRange30Days => '30 days';
+
+  @override
+  String get prepAnalyticsRange90Days => '90 days';
+
+  @override
+  String get prepAnalyticsFilterSubjectLabel => 'Subject';
+
+  @override
+  String get prepAnalyticsAllSubjects => 'All subjects';
+
+  @override
+  String get prepAnalyticsClearFilter => 'Clear filter';
+
+  @override
+  String get prepAnalyticsCurrentStreak => 'Current streak';
+
+  @override
+  String get prepAnalyticsLongestStreak => 'Longest streak';
+
+  @override
+  String get prepAnalyticsUnitsThisWeek => 'Units this week';
+
+  @override
+  String get prepAnalyticsConsistency => 'Consistency';
+
+  @override
+  String prepAnalyticsDaysSuffix(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: ' days',
+      one: ' day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAnalyticsPercentSuffix => '%';
+
+  @override
+  String prepAnalyticsActiveDaysCaption(String active, String total) {
+    return '$active / $total active days';
+  }
+
+  @override
+  String prepAnalyticsAvgPerDayCaption(String avg) {
+    return '$avg/day (7d avg)';
+  }
+
+  @override
+  String get prepAnalyticsRolling7dLabel => '7-day avg';
+
+  @override
+  String get prepAnalyticsRolling30dLabel => '30-day avg';
+
+  @override
+  String prepAnalyticsUnitsPerDayValue(String avg) {
+    return '$avg units/day';
+  }
+
+  @override
+  String get prepAnalyticsBestDayLabel => 'Best day';
+
+  @override
+  String get prepAnalyticsWeakestDayLabel => 'Weakest day';
+
+  @override
+  String prepAnalyticsDaySummaryValue(String units, String date) {
+    return '$units units • $date';
+  }
+
+  @override
+  String get prepAnalyticsMockOverviewLabel => 'Mock tests in range';
+
+  @override
+  String prepAnalyticsMockOverviewValue(
+      int count, String formattedCount, String avg) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount tests • avg $avg%',
+      one: '$formattedCount test • avg $avg%',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAnalyticsNoDataDash => '—';
+
+  @override
+  String get prepAnalyticsAlertBothTitle =>
+      'Today and yesterday were below your daily target';
+
+  @override
+  String get prepAnalyticsAlertTodayTitle =>
+      'Today is still below your daily target';
+
+  @override
+  String get prepAnalyticsAlertYesterdayTitle =>
+      'Yesterday finished below your daily target';
+
+  @override
+  String prepAnalyticsAlertBody(String today, String yesterday, String target) {
+    return 'Today: $today / $target units • Yesterday: $yesterday / $target units';
+  }
+
+  @override
+  String get prepAnalyticsDailyChartTitle => 'Daily study activity';
+
+  @override
+  String prepAnalyticsDailyTargetLegend(String target) {
+    return 'Target: $target/day';
+  }
+
+  @override
+  String prepAnalyticsDailyTooltip(String date, String units) {
+    return '$date\n$units units';
+  }
+
+  @override
+  String get prepAnalyticsWeeklyChartTitle => 'Weekly totals';
+
+  @override
+  String prepAnalyticsWeeklyTooltip(String range, String units, String days) {
+    return '$range\n$units units ($days active)';
+  }
+
+  @override
+  String prepAnalyticsWeeklyRangeLabel(String start, String end) {
+    return '$start – $end';
+  }
+
+  @override
+  String get prepAnalyticsSubjectChartTitle => 'Where study time went';
+
+  @override
+  String get prepAnalyticsSubjectNoData =>
+      'Log study units or mock tests in this window to compare subjects.';
+
+  @override
+  String prepAnalyticsSubjectRowSubtitle(String units, String percent) {
+    return '$units units ($percent%)';
+  }
+
+  @override
+  String prepAnalyticsSubjectMockHint(
+      int count, String formattedCount, String avg) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount mocks • $avg% avg',
+      one: '$formattedCount mock • $avg% avg',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAnalyticsHeatmapTitle => 'Study days heatmap (last 90 days)';
+
+  @override
+  String prepAnalyticsHeatmapTooltip(String date, String units) {
+    return '$date: $units units';
+  }
+
+  @override
+  String get prepAnalyticsHeatmapLess => 'Less';
+
+  @override
+  String get prepAnalyticsHeatmapMore => 'More';
 }

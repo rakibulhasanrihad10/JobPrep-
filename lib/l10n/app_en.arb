@@ -3541,5 +3541,317 @@
   "prepMockDeleteConfirm": "Delete",
   "@prepMockDeleteConfirm": {
     "description": "Destructive confirmation button label for deleting a mock test"
+  },
+  "prepTabAnalytics": "Analytics",
+  "@prepTabAnalytics": {
+    "description": "Tab label for Study Analytics inside Prep screen"
+  },
+  "prepAnalyticsTitle": "Study analytics",
+  "@prepAnalyticsTitle": {
+    "description": "Heading on the Study Analytics screen"
+  },
+  "prepAnalyticsSubtitle": "Track daily consistency, study streaks, weekly volume, and subject focus.",
+  "@prepAnalyticsSubtitle": {
+    "description": "Subtitle explaining Study Analytics metrics and charts"
+  },
+  "prepAnalyticsLoadingLabel": "Loading study analytics...",
+  "@prepAnalyticsLoadingLabel": {
+    "description": "Loading indicator text while computing analytics"
+  },
+  "prepAnalyticsLoadErrorTitle": "Could not load study analytics",
+  "@prepAnalyticsLoadErrorTitle": {
+    "description": "Error card title when analytics data fails to load"
+  },
+  "prepAnalyticsEmptyTitle": "No study activity logged yet",
+  "@prepAnalyticsEmptyTitle": {
+    "description": "Empty state heading when a new user has no logs yet"
+  },
+  "prepAnalyticsEmptyBody": "Log units on your study materials or set a study plan to unlock streaks, charts, and your consistency score.",
+  "@prepAnalyticsEmptyBody": {
+    "description": "Empty state body explaining how to populate Study Analytics"
+  },
+  "prepAnalyticsEmptyAction": "Open subjects",
+  "@prepAnalyticsEmptyAction": {
+    "description": "CTA button navigating from empty analytics back to Subjects"
+  },
+  "prepAnalyticsFilterRangeLabel": "Date range",
+  "@prepAnalyticsFilterRangeLabel": {
+    "description": "Filter label for the analytics day window selector"
+  },
+  "prepAnalyticsRange7Days": "7 days",
+  "@prepAnalyticsRange7Days": {
+    "description": "7-day analytics range option"
+  },
+  "prepAnalyticsRange30Days": "30 days",
+  "@prepAnalyticsRange30Days": {
+    "description": "30-day analytics range option"
+  },
+  "prepAnalyticsRange90Days": "90 days",
+  "@prepAnalyticsRange90Days": {
+    "description": "90-day analytics range option"
+  },
+  "prepAnalyticsFilterSubjectLabel": "Subject",
+  "@prepAnalyticsFilterSubjectLabel": {
+    "description": "Filter label for subject filter on Study Analytics"
+  },
+  "prepAnalyticsAllSubjects": "All subjects",
+  "@prepAnalyticsAllSubjects": {
+    "description": "Default dropdown option covering all subjects in analytics"
+  },
+  "prepAnalyticsClearFilter": "Clear filter",
+  "@prepAnalyticsClearFilter": {
+    "description": "Button clearing subject/range filter back to defaults"
+  },
+  "prepAnalyticsCurrentStreak": "Current streak",
+  "@prepAnalyticsCurrentStreak": {
+    "description": "Metric card title for active consecutive study days"
+  },
+  "prepAnalyticsLongestStreak": "Longest streak",
+  "@prepAnalyticsLongestStreak": {
+    "description": "Metric card title for longest consecutive study days"
+  },
+  "prepAnalyticsUnitsThisWeek": "Units this week",
+  "@prepAnalyticsUnitsThisWeek": {
+    "description": "Metric card title for units completed in the current local week"
+  },
+  "prepAnalyticsConsistency": "Consistency",
+  "@prepAnalyticsConsistency": {
+    "description": "Metric card title for days studied / days in range percentage"
+  },
+  "prepAnalyticsDaysSuffix": "{count, plural, =1{ day} other{ days}}",
+  "@prepAnalyticsDaysSuffix": {
+    "description": "Pluralized unit suffix attached to AnimatedCounter streak values",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "prepAnalyticsPercentSuffix": "%",
+  "@prepAnalyticsPercentSuffix": {
+    "description": "Percent sign suffix attached to AnimatedCounter consistency values"
+  },
+  "prepAnalyticsActiveDaysCaption": "{active} / {total} active days",
+  "@prepAnalyticsActiveDaysCaption": {
+    "description": "Caption under Consistency card showing active out of total days",
+    "placeholders": {
+      "active": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsAvgPerDayCaption": "{avg}/day (7d avg)",
+  "@prepAnalyticsAvgPerDayCaption": {
+    "description": "Caption under Units this week showing 7-day average",
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsRolling7dLabel": "7-day avg",
+  "@prepAnalyticsRolling7dLabel": {
+    "description": "Highlight tile label for 7-day rolling daily unit average"
+  },
+  "prepAnalyticsRolling30dLabel": "30-day avg",
+  "@prepAnalyticsRolling30dLabel": {
+    "description": "Highlight tile label for 30-day rolling daily unit average"
+  },
+  "prepAnalyticsUnitsPerDayValue": "{avg} units/day",
+  "@prepAnalyticsUnitsPerDayValue": {
+    "description": "Formatted rolling average units per day",
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsBestDayLabel": "Best day",
+  "@prepAnalyticsBestDayLabel": {
+    "description": "Highlight tile label for highest-volume study day in range"
+  },
+  "prepAnalyticsWeakestDayLabel": "Weakest day",
+  "@prepAnalyticsWeakestDayLabel": {
+    "description": "Highlight tile label for lowest-volume day in range"
+  },
+  "prepAnalyticsDaySummaryValue": "{units} units • {date}",
+  "@prepAnalyticsDaySummaryValue": {
+    "description": "Formatted best or weakest day units paired with local date",
+    "placeholders": {
+      "units": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsMockOverviewLabel": "Mock tests in range",
+  "@prepAnalyticsMockOverviewLabel": {
+    "description": "Highlight label summarizing mock tests taken during date window"
+  },
+  "prepAnalyticsMockOverviewValue": "{count, plural, =1{{formattedCount} test • avg {avg}%} other{{formattedCount} tests • avg {avg}%}}",
+  "@prepAnalyticsMockOverviewValue": {
+    "description": "Formatted count and average score of mock tests in window",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      },
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsNoDataDash": "—",
+  "@prepAnalyticsNoDataDash": {
+    "description": "Placeholder when no best/weakest day or mock data is available"
+  },
+  "prepAnalyticsAlertBothTitle": "Today and yesterday were below your daily target",
+  "@prepAnalyticsAlertBothTitle": {
+    "description": "Alert headline when both today and yesterday finished under target"
+  },
+  "prepAnalyticsAlertTodayTitle": "Today is still below your daily target",
+  "@prepAnalyticsAlertTodayTitle": {
+    "description": "Alert headline when today has fewer units than daily target"
+  },
+  "prepAnalyticsAlertYesterdayTitle": "Yesterday finished below your daily target",
+  "@prepAnalyticsAlertYesterdayTitle": {
+    "description": "Alert headline when yesterday had fewer units than daily target"
+  },
+  "prepAnalyticsAlertBody": "Today: {today} / {target} units • Yesterday: {yesterday} / {target} units",
+  "@prepAnalyticsAlertBody": {
+    "description": "Details comparing today's and yesterday's logged units with daily target",
+    "placeholders": {
+      "today": {
+        "type": "String"
+      },
+      "yesterday": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsDailyChartTitle": "Daily study activity",
+  "@prepAnalyticsDailyChartTitle": {
+    "description": "Heading for the daily bar chart card"
+  },
+  "prepAnalyticsDailyTargetLegend": "Target: {target}/day",
+  "@prepAnalyticsDailyTargetLegend": {
+    "description": "Badge showing the study plan daily target reference line value",
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsDailyTooltip": "{date}\n{units} units",
+  "@prepAnalyticsDailyTooltip": {
+    "description": "Tooltip shown when hovering or tapping a daily bar",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "units": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsWeeklyChartTitle": "Weekly totals",
+  "@prepAnalyticsWeeklyChartTitle": {
+    "description": "Heading for the weekly totals bar chart card"
+  },
+  "prepAnalyticsWeeklyTooltip": "{range}\n{units} units ({days} active)",
+  "@prepAnalyticsWeeklyTooltip": {
+    "description": "Tooltip shown when touching a weekly bar",
+    "placeholders": {
+      "range": {
+        "type": "String"
+      },
+      "units": {
+        "type": "String"
+      },
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsWeeklyRangeLabel": "{start} – {end}",
+  "@prepAnalyticsWeeklyRangeLabel": {
+    "description": "Short calendar range label for a week bucket",
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsSubjectChartTitle": "Where study time went",
+  "@prepAnalyticsSubjectChartTitle": {
+    "description": "Heading for the subject breakdown chart and legend card"
+  },
+  "prepAnalyticsSubjectNoData": "Log study units or mock tests in this window to compare subjects.",
+  "@prepAnalyticsSubjectNoData": {
+    "description": "Hint inside subject breakdown card when zero activity matches"
+  },
+  "prepAnalyticsSubjectRowSubtitle": "{units} units ({percent}%)",
+  "@prepAnalyticsSubjectRowSubtitle": {
+    "description": "Legend label displaying subject units and percentage share",
+    "placeholders": {
+      "units": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsSubjectMockHint": "{count, plural, =1{{formattedCount} mock • {avg}% avg} other{{formattedCount} mocks • {avg}% avg}}",
+  "@prepAnalyticsSubjectMockHint": {
+    "description": "Sub-caption on subject breakdown showing mock test stats in window",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      },
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsHeatmapTitle": "Study days heatmap (last 90 days)",
+  "@prepAnalyticsHeatmapTitle": {
+    "description": "Heading above the rolling calendar heatmap of study days"
+  },
+  "prepAnalyticsHeatmapTooltip": "{date}: {units} units",
+  "@prepAnalyticsHeatmapTooltip": {
+    "description": "Tooltip label for an individual calendar heatmap day cell",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "units": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsHeatmapLess": "Less",
+  "@prepAnalyticsHeatmapLess": {
+    "description": "Heatmap intensity legend low label"
+  },
+  "prepAnalyticsHeatmapMore": "More",
+  "@prepAnalyticsHeatmapMore": {
+    "description": "Heatmap intensity legend high label"
   }
 }

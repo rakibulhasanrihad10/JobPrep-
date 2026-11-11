@@ -23,6 +23,7 @@ import 'package:job_prep/features/prep/presentation/widgets/prep_subjects_body.d
 import 'package:job_prep/features/prep/presentation/widgets/prep_subjects_section.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_tab_switcher.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_templates_dialog.dart';
+import 'package:job_prep/features/prep/presentation/widgets/study_analytics_tab_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_plan_form_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.dart';
 
@@ -33,6 +34,7 @@ class PrepScreen extends ConsumerStatefulWidget {
     super.key,
     this.selectedSubjectId,
     this.initialMaterialId,
+    this.initialTab = PrepSectionTab.subjects,
   });
 
   /// Optional pre-selected subject displayed in desktop master-detail mode.
@@ -41,6 +43,9 @@ class PrepScreen extends ConsumerStatefulWidget {
   /// Optional material identifier to open immediately when focused.
   final String? initialMaterialId;
 
+  /// Initial section tab displayed when mounting [PrepScreen].
+  final PrepSectionTab initialTab;
+
   @override
   ConsumerState<PrepScreen> createState() => _PrepScreenState();
 }
@@ -48,11 +53,14 @@ class PrepScreen extends ConsumerStatefulWidget {
 class _PrepScreenState extends ConsumerState<PrepScreen> {
   static int _nextTabVisitId = 0;
   static int _nextMockVisitId = 0;
+  static int _nextAnalyticsVisitId = 0;
 
   late int _tabVisitId;
   late int _mockVisitId;
-  PrepSectionTab _activeTab = PrepSectionTab.subjects;
+  late int _analyticsVisitId;
+  late PrepSectionTab _activeTab;
   bool _hasVisitedMockTab = false;
+  bool _hasVisitedAnalyticsTab = false;
   String? _localSelectedId;
 
   @override
@@ -60,6 +68,10 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     super.initState();
     _tabVisitId = ++_nextTabVisitId;
     _mockVisitId = ++_nextMockVisitId;
+    _analyticsVisitId = ++_nextAnalyticsVisitId;
+    _activeTab = widget.initialTab;
+    _hasVisitedMockTab = _activeTab == PrepSectionTab.mockTests;
+    _hasVisitedAnalyticsTab = _activeTab == PrepSectionTab.analytics;
     _localSelectedId = widget.selectedSubjectId;
   }
 
@@ -69,27 +81,41 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     if (widget.selectedSubjectId != oldWidget.selectedSubjectId) {
       _localSelectedId = widget.selectedSubjectId;
     }
+    if (widget.initialTab != oldWidget.initialTab &&
+        widget.initialTab != _activeTab) {
+      _switchTab(widget.initialTab);
+    }
   }
 
   void _switchTab(PrepSectionTab next) {
     if (_activeTab == next) return;
     final shouldRefreshMocks =
         next == PrepSectionTab.mockTests && _hasVisitedMockTab;
+    final shouldRefreshAnalytics =
+        next == PrepSectionTab.analytics && _hasVisitedAnalyticsTab;
     setState(() {
       _activeTab = next;
-      if (next == PrepSectionTab.mockTests) {
-        _hasVisitedMockTab = true;
-        _mockVisitId = ++_nextMockVisitId;
-      } else {
-        _tabVisitId = ++_nextTabVisitId;
+      switch (next) {
+        case PrepSectionTab.subjects:
+          _tabVisitId = ++_nextTabVisitId;
+        case PrepSectionTab.mockTests:
+          _hasVisitedMockTab = true;
+          _mockVisitId = ++_nextMockVisitId;
+        case PrepSectionTab.analytics:
+          _hasVisitedAnalyticsTab = true;
+          _analyticsVisitId = ++_nextAnalyticsVisitId;
       }
     });
     if (shouldRefreshMocks) {
       unawaited(ref.read(mockTestsProvider.notifier).refresh());
     }
+    if (shouldRefreshAnalytics) {
+      ref.invalidate(analyticsProgressLogsProvider);
+    }
   }
 
   void _refreshAll() {
+    ref.invalidate(analyticsProgressLogsProvider);
     unawaited(ref.read(subjectsProvider.notifier).refresh());
     unawaited(ref.read(allMaterialsProvider.notifier).refresh());
     unawaited(ref.read(prepTemplatesProvider.notifier).refresh());
@@ -292,6 +318,11 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
           SizedBox(height: spacing.lg),
           if (_activeTab == PrepSectionTab.mockTests)
             MockTestsTabView(visitId: _mockVisitId)
+          else if (_activeTab == PrepSectionTab.analytics)
+            StudyAnalyticsTabView(
+              visitId: _analyticsVisitId,
+              onOpenSubjects: () => _switchTab(PrepSectionTab.subjects),
+            )
           else
             PrepSubjectsBody(
               isExpanded: isExpanded,

@@ -2648,4 +2648,208 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get prepMockDeleteConfirm => 'মুছুন';
+
+  @override
+  String get prepTabAnalytics => 'বিশ্লেষণ';
+
+  @override
+  String get prepAnalyticsTitle => 'পড়াশোনার বিশ্লেষণ';
+
+  @override
+  String get prepAnalyticsSubtitle =>
+      'দৈনিক ধারাবাহিকতা, স্ট্রিক, সাপ্তাহিক অগ্রগতি এবং বিষয়ভিত্তিক সময় দেখুন।';
+
+  @override
+  String get prepAnalyticsLoadingLabel => 'পড়াশোনার বিশ্লেষণ লোড হচ্ছে...';
+
+  @override
+  String get prepAnalyticsLoadErrorTitle => 'পড়াশোনার বিশ্লেষণ লোড করা যায়নি';
+
+  @override
+  String get prepAnalyticsEmptyTitle =>
+      'এখনো কোনো পড়াশোনার তথ্য যোগ করা হয়নি';
+
+  @override
+  String get prepAnalyticsEmptyBody =>
+      'স্ট্রিক, চার্ট এবং ধারাবাহিকতার স্কোর দেখতে আপনার বই বা নোটে অগ্রগতি যোগ করুন।';
+
+  @override
+  String get prepAnalyticsEmptyAction => 'বিষয়সমূহ দেখুন';
+
+  @override
+  String get prepAnalyticsFilterRangeLabel => 'সময়সীমা';
+
+  @override
+  String get prepAnalyticsRange7Days => '৭ দিন';
+
+  @override
+  String get prepAnalyticsRange30Days => '৩০ দিন';
+
+  @override
+  String get prepAnalyticsRange90Days => '৯০ দিন';
+
+  @override
+  String get prepAnalyticsFilterSubjectLabel => 'বিষয়';
+
+  @override
+  String get prepAnalyticsAllSubjects => 'সব বিষয়';
+
+  @override
+  String get prepAnalyticsClearFilter => 'ফিল্টার মুছুন';
+
+  @override
+  String get prepAnalyticsCurrentStreak => 'বর্তমান স্ট্রিক';
+
+  @override
+  String get prepAnalyticsLongestStreak => 'সর্বোচ্চ স্ট্রিক';
+
+  @override
+  String get prepAnalyticsUnitsThisWeek => 'এই সপ্তাহের ইউনিট';
+
+  @override
+  String get prepAnalyticsConsistency => 'ধারাবাহিকতা';
+
+  @override
+  String prepAnalyticsDaysSuffix(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: ' দিন',
+      one: ' দিন',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAnalyticsPercentSuffix => '%';
+
+  @override
+  String prepAnalyticsActiveDaysCaption(String active, String total) {
+    return '$total দিনের মধ্যে $active দিন সক্রিয়';
+  }
+
+  @override
+  String prepAnalyticsAvgPerDayCaption(String avg) {
+    return 'দৈনিক গড় $avg (৭ দিন)';
+  }
+
+  @override
+  String get prepAnalyticsRolling7dLabel => '৭ দিনের গড়';
+
+  @override
+  String get prepAnalyticsRolling30dLabel => '৩০ দিনের গড়';
+
+  @override
+  String prepAnalyticsUnitsPerDayValue(String avg) {
+    return 'দৈনিক $avg ইউনিট';
+  }
+
+  @override
+  String get prepAnalyticsBestDayLabel => 'সেরা দিন';
+
+  @override
+  String get prepAnalyticsWeakestDayLabel => 'সর্বনিম্ন দিন';
+
+  @override
+  String prepAnalyticsDaySummaryValue(String units, String date) {
+    return '$units ইউনিট • $date';
+  }
+
+  @override
+  String get prepAnalyticsMockOverviewLabel => 'এই সময়ে মডেল টেস্ট';
+
+  @override
+  String prepAnalyticsMockOverviewValue(
+      int count, String formattedCount, String avg) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি টেস্ট • গড় $avg%',
+      one: '$formattedCountটি টেস্ট • গড় $avg%',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAnalyticsNoDataDash => '—';
+
+  @override
+  String get prepAnalyticsAlertBothTitle =>
+      'আজ এবং গতকাল দৈনিক লক্ষ্যের তুলনায় কম পড়া হয়েছে';
+
+  @override
+  String get prepAnalyticsAlertTodayTitle => 'আজ এখনো দৈনিক লক্ষ্য পূরণ হয়নি';
+
+  @override
+  String get prepAnalyticsAlertYesterdayTitle =>
+      'গতকাল দৈনিক লক্ষ্যের তুলনায় কম পড়া হয়েছে';
+
+  @override
+  String prepAnalyticsAlertBody(String today, String yesterday, String target) {
+    return 'আজ: $today / $target ইউনিট • গতকাল: $yesterday / $target ইউনিট';
+  }
+
+  @override
+  String get prepAnalyticsDailyChartTitle => 'দৈনিক পড়াশোনার পরিমাণ';
+
+  @override
+  String prepAnalyticsDailyTargetLegend(String target) {
+    return 'লক্ষ্য: দৈনিক $target';
+  }
+
+  @override
+  String prepAnalyticsDailyTooltip(String date, String units) {
+    return '$date\n$units ইউনিট';
+  }
+
+  @override
+  String get prepAnalyticsWeeklyChartTitle => 'সাপ্তাহিক মোট';
+
+  @override
+  String prepAnalyticsWeeklyTooltip(String range, String units, String days) {
+    return '$range\n$units ইউনিট ($days দিন সক্রিয়)';
+  }
+
+  @override
+  String prepAnalyticsWeeklyRangeLabel(String start, String end) {
+    return '$start – $end';
+  }
+
+  @override
+  String get prepAnalyticsSubjectChartTitle => 'বিষয়ভিত্তিক সময় বণ্টন';
+
+  @override
+  String get prepAnalyticsSubjectNoData =>
+      'বিষয়ভিত্তিক তুলনা দেখতে এই সময়ে পড়াশোনা বা মডেল টেস্ট যোগ করুন।';
+
+  @override
+  String prepAnalyticsSubjectRowSubtitle(String units, String percent) {
+    return '$units ইউনিট ($percent%)';
+  }
+
+  @override
+  String prepAnalyticsSubjectMockHint(
+      int count, String formattedCount, String avg) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি মক • গড় $avg%',
+      one: '$formattedCountটি মক • গড় $avg%',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAnalyticsHeatmapTitle => 'পড়াশোনার হিটম্যাপ (গত ৯০ দিন)';
+
+  @override
+  String prepAnalyticsHeatmapTooltip(String date, String units) {
+    return '$date: $units ইউনিট';
+  }
+
+  @override
+  String get prepAnalyticsHeatmapLess => 'কম';
+
+  @override
+  String get prepAnalyticsHeatmapMore => 'বেশি';
 }

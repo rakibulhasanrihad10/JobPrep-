@@ -17,6 +17,7 @@ import 'package:job_prep/features/circulars/presentation/widgets/quick_capture_s
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_screen.dart';
+import 'package:job_prep/features/prep/presentation/widgets/prep_tab_switcher.dart';
 import 'package:job_prep/features/settings/presentation/screens/settings_screen.dart';
 
 /// Optional initial location override used in widget and deep-link tests.
@@ -171,6 +172,13 @@ final routerProvider = Provider<GoRouter>((ref) {
               child: PrepScreen(),
             ),
             routes: [
+              GoRoute(
+                path: 'analytics',
+                name: 'prep_analytics',
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: PrepScreen(initialTab: PrepSectionTab.analytics),
+                ),
+              ),
               GoRoute(
                 path: ':subjectId',
                 name: 'prep_subject',

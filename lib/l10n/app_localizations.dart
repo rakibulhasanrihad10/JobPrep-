@@ -4535,6 +4535,308 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delete'**
   String get prepMockDeleteConfirm;
+
+  /// Tab label for Study Analytics inside Prep screen
+  ///
+  /// In en, this message translates to:
+  /// **'Analytics'**
+  String get prepTabAnalytics;
+
+  /// Heading on the Study Analytics screen
+  ///
+  /// In en, this message translates to:
+  /// **'Study analytics'**
+  String get prepAnalyticsTitle;
+
+  /// Subtitle explaining Study Analytics metrics and charts
+  ///
+  /// In en, this message translates to:
+  /// **'Track daily consistency, study streaks, weekly volume, and subject focus.'**
+  String get prepAnalyticsSubtitle;
+
+  /// Loading indicator text while computing analytics
+  ///
+  /// In en, this message translates to:
+  /// **'Loading study analytics...'**
+  String get prepAnalyticsLoadingLabel;
+
+  /// Error card title when analytics data fails to load
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load study analytics'**
+  String get prepAnalyticsLoadErrorTitle;
+
+  /// Empty state heading when a new user has no logs yet
+  ///
+  /// In en, this message translates to:
+  /// **'No study activity logged yet'**
+  String get prepAnalyticsEmptyTitle;
+
+  /// Empty state body explaining how to populate Study Analytics
+  ///
+  /// In en, this message translates to:
+  /// **'Log units on your study materials or set a study plan to unlock streaks, charts, and your consistency score.'**
+  String get prepAnalyticsEmptyBody;
+
+  /// CTA button navigating from empty analytics back to Subjects
+  ///
+  /// In en, this message translates to:
+  /// **'Open subjects'**
+  String get prepAnalyticsEmptyAction;
+
+  /// Filter label for the analytics day window selector
+  ///
+  /// In en, this message translates to:
+  /// **'Date range'**
+  String get prepAnalyticsFilterRangeLabel;
+
+  /// 7-day analytics range option
+  ///
+  /// In en, this message translates to:
+  /// **'7 days'**
+  String get prepAnalyticsRange7Days;
+
+  /// 30-day analytics range option
+  ///
+  /// In en, this message translates to:
+  /// **'30 days'**
+  String get prepAnalyticsRange30Days;
+
+  /// 90-day analytics range option
+  ///
+  /// In en, this message translates to:
+  /// **'90 days'**
+  String get prepAnalyticsRange90Days;
+
+  /// Filter label for subject filter on Study Analytics
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get prepAnalyticsFilterSubjectLabel;
+
+  /// Default dropdown option covering all subjects in analytics
+  ///
+  /// In en, this message translates to:
+  /// **'All subjects'**
+  String get prepAnalyticsAllSubjects;
+
+  /// Button clearing subject/range filter back to defaults
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filter'**
+  String get prepAnalyticsClearFilter;
+
+  /// Metric card title for active consecutive study days
+  ///
+  /// In en, this message translates to:
+  /// **'Current streak'**
+  String get prepAnalyticsCurrentStreak;
+
+  /// Metric card title for longest consecutive study days
+  ///
+  /// In en, this message translates to:
+  /// **'Longest streak'**
+  String get prepAnalyticsLongestStreak;
+
+  /// Metric card title for units completed in the current local week
+  ///
+  /// In en, this message translates to:
+  /// **'Units this week'**
+  String get prepAnalyticsUnitsThisWeek;
+
+  /// Metric card title for days studied / days in range percentage
+  ///
+  /// In en, this message translates to:
+  /// **'Consistency'**
+  String get prepAnalyticsConsistency;
+
+  /// Pluralized unit suffix attached to AnimatedCounter streak values
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{ day} other{ days}}'**
+  String prepAnalyticsDaysSuffix(int count);
+
+  /// Percent sign suffix attached to AnimatedCounter consistency values
+  ///
+  /// In en, this message translates to:
+  /// **'%'**
+  String get prepAnalyticsPercentSuffix;
+
+  /// Caption under Consistency card showing active out of total days
+  ///
+  /// In en, this message translates to:
+  /// **'{active} / {total} active days'**
+  String prepAnalyticsActiveDaysCaption(String active, String total);
+
+  /// Caption under Units this week showing 7-day average
+  ///
+  /// In en, this message translates to:
+  /// **'{avg}/day (7d avg)'**
+  String prepAnalyticsAvgPerDayCaption(String avg);
+
+  /// Highlight tile label for 7-day rolling daily unit average
+  ///
+  /// In en, this message translates to:
+  /// **'7-day avg'**
+  String get prepAnalyticsRolling7dLabel;
+
+  /// Highlight tile label for 30-day rolling daily unit average
+  ///
+  /// In en, this message translates to:
+  /// **'30-day avg'**
+  String get prepAnalyticsRolling30dLabel;
+
+  /// Formatted rolling average units per day
+  ///
+  /// In en, this message translates to:
+  /// **'{avg} units/day'**
+  String prepAnalyticsUnitsPerDayValue(String avg);
+
+  /// Highlight tile label for highest-volume study day in range
+  ///
+  /// In en, this message translates to:
+  /// **'Best day'**
+  String get prepAnalyticsBestDayLabel;
+
+  /// Highlight tile label for lowest-volume day in range
+  ///
+  /// In en, this message translates to:
+  /// **'Weakest day'**
+  String get prepAnalyticsWeakestDayLabel;
+
+  /// Formatted best or weakest day units paired with local date
+  ///
+  /// In en, this message translates to:
+  /// **'{units} units • {date}'**
+  String prepAnalyticsDaySummaryValue(String units, String date);
+
+  /// Highlight label summarizing mock tests taken during date window
+  ///
+  /// In en, this message translates to:
+  /// **'Mock tests in range'**
+  String get prepAnalyticsMockOverviewLabel;
+
+  /// Formatted count and average score of mock tests in window
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formattedCount} test • avg {avg}%} other{{formattedCount} tests • avg {avg}%}}'**
+  String prepAnalyticsMockOverviewValue(
+      int count, String formattedCount, String avg);
+
+  /// Placeholder when no best/weakest day or mock data is available
+  ///
+  /// In en, this message translates to:
+  /// **'—'**
+  String get prepAnalyticsNoDataDash;
+
+  /// Alert headline when both today and yesterday finished under target
+  ///
+  /// In en, this message translates to:
+  /// **'Today and yesterday were below your daily target'**
+  String get prepAnalyticsAlertBothTitle;
+
+  /// Alert headline when today has fewer units than daily target
+  ///
+  /// In en, this message translates to:
+  /// **'Today is still below your daily target'**
+  String get prepAnalyticsAlertTodayTitle;
+
+  /// Alert headline when yesterday had fewer units than daily target
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday finished below your daily target'**
+  String get prepAnalyticsAlertYesterdayTitle;
+
+  /// Details comparing today's and yesterday's logged units with daily target
+  ///
+  /// In en, this message translates to:
+  /// **'Today: {today} / {target} units • Yesterday: {yesterday} / {target} units'**
+  String prepAnalyticsAlertBody(String today, String yesterday, String target);
+
+  /// Heading for the daily bar chart card
+  ///
+  /// In en, this message translates to:
+  /// **'Daily study activity'**
+  String get prepAnalyticsDailyChartTitle;
+
+  /// Badge showing the study plan daily target reference line value
+  ///
+  /// In en, this message translates to:
+  /// **'Target: {target}/day'**
+  String prepAnalyticsDailyTargetLegend(String target);
+
+  /// Tooltip shown when hovering or tapping a daily bar
+  ///
+  /// In en, this message translates to:
+  /// **'{date}\n{units} units'**
+  String prepAnalyticsDailyTooltip(String date, String units);
+
+  /// Heading for the weekly totals bar chart card
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly totals'**
+  String get prepAnalyticsWeeklyChartTitle;
+
+  /// Tooltip shown when touching a weekly bar
+  ///
+  /// In en, this message translates to:
+  /// **'{range}\n{units} units ({days} active)'**
+  String prepAnalyticsWeeklyTooltip(String range, String units, String days);
+
+  /// Short calendar range label for a week bucket
+  ///
+  /// In en, this message translates to:
+  /// **'{start} – {end}'**
+  String prepAnalyticsWeeklyRangeLabel(String start, String end);
+
+  /// Heading for the subject breakdown chart and legend card
+  ///
+  /// In en, this message translates to:
+  /// **'Where study time went'**
+  String get prepAnalyticsSubjectChartTitle;
+
+  /// Hint inside subject breakdown card when zero activity matches
+  ///
+  /// In en, this message translates to:
+  /// **'Log study units or mock tests in this window to compare subjects.'**
+  String get prepAnalyticsSubjectNoData;
+
+  /// Legend label displaying subject units and percentage share
+  ///
+  /// In en, this message translates to:
+  /// **'{units} units ({percent}%)'**
+  String prepAnalyticsSubjectRowSubtitle(String units, String percent);
+
+  /// Sub-caption on subject breakdown showing mock test stats in window
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formattedCount} mock • {avg}% avg} other{{formattedCount} mocks • {avg}% avg}}'**
+  String prepAnalyticsSubjectMockHint(
+      int count, String formattedCount, String avg);
+
+  /// Heading above the rolling calendar heatmap of study days
+  ///
+  /// In en, this message translates to:
+  /// **'Study days heatmap (last 90 days)'**
+  String get prepAnalyticsHeatmapTitle;
+
+  /// Tooltip label for an individual calendar heatmap day cell
+  ///
+  /// In en, this message translates to:
+  /// **'{date}: {units} units'**
+  String prepAnalyticsHeatmapTooltip(String date, String units);
+
+  /// Heatmap intensity legend low label
+  ///
+  /// In en, this message translates to:
+  /// **'Less'**
+  String get prepAnalyticsHeatmapLess;
+
+  /// Heatmap intensity legend high label
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get prepAnalyticsHeatmapMore;
 }
 
 class _AppLocalizationsDelegate

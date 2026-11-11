@@ -230,7 +230,8 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
   }) async {
     ref
       ..invalidate(progressLogsForMaterialProvider(materialId))
-      ..invalidate(recentProgressLogsProvider);
+      ..invalidate(recentProgressLogsProvider)
+      ..invalidate(analyticsProgressLogsProvider);
     await Future.wait(<Future<Object?>>[
       ref.refresh(materialsForSubjectProvider(subjectId).future),
       ref.refresh(allMaterialsProvider.future),

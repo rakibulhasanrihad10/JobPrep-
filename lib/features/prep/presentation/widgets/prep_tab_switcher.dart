@@ -10,6 +10,9 @@ enum PrepSectionTab {
 
   /// Cross-subject mock test history, filters, analytics, and trend chart.
   mockTests,
+
+  /// Cross-subject study analytics, streaks, charts, and heatmap.
+  analytics,
 }
 
 /// Tokenized glass tab switcher bar for `PrepScreen`.
@@ -37,25 +40,36 @@ class PrepTabSwitcher extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: GlassCard(
         padding: spacing.insetsAllXs,
-        child: Wrap(
-          spacing: spacing.xs,
-          runSpacing: spacing.xs,
-          children: [
-            _TabButton(
-              key: const ValueKey('prep-tab-subjects'),
-              icon: Icons.menu_book_outlined,
-              label: l10n.prepTabSubjects,
-              isSelected: activeTab == PrepSectionTab.subjects,
-              onTap: () => onChanged(PrepSectionTab.subjects),
-            ),
-            _TabButton(
-              key: const ValueKey('prep-tab-mock-tests'),
-              icon: Icons.analytics_outlined,
-              label: l10n.prepTabMockTests,
-              isSelected: activeTab == PrepSectionTab.mockTests,
-              onTap: () => onChanged(PrepSectionTab.mockTests),
-            ),
-          ],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _TabButton(
+                key: const ValueKey('prep-tab-subjects'),
+                icon: Icons.menu_book_outlined,
+                label: l10n.prepTabSubjects,
+                isSelected: activeTab == PrepSectionTab.subjects,
+                onTap: () => onChanged(PrepSectionTab.subjects),
+              ),
+              SizedBox(width: spacing.xs),
+              _TabButton(
+                key: const ValueKey('prep-tab-mock-tests'),
+                icon: Icons.analytics_outlined,
+                label: l10n.prepTabMockTests,
+                isSelected: activeTab == PrepSectionTab.mockTests,
+                onTap: () => onChanged(PrepSectionTab.mockTests),
+              ),
+              SizedBox(width: spacing.xs),
+              _TabButton(
+                key: const ValueKey('prep-tab-analytics'),
+                icon: Icons.query_stats_rounded,
+                label: l10n.prepTabAnalytics,
+                isSelected: activeTab == PrepSectionTab.analytics,
+                onTap: () => onChanged(PrepSectionTab.analytics),
+              ),
+            ],
+          ),
         ),
       ),
     );
