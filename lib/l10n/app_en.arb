@@ -2678,5 +2678,187 @@
   "settingsRemindersOfflineHint": "Connect Supabase to persist email reminder preferences across devices.",
   "@settingsRemindersOfflineHint": {
     "description": "Notice shown when running without a connected Supabase backend"
+  },
+  "vaultTitle": "Portal Vault",
+  "@vaultTitle": {
+    "description": "Title for client-side encrypted portal vault"
+  },
+  "vaultSubtitle": "Protect saved application portal logins with your local vault passphrase.",
+  "@vaultSubtitle": {
+    "description": "Subtitle explaining portal vault security"
+  },
+  "vaultStatusLocked": "Locked",
+  "@vaultStatusLocked": {
+    "description": "Badge label when portal vault is locked"
+  },
+  "vaultStatusUnlocked": "Unlocked",
+  "@vaultStatusUnlocked": {
+    "description": "Badge label when portal vault is unlocked"
+  },
+  "vaultSetupButton": "Set up vault",
+  "@vaultSetupButton": {
+    "description": "Button opening first-time vault passphrase setup dialog"
+  },
+  "vaultUnlockButton": "Unlock vault",
+  "@vaultUnlockButton": {
+    "description": "Button opening vault unlock dialog"
+  },
+  "vaultLockButton": "Lock vault",
+  "@vaultLockButton": {
+    "description": "Button locking the vault immediately and wiping keys"
+  },
+  "vaultSetupDialogTitle": "Create Vault Passphrase",
+  "@vaultSetupDialogTitle": {
+    "description": "Dialog title for first-time vault setup"
+  },
+  "vaultSetupDialogBody": "Choose a strong passphrase to encrypt your portal passwords on this device.",
+  "@vaultSetupDialogBody": {
+    "description": "Introductory explanation inside first-time vault setup dialog"
+  },
+  "vaultUnrecoverableWarning": "Important: A forgotten passphrase cannot be recovered or reset. Any saved passwords cannot be decrypted without it.",
+  "@vaultUnrecoverableWarning": {
+    "description": "Prominent non-recoverable warning displayed during vault setup"
+  },
+  "vaultAcknowledgeWarningLabel": "I understand that a forgotten passphrase cannot be recovered.",
+  "@vaultAcknowledgeWarningLabel": {
+    "description": "Checkbox label confirming user read the recovery warning"
+  },
+  "vaultAcknowledgeRequiredError": "Please confirm that you understand the recovery warning.",
+  "@vaultAcknowledgeRequiredError": {
+    "description": "Validation error if user tries submitting setup without acknowledging warning"
+  },
+  "vaultPassphraseLabel": "Vault passphrase",
+  "@vaultPassphraseLabel": {
+    "description": "Text field label for vault passphrase"
+  },
+  "vaultPassphraseConfirmLabel": "Confirm passphrase",
+  "@vaultPassphraseConfirmLabel": {
+    "description": "Text field label for confirming new vault passphrase"
+  },
+  "vaultPassphraseTooShortError": "Enter at least 8 characters.",
+  "@vaultPassphraseTooShortError": {
+    "description": "Validation error when vault passphrase is shorter than 8 characters"
+  },
+  "vaultPassphraseMismatchError": "Passphrases do not match.",
+  "@vaultPassphraseMismatchError": {
+    "description": "Validation error when confirmation passphrase does not match"
+  },
+  "vaultCreateAndUnlockAction": "Create & unlock",
+  "@vaultCreateAndUnlockAction": {
+    "description": "Submit button creating vault check value and unlocking session"
+  },
+  "vaultUnlockDialogTitle": "Unlock Portal Vault",
+  "@vaultUnlockDialogTitle": {
+    "description": "Dialog title prompting for existing vault passphrase"
+  },
+  "vaultUnlockDialogBody": "Enter your vault passphrase to view, copy, and manage saved portal accounts.",
+  "@vaultUnlockDialogBody": {
+    "description": "Description text inside vault unlock dialog"
+  },
+  "vaultWrongPassphraseError": "Incorrect vault passphrase. Please try again.",
+  "@vaultWrongPassphraseError": {
+    "description": "Error displayed when vault unlock verification fails"
+  },
+  "vaultAutoLockNote": "Auto-locks after inactivity and whenever you sign out.",
+  "@vaultAutoLockNote": {
+    "description": "Informational caption explaining automatic vault locking"
+  },
+  "vaultPortalLockedHint": "Portal logins are hidden while the vault is locked.",
+  "@vaultPortalLockedHint": {
+    "description": "Locked placeholder text on circular detail screen"
+  },
+  "portalSectionTitle": "Portal Login",
+  "@portalSectionTitle": {
+    "description": "Section title for portal accounts inside circular detail view"
+  },
+  "portalAddAccountButton": "Add account",
+  "@portalAddAccountButton": {
+    "description": "Button adding a portal account to the active circular"
+  },
+  "portalEmptyState": "No portal accounts saved for this circular yet.",
+  "@portalEmptyState": {
+    "description": "Empty state shown when vault is unlocked and circular has no accounts"
+  },
+  "portalAddDialogTitle": "Add Portal Account",
+  "@portalAddDialogTitle": {
+    "description": "Dialog title for adding a portal login"
+  },
+  "portalEditDialogTitle": "Edit Portal Account",
+  "@portalEditDialogTitle": {
+    "description": "Dialog title for editing a portal login"
+  },
+  "portalUrlLabel": "Portal URL (optional)",
+  "@portalUrlLabel": {
+    "description": "Input label for portal login web link"
+  },
+  "portalUsernameLabel": "User ID / Username",
+  "@portalUsernameLabel": {
+    "description": "Input label for portal login username or applicant ID"
+  },
+  "portalUsernameRequiredError": "User ID is required.",
+  "@portalUsernameRequiredError": {
+    "description": "Validation error when portal username is blank"
+  },
+  "portalPasswordLabel": "Password",
+  "@portalPasswordLabel": {
+    "description": "Input label for portal account password"
+  },
+  "portalPasswordRequiredError": "Password is required.",
+  "@portalPasswordRequiredError": {
+    "description": "Validation error when portal password is empty"
+  },
+  "portalNotesLabel": "Notes (optional)",
+  "@portalNotesLabel": {
+    "description": "Input label for optional portal account notes"
+  },
+  "portalCopyUserIdAction": "Copy ID",
+  "@portalCopyUserIdAction": {
+    "description": "Button copying portal user ID to clipboard"
+  },
+  "portalCopyPasswordAction": "Copy password",
+  "@portalCopyPasswordAction": {
+    "description": "Button copying decrypted portal password to clipboard"
+  },
+  "portalOpenUrlAction": "Open portal",
+  "@portalOpenUrlAction": {
+    "description": "Button opening external application portal URL"
+  },
+  "portalRevealPasswordTooltip": "Show password",
+  "@portalRevealPasswordTooltip": {
+    "description": "Tooltip toggling masked portal password visibility"
+  },
+  "portalHidePasswordTooltip": "Hide password",
+  "@portalHidePasswordTooltip": {
+    "description": "Tooltip hiding revealed portal password"
+  },
+  "portalCopiedClipboardNotice": "Copied to clipboard — clears in {formattedSeconds}s.",
+  "@portalCopiedClipboardNotice": {
+    "description": "Snackbar notification confirming clipboard copy and auto-clear countdown",
+    "placeholders": {
+      "formattedSeconds": {
+        "type": "String"
+      }
+    }
+  },
+  "portalDeleteConfirmTitle": "Delete portal account?",
+  "@portalDeleteConfirmTitle": {
+    "description": "Confirmation dialog title before deleting a portal account"
+  },
+  "portalDeleteConfirmMessage": "Remove saved portal login \"{username}\" from this circular?",
+  "@portalDeleteConfirmMessage": {
+    "description": "Confirmation dialog body before deleting a portal account",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "portalSaveError": "Could not save portal account. Please try again.",
+  "@portalSaveError": {
+    "description": "Error shown when saving or deleting a portal account fails"
+  },
+  "portalLoadError": "Could not load portal accounts.",
+  "@portalLoadError": {
+    "description": "Error shown when loading or decrypting portal accounts fails"
   }
 }

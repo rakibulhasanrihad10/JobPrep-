@@ -2014,4 +2014,149 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get settingsRemindersOfflineHint =>
       'সব ডিভাইসে ইমেইল অনুস্মারক সংরক্ষণ করতে সুপাবেস সংযুক্ত করুন।';
+
+  @override
+  String get vaultTitle => 'পোর্টাল ভল্ট';
+
+  @override
+  String get vaultSubtitle =>
+      'আপনার লোকাল ভল্ট পাসফ্রেজ দিয়ে চাকরির পোর্টালের লগইন তথ্য সুরক্ষিত রাখুন।';
+
+  @override
+  String get vaultStatusLocked => 'লক করা আছে';
+
+  @override
+  String get vaultStatusUnlocked => 'আনলক করা আছে';
+
+  @override
+  String get vaultSetupButton => 'ভল্ট সেটআপ করুন';
+
+  @override
+  String get vaultUnlockButton => 'ভল্ট আনলক করুন';
+
+  @override
+  String get vaultLockButton => 'ভল্ট লক করুন';
+
+  @override
+  String get vaultSetupDialogTitle => 'ভল্ট পাসফ্রেজ তৈরি করুন';
+
+  @override
+  String get vaultSetupDialogBody =>
+      'আপনার ডিভাইস থেকেই পোর্টালের পাসওয়ার্ডগুলো এনক্রিপ্ট করতে একটি শক্তিশালী পাসফ্রেজ দিন।';
+
+  @override
+  String get vaultUnrecoverableWarning =>
+      'গুরুত্বপূর্ণ সতর্কতা: ভল্টের পাসফ্রেজ ভুলে গেলে তা পুনরুদ্ধার বা রিসেট করা যাবে না। এটি ছাড়া সংরক্ষিত পাসওয়ার্ড ডিক্রিপ্ট করা সম্ভব নয়।';
+
+  @override
+  String get vaultAcknowledgeWarningLabel =>
+      'আমি বুঝতে পেরেছি যে পাসফ্রেজ ভুলে গেলে তা পুনরুদ্ধার করা যাবে না।';
+
+  @override
+  String get vaultAcknowledgeRequiredError =>
+      'অনুগ্রহ করে পাসফ্রেজ পুনরুদ্ধার না হওয়ার সতর্কতাটি নিশ্চিত করুন।';
+
+  @override
+  String get vaultPassphraseLabel => 'ভল্ট পাসফ্রেজ';
+
+  @override
+  String get vaultPassphraseConfirmLabel => 'পাসফ্রেজ নিশ্চিত করুন';
+
+  @override
+  String get vaultPassphraseTooShortError =>
+      'কমপক্ষে ৮ অক্ষরের পাসফ্রেজ লিখুন।';
+
+  @override
+  String get vaultPassphraseMismatchError => 'পাসফ্রেজ দুটি মিলছে না।';
+
+  @override
+  String get vaultCreateAndUnlockAction => 'তৈরি ও আনলক করুন';
+
+  @override
+  String get vaultUnlockDialogTitle => 'পোর্টাল ভল্ট আনলক করুন';
+
+  @override
+  String get vaultUnlockDialogBody =>
+      'সংরক্ষিত পোর্টাল লগইন দেখতে, কপি করতে ও সম্পাদনা করতে আপনার ভল্ট পাসফ্রেজ লিখুন।';
+
+  @override
+  String get vaultWrongPassphraseError =>
+      'ভল্ট পাসফ্রেজ সঠিক নয়। অনুগ্রহ করে আবার চেষ্টা করুন।';
+
+  @override
+  String get vaultAutoLockNote =>
+      'নিষ্ক্রিয় থাকলে এবং সাইন আউট করলে ভল্ট স্বয়ংক্রিয়ভাবে লক হয়ে যায়।';
+
+  @override
+  String get vaultPortalLockedHint =>
+      'ভল্ট লক অবস্থায় পোর্টাল লগইন তথ্য গোপন থাকে।';
+
+  @override
+  String get portalSectionTitle => 'পোর্টাল লগইন';
+
+  @override
+  String get portalAddAccountButton => 'অ্যাকাউন্ট যোগ করুন';
+
+  @override
+  String get portalEmptyState =>
+      'এই সার্কুলারের জন্য এখনো কোনো পোর্টাল অ্যাকাউন্ট সংরক্ষিত নেই।';
+
+  @override
+  String get portalAddDialogTitle => 'পোর্টাল অ্যাকাউন্ট যোগ করুন';
+
+  @override
+  String get portalEditDialogTitle => 'পোর্টাল অ্যাকাউন্ট সম্পাদনা';
+
+  @override
+  String get portalUrlLabel => 'পোর্টাল লিংক (ঐচ্ছিক)';
+
+  @override
+  String get portalUsernameLabel => 'ইউজার আইডি / ইউজারনেম';
+
+  @override
+  String get portalUsernameRequiredError => 'ইউজার আইডি লেখা আবশ্যক।';
+
+  @override
+  String get portalPasswordLabel => 'পাসওয়ার্ড';
+
+  @override
+  String get portalPasswordRequiredError => 'পাসওয়ার্ড লেখা আবশ্যক।';
+
+  @override
+  String get portalNotesLabel => 'নোট (ঐচ্ছিক)';
+
+  @override
+  String get portalCopyUserIdAction => 'আইডি কপি';
+
+  @override
+  String get portalCopyPasswordAction => 'পাসওয়ার্ড কপি';
+
+  @override
+  String get portalOpenUrlAction => 'পোর্টাল খুলুন';
+
+  @override
+  String get portalRevealPasswordTooltip => 'পাসওয়ার্ড দেখান';
+
+  @override
+  String get portalHidePasswordTooltip => 'পাসওয়ার্ড লুকান';
+
+  @override
+  String portalCopiedClipboardNotice(String formattedSeconds) {
+    return 'ক্লিপবোর্ডে কপি হয়েছে — $formattedSeconds সেকেন্ড পর স্বয়ংক্রিয়ভাবে মুছে যাবে।';
+  }
+
+  @override
+  String get portalDeleteConfirmTitle => 'পোর্টাল অ্যাকাউন্ট মুছবেন?';
+
+  @override
+  String portalDeleteConfirmMessage(String username) {
+    return 'এই সার্কুলার থেকে \"$username\" পোর্টাল লগইনটি মুছে ফেলতে চান?';
+  }
+
+  @override
+  String get portalSaveError =>
+      'পোর্টাল অ্যাকাউন্ট সংরক্ষণ করা যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।';
+
+  @override
+  String get portalLoadError => 'পোর্টাল অ্যাকাউন্টগুলো লোড করা যায়নি।';
 }

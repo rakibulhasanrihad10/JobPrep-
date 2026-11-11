@@ -3507,6 +3507,264 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Connect Supabase to persist email reminder preferences across devices.'**
   String get settingsRemindersOfflineHint;
+
+  /// Title for client-side encrypted portal vault
+  ///
+  /// In en, this message translates to:
+  /// **'Portal Vault'**
+  String get vaultTitle;
+
+  /// Subtitle explaining portal vault security
+  ///
+  /// In en, this message translates to:
+  /// **'Protect saved application portal logins with your local vault passphrase.'**
+  String get vaultSubtitle;
+
+  /// Badge label when portal vault is locked
+  ///
+  /// In en, this message translates to:
+  /// **'Locked'**
+  String get vaultStatusLocked;
+
+  /// Badge label when portal vault is unlocked
+  ///
+  /// In en, this message translates to:
+  /// **'Unlocked'**
+  String get vaultStatusUnlocked;
+
+  /// Button opening first-time vault passphrase setup dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Set up vault'**
+  String get vaultSetupButton;
+
+  /// Button opening vault unlock dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock vault'**
+  String get vaultUnlockButton;
+
+  /// Button locking the vault immediately and wiping keys
+  ///
+  /// In en, this message translates to:
+  /// **'Lock vault'**
+  String get vaultLockButton;
+
+  /// Dialog title for first-time vault setup
+  ///
+  /// In en, this message translates to:
+  /// **'Create Vault Passphrase'**
+  String get vaultSetupDialogTitle;
+
+  /// Introductory explanation inside first-time vault setup dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a strong passphrase to encrypt your portal passwords on this device.'**
+  String get vaultSetupDialogBody;
+
+  /// Prominent non-recoverable warning displayed during vault setup
+  ///
+  /// In en, this message translates to:
+  /// **'Important: A forgotten passphrase cannot be recovered or reset. Any saved passwords cannot be decrypted without it.'**
+  String get vaultUnrecoverableWarning;
+
+  /// Checkbox label confirming user read the recovery warning
+  ///
+  /// In en, this message translates to:
+  /// **'I understand that a forgotten passphrase cannot be recovered.'**
+  String get vaultAcknowledgeWarningLabel;
+
+  /// Validation error if user tries submitting setup without acknowledging warning
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm that you understand the recovery warning.'**
+  String get vaultAcknowledgeRequiredError;
+
+  /// Text field label for vault passphrase
+  ///
+  /// In en, this message translates to:
+  /// **'Vault passphrase'**
+  String get vaultPassphraseLabel;
+
+  /// Text field label for confirming new vault passphrase
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm passphrase'**
+  String get vaultPassphraseConfirmLabel;
+
+  /// Validation error when vault passphrase is shorter than 8 characters
+  ///
+  /// In en, this message translates to:
+  /// **'Enter at least 8 characters.'**
+  String get vaultPassphraseTooShortError;
+
+  /// Validation error when confirmation passphrase does not match
+  ///
+  /// In en, this message translates to:
+  /// **'Passphrases do not match.'**
+  String get vaultPassphraseMismatchError;
+
+  /// Submit button creating vault check value and unlocking session
+  ///
+  /// In en, this message translates to:
+  /// **'Create & unlock'**
+  String get vaultCreateAndUnlockAction;
+
+  /// Dialog title prompting for existing vault passphrase
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock Portal Vault'**
+  String get vaultUnlockDialogTitle;
+
+  /// Description text inside vault unlock dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your vault passphrase to view, copy, and manage saved portal accounts.'**
+  String get vaultUnlockDialogBody;
+
+  /// Error displayed when vault unlock verification fails
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect vault passphrase. Please try again.'**
+  String get vaultWrongPassphraseError;
+
+  /// Informational caption explaining automatic vault locking
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-locks after inactivity and whenever you sign out.'**
+  String get vaultAutoLockNote;
+
+  /// Locked placeholder text on circular detail screen
+  ///
+  /// In en, this message translates to:
+  /// **'Portal logins are hidden while the vault is locked.'**
+  String get vaultPortalLockedHint;
+
+  /// Section title for portal accounts inside circular detail view
+  ///
+  /// In en, this message translates to:
+  /// **'Portal Login'**
+  String get portalSectionTitle;
+
+  /// Button adding a portal account to the active circular
+  ///
+  /// In en, this message translates to:
+  /// **'Add account'**
+  String get portalAddAccountButton;
+
+  /// Empty state shown when vault is unlocked and circular has no accounts
+  ///
+  /// In en, this message translates to:
+  /// **'No portal accounts saved for this circular yet.'**
+  String get portalEmptyState;
+
+  /// Dialog title for adding a portal login
+  ///
+  /// In en, this message translates to:
+  /// **'Add Portal Account'**
+  String get portalAddDialogTitle;
+
+  /// Dialog title for editing a portal login
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Portal Account'**
+  String get portalEditDialogTitle;
+
+  /// Input label for portal login web link
+  ///
+  /// In en, this message translates to:
+  /// **'Portal URL (optional)'**
+  String get portalUrlLabel;
+
+  /// Input label for portal login username or applicant ID
+  ///
+  /// In en, this message translates to:
+  /// **'User ID / Username'**
+  String get portalUsernameLabel;
+
+  /// Validation error when portal username is blank
+  ///
+  /// In en, this message translates to:
+  /// **'User ID is required.'**
+  String get portalUsernameRequiredError;
+
+  /// Input label for portal account password
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get portalPasswordLabel;
+
+  /// Validation error when portal password is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required.'**
+  String get portalPasswordRequiredError;
+
+  /// Input label for optional portal account notes
+  ///
+  /// In en, this message translates to:
+  /// **'Notes (optional)'**
+  String get portalNotesLabel;
+
+  /// Button copying portal user ID to clipboard
+  ///
+  /// In en, this message translates to:
+  /// **'Copy ID'**
+  String get portalCopyUserIdAction;
+
+  /// Button copying decrypted portal password to clipboard
+  ///
+  /// In en, this message translates to:
+  /// **'Copy password'**
+  String get portalCopyPasswordAction;
+
+  /// Button opening external application portal URL
+  ///
+  /// In en, this message translates to:
+  /// **'Open portal'**
+  String get portalOpenUrlAction;
+
+  /// Tooltip toggling masked portal password visibility
+  ///
+  /// In en, this message translates to:
+  /// **'Show password'**
+  String get portalRevealPasswordTooltip;
+
+  /// Tooltip hiding revealed portal password
+  ///
+  /// In en, this message translates to:
+  /// **'Hide password'**
+  String get portalHidePasswordTooltip;
+
+  /// Snackbar notification confirming clipboard copy and auto-clear countdown
+  ///
+  /// In en, this message translates to:
+  /// **'Copied to clipboard — clears in {formattedSeconds}s.'**
+  String portalCopiedClipboardNotice(String formattedSeconds);
+
+  /// Confirmation dialog title before deleting a portal account
+  ///
+  /// In en, this message translates to:
+  /// **'Delete portal account?'**
+  String get portalDeleteConfirmTitle;
+
+  /// Confirmation dialog body before deleting a portal account
+  ///
+  /// In en, this message translates to:
+  /// **'Remove saved portal login \"{username}\" from this circular?'**
+  String portalDeleteConfirmMessage(String username);
+
+  /// Error shown when saving or deleting a portal account fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save portal account. Please try again.'**
+  String get portalSaveError;
+
+  /// Error shown when loading or decrypting portal accounts fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load portal accounts.'**
+  String get portalLoadError;
 }
 
 class _AppLocalizationsDelegate

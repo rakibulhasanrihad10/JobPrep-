@@ -52,7 +52,7 @@ void main() {
     required ThemeMode themeMode,
     required Locale locale,
   }) async {
-    tester.view.physicalSize = const Size(960, 1120);
+    tester.view.physicalSize = const Size(960, 1340);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(() {
       tester.view.resetPhysicalSize();

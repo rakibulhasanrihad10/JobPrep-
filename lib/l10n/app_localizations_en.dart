@@ -2024,4 +2024,148 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get settingsRemindersOfflineHint =>
       'Connect Supabase to persist email reminder preferences across devices.';
+
+  @override
+  String get vaultTitle => 'Portal Vault';
+
+  @override
+  String get vaultSubtitle =>
+      'Protect saved application portal logins with your local vault passphrase.';
+
+  @override
+  String get vaultStatusLocked => 'Locked';
+
+  @override
+  String get vaultStatusUnlocked => 'Unlocked';
+
+  @override
+  String get vaultSetupButton => 'Set up vault';
+
+  @override
+  String get vaultUnlockButton => 'Unlock vault';
+
+  @override
+  String get vaultLockButton => 'Lock vault';
+
+  @override
+  String get vaultSetupDialogTitle => 'Create Vault Passphrase';
+
+  @override
+  String get vaultSetupDialogBody =>
+      'Choose a strong passphrase to encrypt your portal passwords on this device.';
+
+  @override
+  String get vaultUnrecoverableWarning =>
+      'Important: A forgotten passphrase cannot be recovered or reset. Any saved passwords cannot be decrypted without it.';
+
+  @override
+  String get vaultAcknowledgeWarningLabel =>
+      'I understand that a forgotten passphrase cannot be recovered.';
+
+  @override
+  String get vaultAcknowledgeRequiredError =>
+      'Please confirm that you understand the recovery warning.';
+
+  @override
+  String get vaultPassphraseLabel => 'Vault passphrase';
+
+  @override
+  String get vaultPassphraseConfirmLabel => 'Confirm passphrase';
+
+  @override
+  String get vaultPassphraseTooShortError => 'Enter at least 8 characters.';
+
+  @override
+  String get vaultPassphraseMismatchError => 'Passphrases do not match.';
+
+  @override
+  String get vaultCreateAndUnlockAction => 'Create & unlock';
+
+  @override
+  String get vaultUnlockDialogTitle => 'Unlock Portal Vault';
+
+  @override
+  String get vaultUnlockDialogBody =>
+      'Enter your vault passphrase to view, copy, and manage saved portal accounts.';
+
+  @override
+  String get vaultWrongPassphraseError =>
+      'Incorrect vault passphrase. Please try again.';
+
+  @override
+  String get vaultAutoLockNote =>
+      'Auto-locks after inactivity and whenever you sign out.';
+
+  @override
+  String get vaultPortalLockedHint =>
+      'Portal logins are hidden while the vault is locked.';
+
+  @override
+  String get portalSectionTitle => 'Portal Login';
+
+  @override
+  String get portalAddAccountButton => 'Add account';
+
+  @override
+  String get portalEmptyState =>
+      'No portal accounts saved for this circular yet.';
+
+  @override
+  String get portalAddDialogTitle => 'Add Portal Account';
+
+  @override
+  String get portalEditDialogTitle => 'Edit Portal Account';
+
+  @override
+  String get portalUrlLabel => 'Portal URL (optional)';
+
+  @override
+  String get portalUsernameLabel => 'User ID / Username';
+
+  @override
+  String get portalUsernameRequiredError => 'User ID is required.';
+
+  @override
+  String get portalPasswordLabel => 'Password';
+
+  @override
+  String get portalPasswordRequiredError => 'Password is required.';
+
+  @override
+  String get portalNotesLabel => 'Notes (optional)';
+
+  @override
+  String get portalCopyUserIdAction => 'Copy ID';
+
+  @override
+  String get portalCopyPasswordAction => 'Copy password';
+
+  @override
+  String get portalOpenUrlAction => 'Open portal';
+
+  @override
+  String get portalRevealPasswordTooltip => 'Show password';
+
+  @override
+  String get portalHidePasswordTooltip => 'Hide password';
+
+  @override
+  String portalCopiedClipboardNotice(String formattedSeconds) {
+    return 'Copied to clipboard — clears in ${formattedSeconds}s.';
+  }
+
+  @override
+  String get portalDeleteConfirmTitle => 'Delete portal account?';
+
+  @override
+  String portalDeleteConfirmMessage(String username) {
+    return 'Remove saved portal login \"$username\" from this circular?';
+  }
+
+  @override
+  String get portalSaveError =>
+      'Could not save portal account. Please try again.';
+
+  @override
+  String get portalLoadError => 'Could not load portal accounts.';
 }
