@@ -4,12 +4,14 @@ import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/entities/study_analytics.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan_snapshot.dart';
+import 'package:job_prep/features/prep/domain/entities/study_session.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/domain/utils/study_analytics_calculator.dart';
 import 'package:job_prep/features/prep/presentation/providers/mock_test_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_progress_log_controller.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/study_session_providers.dart';
 
 /// Injectable clock for Study Analytics evaluations.
 final Provider<DateTime Function()> studyAnalyticsNowProvider =
@@ -79,6 +81,7 @@ final Provider<AsyncValue<StudyAnalyticsSummary>>
     final logsAsync = ref.watch(analyticsProgressLogsProvider);
     final plansAsync = ref.watch(studyPlanSnapshotsProvider);
     final mocksAsync = ref.watch(mockTestsProvider);
+    final sessionsAsync = ref.watch(studySessionsProvider);
 
     final sources = <AsyncValue<Object?>>[
       subjectsAsync,
@@ -86,6 +89,7 @@ final Provider<AsyncValue<StudyAnalyticsSummary>>
       logsAsync,
       plansAsync,
       mocksAsync,
+      sessionsAsync,
     ];
     for (final src in sources) {
       if (src is AsyncError<Object?> && !src.hasValue) {
@@ -102,6 +106,7 @@ final Provider<AsyncValue<StudyAnalyticsSummary>>
     final planSnapshots =
         plansAsync.asData?.value ?? const <StudyPlanSnapshot>[];
     final mockTests = mocksAsync.asData?.value ?? const <MockTest>[];
+    final sessions = sessionsAsync.asData?.value ?? const <StudySession>[];
 
     final effectiveSubjectFilter =
         (subjectFilter != null && subjects.any((s) => s.id == subjectFilter))
@@ -116,6 +121,7 @@ final Provider<AsyncValue<StudyAnalyticsSummary>>
         logs: logs,
         planSnapshots: planSnapshots,
         mockTests: mockTests,
+        sessions: sessions,
         now: now,
         localOffset: localOffset,
         subjectId: effectiveSubjectFilter,

@@ -5439,6 +5439,476 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add to revision'**
   String get prepMockAddToRevisionButton;
+
+  /// Tab title inside Prep screen for the Study Timer and session history
+  ///
+  /// In en, this message translates to:
+  /// **'Timer'**
+  String get prepTabTimer;
+
+  /// Header title on the Study Timer tab
+  ///
+  /// In en, this message translates to:
+  /// **'Study Timer'**
+  String get prepTimerTitle;
+
+  /// Subtitle explaining timestamp-backed Focus and Stopwatch study tracking
+  ///
+  /// In en, this message translates to:
+  /// **'Track Focus rounds and stopwatch sessions driven by timestamps'**
+  String get prepTimerSubtitle;
+
+  /// Pomodoro Focus mode selector label
+  ///
+  /// In en, this message translates to:
+  /// **'Focus'**
+  String get prepTimerModeFocus;
+
+  /// Open-ended stopwatch mode selector label
+  ///
+  /// In en, this message translates to:
+  /// **'Stopwatch'**
+  String get prepTimerModeStopwatch;
+
+  /// Badge label for manually added offline study sessions
+  ///
+  /// In en, this message translates to:
+  /// **'Manual'**
+  String get prepTimerModeManual;
+
+  /// Button opening the dialog to add a manual off-app study session
+  ///
+  /// In en, this message translates to:
+  /// **'Log manual time'**
+  String get prepTimerManualEntryButton;
+
+  /// Switch label toggling optional gentle chime at round completion
+  ///
+  /// In en, this message translates to:
+  /// **'Sound alert'**
+  String get prepTimerSoundLabel;
+
+  /// Button opening Pomodoro focus and break duration settings
+  ///
+  /// In en, this message translates to:
+  /// **'Pomodoro lengths'**
+  String get prepTimerSettingsButton;
+
+  /// Current active Focus round label
+  ///
+  /// In en, this message translates to:
+  /// **'Focus round {round}'**
+  String prepTimerPhaseFocus(String round);
+
+  /// Short Pomodoro break phase label
+  ///
+  /// In en, this message translates to:
+  /// **'Short break'**
+  String get prepTimerPhaseShortBreak;
+
+  /// Long Pomodoro break phase label triggered every four rounds
+  ///
+  /// In en, this message translates to:
+  /// **'Long break'**
+  String get prepTimerPhaseLongBreak;
+
+  /// Status pill when study timer is actively counting
+  ///
+  /// In en, this message translates to:
+  /// **'Running'**
+  String get prepTimerStatusRunning;
+
+  /// Status pill when study timer is paused
+  ///
+  /// In en, this message translates to:
+  /// **'Paused'**
+  String get prepTimerStatusPaused;
+
+  /// Status pill when timer is ready to start
+  ///
+  /// In en, this message translates to:
+  /// **'Ready'**
+  String get prepTimerStatusReady;
+
+  /// Total active focus time excluding breaks and pauses
+  ///
+  /// In en, this message translates to:
+  /// **'Studied: {duration}'**
+  String prepTimerElapsedSummary(String duration);
+
+  /// Compact summary of Pomodoro lengths in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{focus}m focus • {shortBreak}m short • {longBreak}m long'**
+  String prepTimerConfigSummary(
+      String focus, String shortBreak, String longBreak);
+
+  /// Helper shown when no subject is selected or available
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a subject to start studying'**
+  String get prepTimerSubjectRequired;
+
+  /// Primary action button starting a focus or stopwatch session
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get prepTimerStartButton;
+
+  /// Action button pausing an active study timer
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get prepTimerPauseButton;
+
+  /// Action button resuming a paused study timer
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get prepTimerResumeButton;
+
+  /// Action button finishing the session and opening the save sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get prepTimerFinishButton;
+
+  /// Button discarding an unwanted open timer session
+  ///
+  /// In en, this message translates to:
+  /// **'Discard'**
+  String get prepTimerDiscardButton;
+
+  /// Confirmation heading when discarding a running session
+  ///
+  /// In en, this message translates to:
+  /// **'Discard active session?'**
+  String get prepTimerDiscardConfirmTitle;
+
+  /// Confirmation body explaining open session discard
+  ///
+  /// In en, this message translates to:
+  /// **'This open timer session has not been saved and will be removed permanently.'**
+  String get prepTimerDiscardConfirmBody;
+
+  /// Compact floating timer button navigating back to the full Study Timer tab
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get prepTimerOpenFullButton;
+
+  /// Gentle in-app alert banner shown when a Focus round ends
+  ///
+  /// In en, this message translates to:
+  /// **'Focus round {round} complete!'**
+  String prepTimerAlertFocusDone(String round);
+
+  /// Gentle in-app alert banner shown when a break ends
+  ///
+  /// In en, this message translates to:
+  /// **'Break finished! Ready for round {round}?'**
+  String prepTimerAlertBreakDone(String round);
+
+  /// Button starting short break after focus round completes
+  ///
+  /// In en, this message translates to:
+  /// **'Start {minutes}m short break'**
+  String prepTimerStartShortBreak(String minutes);
+
+  /// Button starting long break after every four rounds
+  ///
+  /// In en, this message translates to:
+  /// **'Start {minutes}m long break'**
+  String prepTimerStartLongBreak(String minutes);
+
+  /// Button advancing from break into the next focus round
+  ///
+  /// In en, this message translates to:
+  /// **'Start round {round}'**
+  String prepTimerStartNextRound(String round);
+
+  /// Button hiding the gentle round completion banner
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get prepTimerDismissAlert;
+
+  /// Dialog heading configuring focus, short break, and long break minutes
+  ///
+  /// In en, this message translates to:
+  /// **'Pomodoro lengths'**
+  String get prepTimerConfigDialogTitle;
+
+  /// Input label for focus round length in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'Focus length (minutes)'**
+  String get prepTimerConfigFocusLabel;
+
+  /// Input label for short break length in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'Short break (minutes)'**
+  String get prepTimerConfigShortBreakLabel;
+
+  /// Input label for long break length after four rounds
+  ///
+  /// In en, this message translates to:
+  /// **'Long break after 4 rounds (minutes)'**
+  String get prepTimerConfigLongBreakLabel;
+
+  /// Validation error for zero or negative Pomodoro minutes
+  ///
+  /// In en, this message translates to:
+  /// **'Enter at least 1 minute'**
+  String get prepTimerConfigPositiveError;
+
+  /// Dialog title shown when finishing a running study session
+  ///
+  /// In en, this message translates to:
+  /// **'Save study session'**
+  String get prepTimerFinishDialogTitle;
+
+  /// Label above total active studied duration on finish sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Studied time'**
+  String get prepTimerFinishDurationLabel;
+
+  /// Optional note input inside finish study session sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Session note (optional)'**
+  String get prepTimerFinishNoteLabel;
+
+  /// Placeholder text inside session note field
+  ///
+  /// In en, this message translates to:
+  /// **'Chapters solved, formulas reviewed...'**
+  String get prepTimerFinishNoteHint;
+
+  /// Optional material progress input shown on session finish when a material is chosen
+  ///
+  /// In en, this message translates to:
+  /// **'Units done in {material} (optional)'**
+  String prepTimerFinishUnitsLabel(String material);
+
+  /// Placeholder hint for optional completed units field on finish sheet
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 20'**
+  String get prepTimerFinishUnitsHint;
+
+  /// Validation error when optional units input on finish sheet is invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a positive whole number or leave blank'**
+  String get prepTimerFinishUnitsError;
+
+  /// Checkbox option inside finish sheet opening revision composer after save
+  ///
+  /// In en, this message translates to:
+  /// **'Mark an item for revision after saving'**
+  String get prepTimerFinishFlagRevisionCheck;
+
+  /// Primary submit button on session finish sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Save session'**
+  String get prepTimerFinishSaveButton;
+
+  /// Confirmation heading shown on finish sheet after saving session
+  ///
+  /// In en, this message translates to:
+  /// **'Session saved!'**
+  String get prepTimerFinishSavedHeading;
+
+  /// Close button after session is saved on finish sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get prepTimerFinishDoneButton;
+
+  /// Dialog title for manually entering offline study time
+  ///
+  /// In en, this message translates to:
+  /// **'Log manual study session'**
+  String get prepTimerManualDialogTitle;
+
+  /// Dialog title when editing a saved study session
+  ///
+  /// In en, this message translates to:
+  /// **'Edit study session'**
+  String get prepTimerEditDialogTitle;
+
+  /// Date picker field label in manual/edit study session dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get prepTimerStartDateLabel;
+
+  /// Time picker field label in manual/edit study session dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Start time'**
+  String get prepTimerStartTimeLabel;
+
+  /// Hours input field label for manual/edit session duration
+  ///
+  /// In en, this message translates to:
+  /// **'Hours'**
+  String get prepTimerHoursLabel;
+
+  /// Minutes input field label for manual/edit session duration
+  ///
+  /// In en, this message translates to:
+  /// **'Minutes'**
+  String get prepTimerMinutesLabel;
+
+  /// Validation error when manual/edited session duration is zero
+  ///
+  /// In en, this message translates to:
+  /// **'Enter at least 1 minute of study time'**
+  String get prepTimerDurationPositiveError;
+
+  /// Section title listing completed and manual study sessions
+  ///
+  /// In en, this message translates to:
+  /// **'Recent study sessions'**
+  String get prepTimerHistoryTitle;
+
+  /// Empty state copy when user has no completed study sessions yet
+  ///
+  /// In en, this message translates to:
+  /// **'No saved study sessions yet. Start Focus or Stopwatch above, or log study time from elsewhere.'**
+  String get prepTimerHistoryEmpty;
+
+  /// Tooltip on session edit icon button
+  ///
+  /// In en, this message translates to:
+  /// **'Edit session'**
+  String get prepTimerEditTooltip;
+
+  /// Tooltip on session delete icon button
+  ///
+  /// In en, this message translates to:
+  /// **'Delete session'**
+  String get prepTimerDeleteTooltip;
+
+  /// Confirmation title before permanently removing a study session
+  ///
+  /// In en, this message translates to:
+  /// **'Delete study session?'**
+  String get prepTimerDeleteConfirmTitle;
+
+  /// Confirmation body explaining impact of deleting a study session
+  ///
+  /// In en, this message translates to:
+  /// **'This session and its study hours will be removed from your history and analytics.'**
+  String get prepTimerDeleteConfirmBody;
+
+  /// Browser tab title template during active Pomodoro Focus round
+  ///
+  /// In en, this message translates to:
+  /// **'{clock} • Focus — JobPrep'**
+  String prepTimerTabFocus(String clock);
+
+  /// Browser tab title template during Pomodoro break
+  ///
+  /// In en, this message translates to:
+  /// **'{clock} • Break — JobPrep'**
+  String prepTimerTabBreak(String clock);
+
+  /// Browser tab title template during active Stopwatch session
+  ///
+  /// In en, this message translates to:
+  /// **'{clock} • Stopwatch — JobPrep'**
+  String prepTimerTabStopwatch(String clock);
+
+  /// Browser tab title template while study timer is paused
+  ///
+  /// In en, this message translates to:
+  /// **'Paused {clock} — JobPrep'**
+  String prepTimerTabPaused(String clock);
+
+  /// Metric label displaying hours studied in the current week
+  ///
+  /// In en, this message translates to:
+  /// **'Hours this week'**
+  String get prepAnalyticsHoursThisWeek;
+
+  /// Short unit suffix denoting hours
+  ///
+  /// In en, this message translates to:
+  /// **'h'**
+  String get prepAnalyticsHoursSuffix;
+
+  /// Caption below hours metric summarizing selected range total
+  ///
+  /// In en, this message translates to:
+  /// **'{hours}h in window'**
+  String prepAnalyticsHoursInRangeCaption(String hours);
+
+  /// Card heading for daily study hours bar chart
+  ///
+  /// In en, this message translates to:
+  /// **'Hours studied per day'**
+  String get prepAnalyticsDailyHoursTitle;
+
+  /// Subtitle explaining 10-minute session rule on daily hours chart
+  ///
+  /// In en, this message translates to:
+  /// **'Days with a 10+ min session or unit log count toward streaks'**
+  String get prepAnalyticsDailyHoursSubtitle;
+
+  /// Card heading for per-subject study hours breakdown chart
+  ///
+  /// In en, this message translates to:
+  /// **'Hours studied by subject'**
+  String get prepAnalyticsSubjectHoursTitle;
+
+  /// Empty copy inside subject hours chart card before any timed session
+  ///
+  /// In en, this message translates to:
+  /// **'Complete a study timer session or add manual hours to compare time across subjects.'**
+  String get prepAnalyticsSubjectHoursEmpty;
+
+  /// Tooltip on study consistency heatmap cell showing both units and hours
+  ///
+  /// In en, this message translates to:
+  /// **'{date}: {units} units, {hours}h'**
+  String prepAnalyticsHeatmapTimeTooltip(
+      String date, String units, String hours);
+
+  /// Date picker button label inside manual/edit session dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Date: {date}'**
+  String prepTimerStartDateValue(String date);
+
+  /// Time picker button label inside manual/edit session dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Start time: {time}'**
+  String prepTimerStartTimeValue(String time);
+
+  /// Formatted study hours value with localized unit
+  ///
+  /// In en, this message translates to:
+  /// **'{hours}h'**
+  String prepAnalyticsHoursValue(String hours);
+
+  /// Tooltip on daily study hours bar chart
+  ///
+  /// In en, this message translates to:
+  /// **'{date}: {hours}h'**
+  String prepAnalyticsDailyHoursTooltip(String date, String hours);
+
+  /// Legend row displaying subject title and hours studied
+  ///
+  /// In en, this message translates to:
+  /// **'{subject}: {hours}h'**
+  String prepAnalyticsSubjectHoursLegend(String subject, String hours);
 }
 
 class _AppLocalizationsDelegate

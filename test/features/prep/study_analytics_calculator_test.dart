@@ -1,9 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:job_prep/features/prep/domain/entities/mock_test.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/entities/study_analytics.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan.dart';
+import 'package:job_prep/features/prep/domain/entities/study_session.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/domain/utils/study_analytics_calculator.dart';
 import 'package:job_prep/features/prep/domain/utils/study_plan_calculator.dart';
@@ -391,6 +393,140 @@ void main() {
         mathOnly.heatmapDays.length,
         StudyAnalyticsCalculator.heatmapDaysCount,
       );
+    });
+  });
+
+  group('Phase 6H study session hours, >=10m streak & consistency', () {
+    test(
+        'counts days with >= 10 min session as studied for streaks & '
+        'consistency while ignoring sessions under 10 min', () {
+      const dhaka = Duration(hours: 6);
+      final now = DateTime.utc(2026, 11, 10, 12); // Nov 10 18:00 Dhaka
+      final sessions = [
+        // Nov 8: exactly 10 minutes (600s) -> qualifies even with 0 units!
+        StudySession(
+          id: 's-10m',
+          userId: 'u-1',
+          subjectId: subMath.id,
+          startedAt: DateTime.utc(2026, 11, 8, 4),
+          endedAt: DateTime.utc(2026, 11, 8, 4, 10),
+          durationSeconds: 600,
+        ),
+        // Nov 9: 9m59s (599s) -> must NOT qualify for streak/consistency!
+        StudySession(
+          id: 's-short',
+          userId: 'u-1',
+          subjectId: subEng.id,
+          startedAt: DateTime.utc(2026, 11, 9, 4),
+          endedAt: DateTime.utc(2026, 11, 9, 4, 9, 59),
+          durationSeconds: 599,
+          mode: StudySessionMode.stopwatch,
+        ),
+        // Nov 10: 60 minutes (3600s) on English -> qualifies!
+        StudySession(
+          id: 's-60m',
+          userId: 'u-1',
+          subjectId: subEng.id,
+          startedAt: DateTime.utc(2026, 11, 10, 4),
+          endedAt: DateTime.utc(2026, 11, 10, 5),
+          durationSeconds: 3600,
+          mode: StudySessionMode.manual,
+        ),
+      ];
+
+      final summary = StudyAnalyticsCalculator.buildSummary(
+        range: StudyAnalyticsRange.days7,
+        subjects: const [subMath, subEng],
+        materials: const [matMath, matEng],
+        logs: const [],
+        planSnapshots: const [],
+        mockTests: const [],
+        sessions: sessions,
+        now: now,
+        localOffset: dhaka,
+      );
+
+      expect(summary.hasAnyLogs, isFalse);
+      expect(summary.hasAnySessions, isTrue);
+      expect(summary.hasAnyActivity, isTrue);
+      // Nov 8 & Nov 10 qualified (Nov 9 was <10m), so 2 active days out of 7.
+      expect(summary.activeDaysInRange, 2);
+      expect(summary.consistencyScore, closeTo(2 / 7, 0.0001));
+      expect(summary.currentStreak, 1);
+      expect(summary.longestStreak, 1);
+      expect(summary.totalSessionSecondsInRange, 4799);
+      expect(summary.totalHoursInRange, closeTo(4799 / 3600, 0.0001));
+
+      final mathRow =
+          summary.subjectBreakdown.firstWhere((e) => e.subjectId == subMath.id);
+      final engRow =
+          summary.subjectBreakdown.firstWhere((e) => e.subjectId == subEng.id);
+      expect(mathRow.sessionSeconds, 600);
+      expect(engRow.sessionSeconds, 4199);
+      expect(engRow.timeShare, closeTo(4199 / 4799, 0.0001));
+
+      // Adding a study log on Nov 9 connects Nov 8-9-10 into a 3-day streak!
+      final bridged = StudyAnalyticsCalculator.buildSummary(
+        range: StudyAnalyticsRange.days7,
+        subjects: const [subMath, subEng],
+        materials: const [matMath, matEng],
+        logs: [
+          ProgressLog(
+            materialId: matMath.id,
+            unitsDone: 5,
+            loggedOn: DateTime.utc(2026, 11, 9, 10),
+          ),
+        ],
+        planSnapshots: const [],
+        mockTests: const [],
+        sessions: sessions,
+        now: now,
+        localOffset: dhaka,
+      );
+      expect(bridged.activeDaysInRange, 3);
+      expect(bridged.currentStreak, 3);
+      expect(bridged.longestStreak, 3);
+    });
+
+    test('splits midnight-crossing sessions into separate daily hours buckets',
+        () {
+      // Dhaka (UTC+6): 2026-11-09 23:30 .. 2026-11-10 00:30 local
+      // -> 30m (1800s) on Nov 9 + 30m (1800s) on Nov 10 -> 2-day streak!
+      const dhaka = Duration(hours: 6);
+      final midnightSession = StudySession(
+        id: 's-mid',
+        userId: 'u-1',
+        subjectId: subMath.id,
+        startedAt: DateTime.utc(2026, 11, 9, 17, 30),
+        endedAt: DateTime.utc(2026, 11, 9, 18, 30),
+        durationSeconds: 3600,
+      );
+
+      final summary = StudyAnalyticsCalculator.buildSummary(
+        range: StudyAnalyticsRange.days7,
+        subjects: const [subMath],
+        materials: const [matMath],
+        logs: const [],
+        planSnapshots: const [],
+        mockTests: const [],
+        sessions: [midnightSession],
+        now: DateTime.utc(2026, 11, 10, 10),
+        localOffset: dhaka,
+      );
+
+      final nov9 = summary.dailyTotals.firstWhere(
+        (d) => d.date == DateTime(2026, 11, 9),
+      );
+      final nov10 = summary.dailyTotals.firstWhere(
+        (d) => d.date == DateTime(2026, 11, 10),
+      );
+      expect(nov9.sessionSeconds, 1800);
+      expect(nov9.hours, closeTo(0.5, 0.0001));
+      expect(nov9.hasQualifyingSession, isTrue);
+      expect(nov10.sessionSeconds, 1800);
+      expect(nov10.hasQualifyingSession, isTrue);
+      expect(summary.currentStreak, 2);
+      expect(summary.longestStreak, 2);
     });
   });
 }

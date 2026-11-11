@@ -13,12 +13,15 @@ import 'package:job_prep/features/prep/presentation/providers/mock_test_provider
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_analytics_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/study_session_providers.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_l10n.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_analytics_daily_bar_chart.dart';
+import 'package:job_prep/features/prep/presentation/widgets/study_analytics_daily_hours_chart.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_analytics_filter_bar.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_analytics_heatmap_card.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_analytics_metrics_grid.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_analytics_subject_breakdown_card.dart';
+import 'package:job_prep/features/prep/presentation/widgets/study_analytics_subject_hours_card.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_analytics_target_banner.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_analytics_weekly_chart.dart';
 
@@ -45,6 +48,7 @@ class StudyAnalyticsTabView extends ConsumerWidget {
     unawaited(ref.read(allMaterialsProvider.notifier).refresh());
     unawaited(ref.read(studyPlansProvider.notifier).refresh());
     unawaited(ref.read(mockTestsProvider.notifier).refresh());
+    unawaited(ref.read(studySessionsProvider.notifier).refresh());
   }
 
   @override
@@ -168,7 +172,7 @@ class StudyAnalyticsTabView extends ConsumerWidget {
               ),
             ),
             data: (summary) {
-              if (!summary.hasAnyLogs) {
+              if (!summary.hasAnyActivity) {
                 return GlassCard(
                   key: const ValueKey('analytics-empty'),
                   padding: spacing.insetsAllXl,
@@ -245,6 +249,37 @@ class StudyAnalyticsTabView extends ConsumerWidget {
                           dailyChart,
                           SizedBox(height: spacing.lg),
                           weeklyChart,
+                        ],
+                      );
+                    },
+                  ),
+                  SizedBox(height: spacing.lg),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      final hoursDaily = StudyAnalyticsDailyHoursChart(
+                        summary: summary,
+                        replayKey: replayKey,
+                      );
+                      final hoursSubject = StudyAnalyticsSubjectHoursCard(
+                        summary: summary,
+                        replayKey: replayKey,
+                      );
+                      if (constraints.maxWidth >= 900) {
+                        return Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(flex: 3, child: hoursDaily),
+                            SizedBox(width: spacing.lg),
+                            Expanded(flex: 2, child: hoursSubject),
+                          ],
+                        );
+                      }
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          hoursDaily,
+                          SizedBox(height: spacing.lg),
+                          hoursSubject,
                         ],
                       );
                     },

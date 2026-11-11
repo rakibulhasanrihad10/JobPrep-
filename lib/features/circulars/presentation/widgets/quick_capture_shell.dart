@@ -9,6 +9,7 @@ import 'package:job_prep/core/widgets/app_scaffold.dart';
 import 'package:job_prep/features/circulars/domain/utils/quick_capture_helpers.dart';
 import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/quick_capture_dialog.dart';
+import 'package:job_prep/features/prep/presentation/widgets/study_timer_floating_bar.dart';
 
 /// Connects [AppScaffold] with the live Inbox count, global Quick Capture
 /// trigger, and incoming `?capture=` URL query parameters.
@@ -124,11 +125,16 @@ class _QuickCaptureShellState extends ConsumerState<QuickCaptureShell> {
           ref.read(vaultSessionProvider.notifier).recordActivity();
           return KeyEventResult.ignored;
         },
-        child: AppScaffold(
-          currentPath: widget.currentUri.path,
-          inboxCount: inboxCount,
-          onQuickCapture: () => unawaited(_openQuickCapture()),
-          child: widget.child,
+        child: Stack(
+          children: [
+            AppScaffold(
+              currentPath: widget.currentUri.path,
+              inboxCount: inboxCount,
+              onQuickCapture: () => unawaited(_openQuickCapture()),
+              child: widget.child,
+            ),
+            const StudyTimerFloatingBar(),
+          ],
         ),
       ),
     );

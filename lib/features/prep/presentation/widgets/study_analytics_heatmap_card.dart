@@ -10,6 +10,7 @@ import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/theme/reduce_effects_controller.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
 import 'package:job_prep/features/prep/domain/entities/study_analytics.dart';
+import 'package:job_prep/features/prep/presentation/utils/study_timer_l10n.dart';
 
 /// Rolling 91-day (13-week) Mon–Sun calendar heatmap visualizing daily study
 /// consistency across local dates without per-cell blur overhead.
@@ -237,7 +238,7 @@ class _HeatmapCell extends StatelessWidget {
     }
 
     final l10n = context.l10n;
-    final tier = _tierForUnits(day.units, maxUnits);
+    final tier = _tierForDay(day, maxUnits);
     final cellColor = StudyAnalyticsHeatmapCard._colorForTier(tier, colors);
 
     final dateLabel = AppFormatters.formatDate(
@@ -251,9 +252,20 @@ class _HeatmapCell extends StatelessWidget {
       locale: locale,
       useBanglaDigits: useBanglaDigits,
     );
+    final tooltipMessage = day.sessionSeconds > 0
+        ? l10n.prepAnalyticsHeatmapTimeTooltip(
+            dateLabel,
+            unitsLabel,
+            StudyTimerL10n.formatHoursNumber(
+              day.sessionSeconds,
+              locale: locale,
+              useBanglaDigits: useBanglaDigits,
+            ),
+          )
+        : l10n.prepAnalyticsHeatmapTooltip(dateLabel, unitsLabel);
 
     return Tooltip(
-      message: l10n.prepAnalyticsHeatmapTooltip(dateLabel, unitsLabel),
+      message: tooltipMessage,
       child: Container(
         key: ValueKey(
           'heatmap-cell-${day.date.year}-${day.date.month}-${day.date.day}',
@@ -264,7 +276,7 @@ class _HeatmapCell extends StatelessWidget {
           color: cellColor,
           borderRadius: context.tokens.radii.smRadius,
           border: Border.all(
-            color: day.units > 0
+            color: day.isStudiedDay
                 ? cellColor
                 : colors.glassBorder.withValues(alpha: 0.45),
           ),
@@ -273,10 +285,17 @@ class _HeatmapCell extends StatelessWidget {
     );
   }
 
-  int _tierForUnits(int units, int peak) {
-    if (units <= 0) return 0;
+  int _tierForDay(DailyStudyTotal day, int peak) {
+    if (!day.isStudiedDay) return 0;
+    if (day.units <= 0) {
+      final mins = day.sessionSeconds / 60.0;
+      if (mins >= 120) return 4;
+      if (mins >= 60) return 3;
+      if (mins >= 25) return 2;
+      return 1;
+    }
     if (peak <= 1) return 4;
-    final ratio = units / peak;
+    final ratio = day.units / peak;
     if (ratio >= 0.75) return 4;
     if (ratio >= 0.50) return 3;
     if (ratio >= 0.25) return 2;

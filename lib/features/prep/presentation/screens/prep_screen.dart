@@ -14,6 +14,7 @@ import 'package:job_prep/features/prep/presentation/providers/prep_subjects_cont
 import 'package:job_prep/features/prep/presentation/providers/prep_template_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/revision_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/study_session_providers.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_screen.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_template_ui_helpers.dart';
 import 'package:job_prep/features/prep/presentation/widgets/books_shelf_view.dart';
@@ -28,6 +29,7 @@ import 'package:job_prep/features/prep/presentation/widgets/prep_templates_dialo
 import 'package:job_prep/features/prep/presentation/widgets/revision_queue_tab_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_analytics_tab_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_plan_form_dialog.dart';
+import 'package:job_prep/features/prep/presentation/widgets/study_timer_tab_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.dart';
 
 /// Main animated preparation dashboard and Subject & Material Manager screen.
@@ -62,15 +64,18 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
   static int _nextMockVisitId = 0;
   static int _nextAnalyticsVisitId = 0;
   static int _nextRevisionVisitId = 0;
+  static int _nextTimerVisitId = 0;
 
   late int _tabVisitId;
   late int _mockVisitId;
   late int _analyticsVisitId;
   late int _revisionVisitId;
+  late int _timerVisitId;
   late PrepSectionTab _activeTab;
   bool _hasVisitedMockTab = false;
   bool _hasVisitedAnalyticsTab = false;
   bool _hasVisitedRevisionTab = false;
+  bool _hasVisitedTimerTab = false;
   String? _localSelectedId;
 
   @override
@@ -80,10 +85,12 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     _mockVisitId = ++_nextMockVisitId;
     _analyticsVisitId = ++_nextAnalyticsVisitId;
     _revisionVisitId = ++_nextRevisionVisitId;
+    _timerVisitId = ++_nextTimerVisitId;
     _activeTab = widget.initialTab;
     _hasVisitedMockTab = _activeTab == PrepSectionTab.mockTests;
     _hasVisitedAnalyticsTab = _activeTab == PrepSectionTab.analytics;
     _hasVisitedRevisionTab = _activeTab == PrepSectionTab.revision;
+    _hasVisitedTimerTab = _activeTab == PrepSectionTab.timer;
     _localSelectedId = widget.selectedSubjectId;
   }
 
@@ -107,6 +114,8 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
         next == PrepSectionTab.analytics && _hasVisitedAnalyticsTab;
     final shouldRefreshRevision =
         next == PrepSectionTab.revision && _hasVisitedRevisionTab;
+    final shouldRefreshTimer =
+        next == PrepSectionTab.timer && _hasVisitedTimerTab;
     setState(() {
       _activeTab = next;
       switch (next) {
@@ -121,6 +130,9 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
         case PrepSectionTab.revision:
           _hasVisitedRevisionTab = true;
           _revisionVisitId = ++_nextRevisionVisitId;
+        case PrepSectionTab.timer:
+          _hasVisitedTimerTab = true;
+          _timerVisitId = ++_nextTimerVisitId;
       }
     });
     if (shouldRefreshMocks) {
@@ -128,9 +140,13 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     }
     if (shouldRefreshAnalytics) {
       ref.invalidate(analyticsProgressLogsProvider);
+      unawaited(ref.read(studySessionsProvider.notifier).refresh());
     }
     if (shouldRefreshRevision) {
       unawaited(ref.read(revisionItemsProvider.notifier).refresh());
+    }
+    if (shouldRefreshTimer) {
+      unawaited(ref.read(studySessionsProvider.notifier).refresh());
     }
   }
 
@@ -142,6 +158,7 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     unawaited(ref.read(studyPlansProvider.notifier).refresh());
     unawaited(ref.read(mockTestsProvider.notifier).refresh());
     unawaited(ref.read(revisionItemsProvider.notifier).refresh());
+    unawaited(ref.read(studySessionsProvider.notifier).refresh());
   }
 
   Future<void> _openCreateSubject({required bool selectCreated}) async {
@@ -346,6 +363,8 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
             )
           else if (_activeTab == PrepSectionTab.revision)
             RevisionQueueTabView(visitId: _revisionVisitId)
+          else if (_activeTab == PrepSectionTab.timer)
+            StudyTimerTabView(visitId: _timerVisitId)
           else
             PrepSubjectsBody(
               isExpanded: isExpanded,

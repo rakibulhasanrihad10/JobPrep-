@@ -5,8 +5,10 @@ import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/entities/study_analytics.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan_snapshot.dart';
+import 'package:job_prep/features/prep/domain/entities/study_session.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/domain/utils/study_analytics_summary_builder.dart';
+import 'package:job_prep/features/prep/domain/utils/study_analytics_time_helper.dart';
 
 /// Pure study analytics, streak, local-date grouping, consistency, and chart
 /// series calculations built from `progress_logs`, study plans & mock tests.
@@ -69,6 +71,7 @@ abstract final class StudyAnalyticsCalculator {
     Iterable<ProgressLog> logs, {
     required DateTime startDate,
     required DateTime endDate,
+    Iterable<StudySession> sessions = const <StudySession>[],
     Duration? localOffset,
   }) {
     final start = DateTime(startDate.year, startDate.month, startDate.day);
@@ -78,6 +81,10 @@ abstract final class StudyAnalyticsCalculator {
     }
 
     final grouped = groupUnitsByLocalDay(logs, localOffset: localOffset);
+    final sessionStats = StudyAnalyticsTimeHelper.groupSessionsByLocalDay(
+      sessions,
+      localOffset: localOffset,
+    );
     final result = <DailyStudyTotal>[];
     var cursor = start;
     while (!cursor.isAfter(end)) {
@@ -85,6 +92,8 @@ abstract final class StudyAnalyticsCalculator {
         DailyStudyTotal(
           date: cursor,
           units: grouped[cursor] ?? 0,
+          sessionSeconds: sessionStats.secondsByDay[cursor] ?? 0,
+          hasQualifyingSession: sessionStats.qualifyingDays.contains(cursor),
         ),
       );
       cursor = DateTime(cursor.year, cursor.month, cursor.day + 1);
@@ -106,6 +115,7 @@ abstract final class StudyAnalyticsCalculator {
     DateTime? bucketStart;
     DateTime? bucketEnd;
     var sum = 0;
+    var secondsSum = 0;
     var active = 0;
 
     for (final item in ordered) {
@@ -125,18 +135,21 @@ abstract final class StudyAnalyticsCalculator {
             weekEnd: bucketEnd!,
             units: sum,
             activeDays: active,
+            sessionSeconds: secondsSum,
           ),
         );
         currentMonday = monday;
         bucketStart = item.date;
         bucketEnd = item.date;
         sum = 0;
+        secondsSum = 0;
         active = 0;
       } else {
         bucketEnd = item.date;
       }
       sum += math.max(0, item.units);
-      if (item.units > 0) active += 1;
+      secondsSum += math.max(0, item.sessionSeconds);
+      if (item.isStudiedDay) active += 1;
     }
 
     if (bucketStart != null && bucketEnd != null) {
@@ -146,34 +159,36 @@ abstract final class StudyAnalyticsCalculator {
           weekEnd: bucketEnd,
           units: sum,
           activeDays: active,
+          sessionSeconds: secondsSum,
         ),
       );
     }
     return List<WeeklyStudyTotal>.unmodifiable(weeks);
   }
 
-  /// Computes `current` and `longest` study streaks (`units >= 1`).
+  /// Computes `current` and `longest` study streaks (`units >= 1` or a
+  /// qualifying study session of `>= 10` minutes on that local day).
   static ({int current, int longest}) calculateStreaks(
     Map<DateTime, int> unitsByLocalDay, {
     required DateTime today,
+    Iterable<DateTime> extraStudiedDays = const <DateTime>[],
   }) {
     final todayOnly = DateTime(today.year, today.month, today.day);
-    final activeDays = <DateTime>[
+    final activeSet = <DateTime>{
       for (final entry in unitsByLocalDay.entries)
         if (entry.value >= 1 && !entry.key.isAfter(todayOnly))
           DateTime(entry.key.year, entry.key.month, entry.key.day),
-    ]..sort((a, b) => a.compareTo(b));
+      for (final day in extraStudiedDays)
+        if (!DateTime(day.year, day.month, day.day).isAfter(todayOnly))
+          DateTime(day.year, day.month, day.day),
+    };
 
-    if (activeDays.isEmpty) {
+    if (activeSet.isEmpty) {
       return (current: 0, longest: 0);
     }
 
-    final uniqueDays = <DateTime>[];
-    for (final day in activeDays) {
-      if (uniqueDays.isEmpty || uniqueDays.last != day) {
-        uniqueDays.add(day);
-      }
-    }
+    final uniqueDays = activeSet.toList(growable: false)
+      ..sort((a, b) => a.compareTo(b));
 
     var longest = 1;
     var run = 1;
@@ -193,7 +208,6 @@ abstract final class StudyAnalyticsCalculator {
 
     final yesterday =
         DateTime(todayOnly.year, todayOnly.month, todayOnly.day - 1);
-    final activeSet = uniqueDays.toSet();
 
     DateTime? cursor;
     if (activeSet.contains(todayOnly)) {
@@ -234,29 +248,32 @@ abstract final class StudyAnalyticsCalculator {
     if (list.isEmpty) return 0;
     var active = 0;
     for (final item in list) {
-      if (item.units >= 1) active += 1;
+      if (item.isStudiedDay) active += 1;
     }
     return (active / list.length).clamp(0.0, 1.0);
   }
 
-  /// Returns best (maximum units) and weakest (minimum units) day across
-  /// [dailyTotals], or `(best: null, weakest: null)` when no logs exist.
+  /// Returns best and weakest day across [dailyTotals], or `(best: null,
+  /// weakest: null)` when no logs or sessions exist.
   static ({DailyStudyTotal? best, DailyStudyTotal? weakest})
       findBestAndWeakestDay(Iterable<DailyStudyTotal> dailyTotals) {
     final list = dailyTotals.toList(growable: false)
       ..sort((a, b) => a.date.compareTo(b.date));
-    if (list.isEmpty || list.every((d) => d.units <= 0)) {
+    final hasUnits = list.any((d) => d.units > 0);
+    final hasTime = list.any((d) => d.sessionSeconds > 0);
+    if (list.isEmpty || (!hasUnits && !hasTime)) {
       return (best: null, weakest: null);
     }
 
     var best = list.first;
     var weakest = list.first;
     for (final item in list.skip(1)) {
-      if (item.units >= best.units) {
-        best = item;
-      }
-      if (item.units <= weakest.units) {
-        weakest = item;
+      if (hasUnits) {
+        if (item.units >= best.units) best = item;
+        if (item.units <= weakest.units) weakest = item;
+      } else {
+        if (item.sessionSeconds >= best.sessionSeconds) best = item;
+        if (item.sessionSeconds <= weakest.sessionSeconds) weakest = item;
       }
     }
     return (best: best, weakest: weakest);
@@ -284,19 +301,21 @@ abstract final class StudyAnalyticsCalculator {
         dailyTarget: dailyTarget,
       );
 
-  /// Computes per-subject breakdown showing where study time and mock tests
-  /// went.
+  /// Computes per-subject breakdown showing where study time, units, and mock
+  /// tests went.
   static List<SubjectStudyBreakdown> calculateSubjectBreakdown({
     required List<Subject> subjects,
     required List<PrepMaterial> materials,
     required List<ProgressLog> logsInRange,
     required List<MockTest> mockTestsInRange,
+    Map<String, int> sessionSecondsBySubject = const <String, int>{},
   }) =>
       StudyAnalyticsSummaryBuilder.calculateSubjectBreakdown(
         subjects: subjects,
         materials: materials,
         logsInRange: logsInRange,
         mockTestsInRange: mockTestsInRange,
+        sessionSecondsBySubject: sessionSecondsBySubject,
       );
 
   /// Builds the complete [StudyAnalyticsSummary] for the requested filters.
@@ -307,6 +326,7 @@ abstract final class StudyAnalyticsCalculator {
     required List<ProgressLog> logs,
     required List<StudyPlanSnapshot> planSnapshots,
     required List<MockTest> mockTests,
+    List<StudySession> sessions = const <StudySession>[],
     DateTime? now,
     Duration? localOffset,
     String? subjectId,
@@ -318,6 +338,7 @@ abstract final class StudyAnalyticsCalculator {
         logs: logs,
         planSnapshots: planSnapshots,
         mockTests: mockTests,
+        sessions: sessions,
         now: now,
         localOffset: localOffset,
         subjectId: subjectId,

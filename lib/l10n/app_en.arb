@@ -4421,5 +4421,435 @@
   "prepMockAddToRevisionButton": "Add to revision",
   "@prepMockAddToRevisionButton": {
     "description": "Action button next to mock test weak topics sending them to the Revision queue"
+  },
+  "prepTabTimer": "Timer",
+  "@prepTabTimer": {
+    "description": "Tab title inside Prep screen for the Study Timer and session history"
+  },
+  "prepTimerTitle": "Study Timer",
+  "@prepTimerTitle": {
+    "description": "Header title on the Study Timer tab"
+  },
+  "prepTimerSubtitle": "Track Focus rounds and stopwatch sessions driven by timestamps",
+  "@prepTimerSubtitle": {
+    "description": "Subtitle explaining timestamp-backed Focus and Stopwatch study tracking"
+  },
+  "prepTimerModeFocus": "Focus",
+  "@prepTimerModeFocus": {
+    "description": "Pomodoro Focus mode selector label"
+  },
+  "prepTimerModeStopwatch": "Stopwatch",
+  "@prepTimerModeStopwatch": {
+    "description": "Open-ended stopwatch mode selector label"
+  },
+  "prepTimerModeManual": "Manual",
+  "@prepTimerModeManual": {
+    "description": "Badge label for manually added offline study sessions"
+  },
+  "prepTimerManualEntryButton": "Log manual time",
+  "@prepTimerManualEntryButton": {
+    "description": "Button opening the dialog to add a manual off-app study session"
+  },
+  "prepTimerSoundLabel": "Sound alert",
+  "@prepTimerSoundLabel": {
+    "description": "Switch label toggling optional gentle chime at round completion"
+  },
+  "prepTimerSettingsButton": "Pomodoro lengths",
+  "@prepTimerSettingsButton": {
+    "description": "Button opening Pomodoro focus and break duration settings"
+  },
+  "prepTimerPhaseFocus": "Focus round {round}",
+  "@prepTimerPhaseFocus": {
+    "description": "Current active Focus round label",
+    "placeholders": {
+      "round": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerPhaseShortBreak": "Short break",
+  "@prepTimerPhaseShortBreak": {
+    "description": "Short Pomodoro break phase label"
+  },
+  "prepTimerPhaseLongBreak": "Long break",
+  "@prepTimerPhaseLongBreak": {
+    "description": "Long Pomodoro break phase label triggered every four rounds"
+  },
+  "prepTimerStatusRunning": "Running",
+  "@prepTimerStatusRunning": {
+    "description": "Status pill when study timer is actively counting"
+  },
+  "prepTimerStatusPaused": "Paused",
+  "@prepTimerStatusPaused": {
+    "description": "Status pill when study timer is paused"
+  },
+  "prepTimerStatusReady": "Ready",
+  "@prepTimerStatusReady": {
+    "description": "Status pill when timer is ready to start"
+  },
+  "prepTimerElapsedSummary": "Studied: {duration}",
+  "@prepTimerElapsedSummary": {
+    "description": "Total active focus time excluding breaks and pauses",
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerConfigSummary": "{focus}m focus • {shortBreak}m short • {longBreak}m long",
+  "@prepTimerConfigSummary": {
+    "description": "Compact summary of Pomodoro lengths in minutes",
+    "placeholders": {
+      "focus": {
+        "type": "String"
+      },
+      "shortBreak": {
+        "type": "String"
+      },
+      "longBreak": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerSubjectRequired": "Pick a subject to start studying",
+  "@prepTimerSubjectRequired": {
+    "description": "Helper shown when no subject is selected or available"
+  },
+  "prepTimerStartButton": "Start",
+  "@prepTimerStartButton": {
+    "description": "Primary action button starting a focus or stopwatch session"
+  },
+  "prepTimerPauseButton": "Pause",
+  "@prepTimerPauseButton": {
+    "description": "Action button pausing an active study timer"
+  },
+  "prepTimerResumeButton": "Resume",
+  "@prepTimerResumeButton": {
+    "description": "Action button resuming a paused study timer"
+  },
+  "prepTimerFinishButton": "Finish",
+  "@prepTimerFinishButton": {
+    "description": "Action button finishing the session and opening the save sheet"
+  },
+  "prepTimerDiscardButton": "Discard",
+  "@prepTimerDiscardButton": {
+    "description": "Button discarding an unwanted open timer session"
+  },
+  "prepTimerDiscardConfirmTitle": "Discard active session?",
+  "@prepTimerDiscardConfirmTitle": {
+    "description": "Confirmation heading when discarding a running session"
+  },
+  "prepTimerDiscardConfirmBody": "This open timer session has not been saved and will be removed permanently.",
+  "@prepTimerDiscardConfirmBody": {
+    "description": "Confirmation body explaining open session discard"
+  },
+  "prepTimerOpenFullButton": "Open",
+  "@prepTimerOpenFullButton": {
+    "description": "Compact floating timer button navigating back to the full Study Timer tab"
+  },
+  "prepTimerAlertFocusDone": "Focus round {round} complete!",
+  "@prepTimerAlertFocusDone": {
+    "description": "Gentle in-app alert banner shown when a Focus round ends",
+    "placeholders": {
+      "round": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerAlertBreakDone": "Break finished! Ready for round {round}?",
+  "@prepTimerAlertBreakDone": {
+    "description": "Gentle in-app alert banner shown when a break ends",
+    "placeholders": {
+      "round": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerStartShortBreak": "Start {minutes}m short break",
+  "@prepTimerStartShortBreak": {
+    "description": "Button starting short break after focus round completes",
+    "placeholders": {
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerStartLongBreak": "Start {minutes}m long break",
+  "@prepTimerStartLongBreak": {
+    "description": "Button starting long break after every four rounds",
+    "placeholders": {
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerStartNextRound": "Start round {round}",
+  "@prepTimerStartNextRound": {
+    "description": "Button advancing from break into the next focus round",
+    "placeholders": {
+      "round": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerDismissAlert": "Dismiss",
+  "@prepTimerDismissAlert": {
+    "description": "Button hiding the gentle round completion banner"
+  },
+  "prepTimerConfigDialogTitle": "Pomodoro lengths",
+  "@prepTimerConfigDialogTitle": {
+    "description": "Dialog heading configuring focus, short break, and long break minutes"
+  },
+  "prepTimerConfigFocusLabel": "Focus length (minutes)",
+  "@prepTimerConfigFocusLabel": {
+    "description": "Input label for focus round length in minutes"
+  },
+  "prepTimerConfigShortBreakLabel": "Short break (minutes)",
+  "@prepTimerConfigShortBreakLabel": {
+    "description": "Input label for short break length in minutes"
+  },
+  "prepTimerConfigLongBreakLabel": "Long break after 4 rounds (minutes)",
+  "@prepTimerConfigLongBreakLabel": {
+    "description": "Input label for long break length after four rounds"
+  },
+  "prepTimerConfigPositiveError": "Enter at least 1 minute",
+  "@prepTimerConfigPositiveError": {
+    "description": "Validation error for zero or negative Pomodoro minutes"
+  },
+  "prepTimerFinishDialogTitle": "Save study session",
+  "@prepTimerFinishDialogTitle": {
+    "description": "Dialog title shown when finishing a running study session"
+  },
+  "prepTimerFinishDurationLabel": "Studied time",
+  "@prepTimerFinishDurationLabel": {
+    "description": "Label above total active studied duration on finish sheet"
+  },
+  "prepTimerFinishNoteLabel": "Session note (optional)",
+  "@prepTimerFinishNoteLabel": {
+    "description": "Optional note input inside finish study session sheet"
+  },
+  "prepTimerFinishNoteHint": "Chapters solved, formulas reviewed...",
+  "@prepTimerFinishNoteHint": {
+    "description": "Placeholder text inside session note field"
+  },
+  "prepTimerFinishUnitsLabel": "Units done in {material} (optional)",
+  "@prepTimerFinishUnitsLabel": {
+    "description": "Optional material progress input shown on session finish when a material is chosen",
+    "placeholders": {
+      "material": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerFinishUnitsHint": "e.g. 20",
+  "@prepTimerFinishUnitsHint": {
+    "description": "Placeholder hint for optional completed units field on finish sheet"
+  },
+  "prepTimerFinishUnitsError": "Enter a positive whole number or leave blank",
+  "@prepTimerFinishUnitsError": {
+    "description": "Validation error when optional units input on finish sheet is invalid"
+  },
+  "prepTimerFinishFlagRevisionCheck": "Mark an item for revision after saving",
+  "@prepTimerFinishFlagRevisionCheck": {
+    "description": "Checkbox option inside finish sheet opening revision composer after save"
+  },
+  "prepTimerFinishSaveButton": "Save session",
+  "@prepTimerFinishSaveButton": {
+    "description": "Primary submit button on session finish sheet"
+  },
+  "prepTimerFinishSavedHeading": "Session saved!",
+  "@prepTimerFinishSavedHeading": {
+    "description": "Confirmation heading shown on finish sheet after saving session"
+  },
+  "prepTimerFinishDoneButton": "Done",
+  "@prepTimerFinishDoneButton": {
+    "description": "Close button after session is saved on finish sheet"
+  },
+  "prepTimerManualDialogTitle": "Log manual study session",
+  "@prepTimerManualDialogTitle": {
+    "description": "Dialog title for manually entering offline study time"
+  },
+  "prepTimerEditDialogTitle": "Edit study session",
+  "@prepTimerEditDialogTitle": {
+    "description": "Dialog title when editing a saved study session"
+  },
+  "prepTimerStartDateLabel": "Date",
+  "@prepTimerStartDateLabel": {
+    "description": "Date picker field label in manual/edit study session dialog"
+  },
+  "prepTimerStartTimeLabel": "Start time",
+  "@prepTimerStartTimeLabel": {
+    "description": "Time picker field label in manual/edit study session dialog"
+  },
+  "prepTimerHoursLabel": "Hours",
+  "@prepTimerHoursLabel": {
+    "description": "Hours input field label for manual/edit session duration"
+  },
+  "prepTimerMinutesLabel": "Minutes",
+  "@prepTimerMinutesLabel": {
+    "description": "Minutes input field label for manual/edit session duration"
+  },
+  "prepTimerDurationPositiveError": "Enter at least 1 minute of study time",
+  "@prepTimerDurationPositiveError": {
+    "description": "Validation error when manual/edited session duration is zero"
+  },
+  "prepTimerHistoryTitle": "Recent study sessions",
+  "@prepTimerHistoryTitle": {
+    "description": "Section title listing completed and manual study sessions"
+  },
+  "prepTimerHistoryEmpty": "No saved study sessions yet. Start Focus or Stopwatch above, or log study time from elsewhere.",
+  "@prepTimerHistoryEmpty": {
+    "description": "Empty state copy when user has no completed study sessions yet"
+  },
+  "prepTimerEditTooltip": "Edit session",
+  "@prepTimerEditTooltip": {
+    "description": "Tooltip on session edit icon button"
+  },
+  "prepTimerDeleteTooltip": "Delete session",
+  "@prepTimerDeleteTooltip": {
+    "description": "Tooltip on session delete icon button"
+  },
+  "prepTimerDeleteConfirmTitle": "Delete study session?",
+  "@prepTimerDeleteConfirmTitle": {
+    "description": "Confirmation title before permanently removing a study session"
+  },
+  "prepTimerDeleteConfirmBody": "This session and its study hours will be removed from your history and analytics.",
+  "@prepTimerDeleteConfirmBody": {
+    "description": "Confirmation body explaining impact of deleting a study session"
+  },
+  "prepTimerTabFocus": "{clock} • Focus — JobPrep",
+  "@prepTimerTabFocus": {
+    "description": "Browser tab title template during active Pomodoro Focus round",
+    "placeholders": {
+      "clock": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerTabBreak": "{clock} • Break — JobPrep",
+  "@prepTimerTabBreak": {
+    "description": "Browser tab title template during Pomodoro break",
+    "placeholders": {
+      "clock": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerTabStopwatch": "{clock} • Stopwatch — JobPrep",
+  "@prepTimerTabStopwatch": {
+    "description": "Browser tab title template during active Stopwatch session",
+    "placeholders": {
+      "clock": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerTabPaused": "Paused {clock} — JobPrep",
+  "@prepTimerTabPaused": {
+    "description": "Browser tab title template while study timer is paused",
+    "placeholders": {
+      "clock": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsHoursThisWeek": "Hours this week",
+  "@prepAnalyticsHoursThisWeek": {
+    "description": "Metric label displaying hours studied in the current week"
+  },
+  "prepAnalyticsHoursSuffix": "h",
+  "@prepAnalyticsHoursSuffix": {
+    "description": "Short unit suffix denoting hours"
+  },
+  "prepAnalyticsHoursInRangeCaption": "{hours}h in window",
+  "@prepAnalyticsHoursInRangeCaption": {
+    "description": "Caption below hours metric summarizing selected range total",
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsDailyHoursTitle": "Hours studied per day",
+  "@prepAnalyticsDailyHoursTitle": {
+    "description": "Card heading for daily study hours bar chart"
+  },
+  "prepAnalyticsDailyHoursSubtitle": "Days with a 10+ min session or unit log count toward streaks",
+  "@prepAnalyticsDailyHoursSubtitle": {
+    "description": "Subtitle explaining 10-minute session rule on daily hours chart"
+  },
+  "prepAnalyticsSubjectHoursTitle": "Hours studied by subject",
+  "@prepAnalyticsSubjectHoursTitle": {
+    "description": "Card heading for per-subject study hours breakdown chart"
+  },
+  "prepAnalyticsSubjectHoursEmpty": "Complete a study timer session or add manual hours to compare time across subjects.",
+  "@prepAnalyticsSubjectHoursEmpty": {
+    "description": "Empty copy inside subject hours chart card before any timed session"
+  },
+  "prepAnalyticsHeatmapTimeTooltip": "{date}: {units} units, {hours}h",
+  "@prepAnalyticsHeatmapTimeTooltip": {
+    "description": "Tooltip on study consistency heatmap cell showing both units and hours",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "units": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerStartDateValue": "Date: {date}",
+  "@prepTimerStartDateValue": {
+    "description": "Date picker button label inside manual/edit session dialog",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerStartTimeValue": "Start time: {time}",
+  "@prepTimerStartTimeValue": {
+    "description": "Time picker button label inside manual/edit session dialog",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsHoursValue": "{hours}h",
+  "@prepAnalyticsHoursValue": {
+    "description": "Formatted study hours value with localized unit",
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsDailyHoursTooltip": "{date}: {hours}h",
+  "@prepAnalyticsDailyHoursTooltip": {
+    "description": "Tooltip on daily study hours bar chart",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsSubjectHoursLegend": "{subject}: {hours}h",
+  "@prepAnalyticsSubjectHoursLegend": {
+    "description": "Legend row displaying subject title and hours studied",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "String"
+      }
+    }
   }
 }

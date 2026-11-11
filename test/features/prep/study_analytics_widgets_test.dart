@@ -12,9 +12,11 @@ import 'package:job_prep/core/theme/app_theme.dart';
 import 'package:job_prep/core/theme/reduce_effects_controller.dart';
 import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
 import 'package:job_prep/features/prep/domain/entities/mock_test.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan.dart';
+import 'package:job_prep/features/prep/domain/entities/study_session.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/presentation/providers/mock_test_providers.dart';
@@ -23,6 +25,7 @@ import 'package:job_prep/features/prep/presentation/providers/prep_progress_log_
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_template_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/study_session_providers.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/study_analytics_screen.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_analytics_tab_view.dart';
@@ -35,6 +38,7 @@ import 'fake_material_cover_repository.dart';
 import 'fake_mock_test_repository.dart';
 import 'fake_prep_template_repository.dart';
 import 'fake_study_plan_repository.dart';
+import 'fake_study_session_repository.dart';
 import 'fake_subject_and_topic_repositories.dart';
 
 void main() {
@@ -82,6 +86,7 @@ void main() {
     List<ProgressLog> logs = const [],
     List<StudyPlan> plans = const [],
     List<MockTest> mocks = const [],
+    List<StudySession> sessions = const [],
     FakeProgressLogRepository? customLogRepo,
     List<Override> extraOverrides = const [],
     Locale locale = const Locale('en'),
@@ -128,6 +133,12 @@ void main() {
         ),
         mockTestRepositoryProvider.overrideWithValue(
           FakeMockTestRepository(initialTests: mocks, clock: () => fixedNow),
+        ),
+        studySessionRepositoryProvider.overrideWithValue(
+          FakeStudySessionRepository(
+            initialSessions: sessions,
+            clock: () => fixedNow,
+          ),
         ),
         ...extraOverrides,
       ],
@@ -277,7 +288,15 @@ void main() {
         find.byKey(const ValueKey('analytics-kpi-consistency')),
         findsOneWidget,
       );
-      expect(find.byType(BarChart), findsNWidgets(2));
+      expect(find.byType(BarChart), findsNWidgets(3));
+      expect(
+        find.byKey(const ValueKey('analytics-daily-hours-card')),
+        findsOneWidget,
+      );
+      expect(
+        find.byKey(const ValueKey('analytics-subject-hours-card')),
+        findsOneWidget,
+      );
       expect(find.byType(PieChart), findsOneWidget);
       expect(
         find.byKey(const ValueKey('analytics-heatmap-card')),
@@ -420,8 +439,68 @@ void main() {
         find.byKey(const ValueKey('study-analytics-tab-view')),
         findsOneWidget,
       );
-      expect(find.byType(BarChart), findsNWidgets(2));
+      expect(find.byType(BarChart), findsNWidgets(3));
       expect(find.byType(PieChart), findsOneWidget);
+    });
+
+    testWidgets(
+        'renders daily and per-subject hours charts when study sessions '
+        'exist without unit logs', (tester) async {
+      tester.view.physicalSize = const Size(1200, 1200);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(() {
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
+      });
+
+      final sessions = [
+        StudySession(
+          id: 'gs-1',
+          userId: 'u-1',
+          subjectId: subMath.id,
+          startedAt: DateTime(2026, 11, 10, 9),
+          endedAt: DateTime(2026, 11, 10, 10, 30),
+          durationSeconds: 5400,
+        ),
+        StudySession(
+          id: 'gs-2',
+          userId: 'u-1',
+          subjectId: subEng.id,
+          startedAt: DateTime(2026, 11, 9, 14),
+          endedAt: DateTime(2026, 11, 9, 14, 45),
+          durationSeconds: 2700,
+          mode: StudySessionMode.stopwatch,
+        ),
+      ];
+
+      await tester.pumpWidget(
+        await buildHarness(
+          child: const SingleChildScrollView(
+            padding: EdgeInsets.all(16),
+            child: StudyAnalyticsTabView(visitId: 1),
+          ),
+          sessions: sessions,
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(
+        find.byKey(const ValueKey('analytics-daily-hours-card')),
+        findsOneWidget,
+      );
+      expect(
+        find.byKey(const ValueKey('analytics-subject-hours-card')),
+        findsOneWidget,
+      );
+      expect(
+        find.byKey(const ValueKey('analytics-subject-hours-chart')),
+        findsOneWidget,
+      );
+      expect(
+        find.byKey(const ValueKey('analytics-highlight-hours-week')),
+        findsOneWidget,
+      );
+      expect(find.byType(BarChart), findsNWidgets(4));
     });
   });
 }

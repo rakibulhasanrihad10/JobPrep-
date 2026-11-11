@@ -3253,4 +3253,290 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get prepMockAddToRevisionButton => 'Add to revision';
+
+  @override
+  String get prepTabTimer => 'Timer';
+
+  @override
+  String get prepTimerTitle => 'Study Timer';
+
+  @override
+  String get prepTimerSubtitle =>
+      'Track Focus rounds and stopwatch sessions driven by timestamps';
+
+  @override
+  String get prepTimerModeFocus => 'Focus';
+
+  @override
+  String get prepTimerModeStopwatch => 'Stopwatch';
+
+  @override
+  String get prepTimerModeManual => 'Manual';
+
+  @override
+  String get prepTimerManualEntryButton => 'Log manual time';
+
+  @override
+  String get prepTimerSoundLabel => 'Sound alert';
+
+  @override
+  String get prepTimerSettingsButton => 'Pomodoro lengths';
+
+  @override
+  String prepTimerPhaseFocus(String round) {
+    return 'Focus round $round';
+  }
+
+  @override
+  String get prepTimerPhaseShortBreak => 'Short break';
+
+  @override
+  String get prepTimerPhaseLongBreak => 'Long break';
+
+  @override
+  String get prepTimerStatusRunning => 'Running';
+
+  @override
+  String get prepTimerStatusPaused => 'Paused';
+
+  @override
+  String get prepTimerStatusReady => 'Ready';
+
+  @override
+  String prepTimerElapsedSummary(String duration) {
+    return 'Studied: $duration';
+  }
+
+  @override
+  String prepTimerConfigSummary(
+      String focus, String shortBreak, String longBreak) {
+    return '${focus}m focus • ${shortBreak}m short • ${longBreak}m long';
+  }
+
+  @override
+  String get prepTimerSubjectRequired => 'Pick a subject to start studying';
+
+  @override
+  String get prepTimerStartButton => 'Start';
+
+  @override
+  String get prepTimerPauseButton => 'Pause';
+
+  @override
+  String get prepTimerResumeButton => 'Resume';
+
+  @override
+  String get prepTimerFinishButton => 'Finish';
+
+  @override
+  String get prepTimerDiscardButton => 'Discard';
+
+  @override
+  String get prepTimerDiscardConfirmTitle => 'Discard active session?';
+
+  @override
+  String get prepTimerDiscardConfirmBody =>
+      'This open timer session has not been saved and will be removed permanently.';
+
+  @override
+  String get prepTimerOpenFullButton => 'Open';
+
+  @override
+  String prepTimerAlertFocusDone(String round) {
+    return 'Focus round $round complete!';
+  }
+
+  @override
+  String prepTimerAlertBreakDone(String round) {
+    return 'Break finished! Ready for round $round?';
+  }
+
+  @override
+  String prepTimerStartShortBreak(String minutes) {
+    return 'Start ${minutes}m short break';
+  }
+
+  @override
+  String prepTimerStartLongBreak(String minutes) {
+    return 'Start ${minutes}m long break';
+  }
+
+  @override
+  String prepTimerStartNextRound(String round) {
+    return 'Start round $round';
+  }
+
+  @override
+  String get prepTimerDismissAlert => 'Dismiss';
+
+  @override
+  String get prepTimerConfigDialogTitle => 'Pomodoro lengths';
+
+  @override
+  String get prepTimerConfigFocusLabel => 'Focus length (minutes)';
+
+  @override
+  String get prepTimerConfigShortBreakLabel => 'Short break (minutes)';
+
+  @override
+  String get prepTimerConfigLongBreakLabel =>
+      'Long break after 4 rounds (minutes)';
+
+  @override
+  String get prepTimerConfigPositiveError => 'Enter at least 1 minute';
+
+  @override
+  String get prepTimerFinishDialogTitle => 'Save study session';
+
+  @override
+  String get prepTimerFinishDurationLabel => 'Studied time';
+
+  @override
+  String get prepTimerFinishNoteLabel => 'Session note (optional)';
+
+  @override
+  String get prepTimerFinishNoteHint => 'Chapters solved, formulas reviewed...';
+
+  @override
+  String prepTimerFinishUnitsLabel(String material) {
+    return 'Units done in $material (optional)';
+  }
+
+  @override
+  String get prepTimerFinishUnitsHint => 'e.g. 20';
+
+  @override
+  String get prepTimerFinishUnitsError =>
+      'Enter a positive whole number or leave blank';
+
+  @override
+  String get prepTimerFinishFlagRevisionCheck =>
+      'Mark an item for revision after saving';
+
+  @override
+  String get prepTimerFinishSaveButton => 'Save session';
+
+  @override
+  String get prepTimerFinishSavedHeading => 'Session saved!';
+
+  @override
+  String get prepTimerFinishDoneButton => 'Done';
+
+  @override
+  String get prepTimerManualDialogTitle => 'Log manual study session';
+
+  @override
+  String get prepTimerEditDialogTitle => 'Edit study session';
+
+  @override
+  String get prepTimerStartDateLabel => 'Date';
+
+  @override
+  String get prepTimerStartTimeLabel => 'Start time';
+
+  @override
+  String get prepTimerHoursLabel => 'Hours';
+
+  @override
+  String get prepTimerMinutesLabel => 'Minutes';
+
+  @override
+  String get prepTimerDurationPositiveError =>
+      'Enter at least 1 minute of study time';
+
+  @override
+  String get prepTimerHistoryTitle => 'Recent study sessions';
+
+  @override
+  String get prepTimerHistoryEmpty =>
+      'No saved study sessions yet. Start Focus or Stopwatch above, or log study time from elsewhere.';
+
+  @override
+  String get prepTimerEditTooltip => 'Edit session';
+
+  @override
+  String get prepTimerDeleteTooltip => 'Delete session';
+
+  @override
+  String get prepTimerDeleteConfirmTitle => 'Delete study session?';
+
+  @override
+  String get prepTimerDeleteConfirmBody =>
+      'This session and its study hours will be removed from your history and analytics.';
+
+  @override
+  String prepTimerTabFocus(String clock) {
+    return '$clock • Focus — JobPrep';
+  }
+
+  @override
+  String prepTimerTabBreak(String clock) {
+    return '$clock • Break — JobPrep';
+  }
+
+  @override
+  String prepTimerTabStopwatch(String clock) {
+    return '$clock • Stopwatch — JobPrep';
+  }
+
+  @override
+  String prepTimerTabPaused(String clock) {
+    return 'Paused $clock — JobPrep';
+  }
+
+  @override
+  String get prepAnalyticsHoursThisWeek => 'Hours this week';
+
+  @override
+  String get prepAnalyticsHoursSuffix => 'h';
+
+  @override
+  String prepAnalyticsHoursInRangeCaption(String hours) {
+    return '${hours}h in window';
+  }
+
+  @override
+  String get prepAnalyticsDailyHoursTitle => 'Hours studied per day';
+
+  @override
+  String get prepAnalyticsDailyHoursSubtitle =>
+      'Days with a 10+ min session or unit log count toward streaks';
+
+  @override
+  String get prepAnalyticsSubjectHoursTitle => 'Hours studied by subject';
+
+  @override
+  String get prepAnalyticsSubjectHoursEmpty =>
+      'Complete a study timer session or add manual hours to compare time across subjects.';
+
+  @override
+  String prepAnalyticsHeatmapTimeTooltip(
+      String date, String units, String hours) {
+    return '$date: $units units, ${hours}h';
+  }
+
+  @override
+  String prepTimerStartDateValue(String date) {
+    return 'Date: $date';
+  }
+
+  @override
+  String prepTimerStartTimeValue(String time) {
+    return 'Start time: $time';
+  }
+
+  @override
+  String prepAnalyticsHoursValue(String hours) {
+    return '${hours}h';
+  }
+
+  @override
+  String prepAnalyticsDailyHoursTooltip(String date, String hours) {
+    return '$date: ${hours}h';
+  }
+
+  @override
+  String prepAnalyticsSubjectHoursLegend(String subject, String hours) {
+    return '$subject: ${hours}h';
+  }
 }

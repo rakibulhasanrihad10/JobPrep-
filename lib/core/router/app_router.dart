@@ -188,6 +188,13 @@ final routerProvider = Provider<GoRouter>((ref) {
                 ),
               ),
               GoRoute(
+                path: 'timer',
+                name: 'prep_timer',
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: PrepScreen(initialTab: PrepSectionTab.timer),
+                ),
+              ),
+              GoRoute(
                 path: ':subjectId',
                 name: 'prep_subject',
                 pageBuilder: (context, state) {

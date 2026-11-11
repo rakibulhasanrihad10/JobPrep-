@@ -17,6 +17,9 @@ enum PrepSectionTab {
   /// Spaced-repetition revision queue (`Due today`, `Overdue`, `Upcoming`,
   /// `Done`).
   revision,
+
+  /// Timestamp-driven study timer (Focus/Stopwatch) and session history.
+  timer,
 }
 
 /// Tokenized glass tab switcher bar for `PrepScreen`.
@@ -79,6 +82,14 @@ class PrepTabSwitcher extends StatelessWidget {
                 label: l10n.prepTabRevision,
                 isSelected: activeTab == PrepSectionTab.revision,
                 onTap: () => onChanged(PrepSectionTab.revision),
+              ),
+              SizedBox(width: spacing.xs),
+              _TabButton(
+                key: const ValueKey('prep-tab-timer'),
+                icon: Icons.timer_outlined,
+                label: l10n.prepTabTimer,
+                isSelected: activeTab == PrepSectionTab.timer,
+                onTap: () => onChanged(PrepSectionTab.timer),
               ),
             ],
           ),

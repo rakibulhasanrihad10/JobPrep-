@@ -3,9 +3,11 @@ import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/entities/study_analytics.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan_snapshot.dart';
+import 'package:job_prep/features/prep/domain/entities/study_session.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/domain/utils/mock_test_analytics.dart';
 import 'package:job_prep/features/prep/domain/utils/study_analytics_calculator.dart';
+import 'package:job_prep/features/prep/domain/utils/study_analytics_time_helper.dart';
 
 /// Builds [StudyAnalyticsSummary] and subject breakdown slices from progress
 /// logs, study plans, subjects, materials, and mock test history.
@@ -67,19 +69,21 @@ abstract final class StudyAnalyticsSummaryBuilder {
     return StudyDayTargetStatus.onTrackOrNoTarget;
   }
 
-  /// Builds subject-level breakdown showing where study units went and linking
-  /// mock test counts/averages recorded in the same date window.
+  /// Builds subject-level breakdown showing where study units, timer hours,
+  /// and mock tests went in the selected date window.
   static List<SubjectStudyBreakdown> calculateSubjectBreakdown({
     required List<Subject> subjects,
     required List<PrepMaterial> materials,
     required List<ProgressLog> logsInRange,
     required List<MockTest> mockTestsInRange,
+    Map<String, int> sessionSecondsBySubject = const <String, int>{},
   }) {
     final subjectByMaterialId = <String, String>{
       for (final m in materials) m.id: m.subjectId,
     };
     final unitsBySubject = <String, int>{};
     var grandTotalUnits = 0;
+    var grandTotalSeconds = 0;
 
     for (final log in logsInRange) {
       if (!log.isStudy || log.unitsDone <= 0) continue;
@@ -90,6 +94,12 @@ abstract final class StudyAnalyticsSummaryBuilder {
       grandTotalUnits += log.unitsDone;
     }
 
+    for (final entry in sessionSecondsBySubject.entries) {
+      if (entry.value > 0) {
+        grandTotalSeconds += entry.value;
+      }
+    }
+
     final testsBySubject = <String, List<MockTest>>{};
     for (final test in mockTestsInRange) {
       testsBySubject.putIfAbsent(test.subjectId, () => []).add(test);
@@ -98,12 +108,13 @@ abstract final class StudyAnalyticsSummaryBuilder {
     final items = <SubjectStudyBreakdown>[];
     for (final subject in subjects) {
       final units = unitsBySubject[subject.id] ?? 0;
+      final secs = sessionSecondsBySubject[subject.id] ?? 0;
       final subjectTests = testsBySubject[subject.id] ?? const <MockTest>[];
       final mockSummary = subjectTests.isEmpty
           ? null
           : MockTestAnalytics.summarizeTests(subjectTests);
       final mockCount = mockSummary?.testCount ?? 0;
-      if (units <= 0 && mockCount <= 0) continue;
+      if (units <= 0 && mockCount <= 0 && secs <= 0) continue;
 
       items.add(
         SubjectStudyBreakdown(
@@ -112,6 +123,8 @@ abstract final class StudyAnalyticsSummaryBuilder {
           colorKey: subject.color,
           units: units,
           share: grandTotalUnits > 0 ? units / grandTotalUnits : 0,
+          sessionSeconds: secs,
+          timeShare: grandTotalSeconds > 0 ? secs / grandTotalSeconds : 0,
           mockTestCount: mockCount,
           averageMockScore: mockCount > 0 ? mockSummary!.averageScore : null,
         ),
@@ -121,6 +134,8 @@ abstract final class StudyAnalyticsSummaryBuilder {
     items.sort((a, b) {
       final unitDiff = b.units.compareTo(a.units);
       if (unitDiff != 0) return unitDiff;
+      final timeDiff = b.sessionSeconds.compareTo(a.sessionSeconds);
+      if (timeDiff != 0) return timeDiff;
       return a.subjectName.compareTo(b.subjectName);
     });
     return List<SubjectStudyBreakdown>.unmodifiable(items);
@@ -135,6 +150,7 @@ abstract final class StudyAnalyticsSummaryBuilder {
     required List<ProgressLog> logs,
     required List<StudyPlanSnapshot> planSnapshots,
     required List<MockTest> mockTests,
+    List<StudySession> sessions = const <StudySession>[],
     DateTime? now,
     Duration? localOffset,
     String? subjectId,
@@ -198,6 +214,23 @@ abstract final class StudyAnalyticsSummaryBuilder {
           test,
     ];
 
+    final scopedSessions = activeSubjectId == null
+        ? sessions
+        : sessions
+            .where((s) => s.subjectId == activeSubjectId)
+            .toList(growable: false);
+    final sessionStats = StudyAnalyticsTimeHelper.groupSessionsByLocalDay(
+      scopedSessions,
+      localOffset: localOffset,
+    );
+    final subjectSecondsInRange =
+        StudyAnalyticsTimeHelper.groupSubjectSecondsInRange(
+      scopedSessions,
+      startDate: startDate,
+      endDate: endDate,
+      localOffset: localOffset,
+    );
+
     final unitsByDayAll = StudyAnalyticsCalculator.groupUnitsByLocalDay(
       scopedLogs,
       localOffset: localOffset,
@@ -206,6 +239,7 @@ abstract final class StudyAnalyticsSummaryBuilder {
       scopedLogs,
       startDate: startDate,
       endDate: endDate,
+      sessions: scopedSessions,
       localOffset: localOffset,
     );
     final weeklyTotals =
@@ -214,14 +248,17 @@ abstract final class StudyAnalyticsSummaryBuilder {
       scopedLogs,
       startDate: heatmapStart,
       endDate: endDate,
+      sessions: scopedSessions,
       localOffset: localOffset,
     );
 
     var totalUnitsInRange = 0;
+    var totalSessionSecondsInRange = 0;
     var activeDaysInRange = 0;
     for (final item in dailyTotals) {
       totalUnitsInRange += item.units;
-      if (item.units >= 1) activeDaysInRange += 1;
+      totalSessionSecondsInRange += item.sessionSeconds;
+      if (item.isStudiedDay) activeDaysInRange += 1;
     }
 
     final mondayThisWeek = DateTime(
@@ -230,15 +267,18 @@ abstract final class StudyAnalyticsSummaryBuilder {
       endDate.day - (endDate.weekday - DateTime.monday),
     );
     var unitsThisWeek = 0;
+    var sessionSecondsThisWeek = 0;
     var cursor = mondayThisWeek;
     while (!cursor.isAfter(endDate)) {
       unitsThisWeek += unitsByDayAll[cursor] ?? 0;
+      sessionSecondsThisWeek += sessionStats.secondsByDay[cursor] ?? 0;
       cursor = DateTime(cursor.year, cursor.month, cursor.day + 1);
     }
 
     final streaks = StudyAnalyticsCalculator.calculateStreaks(
       unitsByDayAll,
       today: endDate,
+      extraStudiedDays: sessionStats.qualifyingDays,
     );
     final avg7 = StudyAnalyticsCalculator.calculateRollingAverage(
       unitsByDayAll,
@@ -277,10 +317,12 @@ abstract final class StudyAnalyticsSummaryBuilder {
       materials: materials,
       logsInRange: logsInRange,
       mockTestsInRange: mocksInRange,
+      sessionSecondsBySubject: subjectSecondsInRange,
     );
 
     final mockSummary = MockTestAnalytics.summarizeTests(mocksInRange);
     final hasAnyLogs = unitsByDayAll.values.any((u) => u > 0);
+    final hasAnySessions = sessionStats.secondsByDay.values.any((s) => s > 0);
 
     return StudyAnalyticsSummary(
       range: range,
@@ -292,6 +334,8 @@ abstract final class StudyAnalyticsSummaryBuilder {
       subjectBreakdown: breakdown,
       totalUnitsInRange: totalUnitsInRange,
       unitsThisWeek: unitsThisWeek,
+      totalSessionSecondsInRange: totalSessionSecondsInRange,
+      sessionSecondsThisWeek: sessionSecondsThisWeek,
       activeDaysInRange: activeDaysInRange,
       currentStreak: streaks.current,
       longestStreak: streaks.longest,
@@ -308,6 +352,7 @@ abstract final class StudyAnalyticsSummaryBuilder {
       averageMockScoreInRange:
           mockSummary.hasTests ? mockSummary.averageScore : null,
       hasAnyLogs: hasAnyLogs,
+      hasAnySessions: hasAnySessions,
     );
   }
 

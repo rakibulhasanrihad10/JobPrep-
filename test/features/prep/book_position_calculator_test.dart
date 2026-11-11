@@ -22,10 +22,12 @@ import 'package:job_prep/features/prep/presentation/providers/prep_progress_log_
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_analytics_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/study_session_providers.dart';
 
 import 'fake_material_and_log_repositories.dart';
 import 'fake_mock_test_repository.dart';
 import 'fake_study_plan_repository.dart';
+import 'fake_study_session_repository.dart';
 import 'fake_subject_and_topic_repositories.dart';
 
 class _EmptyCircularRepository implements CircularRepository {
@@ -398,6 +400,8 @@ void main() {
           studyPlanRepositoryProvider.overrideWithValue(planRepo),
           mockTestRepositoryProvider
               .overrideWithValue(FakeMockTestRepository()),
+          studySessionRepositoryProvider
+              .overrideWithValue(FakeStudySessionRepository()),
           studyAnalyticsOffsetProvider.overrideWithValue(Duration.zero),
         ],
       );
@@ -410,6 +414,7 @@ void main() {
       await container.read(recentProgressLogsProvider.future);
       await container.read(studyPlansProvider.future);
       await container.read(mockTestsProvider.future);
+      await container.read(studySessionsProvider.future);
       await container.read(analyticsProgressLogsProvider.future);
 
       final controller =

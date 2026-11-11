@@ -3247,4 +3247,288 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get prepMockAddToRevisionButton => 'রিভিশনে যোগ করুন';
+
+  @override
+  String get prepTabTimer => 'টাইমার';
+
+  @override
+  String get prepTimerTitle => 'স্টাডি টাইমার';
+
+  @override
+  String get prepTimerSubtitle =>
+      'টাইমস্ট্যাম্প অনুযায়ী ফোকাস রাউন্ড ও স্টপওয়াচ সেশন ট্র্যাক করুন';
+
+  @override
+  String get prepTimerModeFocus => 'ফোকাস';
+
+  @override
+  String get prepTimerModeStopwatch => 'স্টপওয়াচ';
+
+  @override
+  String get prepTimerModeManual => 'ম্যানুয়াল';
+
+  @override
+  String get prepTimerManualEntryButton => 'ম্যানুয়াল সময় যোগ';
+
+  @override
+  String get prepTimerSoundLabel => 'সাউন্ড অ্যালার্ট';
+
+  @override
+  String get prepTimerSettingsButton => 'পমোডোরো সময়';
+
+  @override
+  String prepTimerPhaseFocus(String round) {
+    return 'ফোকাস রাউন্ড $round';
+  }
+
+  @override
+  String get prepTimerPhaseShortBreak => 'ছোট বিরতি';
+
+  @override
+  String get prepTimerPhaseLongBreak => 'দীর্ঘ বিরতি';
+
+  @override
+  String get prepTimerStatusRunning => 'চলছে';
+
+  @override
+  String get prepTimerStatusPaused => 'বিরতিতে';
+
+  @override
+  String get prepTimerStatusReady => 'প্রস্তুত';
+
+  @override
+  String prepTimerElapsedSummary(String duration) {
+    return 'মোট পড়া: $duration';
+  }
+
+  @override
+  String prepTimerConfigSummary(
+      String focus, String shortBreak, String longBreak) {
+    return '$focusমি ফোকাস • $shortBreakমি ছোট • $longBreakমি দীর্ঘ বিরতি';
+  }
+
+  @override
+  String get prepTimerSubjectRequired => 'শুরু করতে একটি বিষয় নির্বাচন করুন';
+
+  @override
+  String get prepTimerStartButton => 'শুরু করুন';
+
+  @override
+  String get prepTimerPauseButton => 'থামান';
+
+  @override
+  String get prepTimerResumeButton => 'পুনরায় শুরু';
+
+  @override
+  String get prepTimerFinishButton => 'শেষ করুন';
+
+  @override
+  String get prepTimerDiscardButton => 'বাতিল';
+
+  @override
+  String get prepTimerDiscardConfirmTitle => 'চলমান সেশন বাতিল করবেন?';
+
+  @override
+  String get prepTimerDiscardConfirmBody =>
+      'এই সেশনটি সংরক্ষিত হয়নি এবং স্থায়ীভাবে মুছে ফেলা হবে।';
+
+  @override
+  String get prepTimerOpenFullButton => 'খুলুন';
+
+  @override
+  String prepTimerAlertFocusDone(String round) {
+    return 'ফোকাস রাউন্ড $round সম্পন্ন হয়েছে!';
+  }
+
+  @override
+  String prepTimerAlertBreakDone(String round) {
+    return 'বিরতি শেষ! রাউন্ড $round শুরু করবেন?';
+  }
+
+  @override
+  String prepTimerStartShortBreak(String minutes) {
+    return '$minutesমি ছোট বিরতি শুরু';
+  }
+
+  @override
+  String prepTimerStartLongBreak(String minutes) {
+    return '$minutesমি দীর্ঘ বিরতি শুরু';
+  }
+
+  @override
+  String prepTimerStartNextRound(String round) {
+    return 'রাউন্ড $round শুরু করুন';
+  }
+
+  @override
+  String get prepTimerDismissAlert => 'বন্ধ করুন';
+
+  @override
+  String get prepTimerConfigDialogTitle => 'পমোডোরো সময়সূচী';
+
+  @override
+  String get prepTimerConfigFocusLabel => 'ফোকাস সময় (মিনিট)';
+
+  @override
+  String get prepTimerConfigShortBreakLabel => 'ছোট বিরতি (মিনিট)';
+
+  @override
+  String get prepTimerConfigLongBreakLabel => '৪ রাউন্ড পর দীর্ঘ বিরতি (মিনিট)';
+
+  @override
+  String get prepTimerConfigPositiveError => 'কমপক্ষে ১ মিনিট লিখুন';
+
+  @override
+  String get prepTimerFinishDialogTitle => 'স্টাডি সেশন সংরক্ষণ';
+
+  @override
+  String get prepTimerFinishDurationLabel => 'মোট অধ্যয়ন সময়';
+
+  @override
+  String get prepTimerFinishNoteLabel => 'সেশন নোট (ঐচ্ছিক)';
+
+  @override
+  String get prepTimerFinishNoteHint => 'কী পড়েছেন বা পরবর্তী ধাপ লিখুন...';
+
+  @override
+  String prepTimerFinishUnitsLabel(String material) {
+    return '$material-এ সম্পন্ন অংশ (ঐচ্ছিক)';
+  }
+
+  @override
+  String get prepTimerFinishUnitsHint => 'যেমন: ২০';
+
+  @override
+  String get prepTimerFinishUnitsError =>
+      'সঠিক পূর্ণসংখ্যা লিখুন বা খালি রাখুন';
+
+  @override
+  String get prepTimerFinishFlagRevisionCheck =>
+      'সংরক্ষণের পর পুনরাবৃত্তির জন্য চিহ্নিত করুন';
+
+  @override
+  String get prepTimerFinishSaveButton => 'সেশন সংরক্ষণ';
+
+  @override
+  String get prepTimerFinishSavedHeading => 'সেশন সংরক্ষিত হয়েছে!';
+
+  @override
+  String get prepTimerFinishDoneButton => 'সম্পন্ন';
+
+  @override
+  String get prepTimerManualDialogTitle => 'ম্যানুয়াল স্টাডি সময় যোগ';
+
+  @override
+  String get prepTimerEditDialogTitle => 'স্টাডি সেশন সম্পাদনা';
+
+  @override
+  String get prepTimerStartDateLabel => 'তারিখ';
+
+  @override
+  String get prepTimerStartTimeLabel => 'শুরুর সময়';
+
+  @override
+  String get prepTimerHoursLabel => 'ঘণ্টা';
+
+  @override
+  String get prepTimerMinutesLabel => 'মিনিট';
+
+  @override
+  String get prepTimerDurationPositiveError => 'কমপক্ষে ১ মিনিট সময় লিখুন';
+
+  @override
+  String get prepTimerHistoryTitle => 'সাম্প্রতিক স্টাডি সেশন';
+
+  @override
+  String get prepTimerHistoryEmpty =>
+      'এখনও কোনো স্টাডি সেশন সংরক্ষিত নেই। টাইমার শুরু করুন অথবা ম্যানুয়াল সময় যোগ করুন।';
+
+  @override
+  String get prepTimerEditTooltip => 'সেশন সম্পাদনা';
+
+  @override
+  String get prepTimerDeleteTooltip => 'সেশন মুছুন';
+
+  @override
+  String get prepTimerDeleteConfirmTitle => 'স্টাডি সেশন মুছবেন?';
+
+  @override
+  String get prepTimerDeleteConfirmBody =>
+      'এই সেশনটি আপনার ইতিহাস এবং বিশ্লেষণ থেকে মুছে ফেলা হবে।';
+
+  @override
+  String prepTimerTabFocus(String clock) {
+    return '$clock • ফোকাস — JobPrep';
+  }
+
+  @override
+  String prepTimerTabBreak(String clock) {
+    return '$clock • বিরতি — JobPrep';
+  }
+
+  @override
+  String prepTimerTabStopwatch(String clock) {
+    return '$clock • স্টপওয়াচ — JobPrep';
+  }
+
+  @override
+  String prepTimerTabPaused(String clock) {
+    return 'বিরতি $clock — JobPrep';
+  }
+
+  @override
+  String get prepAnalyticsHoursThisWeek => 'এই সপ্তাহের ঘণ্টা';
+
+  @override
+  String get prepAnalyticsHoursSuffix => 'ঘণ্টা';
+
+  @override
+  String prepAnalyticsHoursInRangeCaption(String hours) {
+    return 'মোট $hours ঘণ্টা';
+  }
+
+  @override
+  String get prepAnalyticsDailyHoursTitle => 'দৈনিক অধ্যয়ন ঘণ্টা';
+
+  @override
+  String get prepAnalyticsDailyHoursSubtitle =>
+      '১০+ মিনিটের সেশন বা লগ থাকলে স্ট্রিক গণনা হয়';
+
+  @override
+  String get prepAnalyticsSubjectHoursTitle => 'বিষয়ভিত্তিক অধ্যয়ন ঘণ্টা';
+
+  @override
+  String get prepAnalyticsSubjectHoursEmpty =>
+      'বিষয়ভিত্তিক সময় দেখতে একটি স্টাডি সেশন সংরক্ষণ করুন।';
+
+  @override
+  String prepAnalyticsHeatmapTimeTooltip(
+      String date, String units, String hours) {
+    return '$date: $units ইউনিট, $hours ঘণ্টা';
+  }
+
+  @override
+  String prepTimerStartDateValue(String date) {
+    return 'তারিখ: $date';
+  }
+
+  @override
+  String prepTimerStartTimeValue(String time) {
+    return 'শুরুর সময়: $time';
+  }
+
+  @override
+  String prepAnalyticsHoursValue(String hours) {
+    return '$hours ঘণ্টা';
+  }
+
+  @override
+  String prepAnalyticsDailyHoursTooltip(String date, String hours) {
+    return '$date: $hours ঘণ্টা';
+  }
+
+  @override
+  String prepAnalyticsSubjectHoursLegend(String subject, String hours) {
+    return '$subject: $hours ঘণ্টা';
+  }
 }

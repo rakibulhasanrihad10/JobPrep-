@@ -13,11 +13,13 @@ import 'package:job_prep/features/prep/domain/entities/mock_test.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan.dart';
+import 'package:job_prep/features/prep/domain/entities/study_session.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/presentation/providers/mock_test_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_progress_log_controller.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/study_session_providers.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_analytics_tab_view.dart';
 import 'package:job_prep/l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,6 +28,7 @@ import '../features/circulars/fake_circular_repository.dart';
 import '../features/prep/fake_material_and_log_repositories.dart';
 import '../features/prep/fake_mock_test_repository.dart';
 import '../features/prep/fake_study_plan_repository.dart';
+import '../features/prep/fake_study_session_repository.dart';
 import '../features/prep/fake_subject_and_topic_repositories.dart';
 
 class _TolerantGoldenComparator extends LocalFileComparator {
@@ -66,7 +69,7 @@ void main() {
     WidgetTester tester, {
     required ThemeMode themeMode,
   }) async {
-    tester.view.physicalSize = const Size(980, 1580);
+    tester.view.physicalSize = const Size(980, 1980);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(() {
       tester.view.resetPhysicalSize();
@@ -207,6 +210,27 @@ void main() {
       ),
     ];
 
+    final sessions = [
+      StudySession(
+        id: 'gs-1',
+        userId: 'u-1',
+        subjectId: 'g-math',
+        materialId: 'gm-2',
+        startedAt: DateTime(2026, 11, 10, 8),
+        endedAt: DateTime(2026, 11, 10, 10),
+        durationSeconds: 7200,
+      ),
+      StudySession(
+        id: 'gs-2',
+        userId: 'u-1',
+        subjectId: 'g-bn',
+        materialId: 'gm-1',
+        startedAt: DateTime(2026, 11, 9, 15),
+        endedAt: DateTime(2026, 11, 9, 16, 30),
+        durationSeconds: 5400,
+      ),
+    ];
+
     final materialRepo = FakeMaterialRepository(initialMaterials: materials);
 
     await tester.pumpWidget(
@@ -239,6 +263,12 @@ void main() {
           mockTestRepositoryProvider.overrideWithValue(
             FakeMockTestRepository(
               initialTests: mocks,
+              clock: () => fixedNow,
+            ),
+          ),
+          studySessionRepositoryProvider.overrideWithValue(
+            FakeStudySessionRepository(
+              initialSessions: sessions,
               clock: () => fixedNow,
             ),
           ),

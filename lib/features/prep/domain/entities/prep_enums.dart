@@ -184,3 +184,55 @@ enum RevisionStatus {
     return tryParse(raw) ?? fallback;
   }
 }
+
+/// Tracking mode stored in `public.study_sessions.mode`.
+enum StudySessionMode {
+  focus('focus'),
+  stopwatch('stopwatch'),
+  manual('manual');
+
+  const StudySessionMode(this.value);
+
+  /// Database string value persisted in PostgreSQL.
+  final String value;
+
+  /// Parses [raw] into a [StudySessionMode], or returns `null` when invalid.
+  static StudySessionMode? tryParse(String? raw) {
+    final normalized = raw?.trim().toLowerCase();
+    if (normalized == null || normalized.isEmpty) return null;
+    for (final item in StudySessionMode.values) {
+      if (item.value == normalized) return item;
+    }
+    return null;
+  }
+
+  /// Parses [raw] into a [StudySessionMode], falling back to [fallback].
+  static StudySessionMode fromValue(
+    String? raw, {
+    StudySessionMode fallback = StudySessionMode.focus,
+  }) {
+    return tryParse(raw) ?? fallback;
+  }
+}
+
+/// Active Pomodoro interval phase stored in `public.study_sessions`.
+enum PomodoroPhase {
+  focus('focus'),
+  shortBreak('short_break'),
+  longBreak('long_break');
+
+  const PomodoroPhase(this.value);
+
+  /// Database string value persisted in PostgreSQL.
+  final String value;
+
+  /// Parses [raw] into a [PomodoroPhase], or returns `null` when invalid.
+  static PomodoroPhase? tryParse(String? raw) {
+    final normalized = raw?.trim().toLowerCase();
+    if (normalized == null || normalized.isEmpty) return null;
+    for (final item in PomodoroPhase.values) {
+      if (item.value == normalized) return item;
+    }
+    return null;
+  }
+}

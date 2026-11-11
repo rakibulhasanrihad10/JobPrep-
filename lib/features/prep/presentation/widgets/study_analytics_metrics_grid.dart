@@ -7,6 +7,7 @@ import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/animated_counter.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
 import 'package:job_prep/features/prep/domain/entities/study_analytics.dart';
+import 'package:job_prep/features/prep/presentation/utils/study_timer_l10n.dart';
 
 /// Four primary animated KPI cards (`Current streak`, `Longest streak`,
 /// `Units this week`, `Consistency`) plus rolling 7/30-day averages, best/weak
@@ -130,6 +131,19 @@ class StudyAnalyticsMetricsGrid extends ConsumerWidget {
         value: fmtDaySummary(summary.weakestDay),
         valueColor:
             summary.weakestDay != null ? colors.warning : colors.textMuted,
+      ),
+      _HighlightTile(
+        key: const ValueKey('analytics-highlight-hours-week'),
+        label: l10n.prepAnalyticsHoursThisWeek,
+        value: l10n.prepAnalyticsHoursValue(
+          StudyTimerL10n.formatHoursNumber(
+            summary.sessionSecondsThisWeek,
+            locale: locale,
+            useBanglaDigits: useBanglaDigits,
+          ),
+        ),
+        valueColor:
+            summary.sessionSecondsThisWeek > 0 ? colors.info : colors.textMuted,
       ),
     ];
 

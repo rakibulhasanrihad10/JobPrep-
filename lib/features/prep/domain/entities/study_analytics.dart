@@ -1,4 +1,6 @@
-import 'package:flutter/foundation.dart' show immutable, listEquals;
+import 'package:flutter/foundation.dart' show immutable;
+
+export 'package:job_prep/features/prep/domain/entities/study_analytics_summary.dart';
 
 /// Selectable lookback windows supported on the Study Analytics screen.
 enum StudyAnalyticsRange {
@@ -33,13 +35,15 @@ enum StudyDayTargetStatus {
   bothBelowTarget,
 }
 
-/// Total study units logged on a single local calendar day.
+/// Total study units and timer duration logged on a single local calendar day.
 @immutable
 class DailyStudyTotal {
   /// Creates a [DailyStudyTotal].
   const DailyStudyTotal({
     required this.date,
     required this.units,
+    this.sessionSeconds = 0,
+    this.hasQualifyingSession = false,
   });
 
   /// Local calendar midnight (`DateTime(year, month, day)`).
@@ -48,16 +52,32 @@ class DailyStudyTotal {
   /// Total non-negative units studied on [date].
   final int units;
 
+  /// Total completed study timer seconds attributed to local [date].
+  final int sessionSeconds;
+
+  /// Whether at least one session contributed `>= 10 min` (`600` seconds)
+  /// on [date], marking [date] as an active study day even with `0` unit logs.
+  final bool hasQualifyingSession;
+
+  /// Studied hours on [date].
+  double get hours => sessionSeconds / 3600.0;
+
+  /// Whether [date] counts as a studied day (`>= 1` unit or `>= 10m` session).
+  bool get isStudiedDay => units >= 1 || hasQualifyingSession;
+
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     return other is DailyStudyTotal &&
         other.date == date &&
-        other.units == units;
+        other.units == units &&
+        other.sessionSeconds == sessionSeconds &&
+        other.hasQualifyingSession == hasQualifyingSession;
   }
 
   @override
-  int get hashCode => Object.hash(date, units);
+  int get hashCode =>
+      Object.hash(date, units, sessionSeconds, hasQualifyingSession);
 }
 
 /// Aggregated study volume across a single week bucket within the selected
@@ -70,6 +90,7 @@ class WeeklyStudyTotal {
     required this.weekEnd,
     required this.units,
     required this.activeDays,
+    this.sessionSeconds = 0,
   });
 
   /// Inclusive start date (local calendar date) of this weekly bucket.
@@ -81,8 +102,14 @@ class WeeklyStudyTotal {
   /// Sum of units studied within `[weekStart, weekEnd]`.
   final int units;
 
-  /// Count of days inside this bucket with at least 1 unit studied.
+  /// Count of studied days inside `[weekStart, weekEnd]`.
   final int activeDays;
+
+  /// Total completed study session seconds within `[weekStart, weekEnd]`.
+  final int sessionSeconds;
+
+  /// Total studied hours within this weekly bucket.
+  double get hours => sessionSeconds / 3600.0;
 
   @override
   bool operator ==(Object other) {
@@ -91,15 +118,17 @@ class WeeklyStudyTotal {
         other.weekStart == weekStart &&
         other.weekEnd == weekEnd &&
         other.units == units &&
-        other.activeDays == activeDays;
+        other.activeDays == activeDays &&
+        other.sessionSeconds == sessionSeconds;
   }
 
   @override
-  int get hashCode => Object.hash(weekStart, weekEnd, units, activeDays);
+  int get hashCode =>
+      Object.hash(weekStart, weekEnd, units, activeDays, sessionSeconds);
 }
 
-/// Subject-level share of study units (and optional mock test outcomes) in
-/// the selected window.
+/// Subject-level share of study units, timer hours, and optional mock test
+/// outcomes in the selected window.
 @immutable
 class SubjectStudyBreakdown {
   /// Creates a [SubjectStudyBreakdown].
@@ -109,6 +138,8 @@ class SubjectStudyBreakdown {
     required this.colorKey,
     required this.units,
     required this.share,
+    this.sessionSeconds = 0,
+    this.timeShare = 0,
     this.mockTestCount = 0,
     this.averageMockScore,
   });
@@ -128,11 +159,20 @@ class SubjectStudyBreakdown {
   /// Normalized share of total logged units (`0.0..1.0`).
   final double share;
 
+  /// Total study timer seconds for this subject in the selected range.
+  final int sessionSeconds;
+
+  /// Normalized share of total timer seconds (`0.0..1.0`).
+  final double timeShare;
+
   /// Count of mock tests recorded for this subject in the selected range.
   final int mockTestCount;
 
   /// Average mock test net percentage in range, if [mockTestCount] > 0.
   final double? averageMockScore;
+
+  /// Total studied hours for this subject in the selected range.
+  double get hours => sessionSeconds / 3600.0;
 
   @override
   bool operator ==(Object other) {
@@ -143,6 +183,8 @@ class SubjectStudyBreakdown {
         other.colorKey == colorKey &&
         other.units == units &&
         other.share == share &&
+        other.sessionSeconds == sessionSeconds &&
+        other.timeShare == timeShare &&
         other.mockTestCount == mockTestCount &&
         other.averageMockScore == averageMockScore;
   }
@@ -154,172 +196,9 @@ class SubjectStudyBreakdown {
         colorKey,
         units,
         share,
+        sessionSeconds,
+        timeShare,
         mockTestCount,
         averageMockScore,
       );
-}
-
-/// Complete computed view-model consumed by the Study Analytics UI.
-@immutable
-class StudyAnalyticsSummary {
-  /// Creates a [StudyAnalyticsSummary].
-  const StudyAnalyticsSummary({
-    required this.range,
-    required this.startDate,
-    required this.endDate,
-    required this.dailyTotals,
-    required this.weeklyTotals,
-    required this.heatmapDays,
-    required this.subjectBreakdown,
-    required this.totalUnitsInRange,
-    required this.unitsThisWeek,
-    required this.activeDaysInRange,
-    required this.currentStreak,
-    required this.longestStreak,
-    required this.averageLast7Days,
-    required this.averageLast30Days,
-    required this.consistencyScore,
-    required this.todayUnits,
-    required this.yesterdayUnits,
-    required this.targetAlertStatus,
-    required this.mockTestCountInRange,
-    required this.hasAnyLogs,
-    this.dailyTarget,
-    this.bestDay,
-    this.weakestDay,
-    this.averageMockScoreInRange,
-  });
-
-  /// Selected lookback window.
-  final StudyAnalyticsRange range;
-
-  /// Inclusive local start date of [dailyTotals].
-  final DateTime startDate;
-
-  /// Inclusive local end date ("today").
-  final DateTime endDate;
-
-  /// Zero-filled per-day study units across `[startDate, endDate]`.
-  final List<DailyStudyTotal> dailyTotals;
-
-  /// Weekly totals aggregated across `[startDate, endDate]`.
-  final List<WeeklyStudyTotal> weeklyTotals;
-
-  /// Rolling 91-day (13-week) local calendar heatmap series ending [endDate].
-  final List<DailyStudyTotal> heatmapDays;
-
-  /// Subject unit distribution for the selected date range.
-  final List<SubjectStudyBreakdown> subjectBreakdown;
-
-  /// Total units logged across `[startDate, endDate]`.
-  final int totalUnitsInRange;
-
-  /// Total units logged from Monday of the current local week through today.
-  final int unitsThisWeek;
-
-  /// Number of days inside `[startDate, endDate]` with `>= 1` unit logged.
-  final int activeDaysInRange;
-
-  /// Current active consecutive-day streak (`units >= 1`).
-  final int currentStreak;
-
-  /// Longest consecutive-day streak observed across all logs in scope.
-  final int longestStreak;
-
-  /// Mean units per calendar day over the trailing 7 days ending today.
-  final double averageLast7Days;
-
-  /// Mean units per calendar day over the trailing 30 days ending today.
-  final double averageLast30Days;
-
-  /// Ratio `activeDaysInRange / range.days` clamped to `0.0..1.0`.
-  final double consistencyScore;
-
-  /// Optional daily target derived from active study plans for current scope.
-  final int? dailyTarget;
-
-  /// Units studied on local today.
-  final int todayUnits;
-
-  /// Units studied on local yesterday.
-  final int yesterdayUnits;
-
-  /// Alert status checking whether today or yesterday fell below target.
-  final StudyDayTargetStatus targetAlertStatus;
-
-  /// Highest-output day inside `[startDate, endDate]` (`null` if no logs).
-  final DailyStudyTotal? bestDay;
-
-  /// Lowest-output day inside `[startDate, endDate]` (`null` if no logs).
-  final DailyStudyTotal? weakestDay;
-
-  /// Number of mock tests recorded inside `[startDate, endDate]`.
-  final int mockTestCountInRange;
-
-  /// Mean mock test score inside `[startDate, endDate]` when tests exist.
-  final double? averageMockScoreInRange;
-
-  /// Whether at least one positive study log exists in current scope.
-  final bool hasAnyLogs;
-
-  /// Whether any study log exists within the currently selected range.
-  bool get hasLogsInRange => totalUnitsInRange > 0;
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    return other is StudyAnalyticsSummary &&
-        other.range == range &&
-        other.startDate == startDate &&
-        other.endDate == endDate &&
-        listEquals(other.dailyTotals, dailyTotals) &&
-        listEquals(other.weeklyTotals, weeklyTotals) &&
-        listEquals(other.heatmapDays, heatmapDays) &&
-        listEquals(other.subjectBreakdown, subjectBreakdown) &&
-        other.totalUnitsInRange == totalUnitsInRange &&
-        other.unitsThisWeek == unitsThisWeek &&
-        other.activeDaysInRange == activeDaysInRange &&
-        other.currentStreak == currentStreak &&
-        other.longestStreak == longestStreak &&
-        other.averageLast7Days == averageLast7Days &&
-        other.averageLast30Days == averageLast30Days &&
-        other.consistencyScore == consistencyScore &&
-        other.dailyTarget == dailyTarget &&
-        other.todayUnits == todayUnits &&
-        other.yesterdayUnits == yesterdayUnits &&
-        other.targetAlertStatus == targetAlertStatus &&
-        other.bestDay == bestDay &&
-        other.weakestDay == weakestDay &&
-        other.mockTestCountInRange == mockTestCountInRange &&
-        other.averageMockScoreInRange == averageMockScoreInRange &&
-        other.hasAnyLogs == hasAnyLogs;
-  }
-
-  @override
-  int get hashCode => Object.hashAll([
-        range,
-        startDate,
-        endDate,
-        Object.hashAll(dailyTotals),
-        Object.hashAll(weeklyTotals),
-        Object.hashAll(heatmapDays),
-        Object.hashAll(subjectBreakdown),
-        totalUnitsInRange,
-        unitsThisWeek,
-        activeDaysInRange,
-        currentStreak,
-        longestStreak,
-        averageLast7Days,
-        averageLast30Days,
-        consistencyScore,
-        dailyTarget,
-        todayUnits,
-        yesterdayUnits,
-        targetAlertStatus,
-        bestDay,
-        weakestDay,
-        mockTestCountInRange,
-        averageMockScoreInRange,
-        hasAnyLogs,
-      ]);
 }
