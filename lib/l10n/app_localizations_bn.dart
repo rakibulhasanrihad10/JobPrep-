@@ -2376,4 +2376,276 @@ class AppLocalizationsBn extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get prepTabSubjects => 'বিষয়সমূহ';
+
+  @override
+  String get prepTabMockTests => 'মডেল টেস্ট';
+
+  @override
+  String get prepMockTestsTitle => 'মডেল টেস্টসমূহ';
+
+  @override
+  String get prepMockTestsSubtitle =>
+      'নেগেটিভ মার্কিং, ব্যয়িত সময় ও দুর্বল টপিকসহ সব প্ল্যাটফর্মের টেস্ট স্কোর ট্র্যাক করুন।';
+
+  @override
+  String get prepMockTestAddButton => 'মডেল টেস্ট যোগ করুন';
+
+  @override
+  String get prepMockTestSubjectSectionTitle => 'মডেল টেস্ট পারফরম্যান্স';
+
+  @override
+  String prepMockTestSubjectCount(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedটি টেস্ট সংরক্ষিত',
+      one: '$formattedটি টেস্ট সংরক্ষিত',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepMockFilterSubjectLabel => 'বিষয়';
+
+  @override
+  String get prepMockFilterAllSubjects => 'সব বিষয়';
+
+  @override
+  String get prepMockFilterDateLabel => 'সময়সীমা';
+
+  @override
+  String get prepMockFilterDateAll => 'সব সময়';
+
+  @override
+  String get prepMockFilterDate7Days => 'গত ৭ দিন';
+
+  @override
+  String get prepMockFilterDate30Days => 'গত ৩০ দিন';
+
+  @override
+  String get prepMockFilterDate90Days => 'গত ৯০ দিন';
+
+  @override
+  String get prepMockFilterClear => 'ফিল্টার মুছুন';
+
+  @override
+  String get prepMockStatLatest => 'সর্বশেষ';
+
+  @override
+  String get prepMockStatBest => 'সর্বোচ্চ';
+
+  @override
+  String get prepMockStatAverage => 'গড়';
+
+  @override
+  String get prepMockStatImprovement => 'উন্নতি';
+
+  @override
+  String prepMockStatPercentValue(String percent) {
+    return '$percent%';
+  }
+
+  @override
+  String get prepMockStatNotAvailable => '—';
+
+  @override
+  String prepMockStatImprovementLastFive(String formatted) {
+    return 'সর্বশেষ $formattedটি টেস্টে';
+  }
+
+  @override
+  String get prepMockStatImprovementFirstToLatest => 'প্রথম থেকে সর্বশেষ';
+
+  @override
+  String get prepMockStatImprovementNeedsTwo =>
+      'তুলনা করতে কমপক্ষে ২টি টেস্ট যোগ করুন';
+
+  @override
+  String get prepMockTrendChartTitle => 'স্কোর ট্রেন্ড (%)';
+
+  @override
+  String prepMockTrendAverageLineLabel(String percent) {
+    return 'গড় $percent%';
+  }
+
+  @override
+  String get prepMockTrendNeedsDataHint =>
+      'স্কোর ট্রেন্ড ও গড় রেখা দেখতে প্রথম মডেল টেস্টটি যোগ করুন।';
+
+  @override
+  String prepMockTrendTooltip(String title, String percent, String date) {
+    return '$title\n$percent% • $date';
+  }
+
+  @override
+  String get prepMockEmptyTitle => 'এখনো কোনো মডেল টেস্ট যোগ করা হয়নি';
+
+  @override
+  String get prepMockEmptyBody =>
+      'নেগেটিভ মার্কিং পরবর্তী সঠিক স্কোর ও দুর্বল টপিক দেখতে গাইডবই বা অনলাইন প্ল্যাটফর্মের টেস্ট ফলাফল যোগ করুন।';
+
+  @override
+  String get prepMockFilteredEmptyTitle =>
+      'এই ফিল্টারে কোনো মডেল টেস্ট পাওয়া যায়নি';
+
+  @override
+  String get prepMockFilteredEmptyBody =>
+      'বিষয় বা সময়সীমার ফিল্টার পরিবর্তন করুন অথবা নতুন মডেল টেস্ট যোগ করুন।';
+
+  @override
+  String get prepMockLoadingLabel => 'মডেল টেস্ট লোড হচ্ছে...';
+
+  @override
+  String get prepMockLoadErrorTitle => 'মডেল টেস্ট লোড করা যায়নি';
+
+  @override
+  String prepMockScoreRatio(String net, String total) {
+    return '$net / $total';
+  }
+
+  @override
+  String prepMockNegativeMarksBadge(String marks) {
+    return '-$marks নেগেটিভ';
+  }
+
+  @override
+  String prepMockDurationWithLimitBadge(String taken, String limit) {
+    return '$taken / $limit মি.';
+  }
+
+  @override
+  String prepMockDurationBadge(String taken) {
+    return '$taken মি.';
+  }
+
+  @override
+  String prepMockWeakTopicsLabel(String topics) {
+    return 'দুর্বল টপিক: $topics';
+  }
+
+  @override
+  String prepMockLinkedCircularLabel(String title) {
+    return 'বিজ্ঞপ্তি: $title';
+  }
+
+  @override
+  String prepMockLinkedMaterialLabel(String title) {
+    return 'বই/নোট: $title';
+  }
+
+  @override
+  String prepMockLinkedTopicLabel(String title) {
+    return 'টপিক: $title';
+  }
+
+  @override
+  String get prepMockEditTooltip => 'মডেল টেস্ট সম্পাদনা করুন';
+
+  @override
+  String get prepMockDeleteTooltip => 'মডেল টেস্ট মুছুন';
+
+  @override
+  String get prepMockFormCreateTitle => 'মডেল টেস্ট যোগ করুন';
+
+  @override
+  String get prepMockFormEditTitle => 'মডেল টেস্ট সম্পাদনা করুন';
+
+  @override
+  String get prepMockFormSubjectLabel => 'বিষয়';
+
+  @override
+  String get prepMockFormTitleLabel => 'টেস্টের নাম';
+
+  @override
+  String get prepMockFormTitleHint => 'যেমন: ৪৬তম বিসিএস মডেল টেস্ট ০৪';
+
+  @override
+  String get prepMockFormSourceLabel => 'উৎস / প্ল্যাটফর্ম (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormSourceHint => 'যেমন: Live MCQ, ওরাকেল গাইড';
+
+  @override
+  String prepMockFormTakenOnLabel(String date) {
+    return 'টেস্টের তারিখ: $date';
+  }
+
+  @override
+  String get prepMockFormPickDate => 'তারিখ পরিবর্তন';
+
+  @override
+  String get prepMockFormMarksObtainedLabel => 'প্রাপ্ত নম্বর';
+
+  @override
+  String get prepMockFormTotalMarksLabel => 'মোট নম্বর';
+
+  @override
+  String get prepMockFormNegativeMarksLabel => 'নেগেটিভ নম্বর (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormTimeTakenLabel => 'ব্যয়িত সময় (মিনিট, ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormTimeLimitLabel => 'নির্ধারিত সময় (মিনিট, ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormWeakTopicsLabel => 'দুর্বল টপিক (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormWeakTopicsHint => 'যেমন: সংবিধান সংশোধনী, সময় ও কাজ';
+
+  @override
+  String get prepMockFormNotesLabel => 'নোট (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormCircularLabel => 'সংযুক্ত বিজ্ঞপ্তি (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormMaterialLabel => 'সংযুক্ত বই/উপকরণ (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormTopicLabel => 'সংযুক্ত টপিক (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormNoneOption => 'কোনোটিই নয়';
+
+  @override
+  String get prepMockFormSaveAction => 'সংরক্ষণ করুন';
+
+  @override
+  String get prepMockValidationSubjectRequired =>
+      'এই মডেল টেস্টের জন্য একটি বিষয় নির্বাচন করুন।';
+
+  @override
+  String get prepMockValidationTitleRequired => 'মডেল টেস্টের নাম লিখুন।';
+
+  @override
+  String get prepMockValidationTotalPositive =>
+      'মোট নম্বর শূন্যের বেশি হতে হবে।';
+
+  @override
+  String get prepMockValidationMarksRange =>
+      'প্রাপ্ত নম্বর ০ থেকে মোট নম্বরের মধ্যে হতে হবে।';
+
+  @override
+  String get prepMockValidationNegativeMarks =>
+      'নেগেটিভ নম্বর ০ থেকে মোট নম্বরের মধ্যে হতে হবে।';
+
+  @override
+  String get prepMockValidationDuration =>
+      'ব্যয়িত সময় ০ বা বেশি এবং নির্ধারিত সময় শূন্যের বেশি হতে হবে।';
+
+  @override
+  String get prepMockDeleteTitle => 'মডেল টেস্ট মুছে ফেলবেন?';
+
+  @override
+  String prepMockDeleteBody(String title) {
+    return 'আপনার ইতিহাস থেকে \"$title\" মুছে ফেলবেন? এটি আর ফিরিয়ে আনা যাবে না।';
+  }
+
+  @override
+  String get prepMockDeleteConfirm => 'মুছুন';
 }

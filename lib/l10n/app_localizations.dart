@@ -4085,6 +4085,456 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count, plural, =1{{formatted} active plan} other{{formatted} active plans}}'**
   String dashboardTodayTargetPlansSummary(int count, String formatted);
+
+  /// Tab label for Subjects & Study Plans inside Prep screen
+  ///
+  /// In en, this message translates to:
+  /// **'Subjects'**
+  String get prepTabSubjects;
+
+  /// Tab label for Mock Tests inside Prep screen
+  ///
+  /// In en, this message translates to:
+  /// **'Mock tests'**
+  String get prepTabMockTests;
+
+  /// Heading for the Mock tests tab inside Prep screen
+  ///
+  /// In en, this message translates to:
+  /// **'Mock tests'**
+  String get prepMockTestsTitle;
+
+  /// Subtitle explaining the Mock tests tab
+  ///
+  /// In en, this message translates to:
+  /// **'Track scores after negative marking, time taken, and weak topics across platforms.'**
+  String get prepMockTestsSubtitle;
+
+  /// Button label to open the add mock test dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Log mock test'**
+  String get prepMockTestAddButton;
+
+  /// Section title for mock tests inside Subject Detail view
+  ///
+  /// In en, this message translates to:
+  /// **'Mock test performance'**
+  String get prepMockTestSubjectSectionTitle;
+
+  /// Count of mock tests shown for a subject or filtered list
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formatted} test logged} other{{formatted} tests logged}}'**
+  String prepMockTestSubjectCount(int count, String formatted);
+
+  /// Filter label for subject selection on Mock tests tab
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get prepMockFilterSubjectLabel;
+
+  /// Dropdown option showing mock tests across all subjects
+  ///
+  /// In en, this message translates to:
+  /// **'All subjects'**
+  String get prepMockFilterAllSubjects;
+
+  /// Filter label for date range presets on Mock tests tab
+  ///
+  /// In en, this message translates to:
+  /// **'Date range'**
+  String get prepMockFilterDateLabel;
+
+  /// Date range filter preset including all dates
+  ///
+  /// In en, this message translates to:
+  /// **'All time'**
+  String get prepMockFilterDateAll;
+
+  /// Date range filter preset for the last 7 days
+  ///
+  /// In en, this message translates to:
+  /// **'Last 7 days'**
+  String get prepMockFilterDate7Days;
+
+  /// Date range filter preset for the last 30 days
+  ///
+  /// In en, this message translates to:
+  /// **'Last 30 days'**
+  String get prepMockFilterDate30Days;
+
+  /// Date range filter preset for the last 90 days
+  ///
+  /// In en, this message translates to:
+  /// **'Last 90 days'**
+  String get prepMockFilterDate90Days;
+
+  /// Action button clearing active mock test filters
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filters'**
+  String get prepMockFilterClear;
+
+  /// Stat card label for the latest mock test score
+  ///
+  /// In en, this message translates to:
+  /// **'Latest'**
+  String get prepMockStatLatest;
+
+  /// Stat card label for the highest mock test score
+  ///
+  /// In en, this message translates to:
+  /// **'Best'**
+  String get prepMockStatBest;
+
+  /// Stat card label for average mock test score
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get prepMockStatAverage;
+
+  /// Stat card label for score improvement
+  ///
+  /// In en, this message translates to:
+  /// **'Improvement'**
+  String get prepMockStatImprovement;
+
+  /// Formatted percentage value for a mock test stat
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}%'**
+  String prepMockStatPercentValue(String percent);
+
+  /// Placeholder when a mock test statistic is not available yet
+  ///
+  /// In en, this message translates to:
+  /// **'—'**
+  String get prepMockStatNotAvailable;
+
+  /// Caption showing improvement is computed over the last N tests
+  ///
+  /// In en, this message translates to:
+  /// **'Last {formatted} tests'**
+  String prepMockStatImprovementLastFive(String formatted);
+
+  /// Caption showing improvement is measured from first to latest test
+  ///
+  /// In en, this message translates to:
+  /// **'First to latest'**
+  String get prepMockStatImprovementFirstToLatest;
+
+  /// Caption when fewer than two tests exist for improvement calculation
+  ///
+  /// In en, this message translates to:
+  /// **'Log 2+ tests to compare'**
+  String get prepMockStatImprovementNeedsTwo;
+
+  /// Heading above the mock test score trend line chart
+  ///
+  /// In en, this message translates to:
+  /// **'Score trend (%)'**
+  String get prepMockTrendChartTitle;
+
+  /// Legend/reference line label showing average percentage
+  ///
+  /// In en, this message translates to:
+  /// **'Avg {percent}%'**
+  String prepMockTrendAverageLineLabel(String percent);
+
+  /// Hint shown instead of trend chart when there are no tests
+  ///
+  /// In en, this message translates to:
+  /// **'Log your first mock test to plot your score trend and average reference line.'**
+  String get prepMockTrendNeedsDataHint;
+
+  /// Tooltip text when touching a point on the mock test trend chart
+  ///
+  /// In en, this message translates to:
+  /// **'{title}\n{percent}% • {date}'**
+  String prepMockTrendTooltip(String title, String percent, String date);
+
+  /// Empty state heading when no mock tests exist
+  ///
+  /// In en, this message translates to:
+  /// **'No mock tests logged yet'**
+  String get prepMockEmptyTitle;
+
+  /// Empty state body when no mock tests exist
+  ///
+  /// In en, this message translates to:
+  /// **'Log model tests from guidebooks or online platforms to track net percentage and weak areas.'**
+  String get prepMockEmptyBody;
+
+  /// Empty state heading when active filters return no mock tests
+  ///
+  /// In en, this message translates to:
+  /// **'No mock tests match these filters'**
+  String get prepMockFilteredEmptyTitle;
+
+  /// Empty state body when active filters return no mock tests
+  ///
+  /// In en, this message translates to:
+  /// **'Try clearing the subject or date range filter, or log a new mock test.'**
+  String get prepMockFilteredEmptyBody;
+
+  /// Loading label shown while fetching mock tests
+  ///
+  /// In en, this message translates to:
+  /// **'Loading mock tests...'**
+  String get prepMockLoadingLabel;
+
+  /// Error heading shown when mock tests fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load mock tests'**
+  String get prepMockLoadErrorTitle;
+
+  /// Score summary showing net marks out of total marks
+  ///
+  /// In en, this message translates to:
+  /// **'{net} / {total}'**
+  String prepMockScoreRatio(String net, String total);
+
+  /// Badge showing negative marks deducted
+  ///
+  /// In en, this message translates to:
+  /// **'-{marks} neg'**
+  String prepMockNegativeMarksBadge(String marks);
+
+  /// Badge showing time taken out of time limit in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{taken} / {limit} min'**
+  String prepMockDurationWithLimitBadge(String taken, String limit);
+
+  /// Badge showing time taken in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{taken} min'**
+  String prepMockDurationBadge(String taken);
+
+  /// Line showing weak topics noted on a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Weak topics: {topics}'**
+  String prepMockWeakTopicsLabel(String topics);
+
+  /// Chip showing circular linked to a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Circular: {title}'**
+  String prepMockLinkedCircularLabel(String title);
+
+  /// Chip showing material linked to a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Material: {title}'**
+  String prepMockLinkedMaterialLabel(String title);
+
+  /// Chip showing topic linked to a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Topic: {title}'**
+  String prepMockLinkedTopicLabel(String title);
+
+  /// Tooltip for editing a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Edit mock test'**
+  String get prepMockEditTooltip;
+
+  /// Tooltip for deleting a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Delete mock test'**
+  String get prepMockDeleteTooltip;
+
+  /// Dialog heading when creating a new mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Log mock test'**
+  String get prepMockFormCreateTitle;
+
+  /// Dialog heading when editing an existing mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Edit mock test'**
+  String get prepMockFormEditTitle;
+
+  /// Subject field label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get prepMockFormSubjectLabel;
+
+  /// Test title field label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Test title'**
+  String get prepMockFormTitleLabel;
+
+  /// Hint text for mock test title input
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., 46th BCS Model Test 04'**
+  String get prepMockFormTitleHint;
+
+  /// Source field label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Source / Platform (optional)'**
+  String get prepMockFormSourceLabel;
+
+  /// Hint text for mock test source input
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., Live MCQ, Oracle Guide'**
+  String get prepMockFormSourceHint;
+
+  /// Row showing selected test date in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Date taken: {date}'**
+  String prepMockFormTakenOnLabel(String date);
+
+  /// Button opening date picker for test taken_on date
+  ///
+  /// In en, this message translates to:
+  /// **'Change date'**
+  String get prepMockFormPickDate;
+
+  /// Marks obtained numeric input label
+  ///
+  /// In en, this message translates to:
+  /// **'Marks obtained'**
+  String get prepMockFormMarksObtainedLabel;
+
+  /// Total marks numeric input label
+  ///
+  /// In en, this message translates to:
+  /// **'Total marks'**
+  String get prepMockFormTotalMarksLabel;
+
+  /// Negative marks numeric input label
+  ///
+  /// In en, this message translates to:
+  /// **'Negative marks (optional)'**
+  String get prepMockFormNegativeMarksLabel;
+
+  /// Time taken in minutes input label
+  ///
+  /// In en, this message translates to:
+  /// **'Time taken (min, optional)'**
+  String get prepMockFormTimeTakenLabel;
+
+  /// Time limit in minutes input label
+  ///
+  /// In en, this message translates to:
+  /// **'Time limit (min, optional)'**
+  String get prepMockFormTimeLimitLabel;
+
+  /// Weak topics input label
+  ///
+  /// In en, this message translates to:
+  /// **'Weak topics (optional)'**
+  String get prepMockFormWeakTopicsLabel;
+
+  /// Hint for weak topics input
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., Constitutional Amendments, Time & Work'**
+  String get prepMockFormWeakTopicsHint;
+
+  /// Notes input label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Notes (optional)'**
+  String get prepMockFormNotesLabel;
+
+  /// Optional circular dropdown label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Linked circular (optional)'**
+  String get prepMockFormCircularLabel;
+
+  /// Optional material dropdown label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Linked material (optional)'**
+  String get prepMockFormMaterialLabel;
+
+  /// Optional topic dropdown label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Linked topic (optional)'**
+  String get prepMockFormTopicLabel;
+
+  /// Dropdown option representing no linked item
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get prepMockFormNoneOption;
+
+  /// Primary submit button in mock test form dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Save mock test'**
+  String get prepMockFormSaveAction;
+
+  /// Validation error when no subject is selected
+  ///
+  /// In en, this message translates to:
+  /// **'Select a subject for this mock test.'**
+  String get prepMockValidationSubjectRequired;
+
+  /// Validation error when mock test title is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a title for the mock test.'**
+  String get prepMockValidationTitleRequired;
+
+  /// Validation error when total marks is invalid or <= 0
+  ///
+  /// In en, this message translates to:
+  /// **'Total marks must be greater than zero.'**
+  String get prepMockValidationTotalPositive;
+
+  /// Validation error when marks obtained is outside 0..total_marks
+  ///
+  /// In en, this message translates to:
+  /// **'Marks obtained must be between 0 and total marks.'**
+  String get prepMockValidationMarksRange;
+
+  /// Validation error when negative marks is outside 0..total_marks
+  ///
+  /// In en, this message translates to:
+  /// **'Negative marks must be between 0 and total marks.'**
+  String get prepMockValidationNegativeMarks;
+
+  /// Validation error when time taken or time limit is invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Time taken must be 0 or more, and time limit must be greater than zero.'**
+  String get prepMockValidationDuration;
+
+  /// Confirmation dialog heading before deleting a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Delete mock test?'**
+  String get prepMockDeleteTitle;
+
+  /// Confirmation dialog body when deleting a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Remove \"{title}\" from your mock test history? This cannot be undone.'**
+  String prepMockDeleteBody(String title);
+
+  /// Destructive confirmation button label for deleting a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get prepMockDeleteConfirm;
 }
 
 class _AppLocalizationsDelegate

@@ -23,6 +23,7 @@ import 'package:job_prep/features/prep/presentation/widgets/prep_delete_dialog.d
 import 'package:job_prep/features/prep/presentation/widgets/prep_subject_detail_header_card.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_plan_card.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.dart';
+import 'package:job_prep/features/prep/presentation/widgets/subject_mock_tests_section.dart';
 
 /// Displays header, progress ring, and responsive cover cards grid (3-up on
 /// desktop, 2-column on mobile) with quick & custom study progress logging.
@@ -312,6 +313,12 @@ class _PrepSubjectDetailViewState extends ConsumerState<PrepSubjectDetailView> {
               },
             );
           },
+        ),
+        SizedBox(height: spacing.xl),
+        SubjectMockTestsSection(
+          subject: subject,
+          subjectColor: subjectColor,
+          replayKey: effectiveReplayKey,
         ),
       ],
     );

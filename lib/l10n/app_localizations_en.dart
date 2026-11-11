@@ -2382,4 +2382,276 @@ class AppLocalizationsEn extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get prepTabSubjects => 'Subjects';
+
+  @override
+  String get prepTabMockTests => 'Mock tests';
+
+  @override
+  String get prepMockTestsTitle => 'Mock tests';
+
+  @override
+  String get prepMockTestsSubtitle =>
+      'Track scores after negative marking, time taken, and weak topics across platforms.';
+
+  @override
+  String get prepMockTestAddButton => 'Log mock test';
+
+  @override
+  String get prepMockTestSubjectSectionTitle => 'Mock test performance';
+
+  @override
+  String prepMockTestSubjectCount(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formatted tests logged',
+      one: '$formatted test logged',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepMockFilterSubjectLabel => 'Subject';
+
+  @override
+  String get prepMockFilterAllSubjects => 'All subjects';
+
+  @override
+  String get prepMockFilterDateLabel => 'Date range';
+
+  @override
+  String get prepMockFilterDateAll => 'All time';
+
+  @override
+  String get prepMockFilterDate7Days => 'Last 7 days';
+
+  @override
+  String get prepMockFilterDate30Days => 'Last 30 days';
+
+  @override
+  String get prepMockFilterDate90Days => 'Last 90 days';
+
+  @override
+  String get prepMockFilterClear => 'Clear filters';
+
+  @override
+  String get prepMockStatLatest => 'Latest';
+
+  @override
+  String get prepMockStatBest => 'Best';
+
+  @override
+  String get prepMockStatAverage => 'Average';
+
+  @override
+  String get prepMockStatImprovement => 'Improvement';
+
+  @override
+  String prepMockStatPercentValue(String percent) {
+    return '$percent%';
+  }
+
+  @override
+  String get prepMockStatNotAvailable => '—';
+
+  @override
+  String prepMockStatImprovementLastFive(String formatted) {
+    return 'Last $formatted tests';
+  }
+
+  @override
+  String get prepMockStatImprovementFirstToLatest => 'First to latest';
+
+  @override
+  String get prepMockStatImprovementNeedsTwo => 'Log 2+ tests to compare';
+
+  @override
+  String get prepMockTrendChartTitle => 'Score trend (%)';
+
+  @override
+  String prepMockTrendAverageLineLabel(String percent) {
+    return 'Avg $percent%';
+  }
+
+  @override
+  String get prepMockTrendNeedsDataHint =>
+      'Log your first mock test to plot your score trend and average reference line.';
+
+  @override
+  String prepMockTrendTooltip(String title, String percent, String date) {
+    return '$title\n$percent% • $date';
+  }
+
+  @override
+  String get prepMockEmptyTitle => 'No mock tests logged yet';
+
+  @override
+  String get prepMockEmptyBody =>
+      'Log model tests from guidebooks or online platforms to track net percentage and weak areas.';
+
+  @override
+  String get prepMockFilteredEmptyTitle => 'No mock tests match these filters';
+
+  @override
+  String get prepMockFilteredEmptyBody =>
+      'Try clearing the subject or date range filter, or log a new mock test.';
+
+  @override
+  String get prepMockLoadingLabel => 'Loading mock tests...';
+
+  @override
+  String get prepMockLoadErrorTitle => 'Could not load mock tests';
+
+  @override
+  String prepMockScoreRatio(String net, String total) {
+    return '$net / $total';
+  }
+
+  @override
+  String prepMockNegativeMarksBadge(String marks) {
+    return '-$marks neg';
+  }
+
+  @override
+  String prepMockDurationWithLimitBadge(String taken, String limit) {
+    return '$taken / $limit min';
+  }
+
+  @override
+  String prepMockDurationBadge(String taken) {
+    return '$taken min';
+  }
+
+  @override
+  String prepMockWeakTopicsLabel(String topics) {
+    return 'Weak topics: $topics';
+  }
+
+  @override
+  String prepMockLinkedCircularLabel(String title) {
+    return 'Circular: $title';
+  }
+
+  @override
+  String prepMockLinkedMaterialLabel(String title) {
+    return 'Material: $title';
+  }
+
+  @override
+  String prepMockLinkedTopicLabel(String title) {
+    return 'Topic: $title';
+  }
+
+  @override
+  String get prepMockEditTooltip => 'Edit mock test';
+
+  @override
+  String get prepMockDeleteTooltip => 'Delete mock test';
+
+  @override
+  String get prepMockFormCreateTitle => 'Log mock test';
+
+  @override
+  String get prepMockFormEditTitle => 'Edit mock test';
+
+  @override
+  String get prepMockFormSubjectLabel => 'Subject';
+
+  @override
+  String get prepMockFormTitleLabel => 'Test title';
+
+  @override
+  String get prepMockFormTitleHint => 'e.g., 46th BCS Model Test 04';
+
+  @override
+  String get prepMockFormSourceLabel => 'Source / Platform (optional)';
+
+  @override
+  String get prepMockFormSourceHint => 'e.g., Live MCQ, Oracle Guide';
+
+  @override
+  String prepMockFormTakenOnLabel(String date) {
+    return 'Date taken: $date';
+  }
+
+  @override
+  String get prepMockFormPickDate => 'Change date';
+
+  @override
+  String get prepMockFormMarksObtainedLabel => 'Marks obtained';
+
+  @override
+  String get prepMockFormTotalMarksLabel => 'Total marks';
+
+  @override
+  String get prepMockFormNegativeMarksLabel => 'Negative marks (optional)';
+
+  @override
+  String get prepMockFormTimeTakenLabel => 'Time taken (min, optional)';
+
+  @override
+  String get prepMockFormTimeLimitLabel => 'Time limit (min, optional)';
+
+  @override
+  String get prepMockFormWeakTopicsLabel => 'Weak topics (optional)';
+
+  @override
+  String get prepMockFormWeakTopicsHint =>
+      'e.g., Constitutional Amendments, Time & Work';
+
+  @override
+  String get prepMockFormNotesLabel => 'Notes (optional)';
+
+  @override
+  String get prepMockFormCircularLabel => 'Linked circular (optional)';
+
+  @override
+  String get prepMockFormMaterialLabel => 'Linked material (optional)';
+
+  @override
+  String get prepMockFormTopicLabel => 'Linked topic (optional)';
+
+  @override
+  String get prepMockFormNoneOption => 'None';
+
+  @override
+  String get prepMockFormSaveAction => 'Save mock test';
+
+  @override
+  String get prepMockValidationSubjectRequired =>
+      'Select a subject for this mock test.';
+
+  @override
+  String get prepMockValidationTitleRequired =>
+      'Enter a title for the mock test.';
+
+  @override
+  String get prepMockValidationTotalPositive =>
+      'Total marks must be greater than zero.';
+
+  @override
+  String get prepMockValidationMarksRange =>
+      'Marks obtained must be between 0 and total marks.';
+
+  @override
+  String get prepMockValidationNegativeMarks =>
+      'Negative marks must be between 0 and total marks.';
+
+  @override
+  String get prepMockValidationDuration =>
+      'Time taken must be 0 or more, and time limit must be greater than zero.';
+
+  @override
+  String get prepMockDeleteTitle => 'Delete mock test?';
+
+  @override
+  String prepMockDeleteBody(String title) {
+    return 'Remove \"$title\" from your mock test history? This cannot be undone.';
+  }
+
+  @override
+  String get prepMockDeleteConfirm => 'Delete';
 }

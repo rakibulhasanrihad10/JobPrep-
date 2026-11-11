@@ -94,9 +94,11 @@ void main() {
       expect(find.text('Software Engineer'), findsOneWidget);
 
       // Customize units on Software Engineer before copying
-      await tester.tap(
-        find.byKey(const ValueKey('customize-template-software_engineer')),
+      final customizeBtn = find.byKey(
+        const ValueKey('customize-template-software_engineer'),
       );
+      await tester.ensureVisible(customizeBtn);
+      await tester.tap(customizeBtn);
       await tester.pumpAndSettle();
 
       final dsaField = find.byKey(
@@ -118,9 +120,10 @@ void main() {
       // Material copied from template stays editable afterward
       final dsaMaterial = materialRepo.materials
           .firstWhere((m) => m.title == 'Core DSA Problem Set');
-      await tester.tap(
-        find.byKey(ValueKey('material-edit-${dsaMaterial.id}')),
-      );
+      final editDsaBtn =
+          find.byKey(ValueKey('material-edit-${dsaMaterial.id}'));
+      await tester.ensureVisible(editDsaBtn);
+      await tester.tap(editDsaBtn);
       await tester.pumpAndSettle();
       final editUnitsField = find.byKey(
         const ValueKey('material-total-units-field'),

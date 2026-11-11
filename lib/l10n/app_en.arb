@@ -3151,5 +3151,395 @@
         "type": "String"
       }
     }
+  },
+  "prepTabSubjects": "Subjects",
+  "@prepTabSubjects": {
+    "description": "Tab label for Subjects & Study Plans inside Prep screen"
+  },
+  "prepTabMockTests": "Mock tests",
+  "@prepTabMockTests": {
+    "description": "Tab label for Mock Tests inside Prep screen"
+  },
+  "prepMockTestsTitle": "Mock tests",
+  "@prepMockTestsTitle": {
+    "description": "Heading for the Mock tests tab inside Prep screen"
+  },
+  "prepMockTestsSubtitle": "Track scores after negative marking, time taken, and weak topics across platforms.",
+  "@prepMockTestsSubtitle": {
+    "description": "Subtitle explaining the Mock tests tab"
+  },
+  "prepMockTestAddButton": "Log mock test",
+  "@prepMockTestAddButton": {
+    "description": "Button label to open the add mock test dialog"
+  },
+  "prepMockTestSubjectSectionTitle": "Mock test performance",
+  "@prepMockTestSubjectSectionTitle": {
+    "description": "Section title for mock tests inside Subject Detail view"
+  },
+  "prepMockTestSubjectCount": "{count, plural, =1{{formatted} test logged} other{{formatted} tests logged}}",
+  "@prepMockTestSubjectCount": {
+    "description": "Count of mock tests shown for a subject or filtered list",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formatted": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockFilterSubjectLabel": "Subject",
+  "@prepMockFilterSubjectLabel": {
+    "description": "Filter label for subject selection on Mock tests tab"
+  },
+  "prepMockFilterAllSubjects": "All subjects",
+  "@prepMockFilterAllSubjects": {
+    "description": "Dropdown option showing mock tests across all subjects"
+  },
+  "prepMockFilterDateLabel": "Date range",
+  "@prepMockFilterDateLabel": {
+    "description": "Filter label for date range presets on Mock tests tab"
+  },
+  "prepMockFilterDateAll": "All time",
+  "@prepMockFilterDateAll": {
+    "description": "Date range filter preset including all dates"
+  },
+  "prepMockFilterDate7Days": "Last 7 days",
+  "@prepMockFilterDate7Days": {
+    "description": "Date range filter preset for the last 7 days"
+  },
+  "prepMockFilterDate30Days": "Last 30 days",
+  "@prepMockFilterDate30Days": {
+    "description": "Date range filter preset for the last 30 days"
+  },
+  "prepMockFilterDate90Days": "Last 90 days",
+  "@prepMockFilterDate90Days": {
+    "description": "Date range filter preset for the last 90 days"
+  },
+  "prepMockFilterClear": "Clear filters",
+  "@prepMockFilterClear": {
+    "description": "Action button clearing active mock test filters"
+  },
+  "prepMockStatLatest": "Latest",
+  "@prepMockStatLatest": {
+    "description": "Stat card label for the latest mock test score"
+  },
+  "prepMockStatBest": "Best",
+  "@prepMockStatBest": {
+    "description": "Stat card label for the highest mock test score"
+  },
+  "prepMockStatAverage": "Average",
+  "@prepMockStatAverage": {
+    "description": "Stat card label for average mock test score"
+  },
+  "prepMockStatImprovement": "Improvement",
+  "@prepMockStatImprovement": {
+    "description": "Stat card label for score improvement"
+  },
+  "prepMockStatPercentValue": "{percent}%",
+  "@prepMockStatPercentValue": {
+    "description": "Formatted percentage value for a mock test stat",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockStatNotAvailable": "—",
+  "@prepMockStatNotAvailable": {
+    "description": "Placeholder when a mock test statistic is not available yet"
+  },
+  "prepMockStatImprovementLastFive": "Last {formatted} tests",
+  "@prepMockStatImprovementLastFive": {
+    "description": "Caption showing improvement is computed over the last N tests",
+    "placeholders": {
+      "formatted": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockStatImprovementFirstToLatest": "First to latest",
+  "@prepMockStatImprovementFirstToLatest": {
+    "description": "Caption showing improvement is measured from first to latest test"
+  },
+  "prepMockStatImprovementNeedsTwo": "Log 2+ tests to compare",
+  "@prepMockStatImprovementNeedsTwo": {
+    "description": "Caption when fewer than two tests exist for improvement calculation"
+  },
+  "prepMockTrendChartTitle": "Score trend (%)",
+  "@prepMockTrendChartTitle": {
+    "description": "Heading above the mock test score trend line chart"
+  },
+  "prepMockTrendAverageLineLabel": "Avg {percent}%",
+  "@prepMockTrendAverageLineLabel": {
+    "description": "Legend/reference line label showing average percentage",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockTrendNeedsDataHint": "Log your first mock test to plot your score trend and average reference line.",
+  "@prepMockTrendNeedsDataHint": {
+    "description": "Hint shown instead of trend chart when there are no tests"
+  },
+  "prepMockTrendTooltip": "{title}\n{percent}% • {date}",
+  "@prepMockTrendTooltip": {
+    "description": "Tooltip text when touching a point on the mock test trend chart",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockEmptyTitle": "No mock tests logged yet",
+  "@prepMockEmptyTitle": {
+    "description": "Empty state heading when no mock tests exist"
+  },
+  "prepMockEmptyBody": "Log model tests from guidebooks or online platforms to track net percentage and weak areas.",
+  "@prepMockEmptyBody": {
+    "description": "Empty state body when no mock tests exist"
+  },
+  "prepMockFilteredEmptyTitle": "No mock tests match these filters",
+  "@prepMockFilteredEmptyTitle": {
+    "description": "Empty state heading when active filters return no mock tests"
+  },
+  "prepMockFilteredEmptyBody": "Try clearing the subject or date range filter, or log a new mock test.",
+  "@prepMockFilteredEmptyBody": {
+    "description": "Empty state body when active filters return no mock tests"
+  },
+  "prepMockLoadingLabel": "Loading mock tests...",
+  "@prepMockLoadingLabel": {
+    "description": "Loading label shown while fetching mock tests"
+  },
+  "prepMockLoadErrorTitle": "Could not load mock tests",
+  "@prepMockLoadErrorTitle": {
+    "description": "Error heading shown when mock tests fail to load"
+  },
+  "prepMockScoreRatio": "{net} / {total}",
+  "@prepMockScoreRatio": {
+    "description": "Score summary showing net marks out of total marks",
+    "placeholders": {
+      "net": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockNegativeMarksBadge": "-{marks} neg",
+  "@prepMockNegativeMarksBadge": {
+    "description": "Badge showing negative marks deducted",
+    "placeholders": {
+      "marks": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockDurationWithLimitBadge": "{taken} / {limit} min",
+  "@prepMockDurationWithLimitBadge": {
+    "description": "Badge showing time taken out of time limit in minutes",
+    "placeholders": {
+      "taken": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockDurationBadge": "{taken} min",
+  "@prepMockDurationBadge": {
+    "description": "Badge showing time taken in minutes",
+    "placeholders": {
+      "taken": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockWeakTopicsLabel": "Weak topics: {topics}",
+  "@prepMockWeakTopicsLabel": {
+    "description": "Line showing weak topics noted on a mock test",
+    "placeholders": {
+      "topics": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockLinkedCircularLabel": "Circular: {title}",
+  "@prepMockLinkedCircularLabel": {
+    "description": "Chip showing circular linked to a mock test",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockLinkedMaterialLabel": "Material: {title}",
+  "@prepMockLinkedMaterialLabel": {
+    "description": "Chip showing material linked to a mock test",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockLinkedTopicLabel": "Topic: {title}",
+  "@prepMockLinkedTopicLabel": {
+    "description": "Chip showing topic linked to a mock test",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockEditTooltip": "Edit mock test",
+  "@prepMockEditTooltip": {
+    "description": "Tooltip for editing a mock test"
+  },
+  "prepMockDeleteTooltip": "Delete mock test",
+  "@prepMockDeleteTooltip": {
+    "description": "Tooltip for deleting a mock test"
+  },
+  "prepMockFormCreateTitle": "Log mock test",
+  "@prepMockFormCreateTitle": {
+    "description": "Dialog heading when creating a new mock test"
+  },
+  "prepMockFormEditTitle": "Edit mock test",
+  "@prepMockFormEditTitle": {
+    "description": "Dialog heading when editing an existing mock test"
+  },
+  "prepMockFormSubjectLabel": "Subject",
+  "@prepMockFormSubjectLabel": {
+    "description": "Subject field label in mock test form"
+  },
+  "prepMockFormTitleLabel": "Test title",
+  "@prepMockFormTitleLabel": {
+    "description": "Test title field label in mock test form"
+  },
+  "prepMockFormTitleHint": "e.g., 46th BCS Model Test 04",
+  "@prepMockFormTitleHint": {
+    "description": "Hint text for mock test title input"
+  },
+  "prepMockFormSourceLabel": "Source / Platform (optional)",
+  "@prepMockFormSourceLabel": {
+    "description": "Source field label in mock test form"
+  },
+  "prepMockFormSourceHint": "e.g., Live MCQ, Oracle Guide",
+  "@prepMockFormSourceHint": {
+    "description": "Hint text for mock test source input"
+  },
+  "prepMockFormTakenOnLabel": "Date taken: {date}",
+  "@prepMockFormTakenOnLabel": {
+    "description": "Row showing selected test date in mock test form",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockFormPickDate": "Change date",
+  "@prepMockFormPickDate": {
+    "description": "Button opening date picker for test taken_on date"
+  },
+  "prepMockFormMarksObtainedLabel": "Marks obtained",
+  "@prepMockFormMarksObtainedLabel": {
+    "description": "Marks obtained numeric input label"
+  },
+  "prepMockFormTotalMarksLabel": "Total marks",
+  "@prepMockFormTotalMarksLabel": {
+    "description": "Total marks numeric input label"
+  },
+  "prepMockFormNegativeMarksLabel": "Negative marks (optional)",
+  "@prepMockFormNegativeMarksLabel": {
+    "description": "Negative marks numeric input label"
+  },
+  "prepMockFormTimeTakenLabel": "Time taken (min, optional)",
+  "@prepMockFormTimeTakenLabel": {
+    "description": "Time taken in minutes input label"
+  },
+  "prepMockFormTimeLimitLabel": "Time limit (min, optional)",
+  "@prepMockFormTimeLimitLabel": {
+    "description": "Time limit in minutes input label"
+  },
+  "prepMockFormWeakTopicsLabel": "Weak topics (optional)",
+  "@prepMockFormWeakTopicsLabel": {
+    "description": "Weak topics input label"
+  },
+  "prepMockFormWeakTopicsHint": "e.g., Constitutional Amendments, Time & Work",
+  "@prepMockFormWeakTopicsHint": {
+    "description": "Hint for weak topics input"
+  },
+  "prepMockFormNotesLabel": "Notes (optional)",
+  "@prepMockFormNotesLabel": {
+    "description": "Notes input label in mock test form"
+  },
+  "prepMockFormCircularLabel": "Linked circular (optional)",
+  "@prepMockFormCircularLabel": {
+    "description": "Optional circular dropdown label in mock test form"
+  },
+  "prepMockFormMaterialLabel": "Linked material (optional)",
+  "@prepMockFormMaterialLabel": {
+    "description": "Optional material dropdown label in mock test form"
+  },
+  "prepMockFormTopicLabel": "Linked topic (optional)",
+  "@prepMockFormTopicLabel": {
+    "description": "Optional topic dropdown label in mock test form"
+  },
+  "prepMockFormNoneOption": "None",
+  "@prepMockFormNoneOption": {
+    "description": "Dropdown option representing no linked item"
+  },
+  "prepMockFormSaveAction": "Save mock test",
+  "@prepMockFormSaveAction": {
+    "description": "Primary submit button in mock test form dialog"
+  },
+  "prepMockValidationSubjectRequired": "Select a subject for this mock test.",
+  "@prepMockValidationSubjectRequired": {
+    "description": "Validation error when no subject is selected"
+  },
+  "prepMockValidationTitleRequired": "Enter a title for the mock test.",
+  "@prepMockValidationTitleRequired": {
+    "description": "Validation error when mock test title is empty"
+  },
+  "prepMockValidationTotalPositive": "Total marks must be greater than zero.",
+  "@prepMockValidationTotalPositive": {
+    "description": "Validation error when total marks is invalid or <= 0"
+  },
+  "prepMockValidationMarksRange": "Marks obtained must be between 0 and total marks.",
+  "@prepMockValidationMarksRange": {
+    "description": "Validation error when marks obtained is outside 0..total_marks"
+  },
+  "prepMockValidationNegativeMarks": "Negative marks must be between 0 and total marks.",
+  "@prepMockValidationNegativeMarks": {
+    "description": "Validation error when negative marks is outside 0..total_marks"
+  },
+  "prepMockValidationDuration": "Time taken must be 0 or more, and time limit must be greater than zero.",
+  "@prepMockValidationDuration": {
+    "description": "Validation error when time taken or time limit is invalid"
+  },
+  "prepMockDeleteTitle": "Delete mock test?",
+  "@prepMockDeleteTitle": {
+    "description": "Confirmation dialog heading before deleting a mock test"
+  },
+  "prepMockDeleteBody": "Remove \"{title}\" from your mock test history? This cannot be undone.",
+  "@prepMockDeleteBody": {
+    "description": "Confirmation dialog body when deleting a mock test",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockDeleteConfirm": "Delete",
+  "@prepMockDeleteConfirm": {
+    "description": "Destructive confirmation button label for deleting a mock test"
   }
 }
