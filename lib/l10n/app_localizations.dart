@@ -7395,6 +7395,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Saved locally on this device. Connect to sync across devices.'**
   String get settingsSyncWarning;
+
+  /// Button label revealing the next batch of items in a long list
+  ///
+  /// In en, this message translates to:
+  /// **'Show {count} more'**
+  String prepShowMoreItems(String count);
 }
 
 class _AppLocalizationsDelegate

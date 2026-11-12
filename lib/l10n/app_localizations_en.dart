@@ -4494,4 +4494,9 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get settingsSyncWarning =>
       'Saved locally on this device. Connect to sync across devices.';
+
+  @override
+  String prepShowMoreItems(String count) {
+    return 'Show $count more';
+  }
 }

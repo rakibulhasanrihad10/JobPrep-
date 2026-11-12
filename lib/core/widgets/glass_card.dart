@@ -22,6 +22,7 @@ class GlassCard extends ConsumerWidget {
     this.borderColor,
     this.fillColor,
     this.onTap,
+    this.useBlur = true,
   });
 
   /// The widget below this card in the tree.
@@ -51,6 +52,12 @@ class GlassCard extends ConsumerWidget {
   /// Optional callback invoked when the card is tapped.
   final VoidCallback? onTap;
 
+  /// Enables backdrop blur when [reduceEffectsProvider] is false.
+  ///
+  /// Set to false on repeated list rows so scrolling stays smooth without
+  /// stacking per-row `BackdropFilter` GPU passes.
+  final bool useBlur;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tokens = context.tokens;
@@ -59,11 +66,12 @@ class GlassCard extends ConsumerWidget {
     final spacing = tokens.spacing;
 
     final reduceEffects = ref.watch(reduceEffectsProvider);
+    final effectiveBlur = useBlur && !reduceEffects;
     final effectiveRadius = borderRadius ?? radii.cardRadius;
     final effectiveBorderColor = borderColor ?? colors.glassBorder;
-    final effectiveFillColor = reduceEffects
-        ? (fillColor ?? colors.glassFillSolid)
-        : (fillColor ?? colors.glassFill);
+    final effectiveFillColor = effectiveBlur
+        ? (fillColor ?? colors.glassFill)
+        : (fillColor ?? colors.glassFillSolid);
 
     Widget content = Container(
       width: width,
@@ -90,7 +98,7 @@ class GlassCard extends ConsumerWidget {
       );
     }
 
-    if (reduceEffects) {
+    if (!effectiveBlur) {
       content = ClipRRect(
         borderRadius: effectiveRadius,
         child: content,

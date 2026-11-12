@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
@@ -172,7 +170,7 @@ class _GlassTextFieldState extends ConsumerState<GlassTextField> {
     final fieldRadius = radii.mdRadius;
 
     Widget inputContainer = AnimatedContainer(
-      duration: durations.fast,
+      duration: reduceEffects ? Duration.zero : durations.fast,
       decoration: BoxDecoration(
         color: fillColor,
         borderRadius: fieldRadius,
@@ -255,20 +253,10 @@ class _GlassTextFieldState extends ConsumerState<GlassTextField> {
       ),
     );
 
-    if (reduceEffects) {
-      inputContainer = ClipRRect(
-        borderRadius: fieldRadius,
-        child: inputContainer,
-      );
-    } else {
-      inputContainer = ClipRRect(
-        borderRadius: fieldRadius,
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
-          child: inputContainer,
-        ),
-      );
-    }
+    inputContainer = ClipRRect(
+      borderRadius: fieldRadius,
+      child: inputContainer,
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

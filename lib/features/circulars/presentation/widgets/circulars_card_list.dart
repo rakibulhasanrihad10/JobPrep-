@@ -8,6 +8,51 @@ import 'package:job_prep/features/circulars/domain/entities/circular.dart';
 import 'package:job_prep/features/circulars/presentation/utils/circular_l10n.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/circular_badges.dart';
 
+/// Virtualized sliver card list displaying circular entries without per-row
+/// blur layers for smooth scrolling performance on long lists.
+class SliverCircularsCardList extends ConsumerWidget {
+  /// Creates a [SliverCircularsCardList].
+  const SliverCircularsCardList({
+    required this.circulars,
+    super.key,
+    this.onTapCircular,
+    this.selectedCircularId,
+  });
+
+  /// Circulars to display in order.
+  final List<Circular> circulars;
+
+  /// Optional callback invoked when a card is tapped.
+  final ValueChanged<Circular>? onTapCircular;
+
+  /// Optional selected circular ID highlighted in master-detail desktop view.
+  final String? selectedCircularId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final spacing = context.tokens.spacing;
+    final locale = ref.watch(localeProvider);
+    final useBanglaDigits = ref.watch(useBanglaDigitsProvider);
+
+    return SliverList.separated(
+      key: const ValueKey('circulars-mobile-list'),
+      itemCount: circulars.length,
+      separatorBuilder: (_, __) => SizedBox(height: spacing.md),
+      itemBuilder: (context, index) {
+        final circular = circulars[index];
+        return _CircularMobileCard(
+          circular: circular,
+          index: index,
+          locale: locale,
+          useBanglaDigits: useBanglaDigits,
+          isSelected: selectedCircularId == circular.id,
+          onTap: onTapCircular != null ? () => onTapCircular!(circular) : null,
+        );
+      },
+    );
+  }
+}
+
 /// Mobile/tablet card list displaying circular entries without per-row blur
 /// layers for smooth scrolling performance.
 class CircularsCardList extends ConsumerWidget {
@@ -85,6 +130,76 @@ class _CircularMobileCard extends StatelessWidget {
             ? circular.organizationName!.trim()
             : l10n.circularsOrganizationUnspecified;
 
+    final cardColumn = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    circular.title,
+                    style: textStyles.titleMedium,
+                  ),
+                  SizedBox(height: spacing.xs),
+                  Text(
+                    organizationText,
+                    style: textStyles.bodyMedium,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: spacing.sm),
+            CircularSectorChip(sector: circular.sector),
+          ],
+        ),
+        SizedBox(height: spacing.md),
+        Wrap(
+          spacing: spacing.lg,
+          runSpacing: spacing.md,
+          alignment: WrapAlignment.spaceBetween,
+          children: [
+            CircularDeadlineCountdownBadge(
+              deadline: circular.deadline,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.circularsColumnVacancies,
+                  style: textStyles.labelSmall.copyWith(
+                    color: colors.textMuted,
+                  ),
+                ),
+                SizedBox(height: spacing.xs),
+                Text(
+                  CircularL10n.vacanciesLabel(
+                    circular.vacancies,
+                    l10n,
+                    locale: locale,
+                    useBanglaDigits: useBanglaDigits,
+                  ),
+                  style: textStyles.bodyMedium.copyWith(
+                    color: circular.vacancies != null
+                        ? colors.textPrimary
+                        : colors.textMuted,
+                  ),
+                ),
+              ],
+            ),
+            CircularStatusBadge(
+              workflowStatus: circular.workflowStatus,
+              applicationStatus: circular.applicationStatus,
+              priority: circular.priority,
+            ),
+          ],
+        ),
+      ],
+    );
+
     return Container(
       key: ValueKey('circular-card-${circular.id}'),
       decoration: BoxDecoration(
@@ -102,78 +217,9 @@ class _CircularMobileCard extends StatelessWidget {
           onTap: onTap ?? () {},
           child: Padding(
             padding: spacing.insetsAllLg,
-            child: FadeSlideIn(
-              index: index.clamp(0, 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              circular.title,
-                              style: textStyles.titleMedium,
-                            ),
-                            SizedBox(height: spacing.xs),
-                            Text(
-                              organizationText,
-                              style: textStyles.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: spacing.sm),
-                      CircularSectorChip(sector: circular.sector),
-                    ],
-                  ),
-                  SizedBox(height: spacing.md),
-                  Wrap(
-                    spacing: spacing.lg,
-                    runSpacing: spacing.md,
-                    alignment: WrapAlignment.spaceBetween,
-                    children: [
-                      CircularDeadlineCountdownBadge(
-                        deadline: circular.deadline,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            l10n.circularsColumnVacancies,
-                            style: textStyles.labelSmall.copyWith(
-                              color: colors.textMuted,
-                            ),
-                          ),
-                          SizedBox(height: spacing.xs),
-                          Text(
-                            CircularL10n.vacanciesLabel(
-                              circular.vacancies,
-                              l10n,
-                              locale: locale,
-                              useBanglaDigits: useBanglaDigits,
-                            ),
-                            style: textStyles.bodyMedium.copyWith(
-                              color: circular.vacancies != null
-                                  ? colors.textPrimary
-                                  : colors.textMuted,
-                            ),
-                          ),
-                        ],
-                      ),
-                      CircularStatusBadge(
-                        workflowStatus: circular.workflowStatus,
-                        applicationStatus: circular.applicationStatus,
-                        priority: circular.priority,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            child: index < 6
+                ? FadeSlideIn(index: index, child: cardColumn)
+                : cardColumn,
           ),
         ),
       ),

@@ -163,6 +163,7 @@ class MockTestListTile extends ConsumerWidget {
     return GlassCard(
       key: ValueKey('mock-test-tile-${test.id}'),
       padding: spacing.insetsAllLg,
+      useBlur: false,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

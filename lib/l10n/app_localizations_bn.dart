@@ -4488,4 +4488,9 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get settingsSyncWarning =>
       'এই ডিভাইসে সংরক্ষিত হয়েছে। সিঙ্ক করতে সংযোগ পরীক্ষা করুন।';
+
+  @override
+  String prepShowMoreItems(String count) {
+    return 'আরও $countটি দেখুন';
+  }
 }

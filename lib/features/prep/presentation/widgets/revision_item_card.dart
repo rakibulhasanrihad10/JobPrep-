@@ -115,6 +115,7 @@ class RevisionItemCard extends StatelessWidget {
     return GlassCard(
       key: ValueKey('revision-item-card-${item.id}'),
       padding: spacing.insetsAllLg,
+      useBlur: false,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

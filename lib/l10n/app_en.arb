@@ -6145,5 +6145,14 @@
   "settingsSyncWarning": "Saved locally on this device. Connect to sync across devices.",
   "@settingsSyncWarning": {
     "description": "Non-blocking warning shown when remote settings sync fails"
+  },
+  "prepShowMoreItems": "Show {count} more",
+  "@prepShowMoreItems": {
+    "description": "Button label revealing the next batch of items in a long list",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
   }
 }

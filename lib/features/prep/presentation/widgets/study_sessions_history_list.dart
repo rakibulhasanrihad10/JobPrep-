@@ -15,15 +15,26 @@ import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_session_crud_controller.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_session_providers.dart';
+import 'package:job_prep/features/prep/presentation/utils/prep_l10n.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_style_tokens.dart';
 import 'package:job_prep/features/prep/presentation/utils/study_timer_l10n.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_session_form_dialog.dart';
 
 /// Lists completed and manually entered [StudySession] entries with Edit &
 /// Delete actions cleanly updated across history and Study Analytics.
-class StudySessionsHistoryList extends ConsumerWidget {
+class StudySessionsHistoryList extends ConsumerStatefulWidget {
   /// Creates a [StudySessionsHistoryList].
   const StudySessionsHistoryList({super.key});
+
+  @override
+  ConsumerState<StudySessionsHistoryList> createState() =>
+      _StudySessionsHistoryListState();
+}
+
+class _StudySessionsHistoryListState
+    extends ConsumerState<StudySessionsHistoryList> {
+  static const int _pageSize = 20;
+  int _visibleLimit = _pageSize;
 
   Future<void> _confirmDelete(
     BuildContext context,
@@ -67,7 +78,7 @@ class StudySessionsHistoryList extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final tokens = context.tokens;
     final colors = tokens.colors;
     final spacing = tokens.spacing;
@@ -139,33 +150,59 @@ class StudySessionsHistoryList extends ConsumerWidget {
                 color: colors.textSecondary,
               ),
             )
-          else
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                for (var i = 0; i < sessions.length; i++) ...[
-                  if (i > 0)
-                    Divider(height: spacing.lg, color: colors.glassBorder),
-                  _SessionHistoryRow(
-                    session: sessions[i],
-                    subject: subjectsById[sessions[i].subjectId],
-                    material: materialsById[sessions[i].materialId],
-                    locale: locale,
-                    useBanglaDigits: useBanglaDigits,
-                    isBusy: crudState.isSaving &&
-                        crudState.activeSessionId == sessions[i].id,
-                    onEdit: () => unawaited(
-                      showStudySessionFormDialog(
-                        context,
-                        existing: sessions[i],
+          else ...[
+            Builder(
+              builder: (context) {
+                final visibleCount = sessions.length > _visibleLimit
+                    ? _visibleLimit
+                    : sessions.length;
+                final remaining = sessions.length - visibleCount;
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    for (var i = 0; i < visibleCount; i++) ...[
+                      if (i > 0)
+                        Divider(height: spacing.lg, color: colors.glassBorder),
+                      _SessionHistoryRow(
+                        session: sessions[i],
+                        subject: subjectsById[sessions[i].subjectId],
+                        material: materialsById[sessions[i].materialId],
+                        locale: locale,
+                        useBanglaDigits: useBanglaDigits,
+                        isBusy: crudState.isSaving &&
+                            crudState.activeSessionId == sessions[i].id,
+                        onEdit: () => unawaited(
+                          showStudySessionFormDialog(
+                            context,
+                            existing: sessions[i],
+                          ),
+                        ),
+                        onDelete: () => unawaited(
+                          _confirmDelete(context, ref, sessions[i]),
+                        ),
                       ),
-                    ),
-                    onDelete: () =>
-                        unawaited(_confirmDelete(context, ref, sessions[i])),
-                  ),
-                ],
-              ],
+                    ],
+                    if (remaining > 0) ...[
+                      SizedBox(height: spacing.md),
+                      Center(
+                        child: GlassButton(
+                          key: const ValueKey('sessions-show-more-btn'),
+                          onPressed: () => setState(
+                            () => _visibleLimit += _pageSize,
+                          ),
+                          child: Text(
+                            l10n.prepShowMoreItems(
+                              PrepL10n.formatInt(remaining, locale),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
+                );
+              },
             ),
+          ],
         ],
       ),
     );

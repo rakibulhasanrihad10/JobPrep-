@@ -285,7 +285,27 @@ The pipeline executes the following checks sequentially:
 4. **Code Formatting Check**: Enforces `dart format --output=none --set-exit-if-changed .`.
 5. **Strict Static Analysis**: Enforces `flutter analyze --fatal-infos --fatal-warnings`.
 6. **Automated Test Suite**: Executes unit and widget tests with `flutter test`.
-7. **Web Compilation Verification**: Compiles production web bundle (`flutter build web --release`).
+7. **Web Compilation Verification**: Compiles production web bundle (`dart run scripts/build_web.dart` — builds with `--wasm --release` when supported and falls back cleanly to standard JS/CanvasKit).
+8. **PWA Installability, Mobile Throttling & Lighthouse**: Runs `node scripts/pwa_lighthouse_check.mjs` against `build/web` to verify manifest/maskable icons/service worker/Wasm fallback, 4x-CPU/Slow-4G Chrome startup (`reduceEffects` frame pacing), and Lighthouse Performance score.
+
+---
+
+## PWA, WebAssembly & iOS Safari Notes
+
+- **Installable Web App**: [web/manifest.json](web/manifest.json) provides app identity, `#0A0E17` dark navy theme/background colors, and separate `any` + `maskable` 192x192 / 512x512 PNG icons plus an opaque 180x180 `web/icons/apple-touch-icon.png`.
+- **Custom Service Worker & Startup Screen**: [web/sw.js](web/sw.js) precaches the static app shell while leaving cross-origin Supabase Auth/REST/Storage calls network-only, and [web/index.html](web/index.html) displays a lightweight branded `#jobprep-loader` dismissed in [web/flutter_bootstrap.js](web/flutter_bootstrap.js) on Flutter's first frame.
+- **Wasm + JS Fallback**: `dart run scripts/build_web.dart` outputs `main.dart.wasm` + `main.dart.mjs` alongside `main.dart.js` (`canvaskit`). Browsers supporting WasmGC + WebGL use Skwasm; Safari/WebKit and older browsers fall back automatically to CanvasKit/JS.
+- **Performance & Reduce Effects**: `BackdropFilter` layers are restricted to cards (`GlassCard`), navigation chrome/sidebar, and dialogs (omitted from buttons, chips, text fields, and repeated list rows). `CircularsScreen` and `InboxScreen` use sliver virtualization, `MaterialCoverThumbnail` defers loading during rapid flings with bounded `cacheWidth`/`cacheHeight`, and **Settings > Appearance > Reduce effects** disables blurs and entrance motion.
+
+### Testing on iPhone Safari ("Add to Home Screen") & Known Caveats
+
+Manual hardware verification on a physical iPhone running iOS Safari (unavailable in headless Linux/Windows CI) should check **Share > Add to Home Screen** over HTTPS. Known iOS Safari / WebKit PWA behaviors to account for:
+
+1. **WebAssembly Engine Fallback**: iOS Safari currently lacks Skwasm `WasmGC` support, so Flutter's bootstrapper automatically falls back to `main.dart.js` (`canvaskit`). First boot downloads a larger JS/CanvasKit payload on cellular connections before [web/sw.js](web/sw.js) caches it.
+2. **Isolated Standalone Storage & Google OAuth**: On iOS, a Home Screen standalone PWA runs in a storage partition separate from Safari tabs. Signing in with Google OAuth redirects inside standalone mode or Safari tabs may not share cookies/session storage back automatically; email/password sign-in works natively inside standalone mode without cross-context handoff.
+3. **Opaque Touch Icon & Safe Area**: iOS masks non-opaque touch icons against black; `web/icons/apple-touch-icon.png` is intentionally 180x180 opaque `#0A0E17`, paired with `viewport-fit=cover` and `apple-mobile-web-app-status-bar-style="black-translucent"`.
+4. **7-Day Script-Writable Cache Eviction**: WebKit evicts Service Worker caches if the Home Screen app is unused for 7 consecutive days; subsequent opens re-fetch the shell cleanly from network.
+5. **File Downloads & Background Audio Alerts**: Blob exports (CSV/JSON) open in an iOS preview/share sheet rather than a direct Downloads toast, and study-timer Web Audio notifications require prior user tap interaction in the session due to iOS autoplay policies.
 
 ---
 

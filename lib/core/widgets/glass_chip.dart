@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
@@ -122,7 +120,7 @@ class _GlassChipState extends ConsumerState<GlassChip> {
     );
 
     content = AnimatedContainer(
-      duration: durations.fast,
+      duration: reduceEffects ? Duration.zero : durations.fast,
       padding: widget.padding ?? defaultPadding,
       decoration: BoxDecoration(
         color: fillColor,
@@ -144,19 +142,9 @@ class _GlassChipState extends ConsumerState<GlassChip> {
       );
     }
 
-    if (reduceEffects) {
-      return ClipRRect(
-        borderRadius: chipRadius,
-        child: content,
-      );
-    }
-
     return ClipRRect(
       borderRadius: chipRadius,
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
-        child: content,
-      ),
+      child: content,
     );
   }
 }

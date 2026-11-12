@@ -54,8 +54,24 @@ jobs:
       - name: Run automated tests
         run: flutter test
 
-      - name: Build web application
-        run: flutter build web --release
+      - name: Build web application (Wasm with JS fallback)
+        run: dart run scripts/build_web.dart
+
+      - name: Set up Node.js for Lighthouse & PWA audit
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run PWA installability, mobile throttling, and Lighthouse audit
+        run: node scripts/pwa_lighthouse_check.mjs
+
+      - name: Upload Lighthouse JSON report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: build/lighthouse-report.json
+          if-no-files-found: ignore
 
   database:
     name: Supabase Migrations & Database Verification

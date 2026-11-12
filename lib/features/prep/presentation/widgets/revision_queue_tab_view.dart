@@ -26,7 +26,7 @@ import 'package:job_prep/features/prep/presentation/widgets/revision_queue_banne
 /// across `Due today`, `Overdue`, `Upcoming`, and `Done` with subject/material
 /// filters and reversible per-item actions (`Easy`, `Still hard`, `Snooze`,
 /// `Dismiss`, plus Undo).
-class RevisionQueueTabView extends ConsumerWidget {
+class RevisionQueueTabView extends ConsumerStatefulWidget {
   /// Creates a [RevisionQueueTabView].
   const RevisionQueueTabView({
     required this.visitId,
@@ -37,7 +37,18 @@ class RevisionQueueTabView extends ConsumerWidget {
   final int visitId;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<RevisionQueueTabView> createState() =>
+      _RevisionQueueTabViewState();
+}
+
+class _RevisionQueueTabViewState extends ConsumerState<RevisionQueueTabView> {
+  static const int _pageSize = 25;
+  int _visibleLimit = _pageSize;
+  RevisionQueueTab? _lastTab;
+  RevisionFilterState? _lastFilter;
+
+  @override
+  Widget build(BuildContext context) {
     final tokens = context.tokens;
     final colors = tokens.colors;
     final spacing = tokens.spacing;
@@ -55,6 +66,11 @@ class RevisionQueueTabView extends ConsumerWidget {
 
     final activeTab = ref.watch(revisionQueueTabProvider);
     final filter = ref.watch(revisionFilterProvider);
+    if (_lastTab != activeTab || _lastFilter != filter) {
+      _lastTab = activeTab;
+      _lastFilter = filter;
+      _visibleLimit = _pageSize;
+    }
     final counts = ref.watch(revisionTabCountsProvider);
     final filteredAsync = ref.watch(filteredRevisionItemsProvider);
     final mutationState = ref.watch(revisionControllerProvider);
@@ -69,10 +85,10 @@ class RevisionQueueTabView extends ConsumerWidget {
     final masteredCount =
         allItems.where((item) => item.status == RevisionStatus.mastered).length;
     final totalCounts = RevisionScheduler.countTabs(allItems, today: today);
-    final replayKey = 'revision-tab-$visitId-${activeTab.name}';
+    final replayKey = 'revision-tab-${widget.visitId}-${activeTab.name}';
 
     return FadeSlideIn(
-      key: ValueKey('revision-fade-$visitId'),
+      key: ValueKey('revision-fade-${widget.visitId}'),
       child: Column(
         key: const ValueKey('revision-queue-tab-view'),
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -229,10 +245,13 @@ class RevisionQueueTabView extends ConsumerWidget {
                       ref.read(revisionFilterProvider.notifier).clear(),
                 );
               }
+              final visibleCount =
+                  items.length > _visibleLimit ? _visibleLimit : items.length;
+              final remaining = items.length - visibleCount;
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  for (var i = 0; i < items.length; i++) ...[
+                  for (var i = 0; i < visibleCount; i++) ...[
                     if (i > 0) SizedBox(height: spacing.sm),
                     FadeSlideIn(
                       key: ValueKey('rev-fade-$replayKey-${items[i].id}'),
@@ -261,6 +280,22 @@ class RevisionQueueTabView extends ConsumerWidget {
                           ref
                               .read(revisionControllerProvider.notifier)
                               .deleteItem(items[i].id),
+                        ),
+                      ),
+                    ),
+                  ],
+                  if (remaining > 0) ...[
+                    SizedBox(height: spacing.md),
+                    Center(
+                      child: GlassButton(
+                        key: const ValueKey('revision-show-more-btn'),
+                        onPressed: () => setState(
+                          () => _visibleLimit += _pageSize,
+                        ),
+                        child: Text(
+                          l10n.prepShowMoreItems(
+                            PrepL10n.formatInt(remaining, locale),
+                          ),
                         ),
                       ),
                     ),
