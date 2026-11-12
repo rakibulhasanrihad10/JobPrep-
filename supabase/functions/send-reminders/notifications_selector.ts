@@ -29,17 +29,27 @@ export function getLocalCalendarDateAndWeekday(
   };
 }
 
+function extractIsoCalendarDate(isoTimestamp: string): string | null {
+  return extractCalendarDate(isoTimestamp)?.isoDate ?? null;
+}
+
 export function addCalendarDays(isoDate: string, deltaDays: number): string {
-  const calendarDate = extractCalendarDate(isoDate);
-  const utcMidnight = Date.parse(`${calendarDate}T00:00:00.000Z`);
+  const parts = extractCalendarDate(isoDate);
+  if (!parts) {
+    throw new Error(`Invalid calendar date: ${isoDate}`);
+  }
+  const utcMidnight = Date.UTC(parts.year, parts.month - 1, parts.day);
   return new Date(utcMidnight + deltaDays * MILLIS_PER_DAY)
     .toISOString()
     .slice(0, 10);
 }
 
 function diffIsoDates(fromDate: string, toDate: string): number {
-  const fromUtc = Date.parse(`${extractCalendarDate(fromDate)}T00:00:00.000Z`);
-  const toUtc = Date.parse(`${extractCalendarDate(toDate)}T00:00:00.000Z`);
+  const fromParts = extractCalendarDate(fromDate);
+  const toParts = extractCalendarDate(toDate);
+  if (!fromParts || !toParts) return 0;
+  const fromUtc = Date.UTC(fromParts.year, fromParts.month - 1, fromParts.day);
+  const toUtc = Date.UTC(toParts.year, toParts.month - 1, toParts.day);
   return Math.round((toUtc - fromUtc) / MILLIS_PER_DAY);
 }
 
@@ -75,9 +85,11 @@ export function isStudyPlanBehindSchedule(
 
   if (remainingUnits <= 0) return false;
 
-  const today = extractCalendarDate(todayDate);
-  const startDay = extractCalendarDate(plan.startDate);
-  const targetDay = extractCalendarDate(plan.targetDate);
+  const today = extractIsoCalendarDate(todayDate);
+  const startDay = extractIsoCalendarDate(plan.startDate);
+  const targetDay = extractIsoCalendarDate(plan.targetDate);
+  if (!today || !startDay || !targetDay) return false;
+
   const effectiveFinishDay = addCalendarDays(
     targetDay,
     -Math.max(0, plan.finishBufferDays),
@@ -155,35 +167,40 @@ export function selectDueNotifications(params: {
     const prefs = prefsFor(circular.userId);
 
     if (prefs.deadlineSoonEnabled && circular.deadline) {
-      const { daysUntil, targetDate } = diffCalendarDays(
+      const deadlineDiff = diffCalendarDays(
         circular.deadline,
         params.nowIso,
         offset,
       );
-      const leadDays = matchLeadDays(daysUntil);
-      if (leadDays !== null) {
-        candidates.push({
-          userId: circular.userId,
-          type: "deadline_soon",
-          messageKey: "notificationMsgDeadlineSoon",
-          params: {
-            title: circular.title,
-            days: leadDays,
-            targetDate,
-          },
-          route: `/circulars/${circular.id}`,
-          dedupeKey: `deadline_soon|${circular.id}|${leadDays}d|${targetDate}`,
-        });
+      if (deadlineDiff) {
+        const { daysUntil, targetDate } = deadlineDiff;
+        const leadDays = matchLeadDays(daysUntil);
+        if (leadDays !== null) {
+          candidates.push({
+            userId: circular.userId,
+            type: "deadline_soon",
+            messageKey: "notificationMsgDeadlineSoon",
+            params: {
+              title: circular.title,
+              days: leadDays,
+              targetDate,
+            },
+            route: `/circulars/${circular.id}`,
+            dedupeKey: `deadline_soon|${circular.id}|${leadDays}d|${targetDate}`,
+          });
+        }
       }
     }
 
     if (prefs.examSoonEnabled) {
       for (const exam of circular.examDates) {
-        const { daysUntil, targetDate } = diffCalendarDays(
+        const examDiff = diffCalendarDays(
           exam.examDate,
           params.nowIso,
           offset,
         );
+        if (!examDiff) continue;
+        const { daysUntil, targetDate } = examDiff;
         const leadDays = matchLeadDays(daysUntil);
         if (leadDays === null) continue;
         candidates.push({
@@ -207,8 +224,8 @@ export function selectDueNotifications(params: {
   const dueCountsByUser = new Map<string, number>();
   for (const item of params.revisionItems) {
     if (item.status !== "pending" && item.status !== "revised") continue;
-    const dueOn = extractCalendarDate(item.dueOn);
-    if (dueOn <= todayDate) {
+    const dueOn = extractIsoCalendarDate(item.dueOn);
+    if (dueOn !== null && dueOn <= todayDate) {
       dueCountsByUser.set(item.userId, (dueCountsByUser.get(item.userId) ?? 0) + 1);
     }
   }
