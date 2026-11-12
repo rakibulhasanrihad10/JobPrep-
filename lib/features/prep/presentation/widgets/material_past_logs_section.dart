@@ -76,12 +76,44 @@ class MaterialPastLogsSection extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            l10n.prepLogUnitsSummary(
-                              PrepL10n.formatInt(entry.unitsDone, locale),
-                              unitLabel,
-                            ),
-                            style: tokens.textStyles.labelLarge,
+                          Wrap(
+                            spacing: spacing.xs,
+                            runSpacing: spacing.xxs,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Text(
+                                l10n.prepLogUnitsSummary(
+                                  PrepL10n.formatInt(entry.unitsDone, locale),
+                                  unitLabel,
+                                ),
+                                style: tokens.textStyles.labelLarge,
+                              ),
+                              if (entry.isCorrection)
+                                Container(
+                                  key: ValueKey('log-correction-${entry.id}'),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: spacing.xs,
+                                    vertical: spacing.xxs,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color:
+                                        colors.warning.withValues(alpha: 0.16),
+                                    borderRadius: radii.smRadius,
+                                    border: Border.all(
+                                      color: colors.warning.withValues(
+                                        alpha: 0.55,
+                                      ),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    l10n.prepLogEntryTypeCorrectionBadge,
+                                    style:
+                                        tokens.textStyles.labelSmall.copyWith(
+                                      color: colors.warning,
+                                    ),
+                                  ),
+                                ),
+                            ],
                           ),
                           SizedBox(height: spacing.xxs),
                           Text(
@@ -103,16 +135,17 @@ class MaterialPastLogsSection extends StatelessWidget {
                         ],
                       ),
                     ),
-                    IconButton(
-                      key: ValueKey('log-edit-${entry.id}'),
-                      tooltip: l10n.prepEditAction,
-                      visualDensity: VisualDensity.compact,
-                      onPressed: isBusy ? null : () => onEditLog(entry),
-                      icon: Icon(
-                        Icons.edit_outlined,
-                        size: spacing.lg + spacing.xxs,
+                    if (!entry.isCorrection)
+                      IconButton(
+                        key: ValueKey('log-edit-${entry.id}'),
+                        tooltip: l10n.prepEditAction,
+                        visualDensity: VisualDensity.compact,
+                        onPressed: isBusy ? null : () => onEditLog(entry),
+                        icon: Icon(
+                          Icons.edit_outlined,
+                          size: spacing.lg + spacing.xxs,
+                        ),
                       ),
-                    ),
                     IconButton(
                       key: ValueKey('log-delete-${entry.id}'),
                       tooltip: l10n.prepDeleteAction,

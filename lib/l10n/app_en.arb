@@ -2489,5 +2489,3436 @@
   "prepSeededSweSubtitle": "Data Structures & Algorithms, Database Systems, OOP, Web Development, and Software Quality Assurance.",
   "@prepSeededSweSubtitle": {
     "description": "Localized summary for seeded Software Engineer pack"
+  },
+  "dashboardHomeSubtitle": "Your job circulars, upcoming dates, and study momentum at a glance.",
+  "@dashboardHomeSubtitle": {
+    "description": "Subtitle on the Phase 5A home dashboard header"
+  },
+  "dashboardRefreshTooltip": "Refresh dashboard",
+  "@dashboardRefreshTooltip": {
+    "description": "Tooltip for manual refresh icon on home dashboard"
+  },
+  "dashboardLoadError": "Could not load dashboard summary.",
+  "@dashboardLoadError": {
+    "description": "Error banner message when dashboard queries fail"
+  },
+  "dashboardWelcomeTitle": "Welcome to JobPrep",
+  "@dashboardWelcomeTitle": {
+    "description": "Onboarding card title shown to new users with no data yet"
+  },
+  "dashboardWelcomeBody": "Track job circulars, checklists, exam dates, and study progress in one calm workspace.",
+  "@dashboardWelcomeBody": {
+    "description": "Onboarding card body shown to new users with no data yet"
+  },
+  "dashboardWelcomeAddCircular": "Add first circular",
+  "@dashboardWelcomeAddCircular": {
+    "description": "CTA button in new-user welcome card to create a circular"
+  },
+  "dashboardWelcomeSetupPrep": "Set up study plan",
+  "@dashboardWelcomeSetupPrep": {
+    "description": "CTA button in new-user welcome card to open Prep screen"
+  },
+  "dashboardMetricDeadlinesWeek": "Deadlines this week",
+  "@dashboardMetricDeadlinesWeek": {
+    "description": "Metric card label counting deadlines in the next 7 days"
+  },
+  "dashboardMetricInbox": "Inbox items",
+  "@dashboardMetricInbox": {
+    "description": "Metric card label counting quick-captured inbox circulars"
+  },
+  "dashboardMetricExams14Days": "Exams in 14 days",
+  "@dashboardMetricExams14Days": {
+    "description": "Metric card label counting exam dates in the next 14 days"
+  },
+  "dashboardMetricSubmitted": "Applications submitted",
+  "@dashboardMetricSubmitted": {
+    "description": "Metric card label counting submitted circular applications"
+  },
+  "dashboardMetricOverallPrep": "Overall prep",
+  "@dashboardMetricOverallPrep": {
+    "description": "Metric card label for animated overall preparation progress ring"
+  },
+  "dashboardContinueStudyingTitle": "Continue studying",
+  "@dashboardContinueStudyingTitle": {
+    "description": "Section card heading for the most recently logged study material shortcut"
+  },
+  "dashboardContinueStudyingAction": "Continue studying",
+  "@dashboardContinueStudyingAction": {
+    "description": "Primary button opening the most recently logged material"
+  },
+  "dashboardContinueStudyingLastLogged": "+{formattedUnits} {unitLabel} on {formattedDate}",
+  "@dashboardContinueStudyingLastLogged": {
+    "description": "Summary of the most recent study progress log",
+    "placeholders": {
+      "formattedUnits": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      },
+      "formattedDate": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardMaterialProgressLine": "{formattedCompleted} / {formattedTotal} {unitLabel} ({percent}%)",
+  "@dashboardMaterialProgressLine": {
+    "description": "Material completion ratio and percentage line inside continue studying card",
+    "placeholders": {
+      "formattedCompleted": {
+        "type": "String"
+      },
+      "formattedTotal": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardContinueStudyingEmptyTitle": "No study logs yet",
+  "@dashboardContinueStudyingEmptyTitle": {
+    "description": "Empty state title inside continue studying card"
+  },
+  "dashboardContinueStudyingEmptyBody": "Log a study session in Prep and jump straight back into your book or course from here.",
+  "@dashboardContinueStudyingEmptyBody": {
+    "description": "Empty state body inside continue studying card"
+  },
+  "dashboardContinueStudyingEmptyAction": "Open Prep",
+  "@dashboardContinueStudyingEmptyAction": {
+    "description": "CTA button opening Prep screen from empty continue studying state"
+  },
+  "dashboardUpcomingDeadlinesTitle": "Upcoming deadlines",
+  "@dashboardUpcomingDeadlinesTitle": {
+    "description": "Card heading for upcoming circular deadlines list"
+  },
+  "dashboardUpcomingDeadlinesEmptyTitle": "No upcoming deadlines",
+  "@dashboardUpcomingDeadlinesEmptyTitle": {
+    "description": "Empty state title inside upcoming deadlines card"
+  },
+  "dashboardUpcomingDeadlinesEmptyBody": "Saved circulars with future deadlines will appear here with color-coded countdowns.",
+  "@dashboardUpcomingDeadlinesEmptyBody": {
+    "description": "Empty state body inside upcoming deadlines card"
+  },
+  "dashboardViewAllAction": "View all",
+  "@dashboardViewAllAction": {
+    "description": "Secondary button navigating from dashboard card to full list"
+  },
+  "dashboardUpcomingExamsTitle": "Upcoming exams",
+  "@dashboardUpcomingExamsTitle": {
+    "description": "Card heading for upcoming circular exam dates list"
+  },
+  "dashboardUpcomingExamsEmptyTitle": "No upcoming exams scheduled",
+  "@dashboardUpcomingExamsEmptyTitle": {
+    "description": "Empty state title inside upcoming exams card"
+  },
+  "dashboardUpcomingExamsEmptyBody": "Add Preliminary, Written, or Viva dates on a circular to keep track of upcoming sittings here.",
+  "@dashboardUpcomingExamsEmptyBody": {
+    "description": "Empty state body inside upcoming exams card"
+  },
+  "dashboardOpenCalendarAction": "Open calendar",
+  "@dashboardOpenCalendarAction": {
+    "description": "Action button navigating from upcoming exams card to calendar screen"
+  },
+  "dashboardExamToday": "Today",
+  "@dashboardExamToday": {
+    "description": "Countdown badge label when an exam takes place today"
+  },
+  "dashboardExamInDays": "{count, plural, =1{In 1 day} other{In {formattedCount} days}}",
+  "@dashboardExamInDays": {
+    "description": "Countdown badge label for an exam scheduled N days from today",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsRemindersTitle": "Email Reminders",
+  "@settingsRemindersTitle": {
+    "description": "Heading for per-user daily email reminder settings card"
+  },
+  "settingsRemindersSubtitle": "Receive daily alerts for circular deadlines and exam dates 7, 3, and 1 days ahead.",
+  "@settingsRemindersSubtitle": {
+    "description": "Description under email reminder settings heading"
+  },
+  "settingsRemindersToggleLabel": "Enable daily email reminders",
+  "@settingsRemindersToggleLabel": {
+    "description": "Switch label turning daily email reminders on or off"
+  },
+  "settingsRemindersToggleHintEnabled": "Reminders are sent once per milestone using your saved account email.",
+  "@settingsRemindersToggleHintEnabled": {
+    "description": "Helper text shown when email reminders are enabled"
+  },
+  "settingsRemindersToggleHintDisabled": "Email reminders are paused. Turn them on anytime without losing saved circulars.",
+  "@settingsRemindersToggleHintDisabled": {
+    "description": "Helper text shown when email reminders are turned off"
+  },
+  "settingsRemindersLanguageTitle": "Reminder email language",
+  "@settingsRemindersLanguageTitle": {
+    "description": "Subheading above English/Bangla email language selector"
+  },
+  "settingsRemindersLanguageSubtitle": "Choose which language daily reminder emails are written in.",
+  "@settingsRemindersLanguageSubtitle": {
+    "description": "Description explaining email language selection"
+  },
+  "settingsRemindersSaveError": "Could not save reminder settings. Please try again.",
+  "@settingsRemindersSaveError": {
+    "description": "Snackbar or banner message when saving reminder settings fails"
+  },
+  "settingsRemindersLoadError": "Could not load reminder settings.",
+  "@settingsRemindersLoadError": {
+    "description": "Error banner shown when reminder settings fail to load"
+  },
+  "settingsRemindersOfflineHint": "Connect Supabase to persist email reminder preferences across devices.",
+  "@settingsRemindersOfflineHint": {
+    "description": "Notice shown when running without a connected Supabase backend"
+  },
+  "vaultTitle": "Portal Vault",
+  "@vaultTitle": {
+    "description": "Title for client-side encrypted portal vault"
+  },
+  "vaultSubtitle": "Protect saved application portal logins with your local vault passphrase.",
+  "@vaultSubtitle": {
+    "description": "Subtitle explaining portal vault security"
+  },
+  "vaultStatusLocked": "Locked",
+  "@vaultStatusLocked": {
+    "description": "Badge label when portal vault is locked"
+  },
+  "vaultStatusUnlocked": "Unlocked",
+  "@vaultStatusUnlocked": {
+    "description": "Badge label when portal vault is unlocked"
+  },
+  "vaultSetupButton": "Set up vault",
+  "@vaultSetupButton": {
+    "description": "Button opening first-time vault passphrase setup dialog"
+  },
+  "vaultUnlockButton": "Unlock vault",
+  "@vaultUnlockButton": {
+    "description": "Button opening vault unlock dialog"
+  },
+  "vaultLockButton": "Lock vault",
+  "@vaultLockButton": {
+    "description": "Button locking the vault immediately and wiping keys"
+  },
+  "vaultSetupDialogTitle": "Create Vault Passphrase",
+  "@vaultSetupDialogTitle": {
+    "description": "Dialog title for first-time vault setup"
+  },
+  "vaultSetupDialogBody": "Choose a strong passphrase to encrypt your portal passwords on this device.",
+  "@vaultSetupDialogBody": {
+    "description": "Introductory explanation inside first-time vault setup dialog"
+  },
+  "vaultUnrecoverableWarning": "Important: A forgotten passphrase cannot be recovered or reset. Any saved passwords cannot be decrypted without it.",
+  "@vaultUnrecoverableWarning": {
+    "description": "Prominent non-recoverable warning displayed during vault setup"
+  },
+  "vaultAcknowledgeWarningLabel": "I understand that a forgotten passphrase cannot be recovered.",
+  "@vaultAcknowledgeWarningLabel": {
+    "description": "Checkbox label confirming user read the recovery warning"
+  },
+  "vaultAcknowledgeRequiredError": "Please confirm that you understand the recovery warning.",
+  "@vaultAcknowledgeRequiredError": {
+    "description": "Validation error if user tries submitting setup without acknowledging warning"
+  },
+  "vaultPassphraseLabel": "Vault passphrase",
+  "@vaultPassphraseLabel": {
+    "description": "Text field label for vault passphrase"
+  },
+  "vaultPassphraseConfirmLabel": "Confirm passphrase",
+  "@vaultPassphraseConfirmLabel": {
+    "description": "Text field label for confirming new vault passphrase"
+  },
+  "vaultPassphraseTooShortError": "Enter at least 8 characters.",
+  "@vaultPassphraseTooShortError": {
+    "description": "Validation error when vault passphrase is shorter than 8 characters"
+  },
+  "vaultPassphraseMismatchError": "Passphrases do not match.",
+  "@vaultPassphraseMismatchError": {
+    "description": "Validation error when confirmation passphrase does not match"
+  },
+  "vaultCreateAndUnlockAction": "Create & unlock",
+  "@vaultCreateAndUnlockAction": {
+    "description": "Submit button creating vault check value and unlocking session"
+  },
+  "vaultUnlockDialogTitle": "Unlock Portal Vault",
+  "@vaultUnlockDialogTitle": {
+    "description": "Dialog title prompting for existing vault passphrase"
+  },
+  "vaultUnlockDialogBody": "Enter your vault passphrase to view, copy, and manage saved portal accounts.",
+  "@vaultUnlockDialogBody": {
+    "description": "Description text inside vault unlock dialog"
+  },
+  "vaultWrongPassphraseError": "Incorrect vault passphrase. Please try again.",
+  "@vaultWrongPassphraseError": {
+    "description": "Error displayed when vault unlock verification fails"
+  },
+  "vaultAutoLockNote": "Auto-locks after inactivity and whenever you sign out.",
+  "@vaultAutoLockNote": {
+    "description": "Informational caption explaining automatic vault locking"
+  },
+  "vaultPortalLockedHint": "Portal logins are hidden while the vault is locked.",
+  "@vaultPortalLockedHint": {
+    "description": "Locked placeholder text on circular detail screen"
+  },
+  "portalSectionTitle": "Portal Login",
+  "@portalSectionTitle": {
+    "description": "Section title for portal accounts inside circular detail view"
+  },
+  "portalAddAccountButton": "Add account",
+  "@portalAddAccountButton": {
+    "description": "Button adding a portal account to the active circular"
+  },
+  "portalEmptyState": "No portal accounts saved for this circular yet.",
+  "@portalEmptyState": {
+    "description": "Empty state shown when vault is unlocked and circular has no accounts"
+  },
+  "portalAddDialogTitle": "Add Portal Account",
+  "@portalAddDialogTitle": {
+    "description": "Dialog title for adding a portal login"
+  },
+  "portalEditDialogTitle": "Edit Portal Account",
+  "@portalEditDialogTitle": {
+    "description": "Dialog title for editing a portal login"
+  },
+  "portalUrlLabel": "Portal URL (optional)",
+  "@portalUrlLabel": {
+    "description": "Input label for portal login web link"
+  },
+  "portalUsernameLabel": "User ID / Username",
+  "@portalUsernameLabel": {
+    "description": "Input label for portal login username or applicant ID"
+  },
+  "portalUsernameRequiredError": "User ID is required.",
+  "@portalUsernameRequiredError": {
+    "description": "Validation error when portal username is blank"
+  },
+  "portalPasswordLabel": "Password",
+  "@portalPasswordLabel": {
+    "description": "Input label for portal account password"
+  },
+  "portalPasswordRequiredError": "Password is required.",
+  "@portalPasswordRequiredError": {
+    "description": "Validation error when portal password is empty"
+  },
+  "portalNotesLabel": "Notes (optional)",
+  "@portalNotesLabel": {
+    "description": "Input label for optional portal account notes"
+  },
+  "portalCopyUserIdAction": "Copy ID",
+  "@portalCopyUserIdAction": {
+    "description": "Button copying portal user ID to clipboard"
+  },
+  "portalCopyPasswordAction": "Copy password",
+  "@portalCopyPasswordAction": {
+    "description": "Button copying decrypted portal password to clipboard"
+  },
+  "portalOpenUrlAction": "Open portal",
+  "@portalOpenUrlAction": {
+    "description": "Button opening external application portal URL"
+  },
+  "portalRevealPasswordTooltip": "Show password",
+  "@portalRevealPasswordTooltip": {
+    "description": "Tooltip toggling masked portal password visibility"
+  },
+  "portalHidePasswordTooltip": "Hide password",
+  "@portalHidePasswordTooltip": {
+    "description": "Tooltip hiding revealed portal password"
+  },
+  "portalCopiedClipboardNotice": "Copied to clipboard — clears in {formattedSeconds}s.",
+  "@portalCopiedClipboardNotice": {
+    "description": "Snackbar notification confirming clipboard copy and auto-clear countdown",
+    "placeholders": {
+      "formattedSeconds": {
+        "type": "String"
+      }
+    }
+  },
+  "portalDeleteConfirmTitle": "Delete portal account?",
+  "@portalDeleteConfirmTitle": {
+    "description": "Confirmation dialog title before deleting a portal account"
+  },
+  "portalDeleteConfirmMessage": "Remove saved portal login \"{username}\" from this circular?",
+  "@portalDeleteConfirmMessage": {
+    "description": "Confirmation dialog body before deleting a portal account",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "portalSaveError": "Could not save portal account. Please try again.",
+  "@portalSaveError": {
+    "description": "Error shown when saving or deleting a portal account fails"
+  },
+  "portalLoadError": "Could not load portal accounts.",
+  "@portalLoadError": {
+    "description": "Error shown when loading or decrypting portal accounts fails"
+  },
+  "prepStudyPlanSectionTitle": "Study Plans",
+  "@prepStudyPlanSectionTitle": {
+    "description": "Heading for the combined and per-subject study plans section"
+  },
+  "prepStudyPlanAddButton": "Set study plan",
+  "@prepStudyPlanAddButton": {
+    "description": "Button opening dialog to create a new study plan"
+  },
+  "prepStudyPlanCreateTitle": "Create Study Plan",
+  "@prepStudyPlanCreateTitle": {
+    "description": "Dialog title when creating a study plan"
+  },
+  "prepStudyPlanEditTitle": "Edit Study Plan",
+  "@prepStudyPlanEditTitle": {
+    "description": "Dialog title when editing an existing study plan"
+  },
+  "prepStudyPlanScopeLabel": "Plan scope",
+  "@prepStudyPlanScopeLabel": {
+    "description": "Label for selecting all subjects or a specific subject"
+  },
+  "prepStudyPlanAllSubjectsLabel": "All subjects (combined)",
+  "@prepStudyPlanAllSubjectsLabel": {
+    "description": "Label representing the combined all-subjects study plan"
+  },
+  "prepStudyPlanCircularLabel": "Linked exam circular (optional)",
+  "@prepStudyPlanCircularLabel": {
+    "description": "Label for optional circular dropdown in study plan form"
+  },
+  "prepStudyPlanNoCircularOption": "No circular link (custom date)",
+  "@prepStudyPlanNoCircularOption": {
+    "description": "Option representing no linked circular on a study plan"
+  },
+  "prepStudyPlanExamStageLabel": "Circular exam stage (optional)",
+  "@prepStudyPlanExamStageLabel": {
+    "description": "Label for choosing a specific exam stage date from a linked circular"
+  },
+  "prepStudyPlanStartDateLabel": "Start date",
+  "@prepStudyPlanStartDateLabel": {
+    "description": "Label for study plan start date picker"
+  },
+  "prepStudyPlanStartDateValue": "Start date: {formattedDate}",
+  "@prepStudyPlanStartDateValue": {
+    "description": "Formatted button label displaying chosen plan start date",
+    "placeholders": {
+      "formattedDate": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanTargetDateLabel": "Exam date",
+  "@prepStudyPlanTargetDateLabel": {
+    "description": "Label for study plan target exam date picker"
+  },
+  "prepStudyPlanTargetDateValue": "Exam date: {formattedDate}",
+  "@prepStudyPlanTargetDateValue": {
+    "description": "Formatted button label displaying chosen exam date",
+    "placeholders": {
+      "formattedDate": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanBufferDaysLabel": "Finish buffer (days before exam)",
+  "@prepStudyPlanBufferDaysLabel": {
+    "description": "Label for revision buffer days input"
+  },
+  "prepStudyPlanRestDaysLabel": "Rest days per week",
+  "@prepStudyPlanRestDaysLabel": {
+    "description": "Label for rest days per week selector"
+  },
+  "prepStudyPlanMaxPaceLabel": "Max daily pace limit (units/day, optional)",
+  "@prepStudyPlanMaxPaceLabel": {
+    "description": "Label for maximum comfortable daily study pace limit"
+  },
+  "prepStudyPlanMaxPaceHint": "Leave blank for no pace cap",
+  "@prepStudyPlanMaxPaceHint": {
+    "description": "Hint text for optional maximum daily pace limit field"
+  },
+  "prepStudyPlanSaveButton": "Save plan",
+  "@prepStudyPlanSaveButton": {
+    "description": "Submit button saving a study plan"
+  },
+  "prepStudyPlanDeleteTitle": "Delete study plan?",
+  "@prepStudyPlanDeleteTitle": {
+    "description": "Confirmation title before deleting a study plan"
+  },
+  "prepStudyPlanDeleteBody": "Remove this study plan? Your subjects, materials, and progress logs will stay untouched.",
+  "@prepStudyPlanDeleteBody": {
+    "description": "Confirmation body before deleting a study plan"
+  },
+  "prepStudyPlanStatusAhead": "Ahead",
+  "@prepStudyPlanStatusAhead": {
+    "description": "Badge when progress is ahead of the ideal line"
+  },
+  "prepStudyPlanStatusOnTrack": "On track",
+  "@prepStudyPlanStatusOnTrack": {
+    "description": "Badge when progress is on track with the ideal line"
+  },
+  "prepStudyPlanStatusBehind": "Behind",
+  "@prepStudyPlanStatusBehind": {
+    "description": "Badge when progress has fallen behind the ideal line"
+  },
+  "prepStudyPlanRemainingLabel": "Remaining",
+  "@prepStudyPlanRemainingLabel": {
+    "description": "Metric label for remaining study units"
+  },
+  "prepStudyPlanDaysLeftLabel": "Study days left",
+  "@prepStudyPlanDaysLeftLabel": {
+    "description": "Metric label for remaining effective study days"
+  },
+  "prepStudyPlanTodayTargetLabel": "Today's target",
+  "@prepStudyPlanTodayTargetLabel": {
+    "description": "Metric label for today's study unit target"
+  },
+  "prepStudyPlanUnitsCount": "{formatted} units",
+  "@prepStudyPlanUnitsCount": {
+    "description": "Formatted count of study units",
+    "placeholders": {
+      "formatted": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanDaysCount": "{count, plural, =0{0 days} =1{{formatted} day} other{{formatted} days}}",
+  "@prepStudyPlanDaysCount": {
+    "description": "Pluralized count of remaining study days",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formatted": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanTodayDoneOfTarget": "{done} / {target} today",
+  "@prepStudyPlanTodayDoneOfTarget": {
+    "description": "Compact progress label inside Today's progress ring or summary",
+    "placeholders": {
+      "done": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanBufferSummary": "Finishes {formattedDays}d before exam ({examDate})",
+  "@prepStudyPlanBufferSummary": {
+    "description": "Subtitle summarizing exam target date and finish buffer",
+    "placeholders": {
+      "formattedDays": {
+        "type": "String"
+      },
+      "examDate": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanFinishedComplete": "Syllabus complete — today's target is 0.",
+  "@prepStudyPlanFinishedComplete": {
+    "description": "Status message shown when all active syllabus units are finished"
+  },
+  "prepStudyPlanMissedRedistributed": "{days, plural, =1{You missed {formattedUnits} units, they are now spread over the next {formattedDays} day (+{formattedExtra}/day).} other{You missed {formattedUnits} units, they are now spread over the next {formattedDays} days (+{formattedExtra}/day).}}",
+  "@prepStudyPlanMissedRedistributed": {
+    "description": "Automatic missed-day catch-up explanation message",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "formattedUnits": {
+        "type": "String"
+      },
+      "formattedDays": {
+        "type": "String"
+      },
+      "formattedExtra": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanPastTargetNotice": "Study window before the finish buffer has ended with {formattedUnits} units left.",
+  "@prepStudyPlanPastTargetNotice": {
+    "description": "Notice when today is inside the finish buffer or past exam date with work remaining",
+    "placeholders": {
+      "formattedUnits": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanPaceWarning": "Recalculated target ({formattedTarget}/day) exceeds your pace limit ({formattedLimit}/day).",
+  "@prepStudyPlanPaceWarning": {
+    "description": "Warning shown when daily target exceeds max_daily_pace",
+    "placeholders": {
+      "formattedTarget": {
+        "type": "String"
+      },
+      "formattedLimit": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanActionConvertRest": "Turn a rest day into a study day",
+  "@prepStudyPlanActionConvertRest": {
+    "description": "Pace recovery action converting one rest day into a study day"
+  },
+  "prepStudyPlanActionRaisePace": "Raise pace limit",
+  "@prepStudyPlanActionRaisePace": {
+    "description": "Pace recovery action raising max_daily_pace"
+  },
+  "prepStudyPlanActionPostponeMaterial": "Postpone lower-priority material",
+  "@prepStudyPlanActionPostponeMaterial": {
+    "description": "Pace recovery action postponing a lower-priority material"
+  },
+  "prepStudyPlanRaisePaceTitle": "Raise Daily Pace Limit",
+  "@prepStudyPlanRaisePaceTitle": {
+    "description": "Dialog title when raising the daily pace limit"
+  },
+  "prepStudyPlanPostponeTitle": "Postpone Material",
+  "@prepStudyPlanPostponeTitle": {
+    "description": "Dialog title when choosing a material to postpone from the plan"
+  },
+  "prepStudyPlanPostponeSubtitle": "Excluding a material removes its remaining units from this plan's daily target without deleting your study progress.",
+  "@prepStudyPlanPostponeSubtitle": {
+    "description": "Explanation shown inside the postpone material dialog"
+  },
+  "prepStudyPlanPostponedChip": "Postponed: {title}",
+  "@prepStudyPlanPostponedChip": {
+    "description": "Chip label showing a postponed material that can be restored",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepStudyPlanRestoreTooltip": "Restore to plan",
+  "@prepStudyPlanRestoreTooltip": {
+    "description": "Tooltip on postponed material chip delete/restore icon"
+  },
+  "prepStudyPlanEditTooltip": "Edit study plan",
+  "@prepStudyPlanEditTooltip": {
+    "description": "Tooltip on study plan edit icon button"
+  },
+  "prepStudyPlanDeleteTooltip": "Delete study plan",
+  "@prepStudyPlanDeleteTooltip": {
+    "description": "Tooltip on study plan delete icon button"
+  },
+  "prepStudyPlanValidationBuffer": "Finish buffer must be 0 days or greater.",
+  "@prepStudyPlanValidationBuffer": {
+    "description": "Validation error for negative finish buffer"
+  },
+  "prepStudyPlanValidationPace": "Pace limit must be greater than 0.",
+  "@prepStudyPlanValidationPace": {
+    "description": "Validation error for non-positive daily pace limit"
+  },
+  "prepStudyPlanValidationDates": "Exam date must be on or after the start date.",
+  "@prepStudyPlanValidationDates": {
+    "description": "Validation error when exam date precedes start date"
+  },
+  "dashboardTodayTargetTitle": "Today's Target",
+  "@dashboardTodayTargetTitle": {
+    "description": "Heading for Today's Target card on the Home Dashboard"
+  },
+  "dashboardTodayTargetEmptyTitle": "No study plan configured yet",
+  "@dashboardTodayTargetEmptyTitle": {
+    "description": "Empty state heading inside Dashboard Today's Target card"
+  },
+  "dashboardTodayTargetEmptyBody": "Set an exam date to calculate daily targets and automatic missed-day redistribution.",
+  "@dashboardTodayTargetEmptyBody": {
+    "description": "Empty state explanation inside Dashboard Today's Target card"
+  },
+  "dashboardTodayTargetEmptyAction": "Set study plan",
+  "@dashboardTodayTargetEmptyAction": {
+    "description": "CTA button in Dashboard Today's Target empty state"
+  },
+  "dashboardTodayTargetManageAction": "Open study plans",
+  "@dashboardTodayTargetManageAction": {
+    "description": "Button navigating from Dashboard Today's Target card to Prep"
+  },
+  "dashboardTodayTargetPlansSummary": "{count, plural, =1{{formatted} active plan} other{{formatted} active plans}}",
+  "@dashboardTodayTargetPlansSummary": {
+    "description": "Summary count of configured study plans shown on Dashboard",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formatted": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTabSubjects": "Subjects",
+  "@prepTabSubjects": {
+    "description": "Tab label for Subjects & Study Plans inside Prep screen"
+  },
+  "prepTabMockTests": "Mock tests",
+  "@prepTabMockTests": {
+    "description": "Tab label for Mock Tests inside Prep screen"
+  },
+  "prepMockTestsTitle": "Mock tests",
+  "@prepMockTestsTitle": {
+    "description": "Heading for the Mock tests tab inside Prep screen"
+  },
+  "prepMockTestsSubtitle": "Track scores after negative marking, time taken, and weak topics across platforms.",
+  "@prepMockTestsSubtitle": {
+    "description": "Subtitle explaining the Mock tests tab"
+  },
+  "prepMockTestAddButton": "Log mock test",
+  "@prepMockTestAddButton": {
+    "description": "Button label to open the add mock test dialog"
+  },
+  "prepMockTestSubjectSectionTitle": "Mock test performance",
+  "@prepMockTestSubjectSectionTitle": {
+    "description": "Section title for mock tests inside Subject Detail view"
+  },
+  "prepMockTestSubjectCount": "{count, plural, =1{{formatted} test logged} other{{formatted} tests logged}}",
+  "@prepMockTestSubjectCount": {
+    "description": "Count of mock tests shown for a subject or filtered list",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formatted": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockFilterSubjectLabel": "Subject",
+  "@prepMockFilterSubjectLabel": {
+    "description": "Filter label for subject selection on Mock tests tab"
+  },
+  "prepMockFilterAllSubjects": "All subjects",
+  "@prepMockFilterAllSubjects": {
+    "description": "Dropdown option showing mock tests across all subjects"
+  },
+  "prepMockFilterDateLabel": "Date range",
+  "@prepMockFilterDateLabel": {
+    "description": "Filter label for date range presets on Mock tests tab"
+  },
+  "prepMockFilterDateAll": "All time",
+  "@prepMockFilterDateAll": {
+    "description": "Date range filter preset including all dates"
+  },
+  "prepMockFilterDate7Days": "Last 7 days",
+  "@prepMockFilterDate7Days": {
+    "description": "Date range filter preset for the last 7 days"
+  },
+  "prepMockFilterDate30Days": "Last 30 days",
+  "@prepMockFilterDate30Days": {
+    "description": "Date range filter preset for the last 30 days"
+  },
+  "prepMockFilterDate90Days": "Last 90 days",
+  "@prepMockFilterDate90Days": {
+    "description": "Date range filter preset for the last 90 days"
+  },
+  "prepMockFilterClear": "Clear filters",
+  "@prepMockFilterClear": {
+    "description": "Action button clearing active mock test filters"
+  },
+  "prepMockStatLatest": "Latest",
+  "@prepMockStatLatest": {
+    "description": "Stat card label for the latest mock test score"
+  },
+  "prepMockStatBest": "Best",
+  "@prepMockStatBest": {
+    "description": "Stat card label for the highest mock test score"
+  },
+  "prepMockStatAverage": "Average",
+  "@prepMockStatAverage": {
+    "description": "Stat card label for average mock test score"
+  },
+  "prepMockStatImprovement": "Improvement",
+  "@prepMockStatImprovement": {
+    "description": "Stat card label for score improvement"
+  },
+  "prepMockStatPercentValue": "{percent}%",
+  "@prepMockStatPercentValue": {
+    "description": "Formatted percentage value for a mock test stat",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockStatNotAvailable": "—",
+  "@prepMockStatNotAvailable": {
+    "description": "Placeholder when a mock test statistic is not available yet"
+  },
+  "prepMockStatImprovementLastFive": "Last {formatted} tests",
+  "@prepMockStatImprovementLastFive": {
+    "description": "Caption showing improvement is computed over the last N tests",
+    "placeholders": {
+      "formatted": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockStatImprovementFirstToLatest": "First to latest",
+  "@prepMockStatImprovementFirstToLatest": {
+    "description": "Caption showing improvement is measured from first to latest test"
+  },
+  "prepMockStatImprovementNeedsTwo": "Log 2+ tests to compare",
+  "@prepMockStatImprovementNeedsTwo": {
+    "description": "Caption when fewer than two tests exist for improvement calculation"
+  },
+  "prepMockTrendChartTitle": "Score trend (%)",
+  "@prepMockTrendChartTitle": {
+    "description": "Heading above the mock test score trend line chart"
+  },
+  "prepMockTrendAverageLineLabel": "Avg {percent}%",
+  "@prepMockTrendAverageLineLabel": {
+    "description": "Legend/reference line label showing average percentage",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockTrendNeedsDataHint": "Log your first mock test to plot your score trend and average reference line.",
+  "@prepMockTrendNeedsDataHint": {
+    "description": "Hint shown instead of trend chart when there are no tests"
+  },
+  "prepMockTrendTooltip": "{title}\n{percent}% • {date}",
+  "@prepMockTrendTooltip": {
+    "description": "Tooltip text when touching a point on the mock test trend chart",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockEmptyTitle": "No mock tests logged yet",
+  "@prepMockEmptyTitle": {
+    "description": "Empty state heading when no mock tests exist"
+  },
+  "prepMockEmptyBody": "Log model tests from guidebooks or online platforms to track net percentage and weak areas.",
+  "@prepMockEmptyBody": {
+    "description": "Empty state body when no mock tests exist"
+  },
+  "prepMockFilteredEmptyTitle": "No mock tests match these filters",
+  "@prepMockFilteredEmptyTitle": {
+    "description": "Empty state heading when active filters return no mock tests"
+  },
+  "prepMockFilteredEmptyBody": "Try clearing the subject or date range filter, or log a new mock test.",
+  "@prepMockFilteredEmptyBody": {
+    "description": "Empty state body when active filters return no mock tests"
+  },
+  "prepMockLoadingLabel": "Loading mock tests...",
+  "@prepMockLoadingLabel": {
+    "description": "Loading label shown while fetching mock tests"
+  },
+  "prepMockLoadErrorTitle": "Could not load mock tests",
+  "@prepMockLoadErrorTitle": {
+    "description": "Error heading shown when mock tests fail to load"
+  },
+  "prepMockScoreRatio": "{net} / {total}",
+  "@prepMockScoreRatio": {
+    "description": "Score summary showing net marks out of total marks",
+    "placeholders": {
+      "net": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockNegativeMarksBadge": "-{marks} neg",
+  "@prepMockNegativeMarksBadge": {
+    "description": "Badge showing negative marks deducted",
+    "placeholders": {
+      "marks": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockDurationWithLimitBadge": "{taken} / {limit} min",
+  "@prepMockDurationWithLimitBadge": {
+    "description": "Badge showing time taken out of time limit in minutes",
+    "placeholders": {
+      "taken": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockDurationBadge": "{taken} min",
+  "@prepMockDurationBadge": {
+    "description": "Badge showing time taken in minutes",
+    "placeholders": {
+      "taken": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockWeakTopicsLabel": "Weak topics: {topics}",
+  "@prepMockWeakTopicsLabel": {
+    "description": "Line showing weak topics noted on a mock test",
+    "placeholders": {
+      "topics": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockLinkedCircularLabel": "Circular: {title}",
+  "@prepMockLinkedCircularLabel": {
+    "description": "Chip showing circular linked to a mock test",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockLinkedMaterialLabel": "Material: {title}",
+  "@prepMockLinkedMaterialLabel": {
+    "description": "Chip showing material linked to a mock test",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockLinkedTopicLabel": "Topic: {title}",
+  "@prepMockLinkedTopicLabel": {
+    "description": "Chip showing topic linked to a mock test",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockEditTooltip": "Edit mock test",
+  "@prepMockEditTooltip": {
+    "description": "Tooltip for editing a mock test"
+  },
+  "prepMockDeleteTooltip": "Delete mock test",
+  "@prepMockDeleteTooltip": {
+    "description": "Tooltip for deleting a mock test"
+  },
+  "prepMockFormCreateTitle": "Log mock test",
+  "@prepMockFormCreateTitle": {
+    "description": "Dialog heading when creating a new mock test"
+  },
+  "prepMockFormEditTitle": "Edit mock test",
+  "@prepMockFormEditTitle": {
+    "description": "Dialog heading when editing an existing mock test"
+  },
+  "prepMockFormSubjectLabel": "Subject",
+  "@prepMockFormSubjectLabel": {
+    "description": "Subject field label in mock test form"
+  },
+  "prepMockFormTitleLabel": "Test title",
+  "@prepMockFormTitleLabel": {
+    "description": "Test title field label in mock test form"
+  },
+  "prepMockFormTitleHint": "e.g., 46th BCS Model Test 04",
+  "@prepMockFormTitleHint": {
+    "description": "Hint text for mock test title input"
+  },
+  "prepMockFormSourceLabel": "Source / Platform (optional)",
+  "@prepMockFormSourceLabel": {
+    "description": "Source field label in mock test form"
+  },
+  "prepMockFormSourceHint": "e.g., Live MCQ, Oracle Guide",
+  "@prepMockFormSourceHint": {
+    "description": "Hint text for mock test source input"
+  },
+  "prepMockFormTakenOnLabel": "Date taken: {date}",
+  "@prepMockFormTakenOnLabel": {
+    "description": "Row showing selected test date in mock test form",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockFormPickDate": "Change date",
+  "@prepMockFormPickDate": {
+    "description": "Button opening date picker for test taken_on date"
+  },
+  "prepMockFormMarksObtainedLabel": "Marks obtained",
+  "@prepMockFormMarksObtainedLabel": {
+    "description": "Marks obtained numeric input label"
+  },
+  "prepMockFormTotalMarksLabel": "Total marks",
+  "@prepMockFormTotalMarksLabel": {
+    "description": "Total marks numeric input label"
+  },
+  "prepMockFormNegativeMarksLabel": "Negative marks (optional)",
+  "@prepMockFormNegativeMarksLabel": {
+    "description": "Negative marks numeric input label"
+  },
+  "prepMockFormTimeTakenLabel": "Time taken (min, optional)",
+  "@prepMockFormTimeTakenLabel": {
+    "description": "Time taken in minutes input label"
+  },
+  "prepMockFormTimeLimitLabel": "Time limit (min, optional)",
+  "@prepMockFormTimeLimitLabel": {
+    "description": "Time limit in minutes input label"
+  },
+  "prepMockFormWeakTopicsLabel": "Weak topics (optional)",
+  "@prepMockFormWeakTopicsLabel": {
+    "description": "Weak topics input label"
+  },
+  "prepMockFormWeakTopicsHint": "e.g., Constitutional Amendments, Time & Work",
+  "@prepMockFormWeakTopicsHint": {
+    "description": "Hint for weak topics input"
+  },
+  "prepMockFormNotesLabel": "Notes (optional)",
+  "@prepMockFormNotesLabel": {
+    "description": "Notes input label in mock test form"
+  },
+  "prepMockFormCircularLabel": "Linked circular (optional)",
+  "@prepMockFormCircularLabel": {
+    "description": "Optional circular dropdown label in mock test form"
+  },
+  "prepMockFormMaterialLabel": "Linked material (optional)",
+  "@prepMockFormMaterialLabel": {
+    "description": "Optional material dropdown label in mock test form"
+  },
+  "prepMockFormTopicLabel": "Linked topic (optional)",
+  "@prepMockFormTopicLabel": {
+    "description": "Optional topic dropdown label in mock test form"
+  },
+  "prepMockFormNoneOption": "None",
+  "@prepMockFormNoneOption": {
+    "description": "Dropdown option representing no linked item"
+  },
+  "prepMockFormSaveAction": "Save mock test",
+  "@prepMockFormSaveAction": {
+    "description": "Primary submit button in mock test form dialog"
+  },
+  "prepMockValidationSubjectRequired": "Select a subject for this mock test.",
+  "@prepMockValidationSubjectRequired": {
+    "description": "Validation error when no subject is selected"
+  },
+  "prepMockValidationTitleRequired": "Enter a title for the mock test.",
+  "@prepMockValidationTitleRequired": {
+    "description": "Validation error when mock test title is empty"
+  },
+  "prepMockValidationTotalPositive": "Total marks must be greater than zero.",
+  "@prepMockValidationTotalPositive": {
+    "description": "Validation error when total marks is invalid or <= 0"
+  },
+  "prepMockValidationMarksRange": "Marks obtained must be between 0 and total marks.",
+  "@prepMockValidationMarksRange": {
+    "description": "Validation error when marks obtained is outside 0..total_marks"
+  },
+  "prepMockValidationNegativeMarks": "Negative marks must be between 0 and total marks.",
+  "@prepMockValidationNegativeMarks": {
+    "description": "Validation error when negative marks is outside 0..total_marks"
+  },
+  "prepMockValidationDuration": "Time taken must be 0 or more, and time limit must be greater than zero.",
+  "@prepMockValidationDuration": {
+    "description": "Validation error when time taken or time limit is invalid"
+  },
+  "prepMockDeleteTitle": "Delete mock test?",
+  "@prepMockDeleteTitle": {
+    "description": "Confirmation dialog heading before deleting a mock test"
+  },
+  "prepMockDeleteBody": "Remove \"{title}\" from your mock test history? This cannot be undone.",
+  "@prepMockDeleteBody": {
+    "description": "Confirmation dialog body when deleting a mock test",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockDeleteConfirm": "Delete",
+  "@prepMockDeleteConfirm": {
+    "description": "Destructive confirmation button label for deleting a mock test"
+  },
+  "prepTabAnalytics": "Analytics",
+  "@prepTabAnalytics": {
+    "description": "Tab label for Study Analytics inside Prep screen"
+  },
+  "prepAnalyticsTitle": "Study analytics",
+  "@prepAnalyticsTitle": {
+    "description": "Heading on the Study Analytics screen"
+  },
+  "prepAnalyticsSubtitle": "Track daily consistency, study streaks, weekly volume, and subject focus.",
+  "@prepAnalyticsSubtitle": {
+    "description": "Subtitle explaining Study Analytics metrics and charts"
+  },
+  "prepAnalyticsLoadingLabel": "Loading study analytics...",
+  "@prepAnalyticsLoadingLabel": {
+    "description": "Loading indicator text while computing analytics"
+  },
+  "prepAnalyticsLoadErrorTitle": "Could not load study analytics",
+  "@prepAnalyticsLoadErrorTitle": {
+    "description": "Error card title when analytics data fails to load"
+  },
+  "prepAnalyticsEmptyTitle": "No study activity logged yet",
+  "@prepAnalyticsEmptyTitle": {
+    "description": "Empty state heading when a new user has no logs yet"
+  },
+  "prepAnalyticsEmptyBody": "Log units on your study materials or set a study plan to unlock streaks, charts, and your consistency score.",
+  "@prepAnalyticsEmptyBody": {
+    "description": "Empty state body explaining how to populate Study Analytics"
+  },
+  "prepAnalyticsEmptyAction": "Open subjects",
+  "@prepAnalyticsEmptyAction": {
+    "description": "CTA button navigating from empty analytics back to Subjects"
+  },
+  "prepAnalyticsFilterRangeLabel": "Date range",
+  "@prepAnalyticsFilterRangeLabel": {
+    "description": "Filter label for the analytics day window selector"
+  },
+  "prepAnalyticsRange7Days": "7 days",
+  "@prepAnalyticsRange7Days": {
+    "description": "7-day analytics range option"
+  },
+  "prepAnalyticsRange30Days": "30 days",
+  "@prepAnalyticsRange30Days": {
+    "description": "30-day analytics range option"
+  },
+  "prepAnalyticsRange90Days": "90 days",
+  "@prepAnalyticsRange90Days": {
+    "description": "90-day analytics range option"
+  },
+  "prepAnalyticsFilterSubjectLabel": "Subject",
+  "@prepAnalyticsFilterSubjectLabel": {
+    "description": "Filter label for subject filter on Study Analytics"
+  },
+  "prepAnalyticsAllSubjects": "All subjects",
+  "@prepAnalyticsAllSubjects": {
+    "description": "Default dropdown option covering all subjects in analytics"
+  },
+  "prepAnalyticsClearFilter": "Clear filter",
+  "@prepAnalyticsClearFilter": {
+    "description": "Button clearing subject/range filter back to defaults"
+  },
+  "prepAnalyticsCurrentStreak": "Current streak",
+  "@prepAnalyticsCurrentStreak": {
+    "description": "Metric card title for active consecutive study days"
+  },
+  "prepAnalyticsLongestStreak": "Longest streak",
+  "@prepAnalyticsLongestStreak": {
+    "description": "Metric card title for longest consecutive study days"
+  },
+  "prepAnalyticsUnitsThisWeek": "Units this week",
+  "@prepAnalyticsUnitsThisWeek": {
+    "description": "Metric card title for units completed in the current local week"
+  },
+  "prepAnalyticsConsistency": "Consistency",
+  "@prepAnalyticsConsistency": {
+    "description": "Metric card title for days studied / days in range percentage"
+  },
+  "prepAnalyticsDaysSuffix": "{count, plural, =1{ day} other{ days}}",
+  "@prepAnalyticsDaysSuffix": {
+    "description": "Pluralized unit suffix attached to AnimatedCounter streak values",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "prepAnalyticsPercentSuffix": "%",
+  "@prepAnalyticsPercentSuffix": {
+    "description": "Percent sign suffix attached to AnimatedCounter consistency values"
+  },
+  "prepAnalyticsActiveDaysCaption": "{active} / {total} active days",
+  "@prepAnalyticsActiveDaysCaption": {
+    "description": "Caption under Consistency card showing active out of total days",
+    "placeholders": {
+      "active": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsAvgPerDayCaption": "{avg}/day (7d avg)",
+  "@prepAnalyticsAvgPerDayCaption": {
+    "description": "Caption under Units this week showing 7-day average",
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsRolling7dLabel": "7-day avg",
+  "@prepAnalyticsRolling7dLabel": {
+    "description": "Highlight tile label for 7-day rolling daily unit average"
+  },
+  "prepAnalyticsRolling30dLabel": "30-day avg",
+  "@prepAnalyticsRolling30dLabel": {
+    "description": "Highlight tile label for 30-day rolling daily unit average"
+  },
+  "prepAnalyticsUnitsPerDayValue": "{avg} units/day",
+  "@prepAnalyticsUnitsPerDayValue": {
+    "description": "Formatted rolling average units per day",
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsBestDayLabel": "Best day",
+  "@prepAnalyticsBestDayLabel": {
+    "description": "Highlight tile label for highest-volume study day in range"
+  },
+  "prepAnalyticsWeakestDayLabel": "Weakest day",
+  "@prepAnalyticsWeakestDayLabel": {
+    "description": "Highlight tile label for lowest-volume day in range"
+  },
+  "prepAnalyticsDaySummaryValue": "{units} units • {date}",
+  "@prepAnalyticsDaySummaryValue": {
+    "description": "Formatted best or weakest day units paired with local date",
+    "placeholders": {
+      "units": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsMockOverviewLabel": "Mock tests in range",
+  "@prepAnalyticsMockOverviewLabel": {
+    "description": "Highlight label summarizing mock tests taken during date window"
+  },
+  "prepAnalyticsMockOverviewValue": "{count, plural, =1{{formattedCount} test • avg {avg}%} other{{formattedCount} tests • avg {avg}%}}",
+  "@prepAnalyticsMockOverviewValue": {
+    "description": "Formatted count and average score of mock tests in window",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      },
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsNoDataDash": "—",
+  "@prepAnalyticsNoDataDash": {
+    "description": "Placeholder when no best/weakest day or mock data is available"
+  },
+  "prepAnalyticsAlertBothTitle": "Today and yesterday were below your daily target",
+  "@prepAnalyticsAlertBothTitle": {
+    "description": "Alert headline when both today and yesterday finished under target"
+  },
+  "prepAnalyticsAlertTodayTitle": "Today is still below your daily target",
+  "@prepAnalyticsAlertTodayTitle": {
+    "description": "Alert headline when today has fewer units than daily target"
+  },
+  "prepAnalyticsAlertYesterdayTitle": "Yesterday finished below your daily target",
+  "@prepAnalyticsAlertYesterdayTitle": {
+    "description": "Alert headline when yesterday had fewer units than daily target"
+  },
+  "prepAnalyticsAlertBody": "Today: {today} / {target} units • Yesterday: {yesterday} / {target} units",
+  "@prepAnalyticsAlertBody": {
+    "description": "Details comparing today's and yesterday's logged units with daily target",
+    "placeholders": {
+      "today": {
+        "type": "String"
+      },
+      "yesterday": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsDailyChartTitle": "Daily study activity",
+  "@prepAnalyticsDailyChartTitle": {
+    "description": "Heading for the daily bar chart card"
+  },
+  "prepAnalyticsDailyTargetLegend": "Target: {target}/day",
+  "@prepAnalyticsDailyTargetLegend": {
+    "description": "Badge showing the study plan daily target reference line value",
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsDailyTooltip": "{date}\n{units} units",
+  "@prepAnalyticsDailyTooltip": {
+    "description": "Tooltip shown when hovering or tapping a daily bar",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "units": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsWeeklyChartTitle": "Weekly totals",
+  "@prepAnalyticsWeeklyChartTitle": {
+    "description": "Heading for the weekly totals bar chart card"
+  },
+  "prepAnalyticsWeeklyTooltip": "{range}\n{units} units ({days} active)",
+  "@prepAnalyticsWeeklyTooltip": {
+    "description": "Tooltip shown when touching a weekly bar",
+    "placeholders": {
+      "range": {
+        "type": "String"
+      },
+      "units": {
+        "type": "String"
+      },
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsWeeklyRangeLabel": "{start} – {end}",
+  "@prepAnalyticsWeeklyRangeLabel": {
+    "description": "Short calendar range label for a week bucket",
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsSubjectChartTitle": "Where study time went",
+  "@prepAnalyticsSubjectChartTitle": {
+    "description": "Heading for the subject breakdown chart and legend card"
+  },
+  "prepAnalyticsSubjectNoData": "Log study units or mock tests in this window to compare subjects.",
+  "@prepAnalyticsSubjectNoData": {
+    "description": "Hint inside subject breakdown card when zero activity matches"
+  },
+  "prepAnalyticsSubjectRowSubtitle": "{units} units ({percent}%)",
+  "@prepAnalyticsSubjectRowSubtitle": {
+    "description": "Legend label displaying subject units and percentage share",
+    "placeholders": {
+      "units": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsSubjectMockHint": "{count, plural, =1{{formattedCount} mock • {avg}% avg} other{{formattedCount} mocks • {avg}% avg}}",
+  "@prepAnalyticsSubjectMockHint": {
+    "description": "Sub-caption on subject breakdown showing mock test stats in window",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      },
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsHeatmapTitle": "Study days heatmap (last 90 days)",
+  "@prepAnalyticsHeatmapTitle": {
+    "description": "Heading above the rolling calendar heatmap of study days"
+  },
+  "prepAnalyticsHeatmapTooltip": "{date}: {units} units",
+  "@prepAnalyticsHeatmapTooltip": {
+    "description": "Tooltip label for an individual calendar heatmap day cell",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "units": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsHeatmapLess": "Less",
+  "@prepAnalyticsHeatmapLess": {
+    "description": "Heatmap intensity legend low label"
+  },
+  "prepAnalyticsHeatmapMore": "More",
+  "@prepAnalyticsHeatmapMore": {
+    "description": "Heatmap intensity legend high label"
+  },
+  "prepSubjectViewAllMaterials": "All materials",
+  "@prepSubjectViewAllMaterials": {
+    "description": "Toggle chip switching subject detail view to all materials"
+  },
+  "prepSubjectViewBooksShelf": "Books shelf ({count})",
+  "@prepSubjectViewBooksShelf": {
+    "description": "Toggle chip switching subject detail view to the side-by-side books shelf",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "prepOpenBookView": "Book view",
+  "@prepOpenBookView": {
+    "description": "Action button on a book card opening the interactive 3D book progress view"
+  },
+  "prepBooksShelfTitle": "Books shelf",
+  "@prepBooksShelfTitle": {
+    "description": "Heading above the side-by-side grid of book covers for a subject"
+  },
+  "prepBooksShelfSubtitle": "Tap any book to update your position with the bookmark or page field.",
+  "@prepBooksShelfSubtitle": {
+    "description": "Helper text displayed on the Books shelf screen"
+  },
+  "prepBooksShelfEmptyTitle": "No books in {subject} yet",
+  "@prepBooksShelfEmptyTitle": {
+    "description": "Empty state headline on the Books shelf view when a subject has zero book materials",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      }
+    }
+  },
+  "prepBooksShelfEmptyBody": "Add a study material with kind Book to arrange it on your shelf.",
+  "@prepBooksShelfEmptyBody": {
+    "description": "Empty state body on the Books shelf view"
+  },
+  "prepAddBookButton": "Add book",
+  "@prepAddBookButton": {
+    "description": "Button label inside the Books shelf empty state to add a book"
+  },
+  "bookProgressPositionPrefix": "I am at page",
+  "@bookProgressPositionPrefix": {
+    "description": "Leading label before the current page input field inside BookProgressView"
+  },
+  "bookProgressPositionSuffix": "of {total}",
+  "@bookProgressPositionSuffix": {
+    "description": "Trailing label after the current page input field inside BookProgressView",
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressSavePosition": "Save page",
+  "@bookProgressSavePosition": {
+    "description": "Submit button saving the entered page position inside BookProgressView"
+  },
+  "bookProgressUnitSummary": "{current} / {total} {unitLabel}",
+  "@bookProgressUnitSummary": {
+    "description": "Completed and total units summary displayed with BookProgressView",
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressPercentLabel": "{percent}%",
+  "@bookProgressPercentLabel": {
+    "description": "Percentage readout rendered on a book progress badge",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressUpdatedOn": "Updated {date}",
+  "@bookProgressUpdatedOn": {
+    "description": "Last updated date label displayed cleanly on the book card",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressDragHint": "Drag the bookmark or enter your page number",
+  "@bookProgressDragHint": {
+    "description": "Caption guiding bookmark dragging and quick page entry"
+  },
+  "bookProgressBookmarkSemantics": "Book position bookmark",
+  "@bookProgressBookmarkSemantics": {
+    "description": "Accessibility label for the draggable book ribbon bookmark"
+  },
+  "bookProgressErrorEmpty": "Enter a page number",
+  "@bookProgressErrorEmpty": {
+    "description": "Validation error shown when submitting an empty book page input"
+  },
+  "bookProgressErrorWholeNumber": "Enter a whole page number",
+  "@bookProgressErrorWholeNumber": {
+    "description": "Validation error shown when book page input is not a whole integer"
+  },
+  "bookProgressErrorBelowZero": "Page number cannot be negative",
+  "@bookProgressErrorBelowZero": {
+    "description": "Validation error shown when book page input is below zero"
+  },
+  "bookProgressErrorExceedsTotal": "Page cannot exceed {total}",
+  "@bookProgressErrorExceedsTotal": {
+    "description": "Validation error shown when entered page is greater than total pages",
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressConfirmCorrectionTitle": "Save position correction?",
+  "@bookProgressConfirmCorrectionTitle": {
+    "description": "Confirmation dialog title shown when entered page is below current position"
+  },
+  "bookProgressConfirmCorrectionBody": "You are moving back from page {fromPage} to page {toPage} ({delta} {unitLabel}). This updates your book position without counting as studied units in your study plan or analytics.",
+  "@bookProgressConfirmCorrectionBody": {
+    "description": "Explanation shown when lowering the current page position to confirm saving a correction log",
+    "placeholders": {
+      "fromPage": {
+        "type": "String"
+      },
+      "toPage": {
+        "type": "String"
+      },
+      "delta": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressConfirmCorrectionAction": "Save correction",
+  "@bookProgressConfirmCorrectionAction": {
+    "description": "Primary confirm button label for saving a downward position correction"
+  },
+  "bookProgressCorrectionSaved": "Updated position to {page} (correction)",
+  "@bookProgressCorrectionSaved": {
+    "description": "Feedback banner shown after saving a downward book position correction",
+    "placeholders": {
+      "page": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressStudySaved": "Logged +{delta} {unitLabel}",
+  "@bookProgressStudySaved": {
+    "description": "Feedback banner shown after saving a forward page jump as a study log",
+    "placeholders": {
+      "delta": {
+        "type": "String"
+      },
+      "unitLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "bookProgressHistoryButton": "Log history",
+  "@bookProgressHistoryButton": {
+    "description": "Action button inside book view opening full progress log history"
+  },
+  "prepLogEntryTypeCorrectionBadge": "Correction",
+  "@prepLogEntryTypeCorrectionBadge": {
+    "description": "Badge identifying correction entries inside past progress logs"
+  },
+  "prepCloseButton": "Close",
+  "@prepCloseButton": {
+    "description": "Generic close button label for dialogs"
+  },
+  "prepTabRevision": "Revision",
+  "@prepTabRevision": {
+    "description": "Top-level Prep tab label for spaced-repetition revision queue"
+  },
+  "prepRevisionTitle": "Revision queue",
+  "@prepRevisionTitle": {
+    "description": "Headline on the Revision tab"
+  },
+  "prepRevisionSubtitle": "Revisit flagged pages, tricky problems, and weak topics on a spaced schedule.",
+  "@prepRevisionSubtitle": {
+    "description": "Subtitle on the Revision tab"
+  },
+  "prepRevisionDueCountStat": "Due & overdue",
+  "@prepRevisionDueCountStat": {
+    "description": "Metric card label counting active items due today or overdue"
+  },
+  "prepRevisionMasteredStat": "Mastered",
+  "@prepRevisionMasteredStat": {
+    "description": "Metric card label counting items mastered after the full spacing ladder"
+  },
+  "prepRevisionFlagItemButton": "Flag item",
+  "@prepRevisionFlagItemButton": {
+    "description": "Primary CTA button on Revision screen to manually create a revision flag"
+  },
+  "prepRevisionTabDueToday": "Due today ({count})",
+  "@prepRevisionTabDueToday": {
+    "description": "Revision queue tab showing items scheduled due today",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionTabOverdue": "Overdue ({count})",
+  "@prepRevisionTabOverdue": {
+    "description": "Revision queue tab showing items past due date",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionTabUpcoming": "Upcoming ({count})",
+  "@prepRevisionTabUpcoming": {
+    "description": "Revision queue tab showing future scheduled items",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionTabDone": "Done ({count})",
+  "@prepRevisionTabDone": {
+    "description": "Revision queue tab showing mastered or dismissed items",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionAllSubjects": "All subjects",
+  "@prepRevisionAllSubjects": {
+    "description": "Default option in subject filter on Revision queue"
+  },
+  "prepRevisionAllMaterials": "All materials",
+  "@prepRevisionAllMaterials": {
+    "description": "Default option in material filter on Revision queue"
+  },
+  "prepRevisionClearFilters": "Clear filters",
+  "@prepRevisionClearFilters": {
+    "description": "Button clearing subject and material filters on Revision queue"
+  },
+  "prepRevisionReasonTricky": "Tricky",
+  "@prepRevisionReasonTricky": {
+    "description": "Revision flag reason: tricky"
+  },
+  "prepRevisionReasonForgot": "Forgot",
+  "@prepRevisionReasonForgot": {
+    "description": "Revision flag reason: forgot"
+  },
+  "prepRevisionReasonImportant": "Important",
+  "@prepRevisionReasonImportant": {
+    "description": "Revision flag reason: important"
+  },
+  "prepRevisionReasonMistake": "Mistake",
+  "@prepRevisionReasonMistake": {
+    "description": "Revision flag reason: mistake"
+  },
+  "prepRevisionSourceLog": "From study log",
+  "@prepRevisionSourceLog": {
+    "description": "Origin chip indicating flag came from a study progress log"
+  },
+  "prepRevisionSourceMockTest": "From mock test",
+  "@prepRevisionSourceMockTest": {
+    "description": "Origin chip indicating flag came from a mock test weak topic"
+  },
+  "prepRevisionSourceManual": "Manual flag",
+  "@prepRevisionSourceManual": {
+    "description": "Origin chip indicating manual revision flag"
+  },
+  "prepRevisionStatusMastered": "Mastered",
+  "@prepRevisionStatusMastered": {
+    "description": "Badge for mastered revision items"
+  },
+  "prepRevisionStatusDismissed": "Dismissed",
+  "@prepRevisionStatusDismissed": {
+    "description": "Badge for dismissed revision items"
+  },
+  "prepRevisionDueTodayLabel": "Due today",
+  "@prepRevisionDueTodayLabel": {
+    "description": "Schedule label on items due strictly today"
+  },
+  "prepRevisionOverdueDaysLabel": "{count, plural, =1{{formattedCount} day overdue} other{{formattedCount} days overdue}}",
+  "@prepRevisionOverdueDaysLabel": {
+    "description": "Schedule label showing how many days overdue an item is",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionDueInDaysLabel": "{count, plural, =1{In {formattedCount} day} other{In {formattedCount} days}}",
+  "@prepRevisionDueInDaysLabel": {
+    "description": "Schedule label showing remaining days until upcoming review",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionDueDateLabel": "Due {date}",
+  "@prepRevisionDueDateLabel": {
+    "description": "Formatted scheduled date caption on a revision card",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionPageChip": "p. {page}",
+  "@prepRevisionPageChip": {
+    "description": "Compact page number badge rendered on book/page revision cards",
+    "placeholders": {
+      "page": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionReviewCountChip": "{count, plural, =0{New} =1{{formattedCount} review} other{{formattedCount} reviews}}",
+  "@prepRevisionReviewCountChip": {
+    "description": "Completed spaced review count badge",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionActionEasy": "Easy",
+  "@prepRevisionActionEasy": {
+    "description": "Review action advancing the spaced repetition interval along 3, 7, 14, 30 days"
+  },
+  "prepRevisionActionEasyHint": "+{days}d",
+  "@prepRevisionActionEasyHint": {
+    "description": "Short day suffix shown alongside Easy button indicating the next gap",
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionActionEasyMasteredHint": "Master",
+  "@prepRevisionActionEasyMasteredHint": {
+    "description": "Hint shown beside Easy on the final 30-day step before becoming mastered"
+  },
+  "prepRevisionActionStillHard": "Still hard",
+  "@prepRevisionActionStillHard": {
+    "description": "Review action resetting the revision gap back to 1 day"
+  },
+  "prepRevisionActionSnooze": "Snooze +1d",
+  "@prepRevisionActionSnooze": {
+    "description": "Action deferring the due date by 1 day without changing review count"
+  },
+  "prepRevisionActionDismiss": "Dismiss",
+  "@prepRevisionActionDismiss": {
+    "description": "Action dismissing an item from the active queue into Done"
+  },
+  "prepRevisionDeleteTooltip": "Delete revision mark",
+  "@prepRevisionDeleteTooltip": {
+    "description": "Tooltip for deleting a Done revision item"
+  },
+  "prepRevisionUndoButton": "Undo",
+  "@prepRevisionUndoButton": {
+    "description": "Action reverting the latest Easy, Still hard, Snooze, or Dismiss action"
+  },
+  "prepRevisionUndoDismissTooltip": "Hide undo banner",
+  "@prepRevisionUndoDismissTooltip": {
+    "description": "Tooltip closing the revision undo confirmation banner"
+  },
+  "prepRevisionFeedbackEasyNext": "Marked \"{reference}\" as Easy — next review in {days} days.",
+  "@prepRevisionFeedbackEasyNext": {
+    "description": "Undo banner feedback after scheduling the next Easy interval",
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      },
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionFeedbackMastered": "Mastered \"{reference}\"! Moved to Done.",
+  "@prepRevisionFeedbackMastered": {
+    "description": "Undo banner feedback when final Easy step promotes item to mastered",
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionFeedbackStillHard": "Marked \"{reference}\" as Still hard — reset to 1 day.",
+  "@prepRevisionFeedbackStillHard": {
+    "description": "Undo banner feedback after Still hard reset",
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionFeedbackSnoozed": "Snoozed \"{reference}\" by 1 day.",
+  "@prepRevisionFeedbackSnoozed": {
+    "description": "Undo banner feedback after snoozing an item",
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionFeedbackDismissed": "Dismissed \"{reference}\" to Done.",
+  "@prepRevisionFeedbackDismissed": {
+    "description": "Undo banner feedback after dismissing an item",
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionEmptyDueTitle": "Nothing due today",
+  "@prepRevisionEmptyDueTitle": {
+    "description": "Empty headline on Due today queue tab"
+  },
+  "prepRevisionEmptyDueBody": "Flag tricky pages while logging study progress or check Overdue and Upcoming.",
+  "@prepRevisionEmptyDueBody": {
+    "description": "Empty helper text on Due today queue tab"
+  },
+  "prepRevisionEmptyOverdueTitle": "No overdue revisions",
+  "@prepRevisionEmptyOverdueTitle": {
+    "description": "Empty headline on Overdue queue tab"
+  },
+  "prepRevisionEmptyOverdueBody": "Every scheduled revision mark is up to date.",
+  "@prepRevisionEmptyOverdueBody": {
+    "description": "Empty helper text on Overdue queue tab"
+  },
+  "prepRevisionEmptyUpcomingTitle": "No upcoming revisions scheduled",
+  "@prepRevisionEmptyUpcomingTitle": {
+    "description": "Empty headline on Upcoming queue tab"
+  },
+  "prepRevisionEmptyUpcomingBody": "New flags are scheduled 1 day ahead, and Easy reviews space out along 3, 7, 14, and 30 days.",
+  "@prepRevisionEmptyUpcomingBody": {
+    "description": "Empty helper text on Upcoming queue tab"
+  },
+  "prepRevisionEmptyDoneTitle": "No completed items yet",
+  "@prepRevisionEmptyDoneTitle": {
+    "description": "Empty headline on Done queue tab"
+  },
+  "prepRevisionEmptyDoneBody": "Mastered and dismissed items are archived here.",
+  "@prepRevisionEmptyDoneBody": {
+    "description": "Empty helper text on Done queue tab"
+  },
+  "prepRevisionEmptyFilteredBody": "No revision items match the active subject and material filters.",
+  "@prepRevisionEmptyFilteredBody": {
+    "description": "Empty helper text when queue filters hide all items"
+  },
+  "prepRevisionMarkAction": "Mark for revision",
+  "@prepRevisionMarkAction": {
+    "description": "Button label opening inline revision flag composer during logging"
+  },
+  "prepRevisionPostSavePrompt": "Progress saved! Flag any page or problem to revise later without leaving?",
+  "@prepRevisionPostSavePrompt": {
+    "description": "Banner shown immediately after saving progress to invite quick revision flagging"
+  },
+  "prepRevisionAddedCountChip": "{count, plural, =1{{formattedCount} flag added} other{{formattedCount} flags added}}",
+  "@prepRevisionAddedCountChip": {
+    "description": "Badge showing how many revision flags were added inside the current logging session",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "prepRevisionRefLabel": "Reference (page, problem, or topic)",
+  "@prepRevisionRefLabel": {
+    "description": "Text field label for revision item reference_label"
+  },
+  "prepRevisionRefHint": "e.g. p. 128 or Problem 14",
+  "@prepRevisionRefHint": {
+    "description": "Text field placeholder for revision item reference_label"
+  },
+  "prepRevisionRefError": "Enter a page, problem, or topic to revise.",
+  "@prepRevisionRefError": {
+    "description": "Validation error when reference_label is empty"
+  },
+  "prepRevisionPageLabel": "Page # (optional)",
+  "@prepRevisionPageLabel": {
+    "description": "Optional numeric page field shown when flagging book/material items"
+  },
+  "prepRevisionPageHint": "128",
+  "@prepRevisionPageHint": {
+    "description": "Hint text for optional page number input"
+  },
+  "prepRevisionReasonLabel": "Reason",
+  "@prepRevisionReasonLabel": {
+    "description": "Chip selector heading for RevisionReason"
+  },
+  "prepRevisionNoteLabel": "Note (optional)",
+  "@prepRevisionNoteLabel": {
+    "description": "Text field label for optional note on revision item"
+  },
+  "prepRevisionNoteHint": "Sign mistake in derivation, review shortcut...",
+  "@prepRevisionNoteHint": {
+    "description": "Placeholder text for optional revision note"
+  },
+  "prepRevisionAddAnotherButton": "Add flag",
+  "@prepRevisionAddAnotherButton": {
+    "description": "Submit button adding a revision flag while keeping inline composer open"
+  },
+  "prepRevisionDoneFlaggingButton": "Hide flagger",
+  "@prepRevisionDoneFlaggingButton": {
+    "description": "Collapse button hiding the inline revision composer"
+  },
+  "prepRevisionFlagMaterialTooltip": "Flag for revision",
+  "@prepRevisionFlagMaterialTooltip": {
+    "description": "Tooltip on MaterialCard flag icon button"
+  },
+  "prepRevisionDialogTitle": "Mark for revision",
+  "@prepRevisionDialogTitle": {
+    "description": "Dialog heading when creating a manual or mock-test revision item"
+  },
+  "prepRevisionSubjectLabel": "Subject",
+  "@prepRevisionSubjectLabel": {
+    "description": "Subject dropdown label inside standalone revision dialog"
+  },
+  "prepRevisionMaterialOptionalLabel": "Material (optional)",
+  "@prepRevisionMaterialOptionalLabel": {
+    "description": "Material dropdown label inside standalone revision dialog"
+  },
+  "prepRevisionNoMaterialOption": "Subject-wide / No specific material",
+  "@prepRevisionNoMaterialOption": {
+    "description": "Option representing no attached study material on a revision mark"
+  },
+  "prepRevisionWeakTopicsQuickFill": "Tap a weak topic to prefill:",
+  "@prepRevisionWeakTopicsQuickFill": {
+    "description": "Prompt above parsed weak topic chips in mock-test revision dialog"
+  },
+  "prepRevisionAddAllWeakTopics": "Add all ({count})",
+  "@prepRevisionAddAllWeakTopics": {
+    "description": "Quick action adding every parsed weak topic from a mock test at once",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "prepMockAddToRevisionButton": "Add to revision",
+  "@prepMockAddToRevisionButton": {
+    "description": "Action button next to mock test weak topics sending them to the Revision queue"
+  },
+  "prepTabTimer": "Timer",
+  "@prepTabTimer": {
+    "description": "Tab title inside Prep screen for the Study Timer and session history"
+  },
+  "prepTimerTitle": "Study Timer",
+  "@prepTimerTitle": {
+    "description": "Header title on the Study Timer tab"
+  },
+  "prepTimerSubtitle": "Track Focus rounds and stopwatch sessions driven by timestamps",
+  "@prepTimerSubtitle": {
+    "description": "Subtitle explaining timestamp-backed Focus and Stopwatch study tracking"
+  },
+  "prepTimerModeFocus": "Focus",
+  "@prepTimerModeFocus": {
+    "description": "Pomodoro Focus mode selector label"
+  },
+  "prepTimerModeStopwatch": "Stopwatch",
+  "@prepTimerModeStopwatch": {
+    "description": "Open-ended stopwatch mode selector label"
+  },
+  "prepTimerModeManual": "Manual",
+  "@prepTimerModeManual": {
+    "description": "Badge label for manually added offline study sessions"
+  },
+  "prepTimerManualEntryButton": "Log manual time",
+  "@prepTimerManualEntryButton": {
+    "description": "Button opening the dialog to add a manual off-app study session"
+  },
+  "prepTimerSoundLabel": "Sound alert",
+  "@prepTimerSoundLabel": {
+    "description": "Switch label toggling optional gentle chime at round completion"
+  },
+  "prepTimerSettingsButton": "Pomodoro lengths",
+  "@prepTimerSettingsButton": {
+    "description": "Button opening Pomodoro focus and break duration settings"
+  },
+  "prepTimerPhaseFocus": "Focus round {round}",
+  "@prepTimerPhaseFocus": {
+    "description": "Current active Focus round label",
+    "placeholders": {
+      "round": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerPhaseShortBreak": "Short break",
+  "@prepTimerPhaseShortBreak": {
+    "description": "Short Pomodoro break phase label"
+  },
+  "prepTimerPhaseLongBreak": "Long break",
+  "@prepTimerPhaseLongBreak": {
+    "description": "Long Pomodoro break phase label triggered every four rounds"
+  },
+  "prepTimerStatusRunning": "Running",
+  "@prepTimerStatusRunning": {
+    "description": "Status pill when study timer is actively counting"
+  },
+  "prepTimerStatusPaused": "Paused",
+  "@prepTimerStatusPaused": {
+    "description": "Status pill when study timer is paused"
+  },
+  "prepTimerStatusReady": "Ready",
+  "@prepTimerStatusReady": {
+    "description": "Status pill when timer is ready to start"
+  },
+  "prepTimerElapsedSummary": "Studied: {duration}",
+  "@prepTimerElapsedSummary": {
+    "description": "Total active focus time excluding breaks and pauses",
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerConfigSummary": "{focus}m focus • {shortBreak}m short • {longBreak}m long",
+  "@prepTimerConfigSummary": {
+    "description": "Compact summary of Pomodoro lengths in minutes",
+    "placeholders": {
+      "focus": {
+        "type": "String"
+      },
+      "shortBreak": {
+        "type": "String"
+      },
+      "longBreak": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerSubjectRequired": "Pick a subject to start studying",
+  "@prepTimerSubjectRequired": {
+    "description": "Helper shown when no subject is selected or available"
+  },
+  "prepTimerStartButton": "Start",
+  "@prepTimerStartButton": {
+    "description": "Primary action button starting a focus or stopwatch session"
+  },
+  "prepTimerPauseButton": "Pause",
+  "@prepTimerPauseButton": {
+    "description": "Action button pausing an active study timer"
+  },
+  "prepTimerResumeButton": "Resume",
+  "@prepTimerResumeButton": {
+    "description": "Action button resuming a paused study timer"
+  },
+  "prepTimerFinishButton": "Finish",
+  "@prepTimerFinishButton": {
+    "description": "Action button finishing the session and opening the save sheet"
+  },
+  "prepTimerDiscardButton": "Discard",
+  "@prepTimerDiscardButton": {
+    "description": "Button discarding an unwanted open timer session"
+  },
+  "prepTimerDiscardConfirmTitle": "Discard active session?",
+  "@prepTimerDiscardConfirmTitle": {
+    "description": "Confirmation heading when discarding a running session"
+  },
+  "prepTimerDiscardConfirmBody": "This open timer session has not been saved and will be removed permanently.",
+  "@prepTimerDiscardConfirmBody": {
+    "description": "Confirmation body explaining open session discard"
+  },
+  "prepTimerOpenFullButton": "Open",
+  "@prepTimerOpenFullButton": {
+    "description": "Compact floating timer button navigating back to the full Study Timer tab"
+  },
+  "prepTimerAlertFocusDone": "Focus round {round} complete!",
+  "@prepTimerAlertFocusDone": {
+    "description": "Gentle in-app alert banner shown when a Focus round ends",
+    "placeholders": {
+      "round": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerAlertBreakDone": "Break finished! Ready for round {round}?",
+  "@prepTimerAlertBreakDone": {
+    "description": "Gentle in-app alert banner shown when a break ends",
+    "placeholders": {
+      "round": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerStartShortBreak": "Start {minutes}m short break",
+  "@prepTimerStartShortBreak": {
+    "description": "Button starting short break after focus round completes",
+    "placeholders": {
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerStartLongBreak": "Start {minutes}m long break",
+  "@prepTimerStartLongBreak": {
+    "description": "Button starting long break after every four rounds",
+    "placeholders": {
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerStartNextRound": "Start round {round}",
+  "@prepTimerStartNextRound": {
+    "description": "Button advancing from break into the next focus round",
+    "placeholders": {
+      "round": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerDismissAlert": "Dismiss",
+  "@prepTimerDismissAlert": {
+    "description": "Button hiding the gentle round completion banner"
+  },
+  "prepTimerConfigDialogTitle": "Pomodoro lengths",
+  "@prepTimerConfigDialogTitle": {
+    "description": "Dialog heading configuring focus, short break, and long break minutes"
+  },
+  "prepTimerConfigFocusLabel": "Focus length (minutes)",
+  "@prepTimerConfigFocusLabel": {
+    "description": "Input label for focus round length in minutes"
+  },
+  "prepTimerConfigShortBreakLabel": "Short break (minutes)",
+  "@prepTimerConfigShortBreakLabel": {
+    "description": "Input label for short break length in minutes"
+  },
+  "prepTimerConfigLongBreakLabel": "Long break after 4 rounds (minutes)",
+  "@prepTimerConfigLongBreakLabel": {
+    "description": "Input label for long break length after four rounds"
+  },
+  "prepTimerConfigPositiveError": "Enter at least 1 minute",
+  "@prepTimerConfigPositiveError": {
+    "description": "Validation error for zero or negative Pomodoro minutes"
+  },
+  "prepTimerFinishDialogTitle": "Save study session",
+  "@prepTimerFinishDialogTitle": {
+    "description": "Dialog title shown when finishing a running study session"
+  },
+  "prepTimerFinishDurationLabel": "Studied time",
+  "@prepTimerFinishDurationLabel": {
+    "description": "Label above total active studied duration on finish sheet"
+  },
+  "prepTimerFinishNoteLabel": "Session note (optional)",
+  "@prepTimerFinishNoteLabel": {
+    "description": "Optional note input inside finish study session sheet"
+  },
+  "prepTimerFinishNoteHint": "Chapters solved, formulas reviewed...",
+  "@prepTimerFinishNoteHint": {
+    "description": "Placeholder text inside session note field"
+  },
+  "prepTimerFinishUnitsLabel": "Units done in {material} (optional)",
+  "@prepTimerFinishUnitsLabel": {
+    "description": "Optional material progress input shown on session finish when a material is chosen",
+    "placeholders": {
+      "material": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerFinishUnitsHint": "e.g. 20",
+  "@prepTimerFinishUnitsHint": {
+    "description": "Placeholder hint for optional completed units field on finish sheet"
+  },
+  "prepTimerFinishUnitsError": "Enter a positive whole number or leave blank",
+  "@prepTimerFinishUnitsError": {
+    "description": "Validation error when optional units input on finish sheet is invalid"
+  },
+  "prepTimerFinishFlagRevisionCheck": "Mark an item for revision after saving",
+  "@prepTimerFinishFlagRevisionCheck": {
+    "description": "Checkbox option inside finish sheet opening revision composer after save"
+  },
+  "prepTimerFinishSaveButton": "Save session",
+  "@prepTimerFinishSaveButton": {
+    "description": "Primary submit button on session finish sheet"
+  },
+  "prepTimerFinishSavedHeading": "Session saved!",
+  "@prepTimerFinishSavedHeading": {
+    "description": "Confirmation heading shown on finish sheet after saving session"
+  },
+  "prepTimerFinishDoneButton": "Done",
+  "@prepTimerFinishDoneButton": {
+    "description": "Close button after session is saved on finish sheet"
+  },
+  "prepTimerManualDialogTitle": "Log manual study session",
+  "@prepTimerManualDialogTitle": {
+    "description": "Dialog title for manually entering offline study time"
+  },
+  "prepTimerEditDialogTitle": "Edit study session",
+  "@prepTimerEditDialogTitle": {
+    "description": "Dialog title when editing a saved study session"
+  },
+  "prepTimerStartDateLabel": "Date",
+  "@prepTimerStartDateLabel": {
+    "description": "Date picker field label in manual/edit study session dialog"
+  },
+  "prepTimerStartTimeLabel": "Start time",
+  "@prepTimerStartTimeLabel": {
+    "description": "Time picker field label in manual/edit study session dialog"
+  },
+  "prepTimerHoursLabel": "Hours",
+  "@prepTimerHoursLabel": {
+    "description": "Hours input field label for manual/edit session duration"
+  },
+  "prepTimerMinutesLabel": "Minutes",
+  "@prepTimerMinutesLabel": {
+    "description": "Minutes input field label for manual/edit session duration"
+  },
+  "prepTimerDurationPositiveError": "Enter at least 1 minute of study time",
+  "@prepTimerDurationPositiveError": {
+    "description": "Validation error when manual/edited session duration is zero"
+  },
+  "prepTimerHistoryTitle": "Recent study sessions",
+  "@prepTimerHistoryTitle": {
+    "description": "Section title listing completed and manual study sessions"
+  },
+  "prepTimerHistoryEmpty": "No saved study sessions yet. Start Focus or Stopwatch above, or log study time from elsewhere.",
+  "@prepTimerHistoryEmpty": {
+    "description": "Empty state copy when user has no completed study sessions yet"
+  },
+  "prepTimerEditTooltip": "Edit session",
+  "@prepTimerEditTooltip": {
+    "description": "Tooltip on session edit icon button"
+  },
+  "prepTimerDeleteTooltip": "Delete session",
+  "@prepTimerDeleteTooltip": {
+    "description": "Tooltip on session delete icon button"
+  },
+  "prepTimerDeleteConfirmTitle": "Delete study session?",
+  "@prepTimerDeleteConfirmTitle": {
+    "description": "Confirmation title before permanently removing a study session"
+  },
+  "prepTimerDeleteConfirmBody": "This session and its study hours will be removed from your history and analytics.",
+  "@prepTimerDeleteConfirmBody": {
+    "description": "Confirmation body explaining impact of deleting a study session"
+  },
+  "prepTimerTabFocus": "{clock} • Focus — JobPrep",
+  "@prepTimerTabFocus": {
+    "description": "Browser tab title template during active Pomodoro Focus round",
+    "placeholders": {
+      "clock": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerTabBreak": "{clock} • Break — JobPrep",
+  "@prepTimerTabBreak": {
+    "description": "Browser tab title template during Pomodoro break",
+    "placeholders": {
+      "clock": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerTabStopwatch": "{clock} • Stopwatch — JobPrep",
+  "@prepTimerTabStopwatch": {
+    "description": "Browser tab title template during active Stopwatch session",
+    "placeholders": {
+      "clock": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerTabPaused": "Paused {clock} — JobPrep",
+  "@prepTimerTabPaused": {
+    "description": "Browser tab title template while study timer is paused",
+    "placeholders": {
+      "clock": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsHoursThisWeek": "Hours this week",
+  "@prepAnalyticsHoursThisWeek": {
+    "description": "Metric label displaying hours studied in the current week"
+  },
+  "prepAnalyticsHoursSuffix": "h",
+  "@prepAnalyticsHoursSuffix": {
+    "description": "Short unit suffix denoting hours"
+  },
+  "prepAnalyticsHoursInRangeCaption": "{hours}h in window",
+  "@prepAnalyticsHoursInRangeCaption": {
+    "description": "Caption below hours metric summarizing selected range total",
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsDailyHoursTitle": "Hours studied per day",
+  "@prepAnalyticsDailyHoursTitle": {
+    "description": "Card heading for daily study hours bar chart"
+  },
+  "prepAnalyticsDailyHoursSubtitle": "Days with a 10+ min session or unit log count toward streaks",
+  "@prepAnalyticsDailyHoursSubtitle": {
+    "description": "Subtitle explaining 10-minute session rule on daily hours chart"
+  },
+  "prepAnalyticsSubjectHoursTitle": "Hours studied by subject",
+  "@prepAnalyticsSubjectHoursTitle": {
+    "description": "Card heading for per-subject study hours breakdown chart"
+  },
+  "prepAnalyticsSubjectHoursEmpty": "Complete a study timer session or add manual hours to compare time across subjects.",
+  "@prepAnalyticsSubjectHoursEmpty": {
+    "description": "Empty copy inside subject hours chart card before any timed session"
+  },
+  "prepAnalyticsHeatmapTimeTooltip": "{date}: {units} units, {hours}h",
+  "@prepAnalyticsHeatmapTimeTooltip": {
+    "description": "Tooltip on study consistency heatmap cell showing both units and hours",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "units": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerStartDateValue": "Date: {date}",
+  "@prepTimerStartDateValue": {
+    "description": "Date picker button label inside manual/edit session dialog",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "prepTimerStartTimeValue": "Start time: {time}",
+  "@prepTimerStartTimeValue": {
+    "description": "Time picker button label inside manual/edit session dialog",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsHoursValue": "{hours}h",
+  "@prepAnalyticsHoursValue": {
+    "description": "Formatted study hours value with localized unit",
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsDailyHoursTooltip": "{date}: {hours}h",
+  "@prepAnalyticsDailyHoursTooltip": {
+    "description": "Tooltip on daily study hours bar chart",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "prepAnalyticsSubjectHoursLegend": "{subject}: {hours}h",
+  "@prepAnalyticsSubjectHoursLegend": {
+    "description": "Legend row displaying subject title and hours studied",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "navToday": "Today",
+  "@navToday": {
+    "description": "Navigation label for the focused Today screen"
+  },
+  "todayGreetingMorning": "Good morning",
+  "@todayGreetingMorning": {
+    "description": "Morning greeting shown at the top of Today screen"
+  },
+  "todayGreetingAfternoon": "Good afternoon",
+  "@todayGreetingAfternoon": {
+    "description": "Afternoon greeting shown at the top of Today screen"
+  },
+  "todayGreetingEvening": "Good evening",
+  "@todayGreetingEvening": {
+    "description": "Evening greeting shown at the top of Today screen"
+  },
+  "todayGreetingNamed": "{greeting}, {name}",
+  "@todayGreetingNamed": {
+    "description": "Personalized greeting combining time-of-day salutation and user name",
+    "placeholders": {
+      "greeting": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "todaySubtitle": "Your focused action plan for today",
+  "@todaySubtitle": {
+    "description": "Subtitle below the greeting and date on Today screen"
+  },
+  "todayRefreshTooltip": "Refresh today",
+  "@todayRefreshTooltip": {
+    "description": "Tooltip for manual refresh button on Today screen"
+  },
+  "todayLoadError": "Could not load your Today plan.",
+  "@todayLoadError": {
+    "description": "Error message when Today summary providers fail to load"
+  },
+  "todayProgressRingLabel": "{percent}%",
+  "@todayProgressRingLabel": {
+    "description": "Formatted percentage displayed inside the daily progress ring",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "todayProgressRingCaption": "Daily goal",
+  "@todayProgressRingCaption": {
+    "description": "Short caption beneath the daily progress percentage"
+  },
+  "todayDailyDoneOfTarget": "{done} / {target} units today",
+  "@todayDailyDoneOfTarget": {
+    "description": "Summary of total completed vs target units for today",
+    "placeholders": {
+      "done": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "todayNoPlanHeaderHint": "No study plan yet",
+  "@todayNoPlanHeaderHint": {
+    "description": "Short hint inside Today header when user has no active study plan"
+  },
+  "todayDoNextTitle": "Do this next",
+  "@todayDoNextTitle": {
+    "description": "Card title for top prioritized next action on Today screen"
+  },
+  "todayDoNextPriorityDeadline": "Urgent deadline",
+  "@todayDoNextPriorityDeadline": {
+    "description": "Priority badge when top action is a circular deadline within 2 days"
+  },
+  "todayDoNextPriorityRevision": "Overdue revision",
+  "@todayDoNextPriorityRevision": {
+    "description": "Priority badge when top action is an overdue revision item"
+  },
+  "todayDoNextPriorityStudy": "Biggest target today",
+  "@todayDoNextPriorityStudy": {
+    "description": "Priority badge when top action is the largest remaining study target"
+  },
+  "todayDoNextOpenCircularAction": "Review circular",
+  "@todayDoNextOpenCircularAction": {
+    "description": "Action button on Do this next card when a deadline is urgent"
+  },
+  "todayDoNextStartRevisionAction": "Start revision",
+  "@todayDoNextStartRevisionAction": {
+    "description": "Action button on Do this next card when revisions are overdue"
+  },
+  "todayDoNextStartStudyAction": "Start timer",
+  "@todayDoNextStartStudyAction": {
+    "description": "Action button on Do this next card to launch focus timer on target subject"
+  },
+  "todayDoNextOverdueSummary": "{count, plural, =1{{formattedCount} overdue item: {label}} other{{formattedCount} overdue items • Next: {label}}}",
+  "@todayDoNextOverdueSummary": {
+    "description": "Summary text inside Do this next card when overdue revisions take priority",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      },
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "todayDoNextStudySummary": "{remaining} units left today ({done} / {target} done)",
+  "@todayDoNextStudySummary": {
+    "description": "Summary text inside Do this next card for remaining daily study units",
+    "placeholders": {
+      "remaining": {
+        "type": "String"
+      },
+      "done": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "todayDoNextAllCaughtUpTitle": "All caught up for now",
+  "@todayDoNextAllCaughtUpTitle": {
+    "description": "Title inside Do this next card when nothing urgent remains"
+  },
+  "todayDoNextAllCaughtUpBody": "No deadlines in 2 days, no overdue revisions, and today's targets are complete.",
+  "@todayDoNextAllCaughtUpBody": {
+    "description": "Explanation shown when there is no urgent Do this next item"
+  },
+  "todayTargetsTitle": "Today's study targets",
+  "@todayTargetsTitle": {
+    "description": "Section title for per-subject daily study targets on Today screen"
+  },
+  "todayTargetsEmptyTitle": "No study plan yet",
+  "@todayTargetsEmptyTitle": {
+    "description": "Empty state heading when user has no active study plans"
+  },
+  "todayTargetsEmptyBody": "Create a study plan with an exam date to calculate daily subject targets.",
+  "@todayTargetsEmptyBody": {
+    "description": "Empty state body prompting user to create a study plan"
+  },
+  "todayTargetsCreatePlanButton": "Create study plan",
+  "@todayTargetsCreatePlanButton": {
+    "description": "Button label linking to study plan creation from Today screen"
+  },
+  "todayTargetRowDoneTarget": "{done} / {target} units",
+  "@todayTargetRowDoneTarget": {
+    "description": "Completed vs target units readout per study target row",
+    "placeholders": {
+      "done": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "todayTargetRowRemaining": "{remaining} remaining",
+  "@todayTargetRowRemaining": {
+    "description": "Remaining units today for a study plan target row",
+    "placeholders": {
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "todayTargetRowComplete": "Daily target complete",
+  "@todayTargetRowComplete": {
+    "description": "Status text when today's quota for a study target row is met"
+  },
+  "todayTargetQuickLogButton": "Quick log",
+  "@todayTargetQuickLogButton": {
+    "description": "Button label opening quick log dialog for a study target row"
+  },
+  "todayTargetStartTimerButton": "Start timer",
+  "@todayTargetStartTimerButton": {
+    "description": "Button label starting timer for a study target row's subject"
+  },
+  "todayCatchUpTitle": "Catch-up notice",
+  "@todayCatchUpTitle": {
+    "description": "Section header for missed-days catch-up messages on Today screen"
+  },
+  "todayCatchUpSubjectLine": "{subject}: {message}",
+  "@todayCatchUpSubjectLine": {
+    "description": "Subject-prefixed catch-up message line on Today screen",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "todayRevisionTitle": "Revision due today",
+  "@todayRevisionTitle": {
+    "description": "Section header for spaced revisions due today or overdue"
+  },
+  "todayRevisionCountBadge": "{formattedCount} due",
+  "@todayRevisionCountBadge": {
+    "description": "Compact count chip for revisions needing review today",
+    "placeholders": {
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "todayRevisionOverdueBreakdown": "{overdue} overdue · {today} due today",
+  "@todayRevisionOverdueBreakdown": {
+    "description": "Subline breaking down overdue and due-today revision counts",
+    "placeholders": {
+      "overdue": {
+        "type": "String"
+      },
+      "today": {
+        "type": "String"
+      }
+    }
+  },
+  "todayRevisionEmptyTitle": "Nothing due for revision today",
+  "@todayRevisionEmptyTitle": {
+    "description": "Empty state title when zero revisions are due or overdue"
+  },
+  "todayRevisionEmptyBody": "Flag tricky pages or mock mistakes during study to schedule them here automatically.",
+  "@todayRevisionEmptyBody": {
+    "description": "Empty state description inside Revision due today card"
+  },
+  "todayRevisionStartButton": "Start revision",
+  "@todayRevisionStartButton": {
+    "description": "Primary CTA button navigating to revision queue"
+  },
+  "todayDeadlinesTitle": "Deadlines in the next 7 days",
+  "@todayDeadlinesTitle": {
+    "description": "Section title for circulars closing within 7 days on Today screen"
+  },
+  "todayDeadlinesEmptyTitle": "No deadlines in the next 7 days",
+  "@todayDeadlinesEmptyTitle": {
+    "description": "Empty state title when no circular deadlines close within 7 days"
+  },
+  "todayDeadlinesEmptyBody": "Saved circulars closing within the coming week will appear here with urgency badges.",
+  "@todayDeadlinesEmptyBody": {
+    "description": "Empty state description when no 7-day deadlines are approaching"
+  },
+  "todayExamsTitle": "Exams in the next 14 days",
+  "@todayExamsTitle": {
+    "description": "Section title for exam dates within the next 14 days on Today screen"
+  },
+  "todayExamsEmptyTitle": "No exams in the next 14 days",
+  "@todayExamsEmptyTitle": {
+    "description": "Empty state title when zero exams are scheduled within 14 days"
+  },
+  "todayExamsEmptyBody": "Exam dates added to your saved circulars within the next two weeks will show up here.",
+  "@todayExamsEmptyBody": {
+    "description": "Empty state explanation when no 14-day exams exist"
+  },
+  "todayInboxTitle": "Inbox",
+  "@todayInboxTitle": {
+    "description": "Section title for Inbox summary card on Today screen"
+  },
+  "todayInboxWaitingSummary": "{count, plural, =0{Nothing waiting in Inbox} =1{{formattedCount} item waiting in Inbox} other{{formattedCount} items waiting in Inbox}}",
+  "@todayInboxWaitingSummary": {
+    "description": "Summary count of quick-captured circulars waiting to be triaged",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "todayReviewInboxButton": "Review inbox",
+  "@todayReviewInboxButton": {
+    "description": "CTA button navigating from Today screen to Inbox screen"
+  },
+  "todayTimeStudiedTitle": "Time studied today",
+  "@todayTimeStudiedTitle": {
+    "description": "Section title for total study session duration today on Today screen"
+  },
+  "todayTimeStudiedHoursMinutes": "{hours}h {minutes}m",
+  "@todayTimeStudiedHoursMinutes": {
+    "description": "Formatted duration with hours and minutes",
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "todayTimeStudiedMinutesOnly": "{minutes}m",
+  "@todayTimeStudiedMinutesOnly": {
+    "description": "Formatted duration under one hour in minutes",
+    "placeholders": {
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "todayTimeStudiedSessionsSummary": "{count, plural, =0{No study sessions recorded today yet} =1{{formattedCount} session today} other{{formattedCount} sessions today}}",
+  "@todayTimeStudiedSessionsSummary": {
+    "description": "Session count caption under Time studied today",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "todayTimeStudiedRunningNote": "Active session running",
+  "@todayTimeStudiedRunningNote": {
+    "description": "Badge note when a live timer session is currently running today"
+  },
+  "todayOpenTimerButton": "Open timer",
+  "@todayOpenTimerButton": {
+    "description": "Button navigating to the study timer tab"
+  },
+  "todayQuickLogTitle": "Quick log • {subject}",
+  "@todayQuickLogTitle": {
+    "description": "Dialog title for logging progress units from Today screen",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      }
+    }
+  },
+  "todayQuickLogNoMaterialsBody": "Add a book or material under this subject before logging units.",
+  "@todayQuickLogNoMaterialsBody": {
+    "description": "Message inside quick log dialog when chosen scope has no materials yet"
+  },
+  "todayQuickLogOpenSubjectButton": "Add material",
+  "@todayQuickLogOpenSubjectButton": {
+    "description": "CTA opening subject view to add a study material"
+  },
+  "todayQuickLogPresetChip": "+{units}",
+  "@todayQuickLogPresetChip": {
+    "description": "Preset unit chip label inside Today quick log dialog",
+    "placeholders": {
+      "units": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationsBellTooltip": "Notifications",
+  "@notificationsBellTooltip": {
+    "description": "Tooltip for the notification bell button in the app shell"
+  },
+  "notificationsBellUnreadSemantics": "Notifications ({formattedCount} unread)",
+  "@notificationsBellUnreadSemantics": {
+    "description": "Screen-reader label for notification bell with unread count",
+    "placeholders": {
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationsPanelTitle": "Notifications",
+  "@notificationsPanelTitle": {
+    "description": "Header title inside notifications panel and screen"
+  },
+  "notificationsInAppNotice": "Notifications appear here while the app is open; daily email reminders continue working when closed.",
+  "@notificationsInAppNotice": {
+    "description": "Banner explaining live in-app delivery alongside background email reminders"
+  },
+  "notificationsMarkAllReadButton": "Mark all read",
+  "@notificationsMarkAllReadButton": {
+    "description": "Button marking every unread notification as read"
+  },
+  "notificationsMarkReadTooltip": "Mark as read",
+  "@notificationsMarkReadTooltip": {
+    "description": "Tooltip for button marking one notification read"
+  },
+  "notificationsDeleteTooltip": "Delete notification",
+  "@notificationsDeleteTooltip": {
+    "description": "Tooltip for button removing one notification"
+  },
+  "notificationsEmptyTitle": "All caught up",
+  "@notificationsEmptyTitle": {
+    "description": "Empty state heading when there are no notifications"
+  },
+  "notificationsEmptyBody": "Deadline alerts, due revisions, behind-schedule warnings, and your weekly review will show up here.",
+  "@notificationsEmptyBody": {
+    "description": "Empty state body explaining what notifications appear in the inbox"
+  },
+  "notificationsUnreadBadge": "New",
+  "@notificationsUnreadBadge": {
+    "description": "Badge text on unread notifications"
+  },
+  "notificationsOpenWeeklyReviewChip": "Weekly review",
+  "@notificationsOpenWeeklyReviewChip": {
+    "description": "Quick action chip inside notifications panel to open the Weekly Review screen"
+  },
+  "notificationsSaveError": "Could not update notification. Please try again.",
+  "@notificationsSaveError": {
+    "description": "Inline or snackbar error when notification state mutation fails"
+  },
+  "notificationTypeDeadlineSoon": "Deadline",
+  "@notificationTypeDeadlineSoon": {
+    "description": "Type chip label for deadline_soon notification"
+  },
+  "notificationTypeExamSoon": "Exam",
+  "@notificationTypeExamSoon": {
+    "description": "Type chip label for exam_soon notification"
+  },
+  "notificationTypeRevisionDue": "Revision",
+  "@notificationTypeRevisionDue": {
+    "description": "Type chip label for revision_due notification"
+  },
+  "notificationTypeBehindSchedule": "Study pace",
+  "@notificationTypeBehindSchedule": {
+    "description": "Type chip label for behind_schedule notification"
+  },
+  "notificationTypeWeeklyReview": "Weekly review",
+  "@notificationTypeWeeklyReview": {
+    "description": "Type chip label for weekly_review notification"
+  },
+  "notificationMsgDeadlineSoon": "{days, plural, =1{{title} closes tomorrow ({targetDate}).} other{{title} closes in {formattedDays} days ({targetDate}).}}",
+  "@notificationMsgDeadlineSoon": {
+    "description": "Localized notification message for approaching circular deadlines",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      },
+      "formattedDays": {
+        "type": "String"
+      },
+      "targetDate": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationMsgExamSoon": "{days, plural, =1{{title} — {stage} exam is tomorrow ({targetDate}).} other{{title} — {stage} exam is in {formattedDays} days ({targetDate}).}}",
+  "@notificationMsgExamSoon": {
+    "description": "Localized notification message for upcoming circular exams",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      },
+      "stage": {
+        "type": "String"
+      },
+      "formattedDays": {
+        "type": "String"
+      },
+      "targetDate": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationMsgRevisionDue": "{count, plural, =1{You have 1 revision item due today.} other{You have {formattedCount} revision items due today.}}",
+  "@notificationMsgRevisionDue": {
+    "description": "Localized notification message for spaced revisions due today",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationMsgBehindScheduleSubject": "You are falling behind schedule in {subject}.",
+  "@notificationMsgBehindScheduleSubject": {
+    "description": "Localized notification message when a subject study plan is behind",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationMsgBehindScheduleAll": "Your overall study plan is behind schedule.",
+  "@notificationMsgBehindScheduleAll": {
+    "description": "Localized notification message when an all-subjects study plan is behind"
+  },
+  "notificationMsgWeeklyReview": "Your weekly review is ready. See how the past 7 days went.",
+  "@notificationMsgWeeklyReview": {
+    "description": "Localized notification message inviting the user to open Weekly Review"
+  },
+  "settingsInAppNotificationsTitle": "Notification Types & Weekly Review",
+  "@settingsInAppNotificationsTitle": {
+    "description": "Settings card title for per-type notification toggles"
+  },
+  "settingsInAppNotificationsSubtitle": "Choose which in-app notifications are created daily and pick your weekly review day.",
+  "@settingsInAppNotificationsSubtitle": {
+    "description": "Settings card subtitle explaining per-type toggles and weekly review day"
+  },
+  "settingsNotifDeadlineSoonTitle": "Circular deadlines (7, 3, 1 days)",
+  "@settingsNotifDeadlineSoonTitle": {
+    "description": "Toggle label for deadline_soon notifications"
+  },
+  "settingsNotifExamSoonTitle": "Exam dates (7, 3, 1 days)",
+  "@settingsNotifExamSoonTitle": {
+    "description": "Toggle label for exam_soon notifications"
+  },
+  "settingsNotifRevisionDueTitle": "Revision items due today",
+  "@settingsNotifRevisionDueTitle": {
+    "description": "Toggle label for revision_due notifications"
+  },
+  "settingsNotifBehindScheduleTitle": "Behind-schedule study plans",
+  "@settingsNotifBehindScheduleTitle": {
+    "description": "Toggle label for behind_schedule notifications"
+  },
+  "settingsNotifWeeklyReviewTitle": "Weekly review digest",
+  "@settingsNotifWeeklyReviewTitle": {
+    "description": "Toggle label for weekly_review notifications"
+  },
+  "settingsNotifWeeklyReviewDayLabel": "Weekly review day",
+  "@settingsNotifWeeklyReviewDayLabel": {
+    "description": "Section label for picking preferred weekday for weekly review"
+  },
+  "weeklyReviewTitle": "Weekly Review",
+  "@weeklyReviewTitle": {
+    "description": "Main title on the Weekly Review screen"
+  },
+  "weeklyReviewPeriodSubtitle": "Past 7 days ({startDate} – {endDate})",
+  "@weeklyReviewPeriodSubtitle": {
+    "description": "Date window subtitle on the Weekly Review screen",
+    "placeholders": {
+      "startDate": {
+        "type": "String"
+      },
+      "endDate": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewOpenButton": "Open Weekly Review",
+  "@weeklyReviewOpenButton": {
+    "description": "Action opening the Weekly Review screen"
+  },
+  "weeklyReviewUnitsTitle": "Units studied",
+  "@weeklyReviewUnitsTitle": {
+    "description": "Weekly Review card heading for studied units"
+  },
+  "weeklyReviewHoursTitle": "Hours studied",
+  "@weeklyReviewHoursTitle": {
+    "description": "Weekly Review card heading for hours studied"
+  },
+  "weeklyReviewHoursValue": "{formattedHours}h",
+  "@weeklyReviewHoursValue": {
+    "description": "Formatted hours studied value",
+    "placeholders": {
+      "formattedHours": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewConsistencyTitle": "Days studied",
+  "@weeklyReviewConsistencyTitle": {
+    "description": "Weekly Review card heading for days studied and missed days"
+  },
+  "weeklyReviewRevisionsClearedTitle": "Revisions cleared",
+  "@weeklyReviewRevisionsClearedTitle": {
+    "description": "Weekly Review metric heading for cleared revision marks"
+  },
+  "weeklyReviewMockAvgTitle": "Mock test average",
+  "@weeklyReviewMockAvgTitle": {
+    "description": "Weekly Review card heading for mock test percentage average"
+  },
+  "weeklyReviewMockPercent": "{formattedPercent}%",
+  "@weeklyReviewMockPercent": {
+    "description": "Mock test average formatted as percentage",
+    "placeholders": {
+      "formattedPercent": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewMockCountSubtitle": "{count, plural, =0{No mock tests this week} =1{1 mock test taken} other{{formattedCount} mock tests taken}}",
+  "@weeklyReviewMockCountSubtitle": {
+    "description": "Subtitle showing count of mock tests taken during the 7-day window",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewMockNoData": "No score yet",
+  "@weeklyReviewMockNoData": {
+    "description": "Fallback display when no mock tests were taken during the week"
+  },
+  "weeklyReviewDeltaSame": "Same as previous week",
+  "@weeklyReviewDeltaSame": {
+    "description": "Comparison subtitle when metric equals previous week"
+  },
+  "weeklyReviewDeltaUnits": "{sign}{formattedDelta} vs previous week",
+  "@weeklyReviewDeltaUnits": {
+    "description": "Unit delta compared against the prior 7-day window",
+    "placeholders": {
+      "sign": {
+        "type": "String"
+      },
+      "formattedDelta": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewDeltaHours": "{sign}{formattedHours}h vs previous week",
+  "@weeklyReviewDeltaHours": {
+    "description": "Hours delta compared against the prior 7-day window",
+    "placeholders": {
+      "sign": {
+        "type": "String"
+      },
+      "formattedHours": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewDeltaPoints": "{sign}{formattedPoints}% vs previous week",
+  "@weeklyReviewDeltaPoints": {
+    "description": "Mock score average percentage-point delta compared with prior week",
+    "placeholders": {
+      "sign": {
+        "type": "String"
+      },
+      "formattedPoints": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewDaysFraction": "{studied} / {total} days",
+  "@weeklyReviewDaysFraction": {
+    "description": "Fraction showing days studied out of 7",
+    "placeholders": {
+      "studied": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewMissedDaysNone": "Zero missed days this week.",
+  "@weeklyReviewMissedDaysNone": {
+    "description": "Subtitle when user studied on all 7 days"
+  },
+  "weeklyReviewMissedDaysCount": "{count, plural, =1{1 missed day} other{{formattedCount} missed days}}",
+  "@weeklyReviewMissedDaysCount": {
+    "description": "Subtitle showing count of missed study days this week",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewUpcomingTitle": "Next 7 days",
+  "@weeklyReviewUpcomingTitle": {
+    "description": "Section heading listing upcoming deadlines and exams in the next 7 days"
+  },
+  "weeklyReviewUpcomingEmptyTitle": "Clear week ahead",
+  "@weeklyReviewUpcomingEmptyTitle": {
+    "description": "Empty state title when no deadlines or exams occur in the next 7 days"
+  },
+  "weeklyReviewUpcomingEmptyBody": "No application deadlines or scheduled exams fall within the next 7 days.",
+  "@weeklyReviewUpcomingEmptyBody": {
+    "description": "Empty state body when the next 7 days have no events"
+  },
+  "weeklyReviewSuggestionTitle": "Suggestion for next week",
+  "@weeklyReviewSuggestionTitle": {
+    "description": "Card title highlighting the single coaching suggestion for next week"
+  },
+  "weeklyReviewSuggestionDeadline": "Prioritize your {title} application before its deadline closes in the next 3 days.",
+  "@weeklyReviewSuggestionDeadline": {
+    "description": "Coaching suggestion when a circular deadline closes within 3 days",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewSuggestionBehindSubject": "Add a short daily catch-up block for {subject} to bring its study plan back on pace.",
+  "@weeklyReviewSuggestionBehindSubject": {
+    "description": "Coaching suggestion when a subject study plan is behind schedule",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewSuggestionBehindAll": "Set a light catch-up target today to close the gap on your behind-schedule study plan.",
+  "@weeklyReviewSuggestionBehindAll": {
+    "description": "Coaching suggestion when an all-subjects study plan is behind schedule"
+  },
+  "weeklyReviewSuggestionStart": "Start light next week: log 15 minutes or 10 pages on day one to build momentum.",
+  "@weeklyReviewSuggestionStart": {
+    "description": "Coaching suggestion after a week with zero recorded study days"
+  },
+  "weeklyReviewSuggestionMissedDays": "You missed {formattedDays} days this week — try lowering your minimum daily floor so busy days still count.",
+  "@weeklyReviewSuggestionMissedDays": {
+    "description": "Coaching suggestion when 3 or more days were missed in the week",
+    "placeholders": {
+      "formattedDays": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewSuggestionMock": "Schedule one timed mock test next week and flag any weak topics directly to Revision.",
+  "@weeklyReviewSuggestionMock": {
+    "description": "Coaching suggestion when mock averages fell or exams near without mock practice"
+  },
+  "weeklyReviewSuggestionRevision": "Clear your {formattedCount} pending revision items early next week before adding heavy new reading.",
+  "@weeklyReviewSuggestionRevision": {
+    "description": "Coaching suggestion when revision backlog remains pending",
+    "placeholders": {
+      "formattedCount": {
+        "type": "String"
+      }
+    }
+  },
+  "weeklyReviewSuggestionMaintain": "Consistent week! Maintain this steady pace and keep a short daily slot reserved for revision.",
+  "@weeklyReviewSuggestionMaintain": {
+    "description": "Coaching suggestion when study consistency and pace are strong"
+  },
+  "weeklyReviewBackToToday": "Back to Today",
+  "@weeklyReviewBackToToday": {
+    "description": "Action navigating from Weekly Review back to Today"
+  },
+  "onboardingStepProgress": "Step {step} of {total}",
+  "@onboardingStepProgress": {
+    "description": "Step progress label shown in onboarding wizard header",
+    "placeholders": {
+      "step": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingBackButton": "Back",
+  "@onboardingBackButton": {
+    "description": "Back action on each onboarding wizard step"
+  },
+  "onboardingNextButton": "Continue",
+  "@onboardingNextButton": {
+    "description": "Continue action advancing onboarding wizard step"
+  },
+  "onboardingSkipButton": "Skip",
+  "@onboardingSkipButton": {
+    "description": "Skip setup action available on every onboarding step"
+  },
+  "onboardingFinishButton": "Finish setup",
+  "@onboardingFinishButton": {
+    "description": "Final CTA applying setup configuration and opening Today"
+  },
+  "onboardingWelcomeTitle": "Welcome to JobPrep",
+  "@onboardingWelcomeTitle": {
+    "description": "Step 1 heading greeting a new user"
+  },
+  "onboardingWelcomeSubtitle": "Set up your language, theme, syllabus, and weekly pace in a minute. We never ask for phone numbers, addresses, or age.",
+  "@onboardingWelcomeSubtitle": {
+    "description": "Step 1 reassuring explanation of minimal setup"
+  },
+  "onboardingLanguageHeading": "App language",
+  "@onboardingLanguageHeading": {
+    "description": "Section title for language selection inside Step 1"
+  },
+  "onboardingThemeHeading": "Appearance",
+  "@onboardingThemeHeading": {
+    "description": "Section title for theme selection inside Step 1"
+  },
+  "onboardingTrackTitle": "What are you preparing for?",
+  "@onboardingTrackTitle": {
+    "description": "Step 2 heading selecting a prep starter pack or blank start"
+  },
+  "onboardingTrackSubtitle": "Pick a starting syllabus template you can customize on the next step, or start completely blank.",
+  "@onboardingTrackSubtitle": {
+    "description": "Step 2 subtitle explaining template tracks"
+  },
+  "onboardingTrackGovernmentTitle": "Government job exams",
+  "@onboardingTrackGovernmentTitle": {
+    "description": "Track card title for BCS/bank/government jobs"
+  },
+  "onboardingTrackGovernmentDesc": "Bengali, English, General Knowledge, Math, Analytical Reasoning & Computer starter materials.",
+  "@onboardingTrackGovernmentDesc": {
+    "description": "Track card description for government exam pack"
+  },
+  "onboardingTrackSoftwareTitle": "Private software jobs",
+  "@onboardingTrackSoftwareTitle": {
+    "description": "Track card title for software engineering interviews"
+  },
+  "onboardingTrackSoftwareDesc": "Data Structures & Algorithms, System Design, OOP/SQL & Interview Prep materials.",
+  "@onboardingTrackSoftwareDesc": {
+    "description": "Track card description for software job pack"
+  },
+  "onboardingTrackBlankTitle": "Something else (Blank start)",
+  "@onboardingTrackBlankTitle": {
+    "description": "Track card title starting without a predefined pack"
+  },
+  "onboardingTrackBlankDesc": "Add your own custom subjects and materials for any exam, fellowship, or career path.",
+  "@onboardingTrackBlankDesc": {
+    "description": "Track card description for custom blank start"
+  },
+  "onboardingSubjectsTitle": "Customize your subjects & materials",
+  "@onboardingSubjectsTitle": {
+    "description": "Step 3 heading for toggling, renaming, and editing starter subjects and materials"
+  },
+  "onboardingSubjectsSubtitle": "Enable or disable subjects, rename them, edit total units, or add your own.",
+  "@onboardingSubjectsSubtitle": {
+    "description": "Step 3 helper copy"
+  },
+  "onboardingSubjectsEmptyBlankNote": "No subjects yet. Tap Add subject to build your custom track, or continue and add them later.",
+  "@onboardingSubjectsEmptyBlankNote": {
+    "description": "Helper banner shown when blank start has zero subjects yet"
+  },
+  "onboardingSubjectNameLabel": "Subject name",
+  "@onboardingSubjectNameLabel": {
+    "description": "Input field label for renaming a draft subject"
+  },
+  "onboardingMaterialTitleLabel": "Material title",
+  "@onboardingMaterialTitleLabel": {
+    "description": "Input field label for a material title"
+  },
+  "onboardingMaterialUnitsLabel": "Total units",
+  "@onboardingMaterialUnitsLabel": {
+    "description": "Numeric input label for total units in a material"
+  },
+  "onboardingAddSubjectButton": "Add subject",
+  "@onboardingAddSubjectButton": {
+    "description": "Button opening custom subject dialog in Step 3"
+  },
+  "onboardingAddSubjectDialogTitle": "New Subject",
+  "@onboardingAddSubjectDialogTitle": {
+    "description": "Dialog heading when adding a custom subject in Step 3"
+  },
+  "onboardingAddMaterialButton": "Add material",
+  "@onboardingAddMaterialButton": {
+    "description": "Button adding a material inside a subject card in Step 3"
+  },
+  "onboardingAddMaterialDialogTitle": "New Material",
+  "@onboardingAddMaterialDialogTitle": {
+    "description": "Dialog heading when adding a material inside Step 3"
+  },
+  "onboardingRemoveMaterialTooltip": "Remove material",
+  "@onboardingRemoveMaterialTooltip": {
+    "description": "Tooltip for deleting a draft material item"
+  },
+  "onboardingValidationEmptySubject": "Every enabled subject needs a name.",
+  "@onboardingValidationEmptySubject": {
+    "description": "Validation error when an enabled subject name is empty"
+  },
+  "onboardingValidationDuplicateSubject": "Two enabled subjects cannot share the same name.",
+  "@onboardingValidationDuplicateSubject": {
+    "description": "Validation error for duplicate subject names in Step 3"
+  },
+  "onboardingValidationEmptyMaterial": "Every material under an enabled subject needs a title.",
+  "@onboardingValidationEmptyMaterial": {
+    "description": "Validation error when a material title is blank"
+  },
+  "onboardingValidationInvalidUnits": "Every material must have at least 1 unit.",
+  "@onboardingValidationInvalidUnits": {
+    "description": "Validation error when material total units is 0 or invalid"
+  },
+  "onboardingScheduleTitle": "Set your exam timeline & weekly pace",
+  "@onboardingScheduleTitle": {
+    "description": "Step 4 heading configuring exam date, study/rest days, and max pace"
+  },
+  "onboardingScheduleSubtitle": "Your study plan calculates daily unit targets automatically with a 7-day buffer before exam day.",
+  "@onboardingScheduleSubtitle": {
+    "description": "Step 4 subtitle explaining how study plan calculation uses exam date and rest days"
+  },
+  "onboardingExamDateLabel": "Target exam date",
+  "@onboardingExamDateLabel": {
+    "description": "Label above exam date selector"
+  },
+  "onboardingExamDatePickButton": "Choose exam date",
+  "@onboardingExamDatePickButton": {
+    "description": "Placeholder label before picking an exam date"
+  },
+  "onboardingExamDateUnknownToggle": "I don't know my exam date yet",
+  "@onboardingExamDateUnknownToggle": {
+    "description": "Switch allowing user to defer creating a dated study plan"
+  },
+  "onboardingExamDateUnknownNote": "No problem — you can attach an exam date later from Prep > Study Plan.",
+  "@onboardingExamDateUnknownNote": {
+    "description": "Note shown when I don't know yet is active"
+  },
+  "onboardingStudyDaysLabel": "Study days per week",
+  "@onboardingStudyDaysLabel": {
+    "description": "Label for how many days per week the user studies"
+  },
+  "onboardingStudyDaysCount": "{count, plural, =1{{formatted} day / week} other{{formatted} days / week}}",
+  "@onboardingStudyDaysCount": {
+    "description": "Formatted count of study days per week",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "formatted": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingRestDaysLabel": "Which days are your rest days?",
+  "@onboardingRestDaysLabel": {
+    "description": "Label for selecting rest day weekdays"
+  },
+  "onboardingMaxPaceLabel": "Maximum daily pace (optional)",
+  "@onboardingMaxPaceLabel": {
+    "description": "Input label for optional max units/day cap"
+  },
+  "onboardingMaxPaceHint": "e.g. 50 units/day",
+  "@onboardingMaxPaceHint": {
+    "description": "Hint text inside optional max daily pace field"
+  },
+  "onboardingValidationMissingExamDate": "Choose a target exam date or turn on \"I don't know yet\".",
+  "@onboardingValidationMissingExamDate": {
+    "description": "Validation error when Step 4 lacks both an exam date and unknown toggle"
+  },
+  "onboardingValidationPastExamDate": "Choose today or a future exam date.",
+  "@onboardingValidationPastExamDate": {
+    "description": "Validation error when selected exam date is in the past"
+  },
+  "onboardingValidationNoStudyDays": "Keep at least 1 study day per week.",
+  "@onboardingValidationNoStudyDays": {
+    "description": "Validation error if all 7 days are marked as rest"
+  },
+  "onboardingValidationInvalidMaxPace": "Maximum daily pace must be a whole number above 0.",
+  "@onboardingValidationInvalidMaxPace": {
+    "description": "Validation error when optional max pace input is invalid or <= 0"
+  },
+  "onboardingCircularTitle": "Save your first circular (optional)",
+  "@onboardingCircularTitle": {
+    "description": "Step 5 heading for optional Quick Capture circular entry"
+  },
+  "onboardingCircularSubtitle": "Paste an application link to save your first job circular into Inbox right away, or leave blank to skip.",
+  "@onboardingCircularSubtitle": {
+    "description": "Step 5 subtitle explaining optional quick capture"
+  },
+  "onboardingCircularOptionalNote": "Leaving the link empty cleanly skips this step.",
+  "@onboardingCircularOptionalNote": {
+    "description": "Helper hint explaining Step 5 can be skipped by leaving empty or tapping Skip"
+  },
+  "onboardingValidationInvalidUrl": "Enter a valid web link starting with http:// or https://, or leave it blank.",
+  "@onboardingValidationInvalidUrl": {
+    "description": "Validation error when optional circular URL has invalid format"
+  },
+  "onboardingFinishTitle": "Ready to launch your study space",
+  "@onboardingFinishTitle": {
+    "description": "Step 6 summary heading"
+  },
+  "onboardingFinishSubtitle": "Review your choices below. Applying setup again later never creates duplicates.",
+  "@onboardingFinishSubtitle": {
+    "description": "Step 6 reassurance explaining idempotent application"
+  },
+  "onboardingSummaryTrackLabel": "Preparation track",
+  "@onboardingSummaryTrackLabel": {
+    "description": "Summary row label for selected track"
+  },
+  "onboardingSummarySubjectsValue": "{subjectsCount, plural, =0{Blank start (no subjects staged)} =1{1 subject · {formattedMaterials} materials} other{{formattedSubjects} subjects · {formattedMaterials} materials}}",
+  "@onboardingSummarySubjectsValue": {
+    "description": "Summary row text counting enabled subjects and materials",
+    "placeholders": {
+      "subjectsCount": {
+        "type": "int"
+      },
+      "formattedSubjects": {
+        "type": "String"
+      },
+      "formattedMaterials": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingSummaryScheduleExam": "Exam: {examDate} · {studyDays}",
+  "@onboardingSummaryScheduleExam": {
+    "description": "Summary schedule string with chosen exam date and weekly study days",
+    "placeholders": {
+      "examDate": {
+        "type": "String"
+      },
+      "studyDays": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingSummaryScheduleUnknown": "Exam date undecided · {studyDays}",
+  "@onboardingSummaryScheduleUnknown": {
+    "description": "Summary schedule string when user chose I don't know yet",
+    "placeholders": {
+      "studyDays": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingSummaryPaceLabel": "Max pace: {formattedPace} / day",
+  "@onboardingSummaryPaceLabel": {
+    "description": "Summary chip showing optional max daily pace limit",
+    "placeholders": {
+      "formattedPace": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingSummaryCircularPending": "Inbox capture: {target}",
+  "@onboardingSummaryCircularPending": {
+    "description": "Summary text when Step 5 staged a circular link",
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingSummaryCircularSkipped": "No circular staged yet",
+  "@onboardingSummaryCircularSkipped": {
+    "description": "Summary text when no circular URL was entered in Step 5"
+  },
+  "onboardingApplyError": "Could not complete setup. Check your connection and try again.",
+  "@onboardingApplyError": {
+    "description": "Inline error banner when saving or finishing onboarding fails"
+  },
+  "onboardingTodayTipsTitle": "Quick tips to get started",
+  "@onboardingTodayTipsTitle": {
+    "description": "Heading for the three dismissible onboarding tips card on Today screen"
+  },
+  "onboardingTodayTip1": "Log pages or minutes right from Today's targets to keep your study plan accurate.",
+  "@onboardingTodayTip1": {
+    "description": "First onboarding tip displayed on Today screen"
+  },
+  "onboardingTodayTip2": "Flag tricky pages while logging progress to grow your spaced Revision queue.",
+  "@onboardingTodayTip2": {
+    "description": "Second onboarding tip displayed on Today screen"
+  },
+  "onboardingTodayTip3": "Check the notification bell for deadline countdowns and your weekly Sunday review.",
+  "@onboardingTodayTip3": {
+    "description": "Third onboarding tip displayed on Today screen"
+  },
+  "onboardingTodayTipsDismissAll": "Dismiss tips",
+  "@onboardingTodayTipsDismissAll": {
+    "description": "Button dismissing all onboarding tips on Today screen"
+  },
+  "onboardingTodayTipDismissTooltip": "Dismiss tip",
+  "@onboardingTodayTipDismissTooltip": {
+    "description": "Tooltip for dismissing an individual tip row"
+  },
+  "settingsSetupCardTitle": "Setup Wizard",
+  "@settingsSetupCardTitle": {
+    "description": "Settings card heading for re-running the onboarding setup wizard"
+  },
+  "settingsSetupCardSubtitle": "Revisit track templates, customize subjects, or update your baseline schedule safely without creating duplicates.",
+  "@settingsSetupCardSubtitle": {
+    "description": "Settings card explanation for Run setup again"
+  },
+  "settingsRunSetupAgainButton": "Run setup again",
+  "@settingsRunSetupAgainButton": {
+    "description": "Button in Settings reopening the onboarding wizard"
   }
 }

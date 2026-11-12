@@ -8,6 +8,7 @@ import 'package:job_prep/core/widgets/app_nav_badge.dart';
 import 'package:job_prep/core/widgets/app_nav_item.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_sidebar.dart';
+import 'package:job_prep/features/notifications/presentation/widgets/notifications_bell_button.dart';
 
 /// Permanent glass sidebar navigation for expanded / desktop viewports (> 1024 px).
 class AppSidebarNav extends StatelessWidget {
@@ -79,6 +80,8 @@ class AppSidebarNav extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
+              SizedBox(width: spacing.xs),
+              const NotificationsBellButton(),
             ],
           ),
           if (onQuickCapture != null) ...[

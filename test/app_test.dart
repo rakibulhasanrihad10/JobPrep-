@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:job_prep/core/theme/theme_controller.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/features/auth/presentation/screens/login_screen.dart';
-import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:job_prep/features/today/presentation/screens/today_screen.dart';
 import 'package:job_prep/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,7 +11,7 @@ import 'features/auth/fake_auth_repository.dart';
 
 void main() {
   testWidgets(
-    'JobPrepApp initializes with ProviderScope and renders Dashboard when '
+    'JobPrepApp initializes with ProviderScope and renders Today when '
     'authenticated',
     (tester) async {
       SharedPreferences.setMockInitialValues({});
@@ -30,8 +30,8 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.byType(DashboardScreen), findsOneWidget);
-      expect(find.text('JobPrep Dashboard'), findsOneWidget);
+      expect(find.byType(TodayScreen), findsOneWidget);
+      expect(find.text('Do this next'), findsOneWidget);
     },
   );
 
@@ -55,7 +55,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(LoginScreen), findsOneWidget);
-      expect(find.byType(DashboardScreen), findsNothing);
+      expect(find.byType(TodayScreen), findsNothing);
     },
   );
 }

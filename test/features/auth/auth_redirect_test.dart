@@ -9,6 +9,7 @@ import 'package:job_prep/features/auth/presentation/providers/auth_providers.dar
 import 'package:job_prep/features/auth/presentation/screens/login_screen.dart';
 import 'package:job_prep/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:job_prep/features/today/presentation/screens/today_screen.dart';
 import 'package:job_prep/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,6 +29,7 @@ void main() {
         () {
       for (final path in [
         '/',
+        '/today',
         '/dashboard',
         '/circulars',
         '/inbox',
@@ -56,14 +58,15 @@ void main() {
     test('sends signed-in users away from /login and allows app routes', () {
       expect(
         resolveAuthRedirect(authState: signedIn, location: '/login'),
-        equals('/dashboard'),
+        equals('/today'),
       );
       expect(
         resolveAuthRedirect(authState: signedIn, location: '/'),
-        equals('/dashboard'),
+        equals('/today'),
       );
 
       for (final path in [
+        '/today',
         '/dashboard',
         '/circulars',
         '/inbox',
@@ -84,6 +87,7 @@ void main() {
         () {
       for (final path in [
         '/',
+        '/today',
         '/login',
         '/dashboard',
         '/circulars',
@@ -153,8 +157,8 @@ void main() {
 
   group('GoRouter Integration - Live Redirects with FakeAuthRepository', () {
     testWidgets(
-      'redirects across /login, /dashboard, and /reset-password on session '
-      'changes',
+      'redirects across /login, /today, /dashboard, and /reset-password on '
+      'session changes',
       (tester) async {
         tester.view.physicalSize = const Size(1280, 900);
         tester.view.devicePixelRatio = 1.0;
@@ -181,15 +185,15 @@ void main() {
 
         // Starts signed out -> redirected to /login.
         expect(find.byType(LoginScreen), findsOneWidget);
-        expect(find.byType(DashboardScreen), findsNothing);
+        expect(find.byType(TodayScreen), findsNothing);
 
-        // User signs in -> redirected away from /login to /dashboard.
+        // User signs in -> redirected away from /login to /today.
         fakeRepo.emitSession(
           const AuthSessionState.signedIn(FakeAuthRepository.defaultTestUser),
         );
         await tester.pumpAndSettle();
 
-        expect(find.byType(DashboardScreen), findsOneWidget);
+        expect(find.byType(TodayScreen), findsOneWidget);
         expect(find.byType(LoginScreen), findsNothing);
 
         // Password recovery session arrives -> redirected to /reset-password.
@@ -201,18 +205,21 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(find.byType(ResetPasswordScreen), findsOneWidget);
-        expect(find.byType(DashboardScreen), findsNothing);
+        expect(find.byType(TodayScreen), findsNothing);
 
-        // Completing password update yields signedIn so dashboard loads.
+        // Completing password update yields signedIn so Today/Dashboard load.
         await fakeRepo.updatePassword(newPassword: 'UpdatedPassword123!');
         await tester.pumpAndSettle();
 
         final container = ProviderScope.containerOf(
           tester.element(find.byType(JobPrepApp)),
         );
+        container.read(routerProvider).go(AppRoutePaths.today);
+        await tester.pumpAndSettle();
+        expect(find.byType(TodayScreen), findsOneWidget);
+
         container.read(routerProvider).go(AppRoutePaths.dashboard);
         await tester.pumpAndSettle();
-
         expect(find.byType(DashboardScreen), findsOneWidget);
 
         // Sign out sends user back to /login.

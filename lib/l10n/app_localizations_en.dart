@@ -1882,4 +1882,2433 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get prepSeededSweSubtitle =>
       'Data Structures & Algorithms, Database Systems, OOP, Web Development, and Software Quality Assurance.';
+
+  @override
+  String get dashboardHomeSubtitle =>
+      'Your job circulars, upcoming dates, and study momentum at a glance.';
+
+  @override
+  String get dashboardRefreshTooltip => 'Refresh dashboard';
+
+  @override
+  String get dashboardLoadError => 'Could not load dashboard summary.';
+
+  @override
+  String get dashboardWelcomeTitle => 'Welcome to JobPrep';
+
+  @override
+  String get dashboardWelcomeBody =>
+      'Track job circulars, checklists, exam dates, and study progress in one calm workspace.';
+
+  @override
+  String get dashboardWelcomeAddCircular => 'Add first circular';
+
+  @override
+  String get dashboardWelcomeSetupPrep => 'Set up study plan';
+
+  @override
+  String get dashboardMetricDeadlinesWeek => 'Deadlines this week';
+
+  @override
+  String get dashboardMetricInbox => 'Inbox items';
+
+  @override
+  String get dashboardMetricExams14Days => 'Exams in 14 days';
+
+  @override
+  String get dashboardMetricSubmitted => 'Applications submitted';
+
+  @override
+  String get dashboardMetricOverallPrep => 'Overall prep';
+
+  @override
+  String get dashboardContinueStudyingTitle => 'Continue studying';
+
+  @override
+  String get dashboardContinueStudyingAction => 'Continue studying';
+
+  @override
+  String dashboardContinueStudyingLastLogged(
+      String formattedUnits, String unitLabel, String formattedDate) {
+    return '+$formattedUnits $unitLabel on $formattedDate';
+  }
+
+  @override
+  String dashboardMaterialProgressLine(String formattedCompleted,
+      String formattedTotal, String unitLabel, String percent) {
+    return '$formattedCompleted / $formattedTotal $unitLabel ($percent%)';
+  }
+
+  @override
+  String get dashboardContinueStudyingEmptyTitle => 'No study logs yet';
+
+  @override
+  String get dashboardContinueStudyingEmptyBody =>
+      'Log a study session in Prep and jump straight back into your book or course from here.';
+
+  @override
+  String get dashboardContinueStudyingEmptyAction => 'Open Prep';
+
+  @override
+  String get dashboardUpcomingDeadlinesTitle => 'Upcoming deadlines';
+
+  @override
+  String get dashboardUpcomingDeadlinesEmptyTitle => 'No upcoming deadlines';
+
+  @override
+  String get dashboardUpcomingDeadlinesEmptyBody =>
+      'Saved circulars with future deadlines will appear here with color-coded countdowns.';
+
+  @override
+  String get dashboardViewAllAction => 'View all';
+
+  @override
+  String get dashboardUpcomingExamsTitle => 'Upcoming exams';
+
+  @override
+  String get dashboardUpcomingExamsEmptyTitle => 'No upcoming exams scheduled';
+
+  @override
+  String get dashboardUpcomingExamsEmptyBody =>
+      'Add Preliminary, Written, or Viva dates on a circular to keep track of upcoming sittings here.';
+
+  @override
+  String get dashboardOpenCalendarAction => 'Open calendar';
+
+  @override
+  String get dashboardExamToday => 'Today';
+
+  @override
+  String dashboardExamInDays(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'In $formattedCount days',
+      one: 'In 1 day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get settingsRemindersTitle => 'Email Reminders';
+
+  @override
+  String get settingsRemindersSubtitle =>
+      'Receive daily alerts for circular deadlines and exam dates 7, 3, and 1 days ahead.';
+
+  @override
+  String get settingsRemindersToggleLabel => 'Enable daily email reminders';
+
+  @override
+  String get settingsRemindersToggleHintEnabled =>
+      'Reminders are sent once per milestone using your saved account email.';
+
+  @override
+  String get settingsRemindersToggleHintDisabled =>
+      'Email reminders are paused. Turn them on anytime without losing saved circulars.';
+
+  @override
+  String get settingsRemindersLanguageTitle => 'Reminder email language';
+
+  @override
+  String get settingsRemindersLanguageSubtitle =>
+      'Choose which language daily reminder emails are written in.';
+
+  @override
+  String get settingsRemindersSaveError =>
+      'Could not save reminder settings. Please try again.';
+
+  @override
+  String get settingsRemindersLoadError => 'Could not load reminder settings.';
+
+  @override
+  String get settingsRemindersOfflineHint =>
+      'Connect Supabase to persist email reminder preferences across devices.';
+
+  @override
+  String get vaultTitle => 'Portal Vault';
+
+  @override
+  String get vaultSubtitle =>
+      'Protect saved application portal logins with your local vault passphrase.';
+
+  @override
+  String get vaultStatusLocked => 'Locked';
+
+  @override
+  String get vaultStatusUnlocked => 'Unlocked';
+
+  @override
+  String get vaultSetupButton => 'Set up vault';
+
+  @override
+  String get vaultUnlockButton => 'Unlock vault';
+
+  @override
+  String get vaultLockButton => 'Lock vault';
+
+  @override
+  String get vaultSetupDialogTitle => 'Create Vault Passphrase';
+
+  @override
+  String get vaultSetupDialogBody =>
+      'Choose a strong passphrase to encrypt your portal passwords on this device.';
+
+  @override
+  String get vaultUnrecoverableWarning =>
+      'Important: A forgotten passphrase cannot be recovered or reset. Any saved passwords cannot be decrypted without it.';
+
+  @override
+  String get vaultAcknowledgeWarningLabel =>
+      'I understand that a forgotten passphrase cannot be recovered.';
+
+  @override
+  String get vaultAcknowledgeRequiredError =>
+      'Please confirm that you understand the recovery warning.';
+
+  @override
+  String get vaultPassphraseLabel => 'Vault passphrase';
+
+  @override
+  String get vaultPassphraseConfirmLabel => 'Confirm passphrase';
+
+  @override
+  String get vaultPassphraseTooShortError => 'Enter at least 8 characters.';
+
+  @override
+  String get vaultPassphraseMismatchError => 'Passphrases do not match.';
+
+  @override
+  String get vaultCreateAndUnlockAction => 'Create & unlock';
+
+  @override
+  String get vaultUnlockDialogTitle => 'Unlock Portal Vault';
+
+  @override
+  String get vaultUnlockDialogBody =>
+      'Enter your vault passphrase to view, copy, and manage saved portal accounts.';
+
+  @override
+  String get vaultWrongPassphraseError =>
+      'Incorrect vault passphrase. Please try again.';
+
+  @override
+  String get vaultAutoLockNote =>
+      'Auto-locks after inactivity and whenever you sign out.';
+
+  @override
+  String get vaultPortalLockedHint =>
+      'Portal logins are hidden while the vault is locked.';
+
+  @override
+  String get portalSectionTitle => 'Portal Login';
+
+  @override
+  String get portalAddAccountButton => 'Add account';
+
+  @override
+  String get portalEmptyState =>
+      'No portal accounts saved for this circular yet.';
+
+  @override
+  String get portalAddDialogTitle => 'Add Portal Account';
+
+  @override
+  String get portalEditDialogTitle => 'Edit Portal Account';
+
+  @override
+  String get portalUrlLabel => 'Portal URL (optional)';
+
+  @override
+  String get portalUsernameLabel => 'User ID / Username';
+
+  @override
+  String get portalUsernameRequiredError => 'User ID is required.';
+
+  @override
+  String get portalPasswordLabel => 'Password';
+
+  @override
+  String get portalPasswordRequiredError => 'Password is required.';
+
+  @override
+  String get portalNotesLabel => 'Notes (optional)';
+
+  @override
+  String get portalCopyUserIdAction => 'Copy ID';
+
+  @override
+  String get portalCopyPasswordAction => 'Copy password';
+
+  @override
+  String get portalOpenUrlAction => 'Open portal';
+
+  @override
+  String get portalRevealPasswordTooltip => 'Show password';
+
+  @override
+  String get portalHidePasswordTooltip => 'Hide password';
+
+  @override
+  String portalCopiedClipboardNotice(String formattedSeconds) {
+    return 'Copied to clipboard — clears in ${formattedSeconds}s.';
+  }
+
+  @override
+  String get portalDeleteConfirmTitle => 'Delete portal account?';
+
+  @override
+  String portalDeleteConfirmMessage(String username) {
+    return 'Remove saved portal login \"$username\" from this circular?';
+  }
+
+  @override
+  String get portalSaveError =>
+      'Could not save portal account. Please try again.';
+
+  @override
+  String get portalLoadError => 'Could not load portal accounts.';
+
+  @override
+  String get prepStudyPlanSectionTitle => 'Study Plans';
+
+  @override
+  String get prepStudyPlanAddButton => 'Set study plan';
+
+  @override
+  String get prepStudyPlanCreateTitle => 'Create Study Plan';
+
+  @override
+  String get prepStudyPlanEditTitle => 'Edit Study Plan';
+
+  @override
+  String get prepStudyPlanScopeLabel => 'Plan scope';
+
+  @override
+  String get prepStudyPlanAllSubjectsLabel => 'All subjects (combined)';
+
+  @override
+  String get prepStudyPlanCircularLabel => 'Linked exam circular (optional)';
+
+  @override
+  String get prepStudyPlanNoCircularOption => 'No circular link (custom date)';
+
+  @override
+  String get prepStudyPlanExamStageLabel => 'Circular exam stage (optional)';
+
+  @override
+  String get prepStudyPlanStartDateLabel => 'Start date';
+
+  @override
+  String prepStudyPlanStartDateValue(String formattedDate) {
+    return 'Start date: $formattedDate';
+  }
+
+  @override
+  String get prepStudyPlanTargetDateLabel => 'Exam date';
+
+  @override
+  String prepStudyPlanTargetDateValue(String formattedDate) {
+    return 'Exam date: $formattedDate';
+  }
+
+  @override
+  String get prepStudyPlanBufferDaysLabel => 'Finish buffer (days before exam)';
+
+  @override
+  String get prepStudyPlanRestDaysLabel => 'Rest days per week';
+
+  @override
+  String get prepStudyPlanMaxPaceLabel =>
+      'Max daily pace limit (units/day, optional)';
+
+  @override
+  String get prepStudyPlanMaxPaceHint => 'Leave blank for no pace cap';
+
+  @override
+  String get prepStudyPlanSaveButton => 'Save plan';
+
+  @override
+  String get prepStudyPlanDeleteTitle => 'Delete study plan?';
+
+  @override
+  String get prepStudyPlanDeleteBody =>
+      'Remove this study plan? Your subjects, materials, and progress logs will stay untouched.';
+
+  @override
+  String get prepStudyPlanStatusAhead => 'Ahead';
+
+  @override
+  String get prepStudyPlanStatusOnTrack => 'On track';
+
+  @override
+  String get prepStudyPlanStatusBehind => 'Behind';
+
+  @override
+  String get prepStudyPlanRemainingLabel => 'Remaining';
+
+  @override
+  String get prepStudyPlanDaysLeftLabel => 'Study days left';
+
+  @override
+  String get prepStudyPlanTodayTargetLabel => 'Today\'s target';
+
+  @override
+  String prepStudyPlanUnitsCount(String formatted) {
+    return '$formatted units';
+  }
+
+  @override
+  String prepStudyPlanDaysCount(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formatted days',
+      one: '$formatted day',
+      zero: '0 days',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepStudyPlanTodayDoneOfTarget(String done, String target) {
+    return '$done / $target today';
+  }
+
+  @override
+  String prepStudyPlanBufferSummary(String formattedDays, String examDate) {
+    return 'Finishes ${formattedDays}d before exam ($examDate)';
+  }
+
+  @override
+  String get prepStudyPlanFinishedComplete =>
+      'Syllabus complete — today\'s target is 0.';
+
+  @override
+  String prepStudyPlanMissedRedistributed(int days, String formattedUnits,
+      String formattedDays, String formattedExtra) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other:
+          'You missed $formattedUnits units, they are now spread over the next $formattedDays days (+$formattedExtra/day).',
+      one:
+          'You missed $formattedUnits units, they are now spread over the next $formattedDays day (+$formattedExtra/day).',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepStudyPlanPastTargetNotice(String formattedUnits) {
+    return 'Study window before the finish buffer has ended with $formattedUnits units left.';
+  }
+
+  @override
+  String prepStudyPlanPaceWarning(
+      String formattedTarget, String formattedLimit) {
+    return 'Recalculated target ($formattedTarget/day) exceeds your pace limit ($formattedLimit/day).';
+  }
+
+  @override
+  String get prepStudyPlanActionConvertRest =>
+      'Turn a rest day into a study day';
+
+  @override
+  String get prepStudyPlanActionRaisePace => 'Raise pace limit';
+
+  @override
+  String get prepStudyPlanActionPostponeMaterial =>
+      'Postpone lower-priority material';
+
+  @override
+  String get prepStudyPlanRaisePaceTitle => 'Raise Daily Pace Limit';
+
+  @override
+  String get prepStudyPlanPostponeTitle => 'Postpone Material';
+
+  @override
+  String get prepStudyPlanPostponeSubtitle =>
+      'Excluding a material removes its remaining units from this plan\'s daily target without deleting your study progress.';
+
+  @override
+  String prepStudyPlanPostponedChip(String title) {
+    return 'Postponed: $title';
+  }
+
+  @override
+  String get prepStudyPlanRestoreTooltip => 'Restore to plan';
+
+  @override
+  String get prepStudyPlanEditTooltip => 'Edit study plan';
+
+  @override
+  String get prepStudyPlanDeleteTooltip => 'Delete study plan';
+
+  @override
+  String get prepStudyPlanValidationBuffer =>
+      'Finish buffer must be 0 days or greater.';
+
+  @override
+  String get prepStudyPlanValidationPace =>
+      'Pace limit must be greater than 0.';
+
+  @override
+  String get prepStudyPlanValidationDates =>
+      'Exam date must be on or after the start date.';
+
+  @override
+  String get dashboardTodayTargetTitle => 'Today\'s Target';
+
+  @override
+  String get dashboardTodayTargetEmptyTitle => 'No study plan configured yet';
+
+  @override
+  String get dashboardTodayTargetEmptyBody =>
+      'Set an exam date to calculate daily targets and automatic missed-day redistribution.';
+
+  @override
+  String get dashboardTodayTargetEmptyAction => 'Set study plan';
+
+  @override
+  String get dashboardTodayTargetManageAction => 'Open study plans';
+
+  @override
+  String dashboardTodayTargetPlansSummary(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formatted active plans',
+      one: '$formatted active plan',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepTabSubjects => 'Subjects';
+
+  @override
+  String get prepTabMockTests => 'Mock tests';
+
+  @override
+  String get prepMockTestsTitle => 'Mock tests';
+
+  @override
+  String get prepMockTestsSubtitle =>
+      'Track scores after negative marking, time taken, and weak topics across platforms.';
+
+  @override
+  String get prepMockTestAddButton => 'Log mock test';
+
+  @override
+  String get prepMockTestSubjectSectionTitle => 'Mock test performance';
+
+  @override
+  String prepMockTestSubjectCount(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formatted tests logged',
+      one: '$formatted test logged',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepMockFilterSubjectLabel => 'Subject';
+
+  @override
+  String get prepMockFilterAllSubjects => 'All subjects';
+
+  @override
+  String get prepMockFilterDateLabel => 'Date range';
+
+  @override
+  String get prepMockFilterDateAll => 'All time';
+
+  @override
+  String get prepMockFilterDate7Days => 'Last 7 days';
+
+  @override
+  String get prepMockFilterDate30Days => 'Last 30 days';
+
+  @override
+  String get prepMockFilterDate90Days => 'Last 90 days';
+
+  @override
+  String get prepMockFilterClear => 'Clear filters';
+
+  @override
+  String get prepMockStatLatest => 'Latest';
+
+  @override
+  String get prepMockStatBest => 'Best';
+
+  @override
+  String get prepMockStatAverage => 'Average';
+
+  @override
+  String get prepMockStatImprovement => 'Improvement';
+
+  @override
+  String prepMockStatPercentValue(String percent) {
+    return '$percent%';
+  }
+
+  @override
+  String get prepMockStatNotAvailable => '—';
+
+  @override
+  String prepMockStatImprovementLastFive(String formatted) {
+    return 'Last $formatted tests';
+  }
+
+  @override
+  String get prepMockStatImprovementFirstToLatest => 'First to latest';
+
+  @override
+  String get prepMockStatImprovementNeedsTwo => 'Log 2+ tests to compare';
+
+  @override
+  String get prepMockTrendChartTitle => 'Score trend (%)';
+
+  @override
+  String prepMockTrendAverageLineLabel(String percent) {
+    return 'Avg $percent%';
+  }
+
+  @override
+  String get prepMockTrendNeedsDataHint =>
+      'Log your first mock test to plot your score trend and average reference line.';
+
+  @override
+  String prepMockTrendTooltip(String title, String percent, String date) {
+    return '$title\n$percent% • $date';
+  }
+
+  @override
+  String get prepMockEmptyTitle => 'No mock tests logged yet';
+
+  @override
+  String get prepMockEmptyBody =>
+      'Log model tests from guidebooks or online platforms to track net percentage and weak areas.';
+
+  @override
+  String get prepMockFilteredEmptyTitle => 'No mock tests match these filters';
+
+  @override
+  String get prepMockFilteredEmptyBody =>
+      'Try clearing the subject or date range filter, or log a new mock test.';
+
+  @override
+  String get prepMockLoadingLabel => 'Loading mock tests...';
+
+  @override
+  String get prepMockLoadErrorTitle => 'Could not load mock tests';
+
+  @override
+  String prepMockScoreRatio(String net, String total) {
+    return '$net / $total';
+  }
+
+  @override
+  String prepMockNegativeMarksBadge(String marks) {
+    return '-$marks neg';
+  }
+
+  @override
+  String prepMockDurationWithLimitBadge(String taken, String limit) {
+    return '$taken / $limit min';
+  }
+
+  @override
+  String prepMockDurationBadge(String taken) {
+    return '$taken min';
+  }
+
+  @override
+  String prepMockWeakTopicsLabel(String topics) {
+    return 'Weak topics: $topics';
+  }
+
+  @override
+  String prepMockLinkedCircularLabel(String title) {
+    return 'Circular: $title';
+  }
+
+  @override
+  String prepMockLinkedMaterialLabel(String title) {
+    return 'Material: $title';
+  }
+
+  @override
+  String prepMockLinkedTopicLabel(String title) {
+    return 'Topic: $title';
+  }
+
+  @override
+  String get prepMockEditTooltip => 'Edit mock test';
+
+  @override
+  String get prepMockDeleteTooltip => 'Delete mock test';
+
+  @override
+  String get prepMockFormCreateTitle => 'Log mock test';
+
+  @override
+  String get prepMockFormEditTitle => 'Edit mock test';
+
+  @override
+  String get prepMockFormSubjectLabel => 'Subject';
+
+  @override
+  String get prepMockFormTitleLabel => 'Test title';
+
+  @override
+  String get prepMockFormTitleHint => 'e.g., 46th BCS Model Test 04';
+
+  @override
+  String get prepMockFormSourceLabel => 'Source / Platform (optional)';
+
+  @override
+  String get prepMockFormSourceHint => 'e.g., Live MCQ, Oracle Guide';
+
+  @override
+  String prepMockFormTakenOnLabel(String date) {
+    return 'Date taken: $date';
+  }
+
+  @override
+  String get prepMockFormPickDate => 'Change date';
+
+  @override
+  String get prepMockFormMarksObtainedLabel => 'Marks obtained';
+
+  @override
+  String get prepMockFormTotalMarksLabel => 'Total marks';
+
+  @override
+  String get prepMockFormNegativeMarksLabel => 'Negative marks (optional)';
+
+  @override
+  String get prepMockFormTimeTakenLabel => 'Time taken (min, optional)';
+
+  @override
+  String get prepMockFormTimeLimitLabel => 'Time limit (min, optional)';
+
+  @override
+  String get prepMockFormWeakTopicsLabel => 'Weak topics (optional)';
+
+  @override
+  String get prepMockFormWeakTopicsHint =>
+      'e.g., Constitutional Amendments, Time & Work';
+
+  @override
+  String get prepMockFormNotesLabel => 'Notes (optional)';
+
+  @override
+  String get prepMockFormCircularLabel => 'Linked circular (optional)';
+
+  @override
+  String get prepMockFormMaterialLabel => 'Linked material (optional)';
+
+  @override
+  String get prepMockFormTopicLabel => 'Linked topic (optional)';
+
+  @override
+  String get prepMockFormNoneOption => 'None';
+
+  @override
+  String get prepMockFormSaveAction => 'Save mock test';
+
+  @override
+  String get prepMockValidationSubjectRequired =>
+      'Select a subject for this mock test.';
+
+  @override
+  String get prepMockValidationTitleRequired =>
+      'Enter a title for the mock test.';
+
+  @override
+  String get prepMockValidationTotalPositive =>
+      'Total marks must be greater than zero.';
+
+  @override
+  String get prepMockValidationMarksRange =>
+      'Marks obtained must be between 0 and total marks.';
+
+  @override
+  String get prepMockValidationNegativeMarks =>
+      'Negative marks must be between 0 and total marks.';
+
+  @override
+  String get prepMockValidationDuration =>
+      'Time taken must be 0 or more, and time limit must be greater than zero.';
+
+  @override
+  String get prepMockDeleteTitle => 'Delete mock test?';
+
+  @override
+  String prepMockDeleteBody(String title) {
+    return 'Remove \"$title\" from your mock test history? This cannot be undone.';
+  }
+
+  @override
+  String get prepMockDeleteConfirm => 'Delete';
+
+  @override
+  String get prepTabAnalytics => 'Analytics';
+
+  @override
+  String get prepAnalyticsTitle => 'Study analytics';
+
+  @override
+  String get prepAnalyticsSubtitle =>
+      'Track daily consistency, study streaks, weekly volume, and subject focus.';
+
+  @override
+  String get prepAnalyticsLoadingLabel => 'Loading study analytics...';
+
+  @override
+  String get prepAnalyticsLoadErrorTitle => 'Could not load study analytics';
+
+  @override
+  String get prepAnalyticsEmptyTitle => 'No study activity logged yet';
+
+  @override
+  String get prepAnalyticsEmptyBody =>
+      'Log units on your study materials or set a study plan to unlock streaks, charts, and your consistency score.';
+
+  @override
+  String get prepAnalyticsEmptyAction => 'Open subjects';
+
+  @override
+  String get prepAnalyticsFilterRangeLabel => 'Date range';
+
+  @override
+  String get prepAnalyticsRange7Days => '7 days';
+
+  @override
+  String get prepAnalyticsRange30Days => '30 days';
+
+  @override
+  String get prepAnalyticsRange90Days => '90 days';
+
+  @override
+  String get prepAnalyticsFilterSubjectLabel => 'Subject';
+
+  @override
+  String get prepAnalyticsAllSubjects => 'All subjects';
+
+  @override
+  String get prepAnalyticsClearFilter => 'Clear filter';
+
+  @override
+  String get prepAnalyticsCurrentStreak => 'Current streak';
+
+  @override
+  String get prepAnalyticsLongestStreak => 'Longest streak';
+
+  @override
+  String get prepAnalyticsUnitsThisWeek => 'Units this week';
+
+  @override
+  String get prepAnalyticsConsistency => 'Consistency';
+
+  @override
+  String prepAnalyticsDaysSuffix(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: ' days',
+      one: ' day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAnalyticsPercentSuffix => '%';
+
+  @override
+  String prepAnalyticsActiveDaysCaption(String active, String total) {
+    return '$active / $total active days';
+  }
+
+  @override
+  String prepAnalyticsAvgPerDayCaption(String avg) {
+    return '$avg/day (7d avg)';
+  }
+
+  @override
+  String get prepAnalyticsRolling7dLabel => '7-day avg';
+
+  @override
+  String get prepAnalyticsRolling30dLabel => '30-day avg';
+
+  @override
+  String prepAnalyticsUnitsPerDayValue(String avg) {
+    return '$avg units/day';
+  }
+
+  @override
+  String get prepAnalyticsBestDayLabel => 'Best day';
+
+  @override
+  String get prepAnalyticsWeakestDayLabel => 'Weakest day';
+
+  @override
+  String prepAnalyticsDaySummaryValue(String units, String date) {
+    return '$units units • $date';
+  }
+
+  @override
+  String get prepAnalyticsMockOverviewLabel => 'Mock tests in range';
+
+  @override
+  String prepAnalyticsMockOverviewValue(
+      int count, String formattedCount, String avg) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount tests • avg $avg%',
+      one: '$formattedCount test • avg $avg%',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAnalyticsNoDataDash => '—';
+
+  @override
+  String get prepAnalyticsAlertBothTitle =>
+      'Today and yesterday were below your daily target';
+
+  @override
+  String get prepAnalyticsAlertTodayTitle =>
+      'Today is still below your daily target';
+
+  @override
+  String get prepAnalyticsAlertYesterdayTitle =>
+      'Yesterday finished below your daily target';
+
+  @override
+  String prepAnalyticsAlertBody(String today, String yesterday, String target) {
+    return 'Today: $today / $target units • Yesterday: $yesterday / $target units';
+  }
+
+  @override
+  String get prepAnalyticsDailyChartTitle => 'Daily study activity';
+
+  @override
+  String prepAnalyticsDailyTargetLegend(String target) {
+    return 'Target: $target/day';
+  }
+
+  @override
+  String prepAnalyticsDailyTooltip(String date, String units) {
+    return '$date\n$units units';
+  }
+
+  @override
+  String get prepAnalyticsWeeklyChartTitle => 'Weekly totals';
+
+  @override
+  String prepAnalyticsWeeklyTooltip(String range, String units, String days) {
+    return '$range\n$units units ($days active)';
+  }
+
+  @override
+  String prepAnalyticsWeeklyRangeLabel(String start, String end) {
+    return '$start – $end';
+  }
+
+  @override
+  String get prepAnalyticsSubjectChartTitle => 'Where study time went';
+
+  @override
+  String get prepAnalyticsSubjectNoData =>
+      'Log study units or mock tests in this window to compare subjects.';
+
+  @override
+  String prepAnalyticsSubjectRowSubtitle(String units, String percent) {
+    return '$units units ($percent%)';
+  }
+
+  @override
+  String prepAnalyticsSubjectMockHint(
+      int count, String formattedCount, String avg) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount mocks • $avg% avg',
+      one: '$formattedCount mock • $avg% avg',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAnalyticsHeatmapTitle => 'Study days heatmap (last 90 days)';
+
+  @override
+  String prepAnalyticsHeatmapTooltip(String date, String units) {
+    return '$date: $units units';
+  }
+
+  @override
+  String get prepAnalyticsHeatmapLess => 'Less';
+
+  @override
+  String get prepAnalyticsHeatmapMore => 'More';
+
+  @override
+  String get prepSubjectViewAllMaterials => 'All materials';
+
+  @override
+  String prepSubjectViewBooksShelf(String count) {
+    return 'Books shelf ($count)';
+  }
+
+  @override
+  String get prepOpenBookView => 'Book view';
+
+  @override
+  String get prepBooksShelfTitle => 'Books shelf';
+
+  @override
+  String get prepBooksShelfSubtitle =>
+      'Tap any book to update your position with the bookmark or page field.';
+
+  @override
+  String prepBooksShelfEmptyTitle(String subject) {
+    return 'No books in $subject yet';
+  }
+
+  @override
+  String get prepBooksShelfEmptyBody =>
+      'Add a study material with kind Book to arrange it on your shelf.';
+
+  @override
+  String get prepAddBookButton => 'Add book';
+
+  @override
+  String get bookProgressPositionPrefix => 'I am at page';
+
+  @override
+  String bookProgressPositionSuffix(String total) {
+    return 'of $total';
+  }
+
+  @override
+  String get bookProgressSavePosition => 'Save page';
+
+  @override
+  String bookProgressUnitSummary(
+      String current, String total, String unitLabel) {
+    return '$current / $total $unitLabel';
+  }
+
+  @override
+  String bookProgressPercentLabel(String percent) {
+    return '$percent%';
+  }
+
+  @override
+  String bookProgressUpdatedOn(String date) {
+    return 'Updated $date';
+  }
+
+  @override
+  String get bookProgressDragHint =>
+      'Drag the bookmark or enter your page number';
+
+  @override
+  String get bookProgressBookmarkSemantics => 'Book position bookmark';
+
+  @override
+  String get bookProgressErrorEmpty => 'Enter a page number';
+
+  @override
+  String get bookProgressErrorWholeNumber => 'Enter a whole page number';
+
+  @override
+  String get bookProgressErrorBelowZero => 'Page number cannot be negative';
+
+  @override
+  String bookProgressErrorExceedsTotal(String total) {
+    return 'Page cannot exceed $total';
+  }
+
+  @override
+  String get bookProgressConfirmCorrectionTitle => 'Save position correction?';
+
+  @override
+  String bookProgressConfirmCorrectionBody(
+      String fromPage, String toPage, String delta, String unitLabel) {
+    return 'You are moving back from page $fromPage to page $toPage ($delta $unitLabel). This updates your book position without counting as studied units in your study plan or analytics.';
+  }
+
+  @override
+  String get bookProgressConfirmCorrectionAction => 'Save correction';
+
+  @override
+  String bookProgressCorrectionSaved(String page) {
+    return 'Updated position to $page (correction)';
+  }
+
+  @override
+  String bookProgressStudySaved(String delta, String unitLabel) {
+    return 'Logged +$delta $unitLabel';
+  }
+
+  @override
+  String get bookProgressHistoryButton => 'Log history';
+
+  @override
+  String get prepLogEntryTypeCorrectionBadge => 'Correction';
+
+  @override
+  String get prepCloseButton => 'Close';
+
+  @override
+  String get prepTabRevision => 'Revision';
+
+  @override
+  String get prepRevisionTitle => 'Revision queue';
+
+  @override
+  String get prepRevisionSubtitle =>
+      'Revisit flagged pages, tricky problems, and weak topics on a spaced schedule.';
+
+  @override
+  String get prepRevisionDueCountStat => 'Due & overdue';
+
+  @override
+  String get prepRevisionMasteredStat => 'Mastered';
+
+  @override
+  String get prepRevisionFlagItemButton => 'Flag item';
+
+  @override
+  String prepRevisionTabDueToday(String count) {
+    return 'Due today ($count)';
+  }
+
+  @override
+  String prepRevisionTabOverdue(String count) {
+    return 'Overdue ($count)';
+  }
+
+  @override
+  String prepRevisionTabUpcoming(String count) {
+    return 'Upcoming ($count)';
+  }
+
+  @override
+  String prepRevisionTabDone(String count) {
+    return 'Done ($count)';
+  }
+
+  @override
+  String get prepRevisionAllSubjects => 'All subjects';
+
+  @override
+  String get prepRevisionAllMaterials => 'All materials';
+
+  @override
+  String get prepRevisionClearFilters => 'Clear filters';
+
+  @override
+  String get prepRevisionReasonTricky => 'Tricky';
+
+  @override
+  String get prepRevisionReasonForgot => 'Forgot';
+
+  @override
+  String get prepRevisionReasonImportant => 'Important';
+
+  @override
+  String get prepRevisionReasonMistake => 'Mistake';
+
+  @override
+  String get prepRevisionSourceLog => 'From study log';
+
+  @override
+  String get prepRevisionSourceMockTest => 'From mock test';
+
+  @override
+  String get prepRevisionSourceManual => 'Manual flag';
+
+  @override
+  String get prepRevisionStatusMastered => 'Mastered';
+
+  @override
+  String get prepRevisionStatusDismissed => 'Dismissed';
+
+  @override
+  String get prepRevisionDueTodayLabel => 'Due today';
+
+  @override
+  String prepRevisionOverdueDaysLabel(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount days overdue',
+      one: '$formattedCount day overdue',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepRevisionDueInDaysLabel(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'In $formattedCount days',
+      one: 'In $formattedCount day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepRevisionDueDateLabel(String date) {
+    return 'Due $date';
+  }
+
+  @override
+  String prepRevisionPageChip(String page) {
+    return 'p. $page';
+  }
+
+  @override
+  String prepRevisionReviewCountChip(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount reviews',
+      one: '$formattedCount review',
+      zero: 'New',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepRevisionActionEasy => 'Easy';
+
+  @override
+  String prepRevisionActionEasyHint(String days) {
+    return '+${days}d';
+  }
+
+  @override
+  String get prepRevisionActionEasyMasteredHint => 'Master';
+
+  @override
+  String get prepRevisionActionStillHard => 'Still hard';
+
+  @override
+  String get prepRevisionActionSnooze => 'Snooze +1d';
+
+  @override
+  String get prepRevisionActionDismiss => 'Dismiss';
+
+  @override
+  String get prepRevisionDeleteTooltip => 'Delete revision mark';
+
+  @override
+  String get prepRevisionUndoButton => 'Undo';
+
+  @override
+  String get prepRevisionUndoDismissTooltip => 'Hide undo banner';
+
+  @override
+  String prepRevisionFeedbackEasyNext(String reference, String days) {
+    return 'Marked \"$reference\" as Easy — next review in $days days.';
+  }
+
+  @override
+  String prepRevisionFeedbackMastered(String reference) {
+    return 'Mastered \"$reference\"! Moved to Done.';
+  }
+
+  @override
+  String prepRevisionFeedbackStillHard(String reference) {
+    return 'Marked \"$reference\" as Still hard — reset to 1 day.';
+  }
+
+  @override
+  String prepRevisionFeedbackSnoozed(String reference) {
+    return 'Snoozed \"$reference\" by 1 day.';
+  }
+
+  @override
+  String prepRevisionFeedbackDismissed(String reference) {
+    return 'Dismissed \"$reference\" to Done.';
+  }
+
+  @override
+  String get prepRevisionEmptyDueTitle => 'Nothing due today';
+
+  @override
+  String get prepRevisionEmptyDueBody =>
+      'Flag tricky pages while logging study progress or check Overdue and Upcoming.';
+
+  @override
+  String get prepRevisionEmptyOverdueTitle => 'No overdue revisions';
+
+  @override
+  String get prepRevisionEmptyOverdueBody =>
+      'Every scheduled revision mark is up to date.';
+
+  @override
+  String get prepRevisionEmptyUpcomingTitle =>
+      'No upcoming revisions scheduled';
+
+  @override
+  String get prepRevisionEmptyUpcomingBody =>
+      'New flags are scheduled 1 day ahead, and Easy reviews space out along 3, 7, 14, and 30 days.';
+
+  @override
+  String get prepRevisionEmptyDoneTitle => 'No completed items yet';
+
+  @override
+  String get prepRevisionEmptyDoneBody =>
+      'Mastered and dismissed items are archived here.';
+
+  @override
+  String get prepRevisionEmptyFilteredBody =>
+      'No revision items match the active subject and material filters.';
+
+  @override
+  String get prepRevisionMarkAction => 'Mark for revision';
+
+  @override
+  String get prepRevisionPostSavePrompt =>
+      'Progress saved! Flag any page or problem to revise later without leaving?';
+
+  @override
+  String prepRevisionAddedCountChip(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount flags added',
+      one: '$formattedCount flag added',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepRevisionRefLabel => 'Reference (page, problem, or topic)';
+
+  @override
+  String get prepRevisionRefHint => 'e.g. p. 128 or Problem 14';
+
+  @override
+  String get prepRevisionRefError =>
+      'Enter a page, problem, or topic to revise.';
+
+  @override
+  String get prepRevisionPageLabel => 'Page # (optional)';
+
+  @override
+  String get prepRevisionPageHint => '128';
+
+  @override
+  String get prepRevisionReasonLabel => 'Reason';
+
+  @override
+  String get prepRevisionNoteLabel => 'Note (optional)';
+
+  @override
+  String get prepRevisionNoteHint =>
+      'Sign mistake in derivation, review shortcut...';
+
+  @override
+  String get prepRevisionAddAnotherButton => 'Add flag';
+
+  @override
+  String get prepRevisionDoneFlaggingButton => 'Hide flagger';
+
+  @override
+  String get prepRevisionFlagMaterialTooltip => 'Flag for revision';
+
+  @override
+  String get prepRevisionDialogTitle => 'Mark for revision';
+
+  @override
+  String get prepRevisionSubjectLabel => 'Subject';
+
+  @override
+  String get prepRevisionMaterialOptionalLabel => 'Material (optional)';
+
+  @override
+  String get prepRevisionNoMaterialOption =>
+      'Subject-wide / No specific material';
+
+  @override
+  String get prepRevisionWeakTopicsQuickFill => 'Tap a weak topic to prefill:';
+
+  @override
+  String prepRevisionAddAllWeakTopics(String count) {
+    return 'Add all ($count)';
+  }
+
+  @override
+  String get prepMockAddToRevisionButton => 'Add to revision';
+
+  @override
+  String get prepTabTimer => 'Timer';
+
+  @override
+  String get prepTimerTitle => 'Study Timer';
+
+  @override
+  String get prepTimerSubtitle =>
+      'Track Focus rounds and stopwatch sessions driven by timestamps';
+
+  @override
+  String get prepTimerModeFocus => 'Focus';
+
+  @override
+  String get prepTimerModeStopwatch => 'Stopwatch';
+
+  @override
+  String get prepTimerModeManual => 'Manual';
+
+  @override
+  String get prepTimerManualEntryButton => 'Log manual time';
+
+  @override
+  String get prepTimerSoundLabel => 'Sound alert';
+
+  @override
+  String get prepTimerSettingsButton => 'Pomodoro lengths';
+
+  @override
+  String prepTimerPhaseFocus(String round) {
+    return 'Focus round $round';
+  }
+
+  @override
+  String get prepTimerPhaseShortBreak => 'Short break';
+
+  @override
+  String get prepTimerPhaseLongBreak => 'Long break';
+
+  @override
+  String get prepTimerStatusRunning => 'Running';
+
+  @override
+  String get prepTimerStatusPaused => 'Paused';
+
+  @override
+  String get prepTimerStatusReady => 'Ready';
+
+  @override
+  String prepTimerElapsedSummary(String duration) {
+    return 'Studied: $duration';
+  }
+
+  @override
+  String prepTimerConfigSummary(
+      String focus, String shortBreak, String longBreak) {
+    return '${focus}m focus • ${shortBreak}m short • ${longBreak}m long';
+  }
+
+  @override
+  String get prepTimerSubjectRequired => 'Pick a subject to start studying';
+
+  @override
+  String get prepTimerStartButton => 'Start';
+
+  @override
+  String get prepTimerPauseButton => 'Pause';
+
+  @override
+  String get prepTimerResumeButton => 'Resume';
+
+  @override
+  String get prepTimerFinishButton => 'Finish';
+
+  @override
+  String get prepTimerDiscardButton => 'Discard';
+
+  @override
+  String get prepTimerDiscardConfirmTitle => 'Discard active session?';
+
+  @override
+  String get prepTimerDiscardConfirmBody =>
+      'This open timer session has not been saved and will be removed permanently.';
+
+  @override
+  String get prepTimerOpenFullButton => 'Open';
+
+  @override
+  String prepTimerAlertFocusDone(String round) {
+    return 'Focus round $round complete!';
+  }
+
+  @override
+  String prepTimerAlertBreakDone(String round) {
+    return 'Break finished! Ready for round $round?';
+  }
+
+  @override
+  String prepTimerStartShortBreak(String minutes) {
+    return 'Start ${minutes}m short break';
+  }
+
+  @override
+  String prepTimerStartLongBreak(String minutes) {
+    return 'Start ${minutes}m long break';
+  }
+
+  @override
+  String prepTimerStartNextRound(String round) {
+    return 'Start round $round';
+  }
+
+  @override
+  String get prepTimerDismissAlert => 'Dismiss';
+
+  @override
+  String get prepTimerConfigDialogTitle => 'Pomodoro lengths';
+
+  @override
+  String get prepTimerConfigFocusLabel => 'Focus length (minutes)';
+
+  @override
+  String get prepTimerConfigShortBreakLabel => 'Short break (minutes)';
+
+  @override
+  String get prepTimerConfigLongBreakLabel =>
+      'Long break after 4 rounds (minutes)';
+
+  @override
+  String get prepTimerConfigPositiveError => 'Enter at least 1 minute';
+
+  @override
+  String get prepTimerFinishDialogTitle => 'Save study session';
+
+  @override
+  String get prepTimerFinishDurationLabel => 'Studied time';
+
+  @override
+  String get prepTimerFinishNoteLabel => 'Session note (optional)';
+
+  @override
+  String get prepTimerFinishNoteHint => 'Chapters solved, formulas reviewed...';
+
+  @override
+  String prepTimerFinishUnitsLabel(String material) {
+    return 'Units done in $material (optional)';
+  }
+
+  @override
+  String get prepTimerFinishUnitsHint => 'e.g. 20';
+
+  @override
+  String get prepTimerFinishUnitsError =>
+      'Enter a positive whole number or leave blank';
+
+  @override
+  String get prepTimerFinishFlagRevisionCheck =>
+      'Mark an item for revision after saving';
+
+  @override
+  String get prepTimerFinishSaveButton => 'Save session';
+
+  @override
+  String get prepTimerFinishSavedHeading => 'Session saved!';
+
+  @override
+  String get prepTimerFinishDoneButton => 'Done';
+
+  @override
+  String get prepTimerManualDialogTitle => 'Log manual study session';
+
+  @override
+  String get prepTimerEditDialogTitle => 'Edit study session';
+
+  @override
+  String get prepTimerStartDateLabel => 'Date';
+
+  @override
+  String get prepTimerStartTimeLabel => 'Start time';
+
+  @override
+  String get prepTimerHoursLabel => 'Hours';
+
+  @override
+  String get prepTimerMinutesLabel => 'Minutes';
+
+  @override
+  String get prepTimerDurationPositiveError =>
+      'Enter at least 1 minute of study time';
+
+  @override
+  String get prepTimerHistoryTitle => 'Recent study sessions';
+
+  @override
+  String get prepTimerHistoryEmpty =>
+      'No saved study sessions yet. Start Focus or Stopwatch above, or log study time from elsewhere.';
+
+  @override
+  String get prepTimerEditTooltip => 'Edit session';
+
+  @override
+  String get prepTimerDeleteTooltip => 'Delete session';
+
+  @override
+  String get prepTimerDeleteConfirmTitle => 'Delete study session?';
+
+  @override
+  String get prepTimerDeleteConfirmBody =>
+      'This session and its study hours will be removed from your history and analytics.';
+
+  @override
+  String prepTimerTabFocus(String clock) {
+    return '$clock • Focus — JobPrep';
+  }
+
+  @override
+  String prepTimerTabBreak(String clock) {
+    return '$clock • Break — JobPrep';
+  }
+
+  @override
+  String prepTimerTabStopwatch(String clock) {
+    return '$clock • Stopwatch — JobPrep';
+  }
+
+  @override
+  String prepTimerTabPaused(String clock) {
+    return 'Paused $clock — JobPrep';
+  }
+
+  @override
+  String get prepAnalyticsHoursThisWeek => 'Hours this week';
+
+  @override
+  String get prepAnalyticsHoursSuffix => 'h';
+
+  @override
+  String prepAnalyticsHoursInRangeCaption(String hours) {
+    return '${hours}h in window';
+  }
+
+  @override
+  String get prepAnalyticsDailyHoursTitle => 'Hours studied per day';
+
+  @override
+  String get prepAnalyticsDailyHoursSubtitle =>
+      'Days with a 10+ min session or unit log count toward streaks';
+
+  @override
+  String get prepAnalyticsSubjectHoursTitle => 'Hours studied by subject';
+
+  @override
+  String get prepAnalyticsSubjectHoursEmpty =>
+      'Complete a study timer session or add manual hours to compare time across subjects.';
+
+  @override
+  String prepAnalyticsHeatmapTimeTooltip(
+      String date, String units, String hours) {
+    return '$date: $units units, ${hours}h';
+  }
+
+  @override
+  String prepTimerStartDateValue(String date) {
+    return 'Date: $date';
+  }
+
+  @override
+  String prepTimerStartTimeValue(String time) {
+    return 'Start time: $time';
+  }
+
+  @override
+  String prepAnalyticsHoursValue(String hours) {
+    return '${hours}h';
+  }
+
+  @override
+  String prepAnalyticsDailyHoursTooltip(String date, String hours) {
+    return '$date: ${hours}h';
+  }
+
+  @override
+  String prepAnalyticsSubjectHoursLegend(String subject, String hours) {
+    return '$subject: ${hours}h';
+  }
+
+  @override
+  String get navToday => 'Today';
+
+  @override
+  String get todayGreetingMorning => 'Good morning';
+
+  @override
+  String get todayGreetingAfternoon => 'Good afternoon';
+
+  @override
+  String get todayGreetingEvening => 'Good evening';
+
+  @override
+  String todayGreetingNamed(String greeting, String name) {
+    return '$greeting, $name';
+  }
+
+  @override
+  String get todaySubtitle => 'Your focused action plan for today';
+
+  @override
+  String get todayRefreshTooltip => 'Refresh today';
+
+  @override
+  String get todayLoadError => 'Could not load your Today plan.';
+
+  @override
+  String todayProgressRingLabel(String percent) {
+    return '$percent%';
+  }
+
+  @override
+  String get todayProgressRingCaption => 'Daily goal';
+
+  @override
+  String todayDailyDoneOfTarget(String done, String target) {
+    return '$done / $target units today';
+  }
+
+  @override
+  String get todayNoPlanHeaderHint => 'No study plan yet';
+
+  @override
+  String get todayDoNextTitle => 'Do this next';
+
+  @override
+  String get todayDoNextPriorityDeadline => 'Urgent deadline';
+
+  @override
+  String get todayDoNextPriorityRevision => 'Overdue revision';
+
+  @override
+  String get todayDoNextPriorityStudy => 'Biggest target today';
+
+  @override
+  String get todayDoNextOpenCircularAction => 'Review circular';
+
+  @override
+  String get todayDoNextStartRevisionAction => 'Start revision';
+
+  @override
+  String get todayDoNextStartStudyAction => 'Start timer';
+
+  @override
+  String todayDoNextOverdueSummary(
+      int count, String formattedCount, String label) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount overdue items • Next: $label',
+      one: '$formattedCount overdue item: $label',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String todayDoNextStudySummary(String remaining, String done, String target) {
+    return '$remaining units left today ($done / $target done)';
+  }
+
+  @override
+  String get todayDoNextAllCaughtUpTitle => 'All caught up for now';
+
+  @override
+  String get todayDoNextAllCaughtUpBody =>
+      'No deadlines in 2 days, no overdue revisions, and today\'s targets are complete.';
+
+  @override
+  String get todayTargetsTitle => 'Today\'s study targets';
+
+  @override
+  String get todayTargetsEmptyTitle => 'No study plan yet';
+
+  @override
+  String get todayTargetsEmptyBody =>
+      'Create a study plan with an exam date to calculate daily subject targets.';
+
+  @override
+  String get todayTargetsCreatePlanButton => 'Create study plan';
+
+  @override
+  String todayTargetRowDoneTarget(String done, String target) {
+    return '$done / $target units';
+  }
+
+  @override
+  String todayTargetRowRemaining(String remaining) {
+    return '$remaining remaining';
+  }
+
+  @override
+  String get todayTargetRowComplete => 'Daily target complete';
+
+  @override
+  String get todayTargetQuickLogButton => 'Quick log';
+
+  @override
+  String get todayTargetStartTimerButton => 'Start timer';
+
+  @override
+  String get todayCatchUpTitle => 'Catch-up notice';
+
+  @override
+  String todayCatchUpSubjectLine(String subject, String message) {
+    return '$subject: $message';
+  }
+
+  @override
+  String get todayRevisionTitle => 'Revision due today';
+
+  @override
+  String todayRevisionCountBadge(String formattedCount) {
+    return '$formattedCount due';
+  }
+
+  @override
+  String todayRevisionOverdueBreakdown(String overdue, String today) {
+    return '$overdue overdue · $today due today';
+  }
+
+  @override
+  String get todayRevisionEmptyTitle => 'Nothing due for revision today';
+
+  @override
+  String get todayRevisionEmptyBody =>
+      'Flag tricky pages or mock mistakes during study to schedule them here automatically.';
+
+  @override
+  String get todayRevisionStartButton => 'Start revision';
+
+  @override
+  String get todayDeadlinesTitle => 'Deadlines in the next 7 days';
+
+  @override
+  String get todayDeadlinesEmptyTitle => 'No deadlines in the next 7 days';
+
+  @override
+  String get todayDeadlinesEmptyBody =>
+      'Saved circulars closing within the coming week will appear here with urgency badges.';
+
+  @override
+  String get todayExamsTitle => 'Exams in the next 14 days';
+
+  @override
+  String get todayExamsEmptyTitle => 'No exams in the next 14 days';
+
+  @override
+  String get todayExamsEmptyBody =>
+      'Exam dates added to your saved circulars within the next two weeks will show up here.';
+
+  @override
+  String get todayInboxTitle => 'Inbox';
+
+  @override
+  String todayInboxWaitingSummary(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount items waiting in Inbox',
+      one: '$formattedCount item waiting in Inbox',
+      zero: 'Nothing waiting in Inbox',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get todayReviewInboxButton => 'Review inbox';
+
+  @override
+  String get todayTimeStudiedTitle => 'Time studied today';
+
+  @override
+  String todayTimeStudiedHoursMinutes(String hours, String minutes) {
+    return '${hours}h ${minutes}m';
+  }
+
+  @override
+  String todayTimeStudiedMinutesOnly(String minutes) {
+    return '${minutes}m';
+  }
+
+  @override
+  String todayTimeStudiedSessionsSummary(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount sessions today',
+      one: '$formattedCount session today',
+      zero: 'No study sessions recorded today yet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get todayTimeStudiedRunningNote => 'Active session running';
+
+  @override
+  String get todayOpenTimerButton => 'Open timer';
+
+  @override
+  String todayQuickLogTitle(String subject) {
+    return 'Quick log • $subject';
+  }
+
+  @override
+  String get todayQuickLogNoMaterialsBody =>
+      'Add a book or material under this subject before logging units.';
+
+  @override
+  String get todayQuickLogOpenSubjectButton => 'Add material';
+
+  @override
+  String todayQuickLogPresetChip(String units) {
+    return '+$units';
+  }
+
+  @override
+  String get notificationsBellTooltip => 'Notifications';
+
+  @override
+  String notificationsBellUnreadSemantics(String formattedCount) {
+    return 'Notifications ($formattedCount unread)';
+  }
+
+  @override
+  String get notificationsPanelTitle => 'Notifications';
+
+  @override
+  String get notificationsInAppNotice =>
+      'Notifications appear here while the app is open; daily email reminders continue working when closed.';
+
+  @override
+  String get notificationsMarkAllReadButton => 'Mark all read';
+
+  @override
+  String get notificationsMarkReadTooltip => 'Mark as read';
+
+  @override
+  String get notificationsDeleteTooltip => 'Delete notification';
+
+  @override
+  String get notificationsEmptyTitle => 'All caught up';
+
+  @override
+  String get notificationsEmptyBody =>
+      'Deadline alerts, due revisions, behind-schedule warnings, and your weekly review will show up here.';
+
+  @override
+  String get notificationsUnreadBadge => 'New';
+
+  @override
+  String get notificationsOpenWeeklyReviewChip => 'Weekly review';
+
+  @override
+  String get notificationsSaveError =>
+      'Could not update notification. Please try again.';
+
+  @override
+  String get notificationTypeDeadlineSoon => 'Deadline';
+
+  @override
+  String get notificationTypeExamSoon => 'Exam';
+
+  @override
+  String get notificationTypeRevisionDue => 'Revision';
+
+  @override
+  String get notificationTypeBehindSchedule => 'Study pace';
+
+  @override
+  String get notificationTypeWeeklyReview => 'Weekly review';
+
+  @override
+  String notificationMsgDeadlineSoon(
+      int days, String title, String formattedDays, String targetDate) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$title closes in $formattedDays days ($targetDate).',
+      one: '$title closes tomorrow ($targetDate).',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationMsgExamSoon(int days, String title, String stage,
+      String formattedDays, String targetDate) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$title — $stage exam is in $formattedDays days ($targetDate).',
+      one: '$title — $stage exam is tomorrow ($targetDate).',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationMsgRevisionDue(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'You have $formattedCount revision items due today.',
+      one: 'You have 1 revision item due today.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationMsgBehindScheduleSubject(String subject) {
+    return 'You are falling behind schedule in $subject.';
+  }
+
+  @override
+  String get notificationMsgBehindScheduleAll =>
+      'Your overall study plan is behind schedule.';
+
+  @override
+  String get notificationMsgWeeklyReview =>
+      'Your weekly review is ready. See how the past 7 days went.';
+
+  @override
+  String get settingsInAppNotificationsTitle =>
+      'Notification Types & Weekly Review';
+
+  @override
+  String get settingsInAppNotificationsSubtitle =>
+      'Choose which in-app notifications are created daily and pick your weekly review day.';
+
+  @override
+  String get settingsNotifDeadlineSoonTitle =>
+      'Circular deadlines (7, 3, 1 days)';
+
+  @override
+  String get settingsNotifExamSoonTitle => 'Exam dates (7, 3, 1 days)';
+
+  @override
+  String get settingsNotifRevisionDueTitle => 'Revision items due today';
+
+  @override
+  String get settingsNotifBehindScheduleTitle => 'Behind-schedule study plans';
+
+  @override
+  String get settingsNotifWeeklyReviewTitle => 'Weekly review digest';
+
+  @override
+  String get settingsNotifWeeklyReviewDayLabel => 'Weekly review day';
+
+  @override
+  String get weeklyReviewTitle => 'Weekly Review';
+
+  @override
+  String weeklyReviewPeriodSubtitle(String startDate, String endDate) {
+    return 'Past 7 days ($startDate – $endDate)';
+  }
+
+  @override
+  String get weeklyReviewOpenButton => 'Open Weekly Review';
+
+  @override
+  String get weeklyReviewUnitsTitle => 'Units studied';
+
+  @override
+  String get weeklyReviewHoursTitle => 'Hours studied';
+
+  @override
+  String weeklyReviewHoursValue(String formattedHours) {
+    return '${formattedHours}h';
+  }
+
+  @override
+  String get weeklyReviewConsistencyTitle => 'Days studied';
+
+  @override
+  String get weeklyReviewRevisionsClearedTitle => 'Revisions cleared';
+
+  @override
+  String get weeklyReviewMockAvgTitle => 'Mock test average';
+
+  @override
+  String weeklyReviewMockPercent(String formattedPercent) {
+    return '$formattedPercent%';
+  }
+
+  @override
+  String weeklyReviewMockCountSubtitle(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount mock tests taken',
+      one: '1 mock test taken',
+      zero: 'No mock tests this week',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weeklyReviewMockNoData => 'No score yet';
+
+  @override
+  String get weeklyReviewDeltaSame => 'Same as previous week';
+
+  @override
+  String weeklyReviewDeltaUnits(String sign, String formattedDelta) {
+    return '$sign$formattedDelta vs previous week';
+  }
+
+  @override
+  String weeklyReviewDeltaHours(String sign, String formattedHours) {
+    return '$sign${formattedHours}h vs previous week';
+  }
+
+  @override
+  String weeklyReviewDeltaPoints(String sign, String formattedPoints) {
+    return '$sign$formattedPoints% vs previous week';
+  }
+
+  @override
+  String weeklyReviewDaysFraction(String studied, String total) {
+    return '$studied / $total days';
+  }
+
+  @override
+  String get weeklyReviewMissedDaysNone => 'Zero missed days this week.';
+
+  @override
+  String weeklyReviewMissedDaysCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount missed days',
+      one: '1 missed day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weeklyReviewUpcomingTitle => 'Next 7 days';
+
+  @override
+  String get weeklyReviewUpcomingEmptyTitle => 'Clear week ahead';
+
+  @override
+  String get weeklyReviewUpcomingEmptyBody =>
+      'No application deadlines or scheduled exams fall within the next 7 days.';
+
+  @override
+  String get weeklyReviewSuggestionTitle => 'Suggestion for next week';
+
+  @override
+  String weeklyReviewSuggestionDeadline(String title) {
+    return 'Prioritize your $title application before its deadline closes in the next 3 days.';
+  }
+
+  @override
+  String weeklyReviewSuggestionBehindSubject(String subject) {
+    return 'Add a short daily catch-up block for $subject to bring its study plan back on pace.';
+  }
+
+  @override
+  String get weeklyReviewSuggestionBehindAll =>
+      'Set a light catch-up target today to close the gap on your behind-schedule study plan.';
+
+  @override
+  String get weeklyReviewSuggestionStart =>
+      'Start light next week: log 15 minutes or 10 pages on day one to build momentum.';
+
+  @override
+  String weeklyReviewSuggestionMissedDays(String formattedDays) {
+    return 'You missed $formattedDays days this week — try lowering your minimum daily floor so busy days still count.';
+  }
+
+  @override
+  String get weeklyReviewSuggestionMock =>
+      'Schedule one timed mock test next week and flag any weak topics directly to Revision.';
+
+  @override
+  String weeklyReviewSuggestionRevision(String formattedCount) {
+    return 'Clear your $formattedCount pending revision items early next week before adding heavy new reading.';
+  }
+
+  @override
+  String get weeklyReviewSuggestionMaintain =>
+      'Consistent week! Maintain this steady pace and keep a short daily slot reserved for revision.';
+
+  @override
+  String get weeklyReviewBackToToday => 'Back to Today';
+
+  @override
+  String onboardingStepProgress(String step, String total) {
+    return 'Step $step of $total';
+  }
+
+  @override
+  String get onboardingBackButton => 'Back';
+
+  @override
+  String get onboardingNextButton => 'Continue';
+
+  @override
+  String get onboardingSkipButton => 'Skip';
+
+  @override
+  String get onboardingFinishButton => 'Finish setup';
+
+  @override
+  String get onboardingWelcomeTitle => 'Welcome to JobPrep';
+
+  @override
+  String get onboardingWelcomeSubtitle =>
+      'Set up your language, theme, syllabus, and weekly pace in a minute. We never ask for phone numbers, addresses, or age.';
+
+  @override
+  String get onboardingLanguageHeading => 'App language';
+
+  @override
+  String get onboardingThemeHeading => 'Appearance';
+
+  @override
+  String get onboardingTrackTitle => 'What are you preparing for?';
+
+  @override
+  String get onboardingTrackSubtitle =>
+      'Pick a starting syllabus template you can customize on the next step, or start completely blank.';
+
+  @override
+  String get onboardingTrackGovernmentTitle => 'Government job exams';
+
+  @override
+  String get onboardingTrackGovernmentDesc =>
+      'Bengali, English, General Knowledge, Math, Analytical Reasoning & Computer starter materials.';
+
+  @override
+  String get onboardingTrackSoftwareTitle => 'Private software jobs';
+
+  @override
+  String get onboardingTrackSoftwareDesc =>
+      'Data Structures & Algorithms, System Design, OOP/SQL & Interview Prep materials.';
+
+  @override
+  String get onboardingTrackBlankTitle => 'Something else (Blank start)';
+
+  @override
+  String get onboardingTrackBlankDesc =>
+      'Add your own custom subjects and materials for any exam, fellowship, or career path.';
+
+  @override
+  String get onboardingSubjectsTitle => 'Customize your subjects & materials';
+
+  @override
+  String get onboardingSubjectsSubtitle =>
+      'Enable or disable subjects, rename them, edit total units, or add your own.';
+
+  @override
+  String get onboardingSubjectsEmptyBlankNote =>
+      'No subjects yet. Tap Add subject to build your custom track, or continue and add them later.';
+
+  @override
+  String get onboardingSubjectNameLabel => 'Subject name';
+
+  @override
+  String get onboardingMaterialTitleLabel => 'Material title';
+
+  @override
+  String get onboardingMaterialUnitsLabel => 'Total units';
+
+  @override
+  String get onboardingAddSubjectButton => 'Add subject';
+
+  @override
+  String get onboardingAddSubjectDialogTitle => 'New Subject';
+
+  @override
+  String get onboardingAddMaterialButton => 'Add material';
+
+  @override
+  String get onboardingAddMaterialDialogTitle => 'New Material';
+
+  @override
+  String get onboardingRemoveMaterialTooltip => 'Remove material';
+
+  @override
+  String get onboardingValidationEmptySubject =>
+      'Every enabled subject needs a name.';
+
+  @override
+  String get onboardingValidationDuplicateSubject =>
+      'Two enabled subjects cannot share the same name.';
+
+  @override
+  String get onboardingValidationEmptyMaterial =>
+      'Every material under an enabled subject needs a title.';
+
+  @override
+  String get onboardingValidationInvalidUnits =>
+      'Every material must have at least 1 unit.';
+
+  @override
+  String get onboardingScheduleTitle => 'Set your exam timeline & weekly pace';
+
+  @override
+  String get onboardingScheduleSubtitle =>
+      'Your study plan calculates daily unit targets automatically with a 7-day buffer before exam day.';
+
+  @override
+  String get onboardingExamDateLabel => 'Target exam date';
+
+  @override
+  String get onboardingExamDatePickButton => 'Choose exam date';
+
+  @override
+  String get onboardingExamDateUnknownToggle =>
+      'I don\'t know my exam date yet';
+
+  @override
+  String get onboardingExamDateUnknownNote =>
+      'No problem — you can attach an exam date later from Prep > Study Plan.';
+
+  @override
+  String get onboardingStudyDaysLabel => 'Study days per week';
+
+  @override
+  String onboardingStudyDaysCount(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formatted days / week',
+      one: '$formatted day / week',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get onboardingRestDaysLabel => 'Which days are your rest days?';
+
+  @override
+  String get onboardingMaxPaceLabel => 'Maximum daily pace (optional)';
+
+  @override
+  String get onboardingMaxPaceHint => 'e.g. 50 units/day';
+
+  @override
+  String get onboardingValidationMissingExamDate =>
+      'Choose a target exam date or turn on \"I don\'t know yet\".';
+
+  @override
+  String get onboardingValidationPastExamDate =>
+      'Choose today or a future exam date.';
+
+  @override
+  String get onboardingValidationNoStudyDays =>
+      'Keep at least 1 study day per week.';
+
+  @override
+  String get onboardingValidationInvalidMaxPace =>
+      'Maximum daily pace must be a whole number above 0.';
+
+  @override
+  String get onboardingCircularTitle => 'Save your first circular (optional)';
+
+  @override
+  String get onboardingCircularSubtitle =>
+      'Paste an application link to save your first job circular into Inbox right away, or leave blank to skip.';
+
+  @override
+  String get onboardingCircularOptionalNote =>
+      'Leaving the link empty cleanly skips this step.';
+
+  @override
+  String get onboardingValidationInvalidUrl =>
+      'Enter a valid web link starting with http:// or https://, or leave it blank.';
+
+  @override
+  String get onboardingFinishTitle => 'Ready to launch your study space';
+
+  @override
+  String get onboardingFinishSubtitle =>
+      'Review your choices below. Applying setup again later never creates duplicates.';
+
+  @override
+  String get onboardingSummaryTrackLabel => 'Preparation track';
+
+  @override
+  String onboardingSummarySubjectsValue(
+      int subjectsCount, String formattedSubjects, String formattedMaterials) {
+    String _temp0 = intl.Intl.pluralLogic(
+      subjectsCount,
+      locale: localeName,
+      other: '$formattedSubjects subjects · $formattedMaterials materials',
+      one: '1 subject · $formattedMaterials materials',
+      zero: 'Blank start (no subjects staged)',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String onboardingSummaryScheduleExam(String examDate, String studyDays) {
+    return 'Exam: $examDate · $studyDays';
+  }
+
+  @override
+  String onboardingSummaryScheduleUnknown(String studyDays) {
+    return 'Exam date undecided · $studyDays';
+  }
+
+  @override
+  String onboardingSummaryPaceLabel(String formattedPace) {
+    return 'Max pace: $formattedPace / day';
+  }
+
+  @override
+  String onboardingSummaryCircularPending(String target) {
+    return 'Inbox capture: $target';
+  }
+
+  @override
+  String get onboardingSummaryCircularSkipped => 'No circular staged yet';
+
+  @override
+  String get onboardingApplyError =>
+      'Could not complete setup. Check your connection and try again.';
+
+  @override
+  String get onboardingTodayTipsTitle => 'Quick tips to get started';
+
+  @override
+  String get onboardingTodayTip1 =>
+      'Log pages or minutes right from Today\'s targets to keep your study plan accurate.';
+
+  @override
+  String get onboardingTodayTip2 =>
+      'Flag tricky pages while logging progress to grow your spaced Revision queue.';
+
+  @override
+  String get onboardingTodayTip3 =>
+      'Check the notification bell for deadline countdowns and your weekly Sunday review.';
+
+  @override
+  String get onboardingTodayTipsDismissAll => 'Dismiss tips';
+
+  @override
+  String get onboardingTodayTipDismissTooltip => 'Dismiss tip';
+
+  @override
+  String get settingsSetupCardTitle => 'Setup Wizard';
+
+  @override
+  String get settingsSetupCardSubtitle =>
+      'Revisit track templates, customize subjects, or update your baseline schedule safely without creating duplicates.';
+
+  @override
+  String get settingsRunSetupAgainButton => 'Run setup again';
 }

@@ -8,6 +8,7 @@ import 'package:job_prep/core/widgets/app_nav_item.dart';
 import 'package:job_prep/core/widgets/app_nav_rail.dart';
 import 'package:job_prep/core/widgets/app_sidebar_nav.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
+import 'package:job_prep/features/notifications/presentation/widgets/notifications_bell_button.dart';
 
 /// Responsive application scaffold adapting between compact (< 600 px),
 /// medium (600 - 1024 px), and expanded (> 1024 px) form factors.
@@ -89,7 +90,42 @@ class AppScaffold extends StatelessWidget {
             if (breakpoints.isCompact(width)) {
               return Scaffold(
                 backgroundColor: colors.background,
-                body: child,
+                body: SafeArea(
+                  bottom: false,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(
+                          spacing.lg,
+                          spacing.sm,
+                          spacing.lg,
+                          spacing.xs,
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              l10n.appTitle,
+                              style: tokens.textStyles.titleLarge.copyWith(
+                                color: colors.textPrimary,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            const Spacer(),
+                            const NotificationsBellButton(),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: MediaQuery.removePadding(
+                          context: context,
+                          removeTop: true,
+                          child: child,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 floatingActionButton: onQuickCapture == null
                     ? null
                     : Semantics(

@@ -11,25 +11,34 @@ abstract final class AppRoutePaths {
   /// Password recovery / reset route.
   static const String resetPassword = '/reset-password';
 
-  /// Main dashboard route.
+  /// Focused daily Today route (default signed-in home).
+  static const String today = '/today';
+
+  /// Overview Dashboard route.
   static const String dashboard = '/dashboard';
 
   /// Quick-capture Inbox triage route.
   static const String inbox = '/inbox';
+
+  /// Full-screen first-run onboarding wizard route.
+  static const String onboarding = '/onboarding';
 }
 
-/// Computes the target redirect route for [location] given [authState], or
-/// returns `null` when navigation should proceed without redirection.
+/// Computes the target redirect route for [location] given [authState] and
+/// optional [needsOnboarding], returning `null` when allowed.
 ///
 /// Rules:
 /// 1. Recovery sessions (`AuthStatus.passwordRecovery`) are directed to
 ///    `/reset-password`.
 /// 2. Signed-out users (`AuthStatus.signedOut`) are directed to `/login`.
-/// 3. Signed-in users (`AuthStatus.signedIn`) navigating to `/login` (or `/`)
-///    are redirected to `/dashboard`.
+/// 3. Signed-in users (`AuthStatus.signedIn`) who have not completed
+///    onboarding (`needsOnboarding == true`) are directed to `/onboarding`.
+/// 4. Signed-in users who completed onboarding are redirected away from `/login`,
+///    `/`, and `/onboarding` to `/today`.
 String? resolveAuthRedirect({
   required AuthSessionState authState,
   required String location,
+  bool needsOnboarding = false,
 }) {
   final normalized = _normalizePath(location);
 
@@ -47,9 +56,16 @@ String? resolveAuthRedirect({
       return AppRoutePaths.login;
 
     case AuthStatus.signedIn:
+      if (needsOnboarding) {
+        if (normalized == AppRoutePaths.onboarding) {
+          return null;
+        }
+        return AppRoutePaths.onboarding;
+      }
       if (normalized == AppRoutePaths.login ||
-          normalized == AppRoutePaths.root) {
-        return AppRoutePaths.dashboard;
+          normalized == AppRoutePaths.root ||
+          normalized == AppRoutePaths.onboarding) {
+        return AppRoutePaths.today;
       }
       return null;
   }

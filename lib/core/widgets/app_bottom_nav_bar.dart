@@ -145,11 +145,11 @@ class _BottomNavItemTileState extends ConsumerState<_BottomNavItemTile> {
           child: AnimatedContainer(
             duration: durations.fast,
             margin: EdgeInsets.symmetric(
-              horizontal: spacing.xxs,
+              horizontal: 1,
               vertical: spacing.xs,
             ),
             padding: EdgeInsets.symmetric(
-              horizontal: spacing.xs,
+              horizontal: spacing.xxs,
               vertical: spacing.xxs,
             ),
             decoration: BoxDecoration(

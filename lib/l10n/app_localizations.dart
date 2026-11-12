@@ -3271,6 +3271,3800 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Data Structures & Algorithms, Database Systems, OOP, Web Development, and Software Quality Assurance.'**
   String get prepSeededSweSubtitle;
+
+  /// Subtitle on the Phase 5A home dashboard header
+  ///
+  /// In en, this message translates to:
+  /// **'Your job circulars, upcoming dates, and study momentum at a glance.'**
+  String get dashboardHomeSubtitle;
+
+  /// Tooltip for manual refresh icon on home dashboard
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh dashboard'**
+  String get dashboardRefreshTooltip;
+
+  /// Error banner message when dashboard queries fail
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load dashboard summary.'**
+  String get dashboardLoadError;
+
+  /// Onboarding card title shown to new users with no data yet
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to JobPrep'**
+  String get dashboardWelcomeTitle;
+
+  /// Onboarding card body shown to new users with no data yet
+  ///
+  /// In en, this message translates to:
+  /// **'Track job circulars, checklists, exam dates, and study progress in one calm workspace.'**
+  String get dashboardWelcomeBody;
+
+  /// CTA button in new-user welcome card to create a circular
+  ///
+  /// In en, this message translates to:
+  /// **'Add first circular'**
+  String get dashboardWelcomeAddCircular;
+
+  /// CTA button in new-user welcome card to open Prep screen
+  ///
+  /// In en, this message translates to:
+  /// **'Set up study plan'**
+  String get dashboardWelcomeSetupPrep;
+
+  /// Metric card label counting deadlines in the next 7 days
+  ///
+  /// In en, this message translates to:
+  /// **'Deadlines this week'**
+  String get dashboardMetricDeadlinesWeek;
+
+  /// Metric card label counting quick-captured inbox circulars
+  ///
+  /// In en, this message translates to:
+  /// **'Inbox items'**
+  String get dashboardMetricInbox;
+
+  /// Metric card label counting exam dates in the next 14 days
+  ///
+  /// In en, this message translates to:
+  /// **'Exams in 14 days'**
+  String get dashboardMetricExams14Days;
+
+  /// Metric card label counting submitted circular applications
+  ///
+  /// In en, this message translates to:
+  /// **'Applications submitted'**
+  String get dashboardMetricSubmitted;
+
+  /// Metric card label for animated overall preparation progress ring
+  ///
+  /// In en, this message translates to:
+  /// **'Overall prep'**
+  String get dashboardMetricOverallPrep;
+
+  /// Section card heading for the most recently logged study material shortcut
+  ///
+  /// In en, this message translates to:
+  /// **'Continue studying'**
+  String get dashboardContinueStudyingTitle;
+
+  /// Primary button opening the most recently logged material
+  ///
+  /// In en, this message translates to:
+  /// **'Continue studying'**
+  String get dashboardContinueStudyingAction;
+
+  /// Summary of the most recent study progress log
+  ///
+  /// In en, this message translates to:
+  /// **'+{formattedUnits} {unitLabel} on {formattedDate}'**
+  String dashboardContinueStudyingLastLogged(
+      String formattedUnits, String unitLabel, String formattedDate);
+
+  /// Material completion ratio and percentage line inside continue studying card
+  ///
+  /// In en, this message translates to:
+  /// **'{formattedCompleted} / {formattedTotal} {unitLabel} ({percent}%)'**
+  String dashboardMaterialProgressLine(String formattedCompleted,
+      String formattedTotal, String unitLabel, String percent);
+
+  /// Empty state title inside continue studying card
+  ///
+  /// In en, this message translates to:
+  /// **'No study logs yet'**
+  String get dashboardContinueStudyingEmptyTitle;
+
+  /// Empty state body inside continue studying card
+  ///
+  /// In en, this message translates to:
+  /// **'Log a study session in Prep and jump straight back into your book or course from here.'**
+  String get dashboardContinueStudyingEmptyBody;
+
+  /// CTA button opening Prep screen from empty continue studying state
+  ///
+  /// In en, this message translates to:
+  /// **'Open Prep'**
+  String get dashboardContinueStudyingEmptyAction;
+
+  /// Card heading for upcoming circular deadlines list
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming deadlines'**
+  String get dashboardUpcomingDeadlinesTitle;
+
+  /// Empty state title inside upcoming deadlines card
+  ///
+  /// In en, this message translates to:
+  /// **'No upcoming deadlines'**
+  String get dashboardUpcomingDeadlinesEmptyTitle;
+
+  /// Empty state body inside upcoming deadlines card
+  ///
+  /// In en, this message translates to:
+  /// **'Saved circulars with future deadlines will appear here with color-coded countdowns.'**
+  String get dashboardUpcomingDeadlinesEmptyBody;
+
+  /// Secondary button navigating from dashboard card to full list
+  ///
+  /// In en, this message translates to:
+  /// **'View all'**
+  String get dashboardViewAllAction;
+
+  /// Card heading for upcoming circular exam dates list
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming exams'**
+  String get dashboardUpcomingExamsTitle;
+
+  /// Empty state title inside upcoming exams card
+  ///
+  /// In en, this message translates to:
+  /// **'No upcoming exams scheduled'**
+  String get dashboardUpcomingExamsEmptyTitle;
+
+  /// Empty state body inside upcoming exams card
+  ///
+  /// In en, this message translates to:
+  /// **'Add Preliminary, Written, or Viva dates on a circular to keep track of upcoming sittings here.'**
+  String get dashboardUpcomingExamsEmptyBody;
+
+  /// Action button navigating from upcoming exams card to calendar screen
+  ///
+  /// In en, this message translates to:
+  /// **'Open calendar'**
+  String get dashboardOpenCalendarAction;
+
+  /// Countdown badge label when an exam takes place today
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get dashboardExamToday;
+
+  /// Countdown badge label for an exam scheduled N days from today
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{In 1 day} other{In {formattedCount} days}}'**
+  String dashboardExamInDays(int count, String formattedCount);
+
+  /// Heading for per-user daily email reminder settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Email Reminders'**
+  String get settingsRemindersTitle;
+
+  /// Description under email reminder settings heading
+  ///
+  /// In en, this message translates to:
+  /// **'Receive daily alerts for circular deadlines and exam dates 7, 3, and 1 days ahead.'**
+  String get settingsRemindersSubtitle;
+
+  /// Switch label turning daily email reminders on or off
+  ///
+  /// In en, this message translates to:
+  /// **'Enable daily email reminders'**
+  String get settingsRemindersToggleLabel;
+
+  /// Helper text shown when email reminders are enabled
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders are sent once per milestone using your saved account email.'**
+  String get settingsRemindersToggleHintEnabled;
+
+  /// Helper text shown when email reminders are turned off
+  ///
+  /// In en, this message translates to:
+  /// **'Email reminders are paused. Turn them on anytime without losing saved circulars.'**
+  String get settingsRemindersToggleHintDisabled;
+
+  /// Subheading above English/Bangla email language selector
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder email language'**
+  String get settingsRemindersLanguageTitle;
+
+  /// Description explaining email language selection
+  ///
+  /// In en, this message translates to:
+  /// **'Choose which language daily reminder emails are written in.'**
+  String get settingsRemindersLanguageSubtitle;
+
+  /// Snackbar or banner message when saving reminder settings fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save reminder settings. Please try again.'**
+  String get settingsRemindersSaveError;
+
+  /// Error banner shown when reminder settings fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load reminder settings.'**
+  String get settingsRemindersLoadError;
+
+  /// Notice shown when running without a connected Supabase backend
+  ///
+  /// In en, this message translates to:
+  /// **'Connect Supabase to persist email reminder preferences across devices.'**
+  String get settingsRemindersOfflineHint;
+
+  /// Title for client-side encrypted portal vault
+  ///
+  /// In en, this message translates to:
+  /// **'Portal Vault'**
+  String get vaultTitle;
+
+  /// Subtitle explaining portal vault security
+  ///
+  /// In en, this message translates to:
+  /// **'Protect saved application portal logins with your local vault passphrase.'**
+  String get vaultSubtitle;
+
+  /// Badge label when portal vault is locked
+  ///
+  /// In en, this message translates to:
+  /// **'Locked'**
+  String get vaultStatusLocked;
+
+  /// Badge label when portal vault is unlocked
+  ///
+  /// In en, this message translates to:
+  /// **'Unlocked'**
+  String get vaultStatusUnlocked;
+
+  /// Button opening first-time vault passphrase setup dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Set up vault'**
+  String get vaultSetupButton;
+
+  /// Button opening vault unlock dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock vault'**
+  String get vaultUnlockButton;
+
+  /// Button locking the vault immediately and wiping keys
+  ///
+  /// In en, this message translates to:
+  /// **'Lock vault'**
+  String get vaultLockButton;
+
+  /// Dialog title for first-time vault setup
+  ///
+  /// In en, this message translates to:
+  /// **'Create Vault Passphrase'**
+  String get vaultSetupDialogTitle;
+
+  /// Introductory explanation inside first-time vault setup dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a strong passphrase to encrypt your portal passwords on this device.'**
+  String get vaultSetupDialogBody;
+
+  /// Prominent non-recoverable warning displayed during vault setup
+  ///
+  /// In en, this message translates to:
+  /// **'Important: A forgotten passphrase cannot be recovered or reset. Any saved passwords cannot be decrypted without it.'**
+  String get vaultUnrecoverableWarning;
+
+  /// Checkbox label confirming user read the recovery warning
+  ///
+  /// In en, this message translates to:
+  /// **'I understand that a forgotten passphrase cannot be recovered.'**
+  String get vaultAcknowledgeWarningLabel;
+
+  /// Validation error if user tries submitting setup without acknowledging warning
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm that you understand the recovery warning.'**
+  String get vaultAcknowledgeRequiredError;
+
+  /// Text field label for vault passphrase
+  ///
+  /// In en, this message translates to:
+  /// **'Vault passphrase'**
+  String get vaultPassphraseLabel;
+
+  /// Text field label for confirming new vault passphrase
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm passphrase'**
+  String get vaultPassphraseConfirmLabel;
+
+  /// Validation error when vault passphrase is shorter than 8 characters
+  ///
+  /// In en, this message translates to:
+  /// **'Enter at least 8 characters.'**
+  String get vaultPassphraseTooShortError;
+
+  /// Validation error when confirmation passphrase does not match
+  ///
+  /// In en, this message translates to:
+  /// **'Passphrases do not match.'**
+  String get vaultPassphraseMismatchError;
+
+  /// Submit button creating vault check value and unlocking session
+  ///
+  /// In en, this message translates to:
+  /// **'Create & unlock'**
+  String get vaultCreateAndUnlockAction;
+
+  /// Dialog title prompting for existing vault passphrase
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock Portal Vault'**
+  String get vaultUnlockDialogTitle;
+
+  /// Description text inside vault unlock dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your vault passphrase to view, copy, and manage saved portal accounts.'**
+  String get vaultUnlockDialogBody;
+
+  /// Error displayed when vault unlock verification fails
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect vault passphrase. Please try again.'**
+  String get vaultWrongPassphraseError;
+
+  /// Informational caption explaining automatic vault locking
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-locks after inactivity and whenever you sign out.'**
+  String get vaultAutoLockNote;
+
+  /// Locked placeholder text on circular detail screen
+  ///
+  /// In en, this message translates to:
+  /// **'Portal logins are hidden while the vault is locked.'**
+  String get vaultPortalLockedHint;
+
+  /// Section title for portal accounts inside circular detail view
+  ///
+  /// In en, this message translates to:
+  /// **'Portal Login'**
+  String get portalSectionTitle;
+
+  /// Button adding a portal account to the active circular
+  ///
+  /// In en, this message translates to:
+  /// **'Add account'**
+  String get portalAddAccountButton;
+
+  /// Empty state shown when vault is unlocked and circular has no accounts
+  ///
+  /// In en, this message translates to:
+  /// **'No portal accounts saved for this circular yet.'**
+  String get portalEmptyState;
+
+  /// Dialog title for adding a portal login
+  ///
+  /// In en, this message translates to:
+  /// **'Add Portal Account'**
+  String get portalAddDialogTitle;
+
+  /// Dialog title for editing a portal login
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Portal Account'**
+  String get portalEditDialogTitle;
+
+  /// Input label for portal login web link
+  ///
+  /// In en, this message translates to:
+  /// **'Portal URL (optional)'**
+  String get portalUrlLabel;
+
+  /// Input label for portal login username or applicant ID
+  ///
+  /// In en, this message translates to:
+  /// **'User ID / Username'**
+  String get portalUsernameLabel;
+
+  /// Validation error when portal username is blank
+  ///
+  /// In en, this message translates to:
+  /// **'User ID is required.'**
+  String get portalUsernameRequiredError;
+
+  /// Input label for portal account password
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get portalPasswordLabel;
+
+  /// Validation error when portal password is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required.'**
+  String get portalPasswordRequiredError;
+
+  /// Input label for optional portal account notes
+  ///
+  /// In en, this message translates to:
+  /// **'Notes (optional)'**
+  String get portalNotesLabel;
+
+  /// Button copying portal user ID to clipboard
+  ///
+  /// In en, this message translates to:
+  /// **'Copy ID'**
+  String get portalCopyUserIdAction;
+
+  /// Button copying decrypted portal password to clipboard
+  ///
+  /// In en, this message translates to:
+  /// **'Copy password'**
+  String get portalCopyPasswordAction;
+
+  /// Button opening external application portal URL
+  ///
+  /// In en, this message translates to:
+  /// **'Open portal'**
+  String get portalOpenUrlAction;
+
+  /// Tooltip toggling masked portal password visibility
+  ///
+  /// In en, this message translates to:
+  /// **'Show password'**
+  String get portalRevealPasswordTooltip;
+
+  /// Tooltip hiding revealed portal password
+  ///
+  /// In en, this message translates to:
+  /// **'Hide password'**
+  String get portalHidePasswordTooltip;
+
+  /// Snackbar notification confirming clipboard copy and auto-clear countdown
+  ///
+  /// In en, this message translates to:
+  /// **'Copied to clipboard — clears in {formattedSeconds}s.'**
+  String portalCopiedClipboardNotice(String formattedSeconds);
+
+  /// Confirmation dialog title before deleting a portal account
+  ///
+  /// In en, this message translates to:
+  /// **'Delete portal account?'**
+  String get portalDeleteConfirmTitle;
+
+  /// Confirmation dialog body before deleting a portal account
+  ///
+  /// In en, this message translates to:
+  /// **'Remove saved portal login \"{username}\" from this circular?'**
+  String portalDeleteConfirmMessage(String username);
+
+  /// Error shown when saving or deleting a portal account fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save portal account. Please try again.'**
+  String get portalSaveError;
+
+  /// Error shown when loading or decrypting portal accounts fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load portal accounts.'**
+  String get portalLoadError;
+
+  /// Heading for the combined and per-subject study plans section
+  ///
+  /// In en, this message translates to:
+  /// **'Study Plans'**
+  String get prepStudyPlanSectionTitle;
+
+  /// Button opening dialog to create a new study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Set study plan'**
+  String get prepStudyPlanAddButton;
+
+  /// Dialog title when creating a study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Create Study Plan'**
+  String get prepStudyPlanCreateTitle;
+
+  /// Dialog title when editing an existing study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Study Plan'**
+  String get prepStudyPlanEditTitle;
+
+  /// Label for selecting all subjects or a specific subject
+  ///
+  /// In en, this message translates to:
+  /// **'Plan scope'**
+  String get prepStudyPlanScopeLabel;
+
+  /// Label representing the combined all-subjects study plan
+  ///
+  /// In en, this message translates to:
+  /// **'All subjects (combined)'**
+  String get prepStudyPlanAllSubjectsLabel;
+
+  /// Label for optional circular dropdown in study plan form
+  ///
+  /// In en, this message translates to:
+  /// **'Linked exam circular (optional)'**
+  String get prepStudyPlanCircularLabel;
+
+  /// Option representing no linked circular on a study plan
+  ///
+  /// In en, this message translates to:
+  /// **'No circular link (custom date)'**
+  String get prepStudyPlanNoCircularOption;
+
+  /// Label for choosing a specific exam stage date from a linked circular
+  ///
+  /// In en, this message translates to:
+  /// **'Circular exam stage (optional)'**
+  String get prepStudyPlanExamStageLabel;
+
+  /// Label for study plan start date picker
+  ///
+  /// In en, this message translates to:
+  /// **'Start date'**
+  String get prepStudyPlanStartDateLabel;
+
+  /// Formatted button label displaying chosen plan start date
+  ///
+  /// In en, this message translates to:
+  /// **'Start date: {formattedDate}'**
+  String prepStudyPlanStartDateValue(String formattedDate);
+
+  /// Label for study plan target exam date picker
+  ///
+  /// In en, this message translates to:
+  /// **'Exam date'**
+  String get prepStudyPlanTargetDateLabel;
+
+  /// Formatted button label displaying chosen exam date
+  ///
+  /// In en, this message translates to:
+  /// **'Exam date: {formattedDate}'**
+  String prepStudyPlanTargetDateValue(String formattedDate);
+
+  /// Label for revision buffer days input
+  ///
+  /// In en, this message translates to:
+  /// **'Finish buffer (days before exam)'**
+  String get prepStudyPlanBufferDaysLabel;
+
+  /// Label for rest days per week selector
+  ///
+  /// In en, this message translates to:
+  /// **'Rest days per week'**
+  String get prepStudyPlanRestDaysLabel;
+
+  /// Label for maximum comfortable daily study pace limit
+  ///
+  /// In en, this message translates to:
+  /// **'Max daily pace limit (units/day, optional)'**
+  String get prepStudyPlanMaxPaceLabel;
+
+  /// Hint text for optional maximum daily pace limit field
+  ///
+  /// In en, this message translates to:
+  /// **'Leave blank for no pace cap'**
+  String get prepStudyPlanMaxPaceHint;
+
+  /// Submit button saving a study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Save plan'**
+  String get prepStudyPlanSaveButton;
+
+  /// Confirmation title before deleting a study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Delete study plan?'**
+  String get prepStudyPlanDeleteTitle;
+
+  /// Confirmation body before deleting a study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this study plan? Your subjects, materials, and progress logs will stay untouched.'**
+  String get prepStudyPlanDeleteBody;
+
+  /// Badge when progress is ahead of the ideal line
+  ///
+  /// In en, this message translates to:
+  /// **'Ahead'**
+  String get prepStudyPlanStatusAhead;
+
+  /// Badge when progress is on track with the ideal line
+  ///
+  /// In en, this message translates to:
+  /// **'On track'**
+  String get prepStudyPlanStatusOnTrack;
+
+  /// Badge when progress has fallen behind the ideal line
+  ///
+  /// In en, this message translates to:
+  /// **'Behind'**
+  String get prepStudyPlanStatusBehind;
+
+  /// Metric label for remaining study units
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining'**
+  String get prepStudyPlanRemainingLabel;
+
+  /// Metric label for remaining effective study days
+  ///
+  /// In en, this message translates to:
+  /// **'Study days left'**
+  String get prepStudyPlanDaysLeftLabel;
+
+  /// Metric label for today's study unit target
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s target'**
+  String get prepStudyPlanTodayTargetLabel;
+
+  /// Formatted count of study units
+  ///
+  /// In en, this message translates to:
+  /// **'{formatted} units'**
+  String prepStudyPlanUnitsCount(String formatted);
+
+  /// Pluralized count of remaining study days
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{0 days} =1{{formatted} day} other{{formatted} days}}'**
+  String prepStudyPlanDaysCount(int count, String formatted);
+
+  /// Compact progress label inside Today's progress ring or summary
+  ///
+  /// In en, this message translates to:
+  /// **'{done} / {target} today'**
+  String prepStudyPlanTodayDoneOfTarget(String done, String target);
+
+  /// Subtitle summarizing exam target date and finish buffer
+  ///
+  /// In en, this message translates to:
+  /// **'Finishes {formattedDays}d before exam ({examDate})'**
+  String prepStudyPlanBufferSummary(String formattedDays, String examDate);
+
+  /// Status message shown when all active syllabus units are finished
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus complete — today\'s target is 0.'**
+  String get prepStudyPlanFinishedComplete;
+
+  /// Automatic missed-day catch-up explanation message
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{You missed {formattedUnits} units, they are now spread over the next {formattedDays} day (+{formattedExtra}/day).} other{You missed {formattedUnits} units, they are now spread over the next {formattedDays} days (+{formattedExtra}/day).}}'**
+  String prepStudyPlanMissedRedistributed(int days, String formattedUnits,
+      String formattedDays, String formattedExtra);
+
+  /// Notice when today is inside the finish buffer or past exam date with work remaining
+  ///
+  /// In en, this message translates to:
+  /// **'Study window before the finish buffer has ended with {formattedUnits} units left.'**
+  String prepStudyPlanPastTargetNotice(String formattedUnits);
+
+  /// Warning shown when daily target exceeds max_daily_pace
+  ///
+  /// In en, this message translates to:
+  /// **'Recalculated target ({formattedTarget}/day) exceeds your pace limit ({formattedLimit}/day).'**
+  String prepStudyPlanPaceWarning(
+      String formattedTarget, String formattedLimit);
+
+  /// Pace recovery action converting one rest day into a study day
+  ///
+  /// In en, this message translates to:
+  /// **'Turn a rest day into a study day'**
+  String get prepStudyPlanActionConvertRest;
+
+  /// Pace recovery action raising max_daily_pace
+  ///
+  /// In en, this message translates to:
+  /// **'Raise pace limit'**
+  String get prepStudyPlanActionRaisePace;
+
+  /// Pace recovery action postponing a lower-priority material
+  ///
+  /// In en, this message translates to:
+  /// **'Postpone lower-priority material'**
+  String get prepStudyPlanActionPostponeMaterial;
+
+  /// Dialog title when raising the daily pace limit
+  ///
+  /// In en, this message translates to:
+  /// **'Raise Daily Pace Limit'**
+  String get prepStudyPlanRaisePaceTitle;
+
+  /// Dialog title when choosing a material to postpone from the plan
+  ///
+  /// In en, this message translates to:
+  /// **'Postpone Material'**
+  String get prepStudyPlanPostponeTitle;
+
+  /// Explanation shown inside the postpone material dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Excluding a material removes its remaining units from this plan\'s daily target without deleting your study progress.'**
+  String get prepStudyPlanPostponeSubtitle;
+
+  /// Chip label showing a postponed material that can be restored
+  ///
+  /// In en, this message translates to:
+  /// **'Postponed: {title}'**
+  String prepStudyPlanPostponedChip(String title);
+
+  /// Tooltip on postponed material chip delete/restore icon
+  ///
+  /// In en, this message translates to:
+  /// **'Restore to plan'**
+  String get prepStudyPlanRestoreTooltip;
+
+  /// Tooltip on study plan edit icon button
+  ///
+  /// In en, this message translates to:
+  /// **'Edit study plan'**
+  String get prepStudyPlanEditTooltip;
+
+  /// Tooltip on study plan delete icon button
+  ///
+  /// In en, this message translates to:
+  /// **'Delete study plan'**
+  String get prepStudyPlanDeleteTooltip;
+
+  /// Validation error for negative finish buffer
+  ///
+  /// In en, this message translates to:
+  /// **'Finish buffer must be 0 days or greater.'**
+  String get prepStudyPlanValidationBuffer;
+
+  /// Validation error for non-positive daily pace limit
+  ///
+  /// In en, this message translates to:
+  /// **'Pace limit must be greater than 0.'**
+  String get prepStudyPlanValidationPace;
+
+  /// Validation error when exam date precedes start date
+  ///
+  /// In en, this message translates to:
+  /// **'Exam date must be on or after the start date.'**
+  String get prepStudyPlanValidationDates;
+
+  /// Heading for Today's Target card on the Home Dashboard
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Target'**
+  String get dashboardTodayTargetTitle;
+
+  /// Empty state heading inside Dashboard Today's Target card
+  ///
+  /// In en, this message translates to:
+  /// **'No study plan configured yet'**
+  String get dashboardTodayTargetEmptyTitle;
+
+  /// Empty state explanation inside Dashboard Today's Target card
+  ///
+  /// In en, this message translates to:
+  /// **'Set an exam date to calculate daily targets and automatic missed-day redistribution.'**
+  String get dashboardTodayTargetEmptyBody;
+
+  /// CTA button in Dashboard Today's Target empty state
+  ///
+  /// In en, this message translates to:
+  /// **'Set study plan'**
+  String get dashboardTodayTargetEmptyAction;
+
+  /// Button navigating from Dashboard Today's Target card to Prep
+  ///
+  /// In en, this message translates to:
+  /// **'Open study plans'**
+  String get dashboardTodayTargetManageAction;
+
+  /// Summary count of configured study plans shown on Dashboard
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formatted} active plan} other{{formatted} active plans}}'**
+  String dashboardTodayTargetPlansSummary(int count, String formatted);
+
+  /// Tab label for Subjects & Study Plans inside Prep screen
+  ///
+  /// In en, this message translates to:
+  /// **'Subjects'**
+  String get prepTabSubjects;
+
+  /// Tab label for Mock Tests inside Prep screen
+  ///
+  /// In en, this message translates to:
+  /// **'Mock tests'**
+  String get prepTabMockTests;
+
+  /// Heading for the Mock tests tab inside Prep screen
+  ///
+  /// In en, this message translates to:
+  /// **'Mock tests'**
+  String get prepMockTestsTitle;
+
+  /// Subtitle explaining the Mock tests tab
+  ///
+  /// In en, this message translates to:
+  /// **'Track scores after negative marking, time taken, and weak topics across platforms.'**
+  String get prepMockTestsSubtitle;
+
+  /// Button label to open the add mock test dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Log mock test'**
+  String get prepMockTestAddButton;
+
+  /// Section title for mock tests inside Subject Detail view
+  ///
+  /// In en, this message translates to:
+  /// **'Mock test performance'**
+  String get prepMockTestSubjectSectionTitle;
+
+  /// Count of mock tests shown for a subject or filtered list
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formatted} test logged} other{{formatted} tests logged}}'**
+  String prepMockTestSubjectCount(int count, String formatted);
+
+  /// Filter label for subject selection on Mock tests tab
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get prepMockFilterSubjectLabel;
+
+  /// Dropdown option showing mock tests across all subjects
+  ///
+  /// In en, this message translates to:
+  /// **'All subjects'**
+  String get prepMockFilterAllSubjects;
+
+  /// Filter label for date range presets on Mock tests tab
+  ///
+  /// In en, this message translates to:
+  /// **'Date range'**
+  String get prepMockFilterDateLabel;
+
+  /// Date range filter preset including all dates
+  ///
+  /// In en, this message translates to:
+  /// **'All time'**
+  String get prepMockFilterDateAll;
+
+  /// Date range filter preset for the last 7 days
+  ///
+  /// In en, this message translates to:
+  /// **'Last 7 days'**
+  String get prepMockFilterDate7Days;
+
+  /// Date range filter preset for the last 30 days
+  ///
+  /// In en, this message translates to:
+  /// **'Last 30 days'**
+  String get prepMockFilterDate30Days;
+
+  /// Date range filter preset for the last 90 days
+  ///
+  /// In en, this message translates to:
+  /// **'Last 90 days'**
+  String get prepMockFilterDate90Days;
+
+  /// Action button clearing active mock test filters
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filters'**
+  String get prepMockFilterClear;
+
+  /// Stat card label for the latest mock test score
+  ///
+  /// In en, this message translates to:
+  /// **'Latest'**
+  String get prepMockStatLatest;
+
+  /// Stat card label for the highest mock test score
+  ///
+  /// In en, this message translates to:
+  /// **'Best'**
+  String get prepMockStatBest;
+
+  /// Stat card label for average mock test score
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get prepMockStatAverage;
+
+  /// Stat card label for score improvement
+  ///
+  /// In en, this message translates to:
+  /// **'Improvement'**
+  String get prepMockStatImprovement;
+
+  /// Formatted percentage value for a mock test stat
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}%'**
+  String prepMockStatPercentValue(String percent);
+
+  /// Placeholder when a mock test statistic is not available yet
+  ///
+  /// In en, this message translates to:
+  /// **'—'**
+  String get prepMockStatNotAvailable;
+
+  /// Caption showing improvement is computed over the last N tests
+  ///
+  /// In en, this message translates to:
+  /// **'Last {formatted} tests'**
+  String prepMockStatImprovementLastFive(String formatted);
+
+  /// Caption showing improvement is measured from first to latest test
+  ///
+  /// In en, this message translates to:
+  /// **'First to latest'**
+  String get prepMockStatImprovementFirstToLatest;
+
+  /// Caption when fewer than two tests exist for improvement calculation
+  ///
+  /// In en, this message translates to:
+  /// **'Log 2+ tests to compare'**
+  String get prepMockStatImprovementNeedsTwo;
+
+  /// Heading above the mock test score trend line chart
+  ///
+  /// In en, this message translates to:
+  /// **'Score trend (%)'**
+  String get prepMockTrendChartTitle;
+
+  /// Legend/reference line label showing average percentage
+  ///
+  /// In en, this message translates to:
+  /// **'Avg {percent}%'**
+  String prepMockTrendAverageLineLabel(String percent);
+
+  /// Hint shown instead of trend chart when there are no tests
+  ///
+  /// In en, this message translates to:
+  /// **'Log your first mock test to plot your score trend and average reference line.'**
+  String get prepMockTrendNeedsDataHint;
+
+  /// Tooltip text when touching a point on the mock test trend chart
+  ///
+  /// In en, this message translates to:
+  /// **'{title}\n{percent}% • {date}'**
+  String prepMockTrendTooltip(String title, String percent, String date);
+
+  /// Empty state heading when no mock tests exist
+  ///
+  /// In en, this message translates to:
+  /// **'No mock tests logged yet'**
+  String get prepMockEmptyTitle;
+
+  /// Empty state body when no mock tests exist
+  ///
+  /// In en, this message translates to:
+  /// **'Log model tests from guidebooks or online platforms to track net percentage and weak areas.'**
+  String get prepMockEmptyBody;
+
+  /// Empty state heading when active filters return no mock tests
+  ///
+  /// In en, this message translates to:
+  /// **'No mock tests match these filters'**
+  String get prepMockFilteredEmptyTitle;
+
+  /// Empty state body when active filters return no mock tests
+  ///
+  /// In en, this message translates to:
+  /// **'Try clearing the subject or date range filter, or log a new mock test.'**
+  String get prepMockFilteredEmptyBody;
+
+  /// Loading label shown while fetching mock tests
+  ///
+  /// In en, this message translates to:
+  /// **'Loading mock tests...'**
+  String get prepMockLoadingLabel;
+
+  /// Error heading shown when mock tests fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load mock tests'**
+  String get prepMockLoadErrorTitle;
+
+  /// Score summary showing net marks out of total marks
+  ///
+  /// In en, this message translates to:
+  /// **'{net} / {total}'**
+  String prepMockScoreRatio(String net, String total);
+
+  /// Badge showing negative marks deducted
+  ///
+  /// In en, this message translates to:
+  /// **'-{marks} neg'**
+  String prepMockNegativeMarksBadge(String marks);
+
+  /// Badge showing time taken out of time limit in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{taken} / {limit} min'**
+  String prepMockDurationWithLimitBadge(String taken, String limit);
+
+  /// Badge showing time taken in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{taken} min'**
+  String prepMockDurationBadge(String taken);
+
+  /// Line showing weak topics noted on a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Weak topics: {topics}'**
+  String prepMockWeakTopicsLabel(String topics);
+
+  /// Chip showing circular linked to a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Circular: {title}'**
+  String prepMockLinkedCircularLabel(String title);
+
+  /// Chip showing material linked to a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Material: {title}'**
+  String prepMockLinkedMaterialLabel(String title);
+
+  /// Chip showing topic linked to a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Topic: {title}'**
+  String prepMockLinkedTopicLabel(String title);
+
+  /// Tooltip for editing a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Edit mock test'**
+  String get prepMockEditTooltip;
+
+  /// Tooltip for deleting a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Delete mock test'**
+  String get prepMockDeleteTooltip;
+
+  /// Dialog heading when creating a new mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Log mock test'**
+  String get prepMockFormCreateTitle;
+
+  /// Dialog heading when editing an existing mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Edit mock test'**
+  String get prepMockFormEditTitle;
+
+  /// Subject field label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get prepMockFormSubjectLabel;
+
+  /// Test title field label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Test title'**
+  String get prepMockFormTitleLabel;
+
+  /// Hint text for mock test title input
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., 46th BCS Model Test 04'**
+  String get prepMockFormTitleHint;
+
+  /// Source field label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Source / Platform (optional)'**
+  String get prepMockFormSourceLabel;
+
+  /// Hint text for mock test source input
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., Live MCQ, Oracle Guide'**
+  String get prepMockFormSourceHint;
+
+  /// Row showing selected test date in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Date taken: {date}'**
+  String prepMockFormTakenOnLabel(String date);
+
+  /// Button opening date picker for test taken_on date
+  ///
+  /// In en, this message translates to:
+  /// **'Change date'**
+  String get prepMockFormPickDate;
+
+  /// Marks obtained numeric input label
+  ///
+  /// In en, this message translates to:
+  /// **'Marks obtained'**
+  String get prepMockFormMarksObtainedLabel;
+
+  /// Total marks numeric input label
+  ///
+  /// In en, this message translates to:
+  /// **'Total marks'**
+  String get prepMockFormTotalMarksLabel;
+
+  /// Negative marks numeric input label
+  ///
+  /// In en, this message translates to:
+  /// **'Negative marks (optional)'**
+  String get prepMockFormNegativeMarksLabel;
+
+  /// Time taken in minutes input label
+  ///
+  /// In en, this message translates to:
+  /// **'Time taken (min, optional)'**
+  String get prepMockFormTimeTakenLabel;
+
+  /// Time limit in minutes input label
+  ///
+  /// In en, this message translates to:
+  /// **'Time limit (min, optional)'**
+  String get prepMockFormTimeLimitLabel;
+
+  /// Weak topics input label
+  ///
+  /// In en, this message translates to:
+  /// **'Weak topics (optional)'**
+  String get prepMockFormWeakTopicsLabel;
+
+  /// Hint for weak topics input
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., Constitutional Amendments, Time & Work'**
+  String get prepMockFormWeakTopicsHint;
+
+  /// Notes input label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Notes (optional)'**
+  String get prepMockFormNotesLabel;
+
+  /// Optional circular dropdown label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Linked circular (optional)'**
+  String get prepMockFormCircularLabel;
+
+  /// Optional material dropdown label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Linked material (optional)'**
+  String get prepMockFormMaterialLabel;
+
+  /// Optional topic dropdown label in mock test form
+  ///
+  /// In en, this message translates to:
+  /// **'Linked topic (optional)'**
+  String get prepMockFormTopicLabel;
+
+  /// Dropdown option representing no linked item
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get prepMockFormNoneOption;
+
+  /// Primary submit button in mock test form dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Save mock test'**
+  String get prepMockFormSaveAction;
+
+  /// Validation error when no subject is selected
+  ///
+  /// In en, this message translates to:
+  /// **'Select a subject for this mock test.'**
+  String get prepMockValidationSubjectRequired;
+
+  /// Validation error when mock test title is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a title for the mock test.'**
+  String get prepMockValidationTitleRequired;
+
+  /// Validation error when total marks is invalid or <= 0
+  ///
+  /// In en, this message translates to:
+  /// **'Total marks must be greater than zero.'**
+  String get prepMockValidationTotalPositive;
+
+  /// Validation error when marks obtained is outside 0..total_marks
+  ///
+  /// In en, this message translates to:
+  /// **'Marks obtained must be between 0 and total marks.'**
+  String get prepMockValidationMarksRange;
+
+  /// Validation error when negative marks is outside 0..total_marks
+  ///
+  /// In en, this message translates to:
+  /// **'Negative marks must be between 0 and total marks.'**
+  String get prepMockValidationNegativeMarks;
+
+  /// Validation error when time taken or time limit is invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Time taken must be 0 or more, and time limit must be greater than zero.'**
+  String get prepMockValidationDuration;
+
+  /// Confirmation dialog heading before deleting a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Delete mock test?'**
+  String get prepMockDeleteTitle;
+
+  /// Confirmation dialog body when deleting a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Remove \"{title}\" from your mock test history? This cannot be undone.'**
+  String prepMockDeleteBody(String title);
+
+  /// Destructive confirmation button label for deleting a mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get prepMockDeleteConfirm;
+
+  /// Tab label for Study Analytics inside Prep screen
+  ///
+  /// In en, this message translates to:
+  /// **'Analytics'**
+  String get prepTabAnalytics;
+
+  /// Heading on the Study Analytics screen
+  ///
+  /// In en, this message translates to:
+  /// **'Study analytics'**
+  String get prepAnalyticsTitle;
+
+  /// Subtitle explaining Study Analytics metrics and charts
+  ///
+  /// In en, this message translates to:
+  /// **'Track daily consistency, study streaks, weekly volume, and subject focus.'**
+  String get prepAnalyticsSubtitle;
+
+  /// Loading indicator text while computing analytics
+  ///
+  /// In en, this message translates to:
+  /// **'Loading study analytics...'**
+  String get prepAnalyticsLoadingLabel;
+
+  /// Error card title when analytics data fails to load
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load study analytics'**
+  String get prepAnalyticsLoadErrorTitle;
+
+  /// Empty state heading when a new user has no logs yet
+  ///
+  /// In en, this message translates to:
+  /// **'No study activity logged yet'**
+  String get prepAnalyticsEmptyTitle;
+
+  /// Empty state body explaining how to populate Study Analytics
+  ///
+  /// In en, this message translates to:
+  /// **'Log units on your study materials or set a study plan to unlock streaks, charts, and your consistency score.'**
+  String get prepAnalyticsEmptyBody;
+
+  /// CTA button navigating from empty analytics back to Subjects
+  ///
+  /// In en, this message translates to:
+  /// **'Open subjects'**
+  String get prepAnalyticsEmptyAction;
+
+  /// Filter label for the analytics day window selector
+  ///
+  /// In en, this message translates to:
+  /// **'Date range'**
+  String get prepAnalyticsFilterRangeLabel;
+
+  /// 7-day analytics range option
+  ///
+  /// In en, this message translates to:
+  /// **'7 days'**
+  String get prepAnalyticsRange7Days;
+
+  /// 30-day analytics range option
+  ///
+  /// In en, this message translates to:
+  /// **'30 days'**
+  String get prepAnalyticsRange30Days;
+
+  /// 90-day analytics range option
+  ///
+  /// In en, this message translates to:
+  /// **'90 days'**
+  String get prepAnalyticsRange90Days;
+
+  /// Filter label for subject filter on Study Analytics
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get prepAnalyticsFilterSubjectLabel;
+
+  /// Default dropdown option covering all subjects in analytics
+  ///
+  /// In en, this message translates to:
+  /// **'All subjects'**
+  String get prepAnalyticsAllSubjects;
+
+  /// Button clearing subject/range filter back to defaults
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filter'**
+  String get prepAnalyticsClearFilter;
+
+  /// Metric card title for active consecutive study days
+  ///
+  /// In en, this message translates to:
+  /// **'Current streak'**
+  String get prepAnalyticsCurrentStreak;
+
+  /// Metric card title for longest consecutive study days
+  ///
+  /// In en, this message translates to:
+  /// **'Longest streak'**
+  String get prepAnalyticsLongestStreak;
+
+  /// Metric card title for units completed in the current local week
+  ///
+  /// In en, this message translates to:
+  /// **'Units this week'**
+  String get prepAnalyticsUnitsThisWeek;
+
+  /// Metric card title for days studied / days in range percentage
+  ///
+  /// In en, this message translates to:
+  /// **'Consistency'**
+  String get prepAnalyticsConsistency;
+
+  /// Pluralized unit suffix attached to AnimatedCounter streak values
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{ day} other{ days}}'**
+  String prepAnalyticsDaysSuffix(int count);
+
+  /// Percent sign suffix attached to AnimatedCounter consistency values
+  ///
+  /// In en, this message translates to:
+  /// **'%'**
+  String get prepAnalyticsPercentSuffix;
+
+  /// Caption under Consistency card showing active out of total days
+  ///
+  /// In en, this message translates to:
+  /// **'{active} / {total} active days'**
+  String prepAnalyticsActiveDaysCaption(String active, String total);
+
+  /// Caption under Units this week showing 7-day average
+  ///
+  /// In en, this message translates to:
+  /// **'{avg}/day (7d avg)'**
+  String prepAnalyticsAvgPerDayCaption(String avg);
+
+  /// Highlight tile label for 7-day rolling daily unit average
+  ///
+  /// In en, this message translates to:
+  /// **'7-day avg'**
+  String get prepAnalyticsRolling7dLabel;
+
+  /// Highlight tile label for 30-day rolling daily unit average
+  ///
+  /// In en, this message translates to:
+  /// **'30-day avg'**
+  String get prepAnalyticsRolling30dLabel;
+
+  /// Formatted rolling average units per day
+  ///
+  /// In en, this message translates to:
+  /// **'{avg} units/day'**
+  String prepAnalyticsUnitsPerDayValue(String avg);
+
+  /// Highlight tile label for highest-volume study day in range
+  ///
+  /// In en, this message translates to:
+  /// **'Best day'**
+  String get prepAnalyticsBestDayLabel;
+
+  /// Highlight tile label for lowest-volume day in range
+  ///
+  /// In en, this message translates to:
+  /// **'Weakest day'**
+  String get prepAnalyticsWeakestDayLabel;
+
+  /// Formatted best or weakest day units paired with local date
+  ///
+  /// In en, this message translates to:
+  /// **'{units} units • {date}'**
+  String prepAnalyticsDaySummaryValue(String units, String date);
+
+  /// Highlight label summarizing mock tests taken during date window
+  ///
+  /// In en, this message translates to:
+  /// **'Mock tests in range'**
+  String get prepAnalyticsMockOverviewLabel;
+
+  /// Formatted count and average score of mock tests in window
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formattedCount} test • avg {avg}%} other{{formattedCount} tests • avg {avg}%}}'**
+  String prepAnalyticsMockOverviewValue(
+      int count, String formattedCount, String avg);
+
+  /// Placeholder when no best/weakest day or mock data is available
+  ///
+  /// In en, this message translates to:
+  /// **'—'**
+  String get prepAnalyticsNoDataDash;
+
+  /// Alert headline when both today and yesterday finished under target
+  ///
+  /// In en, this message translates to:
+  /// **'Today and yesterday were below your daily target'**
+  String get prepAnalyticsAlertBothTitle;
+
+  /// Alert headline when today has fewer units than daily target
+  ///
+  /// In en, this message translates to:
+  /// **'Today is still below your daily target'**
+  String get prepAnalyticsAlertTodayTitle;
+
+  /// Alert headline when yesterday had fewer units than daily target
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday finished below your daily target'**
+  String get prepAnalyticsAlertYesterdayTitle;
+
+  /// Details comparing today's and yesterday's logged units with daily target
+  ///
+  /// In en, this message translates to:
+  /// **'Today: {today} / {target} units • Yesterday: {yesterday} / {target} units'**
+  String prepAnalyticsAlertBody(String today, String yesterday, String target);
+
+  /// Heading for the daily bar chart card
+  ///
+  /// In en, this message translates to:
+  /// **'Daily study activity'**
+  String get prepAnalyticsDailyChartTitle;
+
+  /// Badge showing the study plan daily target reference line value
+  ///
+  /// In en, this message translates to:
+  /// **'Target: {target}/day'**
+  String prepAnalyticsDailyTargetLegend(String target);
+
+  /// Tooltip shown when hovering or tapping a daily bar
+  ///
+  /// In en, this message translates to:
+  /// **'{date}\n{units} units'**
+  String prepAnalyticsDailyTooltip(String date, String units);
+
+  /// Heading for the weekly totals bar chart card
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly totals'**
+  String get prepAnalyticsWeeklyChartTitle;
+
+  /// Tooltip shown when touching a weekly bar
+  ///
+  /// In en, this message translates to:
+  /// **'{range}\n{units} units ({days} active)'**
+  String prepAnalyticsWeeklyTooltip(String range, String units, String days);
+
+  /// Short calendar range label for a week bucket
+  ///
+  /// In en, this message translates to:
+  /// **'{start} – {end}'**
+  String prepAnalyticsWeeklyRangeLabel(String start, String end);
+
+  /// Heading for the subject breakdown chart and legend card
+  ///
+  /// In en, this message translates to:
+  /// **'Where study time went'**
+  String get prepAnalyticsSubjectChartTitle;
+
+  /// Hint inside subject breakdown card when zero activity matches
+  ///
+  /// In en, this message translates to:
+  /// **'Log study units or mock tests in this window to compare subjects.'**
+  String get prepAnalyticsSubjectNoData;
+
+  /// Legend label displaying subject units and percentage share
+  ///
+  /// In en, this message translates to:
+  /// **'{units} units ({percent}%)'**
+  String prepAnalyticsSubjectRowSubtitle(String units, String percent);
+
+  /// Sub-caption on subject breakdown showing mock test stats in window
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formattedCount} mock • {avg}% avg} other{{formattedCount} mocks • {avg}% avg}}'**
+  String prepAnalyticsSubjectMockHint(
+      int count, String formattedCount, String avg);
+
+  /// Heading above the rolling calendar heatmap of study days
+  ///
+  /// In en, this message translates to:
+  /// **'Study days heatmap (last 90 days)'**
+  String get prepAnalyticsHeatmapTitle;
+
+  /// Tooltip label for an individual calendar heatmap day cell
+  ///
+  /// In en, this message translates to:
+  /// **'{date}: {units} units'**
+  String prepAnalyticsHeatmapTooltip(String date, String units);
+
+  /// Heatmap intensity legend low label
+  ///
+  /// In en, this message translates to:
+  /// **'Less'**
+  String get prepAnalyticsHeatmapLess;
+
+  /// Heatmap intensity legend high label
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get prepAnalyticsHeatmapMore;
+
+  /// Toggle chip switching subject detail view to all materials
+  ///
+  /// In en, this message translates to:
+  /// **'All materials'**
+  String get prepSubjectViewAllMaterials;
+
+  /// Toggle chip switching subject detail view to the side-by-side books shelf
+  ///
+  /// In en, this message translates to:
+  /// **'Books shelf ({count})'**
+  String prepSubjectViewBooksShelf(String count);
+
+  /// Action button on a book card opening the interactive 3D book progress view
+  ///
+  /// In en, this message translates to:
+  /// **'Book view'**
+  String get prepOpenBookView;
+
+  /// Heading above the side-by-side grid of book covers for a subject
+  ///
+  /// In en, this message translates to:
+  /// **'Books shelf'**
+  String get prepBooksShelfTitle;
+
+  /// Helper text displayed on the Books shelf screen
+  ///
+  /// In en, this message translates to:
+  /// **'Tap any book to update your position with the bookmark or page field.'**
+  String get prepBooksShelfSubtitle;
+
+  /// Empty state headline on the Books shelf view when a subject has zero book materials
+  ///
+  /// In en, this message translates to:
+  /// **'No books in {subject} yet'**
+  String prepBooksShelfEmptyTitle(String subject);
+
+  /// Empty state body on the Books shelf view
+  ///
+  /// In en, this message translates to:
+  /// **'Add a study material with kind Book to arrange it on your shelf.'**
+  String get prepBooksShelfEmptyBody;
+
+  /// Button label inside the Books shelf empty state to add a book
+  ///
+  /// In en, this message translates to:
+  /// **'Add book'**
+  String get prepAddBookButton;
+
+  /// Leading label before the current page input field inside BookProgressView
+  ///
+  /// In en, this message translates to:
+  /// **'I am at page'**
+  String get bookProgressPositionPrefix;
+
+  /// Trailing label after the current page input field inside BookProgressView
+  ///
+  /// In en, this message translates to:
+  /// **'of {total}'**
+  String bookProgressPositionSuffix(String total);
+
+  /// Submit button saving the entered page position inside BookProgressView
+  ///
+  /// In en, this message translates to:
+  /// **'Save page'**
+  String get bookProgressSavePosition;
+
+  /// Completed and total units summary displayed with BookProgressView
+  ///
+  /// In en, this message translates to:
+  /// **'{current} / {total} {unitLabel}'**
+  String bookProgressUnitSummary(
+      String current, String total, String unitLabel);
+
+  /// Percentage readout rendered on a book progress badge
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}%'**
+  String bookProgressPercentLabel(String percent);
+
+  /// Last updated date label displayed cleanly on the book card
+  ///
+  /// In en, this message translates to:
+  /// **'Updated {date}'**
+  String bookProgressUpdatedOn(String date);
+
+  /// Caption guiding bookmark dragging and quick page entry
+  ///
+  /// In en, this message translates to:
+  /// **'Drag the bookmark or enter your page number'**
+  String get bookProgressDragHint;
+
+  /// Accessibility label for the draggable book ribbon bookmark
+  ///
+  /// In en, this message translates to:
+  /// **'Book position bookmark'**
+  String get bookProgressBookmarkSemantics;
+
+  /// Validation error shown when submitting an empty book page input
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a page number'**
+  String get bookProgressErrorEmpty;
+
+  /// Validation error shown when book page input is not a whole integer
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a whole page number'**
+  String get bookProgressErrorWholeNumber;
+
+  /// Validation error shown when book page input is below zero
+  ///
+  /// In en, this message translates to:
+  /// **'Page number cannot be negative'**
+  String get bookProgressErrorBelowZero;
+
+  /// Validation error shown when entered page is greater than total pages
+  ///
+  /// In en, this message translates to:
+  /// **'Page cannot exceed {total}'**
+  String bookProgressErrorExceedsTotal(String total);
+
+  /// Confirmation dialog title shown when entered page is below current position
+  ///
+  /// In en, this message translates to:
+  /// **'Save position correction?'**
+  String get bookProgressConfirmCorrectionTitle;
+
+  /// Explanation shown when lowering the current page position to confirm saving a correction log
+  ///
+  /// In en, this message translates to:
+  /// **'You are moving back from page {fromPage} to page {toPage} ({delta} {unitLabel}). This updates your book position without counting as studied units in your study plan or analytics.'**
+  String bookProgressConfirmCorrectionBody(
+      String fromPage, String toPage, String delta, String unitLabel);
+
+  /// Primary confirm button label for saving a downward position correction
+  ///
+  /// In en, this message translates to:
+  /// **'Save correction'**
+  String get bookProgressConfirmCorrectionAction;
+
+  /// Feedback banner shown after saving a downward book position correction
+  ///
+  /// In en, this message translates to:
+  /// **'Updated position to {page} (correction)'**
+  String bookProgressCorrectionSaved(String page);
+
+  /// Feedback banner shown after saving a forward page jump as a study log
+  ///
+  /// In en, this message translates to:
+  /// **'Logged +{delta} {unitLabel}'**
+  String bookProgressStudySaved(String delta, String unitLabel);
+
+  /// Action button inside book view opening full progress log history
+  ///
+  /// In en, this message translates to:
+  /// **'Log history'**
+  String get bookProgressHistoryButton;
+
+  /// Badge identifying correction entries inside past progress logs
+  ///
+  /// In en, this message translates to:
+  /// **'Correction'**
+  String get prepLogEntryTypeCorrectionBadge;
+
+  /// Generic close button label for dialogs
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get prepCloseButton;
+
+  /// Top-level Prep tab label for spaced-repetition revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'Revision'**
+  String get prepTabRevision;
+
+  /// Headline on the Revision tab
+  ///
+  /// In en, this message translates to:
+  /// **'Revision queue'**
+  String get prepRevisionTitle;
+
+  /// Subtitle on the Revision tab
+  ///
+  /// In en, this message translates to:
+  /// **'Revisit flagged pages, tricky problems, and weak topics on a spaced schedule.'**
+  String get prepRevisionSubtitle;
+
+  /// Metric card label counting active items due today or overdue
+  ///
+  /// In en, this message translates to:
+  /// **'Due & overdue'**
+  String get prepRevisionDueCountStat;
+
+  /// Metric card label counting items mastered after the full spacing ladder
+  ///
+  /// In en, this message translates to:
+  /// **'Mastered'**
+  String get prepRevisionMasteredStat;
+
+  /// Primary CTA button on Revision screen to manually create a revision flag
+  ///
+  /// In en, this message translates to:
+  /// **'Flag item'**
+  String get prepRevisionFlagItemButton;
+
+  /// Revision queue tab showing items scheduled due today
+  ///
+  /// In en, this message translates to:
+  /// **'Due today ({count})'**
+  String prepRevisionTabDueToday(String count);
+
+  /// Revision queue tab showing items past due date
+  ///
+  /// In en, this message translates to:
+  /// **'Overdue ({count})'**
+  String prepRevisionTabOverdue(String count);
+
+  /// Revision queue tab showing future scheduled items
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming ({count})'**
+  String prepRevisionTabUpcoming(String count);
+
+  /// Revision queue tab showing mastered or dismissed items
+  ///
+  /// In en, this message translates to:
+  /// **'Done ({count})'**
+  String prepRevisionTabDone(String count);
+
+  /// Default option in subject filter on Revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'All subjects'**
+  String get prepRevisionAllSubjects;
+
+  /// Default option in material filter on Revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'All materials'**
+  String get prepRevisionAllMaterials;
+
+  /// Button clearing subject and material filters on Revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filters'**
+  String get prepRevisionClearFilters;
+
+  /// Revision flag reason: tricky
+  ///
+  /// In en, this message translates to:
+  /// **'Tricky'**
+  String get prepRevisionReasonTricky;
+
+  /// Revision flag reason: forgot
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot'**
+  String get prepRevisionReasonForgot;
+
+  /// Revision flag reason: important
+  ///
+  /// In en, this message translates to:
+  /// **'Important'**
+  String get prepRevisionReasonImportant;
+
+  /// Revision flag reason: mistake
+  ///
+  /// In en, this message translates to:
+  /// **'Mistake'**
+  String get prepRevisionReasonMistake;
+
+  /// Origin chip indicating flag came from a study progress log
+  ///
+  /// In en, this message translates to:
+  /// **'From study log'**
+  String get prepRevisionSourceLog;
+
+  /// Origin chip indicating flag came from a mock test weak topic
+  ///
+  /// In en, this message translates to:
+  /// **'From mock test'**
+  String get prepRevisionSourceMockTest;
+
+  /// Origin chip indicating manual revision flag
+  ///
+  /// In en, this message translates to:
+  /// **'Manual flag'**
+  String get prepRevisionSourceManual;
+
+  /// Badge for mastered revision items
+  ///
+  /// In en, this message translates to:
+  /// **'Mastered'**
+  String get prepRevisionStatusMastered;
+
+  /// Badge for dismissed revision items
+  ///
+  /// In en, this message translates to:
+  /// **'Dismissed'**
+  String get prepRevisionStatusDismissed;
+
+  /// Schedule label on items due strictly today
+  ///
+  /// In en, this message translates to:
+  /// **'Due today'**
+  String get prepRevisionDueTodayLabel;
+
+  /// Schedule label showing how many days overdue an item is
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formattedCount} day overdue} other{{formattedCount} days overdue}}'**
+  String prepRevisionOverdueDaysLabel(int count, String formattedCount);
+
+  /// Schedule label showing remaining days until upcoming review
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{In {formattedCount} day} other{In {formattedCount} days}}'**
+  String prepRevisionDueInDaysLabel(int count, String formattedCount);
+
+  /// Formatted scheduled date caption on a revision card
+  ///
+  /// In en, this message translates to:
+  /// **'Due {date}'**
+  String prepRevisionDueDateLabel(String date);
+
+  /// Compact page number badge rendered on book/page revision cards
+  ///
+  /// In en, this message translates to:
+  /// **'p. {page}'**
+  String prepRevisionPageChip(String page);
+
+  /// Completed spaced review count badge
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{New} =1{{formattedCount} review} other{{formattedCount} reviews}}'**
+  String prepRevisionReviewCountChip(int count, String formattedCount);
+
+  /// Review action advancing the spaced repetition interval along 3, 7, 14, 30 days
+  ///
+  /// In en, this message translates to:
+  /// **'Easy'**
+  String get prepRevisionActionEasy;
+
+  /// Short day suffix shown alongside Easy button indicating the next gap
+  ///
+  /// In en, this message translates to:
+  /// **'+{days}d'**
+  String prepRevisionActionEasyHint(String days);
+
+  /// Hint shown beside Easy on the final 30-day step before becoming mastered
+  ///
+  /// In en, this message translates to:
+  /// **'Master'**
+  String get prepRevisionActionEasyMasteredHint;
+
+  /// Review action resetting the revision gap back to 1 day
+  ///
+  /// In en, this message translates to:
+  /// **'Still hard'**
+  String get prepRevisionActionStillHard;
+
+  /// Action deferring the due date by 1 day without changing review count
+  ///
+  /// In en, this message translates to:
+  /// **'Snooze +1d'**
+  String get prepRevisionActionSnooze;
+
+  /// Action dismissing an item from the active queue into Done
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get prepRevisionActionDismiss;
+
+  /// Tooltip for deleting a Done revision item
+  ///
+  /// In en, this message translates to:
+  /// **'Delete revision mark'**
+  String get prepRevisionDeleteTooltip;
+
+  /// Action reverting the latest Easy, Still hard, Snooze, or Dismiss action
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get prepRevisionUndoButton;
+
+  /// Tooltip closing the revision undo confirmation banner
+  ///
+  /// In en, this message translates to:
+  /// **'Hide undo banner'**
+  String get prepRevisionUndoDismissTooltip;
+
+  /// Undo banner feedback after scheduling the next Easy interval
+  ///
+  /// In en, this message translates to:
+  /// **'Marked \"{reference}\" as Easy — next review in {days} days.'**
+  String prepRevisionFeedbackEasyNext(String reference, String days);
+
+  /// Undo banner feedback when final Easy step promotes item to mastered
+  ///
+  /// In en, this message translates to:
+  /// **'Mastered \"{reference}\"! Moved to Done.'**
+  String prepRevisionFeedbackMastered(String reference);
+
+  /// Undo banner feedback after Still hard reset
+  ///
+  /// In en, this message translates to:
+  /// **'Marked \"{reference}\" as Still hard — reset to 1 day.'**
+  String prepRevisionFeedbackStillHard(String reference);
+
+  /// Undo banner feedback after snoozing an item
+  ///
+  /// In en, this message translates to:
+  /// **'Snoozed \"{reference}\" by 1 day.'**
+  String prepRevisionFeedbackSnoozed(String reference);
+
+  /// Undo banner feedback after dismissing an item
+  ///
+  /// In en, this message translates to:
+  /// **'Dismissed \"{reference}\" to Done.'**
+  String prepRevisionFeedbackDismissed(String reference);
+
+  /// Empty headline on Due today queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing due today'**
+  String get prepRevisionEmptyDueTitle;
+
+  /// Empty helper text on Due today queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'Flag tricky pages while logging study progress or check Overdue and Upcoming.'**
+  String get prepRevisionEmptyDueBody;
+
+  /// Empty headline on Overdue queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'No overdue revisions'**
+  String get prepRevisionEmptyOverdueTitle;
+
+  /// Empty helper text on Overdue queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'Every scheduled revision mark is up to date.'**
+  String get prepRevisionEmptyOverdueBody;
+
+  /// Empty headline on Upcoming queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'No upcoming revisions scheduled'**
+  String get prepRevisionEmptyUpcomingTitle;
+
+  /// Empty helper text on Upcoming queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'New flags are scheduled 1 day ahead, and Easy reviews space out along 3, 7, 14, and 30 days.'**
+  String get prepRevisionEmptyUpcomingBody;
+
+  /// Empty headline on Done queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'No completed items yet'**
+  String get prepRevisionEmptyDoneTitle;
+
+  /// Empty helper text on Done queue tab
+  ///
+  /// In en, this message translates to:
+  /// **'Mastered and dismissed items are archived here.'**
+  String get prepRevisionEmptyDoneBody;
+
+  /// Empty helper text when queue filters hide all items
+  ///
+  /// In en, this message translates to:
+  /// **'No revision items match the active subject and material filters.'**
+  String get prepRevisionEmptyFilteredBody;
+
+  /// Button label opening inline revision flag composer during logging
+  ///
+  /// In en, this message translates to:
+  /// **'Mark for revision'**
+  String get prepRevisionMarkAction;
+
+  /// Banner shown immediately after saving progress to invite quick revision flagging
+  ///
+  /// In en, this message translates to:
+  /// **'Progress saved! Flag any page or problem to revise later without leaving?'**
+  String get prepRevisionPostSavePrompt;
+
+  /// Badge showing how many revision flags were added inside the current logging session
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formattedCount} flag added} other{{formattedCount} flags added}}'**
+  String prepRevisionAddedCountChip(int count, String formattedCount);
+
+  /// Text field label for revision item reference_label
+  ///
+  /// In en, this message translates to:
+  /// **'Reference (page, problem, or topic)'**
+  String get prepRevisionRefLabel;
+
+  /// Text field placeholder for revision item reference_label
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. p. 128 or Problem 14'**
+  String get prepRevisionRefHint;
+
+  /// Validation error when reference_label is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a page, problem, or topic to revise.'**
+  String get prepRevisionRefError;
+
+  /// Optional numeric page field shown when flagging book/material items
+  ///
+  /// In en, this message translates to:
+  /// **'Page # (optional)'**
+  String get prepRevisionPageLabel;
+
+  /// Hint text for optional page number input
+  ///
+  /// In en, this message translates to:
+  /// **'128'**
+  String get prepRevisionPageHint;
+
+  /// Chip selector heading for RevisionReason
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get prepRevisionReasonLabel;
+
+  /// Text field label for optional note on revision item
+  ///
+  /// In en, this message translates to:
+  /// **'Note (optional)'**
+  String get prepRevisionNoteLabel;
+
+  /// Placeholder text for optional revision note
+  ///
+  /// In en, this message translates to:
+  /// **'Sign mistake in derivation, review shortcut...'**
+  String get prepRevisionNoteHint;
+
+  /// Submit button adding a revision flag while keeping inline composer open
+  ///
+  /// In en, this message translates to:
+  /// **'Add flag'**
+  String get prepRevisionAddAnotherButton;
+
+  /// Collapse button hiding the inline revision composer
+  ///
+  /// In en, this message translates to:
+  /// **'Hide flagger'**
+  String get prepRevisionDoneFlaggingButton;
+
+  /// Tooltip on MaterialCard flag icon button
+  ///
+  /// In en, this message translates to:
+  /// **'Flag for revision'**
+  String get prepRevisionFlagMaterialTooltip;
+
+  /// Dialog heading when creating a manual or mock-test revision item
+  ///
+  /// In en, this message translates to:
+  /// **'Mark for revision'**
+  String get prepRevisionDialogTitle;
+
+  /// Subject dropdown label inside standalone revision dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get prepRevisionSubjectLabel;
+
+  /// Material dropdown label inside standalone revision dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Material (optional)'**
+  String get prepRevisionMaterialOptionalLabel;
+
+  /// Option representing no attached study material on a revision mark
+  ///
+  /// In en, this message translates to:
+  /// **'Subject-wide / No specific material'**
+  String get prepRevisionNoMaterialOption;
+
+  /// Prompt above parsed weak topic chips in mock-test revision dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a weak topic to prefill:'**
+  String get prepRevisionWeakTopicsQuickFill;
+
+  /// Quick action adding every parsed weak topic from a mock test at once
+  ///
+  /// In en, this message translates to:
+  /// **'Add all ({count})'**
+  String prepRevisionAddAllWeakTopics(String count);
+
+  /// Action button next to mock test weak topics sending them to the Revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'Add to revision'**
+  String get prepMockAddToRevisionButton;
+
+  /// Tab title inside Prep screen for the Study Timer and session history
+  ///
+  /// In en, this message translates to:
+  /// **'Timer'**
+  String get prepTabTimer;
+
+  /// Header title on the Study Timer tab
+  ///
+  /// In en, this message translates to:
+  /// **'Study Timer'**
+  String get prepTimerTitle;
+
+  /// Subtitle explaining timestamp-backed Focus and Stopwatch study tracking
+  ///
+  /// In en, this message translates to:
+  /// **'Track Focus rounds and stopwatch sessions driven by timestamps'**
+  String get prepTimerSubtitle;
+
+  /// Pomodoro Focus mode selector label
+  ///
+  /// In en, this message translates to:
+  /// **'Focus'**
+  String get prepTimerModeFocus;
+
+  /// Open-ended stopwatch mode selector label
+  ///
+  /// In en, this message translates to:
+  /// **'Stopwatch'**
+  String get prepTimerModeStopwatch;
+
+  /// Badge label for manually added offline study sessions
+  ///
+  /// In en, this message translates to:
+  /// **'Manual'**
+  String get prepTimerModeManual;
+
+  /// Button opening the dialog to add a manual off-app study session
+  ///
+  /// In en, this message translates to:
+  /// **'Log manual time'**
+  String get prepTimerManualEntryButton;
+
+  /// Switch label toggling optional gentle chime at round completion
+  ///
+  /// In en, this message translates to:
+  /// **'Sound alert'**
+  String get prepTimerSoundLabel;
+
+  /// Button opening Pomodoro focus and break duration settings
+  ///
+  /// In en, this message translates to:
+  /// **'Pomodoro lengths'**
+  String get prepTimerSettingsButton;
+
+  /// Current active Focus round label
+  ///
+  /// In en, this message translates to:
+  /// **'Focus round {round}'**
+  String prepTimerPhaseFocus(String round);
+
+  /// Short Pomodoro break phase label
+  ///
+  /// In en, this message translates to:
+  /// **'Short break'**
+  String get prepTimerPhaseShortBreak;
+
+  /// Long Pomodoro break phase label triggered every four rounds
+  ///
+  /// In en, this message translates to:
+  /// **'Long break'**
+  String get prepTimerPhaseLongBreak;
+
+  /// Status pill when study timer is actively counting
+  ///
+  /// In en, this message translates to:
+  /// **'Running'**
+  String get prepTimerStatusRunning;
+
+  /// Status pill when study timer is paused
+  ///
+  /// In en, this message translates to:
+  /// **'Paused'**
+  String get prepTimerStatusPaused;
+
+  /// Status pill when timer is ready to start
+  ///
+  /// In en, this message translates to:
+  /// **'Ready'**
+  String get prepTimerStatusReady;
+
+  /// Total active focus time excluding breaks and pauses
+  ///
+  /// In en, this message translates to:
+  /// **'Studied: {duration}'**
+  String prepTimerElapsedSummary(String duration);
+
+  /// Compact summary of Pomodoro lengths in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{focus}m focus • {shortBreak}m short • {longBreak}m long'**
+  String prepTimerConfigSummary(
+      String focus, String shortBreak, String longBreak);
+
+  /// Helper shown when no subject is selected or available
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a subject to start studying'**
+  String get prepTimerSubjectRequired;
+
+  /// Primary action button starting a focus or stopwatch session
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get prepTimerStartButton;
+
+  /// Action button pausing an active study timer
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get prepTimerPauseButton;
+
+  /// Action button resuming a paused study timer
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get prepTimerResumeButton;
+
+  /// Action button finishing the session and opening the save sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get prepTimerFinishButton;
+
+  /// Button discarding an unwanted open timer session
+  ///
+  /// In en, this message translates to:
+  /// **'Discard'**
+  String get prepTimerDiscardButton;
+
+  /// Confirmation heading when discarding a running session
+  ///
+  /// In en, this message translates to:
+  /// **'Discard active session?'**
+  String get prepTimerDiscardConfirmTitle;
+
+  /// Confirmation body explaining open session discard
+  ///
+  /// In en, this message translates to:
+  /// **'This open timer session has not been saved and will be removed permanently.'**
+  String get prepTimerDiscardConfirmBody;
+
+  /// Compact floating timer button navigating back to the full Study Timer tab
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get prepTimerOpenFullButton;
+
+  /// Gentle in-app alert banner shown when a Focus round ends
+  ///
+  /// In en, this message translates to:
+  /// **'Focus round {round} complete!'**
+  String prepTimerAlertFocusDone(String round);
+
+  /// Gentle in-app alert banner shown when a break ends
+  ///
+  /// In en, this message translates to:
+  /// **'Break finished! Ready for round {round}?'**
+  String prepTimerAlertBreakDone(String round);
+
+  /// Button starting short break after focus round completes
+  ///
+  /// In en, this message translates to:
+  /// **'Start {minutes}m short break'**
+  String prepTimerStartShortBreak(String minutes);
+
+  /// Button starting long break after every four rounds
+  ///
+  /// In en, this message translates to:
+  /// **'Start {minutes}m long break'**
+  String prepTimerStartLongBreak(String minutes);
+
+  /// Button advancing from break into the next focus round
+  ///
+  /// In en, this message translates to:
+  /// **'Start round {round}'**
+  String prepTimerStartNextRound(String round);
+
+  /// Button hiding the gentle round completion banner
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get prepTimerDismissAlert;
+
+  /// Dialog heading configuring focus, short break, and long break minutes
+  ///
+  /// In en, this message translates to:
+  /// **'Pomodoro lengths'**
+  String get prepTimerConfigDialogTitle;
+
+  /// Input label for focus round length in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'Focus length (minutes)'**
+  String get prepTimerConfigFocusLabel;
+
+  /// Input label for short break length in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'Short break (minutes)'**
+  String get prepTimerConfigShortBreakLabel;
+
+  /// Input label for long break length after four rounds
+  ///
+  /// In en, this message translates to:
+  /// **'Long break after 4 rounds (minutes)'**
+  String get prepTimerConfigLongBreakLabel;
+
+  /// Validation error for zero or negative Pomodoro minutes
+  ///
+  /// In en, this message translates to:
+  /// **'Enter at least 1 minute'**
+  String get prepTimerConfigPositiveError;
+
+  /// Dialog title shown when finishing a running study session
+  ///
+  /// In en, this message translates to:
+  /// **'Save study session'**
+  String get prepTimerFinishDialogTitle;
+
+  /// Label above total active studied duration on finish sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Studied time'**
+  String get prepTimerFinishDurationLabel;
+
+  /// Optional note input inside finish study session sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Session note (optional)'**
+  String get prepTimerFinishNoteLabel;
+
+  /// Placeholder text inside session note field
+  ///
+  /// In en, this message translates to:
+  /// **'Chapters solved, formulas reviewed...'**
+  String get prepTimerFinishNoteHint;
+
+  /// Optional material progress input shown on session finish when a material is chosen
+  ///
+  /// In en, this message translates to:
+  /// **'Units done in {material} (optional)'**
+  String prepTimerFinishUnitsLabel(String material);
+
+  /// Placeholder hint for optional completed units field on finish sheet
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 20'**
+  String get prepTimerFinishUnitsHint;
+
+  /// Validation error when optional units input on finish sheet is invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a positive whole number or leave blank'**
+  String get prepTimerFinishUnitsError;
+
+  /// Checkbox option inside finish sheet opening revision composer after save
+  ///
+  /// In en, this message translates to:
+  /// **'Mark an item for revision after saving'**
+  String get prepTimerFinishFlagRevisionCheck;
+
+  /// Primary submit button on session finish sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Save session'**
+  String get prepTimerFinishSaveButton;
+
+  /// Confirmation heading shown on finish sheet after saving session
+  ///
+  /// In en, this message translates to:
+  /// **'Session saved!'**
+  String get prepTimerFinishSavedHeading;
+
+  /// Close button after session is saved on finish sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get prepTimerFinishDoneButton;
+
+  /// Dialog title for manually entering offline study time
+  ///
+  /// In en, this message translates to:
+  /// **'Log manual study session'**
+  String get prepTimerManualDialogTitle;
+
+  /// Dialog title when editing a saved study session
+  ///
+  /// In en, this message translates to:
+  /// **'Edit study session'**
+  String get prepTimerEditDialogTitle;
+
+  /// Date picker field label in manual/edit study session dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get prepTimerStartDateLabel;
+
+  /// Time picker field label in manual/edit study session dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Start time'**
+  String get prepTimerStartTimeLabel;
+
+  /// Hours input field label for manual/edit session duration
+  ///
+  /// In en, this message translates to:
+  /// **'Hours'**
+  String get prepTimerHoursLabel;
+
+  /// Minutes input field label for manual/edit session duration
+  ///
+  /// In en, this message translates to:
+  /// **'Minutes'**
+  String get prepTimerMinutesLabel;
+
+  /// Validation error when manual/edited session duration is zero
+  ///
+  /// In en, this message translates to:
+  /// **'Enter at least 1 minute of study time'**
+  String get prepTimerDurationPositiveError;
+
+  /// Section title listing completed and manual study sessions
+  ///
+  /// In en, this message translates to:
+  /// **'Recent study sessions'**
+  String get prepTimerHistoryTitle;
+
+  /// Empty state copy when user has no completed study sessions yet
+  ///
+  /// In en, this message translates to:
+  /// **'No saved study sessions yet. Start Focus or Stopwatch above, or log study time from elsewhere.'**
+  String get prepTimerHistoryEmpty;
+
+  /// Tooltip on session edit icon button
+  ///
+  /// In en, this message translates to:
+  /// **'Edit session'**
+  String get prepTimerEditTooltip;
+
+  /// Tooltip on session delete icon button
+  ///
+  /// In en, this message translates to:
+  /// **'Delete session'**
+  String get prepTimerDeleteTooltip;
+
+  /// Confirmation title before permanently removing a study session
+  ///
+  /// In en, this message translates to:
+  /// **'Delete study session?'**
+  String get prepTimerDeleteConfirmTitle;
+
+  /// Confirmation body explaining impact of deleting a study session
+  ///
+  /// In en, this message translates to:
+  /// **'This session and its study hours will be removed from your history and analytics.'**
+  String get prepTimerDeleteConfirmBody;
+
+  /// Browser tab title template during active Pomodoro Focus round
+  ///
+  /// In en, this message translates to:
+  /// **'{clock} • Focus — JobPrep'**
+  String prepTimerTabFocus(String clock);
+
+  /// Browser tab title template during Pomodoro break
+  ///
+  /// In en, this message translates to:
+  /// **'{clock} • Break — JobPrep'**
+  String prepTimerTabBreak(String clock);
+
+  /// Browser tab title template during active Stopwatch session
+  ///
+  /// In en, this message translates to:
+  /// **'{clock} • Stopwatch — JobPrep'**
+  String prepTimerTabStopwatch(String clock);
+
+  /// Browser tab title template while study timer is paused
+  ///
+  /// In en, this message translates to:
+  /// **'Paused {clock} — JobPrep'**
+  String prepTimerTabPaused(String clock);
+
+  /// Metric label displaying hours studied in the current week
+  ///
+  /// In en, this message translates to:
+  /// **'Hours this week'**
+  String get prepAnalyticsHoursThisWeek;
+
+  /// Short unit suffix denoting hours
+  ///
+  /// In en, this message translates to:
+  /// **'h'**
+  String get prepAnalyticsHoursSuffix;
+
+  /// Caption below hours metric summarizing selected range total
+  ///
+  /// In en, this message translates to:
+  /// **'{hours}h in window'**
+  String prepAnalyticsHoursInRangeCaption(String hours);
+
+  /// Card heading for daily study hours bar chart
+  ///
+  /// In en, this message translates to:
+  /// **'Hours studied per day'**
+  String get prepAnalyticsDailyHoursTitle;
+
+  /// Subtitle explaining 10-minute session rule on daily hours chart
+  ///
+  /// In en, this message translates to:
+  /// **'Days with a 10+ min session or unit log count toward streaks'**
+  String get prepAnalyticsDailyHoursSubtitle;
+
+  /// Card heading for per-subject study hours breakdown chart
+  ///
+  /// In en, this message translates to:
+  /// **'Hours studied by subject'**
+  String get prepAnalyticsSubjectHoursTitle;
+
+  /// Empty copy inside subject hours chart card before any timed session
+  ///
+  /// In en, this message translates to:
+  /// **'Complete a study timer session or add manual hours to compare time across subjects.'**
+  String get prepAnalyticsSubjectHoursEmpty;
+
+  /// Tooltip on study consistency heatmap cell showing both units and hours
+  ///
+  /// In en, this message translates to:
+  /// **'{date}: {units} units, {hours}h'**
+  String prepAnalyticsHeatmapTimeTooltip(
+      String date, String units, String hours);
+
+  /// Date picker button label inside manual/edit session dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Date: {date}'**
+  String prepTimerStartDateValue(String date);
+
+  /// Time picker button label inside manual/edit session dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Start time: {time}'**
+  String prepTimerStartTimeValue(String time);
+
+  /// Formatted study hours value with localized unit
+  ///
+  /// In en, this message translates to:
+  /// **'{hours}h'**
+  String prepAnalyticsHoursValue(String hours);
+
+  /// Tooltip on daily study hours bar chart
+  ///
+  /// In en, this message translates to:
+  /// **'{date}: {hours}h'**
+  String prepAnalyticsDailyHoursTooltip(String date, String hours);
+
+  /// Legend row displaying subject title and hours studied
+  ///
+  /// In en, this message translates to:
+  /// **'{subject}: {hours}h'**
+  String prepAnalyticsSubjectHoursLegend(String subject, String hours);
+
+  /// Navigation label for the focused Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get navToday;
+
+  /// Morning greeting shown at the top of Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get todayGreetingMorning;
+
+  /// Afternoon greeting shown at the top of Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Good afternoon'**
+  String get todayGreetingAfternoon;
+
+  /// Evening greeting shown at the top of Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Good evening'**
+  String get todayGreetingEvening;
+
+  /// Personalized greeting combining time-of-day salutation and user name
+  ///
+  /// In en, this message translates to:
+  /// **'{greeting}, {name}'**
+  String todayGreetingNamed(String greeting, String name);
+
+  /// Subtitle below the greeting and date on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Your focused action plan for today'**
+  String get todaySubtitle;
+
+  /// Tooltip for manual refresh button on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh today'**
+  String get todayRefreshTooltip;
+
+  /// Error message when Today summary providers fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load your Today plan.'**
+  String get todayLoadError;
+
+  /// Formatted percentage displayed inside the daily progress ring
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}%'**
+  String todayProgressRingLabel(String percent);
+
+  /// Short caption beneath the daily progress percentage
+  ///
+  /// In en, this message translates to:
+  /// **'Daily goal'**
+  String get todayProgressRingCaption;
+
+  /// Summary of total completed vs target units for today
+  ///
+  /// In en, this message translates to:
+  /// **'{done} / {target} units today'**
+  String todayDailyDoneOfTarget(String done, String target);
+
+  /// Short hint inside Today header when user has no active study plan
+  ///
+  /// In en, this message translates to:
+  /// **'No study plan yet'**
+  String get todayNoPlanHeaderHint;
+
+  /// Card title for top prioritized next action on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Do this next'**
+  String get todayDoNextTitle;
+
+  /// Priority badge when top action is a circular deadline within 2 days
+  ///
+  /// In en, this message translates to:
+  /// **'Urgent deadline'**
+  String get todayDoNextPriorityDeadline;
+
+  /// Priority badge when top action is an overdue revision item
+  ///
+  /// In en, this message translates to:
+  /// **'Overdue revision'**
+  String get todayDoNextPriorityRevision;
+
+  /// Priority badge when top action is the largest remaining study target
+  ///
+  /// In en, this message translates to:
+  /// **'Biggest target today'**
+  String get todayDoNextPriorityStudy;
+
+  /// Action button on Do this next card when a deadline is urgent
+  ///
+  /// In en, this message translates to:
+  /// **'Review circular'**
+  String get todayDoNextOpenCircularAction;
+
+  /// Action button on Do this next card when revisions are overdue
+  ///
+  /// In en, this message translates to:
+  /// **'Start revision'**
+  String get todayDoNextStartRevisionAction;
+
+  /// Action button on Do this next card to launch focus timer on target subject
+  ///
+  /// In en, this message translates to:
+  /// **'Start timer'**
+  String get todayDoNextStartStudyAction;
+
+  /// Summary text inside Do this next card when overdue revisions take priority
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formattedCount} overdue item: {label}} other{{formattedCount} overdue items • Next: {label}}}'**
+  String todayDoNextOverdueSummary(
+      int count, String formattedCount, String label);
+
+  /// Summary text inside Do this next card for remaining daily study units
+  ///
+  /// In en, this message translates to:
+  /// **'{remaining} units left today ({done} / {target} done)'**
+  String todayDoNextStudySummary(String remaining, String done, String target);
+
+  /// Title inside Do this next card when nothing urgent remains
+  ///
+  /// In en, this message translates to:
+  /// **'All caught up for now'**
+  String get todayDoNextAllCaughtUpTitle;
+
+  /// Explanation shown when there is no urgent Do this next item
+  ///
+  /// In en, this message translates to:
+  /// **'No deadlines in 2 days, no overdue revisions, and today\'s targets are complete.'**
+  String get todayDoNextAllCaughtUpBody;
+
+  /// Section title for per-subject daily study targets on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s study targets'**
+  String get todayTargetsTitle;
+
+  /// Empty state heading when user has no active study plans
+  ///
+  /// In en, this message translates to:
+  /// **'No study plan yet'**
+  String get todayTargetsEmptyTitle;
+
+  /// Empty state body prompting user to create a study plan
+  ///
+  /// In en, this message translates to:
+  /// **'Create a study plan with an exam date to calculate daily subject targets.'**
+  String get todayTargetsEmptyBody;
+
+  /// Button label linking to study plan creation from Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Create study plan'**
+  String get todayTargetsCreatePlanButton;
+
+  /// Completed vs target units readout per study target row
+  ///
+  /// In en, this message translates to:
+  /// **'{done} / {target} units'**
+  String todayTargetRowDoneTarget(String done, String target);
+
+  /// Remaining units today for a study plan target row
+  ///
+  /// In en, this message translates to:
+  /// **'{remaining} remaining'**
+  String todayTargetRowRemaining(String remaining);
+
+  /// Status text when today's quota for a study target row is met
+  ///
+  /// In en, this message translates to:
+  /// **'Daily target complete'**
+  String get todayTargetRowComplete;
+
+  /// Button label opening quick log dialog for a study target row
+  ///
+  /// In en, this message translates to:
+  /// **'Quick log'**
+  String get todayTargetQuickLogButton;
+
+  /// Button label starting timer for a study target row's subject
+  ///
+  /// In en, this message translates to:
+  /// **'Start timer'**
+  String get todayTargetStartTimerButton;
+
+  /// Section header for missed-days catch-up messages on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Catch-up notice'**
+  String get todayCatchUpTitle;
+
+  /// Subject-prefixed catch-up message line on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'{subject}: {message}'**
+  String todayCatchUpSubjectLine(String subject, String message);
+
+  /// Section header for spaced revisions due today or overdue
+  ///
+  /// In en, this message translates to:
+  /// **'Revision due today'**
+  String get todayRevisionTitle;
+
+  /// Compact count chip for revisions needing review today
+  ///
+  /// In en, this message translates to:
+  /// **'{formattedCount} due'**
+  String todayRevisionCountBadge(String formattedCount);
+
+  /// Subline breaking down overdue and due-today revision counts
+  ///
+  /// In en, this message translates to:
+  /// **'{overdue} overdue · {today} due today'**
+  String todayRevisionOverdueBreakdown(String overdue, String today);
+
+  /// Empty state title when zero revisions are due or overdue
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing due for revision today'**
+  String get todayRevisionEmptyTitle;
+
+  /// Empty state description inside Revision due today card
+  ///
+  /// In en, this message translates to:
+  /// **'Flag tricky pages or mock mistakes during study to schedule them here automatically.'**
+  String get todayRevisionEmptyBody;
+
+  /// Primary CTA button navigating to revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'Start revision'**
+  String get todayRevisionStartButton;
+
+  /// Section title for circulars closing within 7 days on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Deadlines in the next 7 days'**
+  String get todayDeadlinesTitle;
+
+  /// Empty state title when no circular deadlines close within 7 days
+  ///
+  /// In en, this message translates to:
+  /// **'No deadlines in the next 7 days'**
+  String get todayDeadlinesEmptyTitle;
+
+  /// Empty state description when no 7-day deadlines are approaching
+  ///
+  /// In en, this message translates to:
+  /// **'Saved circulars closing within the coming week will appear here with urgency badges.'**
+  String get todayDeadlinesEmptyBody;
+
+  /// Section title for exam dates within the next 14 days on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Exams in the next 14 days'**
+  String get todayExamsTitle;
+
+  /// Empty state title when zero exams are scheduled within 14 days
+  ///
+  /// In en, this message translates to:
+  /// **'No exams in the next 14 days'**
+  String get todayExamsEmptyTitle;
+
+  /// Empty state explanation when no 14-day exams exist
+  ///
+  /// In en, this message translates to:
+  /// **'Exam dates added to your saved circulars within the next two weeks will show up here.'**
+  String get todayExamsEmptyBody;
+
+  /// Section title for Inbox summary card on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Inbox'**
+  String get todayInboxTitle;
+
+  /// Summary count of quick-captured circulars waiting to be triaged
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Nothing waiting in Inbox} =1{{formattedCount} item waiting in Inbox} other{{formattedCount} items waiting in Inbox}}'**
+  String todayInboxWaitingSummary(int count, String formattedCount);
+
+  /// CTA button navigating from Today screen to Inbox screen
+  ///
+  /// In en, this message translates to:
+  /// **'Review inbox'**
+  String get todayReviewInboxButton;
+
+  /// Section title for total study session duration today on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Time studied today'**
+  String get todayTimeStudiedTitle;
+
+  /// Formatted duration with hours and minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{hours}h {minutes}m'**
+  String todayTimeStudiedHoursMinutes(String hours, String minutes);
+
+  /// Formatted duration under one hour in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes}m'**
+  String todayTimeStudiedMinutesOnly(String minutes);
+
+  /// Session count caption under Time studied today
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No study sessions recorded today yet} =1{{formattedCount} session today} other{{formattedCount} sessions today}}'**
+  String todayTimeStudiedSessionsSummary(int count, String formattedCount);
+
+  /// Badge note when a live timer session is currently running today
+  ///
+  /// In en, this message translates to:
+  /// **'Active session running'**
+  String get todayTimeStudiedRunningNote;
+
+  /// Button navigating to the study timer tab
+  ///
+  /// In en, this message translates to:
+  /// **'Open timer'**
+  String get todayOpenTimerButton;
+
+  /// Dialog title for logging progress units from Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Quick log • {subject}'**
+  String todayQuickLogTitle(String subject);
+
+  /// Message inside quick log dialog when chosen scope has no materials yet
+  ///
+  /// In en, this message translates to:
+  /// **'Add a book or material under this subject before logging units.'**
+  String get todayQuickLogNoMaterialsBody;
+
+  /// CTA opening subject view to add a study material
+  ///
+  /// In en, this message translates to:
+  /// **'Add material'**
+  String get todayQuickLogOpenSubjectButton;
+
+  /// Preset unit chip label inside Today quick log dialog
+  ///
+  /// In en, this message translates to:
+  /// **'+{units}'**
+  String todayQuickLogPresetChip(String units);
+
+  /// Tooltip for the notification bell button in the app shell
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsBellTooltip;
+
+  /// Screen-reader label for notification bell with unread count
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications ({formattedCount} unread)'**
+  String notificationsBellUnreadSemantics(String formattedCount);
+
+  /// Header title inside notifications panel and screen
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsPanelTitle;
+
+  /// Banner explaining live in-app delivery alongside background email reminders
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications appear here while the app is open; daily email reminders continue working when closed.'**
+  String get notificationsInAppNotice;
+
+  /// Button marking every unread notification as read
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all read'**
+  String get notificationsMarkAllReadButton;
+
+  /// Tooltip for button marking one notification read
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as read'**
+  String get notificationsMarkReadTooltip;
+
+  /// Tooltip for button removing one notification
+  ///
+  /// In en, this message translates to:
+  /// **'Delete notification'**
+  String get notificationsDeleteTooltip;
+
+  /// Empty state heading when there are no notifications
+  ///
+  /// In en, this message translates to:
+  /// **'All caught up'**
+  String get notificationsEmptyTitle;
+
+  /// Empty state body explaining what notifications appear in the inbox
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline alerts, due revisions, behind-schedule warnings, and your weekly review will show up here.'**
+  String get notificationsEmptyBody;
+
+  /// Badge text on unread notifications
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get notificationsUnreadBadge;
+
+  /// Quick action chip inside notifications panel to open the Weekly Review screen
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly review'**
+  String get notificationsOpenWeeklyReviewChip;
+
+  /// Inline or snackbar error when notification state mutation fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not update notification. Please try again.'**
+  String get notificationsSaveError;
+
+  /// Type chip label for deadline_soon notification
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline'**
+  String get notificationTypeDeadlineSoon;
+
+  /// Type chip label for exam_soon notification
+  ///
+  /// In en, this message translates to:
+  /// **'Exam'**
+  String get notificationTypeExamSoon;
+
+  /// Type chip label for revision_due notification
+  ///
+  /// In en, this message translates to:
+  /// **'Revision'**
+  String get notificationTypeRevisionDue;
+
+  /// Type chip label for behind_schedule notification
+  ///
+  /// In en, this message translates to:
+  /// **'Study pace'**
+  String get notificationTypeBehindSchedule;
+
+  /// Type chip label for weekly_review notification
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly review'**
+  String get notificationTypeWeeklyReview;
+
+  /// Localized notification message for approaching circular deadlines
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{{title} closes tomorrow ({targetDate}).} other{{title} closes in {formattedDays} days ({targetDate}).}}'**
+  String notificationMsgDeadlineSoon(
+      int days, String title, String formattedDays, String targetDate);
+
+  /// Localized notification message for upcoming circular exams
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{{title} — {stage} exam is tomorrow ({targetDate}).} other{{title} — {stage} exam is in {formattedDays} days ({targetDate}).}}'**
+  String notificationMsgExamSoon(int days, String title, String stage,
+      String formattedDays, String targetDate);
+
+  /// Localized notification message for spaced revisions due today
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{You have 1 revision item due today.} other{You have {formattedCount} revision items due today.}}'**
+  String notificationMsgRevisionDue(int count, String formattedCount);
+
+  /// Localized notification message when a subject study plan is behind
+  ///
+  /// In en, this message translates to:
+  /// **'You are falling behind schedule in {subject}.'**
+  String notificationMsgBehindScheduleSubject(String subject);
+
+  /// Localized notification message when an all-subjects study plan is behind
+  ///
+  /// In en, this message translates to:
+  /// **'Your overall study plan is behind schedule.'**
+  String get notificationMsgBehindScheduleAll;
+
+  /// Localized notification message inviting the user to open Weekly Review
+  ///
+  /// In en, this message translates to:
+  /// **'Your weekly review is ready. See how the past 7 days went.'**
+  String get notificationMsgWeeklyReview;
+
+  /// Settings card title for per-type notification toggles
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Types & Weekly Review'**
+  String get settingsInAppNotificationsTitle;
+
+  /// Settings card subtitle explaining per-type toggles and weekly review day
+  ///
+  /// In en, this message translates to:
+  /// **'Choose which in-app notifications are created daily and pick your weekly review day.'**
+  String get settingsInAppNotificationsSubtitle;
+
+  /// Toggle label for deadline_soon notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Circular deadlines (7, 3, 1 days)'**
+  String get settingsNotifDeadlineSoonTitle;
+
+  /// Toggle label for exam_soon notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Exam dates (7, 3, 1 days)'**
+  String get settingsNotifExamSoonTitle;
+
+  /// Toggle label for revision_due notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Revision items due today'**
+  String get settingsNotifRevisionDueTitle;
+
+  /// Toggle label for behind_schedule notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Behind-schedule study plans'**
+  String get settingsNotifBehindScheduleTitle;
+
+  /// Toggle label for weekly_review notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly review digest'**
+  String get settingsNotifWeeklyReviewTitle;
+
+  /// Section label for picking preferred weekday for weekly review
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly review day'**
+  String get settingsNotifWeeklyReviewDayLabel;
+
+  /// Main title on the Weekly Review screen
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly Review'**
+  String get weeklyReviewTitle;
+
+  /// Date window subtitle on the Weekly Review screen
+  ///
+  /// In en, this message translates to:
+  /// **'Past 7 days ({startDate} – {endDate})'**
+  String weeklyReviewPeriodSubtitle(String startDate, String endDate);
+
+  /// Action opening the Weekly Review screen
+  ///
+  /// In en, this message translates to:
+  /// **'Open Weekly Review'**
+  String get weeklyReviewOpenButton;
+
+  /// Weekly Review card heading for studied units
+  ///
+  /// In en, this message translates to:
+  /// **'Units studied'**
+  String get weeklyReviewUnitsTitle;
+
+  /// Weekly Review card heading for hours studied
+  ///
+  /// In en, this message translates to:
+  /// **'Hours studied'**
+  String get weeklyReviewHoursTitle;
+
+  /// Formatted hours studied value
+  ///
+  /// In en, this message translates to:
+  /// **'{formattedHours}h'**
+  String weeklyReviewHoursValue(String formattedHours);
+
+  /// Weekly Review card heading for days studied and missed days
+  ///
+  /// In en, this message translates to:
+  /// **'Days studied'**
+  String get weeklyReviewConsistencyTitle;
+
+  /// Weekly Review metric heading for cleared revision marks
+  ///
+  /// In en, this message translates to:
+  /// **'Revisions cleared'**
+  String get weeklyReviewRevisionsClearedTitle;
+
+  /// Weekly Review card heading for mock test percentage average
+  ///
+  /// In en, this message translates to:
+  /// **'Mock test average'**
+  String get weeklyReviewMockAvgTitle;
+
+  /// Mock test average formatted as percentage
+  ///
+  /// In en, this message translates to:
+  /// **'{formattedPercent}%'**
+  String weeklyReviewMockPercent(String formattedPercent);
+
+  /// Subtitle showing count of mock tests taken during the 7-day window
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No mock tests this week} =1{1 mock test taken} other{{formattedCount} mock tests taken}}'**
+  String weeklyReviewMockCountSubtitle(int count, String formattedCount);
+
+  /// Fallback display when no mock tests were taken during the week
+  ///
+  /// In en, this message translates to:
+  /// **'No score yet'**
+  String get weeklyReviewMockNoData;
+
+  /// Comparison subtitle when metric equals previous week
+  ///
+  /// In en, this message translates to:
+  /// **'Same as previous week'**
+  String get weeklyReviewDeltaSame;
+
+  /// Unit delta compared against the prior 7-day window
+  ///
+  /// In en, this message translates to:
+  /// **'{sign}{formattedDelta} vs previous week'**
+  String weeklyReviewDeltaUnits(String sign, String formattedDelta);
+
+  /// Hours delta compared against the prior 7-day window
+  ///
+  /// In en, this message translates to:
+  /// **'{sign}{formattedHours}h vs previous week'**
+  String weeklyReviewDeltaHours(String sign, String formattedHours);
+
+  /// Mock score average percentage-point delta compared with prior week
+  ///
+  /// In en, this message translates to:
+  /// **'{sign}{formattedPoints}% vs previous week'**
+  String weeklyReviewDeltaPoints(String sign, String formattedPoints);
+
+  /// Fraction showing days studied out of 7
+  ///
+  /// In en, this message translates to:
+  /// **'{studied} / {total} days'**
+  String weeklyReviewDaysFraction(String studied, String total);
+
+  /// Subtitle when user studied on all 7 days
+  ///
+  /// In en, this message translates to:
+  /// **'Zero missed days this week.'**
+  String get weeklyReviewMissedDaysNone;
+
+  /// Subtitle showing count of missed study days this week
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 missed day} other{{formattedCount} missed days}}'**
+  String weeklyReviewMissedDaysCount(int count, String formattedCount);
+
+  /// Section heading listing upcoming deadlines and exams in the next 7 days
+  ///
+  /// In en, this message translates to:
+  /// **'Next 7 days'**
+  String get weeklyReviewUpcomingTitle;
+
+  /// Empty state title when no deadlines or exams occur in the next 7 days
+  ///
+  /// In en, this message translates to:
+  /// **'Clear week ahead'**
+  String get weeklyReviewUpcomingEmptyTitle;
+
+  /// Empty state body when the next 7 days have no events
+  ///
+  /// In en, this message translates to:
+  /// **'No application deadlines or scheduled exams fall within the next 7 days.'**
+  String get weeklyReviewUpcomingEmptyBody;
+
+  /// Card title highlighting the single coaching suggestion for next week
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestion for next week'**
+  String get weeklyReviewSuggestionTitle;
+
+  /// Coaching suggestion when a circular deadline closes within 3 days
+  ///
+  /// In en, this message translates to:
+  /// **'Prioritize your {title} application before its deadline closes in the next 3 days.'**
+  String weeklyReviewSuggestionDeadline(String title);
+
+  /// Coaching suggestion when a subject study plan is behind schedule
+  ///
+  /// In en, this message translates to:
+  /// **'Add a short daily catch-up block for {subject} to bring its study plan back on pace.'**
+  String weeklyReviewSuggestionBehindSubject(String subject);
+
+  /// Coaching suggestion when an all-subjects study plan is behind schedule
+  ///
+  /// In en, this message translates to:
+  /// **'Set a light catch-up target today to close the gap on your behind-schedule study plan.'**
+  String get weeklyReviewSuggestionBehindAll;
+
+  /// Coaching suggestion after a week with zero recorded study days
+  ///
+  /// In en, this message translates to:
+  /// **'Start light next week: log 15 minutes or 10 pages on day one to build momentum.'**
+  String get weeklyReviewSuggestionStart;
+
+  /// Coaching suggestion when 3 or more days were missed in the week
+  ///
+  /// In en, this message translates to:
+  /// **'You missed {formattedDays} days this week — try lowering your minimum daily floor so busy days still count.'**
+  String weeklyReviewSuggestionMissedDays(String formattedDays);
+
+  /// Coaching suggestion when mock averages fell or exams near without mock practice
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule one timed mock test next week and flag any weak topics directly to Revision.'**
+  String get weeklyReviewSuggestionMock;
+
+  /// Coaching suggestion when revision backlog remains pending
+  ///
+  /// In en, this message translates to:
+  /// **'Clear your {formattedCount} pending revision items early next week before adding heavy new reading.'**
+  String weeklyReviewSuggestionRevision(String formattedCount);
+
+  /// Coaching suggestion when study consistency and pace are strong
+  ///
+  /// In en, this message translates to:
+  /// **'Consistent week! Maintain this steady pace and keep a short daily slot reserved for revision.'**
+  String get weeklyReviewSuggestionMaintain;
+
+  /// Action navigating from Weekly Review back to Today
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Today'**
+  String get weeklyReviewBackToToday;
+
+  /// Step progress label shown in onboarding wizard header
+  ///
+  /// In en, this message translates to:
+  /// **'Step {step} of {total}'**
+  String onboardingStepProgress(String step, String total);
+
+  /// Back action on each onboarding wizard step
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get onboardingBackButton;
+
+  /// Continue action advancing onboarding wizard step
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get onboardingNextButton;
+
+  /// Skip setup action available on every onboarding step
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get onboardingSkipButton;
+
+  /// Final CTA applying setup configuration and opening Today
+  ///
+  /// In en, this message translates to:
+  /// **'Finish setup'**
+  String get onboardingFinishButton;
+
+  /// Step 1 heading greeting a new user
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to JobPrep'**
+  String get onboardingWelcomeTitle;
+
+  /// Step 1 reassuring explanation of minimal setup
+  ///
+  /// In en, this message translates to:
+  /// **'Set up your language, theme, syllabus, and weekly pace in a minute. We never ask for phone numbers, addresses, or age.'**
+  String get onboardingWelcomeSubtitle;
+
+  /// Section title for language selection inside Step 1
+  ///
+  /// In en, this message translates to:
+  /// **'App language'**
+  String get onboardingLanguageHeading;
+
+  /// Section title for theme selection inside Step 1
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get onboardingThemeHeading;
+
+  /// Step 2 heading selecting a prep starter pack or blank start
+  ///
+  /// In en, this message translates to:
+  /// **'What are you preparing for?'**
+  String get onboardingTrackTitle;
+
+  /// Step 2 subtitle explaining template tracks
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a starting syllabus template you can customize on the next step, or start completely blank.'**
+  String get onboardingTrackSubtitle;
+
+  /// Track card title for BCS/bank/government jobs
+  ///
+  /// In en, this message translates to:
+  /// **'Government job exams'**
+  String get onboardingTrackGovernmentTitle;
+
+  /// Track card description for government exam pack
+  ///
+  /// In en, this message translates to:
+  /// **'Bengali, English, General Knowledge, Math, Analytical Reasoning & Computer starter materials.'**
+  String get onboardingTrackGovernmentDesc;
+
+  /// Track card title for software engineering interviews
+  ///
+  /// In en, this message translates to:
+  /// **'Private software jobs'**
+  String get onboardingTrackSoftwareTitle;
+
+  /// Track card description for software job pack
+  ///
+  /// In en, this message translates to:
+  /// **'Data Structures & Algorithms, System Design, OOP/SQL & Interview Prep materials.'**
+  String get onboardingTrackSoftwareDesc;
+
+  /// Track card title starting without a predefined pack
+  ///
+  /// In en, this message translates to:
+  /// **'Something else (Blank start)'**
+  String get onboardingTrackBlankTitle;
+
+  /// Track card description for custom blank start
+  ///
+  /// In en, this message translates to:
+  /// **'Add your own custom subjects and materials for any exam, fellowship, or career path.'**
+  String get onboardingTrackBlankDesc;
+
+  /// Step 3 heading for toggling, renaming, and editing starter subjects and materials
+  ///
+  /// In en, this message translates to:
+  /// **'Customize your subjects & materials'**
+  String get onboardingSubjectsTitle;
+
+  /// Step 3 helper copy
+  ///
+  /// In en, this message translates to:
+  /// **'Enable or disable subjects, rename them, edit total units, or add your own.'**
+  String get onboardingSubjectsSubtitle;
+
+  /// Helper banner shown when blank start has zero subjects yet
+  ///
+  /// In en, this message translates to:
+  /// **'No subjects yet. Tap Add subject to build your custom track, or continue and add them later.'**
+  String get onboardingSubjectsEmptyBlankNote;
+
+  /// Input field label for renaming a draft subject
+  ///
+  /// In en, this message translates to:
+  /// **'Subject name'**
+  String get onboardingSubjectNameLabel;
+
+  /// Input field label for a material title
+  ///
+  /// In en, this message translates to:
+  /// **'Material title'**
+  String get onboardingMaterialTitleLabel;
+
+  /// Numeric input label for total units in a material
+  ///
+  /// In en, this message translates to:
+  /// **'Total units'**
+  String get onboardingMaterialUnitsLabel;
+
+  /// Button opening custom subject dialog in Step 3
+  ///
+  /// In en, this message translates to:
+  /// **'Add subject'**
+  String get onboardingAddSubjectButton;
+
+  /// Dialog heading when adding a custom subject in Step 3
+  ///
+  /// In en, this message translates to:
+  /// **'New Subject'**
+  String get onboardingAddSubjectDialogTitle;
+
+  /// Button adding a material inside a subject card in Step 3
+  ///
+  /// In en, this message translates to:
+  /// **'Add material'**
+  String get onboardingAddMaterialButton;
+
+  /// Dialog heading when adding a material inside Step 3
+  ///
+  /// In en, this message translates to:
+  /// **'New Material'**
+  String get onboardingAddMaterialDialogTitle;
+
+  /// Tooltip for deleting a draft material item
+  ///
+  /// In en, this message translates to:
+  /// **'Remove material'**
+  String get onboardingRemoveMaterialTooltip;
+
+  /// Validation error when an enabled subject name is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Every enabled subject needs a name.'**
+  String get onboardingValidationEmptySubject;
+
+  /// Validation error for duplicate subject names in Step 3
+  ///
+  /// In en, this message translates to:
+  /// **'Two enabled subjects cannot share the same name.'**
+  String get onboardingValidationDuplicateSubject;
+
+  /// Validation error when a material title is blank
+  ///
+  /// In en, this message translates to:
+  /// **'Every material under an enabled subject needs a title.'**
+  String get onboardingValidationEmptyMaterial;
+
+  /// Validation error when material total units is 0 or invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Every material must have at least 1 unit.'**
+  String get onboardingValidationInvalidUnits;
+
+  /// Step 4 heading configuring exam date, study/rest days, and max pace
+  ///
+  /// In en, this message translates to:
+  /// **'Set your exam timeline & weekly pace'**
+  String get onboardingScheduleTitle;
+
+  /// Step 4 subtitle explaining how study plan calculation uses exam date and rest days
+  ///
+  /// In en, this message translates to:
+  /// **'Your study plan calculates daily unit targets automatically with a 7-day buffer before exam day.'**
+  String get onboardingScheduleSubtitle;
+
+  /// Label above exam date selector
+  ///
+  /// In en, this message translates to:
+  /// **'Target exam date'**
+  String get onboardingExamDateLabel;
+
+  /// Placeholder label before picking an exam date
+  ///
+  /// In en, this message translates to:
+  /// **'Choose exam date'**
+  String get onboardingExamDatePickButton;
+
+  /// Switch allowing user to defer creating a dated study plan
+  ///
+  /// In en, this message translates to:
+  /// **'I don\'t know my exam date yet'**
+  String get onboardingExamDateUnknownToggle;
+
+  /// Note shown when I don't know yet is active
+  ///
+  /// In en, this message translates to:
+  /// **'No problem — you can attach an exam date later from Prep > Study Plan.'**
+  String get onboardingExamDateUnknownNote;
+
+  /// Label for how many days per week the user studies
+  ///
+  /// In en, this message translates to:
+  /// **'Study days per week'**
+  String get onboardingStudyDaysLabel;
+
+  /// Formatted count of study days per week
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{formatted} day / week} other{{formatted} days / week}}'**
+  String onboardingStudyDaysCount(int count, String formatted);
+
+  /// Label for selecting rest day weekdays
+  ///
+  /// In en, this message translates to:
+  /// **'Which days are your rest days?'**
+  String get onboardingRestDaysLabel;
+
+  /// Input label for optional max units/day cap
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum daily pace (optional)'**
+  String get onboardingMaxPaceLabel;
+
+  /// Hint text inside optional max daily pace field
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 50 units/day'**
+  String get onboardingMaxPaceHint;
+
+  /// Validation error when Step 4 lacks both an exam date and unknown toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a target exam date or turn on \"I don\'t know yet\".'**
+  String get onboardingValidationMissingExamDate;
+
+  /// Validation error when selected exam date is in the past
+  ///
+  /// In en, this message translates to:
+  /// **'Choose today or a future exam date.'**
+  String get onboardingValidationPastExamDate;
+
+  /// Validation error if all 7 days are marked as rest
+  ///
+  /// In en, this message translates to:
+  /// **'Keep at least 1 study day per week.'**
+  String get onboardingValidationNoStudyDays;
+
+  /// Validation error when optional max pace input is invalid or <= 0
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum daily pace must be a whole number above 0.'**
+  String get onboardingValidationInvalidMaxPace;
+
+  /// Step 5 heading for optional Quick Capture circular entry
+  ///
+  /// In en, this message translates to:
+  /// **'Save your first circular (optional)'**
+  String get onboardingCircularTitle;
+
+  /// Step 5 subtitle explaining optional quick capture
+  ///
+  /// In en, this message translates to:
+  /// **'Paste an application link to save your first job circular into Inbox right away, or leave blank to skip.'**
+  String get onboardingCircularSubtitle;
+
+  /// Helper hint explaining Step 5 can be skipped by leaving empty or tapping Skip
+  ///
+  /// In en, this message translates to:
+  /// **'Leaving the link empty cleanly skips this step.'**
+  String get onboardingCircularOptionalNote;
+
+  /// Validation error when optional circular URL has invalid format
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid web link starting with http:// or https://, or leave it blank.'**
+  String get onboardingValidationInvalidUrl;
+
+  /// Step 6 summary heading
+  ///
+  /// In en, this message translates to:
+  /// **'Ready to launch your study space'**
+  String get onboardingFinishTitle;
+
+  /// Step 6 reassurance explaining idempotent application
+  ///
+  /// In en, this message translates to:
+  /// **'Review your choices below. Applying setup again later never creates duplicates.'**
+  String get onboardingFinishSubtitle;
+
+  /// Summary row label for selected track
+  ///
+  /// In en, this message translates to:
+  /// **'Preparation track'**
+  String get onboardingSummaryTrackLabel;
+
+  /// Summary row text counting enabled subjects and materials
+  ///
+  /// In en, this message translates to:
+  /// **'{subjectsCount, plural, =0{Blank start (no subjects staged)} =1{1 subject · {formattedMaterials} materials} other{{formattedSubjects} subjects · {formattedMaterials} materials}}'**
+  String onboardingSummarySubjectsValue(
+      int subjectsCount, String formattedSubjects, String formattedMaterials);
+
+  /// Summary schedule string with chosen exam date and weekly study days
+  ///
+  /// In en, this message translates to:
+  /// **'Exam: {examDate} · {studyDays}'**
+  String onboardingSummaryScheduleExam(String examDate, String studyDays);
+
+  /// Summary schedule string when user chose I don't know yet
+  ///
+  /// In en, this message translates to:
+  /// **'Exam date undecided · {studyDays}'**
+  String onboardingSummaryScheduleUnknown(String studyDays);
+
+  /// Summary chip showing optional max daily pace limit
+  ///
+  /// In en, this message translates to:
+  /// **'Max pace: {formattedPace} / day'**
+  String onboardingSummaryPaceLabel(String formattedPace);
+
+  /// Summary text when Step 5 staged a circular link
+  ///
+  /// In en, this message translates to:
+  /// **'Inbox capture: {target}'**
+  String onboardingSummaryCircularPending(String target);
+
+  /// Summary text when no circular URL was entered in Step 5
+  ///
+  /// In en, this message translates to:
+  /// **'No circular staged yet'**
+  String get onboardingSummaryCircularSkipped;
+
+  /// Inline error banner when saving or finishing onboarding fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not complete setup. Check your connection and try again.'**
+  String get onboardingApplyError;
+
+  /// Heading for the three dismissible onboarding tips card on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Quick tips to get started'**
+  String get onboardingTodayTipsTitle;
+
+  /// First onboarding tip displayed on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Log pages or minutes right from Today\'s targets to keep your study plan accurate.'**
+  String get onboardingTodayTip1;
+
+  /// Second onboarding tip displayed on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Flag tricky pages while logging progress to grow your spaced Revision queue.'**
+  String get onboardingTodayTip2;
+
+  /// Third onboarding tip displayed on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Check the notification bell for deadline countdowns and your weekly Sunday review.'**
+  String get onboardingTodayTip3;
+
+  /// Button dismissing all onboarding tips on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss tips'**
+  String get onboardingTodayTipsDismissAll;
+
+  /// Tooltip for dismissing an individual tip row
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss tip'**
+  String get onboardingTodayTipDismissTooltip;
+
+  /// Settings card heading for re-running the onboarding setup wizard
+  ///
+  /// In en, this message translates to:
+  /// **'Setup Wizard'**
+  String get settingsSetupCardTitle;
+
+  /// Settings card explanation for Run setup again
+  ///
+  /// In en, this message translates to:
+  /// **'Revisit track templates, customize subjects, or update your baseline schedule safely without creating duplicates.'**
+  String get settingsSetupCardSubtitle;
+
+  /// Button in Settings reopening the onboarding wizard
+  ///
+  /// In en, this message translates to:
+  /// **'Run setup again'**
+  String get settingsRunSetupAgainButton;
 }
 
 class _AppLocalizationsDelegate

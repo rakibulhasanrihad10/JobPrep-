@@ -16,6 +16,7 @@ import 'package:job_prep/features/circulars/presentation/screens/circulars_scree
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
 import 'package:job_prep/features/settings/presentation/screens/settings_screen.dart';
+import 'package:job_prep/features/today/presentation/screens/today_screen.dart';
 import 'package:job_prep/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -75,12 +76,21 @@ void main() {
         expect(find.byType(AppSidebarNav), findsNothing);
 
         // Verify navigation items on bottom bar
-        expect(find.text('Dashboard'), findsOneWidget);
-        expect(find.text('Circulars'), findsOneWidget);
-        expect(find.text('Prep'), findsOneWidget);
-        expect(find.text('Calendar'), findsOneWidget);
-        expect(find.text('Settings'), findsOneWidget);
-        expect(find.text('Inbox'), findsOneWidget);
+        final bottomBar = find.byType(AppBottomNavBar);
+        for (final label in const [
+          'Today',
+          'Dashboard',
+          'Circulars',
+          'Prep',
+          'Calendar',
+          'Settings',
+          'Inbox',
+        ]) {
+          expect(
+            find.descendant(of: bottomBar, matching: find.text(label)),
+            findsOneWidget,
+          );
+        }
       },
     );
 
@@ -95,12 +105,21 @@ void main() {
         expect(find.byType(AppSidebarNav), findsNothing);
 
         // Verify rail items
-        expect(find.text('Dashboard'), findsOneWidget);
-        expect(find.text('Circulars'), findsOneWidget);
-        expect(find.text('Prep'), findsOneWidget);
-        expect(find.text('Calendar'), findsOneWidget);
-        expect(find.text('Settings'), findsOneWidget);
-        expect(find.text('Inbox'), findsOneWidget);
+        final navRail = find.byType(AppNavRail);
+        for (final label in const [
+          'Today',
+          'Dashboard',
+          'Circulars',
+          'Prep',
+          'Calendar',
+          'Settings',
+          'Inbox',
+        ]) {
+          expect(
+            find.descendant(of: navRail, matching: find.text(label)),
+            findsOneWidget,
+          );
+        }
       },
     );
 
@@ -122,6 +141,7 @@ void main() {
         expect(find.text('Alt+4'), findsOneWidget);
         expect(find.text('Alt+5'), findsOneWidget);
         expect(find.text('Alt+6'), findsOneWidget);
+        expect(find.text('Alt+7'), findsOneWidget);
 
         // Content constraint check (1200 px max width)
         final constrainedBoxes = tester.widgetList<ConstrainedBox>(
@@ -141,13 +161,18 @@ void main() {
       (tester) async {
         await pumpApp(tester);
 
+        expect(find.byType(TodayScreen), findsOneWidget);
+
+        // Tap Dashboard
+        await tester.tap(find.text('Dashboard'));
+        await tester.pumpAndSettle();
         expect(find.byType(DashboardScreen), findsOneWidget);
+        expect(find.byType(TodayScreen), findsNothing);
 
         // Tap Circulars
         await tester.tap(find.text('Circulars'));
         await tester.pumpAndSettle();
         expect(find.byType(CircularsScreen), findsOneWidget);
-        expect(find.byType(DashboardScreen), findsNothing);
 
         // Tap Prep
         await tester.tap(find.text('Prep'));
@@ -164,10 +189,10 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.byType(SettingsScreen), findsOneWidget);
 
-        // Tap Dashboard
-        await tester.tap(find.text('Dashboard'));
+        // Tap Today
+        await tester.tap(find.text('Today'));
         await tester.pumpAndSettle();
-        expect(find.byType(DashboardScreen), findsOneWidget);
+        expect(find.byType(TodayScreen), findsOneWidget);
       },
     );
 
@@ -176,6 +201,10 @@ void main() {
       (tester) async {
         await pumpApp(tester, size: const Size(400, 800));
 
+        expect(find.byType(TodayScreen), findsOneWidget);
+
+        await tester.tap(find.text('Dashboard'));
+        await tester.pumpAndSettle();
         expect(find.byType(DashboardScreen), findsOneWidget);
 
         await tester.tap(find.text('Circulars'));
@@ -192,42 +221,49 @@ void main() {
       'Web Keyboard Shortcuts navigate across screens',
       (tester) async {
         await pumpApp(tester);
-        expect(find.byType(DashboardScreen), findsOneWidget);
+        expect(find.byType(TodayScreen), findsOneWidget);
 
-        // Alt + 2 -> Circulars
+        // Alt + 2 -> Dashboard
         await tester.sendKeyDownEvent(LogicalKeyboardKey.altLeft);
         await tester.sendKeyEvent(LogicalKeyboardKey.digit2);
         await tester.sendKeyUpEvent(LogicalKeyboardKey.altLeft);
         await tester.pumpAndSettle();
-        expect(find.byType(CircularsScreen), findsOneWidget);
+        expect(find.byType(DashboardScreen), findsOneWidget);
 
-        // Alt + 3 -> Prep
+        // Alt + 3 -> Circulars
         await tester.sendKeyDownEvent(LogicalKeyboardKey.altLeft);
         await tester.sendKeyEvent(LogicalKeyboardKey.digit3);
         await tester.sendKeyUpEvent(LogicalKeyboardKey.altLeft);
         await tester.pumpAndSettle();
-        expect(find.byType(PrepScreen), findsOneWidget);
+        expect(find.byType(CircularsScreen), findsOneWidget);
 
-        // Alt + 4 -> Calendar
+        // Alt + 4 -> Prep
         await tester.sendKeyDownEvent(LogicalKeyboardKey.altLeft);
         await tester.sendKeyEvent(LogicalKeyboardKey.digit4);
         await tester.sendKeyUpEvent(LogicalKeyboardKey.altLeft);
         await tester.pumpAndSettle();
-        expect(find.byType(CalendarScreen), findsOneWidget);
+        expect(find.byType(PrepScreen), findsOneWidget);
 
-        // Alt + 5 -> Settings
+        // Alt + 5 -> Calendar
         await tester.sendKeyDownEvent(LogicalKeyboardKey.altLeft);
         await tester.sendKeyEvent(LogicalKeyboardKey.digit5);
         await tester.sendKeyUpEvent(LogicalKeyboardKey.altLeft);
         await tester.pumpAndSettle();
+        expect(find.byType(CalendarScreen), findsOneWidget);
+
+        // Alt + 6 -> Settings
+        await tester.sendKeyDownEvent(LogicalKeyboardKey.altLeft);
+        await tester.sendKeyEvent(LogicalKeyboardKey.digit6);
+        await tester.sendKeyUpEvent(LogicalKeyboardKey.altLeft);
+        await tester.pumpAndSettle();
         expect(find.byType(SettingsScreen), findsOneWidget);
 
-        // Alt + 1 -> Dashboard
+        // Alt + 1 -> Today
         await tester.sendKeyDownEvent(LogicalKeyboardKey.altLeft);
         await tester.sendKeyEvent(LogicalKeyboardKey.digit1);
         await tester.sendKeyUpEvent(LogicalKeyboardKey.altLeft);
         await tester.pumpAndSettle();
-        expect(find.byType(DashboardScreen), findsOneWidget);
+        expect(find.byType(TodayScreen), findsOneWidget);
       },
     );
 
@@ -288,12 +324,21 @@ void main() {
           locale: const Locale('bn'),
         );
 
-        expect(find.text('ড্যাশবোর্ড'), findsOneWidget);
-        expect(find.text('সার্কুলার'), findsOneWidget);
-        expect(find.text('প্রস্তুতি'), findsOneWidget);
-        expect(find.text('ক্যালেন্ডার'), findsOneWidget);
-        expect(find.text('সেটিংস'), findsOneWidget);
-        expect(find.text('ইনবক্স'), findsOneWidget);
+        final sidebar = find.byType(AppSidebarNav);
+        for (final label in const [
+          'আজ',
+          'ড্যাশবোর্ড',
+          'সার্কুলার',
+          'প্রস্তুতি',
+          'ক্যালেন্ডার',
+          'সেটিংস',
+          'ইনবক্স',
+        ]) {
+          expect(
+            find.descendant(of: sidebar, matching: find.text(label)),
+            findsOneWidget,
+          );
+        }
       },
     );
   });

@@ -114,5 +114,11 @@ class SupabaseProgressLogRepository implements ProgressLogRepository {
         message: 'Progress log requires a material id.',
       );
     }
+    if (log.isStudy && log.unitsDone < 0) {
+      throw const PrepValidationFailure(
+        code: 'negative_study_units',
+        message: 'Study logs cannot record negative units.',
+      );
+    }
   }
 }

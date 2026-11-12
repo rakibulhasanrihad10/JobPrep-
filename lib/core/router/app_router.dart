@@ -15,16 +15,24 @@ import 'package:job_prep/features/circulars/presentation/screens/circulars_scree
 import 'package:job_prep/features/circulars/presentation/screens/inbox_screen.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/quick_capture_shell.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:job_prep/features/notifications/presentation/screens/notifications_screen.dart';
+import 'package:job_prep/features/notifications/presentation/screens/weekly_review_screen.dart';
+import 'package:job_prep/features/onboarding/domain/entities/onboarding_status.dart';
+import 'package:job_prep/features/onboarding/presentation/providers/onboarding_status_provider.dart';
+import 'package:job_prep/features/onboarding/presentation/screens/onboarding_wizard_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_screen.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_screen.dart';
+import 'package:job_prep/features/prep/presentation/widgets/books_shelf_view.dart';
+import 'package:job_prep/features/prep/presentation/widgets/prep_tab_switcher.dart';
 import 'package:job_prep/features/settings/presentation/screens/settings_screen.dart';
+import 'package:job_prep/features/today/presentation/screens/today_screen.dart';
 
 /// Optional initial location override used in widget and deep-link tests.
 final initialRouteLocationProvider = Provider<String?>((ref) => null);
 
 class _AuthRouterRefreshListenable extends ChangeNotifier {
   _AuthRouterRefreshListenable(this._ref) {
-    _subscription = _ref.listen<AuthSessionState>(
+    _authSubscription = _ref.listen<AuthSessionState>(
       authSessionProvider,
       (previous, next) {
         if (previous != next) {
@@ -32,37 +40,56 @@ class _AuthRouterRefreshListenable extends ChangeNotifier {
         }
       },
     );
+    _onboardingSubscription = _ref.listen<AsyncValue<OnboardingStatus>>(
+      onboardingStatusProvider,
+      (previous, next) {
+        final prevNeeds = previous?.asData?.value.needsOnboarding ?? false;
+        final nextNeeds = next.asData?.value.needsOnboarding ?? false;
+        if (prevNeeds != nextNeeds) {
+          notifyListeners();
+        }
+      },
+    );
   }
 
   final Ref _ref;
-  late final ProviderSubscription<AuthSessionState> _subscription;
+  late final ProviderSubscription<AuthSessionState> _authSubscription;
+  late final ProviderSubscription<AsyncValue<OnboardingStatus>>
+      _onboardingSubscription;
 
   @override
   void dispose() {
-    _subscription.close();
+    _authSubscription.close();
+    _onboardingSubscription.close();
     super.dispose();
   }
 }
 
 /// Provider for application routing using [GoRouter] configured with
-/// [ShellRoute] and reactive auth redirects.
+/// [ShellRoute] and reactive auth & onboarding redirects.
 final routerProvider = Provider<GoRouter>((ref) {
   final refreshListenable = _AuthRouterRefreshListenable(ref);
   ref.onDispose(refreshListenable.dispose);
   final initialLocationOverride = ref.watch(initialRouteLocationProvider);
 
   final router = GoRouter(
-    initialLocation: initialLocationOverride ?? AppRoutePaths.dashboard,
+    initialLocation: initialLocationOverride ?? AppRoutePaths.today,
     overridePlatformDefaultLocation: initialLocationOverride != null,
     refreshListenable: refreshListenable,
     redirect: (context, state) {
+      final onboardingAsync = ref.read(onboardingStatusProvider);
+      final needsOnboarding =
+          onboardingAsync.asData?.value.needsOnboarding ?? false;
       final targetPath = resolveAuthRedirect(
         authState: ref.read(authSessionProvider),
         location: state.uri.path,
+        needsOnboarding: needsOnboarding,
       );
       if (targetPath == null) return null;
       if (targetPath == AppRoutePaths.login ||
-          targetPath == AppRoutePaths.dashboard) {
+          targetPath == AppRoutePaths.today ||
+          targetPath == AppRoutePaths.dashboard ||
+          targetPath == AppRoutePaths.onboarding) {
         return buildLocationWithCapture(targetPath, sourceUri: state.uri);
       }
       return targetPath;
@@ -71,7 +98,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutePaths.root,
         redirect: (context, state) => buildLocationWithCapture(
-          AppRoutePaths.dashboard,
+          AppRoutePaths.today,
           sourceUri: state.uri,
         ),
       ),
@@ -96,6 +123,13 @@ final routerProvider = Provider<GoRouter>((ref) {
           child: ResetPasswordScreen(),
         ),
       ),
+      GoRoute(
+        path: AppRoutePaths.onboarding,
+        name: 'onboarding',
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: OnboardingWizardScreen(),
+        ),
+      ),
       ShellRoute(
         builder: (context, state, child) {
           return QuickCaptureShell(
@@ -104,6 +138,13 @@ final routerProvider = Provider<GoRouter>((ref) {
           );
         },
         routes: [
+          GoRoute(
+            path: AppRoutePaths.today,
+            name: 'today',
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: TodayScreen(),
+            ),
+          ),
           GoRoute(
             path: AppRoutePaths.dashboard,
             name: 'dashboard',
@@ -172,14 +213,60 @@ final routerProvider = Provider<GoRouter>((ref) {
             ),
             routes: [
               GoRoute(
+                path: 'analytics',
+                name: 'prep_analytics',
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: PrepScreen(initialTab: PrepSectionTab.analytics),
+                ),
+              ),
+              GoRoute(
+                path: 'revision',
+                name: 'prep_revision',
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: PrepScreen(initialTab: PrepSectionTab.revision),
+                ),
+              ),
+              GoRoute(
+                path: 'timer',
+                name: 'prep_timer',
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: PrepScreen(initialTab: PrepSectionTab.timer),
+                ),
+              ),
+              GoRoute(
                 path: ':subjectId',
                 name: 'prep_subject',
                 pageBuilder: (context, state) {
                   final subjectId = state.pathParameters['subjectId']!;
+                  final initialMaterialId =
+                      state.uri.queryParameters['material'];
+                  final initialView =
+                      state.uri.queryParameters['view'] == 'books'
+                          ? PrepSubjectViewMode.booksShelf
+                          : PrepSubjectViewMode.allMaterials;
                   return NoTransitionPage(
-                    child: PrepSubjectDetailScreen(subjectId: subjectId),
+                    child: PrepSubjectDetailScreen(
+                      subjectId: subjectId,
+                      initialMaterialId: initialMaterialId,
+                      initialViewMode: initialView,
+                    ),
                   );
                 },
+                routes: [
+                  GoRoute(
+                    path: 'books',
+                    name: 'prep_subject_books',
+                    pageBuilder: (context, state) {
+                      final subjectId = state.pathParameters['subjectId']!;
+                      return NoTransitionPage(
+                        child: PrepSubjectDetailScreen(
+                          subjectId: subjectId,
+                          initialViewMode: PrepSubjectViewMode.booksShelf,
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
           ),
@@ -188,6 +275,20 @@ final routerProvider = Provider<GoRouter>((ref) {
             name: 'calendar',
             pageBuilder: (context, state) => const NoTransitionPage(
               child: CalendarScreen(),
+            ),
+          ),
+          GoRoute(
+            path: '/notifications',
+            name: 'notifications',
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: NotificationsScreen(),
+            ),
+          ),
+          GoRoute(
+            path: '/weekly-review',
+            name: 'weekly_review',
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: WeeklyReviewScreen(),
             ),
           ),
           GoRoute(

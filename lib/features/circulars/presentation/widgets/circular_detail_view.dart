@@ -19,6 +19,7 @@ import 'package:job_prep/features/circulars/presentation/widgets/circular_exam_d
 import 'package:job_prep/features/circulars/presentation/widgets/circular_files_section.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/circular_form_chrome.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/circulars_states.dart';
+import 'package:job_prep/features/vault/presentation/widgets/circular_portal_login_section.dart';
 
 /// Complete detail body displaying circular header, quick actions & checklist,
 /// launchable links, overview metadata, exam dates, and notes/syllabus.
@@ -153,6 +154,8 @@ class CircularDetailView extends ConsumerWidget {
           CircularDetailTextCard(circular: circular),
           SizedBox(height: spacing.lg),
           CircularFilesSection(circular: circular),
+          SizedBox(height: spacing.lg),
+          CircularPortalLoginSection(circular: circular),
         ],
       );
     }

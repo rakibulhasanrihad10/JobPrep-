@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
+import 'package:job_prep/core/security/vault_providers.dart';
 import 'package:job_prep/core/widgets/app_scaffold.dart';
 import 'package:job_prep/features/circulars/domain/utils/quick_capture_helpers.dart';
 import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/quick_capture_dialog.dart';
+import 'package:job_prep/features/prep/presentation/widgets/study_timer_floating_bar.dart';
 
 /// Connects [AppScaffold] with the live Inbox count, global Quick Capture
 /// trigger, and incoming `?capture=` URL query parameters.
@@ -112,11 +114,29 @@ class _QuickCaptureShellState extends ConsumerState<QuickCaptureShell> {
   Widget build(BuildContext context) {
     final inboxCount = ref.watch(inboxCountProvider);
 
-    return AppScaffold(
-      currentPath: widget.currentUri.path,
-      inboxCount: inboxCount,
-      onQuickCapture: () => unawaited(_openQuickCapture()),
-      child: widget.child,
+    return Listener(
+      behavior: HitTestBehavior.translucent,
+      onPointerDown: (_) =>
+          ref.read(vaultSessionProvider.notifier).recordActivity(),
+      child: Focus(
+        skipTraversal: true,
+        canRequestFocus: false,
+        onKeyEvent: (_, __) {
+          ref.read(vaultSessionProvider.notifier).recordActivity();
+          return KeyEventResult.ignored;
+        },
+        child: Stack(
+          children: [
+            AppScaffold(
+              currentPath: widget.currentUri.path,
+              inboxCount: inboxCount,
+              onQuickCapture: () => unawaited(_openQuickCapture()),
+              child: widget.child,
+            ),
+            const StudyTimerFloatingBar(),
+          ],
+        ),
+      ),
     );
   }
 }

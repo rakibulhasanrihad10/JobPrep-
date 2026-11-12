@@ -4,30 +4,56 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
-import 'package:job_prep/core/widgets/fade_slide_in.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_template.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/domain/utils/prep_template_planner.dart';
+import 'package:job_prep/features/prep/presentation/providers/mock_test_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_subjects_controller.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_template_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/revision_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/study_session_providers.dart';
 import 'package:job_prep/features/prep/presentation/screens/prep_subject_detail_screen.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_template_ui_helpers.dart';
+import 'package:job_prep/features/prep/presentation/widgets/books_shelf_view.dart';
+import 'package:job_prep/features/prep/presentation/widgets/mock_tests_tab_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_delete_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_overview_header_card.dart';
-import 'package:job_prep/features/prep/presentation/widgets/prep_subject_detail_view.dart';
+import 'package:job_prep/features/prep/presentation/widgets/prep_study_plans_section.dart';
+import 'package:job_prep/features/prep/presentation/widgets/prep_subjects_body.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_subjects_section.dart';
+import 'package:job_prep/features/prep/presentation/widgets/prep_tab_switcher.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_templates_dialog.dart';
+import 'package:job_prep/features/prep/presentation/widgets/revision_queue_tab_view.dart';
+import 'package:job_prep/features/prep/presentation/widgets/study_analytics_tab_view.dart';
+import 'package:job_prep/features/prep/presentation/widgets/study_plan_form_dialog.dart';
+import 'package:job_prep/features/prep/presentation/widgets/study_timer_tab_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.dart';
 
 /// Main animated preparation dashboard and Subject & Material Manager screen.
 class PrepScreen extends ConsumerStatefulWidget {
   /// Creates a [PrepScreen].
-  const PrepScreen({super.key, this.selectedSubjectId});
+  const PrepScreen({
+    super.key,
+    this.selectedSubjectId,
+    this.initialMaterialId,
+    this.initialTab = PrepSectionTab.subjects,
+    this.initialSubjectViewMode = PrepSubjectViewMode.allMaterials,
+  });
 
   /// Optional pre-selected subject displayed in desktop master-detail mode.
   final String? selectedSubjectId;
+
+  /// Optional material identifier to open immediately when focused.
+  final String? initialMaterialId;
+
+  /// Initial section tab displayed when mounting [PrepScreen].
+  final PrepSectionTab initialTab;
+
+  /// Initial view mode for the selected subject on desktop routes.
+  final PrepSubjectViewMode initialSubjectViewMode;
 
   @override
   ConsumerState<PrepScreen> createState() => _PrepScreenState();
@@ -35,14 +61,36 @@ class PrepScreen extends ConsumerStatefulWidget {
 
 class _PrepScreenState extends ConsumerState<PrepScreen> {
   static int _nextTabVisitId = 0;
+  static int _nextMockVisitId = 0;
+  static int _nextAnalyticsVisitId = 0;
+  static int _nextRevisionVisitId = 0;
+  static int _nextTimerVisitId = 0;
 
-  late final int _tabVisitId;
+  late int _tabVisitId;
+  late int _mockVisitId;
+  late int _analyticsVisitId;
+  late int _revisionVisitId;
+  late int _timerVisitId;
+  late PrepSectionTab _activeTab;
+  bool _hasVisitedMockTab = false;
+  bool _hasVisitedAnalyticsTab = false;
+  bool _hasVisitedRevisionTab = false;
+  bool _hasVisitedTimerTab = false;
   String? _localSelectedId;
 
   @override
   void initState() {
     super.initState();
     _tabVisitId = ++_nextTabVisitId;
+    _mockVisitId = ++_nextMockVisitId;
+    _analyticsVisitId = ++_nextAnalyticsVisitId;
+    _revisionVisitId = ++_nextRevisionVisitId;
+    _timerVisitId = ++_nextTimerVisitId;
+    _activeTab = widget.initialTab;
+    _hasVisitedMockTab = _activeTab == PrepSectionTab.mockTests;
+    _hasVisitedAnalyticsTab = _activeTab == PrepSectionTab.analytics;
+    _hasVisitedRevisionTab = _activeTab == PrepSectionTab.revision;
+    _hasVisitedTimerTab = _activeTab == PrepSectionTab.timer;
     _localSelectedId = widget.selectedSubjectId;
   }
 
@@ -52,12 +100,65 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     if (widget.selectedSubjectId != oldWidget.selectedSubjectId) {
       _localSelectedId = widget.selectedSubjectId;
     }
+    if (widget.initialTab != oldWidget.initialTab &&
+        widget.initialTab != _activeTab) {
+      _switchTab(widget.initialTab);
+    }
+  }
+
+  void _switchTab(PrepSectionTab next) {
+    if (_activeTab == next) return;
+    final shouldRefreshMocks =
+        next == PrepSectionTab.mockTests && _hasVisitedMockTab;
+    final shouldRefreshAnalytics =
+        next == PrepSectionTab.analytics && _hasVisitedAnalyticsTab;
+    final shouldRefreshRevision =
+        next == PrepSectionTab.revision && _hasVisitedRevisionTab;
+    final shouldRefreshTimer =
+        next == PrepSectionTab.timer && _hasVisitedTimerTab;
+    setState(() {
+      _activeTab = next;
+      switch (next) {
+        case PrepSectionTab.subjects:
+          _tabVisitId = ++_nextTabVisitId;
+        case PrepSectionTab.mockTests:
+          _hasVisitedMockTab = true;
+          _mockVisitId = ++_nextMockVisitId;
+        case PrepSectionTab.analytics:
+          _hasVisitedAnalyticsTab = true;
+          _analyticsVisitId = ++_nextAnalyticsVisitId;
+        case PrepSectionTab.revision:
+          _hasVisitedRevisionTab = true;
+          _revisionVisitId = ++_nextRevisionVisitId;
+        case PrepSectionTab.timer:
+          _hasVisitedTimerTab = true;
+          _timerVisitId = ++_nextTimerVisitId;
+      }
+    });
+    if (shouldRefreshMocks) {
+      unawaited(ref.read(mockTestsProvider.notifier).refresh());
+    }
+    if (shouldRefreshAnalytics) {
+      ref.invalidate(analyticsProgressLogsProvider);
+      unawaited(ref.read(studySessionsProvider.notifier).refresh());
+    }
+    if (shouldRefreshRevision) {
+      unawaited(ref.read(revisionItemsProvider.notifier).refresh());
+    }
+    if (shouldRefreshTimer) {
+      unawaited(ref.read(studySessionsProvider.notifier).refresh());
+    }
   }
 
   void _refreshAll() {
+    ref.invalidate(analyticsProgressLogsProvider);
     unawaited(ref.read(subjectsProvider.notifier).refresh());
     unawaited(ref.read(allMaterialsProvider.notifier).refresh());
     unawaited(ref.read(prepTemplatesProvider.notifier).refresh());
+    unawaited(ref.read(studyPlansProvider.notifier).refresh());
+    unawaited(ref.read(mockTestsProvider.notifier).refresh());
+    unawaited(ref.read(revisionItemsProvider.notifier).refresh());
+    unawaited(ref.read(studySessionsProvider.notifier).refresh());
   }
 
   Future<void> _openCreateSubject({required bool selectCreated}) async {
@@ -139,6 +240,8 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
     final overallProgress =
         ref.watch(overallPrepProgressProvider).asData?.value ?? 0.0;
     final templateActionState = ref.watch(prepTemplateActionControllerProvider);
+    final planSnapshots =
+        ref.watch(studyPlanSnapshotsProvider).asData?.value ?? const [];
 
     final subjects = List<Subject>.of(
       subjectsAsync.asData?.value ?? const <Subject>[],
@@ -190,6 +293,12 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
                   materials: materials,
                 ),
               ),
+      onCreateStudyPlan: () => unawaited(showStudyPlanFormDialog(context)),
+    );
+
+    final plansSection = PrepStudyPlansSection(
+      snapshots: planSnapshots,
+      visitId: _tabVisitId,
     );
 
     final subjectsSection = PrepSubjectsSection(
@@ -237,43 +346,41 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
         horizontalPad,
         spacing.xl + spacing.xxxl,
       ),
-      child: FadeSlideIn(
-        child: isExpanded && subjects.isNotEmpty && selectedSubject != null
-            ? Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        headerCard,
-                        SizedBox(height: spacing.lg),
-                        subjectsSection,
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: spacing.xl),
-                  Expanded(
-                    flex: 8,
-                    child: PrepSubjectDetailView(
-                      subject: selectedSubject,
-                      replayKey:
-                          'detail-visit-$_tabVisitId-${selectedSubject.id}',
-                      onSubjectDeleted: () =>
-                          setState(() => _localSelectedId = null),
-                    ),
-                  ),
-                ],
-              )
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  headerCard,
-                  SizedBox(height: spacing.lg),
-                  subjectsSection,
-                ],
-              ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          PrepTabSwitcher(
+            activeTab: _activeTab,
+            onChanged: _switchTab,
+          ),
+          SizedBox(height: spacing.lg),
+          if (_activeTab == PrepSectionTab.mockTests)
+            MockTestsTabView(visitId: _mockVisitId)
+          else if (_activeTab == PrepSectionTab.analytics)
+            StudyAnalyticsTabView(
+              visitId: _analyticsVisitId,
+              onOpenSubjects: () => _switchTab(PrepSectionTab.subjects),
+            )
+          else if (_activeTab == PrepSectionTab.revision)
+            RevisionQueueTabView(visitId: _revisionVisitId)
+          else if (_activeTab == PrepSectionTab.timer)
+            StudyTimerTabView(visitId: _timerVisitId)
+          else
+            PrepSubjectsBody(
+              isExpanded: isExpanded,
+              hasStudyPlans: planSnapshots.isNotEmpty,
+              subjects: subjects,
+              selectedSubject: selectedSubject,
+              routeSubjectId: widget.selectedSubjectId,
+              initialMaterialId: widget.initialMaterialId,
+              initialViewMode: widget.initialSubjectViewMode,
+              tabVisitId: _tabVisitId,
+              headerCard: headerCard,
+              plansSection: plansSection,
+              subjectsSection: subjectsSection,
+              onSubjectDeleted: () => setState(() => _localSelectedId = null),
+            ),
+        ],
       ),
     );
   }

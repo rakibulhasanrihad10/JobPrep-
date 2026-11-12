@@ -1869,4 +1869,2440 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get prepSeededSweSubtitle =>
       'ডেটা স্ট্রাকচার ও অ্যালগরিদম, ডেটাবেস সিস্টেম, ওওপি, ওয়েব ডেভেলপমেন্ট এবং সফটওয়্যার কোয়ালিটি অ্যাসুরেন্স।';
+
+  @override
+  String get dashboardHomeSubtitle =>
+      'আপনার সার্কুলার, আসন্ন তারিখ ও পড়াশোনার অগ্রগতির একনজর চিত্র।';
+
+  @override
+  String get dashboardRefreshTooltip => 'ড্যাশবোর্ড রিফ্রেশ করুন';
+
+  @override
+  String get dashboardLoadError => 'ড্যাশবোর্ডের তথ্য লোড করা যায়নি।';
+
+  @override
+  String get dashboardWelcomeTitle => 'JobPrep-এ স্বাগতম';
+
+  @override
+  String get dashboardWelcomeBody =>
+      'একই জায়গায় চাকরির সার্কুলার, আবেদনের চেকলিস্ট, পরীক্ষার তারিখ ও পড়াশোনার অগ্রগতি ট্র্যাক করুন।';
+
+  @override
+  String get dashboardWelcomeAddCircular => 'প্রথম সার্কুলার যোগ করুন';
+
+  @override
+  String get dashboardWelcomeSetupPrep => 'পড়ার পরিকল্পনা সাজান';
+
+  @override
+  String get dashboardMetricDeadlinesWeek => 'এই সপ্তাহের শেষ তারিখ';
+
+  @override
+  String get dashboardMetricInbox => 'ইনবক্স আইটেম';
+
+  @override
+  String get dashboardMetricExams14Days => '১৪ দিনের মধ্যে পরীক্ষা';
+
+  @override
+  String get dashboardMetricSubmitted => 'জমা দেওয়া আবেদন';
+
+  @override
+  String get dashboardMetricOverallPrep => 'সামগ্রিক প্রস্তুতি';
+
+  @override
+  String get dashboardContinueStudyingTitle => 'পড়াশোনা চালিয়ে যান';
+
+  @override
+  String get dashboardContinueStudyingAction => 'এখনই লগ করুন';
+
+  @override
+  String dashboardContinueStudyingLastLogged(
+      String formattedUnits, String unitLabel, String formattedDate) {
+    return '$formattedDate-এ +$formattedUnits $unitLabel';
+  }
+
+  @override
+  String dashboardMaterialProgressLine(String formattedCompleted,
+      String formattedTotal, String unitLabel, String percent) {
+    return '$formattedCompleted / $formattedTotal $unitLabel ($percent%)';
+  }
+
+  @override
+  String get dashboardContinueStudyingEmptyTitle =>
+      'এখনো কোনো পাঠ লগ করা হয়নি';
+
+  @override
+  String get dashboardContinueStudyingEmptyBody =>
+      'প্রস্তুতি বিভাগে একটি পাঠ লগ করলে এখান থেকেই সরাসরি চালিয়ে যেতে পারবেন।';
+
+  @override
+  String get dashboardContinueStudyingEmptyAction => 'প্রস্তুতিতে যান';
+
+  @override
+  String get dashboardUpcomingDeadlinesTitle => 'আসন্ন আবেদনের শেষ তারিখ';
+
+  @override
+  String get dashboardUpcomingDeadlinesEmptyTitle => 'কোনো আসন্ন শেষ তারিখ নেই';
+
+  @override
+  String get dashboardUpcomingDeadlinesEmptyBody =>
+      'ভবিষ্যৎ শেষ তারিখসহ সংরক্ষিত সার্কুলারগুলো রঙিন কাউন্টডাউনসহ এখানে দেখাবে।';
+
+  @override
+  String get dashboardViewAllAction => 'সব দেখুন';
+
+  @override
+  String get dashboardUpcomingExamsTitle => 'আসন্ন পরীক্ষাসমূহ';
+
+  @override
+  String get dashboardUpcomingExamsEmptyTitle =>
+      'কোনো আসন্ন পরীক্ষা নির্ধারিত নেই';
+
+  @override
+  String get dashboardUpcomingExamsEmptyBody =>
+      'সার্কুলারের ভেতরে প্রিলি, লিখিত বা ভাইভার তারিখ যোগ করলে এখানে দেখাবে।';
+
+  @override
+  String get dashboardOpenCalendarAction => 'ক্যালেন্ডার খুলুন';
+
+  @override
+  String get dashboardExamToday => 'আজ';
+
+  @override
+  String dashboardExamInDays(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount দিন বাকি',
+      one: '১ দিন বাকি',
+      zero: 'আজ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get settingsRemindersTitle => 'ইমেইল অনুস্মারক';
+
+  @override
+  String get settingsRemindersSubtitle =>
+      'সার্কুলারের শেষ তারিখ ও পরীক্ষার ৭, ৩ এবং ১ দিন আগে দৈনিক ইমেইল অনুস্মারক পান।';
+
+  @override
+  String get settingsRemindersToggleLabel => 'দৈনিক ইমেইল অনুস্মারক চালু করুন';
+
+  @override
+  String get settingsRemindersToggleHintEnabled =>
+      'আপনার অ্যাকাউন্টের ইমেইলে প্রতিটি ধাপের জন্য একবার করে অনুস্মারক পাঠানো হবে।';
+
+  @override
+  String get settingsRemindersToggleHintDisabled =>
+      'ইমেইল অনুস্মারক বর্তমানে বন্ধ আছে। আপনার সার্কুলার অক্ষুণ্ণ রেখে যেকোনো সময় চালু করতে পারবেন।';
+
+  @override
+  String get settingsRemindersLanguageTitle => 'অনুস্মারক ইমেইলের ভাষা';
+
+  @override
+  String get settingsRemindersLanguageSubtitle =>
+      'দৈনিক অনুস্মারক ইমেইল কোন ভাষায় পাঠানো হবে তা নির্বাচন করুন।';
+
+  @override
+  String get settingsRemindersSaveError =>
+      'অনুস্মারক সেটিংস সংরক্ষণ করা যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।';
+
+  @override
+  String get settingsRemindersLoadError => 'অনুস্মারক সেটিংস লোড করা যায়নি।';
+
+  @override
+  String get settingsRemindersOfflineHint =>
+      'সব ডিভাইসে ইমেইল অনুস্মারক সংরক্ষণ করতে সুপাবেস সংযুক্ত করুন।';
+
+  @override
+  String get vaultTitle => 'পোর্টাল ভল্ট';
+
+  @override
+  String get vaultSubtitle =>
+      'আপনার লোকাল ভল্ট পাসফ্রেজ দিয়ে চাকরির পোর্টালের লগইন তথ্য সুরক্ষিত রাখুন।';
+
+  @override
+  String get vaultStatusLocked => 'লক করা আছে';
+
+  @override
+  String get vaultStatusUnlocked => 'আনলক করা আছে';
+
+  @override
+  String get vaultSetupButton => 'ভল্ট সেটআপ করুন';
+
+  @override
+  String get vaultUnlockButton => 'ভল্ট আনলক করুন';
+
+  @override
+  String get vaultLockButton => 'ভল্ট লক করুন';
+
+  @override
+  String get vaultSetupDialogTitle => 'ভল্ট পাসফ্রেজ তৈরি করুন';
+
+  @override
+  String get vaultSetupDialogBody =>
+      'আপনার ডিভাইস থেকেই পোর্টালের পাসওয়ার্ডগুলো এনক্রিপ্ট করতে একটি শক্তিশালী পাসফ্রেজ দিন।';
+
+  @override
+  String get vaultUnrecoverableWarning =>
+      'গুরুত্বপূর্ণ সতর্কতা: ভল্টের পাসফ্রেজ ভুলে গেলে তা পুনরুদ্ধার বা রিসেট করা যাবে না। এটি ছাড়া সংরক্ষিত পাসওয়ার্ড ডিক্রিপ্ট করা সম্ভব নয়।';
+
+  @override
+  String get vaultAcknowledgeWarningLabel =>
+      'আমি বুঝতে পেরেছি যে পাসফ্রেজ ভুলে গেলে তা পুনরুদ্ধার করা যাবে না।';
+
+  @override
+  String get vaultAcknowledgeRequiredError =>
+      'অনুগ্রহ করে পাসফ্রেজ পুনরুদ্ধার না হওয়ার সতর্কতাটি নিশ্চিত করুন।';
+
+  @override
+  String get vaultPassphraseLabel => 'ভল্ট পাসফ্রেজ';
+
+  @override
+  String get vaultPassphraseConfirmLabel => 'পাসফ্রেজ নিশ্চিত করুন';
+
+  @override
+  String get vaultPassphraseTooShortError =>
+      'কমপক্ষে ৮ অক্ষরের পাসফ্রেজ লিখুন।';
+
+  @override
+  String get vaultPassphraseMismatchError => 'পাসফ্রেজ দুটি মিলছে না।';
+
+  @override
+  String get vaultCreateAndUnlockAction => 'তৈরি ও আনলক করুন';
+
+  @override
+  String get vaultUnlockDialogTitle => 'পোর্টাল ভল্ট আনলক করুন';
+
+  @override
+  String get vaultUnlockDialogBody =>
+      'সংরক্ষিত পোর্টাল লগইন দেখতে, কপি করতে ও সম্পাদনা করতে আপনার ভল্ট পাসফ্রেজ লিখুন।';
+
+  @override
+  String get vaultWrongPassphraseError =>
+      'ভল্ট পাসফ্রেজ সঠিক নয়। অনুগ্রহ করে আবার চেষ্টা করুন।';
+
+  @override
+  String get vaultAutoLockNote =>
+      'নিষ্ক্রিয় থাকলে এবং সাইন আউট করলে ভল্ট স্বয়ংক্রিয়ভাবে লক হয়ে যায়।';
+
+  @override
+  String get vaultPortalLockedHint =>
+      'ভল্ট লক অবস্থায় পোর্টাল লগইন তথ্য গোপন থাকে।';
+
+  @override
+  String get portalSectionTitle => 'পোর্টাল লগইন';
+
+  @override
+  String get portalAddAccountButton => 'অ্যাকাউন্ট যোগ করুন';
+
+  @override
+  String get portalEmptyState =>
+      'এই সার্কুলারের জন্য এখনো কোনো পোর্টাল অ্যাকাউন্ট সংরক্ষিত নেই।';
+
+  @override
+  String get portalAddDialogTitle => 'পোর্টাল অ্যাকাউন্ট যোগ করুন';
+
+  @override
+  String get portalEditDialogTitle => 'পোর্টাল অ্যাকাউন্ট সম্পাদনা';
+
+  @override
+  String get portalUrlLabel => 'পোর্টাল লিংক (ঐচ্ছিক)';
+
+  @override
+  String get portalUsernameLabel => 'ইউজার আইডি / ইউজারনেম';
+
+  @override
+  String get portalUsernameRequiredError => 'ইউজার আইডি লেখা আবশ্যক।';
+
+  @override
+  String get portalPasswordLabel => 'পাসওয়ার্ড';
+
+  @override
+  String get portalPasswordRequiredError => 'পাসওয়ার্ড লেখা আবশ্যক।';
+
+  @override
+  String get portalNotesLabel => 'নোট (ঐচ্ছিক)';
+
+  @override
+  String get portalCopyUserIdAction => 'আইডি কপি';
+
+  @override
+  String get portalCopyPasswordAction => 'পাসওয়ার্ড কপি';
+
+  @override
+  String get portalOpenUrlAction => 'পোর্টাল খুলুন';
+
+  @override
+  String get portalRevealPasswordTooltip => 'পাসওয়ার্ড দেখান';
+
+  @override
+  String get portalHidePasswordTooltip => 'পাসওয়ার্ড লুকান';
+
+  @override
+  String portalCopiedClipboardNotice(String formattedSeconds) {
+    return 'ক্লিপবোর্ডে কপি হয়েছে — $formattedSeconds সেকেন্ড পর স্বয়ংক্রিয়ভাবে মুছে যাবে।';
+  }
+
+  @override
+  String get portalDeleteConfirmTitle => 'পোর্টাল অ্যাকাউন্ট মুছবেন?';
+
+  @override
+  String portalDeleteConfirmMessage(String username) {
+    return 'এই সার্কুলার থেকে \"$username\" পোর্টাল লগইনটি মুছে ফেলতে চান?';
+  }
+
+  @override
+  String get portalSaveError =>
+      'পোর্টাল অ্যাকাউন্ট সংরক্ষণ করা যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।';
+
+  @override
+  String get portalLoadError => 'পোর্টাল অ্যাকাউন্টগুলো লোড করা যায়নি।';
+
+  @override
+  String get prepStudyPlanSectionTitle => 'স্টাডি প্ল্যান';
+
+  @override
+  String get prepStudyPlanAddButton => 'স্টাডি প্ল্যান সেট করুন';
+
+  @override
+  String get prepStudyPlanCreateTitle => 'স্টাডি প্ল্যান তৈরি করুন';
+
+  @override
+  String get prepStudyPlanEditTitle => 'স্টাডি প্ল্যান সম্পাদনা করুন';
+
+  @override
+  String get prepStudyPlanScopeLabel => 'প্ল্যানের পরিধি';
+
+  @override
+  String get prepStudyPlanAllSubjectsLabel => 'সকল বিষয় (সম্মিলিত)';
+
+  @override
+  String get prepStudyPlanCircularLabel =>
+      'সংযুক্ত পরীক্ষার সার্কুলার (ঐচ্ছিক)';
+
+  @override
+  String get prepStudyPlanNoCircularOption =>
+      'কোনো সার্কুলার সংযুক্ত নয় (কাস্টম তারিখ)';
+
+  @override
+  String get prepStudyPlanExamStageLabel => 'সার্কুলার পরীক্ষার ধাপ (ঐচ্ছিক)';
+
+  @override
+  String get prepStudyPlanStartDateLabel => 'শুরুর তারিখ';
+
+  @override
+  String prepStudyPlanStartDateValue(String formattedDate) {
+    return 'শুরুর তারিখ: $formattedDate';
+  }
+
+  @override
+  String get prepStudyPlanTargetDateLabel => 'পরীক্ষার তারিখ';
+
+  @override
+  String prepStudyPlanTargetDateValue(String formattedDate) {
+    return 'পরীক্ষার তারিখ: $formattedDate';
+  }
+
+  @override
+  String get prepStudyPlanBufferDaysLabel =>
+      'প্রস্তুতি বাফার (পরীক্ষার আগে দিন)';
+
+  @override
+  String get prepStudyPlanRestDaysLabel => 'সপ্তাহে বিশ্রামের দিন';
+
+  @override
+  String get prepStudyPlanMaxPaceLabel =>
+      'সর্বোচ্চ দৈনিক সীমা (ইউনিট/দিন, ঐচ্ছিক)';
+
+  @override
+  String get prepStudyPlanMaxPaceHint => 'সীমা না রাখতে চাইলে ফাঁকা রাখুন';
+
+  @override
+  String get prepStudyPlanSaveButton => 'প্ল্যান সংরক্ষণ';
+
+  @override
+  String get prepStudyPlanDeleteTitle => 'স্টাডি প্ল্যান মুছবেন?';
+
+  @override
+  String get prepStudyPlanDeleteBody =>
+      'এই প্ল্যানটি মুছে ফেলবেন? আপনার বিষয়, উপকরণ এবং অগ্রগতির লগ অপরিবর্তিত থাকবে।';
+
+  @override
+  String get prepStudyPlanStatusAhead => 'এগিয়ে';
+
+  @override
+  String get prepStudyPlanStatusOnTrack => 'সঠিক পথে';
+
+  @override
+  String get prepStudyPlanStatusBehind => 'পিছিয়ে';
+
+  @override
+  String get prepStudyPlanRemainingLabel => 'বাকি';
+
+  @override
+  String get prepStudyPlanDaysLeftLabel => 'বাকি অধ্যয়নের দিন';
+
+  @override
+  String get prepStudyPlanTodayTargetLabel => 'আজকের লক্ষ্য';
+
+  @override
+  String prepStudyPlanUnitsCount(String formatted) {
+    return '$formatted ইউনিট';
+  }
+
+  @override
+  String prepStudyPlanDaysCount(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formatted দিন',
+      one: '$formatted দিন',
+      zero: '০ দিন',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepStudyPlanTodayDoneOfTarget(String done, String target) {
+    return 'আজ $target-এর মধ্যে $done';
+  }
+
+  @override
+  String prepStudyPlanBufferSummary(String formattedDays, String examDate) {
+    return 'পরীক্ষার $formattedDays দিন আগে শেষ হবে ($examDate)';
+  }
+
+  @override
+  String get prepStudyPlanFinishedComplete =>
+      'সিলেবাস সম্পন্ন — আজকের লক্ষ্য ০।';
+
+  @override
+  String prepStudyPlanMissedRedistributed(int days, String formattedUnits,
+      String formattedDays, String formattedExtra) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other:
+          'আপনি $formattedUnits ইউনিট মিস করেছেন, যা পরবর্তী $formattedDays দিনে ভাগ করে দেওয়া হয়েছে (+$formattedExtra/দিন)।',
+      one:
+          'আপনি $formattedUnits ইউনিট মিস করেছেন, যা পরবর্তী $formattedDays দিনে ভাগ করে দেওয়া হয়েছে (+$formattedExtra/দিন)।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepStudyPlanPastTargetNotice(String formattedUnits) {
+    return 'বাফারের আগের অধ্যয়নের সময় শেষ হয়েছে এবং এখনো $formattedUnits ইউনিট বাকি আছে।';
+  }
+
+  @override
+  String prepStudyPlanPaceWarning(
+      String formattedTarget, String formattedLimit) {
+    return 'পুনর্নির্ধারিত লক্ষ্য ($formattedTarget/দিন) আপনার নির্ধারিত সীমা ($formattedLimit/দিন) অতিক্রম করেছে।';
+  }
+
+  @override
+  String get prepStudyPlanActionConvertRest =>
+      'একটি বিশ্রামের দিন অধ্যয়নের দিন করুন';
+
+  @override
+  String get prepStudyPlanActionRaisePace => 'দৈনিক সীমা বাড়ান';
+
+  @override
+  String get prepStudyPlanActionPostponeMaterial =>
+      'কম গুরুত্বপূর্ণ উপকরণ স্থগিত করুন';
+
+  @override
+  String get prepStudyPlanRaisePaceTitle => 'দৈনিক লক্ষ্যের সীমা বাড়ান';
+
+  @override
+  String get prepStudyPlanPostponeTitle => 'উপকরণ স্থগিত করুন';
+
+  @override
+  String get prepStudyPlanPostponeSubtitle =>
+      'কোনো উপকরণ স্থগিত করলে আপনার সংরক্ষিত অগ্রগতি না মুছেই এই প্ল্যানের দৈনিক লক্ষ্য থেকে তার বাকি ইউনিট বাদ দেওয়া হবে।';
+
+  @override
+  String prepStudyPlanPostponedChip(String title) {
+    return 'স্থগিত: $title';
+  }
+
+  @override
+  String get prepStudyPlanRestoreTooltip => 'প্ল্যানে পুনরায় যুক্ত করুন';
+
+  @override
+  String get prepStudyPlanEditTooltip => 'স্টাডি প্ল্যান সম্পাদনা';
+
+  @override
+  String get prepStudyPlanDeleteTooltip => 'স্টাডি প্ল্যান মুছুন';
+
+  @override
+  String get prepStudyPlanValidationBuffer =>
+      'প্রস্তুতি বাফার ০ দিন বা তার বেশি হতে হবে।';
+
+  @override
+  String get prepStudyPlanValidationPace =>
+      'দৈনিক সীমা ০-এর চেয়ে বেশি হতে হবে।';
+
+  @override
+  String get prepStudyPlanValidationDates =>
+      'পরীক্ষার তারিখ শুরুর তারিখ বা তার পরে হতে হবে।';
+
+  @override
+  String get dashboardTodayTargetTitle => 'আজকের অধ্যয়নের লক্ষ্য';
+
+  @override
+  String get dashboardTodayTargetEmptyTitle => 'এখনো কোনো স্টাডি প্ল্যান নেই';
+
+  @override
+  String get dashboardTodayTargetEmptyBody =>
+      'প্রতিদিনের লক্ষ্য ও স্বয়ংক্রিয় ক্যাচ-আপ হিসাব পেতে একটি পরীক্ষার তারিখ নির্ধারণ করুন।';
+
+  @override
+  String get dashboardTodayTargetEmptyAction => 'স্টাডি প্ল্যান সেট করুন';
+
+  @override
+  String get dashboardTodayTargetManageAction => 'স্টাডি প্ল্যান দেখুন';
+
+  @override
+  String dashboardTodayTargetPlansSummary(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedটি সক্রিয় প্ল্যান',
+      one: '$formattedটি সক্রিয় প্ল্যান',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepTabSubjects => 'বিষয়সমূহ';
+
+  @override
+  String get prepTabMockTests => 'মডেল টেস্ট';
+
+  @override
+  String get prepMockTestsTitle => 'মডেল টেস্টসমূহ';
+
+  @override
+  String get prepMockTestsSubtitle =>
+      'নেগেটিভ মার্কিং, ব্যয়িত সময় ও দুর্বল টপিকসহ সব প্ল্যাটফর্মের টেস্ট স্কোর ট্র্যাক করুন।';
+
+  @override
+  String get prepMockTestAddButton => 'মডেল টেস্ট যোগ করুন';
+
+  @override
+  String get prepMockTestSubjectSectionTitle => 'মডেল টেস্ট পারফরম্যান্স';
+
+  @override
+  String prepMockTestSubjectCount(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedটি টেস্ট সংরক্ষিত',
+      one: '$formattedটি টেস্ট সংরক্ষিত',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepMockFilterSubjectLabel => 'বিষয়';
+
+  @override
+  String get prepMockFilterAllSubjects => 'সব বিষয়';
+
+  @override
+  String get prepMockFilterDateLabel => 'সময়সীমা';
+
+  @override
+  String get prepMockFilterDateAll => 'সব সময়';
+
+  @override
+  String get prepMockFilterDate7Days => 'গত ৭ দিন';
+
+  @override
+  String get prepMockFilterDate30Days => 'গত ৩০ দিন';
+
+  @override
+  String get prepMockFilterDate90Days => 'গত ৯০ দিন';
+
+  @override
+  String get prepMockFilterClear => 'ফিল্টার মুছুন';
+
+  @override
+  String get prepMockStatLatest => 'সর্বশেষ';
+
+  @override
+  String get prepMockStatBest => 'সর্বোচ্চ';
+
+  @override
+  String get prepMockStatAverage => 'গড়';
+
+  @override
+  String get prepMockStatImprovement => 'উন্নতি';
+
+  @override
+  String prepMockStatPercentValue(String percent) {
+    return '$percent%';
+  }
+
+  @override
+  String get prepMockStatNotAvailable => '—';
+
+  @override
+  String prepMockStatImprovementLastFive(String formatted) {
+    return 'সর্বশেষ $formattedটি টেস্টে';
+  }
+
+  @override
+  String get prepMockStatImprovementFirstToLatest => 'প্রথম থেকে সর্বশেষ';
+
+  @override
+  String get prepMockStatImprovementNeedsTwo =>
+      'তুলনা করতে কমপক্ষে ২টি টেস্ট যোগ করুন';
+
+  @override
+  String get prepMockTrendChartTitle => 'স্কোর ট্রেন্ড (%)';
+
+  @override
+  String prepMockTrendAverageLineLabel(String percent) {
+    return 'গড় $percent%';
+  }
+
+  @override
+  String get prepMockTrendNeedsDataHint =>
+      'স্কোর ট্রেন্ড ও গড় রেখা দেখতে প্রথম মডেল টেস্টটি যোগ করুন।';
+
+  @override
+  String prepMockTrendTooltip(String title, String percent, String date) {
+    return '$title\n$percent% • $date';
+  }
+
+  @override
+  String get prepMockEmptyTitle => 'এখনো কোনো মডেল টেস্ট যোগ করা হয়নি';
+
+  @override
+  String get prepMockEmptyBody =>
+      'নেগেটিভ মার্কিং পরবর্তী সঠিক স্কোর ও দুর্বল টপিক দেখতে গাইডবই বা অনলাইন প্ল্যাটফর্মের টেস্ট ফলাফল যোগ করুন।';
+
+  @override
+  String get prepMockFilteredEmptyTitle =>
+      'এই ফিল্টারে কোনো মডেল টেস্ট পাওয়া যায়নি';
+
+  @override
+  String get prepMockFilteredEmptyBody =>
+      'বিষয় বা সময়সীমার ফিল্টার পরিবর্তন করুন অথবা নতুন মডেল টেস্ট যোগ করুন।';
+
+  @override
+  String get prepMockLoadingLabel => 'মডেল টেস্ট লোড হচ্ছে...';
+
+  @override
+  String get prepMockLoadErrorTitle => 'মডেল টেস্ট লোড করা যায়নি';
+
+  @override
+  String prepMockScoreRatio(String net, String total) {
+    return '$net / $total';
+  }
+
+  @override
+  String prepMockNegativeMarksBadge(String marks) {
+    return '-$marks নেগেটিভ';
+  }
+
+  @override
+  String prepMockDurationWithLimitBadge(String taken, String limit) {
+    return '$taken / $limit মি.';
+  }
+
+  @override
+  String prepMockDurationBadge(String taken) {
+    return '$taken মি.';
+  }
+
+  @override
+  String prepMockWeakTopicsLabel(String topics) {
+    return 'দুর্বল টপিক: $topics';
+  }
+
+  @override
+  String prepMockLinkedCircularLabel(String title) {
+    return 'বিজ্ঞপ্তি: $title';
+  }
+
+  @override
+  String prepMockLinkedMaterialLabel(String title) {
+    return 'বই/নোট: $title';
+  }
+
+  @override
+  String prepMockLinkedTopicLabel(String title) {
+    return 'টপিক: $title';
+  }
+
+  @override
+  String get prepMockEditTooltip => 'মডেল টেস্ট সম্পাদনা করুন';
+
+  @override
+  String get prepMockDeleteTooltip => 'মডেল টেস্ট মুছুন';
+
+  @override
+  String get prepMockFormCreateTitle => 'মডেল টেস্ট যোগ করুন';
+
+  @override
+  String get prepMockFormEditTitle => 'মডেল টেস্ট সম্পাদনা করুন';
+
+  @override
+  String get prepMockFormSubjectLabel => 'বিষয়';
+
+  @override
+  String get prepMockFormTitleLabel => 'টেস্টের নাম';
+
+  @override
+  String get prepMockFormTitleHint => 'যেমন: ৪৬তম বিসিএস মডেল টেস্ট ০৪';
+
+  @override
+  String get prepMockFormSourceLabel => 'উৎস / প্ল্যাটফর্ম (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormSourceHint => 'যেমন: Live MCQ, ওরাকেল গাইড';
+
+  @override
+  String prepMockFormTakenOnLabel(String date) {
+    return 'টেস্টের তারিখ: $date';
+  }
+
+  @override
+  String get prepMockFormPickDate => 'তারিখ পরিবর্তন';
+
+  @override
+  String get prepMockFormMarksObtainedLabel => 'প্রাপ্ত নম্বর';
+
+  @override
+  String get prepMockFormTotalMarksLabel => 'মোট নম্বর';
+
+  @override
+  String get prepMockFormNegativeMarksLabel => 'নেগেটিভ নম্বর (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormTimeTakenLabel => 'ব্যয়িত সময় (মিনিট, ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormTimeLimitLabel => 'নির্ধারিত সময় (মিনিট, ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormWeakTopicsLabel => 'দুর্বল টপিক (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormWeakTopicsHint => 'যেমন: সংবিধান সংশোধনী, সময় ও কাজ';
+
+  @override
+  String get prepMockFormNotesLabel => 'নোট (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormCircularLabel => 'সংযুক্ত বিজ্ঞপ্তি (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormMaterialLabel => 'সংযুক্ত বই/উপকরণ (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormTopicLabel => 'সংযুক্ত টপিক (ঐচ্ছিক)';
+
+  @override
+  String get prepMockFormNoneOption => 'কোনোটিই নয়';
+
+  @override
+  String get prepMockFormSaveAction => 'সংরক্ষণ করুন';
+
+  @override
+  String get prepMockValidationSubjectRequired =>
+      'এই মডেল টেস্টের জন্য একটি বিষয় নির্বাচন করুন।';
+
+  @override
+  String get prepMockValidationTitleRequired => 'মডেল টেস্টের নাম লিখুন।';
+
+  @override
+  String get prepMockValidationTotalPositive =>
+      'মোট নম্বর শূন্যের বেশি হতে হবে।';
+
+  @override
+  String get prepMockValidationMarksRange =>
+      'প্রাপ্ত নম্বর ০ থেকে মোট নম্বরের মধ্যে হতে হবে।';
+
+  @override
+  String get prepMockValidationNegativeMarks =>
+      'নেগেটিভ নম্বর ০ থেকে মোট নম্বরের মধ্যে হতে হবে।';
+
+  @override
+  String get prepMockValidationDuration =>
+      'ব্যয়িত সময় ০ বা বেশি এবং নির্ধারিত সময় শূন্যের বেশি হতে হবে।';
+
+  @override
+  String get prepMockDeleteTitle => 'মডেল টেস্ট মুছে ফেলবেন?';
+
+  @override
+  String prepMockDeleteBody(String title) {
+    return 'আপনার ইতিহাস থেকে \"$title\" মুছে ফেলবেন? এটি আর ফিরিয়ে আনা যাবে না।';
+  }
+
+  @override
+  String get prepMockDeleteConfirm => 'মুছুন';
+
+  @override
+  String get prepTabAnalytics => 'বিশ্লেষণ';
+
+  @override
+  String get prepAnalyticsTitle => 'পড়াশোনার বিশ্লেষণ';
+
+  @override
+  String get prepAnalyticsSubtitle =>
+      'দৈনিক ধারাবাহিকতা, স্ট্রিক, সাপ্তাহিক অগ্রগতি এবং বিষয়ভিত্তিক সময় দেখুন।';
+
+  @override
+  String get prepAnalyticsLoadingLabel => 'পড়াশোনার বিশ্লেষণ লোড হচ্ছে...';
+
+  @override
+  String get prepAnalyticsLoadErrorTitle => 'পড়াশোনার বিশ্লেষণ লোড করা যায়নি';
+
+  @override
+  String get prepAnalyticsEmptyTitle =>
+      'এখনো কোনো পড়াশোনার তথ্য যোগ করা হয়নি';
+
+  @override
+  String get prepAnalyticsEmptyBody =>
+      'স্ট্রিক, চার্ট এবং ধারাবাহিকতার স্কোর দেখতে আপনার বই বা নোটে অগ্রগতি যোগ করুন।';
+
+  @override
+  String get prepAnalyticsEmptyAction => 'বিষয়সমূহ দেখুন';
+
+  @override
+  String get prepAnalyticsFilterRangeLabel => 'সময়সীমা';
+
+  @override
+  String get prepAnalyticsRange7Days => '৭ দিন';
+
+  @override
+  String get prepAnalyticsRange30Days => '৩০ দিন';
+
+  @override
+  String get prepAnalyticsRange90Days => '৯০ দিন';
+
+  @override
+  String get prepAnalyticsFilterSubjectLabel => 'বিষয়';
+
+  @override
+  String get prepAnalyticsAllSubjects => 'সব বিষয়';
+
+  @override
+  String get prepAnalyticsClearFilter => 'ফিল্টার মুছুন';
+
+  @override
+  String get prepAnalyticsCurrentStreak => 'বর্তমান স্ট্রিক';
+
+  @override
+  String get prepAnalyticsLongestStreak => 'সর্বোচ্চ স্ট্রিক';
+
+  @override
+  String get prepAnalyticsUnitsThisWeek => 'এই সপ্তাহের ইউনিট';
+
+  @override
+  String get prepAnalyticsConsistency => 'ধারাবাহিকতা';
+
+  @override
+  String prepAnalyticsDaysSuffix(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: ' দিন',
+      one: ' দিন',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAnalyticsPercentSuffix => '%';
+
+  @override
+  String prepAnalyticsActiveDaysCaption(String active, String total) {
+    return '$total দিনের মধ্যে $active দিন সক্রিয়';
+  }
+
+  @override
+  String prepAnalyticsAvgPerDayCaption(String avg) {
+    return 'দৈনিক গড় $avg (৭ দিন)';
+  }
+
+  @override
+  String get prepAnalyticsRolling7dLabel => '৭ দিনের গড়';
+
+  @override
+  String get prepAnalyticsRolling30dLabel => '৩০ দিনের গড়';
+
+  @override
+  String prepAnalyticsUnitsPerDayValue(String avg) {
+    return 'দৈনিক $avg ইউনিট';
+  }
+
+  @override
+  String get prepAnalyticsBestDayLabel => 'সেরা দিন';
+
+  @override
+  String get prepAnalyticsWeakestDayLabel => 'সর্বনিম্ন দিন';
+
+  @override
+  String prepAnalyticsDaySummaryValue(String units, String date) {
+    return '$units ইউনিট • $date';
+  }
+
+  @override
+  String get prepAnalyticsMockOverviewLabel => 'এই সময়ে মডেল টেস্ট';
+
+  @override
+  String prepAnalyticsMockOverviewValue(
+      int count, String formattedCount, String avg) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি টেস্ট • গড় $avg%',
+      one: '$formattedCountটি টেস্ট • গড় $avg%',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAnalyticsNoDataDash => '—';
+
+  @override
+  String get prepAnalyticsAlertBothTitle =>
+      'আজ এবং গতকাল দৈনিক লক্ষ্যের তুলনায় কম পড়া হয়েছে';
+
+  @override
+  String get prepAnalyticsAlertTodayTitle => 'আজ এখনো দৈনিক লক্ষ্য পূরণ হয়নি';
+
+  @override
+  String get prepAnalyticsAlertYesterdayTitle =>
+      'গতকাল দৈনিক লক্ষ্যের তুলনায় কম পড়া হয়েছে';
+
+  @override
+  String prepAnalyticsAlertBody(String today, String yesterday, String target) {
+    return 'আজ: $today / $target ইউনিট • গতকাল: $yesterday / $target ইউনিট';
+  }
+
+  @override
+  String get prepAnalyticsDailyChartTitle => 'দৈনিক পড়াশোনার পরিমাণ';
+
+  @override
+  String prepAnalyticsDailyTargetLegend(String target) {
+    return 'লক্ষ্য: দৈনিক $target';
+  }
+
+  @override
+  String prepAnalyticsDailyTooltip(String date, String units) {
+    return '$date\n$units ইউনিট';
+  }
+
+  @override
+  String get prepAnalyticsWeeklyChartTitle => 'সাপ্তাহিক মোট';
+
+  @override
+  String prepAnalyticsWeeklyTooltip(String range, String units, String days) {
+    return '$range\n$units ইউনিট ($days দিন সক্রিয়)';
+  }
+
+  @override
+  String prepAnalyticsWeeklyRangeLabel(String start, String end) {
+    return '$start – $end';
+  }
+
+  @override
+  String get prepAnalyticsSubjectChartTitle => 'বিষয়ভিত্তিক সময় বণ্টন';
+
+  @override
+  String get prepAnalyticsSubjectNoData =>
+      'বিষয়ভিত্তিক তুলনা দেখতে এই সময়ে পড়াশোনা বা মডেল টেস্ট যোগ করুন।';
+
+  @override
+  String prepAnalyticsSubjectRowSubtitle(String units, String percent) {
+    return '$units ইউনিট ($percent%)';
+  }
+
+  @override
+  String prepAnalyticsSubjectMockHint(
+      int count, String formattedCount, String avg) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি মক • গড় $avg%',
+      one: '$formattedCountটি মক • গড় $avg%',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepAnalyticsHeatmapTitle => 'পড়াশোনার হিটম্যাপ (গত ৯০ দিন)';
+
+  @override
+  String prepAnalyticsHeatmapTooltip(String date, String units) {
+    return '$date: $units ইউনিট';
+  }
+
+  @override
+  String get prepAnalyticsHeatmapLess => 'কম';
+
+  @override
+  String get prepAnalyticsHeatmapMore => 'বেশি';
+
+  @override
+  String get prepSubjectViewAllMaterials => 'সব উপকরণ';
+
+  @override
+  String prepSubjectViewBooksShelf(String count) {
+    return 'বইয়ের তাক ($count)';
+  }
+
+  @override
+  String get prepOpenBookView => 'বই দেখুন';
+
+  @override
+  String get prepBooksShelfTitle => 'বইয়ের তাক';
+
+  @override
+  String get prepBooksShelfSubtitle =>
+      'বুকমার্ক টেনে বা পৃষ্ঠা লিখে অগ্রগতি ঠিক করতে যেকোনো বইয়ে ট্যাপ করুন।';
+
+  @override
+  String prepBooksShelfEmptyTitle(String subject) {
+    return '$subject-এ এখনো কোনো বই নেই';
+  }
+
+  @override
+  String get prepBooksShelfEmptyBody =>
+      'শেল্ফে দেখতে \'বই\' ধরনের একটি স্টাডি উপকরণ যোগ করুন।';
+
+  @override
+  String get prepAddBookButton => 'বই যোগ করুন';
+
+  @override
+  String get bookProgressPositionPrefix => 'আমি আছি পৃষ্ঠা';
+
+  @override
+  String bookProgressPositionSuffix(String total) {
+    return '/ মোট $total';
+  }
+
+  @override
+  String get bookProgressSavePosition => 'সংরক্ষণ করুন';
+
+  @override
+  String bookProgressUnitSummary(
+      String current, String total, String unitLabel) {
+    return '$current / $total $unitLabel';
+  }
+
+  @override
+  String bookProgressPercentLabel(String percent) {
+    return '$percent%';
+  }
+
+  @override
+  String bookProgressUpdatedOn(String date) {
+    return 'আপডেট: $date';
+  }
+
+  @override
+  String get bookProgressDragHint => 'বুকমার্ক টানুন বা পৃষ্ঠা নম্বর লিখুন';
+
+  @override
+  String get bookProgressBookmarkSemantics => 'বইয়ের অবস্থান বুকমার্ক';
+
+  @override
+  String get bookProgressErrorEmpty => 'পৃষ্ঠা নম্বর লিখুন';
+
+  @override
+  String get bookProgressErrorWholeNumber =>
+      'পূর্ণ সংখ্যায় পৃষ্ঠা নম্বর লিখুন';
+
+  @override
+  String get bookProgressErrorBelowZero => 'পৃষ্ঠা নম্বর ঋণাত্মক হতে পারবে না';
+
+  @override
+  String bookProgressErrorExceedsTotal(String total) {
+    return 'পৃষ্ঠা $total-এর বেশি হতে পারবে না';
+  }
+
+  @override
+  String get bookProgressConfirmCorrectionTitle =>
+      'অবস্থান সংশোধন সংরক্ষণ করবেন?';
+
+  @override
+  String bookProgressConfirmCorrectionBody(
+      String fromPage, String toPage, String delta, String unitLabel) {
+    return 'আপনি পৃষ্ঠা $fromPage থেকে পৃষ্ঠা $toPage-এ ($delta $unitLabel) ফিরে যাচ্ছেন। এটি স্টাডি প্ল্যান বা অ্যানালিটিক্সে পড়া ইউনিট হিসেবে গণনা না করেই বইয়ের অবস্থান হালনাগাদ করবে।';
+  }
+
+  @override
+  String get bookProgressConfirmCorrectionAction => 'সংশোধন সংরক্ষণ';
+
+  @override
+  String bookProgressCorrectionSaved(String page) {
+    return '$page নং অবস্থানে সংশোধন সংরক্ষিত হয়েছে';
+  }
+
+  @override
+  String bookProgressStudySaved(String delta, String unitLabel) {
+    return '+$delta $unitLabel লগ করা হয়েছে';
+  }
+
+  @override
+  String get bookProgressHistoryButton => 'লগের ইতিহাস';
+
+  @override
+  String get prepLogEntryTypeCorrectionBadge => 'সংশোধন';
+
+  @override
+  String get prepCloseButton => 'বন্ধ করুন';
+
+  @override
+  String get prepTabRevision => 'পুনরাবৃত্তি';
+
+  @override
+  String get prepRevisionTitle => 'পুনরাবৃত্তির তালিকা';
+
+  @override
+  String get prepRevisionSubtitle =>
+      'কঠিন পৃষ্ঠা, ভুল এবং দুর্বল বিষয়গুলো নির্দিষ্ট বিরতিতে আবার অনুশীলন করুন।';
+
+  @override
+  String get prepRevisionDueCountStat => 'আজ ও বকেয়া';
+
+  @override
+  String get prepRevisionMasteredStat => 'আয়ত্ত হয়েছে';
+
+  @override
+  String get prepRevisionFlagItemButton => 'ফ্ল্যাগ যোগ করুন';
+
+  @override
+  String prepRevisionTabDueToday(String count) {
+    return 'আজকের ($count)';
+  }
+
+  @override
+  String prepRevisionTabOverdue(String count) {
+    return 'বকেয়া ($count)';
+  }
+
+  @override
+  String prepRevisionTabUpcoming(String count) {
+    return 'আসন্ন ($count)';
+  }
+
+  @override
+  String prepRevisionTabDone(String count) {
+    return 'সম্পন্ন ($count)';
+  }
+
+  @override
+  String get prepRevisionAllSubjects => 'সব বিষয়';
+
+  @override
+  String get prepRevisionAllMaterials => 'সব উপকরণ';
+
+  @override
+  String get prepRevisionClearFilters => 'ফিল্টার মুছুন';
+
+  @override
+  String get prepRevisionReasonTricky => 'কঠিন';
+
+  @override
+  String get prepRevisionReasonForgot => 'ভুলে গেছি';
+
+  @override
+  String get prepRevisionReasonImportant => 'গুরুত্বপূর্ণ';
+
+  @override
+  String get prepRevisionReasonMistake => 'ভুল হয়েছে';
+
+  @override
+  String get prepRevisionSourceLog => 'স্টাডি লগ থেকে';
+
+  @override
+  String get prepRevisionSourceMockTest => 'মডেল টেস্ট থেকে';
+
+  @override
+  String get prepRevisionSourceManual => 'ম্যানুয়াল ফ্ল্যাগ';
+
+  @override
+  String get prepRevisionStatusMastered => 'আয়ত্তকৃত';
+
+  @override
+  String get prepRevisionStatusDismissed => 'বাদ দেওয়া হয়েছে';
+
+  @override
+  String get prepRevisionDueTodayLabel => 'আজ নির্ধারিত';
+
+  @override
+  String prepRevisionOverdueDaysLabel(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount দিন বকেয়া',
+      one: '$formattedCount দিন বকেয়া',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepRevisionDueInDaysLabel(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount দিন পর',
+      one: '$formattedCount দিন পর',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prepRevisionDueDateLabel(String date) {
+    return 'নির্ধারিত: $date';
+  }
+
+  @override
+  String prepRevisionPageChip(String page) {
+    return 'পৃ. $page';
+  }
+
+  @override
+  String prepRevisionReviewCountChip(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount বার রিভিউ',
+      one: '$formattedCount বার রিভিউ',
+      zero: 'নতুন',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepRevisionActionEasy => 'সহজ';
+
+  @override
+  String prepRevisionActionEasyHint(String days) {
+    return '+$days দিন';
+  }
+
+  @override
+  String get prepRevisionActionEasyMasteredHint => 'আয়ত্ত';
+
+  @override
+  String get prepRevisionActionStillHard => 'এখনো কঠিন';
+
+  @override
+  String get prepRevisionActionSnooze => '১ দিন পেছান';
+
+  @override
+  String get prepRevisionActionDismiss => 'বাদ দিন';
+
+  @override
+  String get prepRevisionDeleteTooltip => 'রিভিশন মার্ক মুছুন';
+
+  @override
+  String get prepRevisionUndoButton => 'পূর্বাবস্থায় ফেরান';
+
+  @override
+  String get prepRevisionUndoDismissTooltip => 'বার্তা লুকান';
+
+  @override
+  String prepRevisionFeedbackEasyNext(String reference, String days) {
+    return '\"$reference\" সহজ হিসেবে চিহ্নিত — পরবর্তী রিভিশন $days দিন পর।';
+  }
+
+  @override
+  String prepRevisionFeedbackMastered(String reference) {
+    return '\"$reference\" আয়ত্ত হয়েছে! সম্পন্ন ট্যাবে সরানো হয়েছে।';
+  }
+
+  @override
+  String prepRevisionFeedbackStillHard(String reference) {
+    return '\"$reference\" এখনো কঠিন — আগামীকালের জন্য রিসেট হয়েছে।';
+  }
+
+  @override
+  String prepRevisionFeedbackSnoozed(String reference) {
+    return '\"$reference\" ১ দিন পিছিয়ে দেওয়া হয়েছে।';
+  }
+
+  @override
+  String prepRevisionFeedbackDismissed(String reference) {
+    return '\"$reference\" সম্পন্ন তালিকায় সরানো হয়েছে।';
+  }
+
+  @override
+  String get prepRevisionEmptyDueTitle => 'আজ রিভিশনের কিছু বাকি নেই';
+
+  @override
+  String get prepRevisionEmptyDueBody =>
+      'পড়া লগ করার সময় কঠিন অংশ ফ্ল্যাগ করুন বা বকেয়া ও আসন্ন ট্যাব দেখুন।';
+
+  @override
+  String get prepRevisionEmptyOverdueTitle => 'কোনো বকেয়া রিভিশন নেই';
+
+  @override
+  String get prepRevisionEmptyOverdueBody =>
+      'আপনার সব পূর্বনির্ধারিত রিভিশন হালনাগাদ রয়েছে।';
+
+  @override
+  String get prepRevisionEmptyUpcomingTitle =>
+      'সামনে কোনো নির্ধারিত রিভিশন নেই';
+
+  @override
+  String get prepRevisionEmptyUpcomingBody =>
+      'নতুন ফ্ল্যাগ ১ দিন পর এবং সহজ রিভিউ ৩, ৭, ১৪ ও ৩০ দিনের বিরতিতে এখানে দেখাবে।';
+
+  @override
+  String get prepRevisionEmptyDoneTitle => 'এখনো কোনো সম্পন্ন আইটেম নেই';
+
+  @override
+  String get prepRevisionEmptyDoneBody =>
+      'আয়ত্তকৃত বা বাদ দেওয়া আইটেম এখানে সংরক্ষিত থাকে।';
+
+  @override
+  String get prepRevisionEmptyFilteredBody =>
+      'নির্বাচিত বিষয় ও উপকরণ ফিল্টারের সাথে কোনো রিভিশন আইটেম মেলেনি।';
+
+  @override
+  String get prepRevisionMarkAction => 'রিভিশনের জন্য চিহ্নিত করুন';
+
+  @override
+  String get prepRevisionPostSavePrompt =>
+      'অগ্রগতি সংরক্ষিত! পরে রিভিশনের জন্য পৃষ্ঠা বা সমস্যা ফ্ল্যাগ করবেন?';
+
+  @override
+  String prepRevisionAddedCountChip(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি ফ্ল্যাগ যোগ হয়েছে',
+      one: '$formattedCountটি ফ্ল্যাগ যোগ হয়েছে',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prepRevisionRefLabel => 'কী রিভিশন করবেন';
+
+  @override
+  String get prepRevisionRefHint => 'যেমন: পৃ. ১২৮ বা সমস্যা ১৪';
+
+  @override
+  String get prepRevisionRefError =>
+      'রিভিশনের জন্য পৃষ্ঠা, সমস্যা বা অধ্যায়ের নাম লিখুন।';
+
+  @override
+  String get prepRevisionPageLabel => 'পৃষ্ঠা নং (ঐচ্ছিক)';
+
+  @override
+  String get prepRevisionPageHint => '১২৮';
+
+  @override
+  String get prepRevisionReasonLabel => 'কারণ';
+
+  @override
+  String get prepRevisionNoteLabel => 'নোট (ঐচ্ছিক)';
+
+  @override
+  String get prepRevisionNoteHint => 'সূত্রের চিহ্ন বা শর্টকাটের নোট...';
+
+  @override
+  String get prepRevisionAddAnotherButton => 'ফ্ল্যাগ যোগ করুন';
+
+  @override
+  String get prepRevisionDoneFlaggingButton => 'ফ্ল্যাগার লুকান';
+
+  @override
+  String get prepRevisionFlagMaterialTooltip => 'রিভিশনের জন্য ফ্ল্যাগ করুন';
+
+  @override
+  String get prepRevisionDialogTitle => 'রিভিশনের জন্য চিহ্নিত করুন';
+
+  @override
+  String get prepRevisionSubjectLabel => 'বিষয়';
+
+  @override
+  String get prepRevisionMaterialOptionalLabel => 'উপকরণ (ঐচ্ছিক)';
+
+  @override
+  String get prepRevisionNoMaterialOption => 'বিষয়ভিত্তিক / নির্দিষ্ট বই নয়';
+
+  @override
+  String get prepRevisionWeakTopicsQuickFill =>
+      'দ্রুত পূরণ করতে দুর্বল টপিকে ট্যাপ করুন:';
+
+  @override
+  String prepRevisionAddAllWeakTopics(String count) {
+    return 'সবগুলো যোগ করুন ($count)';
+  }
+
+  @override
+  String get prepMockAddToRevisionButton => 'রিভিশনে যোগ করুন';
+
+  @override
+  String get prepTabTimer => 'টাইমার';
+
+  @override
+  String get prepTimerTitle => 'স্টাডি টাইমার';
+
+  @override
+  String get prepTimerSubtitle =>
+      'টাইমস্ট্যাম্প অনুযায়ী ফোকাস রাউন্ড ও স্টপওয়াচ সেশন ট্র্যাক করুন';
+
+  @override
+  String get prepTimerModeFocus => 'ফোকাস';
+
+  @override
+  String get prepTimerModeStopwatch => 'স্টপওয়াচ';
+
+  @override
+  String get prepTimerModeManual => 'ম্যানুয়াল';
+
+  @override
+  String get prepTimerManualEntryButton => 'ম্যানুয়াল সময় যোগ';
+
+  @override
+  String get prepTimerSoundLabel => 'সাউন্ড অ্যালার্ট';
+
+  @override
+  String get prepTimerSettingsButton => 'পমোডোরো সময়';
+
+  @override
+  String prepTimerPhaseFocus(String round) {
+    return 'ফোকাস রাউন্ড $round';
+  }
+
+  @override
+  String get prepTimerPhaseShortBreak => 'ছোট বিরতি';
+
+  @override
+  String get prepTimerPhaseLongBreak => 'দীর্ঘ বিরতি';
+
+  @override
+  String get prepTimerStatusRunning => 'চলছে';
+
+  @override
+  String get prepTimerStatusPaused => 'বিরতিতে';
+
+  @override
+  String get prepTimerStatusReady => 'প্রস্তুত';
+
+  @override
+  String prepTimerElapsedSummary(String duration) {
+    return 'মোট পড়া: $duration';
+  }
+
+  @override
+  String prepTimerConfigSummary(
+      String focus, String shortBreak, String longBreak) {
+    return '$focusমি ফোকাস • $shortBreakমি ছোট • $longBreakমি দীর্ঘ বিরতি';
+  }
+
+  @override
+  String get prepTimerSubjectRequired => 'শুরু করতে একটি বিষয় নির্বাচন করুন';
+
+  @override
+  String get prepTimerStartButton => 'শুরু করুন';
+
+  @override
+  String get prepTimerPauseButton => 'থামান';
+
+  @override
+  String get prepTimerResumeButton => 'পুনরায় শুরু';
+
+  @override
+  String get prepTimerFinishButton => 'শেষ করুন';
+
+  @override
+  String get prepTimerDiscardButton => 'বাতিল';
+
+  @override
+  String get prepTimerDiscardConfirmTitle => 'চলমান সেশন বাতিল করবেন?';
+
+  @override
+  String get prepTimerDiscardConfirmBody =>
+      'এই সেশনটি সংরক্ষিত হয়নি এবং স্থায়ীভাবে মুছে ফেলা হবে।';
+
+  @override
+  String get prepTimerOpenFullButton => 'খুলুন';
+
+  @override
+  String prepTimerAlertFocusDone(String round) {
+    return 'ফোকাস রাউন্ড $round সম্পন্ন হয়েছে!';
+  }
+
+  @override
+  String prepTimerAlertBreakDone(String round) {
+    return 'বিরতি শেষ! রাউন্ড $round শুরু করবেন?';
+  }
+
+  @override
+  String prepTimerStartShortBreak(String minutes) {
+    return '$minutesমি ছোট বিরতি শুরু';
+  }
+
+  @override
+  String prepTimerStartLongBreak(String minutes) {
+    return '$minutesমি দীর্ঘ বিরতি শুরু';
+  }
+
+  @override
+  String prepTimerStartNextRound(String round) {
+    return 'রাউন্ড $round শুরু করুন';
+  }
+
+  @override
+  String get prepTimerDismissAlert => 'বন্ধ করুন';
+
+  @override
+  String get prepTimerConfigDialogTitle => 'পমোডোরো সময়সূচী';
+
+  @override
+  String get prepTimerConfigFocusLabel => 'ফোকাস সময় (মিনিট)';
+
+  @override
+  String get prepTimerConfigShortBreakLabel => 'ছোট বিরতি (মিনিট)';
+
+  @override
+  String get prepTimerConfigLongBreakLabel => '৪ রাউন্ড পর দীর্ঘ বিরতি (মিনিট)';
+
+  @override
+  String get prepTimerConfigPositiveError => 'কমপক্ষে ১ মিনিট লিখুন';
+
+  @override
+  String get prepTimerFinishDialogTitle => 'স্টাডি সেশন সংরক্ষণ';
+
+  @override
+  String get prepTimerFinishDurationLabel => 'মোট অধ্যয়ন সময়';
+
+  @override
+  String get prepTimerFinishNoteLabel => 'সেশন নোট (ঐচ্ছিক)';
+
+  @override
+  String get prepTimerFinishNoteHint => 'কী পড়েছেন বা পরবর্তী ধাপ লিখুন...';
+
+  @override
+  String prepTimerFinishUnitsLabel(String material) {
+    return '$material-এ সম্পন্ন অংশ (ঐচ্ছিক)';
+  }
+
+  @override
+  String get prepTimerFinishUnitsHint => 'যেমন: ২০';
+
+  @override
+  String get prepTimerFinishUnitsError =>
+      'সঠিক পূর্ণসংখ্যা লিখুন বা খালি রাখুন';
+
+  @override
+  String get prepTimerFinishFlagRevisionCheck =>
+      'সংরক্ষণের পর পুনরাবৃত্তির জন্য চিহ্নিত করুন';
+
+  @override
+  String get prepTimerFinishSaveButton => 'সেশন সংরক্ষণ';
+
+  @override
+  String get prepTimerFinishSavedHeading => 'সেশন সংরক্ষিত হয়েছে!';
+
+  @override
+  String get prepTimerFinishDoneButton => 'সম্পন্ন';
+
+  @override
+  String get prepTimerManualDialogTitle => 'ম্যানুয়াল স্টাডি সময় যোগ';
+
+  @override
+  String get prepTimerEditDialogTitle => 'স্টাডি সেশন সম্পাদনা';
+
+  @override
+  String get prepTimerStartDateLabel => 'তারিখ';
+
+  @override
+  String get prepTimerStartTimeLabel => 'শুরুর সময়';
+
+  @override
+  String get prepTimerHoursLabel => 'ঘণ্টা';
+
+  @override
+  String get prepTimerMinutesLabel => 'মিনিট';
+
+  @override
+  String get prepTimerDurationPositiveError => 'কমপক্ষে ১ মিনিট সময় লিখুন';
+
+  @override
+  String get prepTimerHistoryTitle => 'সাম্প্রতিক স্টাডি সেশন';
+
+  @override
+  String get prepTimerHistoryEmpty =>
+      'এখনও কোনো স্টাডি সেশন সংরক্ষিত নেই। টাইমার শুরু করুন অথবা ম্যানুয়াল সময় যোগ করুন।';
+
+  @override
+  String get prepTimerEditTooltip => 'সেশন সম্পাদনা';
+
+  @override
+  String get prepTimerDeleteTooltip => 'সেশন মুছুন';
+
+  @override
+  String get prepTimerDeleteConfirmTitle => 'স্টাডি সেশন মুছবেন?';
+
+  @override
+  String get prepTimerDeleteConfirmBody =>
+      'এই সেশনটি আপনার ইতিহাস এবং বিশ্লেষণ থেকে মুছে ফেলা হবে।';
+
+  @override
+  String prepTimerTabFocus(String clock) {
+    return '$clock • ফোকাস — JobPrep';
+  }
+
+  @override
+  String prepTimerTabBreak(String clock) {
+    return '$clock • বিরতি — JobPrep';
+  }
+
+  @override
+  String prepTimerTabStopwatch(String clock) {
+    return '$clock • স্টপওয়াচ — JobPrep';
+  }
+
+  @override
+  String prepTimerTabPaused(String clock) {
+    return 'বিরতি $clock — JobPrep';
+  }
+
+  @override
+  String get prepAnalyticsHoursThisWeek => 'এই সপ্তাহের ঘণ্টা';
+
+  @override
+  String get prepAnalyticsHoursSuffix => 'ঘণ্টা';
+
+  @override
+  String prepAnalyticsHoursInRangeCaption(String hours) {
+    return 'মোট $hours ঘণ্টা';
+  }
+
+  @override
+  String get prepAnalyticsDailyHoursTitle => 'দৈনিক অধ্যয়ন ঘণ্টা';
+
+  @override
+  String get prepAnalyticsDailyHoursSubtitle =>
+      '১০+ মিনিটের সেশন বা লগ থাকলে স্ট্রিক গণনা হয়';
+
+  @override
+  String get prepAnalyticsSubjectHoursTitle => 'বিষয়ভিত্তিক অধ্যয়ন ঘণ্টা';
+
+  @override
+  String get prepAnalyticsSubjectHoursEmpty =>
+      'বিষয়ভিত্তিক সময় দেখতে একটি স্টাডি সেশন সংরক্ষণ করুন।';
+
+  @override
+  String prepAnalyticsHeatmapTimeTooltip(
+      String date, String units, String hours) {
+    return '$date: $units ইউনিট, $hours ঘণ্টা';
+  }
+
+  @override
+  String prepTimerStartDateValue(String date) {
+    return 'তারিখ: $date';
+  }
+
+  @override
+  String prepTimerStartTimeValue(String time) {
+    return 'শুরুর সময়: $time';
+  }
+
+  @override
+  String prepAnalyticsHoursValue(String hours) {
+    return '$hours ঘণ্টা';
+  }
+
+  @override
+  String prepAnalyticsDailyHoursTooltip(String date, String hours) {
+    return '$date: $hours ঘণ্টা';
+  }
+
+  @override
+  String prepAnalyticsSubjectHoursLegend(String subject, String hours) {
+    return '$subject: $hours ঘণ্টা';
+  }
+
+  @override
+  String get navToday => 'আজ';
+
+  @override
+  String get todayGreetingMorning => 'সুপ্রভাত';
+
+  @override
+  String get todayGreetingAfternoon => 'শুভ অপরাহ্ণ';
+
+  @override
+  String get todayGreetingEvening => 'শুভ সন্ধ্যা';
+
+  @override
+  String todayGreetingNamed(String greeting, String name) {
+    return '$greeting, $name';
+  }
+
+  @override
+  String get todaySubtitle => 'আজকের কাজের স্পষ্ট পরিকল্পনা';
+
+  @override
+  String get todayRefreshTooltip => 'আজকের তথ্য রিফ্রেশ';
+
+  @override
+  String get todayLoadError => 'আজকের পরিকল্পনা লোড করা যায়নি।';
+
+  @override
+  String todayProgressRingLabel(String percent) {
+    return '$percent%';
+  }
+
+  @override
+  String get todayProgressRingCaption => 'দৈনিক লক্ষ্য';
+
+  @override
+  String todayDailyDoneOfTarget(String done, String target) {
+    return 'আজ $done / $target ইউনিট';
+  }
+
+  @override
+  String get todayNoPlanHeaderHint => 'এখনও স্টাডি প্ল্যান নেই';
+
+  @override
+  String get todayDoNextTitle => 'এখনই করুন';
+
+  @override
+  String get todayDoNextPriorityDeadline => 'জরুরি শেষ তারিখ';
+
+  @override
+  String get todayDoNextPriorityRevision => 'বকেয়া রিভিশন';
+
+  @override
+  String get todayDoNextPriorityStudy => 'আজকের বড় লক্ষ্য';
+
+  @override
+  String get todayDoNextOpenCircularAction => 'সার্কুলার দেখুন';
+
+  @override
+  String get todayDoNextStartRevisionAction => 'রিভিশন শুরু করুন';
+
+  @override
+  String get todayDoNextStartStudyAction => 'টাইমার শুরু করুন';
+
+  @override
+  String todayDoNextOverdueSummary(
+      int count, String formattedCount, String label) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি বকেয়া রিভিশন • পরবর্তী: $label',
+      one: '$formattedCountটি বকেয়া রিভিশন: $label',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String todayDoNextStudySummary(String remaining, String done, String target) {
+    return 'আজ $remaining ইউনিট বাকি ($done / $target সম্পন্ন)';
+  }
+
+  @override
+  String get todayDoNextAllCaughtUpTitle => 'আজকের জরুরি সব কাজ সম্পন্ন';
+
+  @override
+  String get todayDoNextAllCaughtUpBody =>
+      'আগামী ২ দিনে কোনো শেষ তারিখ, বকেয়া রিভিশন বা বাকি লক্ষ্য নেই।';
+
+  @override
+  String get todayTargetsTitle => 'আজকের অধ্যয়নের লক্ষ্য';
+
+  @override
+  String get todayTargetsEmptyTitle => 'এখনও কোনো স্টাডি প্ল্যান নেই';
+
+  @override
+  String get todayTargetsEmptyBody =>
+      'দৈনিক বিষয়ভিত্তিক লক্ষ্য দেখতে পরীক্ষার তারিখসহ একটি স্টাডি প্ল্যান তৈরি করুন।';
+
+  @override
+  String get todayTargetsCreatePlanButton => 'স্টাডি প্ল্যান তৈরি করুন';
+
+  @override
+  String todayTargetRowDoneTarget(String done, String target) {
+    return '$done / $target ইউনিট';
+  }
+
+  @override
+  String todayTargetRowRemaining(String remaining) {
+    return 'আজ $remaining বাকি';
+  }
+
+  @override
+  String get todayTargetRowComplete => 'আজকের লক্ষ্য সম্পন্ন';
+
+  @override
+  String get todayTargetQuickLogButton => 'দ্রুত লগ';
+
+  @override
+  String get todayTargetStartTimerButton => 'টাইমার';
+
+  @override
+  String get todayCatchUpTitle => 'গতি সমন্বয় বার্তা';
+
+  @override
+  String todayCatchUpSubjectLine(String subject, String message) {
+    return '$subject: $message';
+  }
+
+  @override
+  String get todayRevisionTitle => 'আজকের রিভিশন';
+
+  @override
+  String todayRevisionCountBadge(String formattedCount) {
+    return '$formattedCountটি বাকি';
+  }
+
+  @override
+  String todayRevisionOverdueBreakdown(String overdue, String today) {
+    return '$overdueটি বকেয়া · $todayটি আজ';
+  }
+
+  @override
+  String get todayRevisionEmptyTitle => 'আজ রিভিশনের জন্য কিছু বাকি নেই';
+
+  @override
+  String get todayRevisionEmptyBody =>
+      'পড়ার সময় কঠিন অংশ চিহ্নিত করলে তা স্বয়ংক্রিয়ভাবে এখানে রিভিশনের জন্য আসবে।';
+
+  @override
+  String get todayRevisionStartButton => 'রিভিশন শুরু করুন';
+
+  @override
+  String get todayDeadlinesTitle => 'আগামী ৭ দিনের শেষ তারিখ';
+
+  @override
+  String get todayDeadlinesEmptyTitle => 'আগামী ৭ দিনে কোনো শেষ তারিখ নেই';
+
+  @override
+  String get todayDeadlinesEmptyBody =>
+      'আগামী সপ্তাহের মধ্যে শেষ হতে যাওয়া সংরক্ষিত সার্কুলার এখানে দেখা যাবে।';
+
+  @override
+  String get todayExamsTitle => 'আগামী ১৪ দিনের পরীক্ষা';
+
+  @override
+  String get todayExamsEmptyTitle => 'আগামী ১৪ দিনে কোনো পরীক্ষা নেই';
+
+  @override
+  String get todayExamsEmptyBody =>
+      'সংরক্ষিত সার্কুলারে আগামী দুই সপ্তাহের মধ্যে কোনো পরীক্ষার তারিখ থাকলে এখানে দেখাবে।';
+
+  @override
+  String get todayInboxTitle => 'ইনবক্স';
+
+  @override
+  String todayInboxWaitingSummary(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'ইনবক্সে $formattedCountটি আইটেম অপেক্ষা করছে',
+      zero: 'ইনবক্সে অপেক্ষমাণ কোনো আইটেম নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get todayReviewInboxButton => 'ইনবক্স পর্যালোচনা';
+
+  @override
+  String get todayTimeStudiedTitle => 'আজকের অধ্যয়নের সময়';
+
+  @override
+  String todayTimeStudiedHoursMinutes(String hours, String minutes) {
+    return '$hours ঘণ্টা $minutes মিনিট';
+  }
+
+  @override
+  String todayTimeStudiedMinutesOnly(String minutes) {
+    return '$minutes মিনিট';
+  }
+
+  @override
+  String todayTimeStudiedSessionsSummary(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'আজ $formattedCountটি সেশন',
+      zero: 'আজ এখনও কোনো সেশন রেকর্ড হয়নি',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get todayTimeStudiedRunningNote => 'সক্রিয় সেশন চলছে';
+
+  @override
+  String get todayOpenTimerButton => 'টাইমার খুলুন';
+
+  @override
+  String todayQuickLogTitle(String subject) {
+    return 'দ্রুত লগ • $subject';
+  }
+
+  @override
+  String get todayQuickLogNoMaterialsBody =>
+      'ইউনিট লগ করার আগে এই বিষয়ে একটি বই বা উপকরণ যোগ করুন।';
+
+  @override
+  String get todayQuickLogOpenSubjectButton => 'উপকরণ যোগ করুন';
+
+  @override
+  String todayQuickLogPresetChip(String units) {
+    return '+$units';
+  }
+
+  @override
+  String get notificationsBellTooltip => 'বিজ্ঞপ্তি';
+
+  @override
+  String notificationsBellUnreadSemantics(String formattedCount) {
+    return 'বিজ্ঞপ্তি ($formattedCountটি অপঠিত)';
+  }
+
+  @override
+  String get notificationsPanelTitle => 'বিজ্ঞপ্তি';
+
+  @override
+  String get notificationsInAppNotice =>
+      'অ্যাপ খোলা থাকলে এখানে বিজ্ঞপ্তি দেখা যাবে; অ্যাপ বন্ধ থাকলেও দৈনিক ইমেইল অনুস্মারক চালু থাকবে।';
+
+  @override
+  String get notificationsMarkAllReadButton => 'সব পড়া হয়েছে';
+
+  @override
+  String get notificationsMarkReadTooltip => 'পড়া হয়েছে চিহ্নিত করুন';
+
+  @override
+  String get notificationsDeleteTooltip => 'বিজ্ঞপ্তি মুছুন';
+
+  @override
+  String get notificationsEmptyTitle => 'সব পড়া হয়ে গেছে';
+
+  @override
+  String get notificationsEmptyBody =>
+      'আবেদনের শেষ তারিখ, রিভিশন তালিকা, পিছিয়ে পড়া পরিকল্পনা এবং সাপ্তাহিক পর্যালোচনার বিজ্ঞপ্তি এখানে দেখা যাবে।';
+
+  @override
+  String get notificationsUnreadBadge => 'নতুন';
+
+  @override
+  String get notificationsOpenWeeklyReviewChip => 'সাপ্তাহিক পর্যালোচনা';
+
+  @override
+  String get notificationsSaveError =>
+      'বিজ্ঞপ্তি আপডেট করা যায়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get notificationTypeDeadlineSoon => 'শেষ তারিখ';
+
+  @override
+  String get notificationTypeExamSoon => 'পরীক্ষা';
+
+  @override
+  String get notificationTypeRevisionDue => 'রিভিশন';
+
+  @override
+  String get notificationTypeBehindSchedule => 'অধ্যয়নের গতি';
+
+  @override
+  String get notificationTypeWeeklyReview => 'সাপ্তাহিক পর্যালোচনা';
+
+  @override
+  String notificationMsgDeadlineSoon(
+      int days, String title, String formattedDays, String targetDate) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$title আবেদনের আর $formattedDays দিন বাকি ($targetDate)।',
+      one: '$title আবেদনের শেষ দিন আগামীকাল ($targetDate)।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationMsgExamSoon(int days, String title, String stage,
+      String formattedDays, String targetDate) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$title — $stage পরীক্ষা আর $formattedDays দিন পর ($targetDate)।',
+      one: '$title — $stage পরীক্ষা আগামীকাল ($targetDate)।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationMsgRevisionDue(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'আজ রিভিশনের জন্য $formattedCountটি আইটেম বাকি আছে।',
+      one: 'আজ রিভিশনের জন্য ১টি আইটেম বাকি আছে।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String notificationMsgBehindScheduleSubject(String subject) {
+    return '$subject বিষয়ের অধ্যয়ন পরিকল্পনায় আপনি কিছুটা পিছিয়ে আছেন।';
+  }
+
+  @override
+  String get notificationMsgBehindScheduleAll =>
+      'আপনার সামগ্রিক অধ্যয়ন পরিকল্পনা নির্ধারিত গতির চেয়ে পিছিয়ে আছে।';
+
+  @override
+  String get notificationMsgWeeklyReview =>
+      'আপনার সাপ্তাহিক পর্যালোচনা প্রস্তুত। গত ৭ দিনের অগ্রগতি দেখুন।';
+
+  @override
+  String get settingsInAppNotificationsTitle =>
+      'বিজ্ঞপ্তির ধরন ও সাপ্তাহিক পর্যালোচনা';
+
+  @override
+  String get settingsInAppNotificationsSubtitle =>
+      'প্রতিদিন কোন ধরনের অ্যাপ-অভ্যন্তরীণ বিজ্ঞপ্তি তৈরি হবে তা বেছে নিন এবং সাপ্তাহিক পর্যালোচনার দিন নির্ধারণ করুন।';
+
+  @override
+  String get settingsNotifDeadlineSoonTitle =>
+      'সার্কুলারের শেষ তারিখ (৭, ৩, ১ দিন)';
+
+  @override
+  String get settingsNotifExamSoonTitle => 'পরীক্ষার তারিখ (৭, ৩, ১ দিন)';
+
+  @override
+  String get settingsNotifRevisionDueTitle => 'আজকের রিভিশন তালিকা';
+
+  @override
+  String get settingsNotifBehindScheduleTitle =>
+      'পিছিয়ে পড়া অধ্যয়ন পরিকল্পনা';
+
+  @override
+  String get settingsNotifWeeklyReviewTitle => 'সাপ্তাহিক পর্যালোচনা বিজ্ঞপ্তি';
+
+  @override
+  String get settingsNotifWeeklyReviewDayLabel => 'সাপ্তাহিক পর্যালোচনার দিন';
+
+  @override
+  String get weeklyReviewTitle => 'সাপ্তাহিক পর্যালোচনা';
+
+  @override
+  String weeklyReviewPeriodSubtitle(String startDate, String endDate) {
+    return 'গত ৭ দিন ($startDate – $endDate)';
+  }
+
+  @override
+  String get weeklyReviewOpenButton => 'সাপ্তাহিক পর্যালোচনা খুলুন';
+
+  @override
+  String get weeklyReviewUnitsTitle => 'পঠিত ইউনিট';
+
+  @override
+  String get weeklyReviewHoursTitle => 'অধ্যয়নের ঘণ্টা';
+
+  @override
+  String weeklyReviewHoursValue(String formattedHours) {
+    return '$formattedHours ঘণ্টা';
+  }
+
+  @override
+  String get weeklyReviewConsistencyTitle => 'অধ্যয়নের দিন';
+
+  @override
+  String get weeklyReviewRevisionsClearedTitle => 'সম্পন্ন রিভিশন';
+
+  @override
+  String get weeklyReviewMockAvgTitle => 'মক টেস্ট গড়';
+
+  @override
+  String weeklyReviewMockPercent(String formattedPercent) {
+    return '$formattedPercent%';
+  }
+
+  @override
+  String weeklyReviewMockCountSubtitle(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCountটি মক টেস্ট সম্পন্ন',
+      one: '১টি মক টেস্ট সম্পন্ন',
+      zero: 'এই সপ্তাহে কোনো মক টেস্ট দেওয়া হয়নি',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weeklyReviewMockNoData => 'এখনও স্কোর নেই';
+
+  @override
+  String get weeklyReviewDeltaSame => 'গত সপ্তাহের সমান';
+
+  @override
+  String weeklyReviewDeltaUnits(String sign, String formattedDelta) {
+    return 'গত সপ্তাহের তুলনায় $sign$formattedDelta';
+  }
+
+  @override
+  String weeklyReviewDeltaHours(String sign, String formattedHours) {
+    return 'গত সপ্তাহের তুলনায় $sign$formattedHours ঘণ্টা';
+  }
+
+  @override
+  String weeklyReviewDeltaPoints(String sign, String formattedPoints) {
+    return 'গত সপ্তাহের তুলনায় $sign$formattedPoints%';
+  }
+
+  @override
+  String weeklyReviewDaysFraction(String studied, String total) {
+    return '$studied / $total দিন';
+  }
+
+  @override
+  String get weeklyReviewMissedDaysNone =>
+      'এই সপ্তাহে কোনো দিন পড়া বাদ যায়নি।';
+
+  @override
+  String weeklyReviewMissedDaysCount(int count, String formattedCount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$formattedCount দিন বাদ পড়েছে',
+      one: '১ দিন বাদ পড়েছে',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weeklyReviewUpcomingTitle => 'আগামী ৭ দিন';
+
+  @override
+  String get weeklyReviewUpcomingEmptyTitle =>
+      'আগামী সপ্তাহে কোনো জরুরি তারিখ নেই';
+
+  @override
+  String get weeklyReviewUpcomingEmptyBody =>
+      'আগামী ৭ দিনে কোনো আবেদনের শেষ তারিখ বা পরীক্ষার তারিখ নির্ধারিত নেই।';
+
+  @override
+  String get weeklyReviewSuggestionTitle => 'আগামী সপ্তাহের পরামর্শ';
+
+  @override
+  String weeklyReviewSuggestionDeadline(String title) {
+    return 'সময় শেষ হওয়ার আগে আগামী ৩ দিনের মধ্যে $title আবেদনটি সম্পন্ন করুন।';
+  }
+
+  @override
+  String weeklyReviewSuggestionBehindSubject(String subject) {
+    return '$subject অধ্যয়ন পরিকল্পনায় পিছিয়ে থাকা অংশ পুষিয়ে নিতে প্রতিদিন সামান্য অতিরিক্ত সময় দিন।';
+  }
+
+  @override
+  String get weeklyReviewSuggestionBehindAll =>
+      'পিছিয়ে থাকা লক্ষ্য পূরণ শুরু করতে আজ হালকা একটি অধ্যয়ন সেশন সম্পন্ন করুন।';
+
+  @override
+  String get weeklyReviewSuggestionStart =>
+      'সহজভাবে শুরু করুন: ধারাবাহিকতা ফেরাতে প্রথম দিন ১৫ মিনিট বা ১০ পৃষ্ঠা লগ করুন।';
+
+  @override
+  String weeklyReviewSuggestionMissedDays(String formattedDays) {
+    return 'এই সপ্তাহে $formattedDays দিন পড়া বাদ পড়েছে — ব্যস্ত দিনেও লক্ষ্য ধরে রাখতে দৈনিক ন্যূনতম লক্ষ্য কিছুটা কম রাখুন।';
+  }
+
+  @override
+  String get weeklyReviewSuggestionMock =>
+      'আগামী সপ্তাহে অন্তত একটি সময়বদ্ধ মক টেস্ট দিন এবং দুর্বল টপিক রিভিশনে যোগ করুন।';
+
+  @override
+  String weeklyReviewSuggestionRevision(String formattedCount) {
+    return 'নতুন ভারী পড়া শুরু করার আগে অপেক্ষমাণ $formattedCountটি রিভিশন আইটেম সম্পন্ন করুন।';
+  }
+
+  @override
+  String get weeklyReviewSuggestionMaintain =>
+      'দারুণ সপ্তাহ! একই ধারাবাহিক গতি বজায় রাখুন এবং প্রতিদিন রিভিশনের জন্য একটু সময় রাখুন।';
+
+  @override
+  String get weeklyReviewBackToToday => 'টুডে স্ক্রিনে ফিরুন';
+
+  @override
+  String onboardingStepProgress(String step, String total) {
+    return 'ধাপ $step / $total';
+  }
+
+  @override
+  String get onboardingBackButton => 'পেছনে';
+
+  @override
+  String get onboardingNextButton => 'পরবর্তী';
+
+  @override
+  String get onboardingSkipButton => 'এড়িয়ে যান';
+
+  @override
+  String get onboardingFinishButton => 'সেটআপ সম্পন্ন করুন';
+
+  @override
+  String get onboardingWelcomeTitle => 'জবপ্রেপ-এ স্বাগতম';
+
+  @override
+  String get onboardingWelcomeSubtitle =>
+      'এক মিনিটে আপনার ভাষা, থিম, পাঠ্যক্রম ও সাপ্তাহিক গতি নির্ধারণ করুন। আমরা কখনোই ফোন নম্বর, ঠিকানা বা বয়স চাই না।';
+
+  @override
+  String get onboardingLanguageHeading => 'অ্যাপের ভাষা';
+
+  @override
+  String get onboardingThemeHeading => 'অ্যাপিয়ারেন্স';
+
+  @override
+  String get onboardingTrackTitle => 'আপনি কিসের প্রস্তুতি নিচ্ছেন?';
+
+  @override
+  String get onboardingTrackSubtitle =>
+      'পরবর্তী ধাপে সম্পাদনার জন্য একটি শুরুর টেমপ্লেট বেছে নিন অথবা সম্পূর্ণ খালি থেকে শুরু করুন।';
+
+  @override
+  String get onboardingTrackGovernmentTitle => 'সরকারি চাকরি পরীক্ষা';
+
+  @override
+  String get onboardingTrackGovernmentDesc =>
+      'বাংলা, ইংরেজি, সাধারণ জ্ঞান, গণিত, মানসিক দক্ষতা ও কম্পিউটারের প্রাথমিক উপকরণ।';
+
+  @override
+  String get onboardingTrackSoftwareTitle => 'বেসরকারি সফটওয়্যার চাকরি';
+
+  @override
+  String get onboardingTrackSoftwareDesc =>
+      'ডেটা স্ট্রাকচার ও অ্যালগরিদম, সিস্টেম ডিজাইন, OOP/SQL এবং ইন্টারভিউ প্রস্তুতি।';
+
+  @override
+  String get onboardingTrackBlankTitle => 'অন্য কিছু (খালি থেকে শুরু)';
+
+  @override
+  String get onboardingTrackBlankDesc =>
+      'যেকোনো পরীক্ষা বা ক্যারিয়ারের জন্য নিজের মতো বিষয় ও উপকরণ যোগ করুন।';
+
+  @override
+  String get onboardingSubjectsTitle => 'বিষয় ও উপকরণ সম্পাদনা করুন';
+
+  @override
+  String get onboardingSubjectsSubtitle =>
+      'বিষয় চালু বা বন্ধ করুন, নাম বদলান, মোট ইউনিট ঠিক করুন অথবা নিজের বিষয় যোগ করুন।';
+
+  @override
+  String get onboardingSubjectsEmptyBlankNote =>
+      'এখনো কোনো বিষয় নেই। কাস্টম বিষয় যোগ করতে \"বিষয় যোগ করুন\" চাপুন অথবা পরে যোগ করতে এগিয়ে যান।';
+
+  @override
+  String get onboardingSubjectNameLabel => 'বিষয়ের নাম';
+
+  @override
+  String get onboardingMaterialTitleLabel => 'উপকরণের নাম';
+
+  @override
+  String get onboardingMaterialUnitsLabel => 'মোট ইউনিট';
+
+  @override
+  String get onboardingAddSubjectButton => 'বিষয় যোগ করুন';
+
+  @override
+  String get onboardingAddSubjectDialogTitle => 'নতুন বিষয়';
+
+  @override
+  String get onboardingAddMaterialButton => 'উপকরণ যোগ করুন';
+
+  @override
+  String get onboardingAddMaterialDialogTitle => 'নতুন উপকরণ';
+
+  @override
+  String get onboardingRemoveMaterialTooltip => 'উপকরণ সরান';
+
+  @override
+  String get onboardingValidationEmptySubject =>
+      'সক্রিয় প্রতিটি বিষয়ের নাম থাকা প্রয়োজন।';
+
+  @override
+  String get onboardingValidationDuplicateSubject =>
+      'সক্রিয় দুটি বিষয়ের নাম একই হতে পারবে না।';
+
+  @override
+  String get onboardingValidationEmptyMaterial =>
+      'সক্রিয় বিষয়ের প্রতিটি উপকরণের শিরোনাম থাকা প্রয়োজন।';
+
+  @override
+  String get onboardingValidationInvalidUnits =>
+      'প্রতিটি উপকরণে অন্তত ১টি ইউনিট থাকতে হবে।';
+
+  @override
+  String get onboardingScheduleTitle => 'পরীক্ষার সময়সূচি ও সাপ্তাহিক গতি';
+
+  @override
+  String get onboardingScheduleSubtitle =>
+      'পরীক্ষার ৭ দিন আগে শেষ করার বাফার রেখে আপনার দৈনিক লক্ষ্য স্বয়ংক্রিয়ভাবে হিসাব হবে।';
+
+  @override
+  String get onboardingExamDateLabel => 'সম্ভাব্য পরীক্ষার তারিখ';
+
+  @override
+  String get onboardingExamDatePickButton => 'পরীক্ষার তারিখ বেছে নিন';
+
+  @override
+  String get onboardingExamDateUnknownToggle =>
+      'আমি এখনো পরীক্ষার তারিখ জানি না';
+
+  @override
+  String get onboardingExamDateUnknownNote =>
+      'সমস্যা নেই — পরে প্রস্তুতি > স্টাডি প্ল্যান থেকে তারিখ যোগ করতে পারবেন।';
+
+  @override
+  String get onboardingStudyDaysLabel => 'সপ্তাহে কয়দিন পড়বেন';
+
+  @override
+  String onboardingStudyDaysCount(int count, String formatted) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'সপ্তাহে $formatted দিন',
+      one: 'সপ্তাহে $formatted দিন',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get onboardingRestDaysLabel => 'কোন দিনগুলো বিশ্রামের দিন?';
+
+  @override
+  String get onboardingMaxPaceLabel => 'সর্বোচ্চ দৈনিক লক্ষ্য (ঐচ্ছিক)';
+
+  @override
+  String get onboardingMaxPaceHint => 'যেমন ৫০ ইউনিট/দিন';
+
+  @override
+  String get onboardingValidationMissingExamDate =>
+      'পরীক্ষার তারিখ বেছে নিন অথবা \"আমি এখনো জানি না\" চালু করুন।';
+
+  @override
+  String get onboardingValidationPastExamDate =>
+      'আজ বা ভবিষ্যতের একটি পরীক্ষার তারিখ বেছে নিন।';
+
+  @override
+  String get onboardingValidationNoStudyDays =>
+      'সপ্তাহে অন্তত ১ দিন অধ্যয়নের জন্য রাখুন।';
+
+  @override
+  String get onboardingValidationInvalidMaxPace =>
+      'সর্বোচ্চ দৈনিক লক্ষ্য ০-এর বেশি পূর্ণসংখ্যা হতে হবে।';
+
+  @override
+  String get onboardingCircularTitle => 'প্রথম সার্কুলার সংরক্ষণ (ঐচ্ছিক)';
+
+  @override
+  String get onboardingCircularSubtitle =>
+      'ইনবক্সে প্রথম সার্কুলার রাখতে আবেদন লিংক দিন, অথবা এড়িয়ে যেতে খালি রাখুন।';
+
+  @override
+  String get onboardingCircularOptionalNote =>
+      'লিংক খালি রাখলে এই ধাপটি এড়িয়ে যাবে।';
+
+  @override
+  String get onboardingValidationInvalidUrl =>
+      'http:// বা https:// দিয়ে শুরু হওয়া সঠিক লিংক দিন অথবা খালি রাখুন।';
+
+  @override
+  String get onboardingFinishTitle => 'আপনার অধ্যয়নের জায়গা প্রস্তুত';
+
+  @override
+  String get onboardingFinishSubtitle =>
+      'নিচের পছন্দগুলো দেখে নিন। পরে আবার সেটআপ চালালে ডুপ্লিকেট তৈরি হবে না।';
+
+  @override
+  String get onboardingSummaryTrackLabel => 'প্রস্তুতির ট্র্যাক';
+
+  @override
+  String onboardingSummarySubjectsValue(
+      int subjectsCount, String formattedSubjects, String formattedMaterials) {
+    String _temp0 = intl.Intl.pluralLogic(
+      subjectsCount,
+      locale: localeName,
+      other: '$formattedSubjectsটি বিষয় · $formattedMaterialsটি উপকরণ',
+      one: '১টি বিষয় · $formattedMaterialsটি উপকরণ',
+      zero: 'খালি শুরু (এখনো বিষয় নেই)',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String onboardingSummaryScheduleExam(String examDate, String studyDays) {
+    return 'পরীক্ষা: $examDate · $studyDays';
+  }
+
+  @override
+  String onboardingSummaryScheduleUnknown(String studyDays) {
+    return 'তারিখ নির্ধারিত নয় · $studyDays';
+  }
+
+  @override
+  String onboardingSummaryPaceLabel(String formattedPace) {
+    return 'সর্বোচ্চ গতি: $formattedPace / দিন';
+  }
+
+  @override
+  String onboardingSummaryCircularPending(String target) {
+    return 'ইনবক্স ক্যাপচার: $target';
+  }
+
+  @override
+  String get onboardingSummaryCircularSkipped =>
+      'এখনো কোনো সার্কুলার যুক্ত হয়নি';
+
+  @override
+  String get onboardingApplyError =>
+      'সেটআপ সংরক্ষণ করা যায়নি। সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।';
+
+  @override
+  String get onboardingTodayTipsTitle => 'শুরু করার ৩টি দ্রুত পরামর্শ';
+
+  @override
+  String get onboardingTodayTip1 =>
+      'স্টাডি প্ল্যান ঠিক রাখতে টুডে লক্ষ্য থেকেই পড়া পৃষ্ঠা বা মিনিট লগ করুন।';
+
+  @override
+  String get onboardingTodayTip2 =>
+      'কঠিন অংশ ফ্ল্যাগ করে আপনার স্পেসড রিভিশন তালিকা তৈরি করুন।';
+
+  @override
+  String get onboardingTodayTip3 =>
+      'শেষ তারিখের কাউন্টডাউন এবং সাপ্তাহিক পর্যালোচনার জন্য নোটিফিকেশন বেল দেখুন।';
+
+  @override
+  String get onboardingTodayTipsDismissAll => 'পরামর্শ লুকান';
+
+  @override
+  String get onboardingTodayTipDismissTooltip => 'পরামর্শটি সরান';
+
+  @override
+  String get settingsSetupCardTitle => 'সেটআপ উইজার্ড';
+
+  @override
+  String get settingsSetupCardSubtitle =>
+      'ডুপ্লিকেট ছাড়াই আবার শুরুর টেমপ্লেট, বিষয় বা সময়সূচি পরিবর্তন করুন।';
+
+  @override
+  String get settingsRunSetupAgainButton => 'আবার সেটআপ চালান';
 }

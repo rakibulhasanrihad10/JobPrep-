@@ -5,13 +5,22 @@ import 'package:job_prep/l10n/app_localizations.dart';
 /// Top-level navigation items supported across mobile, tablet, and
 /// desktop shells.
 enum AppNavItem {
+  /// Focused daily command center (default home after sign in).
+  today(
+    route: '/today',
+    icon: Icons.today_outlined,
+    selectedIcon: Icons.today_rounded,
+    shortcutDigit: 1,
+    shortcutKey: LogicalKeyboardKey.digit1,
+  ),
+
   /// Dashboard screen with overview metrics and activity.
   dashboard(
     route: '/dashboard',
     icon: Icons.space_dashboard_outlined,
     selectedIcon: Icons.space_dashboard,
-    shortcutDigit: 1,
-    shortcutKey: LogicalKeyboardKey.digit1,
+    shortcutDigit: 2,
+    shortcutKey: LogicalKeyboardKey.digit2,
   ),
 
   /// Circulars screen for tracking job circulars.
@@ -19,8 +28,8 @@ enum AppNavItem {
     route: '/circulars',
     icon: Icons.work_outline,
     selectedIcon: Icons.work,
-    shortcutDigit: 2,
-    shortcutKey: LogicalKeyboardKey.digit2,
+    shortcutDigit: 3,
+    shortcutKey: LogicalKeyboardKey.digit3,
   ),
 
   /// Exam preparation tracking and subject syllabi.
@@ -28,8 +37,8 @@ enum AppNavItem {
     route: '/prep',
     icon: Icons.menu_book_outlined,
     selectedIcon: Icons.menu_book,
-    shortcutDigit: 3,
-    shortcutKey: LogicalKeyboardKey.digit3,
+    shortcutDigit: 4,
+    shortcutKey: LogicalKeyboardKey.digit4,
   ),
 
   /// Exam calendar and deadlines.
@@ -37,8 +46,8 @@ enum AppNavItem {
     route: '/calendar',
     icon: Icons.calendar_month_outlined,
     selectedIcon: Icons.calendar_month,
-    shortcutDigit: 4,
-    shortcutKey: LogicalKeyboardKey.digit4,
+    shortcutDigit: 5,
+    shortcutKey: LogicalKeyboardKey.digit5,
   ),
 
   /// Application settings and preferences.
@@ -46,8 +55,8 @@ enum AppNavItem {
     route: '/settings',
     icon: Icons.settings_outlined,
     selectedIcon: Icons.settings,
-    shortcutDigit: 5,
-    shortcutKey: LogicalKeyboardKey.digit5,
+    shortcutDigit: 6,
+    shortcutKey: LogicalKeyboardKey.digit6,
   ),
 
   /// Quick-captured circulars awaiting triage.
@@ -55,8 +64,8 @@ enum AppNavItem {
     route: '/inbox',
     icon: Icons.inbox_outlined,
     selectedIcon: Icons.inbox_rounded,
-    shortcutDigit: 6,
-    shortcutKey: LogicalKeyboardKey.digit6,
+    shortcutDigit: 7,
+    shortcutKey: LogicalKeyboardKey.digit7,
   );
 
   const AppNavItem({
@@ -85,6 +94,8 @@ enum AppNavItem {
   /// Resolves the localized display label.
   String label(AppLocalizations l10n) {
     switch (this) {
+      case AppNavItem.today:
+        return l10n.navToday;
       case AppNavItem.dashboard:
         return l10n.navDashboard;
       case AppNavItem.circulars:
@@ -107,6 +118,6 @@ enum AppNavItem {
         return item;
       }
     }
-    return AppNavItem.dashboard;
+    return AppNavItem.today;
   }
 }

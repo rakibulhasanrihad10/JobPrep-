@@ -5,6 +5,7 @@ import 'package:job_prep/core/localization/formatters.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_dialog.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_progress_log_controller.dart';
@@ -13,6 +14,7 @@ import 'package:job_prep/features/prep/presentation/utils/prep_l10n.dart';
 import 'package:job_prep/features/prep/presentation/widgets/material_log_entry_fields.dart';
 import 'package:job_prep/features/prep/presentation/widgets/material_log_summary_header.dart';
 import 'package:job_prep/features/prep/presentation/widgets/material_past_logs_section.dart';
+import 'package:job_prep/features/prep/presentation/widgets/revision_flag_composer.dart';
 
 /// Opens the custom progress logging and past logs history dialog.
 Future<void> showMaterialLogsDialog(
@@ -55,6 +57,9 @@ class _MaterialLogsDialogState extends ConsumerState<MaterialLogsDialog> {
   final _noteController = TextEditingController();
   late DateTime _selectedDate;
   ProgressLog? _editingLog;
+  ProgressLog? _lastSavedLog;
+  bool _justSavedLog = false;
+  bool _showRevisionComposer = false;
 
   @override
   void initState() {
@@ -121,23 +126,31 @@ class _MaterialLogsDialogState extends ConsumerState<MaterialLogsDialog> {
     final units = _parsePositiveUnits(_unitsController.text)!;
     final controller = ref.read(prepProgressLogControllerProvider.notifier);
 
-    final ok = _editingLog != null
-        ? await controller.updateLog(
-            material: currentMaterial,
-            existing: _editingLog!,
-            unitsDone: units,
-            loggedOn: _selectedDate,
-            note: _noteController.text,
-          )
-        : await controller.logUnits(
-            material: currentMaterial,
-            units: units,
-            loggedOn: _selectedDate,
-            note: _noteController.text,
-          );
+    if (_editingLog != null) {
+      final ok = await controller.updateLog(
+        material: currentMaterial,
+        existing: _editingLog!,
+        unitsDone: units,
+        loggedOn: _selectedDate,
+        note: _noteController.text,
+      );
+      if (!mounted || !ok) return;
+      _cancelEditing();
+      return;
+    }
 
-    if (!mounted || !ok) return;
+    final saved = await controller.logUnitsAndReturn(
+      material: currentMaterial,
+      units: units,
+      loggedOn: _selectedDate,
+      note: _noteController.text,
+    );
+    if (!mounted || saved == null) return;
     _cancelEditing();
+    setState(() {
+      _lastSavedLog = saved;
+      _justSavedLog = true;
+    });
   }
 
   @override
@@ -190,6 +203,87 @@ class _MaterialLogsDialogState extends ConsumerState<MaterialLogsDialog> {
                     ? PrepL10n.failureMessage(mutationState.error!, l10n)
                     : null,
               ),
+              SizedBox(height: spacing.md),
+              if (_justSavedLog && !_showRevisionComposer) ...[
+                Container(
+                  key: const ValueKey('log-post-save-revision-banner'),
+                  padding: spacing.insetsAllMd,
+                  decoration: BoxDecoration(
+                    color: tokens.colors.goldAccentSubtle,
+                    borderRadius: tokens.radii.buttonRadius,
+                    border: Border.all(
+                      color: tokens.colors.goldAccent.withValues(alpha: 0.65),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        l10n.prepRevisionPostSavePrompt,
+                        style: tokens.textStyles.bodySmall.copyWith(
+                          color: tokens.colors.textPrimary,
+                        ),
+                      ),
+                      SizedBox(height: spacing.sm),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: GlassButton(
+                          key: const ValueKey(
+                            'log-mark-for-revision-button',
+                          ),
+                          variant: GlassButtonVariant.primary,
+                          leading: Icon(
+                            Icons.flag_outlined,
+                            size: spacing.lg,
+                            color: tokens.colors.goldAccent,
+                          ),
+                          onPressed: () =>
+                              setState(() => _showRevisionComposer = true),
+                          child: Text(l10n.prepRevisionMarkAction),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ] else if (!_showRevisionComposer) ...[
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: GlassButton(
+                    key: const ValueKey('log-mark-for-revision-button'),
+                    leading: Icon(
+                      Icons.flag_outlined,
+                      size: spacing.lg,
+                      color: tokens.colors.goldAccent,
+                    ),
+                    onPressed: () =>
+                        setState(() => _showRevisionComposer = true),
+                    child: Text(l10n.prepRevisionMarkAction),
+                  ),
+                ),
+              ],
+              if (_showRevisionComposer) ...[
+                SizedBox(height: spacing.sm),
+                RevisionFlagComposer(
+                  subjectId: currentMaterial.subjectId,
+                  materialId: currentMaterial.id,
+                  progressLogId: _lastSavedLog?.id,
+                  source: _lastSavedLog != null
+                      ? RevisionSource.log
+                      : RevisionSource.manual,
+                  initialReference: currentMaterial.completedUnits > 0 &&
+                          currentMaterial.kind == MaterialKind.book
+                      ? l10n.prepRevisionPageChip(
+                          currentMaterial.completedUnits.toString(),
+                        )
+                      : '',
+                  initialPageNumber:
+                      currentMaterial.kind == MaterialKind.book &&
+                              currentMaterial.completedUnits > 0
+                          ? currentMaterial.completedUnits
+                          : null,
+                  onClose: () => setState(() => _showRevisionComposer = false),
+                ),
+              ],
               SizedBox(height: spacing.xl),
               Text(
                 l10n.prepPastLogsTitle,

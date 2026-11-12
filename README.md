@@ -212,6 +212,56 @@ Configure authentication providers and allowed redirect URLs in the **Supabase D
 
 ---
 
+### 5. Email Reminders Edge Function, Resend Secret & Daily `pg_cron` Setup
+
+Phase 5B delivers daily automated reminders via Supabase Edge Functions (`supabase/functions/send-reminders/`), PostgreSQL (`user_reminder_settings` and `reminder_log`), and a daily `pg_cron` schedule (`jobprep-daily-reminders`).
+
+#### How It Works
+- **Lead Windows**: The Edge Function runs [`selectDueReminders`](supabase/functions/send-reminders/selector.ts) over active (non-archived) circulars and scheduled exam dates, selecting events due **7, 3, and 1 days ahead** (aligned to `REMINDER_TIMEZONE_OFFSET_MINUTES`, defaulting to `360` for `Asia/Dhaka` `+06:00`).
+- **Per-User Controls**: Each user manages opt-in/opt-out (`reminders_enabled`) and email digest language (**English** `en` or **Bangla** `bn`) from **Settings > Email Reminders**. Users without an explicit row default to enabled English reminders.
+- **Duplicate-Send Prevention**: Before sending through Resend, claimed deliveries are inserted into `public.reminder_log`. A composite unique index (`idx_reminder_log_dedup` over `(user_id, reminder_kind, circular_id, COALESCE(exam_date_id, '00000000-0000-0000-0000-000000000000'), days_before, target_date)`) enforces at the database level that the same reminder is never sent twice—even under concurrent runs.
+
+#### 1. Store Edge Function Secrets in Supabase (Never Commit Keys)
+Set the Resend API key and cron shared secret via Supabase CLI:
+```bash
+npx supabase secrets set \
+  RESEND_API_KEY=<your-resend-api-key> \
+  RESEND_FROM_EMAIL="JobPrep <reminders@yourdomain.com>" \
+  REMINDER_CRON_SECRET=<long-random-cron-secret> \
+  REMINDER_TIMEZONE_OFFSET_MINUTES=360
+```
+
+#### 2. Deploy the Edge Function
+```bash
+npx supabase functions deploy send-reminders --no-verify-jwt
+```
+> `--no-verify-jwt` matches `[functions.send-reminders]` in `supabase/config.toml`; incoming `POST` requests are authenticated inside the Edge Function using `REMINDER_CRON_SECRET` (`x-cron-secret` header).
+
+#### 3. Enable Extensions & Seed Vault Secrets for Daily `pg_cron`
+The migration `supabase/migrations/20261111000000_reminders.sql` registers the daily `pg_cron` job `jobprep-daily-reminders` at `0 2 * * *` UTC (`08:00 AM` Bangladesh Standard Time) calling `public.dispatch_daily_reminders()`.
+
+1. In your Cloud Supabase Dashboard (**Database > Extensions**), confirm **`pg_cron`**, **`pg_net`**, and **`supabase_vault`** are enabled.
+2. Add your project URL and the matching cron secret to Supabase Vault (via SQL Editor in Dashboard):
+```sql
+SELECT vault.create_secret('https://<your-project-id>.supabase.co', 'project_url');
+SELECT vault.create_secret('<long-random-cron-secret>', 'reminder_cron_secret');
+```
+3. (Optional) Trigger a manual test run from SQL Editor and inspect HTTP queue status:
+```sql
+SELECT public.dispatch_daily_reminders();
+SELECT * FROM net._http_response ORDER BY created DESC LIMIT 5;
+```
+
+#### 4. Run Edge Function Unit & Duplicate-Protection Tests
+```bash
+deno test --allow-env supabase/functions/send-reminders/selector_test.ts
+deno test --allow-env supabase/functions/send-reminders/notifications_selector_test.ts
+```
+
+> Phase 6J extends `send-reminders` with pure daily/weekly in-app notification creation (`notifications_selector.ts` + `notifications` unique index `(user_id, dedupe_key)`), respecting per-type settings (`user_reminder_settings`) and preferred `weekly_review_day` (`0` Sunday .. `6` Saturday).
+
+---
+
 ## Git Workflow & Conventions
 
 - **Branches**:

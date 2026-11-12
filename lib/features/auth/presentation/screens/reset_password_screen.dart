@@ -57,7 +57,7 @@ class _ResetPasswordScreenState extends ConsumerState<ResetPasswordScreen> {
       widget.onContinueToDashboard!.call();
       return;
     }
-    GoRouter.maybeOf(context)?.go(AppRoutePaths.dashboard);
+    GoRouter.maybeOf(context)?.go(AppRoutePaths.today);
   }
 
   @override

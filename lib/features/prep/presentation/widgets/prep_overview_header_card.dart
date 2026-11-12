@@ -22,6 +22,7 @@ class PrepOverviewHeaderCard extends StatelessWidget {
     this.replayKey,
     this.onOpenTemplates,
     this.onSaveAsTemplate,
+    this.onCreateStudyPlan,
   });
 
   /// Normalized overall progress across all subjects (`0` to `1`).
@@ -53,6 +54,9 @@ class PrepOverviewHeaderCard extends StatelessWidget {
 
   /// Callback saving current subjects as a reusable personal template.
   final VoidCallback? onSaveAsTemplate;
+
+  /// Callback opening dialog to create or edit a study plan.
+  final VoidCallback? onCreateStudyPlan;
 
   @override
   Widget build(BuildContext context) {
@@ -177,6 +181,17 @@ class PrepOverviewHeaderCard extends StatelessWidget {
                   ),
                   onPressed: onSaveAsTemplate,
                   child: Text(l10n.prepSaveAsTemplateButton),
+                ),
+              if (onCreateStudyPlan != null)
+                GlassButton(
+                  key: const ValueKey('open-study-plan-button'),
+                  leading: Icon(
+                    Icons.event_note_outlined,
+                    size: spacing.lg,
+                    color: colors.textPrimary,
+                  ),
+                  onPressed: onCreateStudyPlan,
+                  child: Text(l10n.prepStudyPlanAddButton),
                 ),
             ],
           ),

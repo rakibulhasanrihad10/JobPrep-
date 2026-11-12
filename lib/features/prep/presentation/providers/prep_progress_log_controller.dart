@@ -1,13 +1,16 @@
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
+import 'package:job_prep/features/prep/domain/utils/book_position_calculator.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 
-/// Injectable clock callback defaulting to `DateTime.now` for progress logs.
+/// Injectable clock callback defaulting to [circularNowProvider] so all
+/// Prep, Study Plan, Circular, and Dashboard tests share one freezeable clock.
 final Provider<DateTime Function()> prepNowProvider =
-    Provider<DateTime Function()>((ref) => DateTime.now);
+    Provider<DateTime Function()>((ref) => ref.watch(circularNowProvider));
 
 /// Immutable mutation status for logging, editing, or deleting study logs.
 @immutable
@@ -73,6 +76,23 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
     DateTime? loggedOn,
     String? note,
   }) async {
+    final created = await logUnitsAndReturn(
+      material: material,
+      units: units,
+      loggedOn: loggedOn,
+      note: note,
+    );
+    return created != null;
+  }
+
+  /// Logs [units] completed on [material] cleanly and returns the persisted
+  /// [ProgressLog] record (or `null` when validation/persistence fails).
+  Future<ProgressLog?> logUnitsAndReturn({
+    required PrepMaterial material,
+    required int units,
+    DateTime? loggedOn,
+    String? note,
+  }) async {
     if (units <= 0) {
       state = state.copyWith(
         error: const PrepValidationFailure(
@@ -80,7 +100,7 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
           message: 'Logged units must be greater than zero.',
         ),
       );
-      return false;
+      return null;
     }
 
     state = state.copyWith(
@@ -95,7 +115,7 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
       final effectiveDate = loggedOn ?? ref.read(prepNowProvider)();
       final trimmedNote = note?.trim();
 
-      await repo.createLog(
+      final saved = await repo.createLog(
         ProgressLog(
           materialId: material.id,
           unitsDone: units,
@@ -115,7 +135,7 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
         activeMaterialId: null,
         activeLogId: null,
       );
-      return true;
+      return saved;
     } on Object catch (error) {
       state = state.copyWith(
         isSaving: false,
@@ -123,7 +143,7 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
         activeLogId: null,
         error: error,
       );
-      return false;
+      return null;
     }
   }
 
@@ -187,6 +207,112 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
     }
   }
 
+  /// Computes the difference between `material.completedUnits` and [targetPage]
+  /// and saves either a `study` increment or a `correction` adjustment (when
+  /// [targetPage] is lower and [confirmCorrection] is true).
+  Future<BookPositionChange?> setBookPosition({
+    required PrepMaterial material,
+    required int targetPage,
+    bool confirmCorrection = false,
+    DateTime? loggedOn,
+    String? note,
+  }) async {
+    final result = await setBookPositionAndReturn(
+      material: material,
+      targetPage: targetPage,
+      confirmCorrection: confirmCorrection,
+      loggedOn: loggedOn,
+      note: note,
+    );
+    return result?.change;
+  }
+
+  /// Like [setBookPosition], also returning the persisted [ProgressLog] when a
+  /// non-zero delta was recorded cleanly.
+  Future<({BookPositionChange change, ProgressLog? savedLog})?>
+      setBookPositionAndReturn({
+    required PrepMaterial material,
+    required int targetPage,
+    bool confirmCorrection = false,
+    DateTime? loggedOn,
+    String? note,
+  }) async {
+    final safeTotal = material.totalUnits < 0 ? 0 : material.totalUnits;
+    if (targetPage < 0 || targetPage > safeTotal) {
+      state = state.copyWith(
+        error: const PrepValidationFailure(
+          code: 'invalid_book_position',
+          message: 'Book position must be between zero and total pages.',
+        ),
+      );
+      return null;
+    }
+
+    final change = BookPositionCalculator.computeChange(
+      currentUnits: material.completedUnits,
+      totalUnits: safeTotal,
+      targetPage: targetPage,
+    );
+    if (change.isNoOp) {
+      clearError();
+      return (change: change, savedLog: null);
+    }
+
+    if (change.requiresConfirmation && !confirmCorrection) {
+      state = state.copyWith(
+        error: const PrepValidationFailure(
+          code: 'correction_confirmation_required',
+          message: 'Moving backwards requires position correction approval.',
+        ),
+      );
+      return null;
+    }
+
+    state = state.copyWith(
+      isSaving: true,
+      activeMaterialId: material.id,
+      activeLogId: null,
+      error: null,
+    );
+
+    try {
+      final repo = ref.read(progressLogRepositoryProvider);
+      final effectiveDate = loggedOn ?? ref.read(prepNowProvider)();
+      final trimmedNote = note?.trim();
+
+      final savedLog = await repo.createLog(
+        ProgressLog(
+          materialId: material.id,
+          unitsDone: change.delta,
+          entryType: change.entryType,
+          loggedOn: _dateOnly(effectiveDate),
+          note: (trimmedNote != null && trimmedNote.isNotEmpty)
+              ? trimmedNote
+              : null,
+        ),
+      );
+
+      await _refreshAfterMutation(
+        materialId: material.id,
+        subjectId: material.subjectId,
+      );
+      state = state.copyWith(
+        isSaving: false,
+        activeMaterialId: null,
+        activeLogId: null,
+      );
+      return (change: change, savedLog: savedLog);
+    } on Object catch (error) {
+      state = state.copyWith(
+        isSaving: false,
+        activeMaterialId: null,
+        activeLogId: null,
+        error: error,
+      );
+      return null;
+    }
+  }
+
   /// Deletes a past [log] entry and updates material/subject percentages live.
   Future<bool> deleteLog({
     required PrepMaterial material,
@@ -228,10 +354,11 @@ class PrepProgressLogNotifier extends Notifier<PrepProgressLogState> {
   }) async {
     ref
       ..invalidate(progressLogsForMaterialProvider(materialId))
-      ..invalidate(recentProgressLogsProvider);
+      ..invalidate(analyticsProgressLogsProvider);
     await Future.wait(<Future<Object?>>[
       ref.refresh(materialsForSubjectProvider(subjectId).future),
       ref.refresh(allMaterialsProvider.future),
+      ref.refresh(recentProgressLogsProvider.future),
     ]);
   }
 
