@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/fade_slide_in.dart';
-import 'package:job_prep/features/dashboard/presentation/widgets/language_switcher_card.dart';
-import 'package:job_prep/features/dashboard/presentation/widgets/theme_switcher_card.dart';
+import 'package:job_prep/features/settings/presentation/providers/user_settings_providers.dart';
+import 'package:job_prep/features/settings/presentation/widgets/appearance_settings_card.dart';
+import 'package:job_prep/features/settings/presentation/widgets/data_settings_card.dart';
 import 'package:job_prep/features/settings/presentation/widgets/email_reminders_card.dart';
 import 'package:job_prep/features/settings/presentation/widgets/in_app_notifications_card.dart';
-import 'package:job_prep/features/settings/presentation/widgets/setup_wizard_settings_card.dart';
+import 'package:job_prep/features/settings/presentation/widgets/language_settings_card.dart';
+import 'package:job_prep/features/settings/presentation/widgets/profile_settings_card.dart';
+import 'package:job_prep/features/settings/presentation/widgets/study_settings_card.dart';
 import 'package:job_prep/features/vault/presentation/widgets/vault_security_card.dart';
 
-/// Screen for managing application settings, theme, and language.
-class SettingsScreen extends StatelessWidget {
+/// Full Settings screen organizing Profile, Appearance, Language,
+/// Notifications, Study defaults, Portal Vault Security, and Data Export.
+class SettingsScreen extends ConsumerWidget {
   /// Creates a [SettingsScreen].
   const SettingsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(userSettingsProvider);
     final tokens = context.tokens;
     final spacing = tokens.spacing;
     final textStyles = tokens.textStyles;
     final l10n = context.l10n;
 
     return SingleChildScrollView(
+      key: const ValueKey('settings-scroll-view'),
       padding: spacing.insetsAllXl,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -43,32 +50,51 @@ class SettingsScreen extends StatelessWidget {
           SizedBox(height: spacing.xl),
           const FadeSlideIn(
             index: 2,
-            child: ThemeSwitcherCard(),
+            child: ProfileSettingsCard(),
           ),
           SizedBox(height: spacing.lg),
           const FadeSlideIn(
             index: 3,
-            child: LanguageSwitcherCard(),
+            child: AppearanceSettingsCard(),
           ),
           SizedBox(height: spacing.lg),
           const FadeSlideIn(
             index: 4,
+            child: LanguageSettingsCard(),
+          ),
+          SizedBox(height: spacing.xl),
+          FadeSlideIn(
+            index: 5,
+            child: Text(
+              l10n.settingsNotificationsSectionTitle,
+              key: const ValueKey('settings-notifications-heading'),
+              style: textStyles.titleLarge,
+            ),
+          ),
+          SizedBox(height: spacing.sm),
+          const FadeSlideIn(
+            index: 6,
             child: EmailRemindersCard(),
           ),
           SizedBox(height: spacing.lg),
           const FadeSlideIn(
-            index: 5,
-            child: VaultSecurityCard(),
-          ),
-          SizedBox(height: spacing.lg),
-          const FadeSlideIn(
-            index: 6,
+            index: 7,
             child: InAppNotificationsCard(),
           ),
           SizedBox(height: spacing.lg),
           const FadeSlideIn(
-            index: 7,
-            child: SetupWizardSettingsCard(),
+            index: 8,
+            child: StudySettingsCard(),
+          ),
+          SizedBox(height: spacing.lg),
+          const FadeSlideIn(
+            index: 9,
+            child: VaultSecurityCard(),
+          ),
+          SizedBox(height: spacing.lg),
+          const FadeSlideIn(
+            index: 10,
+            child: DataSettingsCard(),
           ),
         ],
       ),

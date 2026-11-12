@@ -14,6 +14,10 @@ abstract interface class PortalAccountRepository {
   /// Persists the encrypted passphrase check value for the active user.
   Future<VaultPayload> saveVerifier(VaultPayload verifier);
 
+  /// Lists all encrypted portal accounts owned by the active user across all
+  /// circulars, ordered oldest first.
+  Future<List<PortalAccount>> getAllAccounts();
+
   /// Lists all encrypted portal accounts attached to [circularId].
   Future<List<PortalAccount>> getAccountsForCircular(String circularId);
 

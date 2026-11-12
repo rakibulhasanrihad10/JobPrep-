@@ -65,6 +65,22 @@ class SupabasePortalAccountRepository implements PortalAccountRepository {
   }
 
   @override
+  Future<List<PortalAccount>> getAllAccounts() async {
+    try {
+      final rows = await _client
+          .from(_accountsTable)
+          .select()
+          .order('created_at', ascending: true);
+
+      return List<PortalAccount>.unmodifiable(
+        rows.map(PortalAccountMapper.fromJson),
+      );
+    } on Object catch (error) {
+      throw VaultErrorMapper.map(error);
+    }
+  }
+
+  @override
   Future<List<PortalAccount>> getAccountsForCircular(String circularId) async {
     final trimmedId = circularId.trim();
     if (trimmedId.isEmpty) return const [];

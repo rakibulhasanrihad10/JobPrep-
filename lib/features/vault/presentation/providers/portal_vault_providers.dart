@@ -106,6 +106,61 @@ class PortalVaultController extends Notifier<void> {
     ref.read(vaultSessionProvider.notifier).lock();
   }
 
+  /// Verifies [currentPassphrase], re-encrypts every saved portal account under
+  /// [newPassphrase] alongside a new check verifier, and unlocks the vault with
+  /// [newPassphrase] without storing or logging any secrets.
+  Future<bool> changePassphrase({
+    required String currentPassphrase,
+    required String newPassphrase,
+  }) async {
+    final verifier = await ref.read(vaultVerifierProvider.future);
+    if (verifier == null) return false;
+
+    final vault = ref.read(vaultServiceProvider);
+    final isValid = await vault.verifyPassphrase(
+      passphrase: currentPassphrase,
+      checkValue: verifier,
+    );
+    if (!isValid) return false;
+
+    final repo = ref.read(portalAccountRepositoryProvider);
+    final accounts = await repo.getAllAccounts();
+
+    final reencrypted = <PortalAccount>[];
+    for (final account in accounts) {
+      final plaintext = await vault.decryptWithPassphrase(
+        payload: account.toVaultPayload(),
+        passphrase: currentPassphrase,
+      );
+      final updatedPayload = await vault.encryptWithPassphrase(
+        plaintext: plaintext,
+        passphrase: newPassphrase,
+      );
+      reencrypted.add(
+        account.copyWith(
+          encryptedPassword: updatedPayload.ciphertext,
+          salt: updatedPayload.salt,
+          nonce: updatedPayload.nonce,
+          iterations: updatedPayload.iterations,
+        ),
+      );
+    }
+
+    final newCheck = await vault.createCheckValue(newPassphrase);
+    for (final updated in reencrypted) {
+      await repo.updateAccount(updated);
+    }
+    final savedVerifier = await repo.saveVerifier(newCheck);
+    final unlocked = await ref.read(vaultSessionProvider.notifier).unlock(
+          passphrase: newPassphrase,
+          checkValue: savedVerifier,
+        );
+    ref
+      ..invalidate(vaultVerifierProvider)
+      ..invalidate(circularPortalAccountsProvider);
+    return unlocked;
+  }
+
   /// Encrypts [draft] password client-side via VaultService before passing
   /// ciphertext metadata to [PortalAccountRepository].
   Future<PortalAccount> savePortalAccount(

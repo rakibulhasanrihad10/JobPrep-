@@ -4311,4 +4311,187 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsRunSetupAgainButton => 'Run setup again';
+
+  @override
+  String get settingsProfileTitle => 'Profile';
+
+  @override
+  String get settingsProfileSubtitle =>
+      'Manage your display name, account email, password, and active session.';
+
+  @override
+  String get settingsDisplayNameLabel => 'Display name';
+
+  @override
+  String get settingsDisplayNameSaveButton => 'Save name';
+
+  @override
+  String get settingsDisplayNameSaved => 'Display name updated';
+
+  @override
+  String get settingsDisplayNameSaveError =>
+      'Could not update display name. Please try again.';
+
+  @override
+  String get settingsEmailLabel => 'Email';
+
+  @override
+  String get settingsEmailUnavailable => 'No email linked';
+
+  @override
+  String get settingsChangePasswordButton => 'Change password';
+
+  @override
+  String get settingsChangePasswordTitle => 'Change Password';
+
+  @override
+  String get settingsNewPasswordLabel => 'New password';
+
+  @override
+  String get settingsConfirmPasswordLabel => 'Confirm new password';
+
+  @override
+  String get settingsPasswordSaveButton => 'Update password';
+
+  @override
+  String get settingsPasswordSaved => 'Password updated successfully';
+
+  @override
+  String get settingsPasswordError =>
+      'Could not update password. Please verify your session and try again.';
+
+  @override
+  String get settingsSignOutButton => 'Sign out';
+
+  @override
+  String get settingsAppearanceTitle => 'Appearance';
+
+  @override
+  String get settingsAppearanceSubtitle =>
+      'Choose your color theme and visual effect preferences.';
+
+  @override
+  String get settingsReduceEffectsLabel => 'Reduce visual effects';
+
+  @override
+  String get settingsReduceEffectsHint =>
+      'Replace frosted glass blur with solid fills and skip motion animations.';
+
+  @override
+  String get settingsLanguageTitle => 'Language';
+
+  @override
+  String get settingsLanguageSubtitle =>
+      'Choose your interface language and numeral format.';
+
+  @override
+  String get settingsBanglaDigitsLabel => 'Use Bangla digits';
+
+  @override
+  String get settingsBanglaDigitsHint =>
+      'Display dates, counters, and progress figures using Bangla digits.';
+
+  @override
+  String get settingsNotificationsSectionTitle => 'Notifications';
+
+  @override
+  String get settingsStudyTitle => 'Study';
+
+  @override
+  String get settingsStudySubtitle =>
+      'Set default focus & break timer lengths or rerun onboarding.';
+
+  @override
+  String get settingsTimerFocusMinutesLabel => 'Focus length (minutes)';
+
+  @override
+  String get settingsTimerShortBreakLabel => 'Short break (minutes)';
+
+  @override
+  String get settingsTimerLongBreakLabel => 'Long break (minutes)';
+
+  @override
+  String get settingsStudySaveTimerButton => 'Save timer defaults';
+
+  @override
+  String get settingsStudyTimerSaved => 'Study timer defaults saved';
+
+  @override
+  String get settingsStudyTimerInvalidError =>
+      'Enter valid minutes (Focus 5–180, Short break 1–60, Long break 5–90).';
+
+  @override
+  String get vaultChangePassphraseButton => 'Change passphrase';
+
+  @override
+  String get vaultChangePassphraseTitle => 'Change Vault Passphrase';
+
+  @override
+  String get vaultChangePassphraseBody =>
+      'Verify your current passphrase, then choose a new passphrase to re-encrypt all saved portal logins.';
+
+  @override
+  String get vaultCurrentPassphraseLabel => 'Current passphrase';
+
+  @override
+  String get vaultNewPassphraseLabel => 'New passphrase';
+
+  @override
+  String get vaultConfirmNewPassphraseLabel => 'Confirm new passphrase';
+
+  @override
+  String get vaultChangePassphraseSubmit => 'Update passphrase';
+
+  @override
+  String get vaultChangePassphraseSuccess => 'Vault passphrase updated';
+
+  @override
+  String get vaultCurrentPassphraseWrongError =>
+      'Current passphrase is incorrect.';
+
+  @override
+  String get settingsDataTitle => 'Data & Account';
+
+  @override
+  String get settingsDataSubtitle =>
+      'Download a full backup of your circulars and study progress, or delete your account permanently.';
+
+  @override
+  String get settingsExportCsvButton => 'Export CSV';
+
+  @override
+  String get settingsExportJsonButton => 'Export JSON';
+
+  @override
+  String settingsExportSuccess(String fileName) {
+    return 'Exported $fileName';
+  }
+
+  @override
+  String get settingsExportError => 'Could not export data. Please try again.';
+
+  @override
+  String get settingsDeleteAccountButton => 'Delete my account';
+
+  @override
+  String get settingsDeleteAccountDialogTitle => 'Delete account permanently?';
+
+  @override
+  String get settingsDeleteAccountWarning =>
+      'This permanently removes your account, saved circulars, attachments, study progress, mock tests, revision marks, vault logins, and settings. This action cannot be undone.';
+
+  @override
+  String get settingsDeleteAccountAckLabel =>
+      'I understand all my data will be permanently deleted.';
+
+  @override
+  String get settingsDeleteAccountConfirmButton => 'Delete permanently';
+
+  @override
+  String get settingsDeleteAccountError =>
+      'Could not delete account right now. Please try again.';
+
+  @override
+  String get settingsSyncWarning =>
+      'Saved locally on this device. Connect to sync across devices.';
 }

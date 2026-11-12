@@ -54,6 +54,12 @@ class FakePortalAccountRepository implements PortalAccountRepository {
   }
 
   @override
+  Future<List<PortalAccount>> getAllAccounts() async {
+    _consumeError();
+    return List<PortalAccount>.unmodifiable(_accounts);
+  }
+
+  @override
   Future<List<PortalAccount>> getAccountsForCircular(String circularId) async {
     _consumeError();
     return List<PortalAccount>.unmodifiable(

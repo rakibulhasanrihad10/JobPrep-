@@ -5920,5 +5920,230 @@
   "settingsRunSetupAgainButton": "Run setup again",
   "@settingsRunSetupAgainButton": {
     "description": "Button in Settings reopening the onboarding wizard"
+  },
+  "settingsProfileTitle": "Profile",
+  "@settingsProfileTitle": {
+    "description": "Section title for user profile controls in Settings"
+  },
+  "settingsProfileSubtitle": "Manage your display name, account email, password, and active session.",
+  "@settingsProfileSubtitle": {
+    "description": "Subtitle under the Profile settings card"
+  },
+  "settingsDisplayNameLabel": "Display name",
+  "@settingsDisplayNameLabel": {
+    "description": "Label for the display name input in Profile settings"
+  },
+  "settingsDisplayNameSaveButton": "Save name",
+  "@settingsDisplayNameSaveButton": {
+    "description": "Button saving edited display name in Settings"
+  },
+  "settingsDisplayNameSaved": "Display name updated",
+  "@settingsDisplayNameSaved": {
+    "description": "Feedback shown when display name saves"
+  },
+  "settingsDisplayNameSaveError": "Could not update display name. Please try again.",
+  "@settingsDisplayNameSaveError": {
+    "description": "Error shown when saving display name fails"
+  },
+  "settingsEmailLabel": "Email",
+  "@settingsEmailLabel": {
+    "description": "Label preceding user account email in Settings"
+  },
+  "settingsEmailUnavailable": "No email linked",
+  "@settingsEmailUnavailable": {
+    "description": "Fallback when authenticated user has no email"
+  },
+  "settingsChangePasswordButton": "Change password",
+  "@settingsChangePasswordButton": {
+    "description": "Button opening change password dialog"
+  },
+  "settingsChangePasswordTitle": "Change Password",
+  "@settingsChangePasswordTitle": {
+    "description": "Title of the change password dialog"
+  },
+  "settingsNewPasswordLabel": "New password",
+  "@settingsNewPasswordLabel": {
+    "description": "Field label for new account password"
+  },
+  "settingsConfirmPasswordLabel": "Confirm new password",
+  "@settingsConfirmPasswordLabel": {
+    "description": "Field label for confirming new account password"
+  },
+  "settingsPasswordSaveButton": "Update password",
+  "@settingsPasswordSaveButton": {
+    "description": "Submit button for changing account password"
+  },
+  "settingsPasswordSaved": "Password updated successfully",
+  "@settingsPasswordSaved": {
+    "description": "Feedback shown after password update succeeds"
+  },
+  "settingsPasswordError": "Could not update password. Please verify your session and try again.",
+  "@settingsPasswordError": {
+    "description": "Fallback error shown when password update fails"
+  },
+  "settingsSignOutButton": "Sign out",
+  "@settingsSignOutButton": {
+    "description": "Button signing user out from Settings"
+  },
+  "settingsAppearanceTitle": "Appearance",
+  "@settingsAppearanceTitle": {
+    "description": "Section title for theme and visual effects settings"
+  },
+  "settingsAppearanceSubtitle": "Choose your color theme and visual effect preferences.",
+  "@settingsAppearanceSubtitle": {
+    "description": "Subtitle under Appearance settings card"
+  },
+  "settingsReduceEffectsLabel": "Reduce visual effects",
+  "@settingsReduceEffectsLabel": {
+    "description": "Switch label replacing glass blur with solid fills and skipping animations"
+  },
+  "settingsReduceEffectsHint": "Replace frosted glass blur with solid fills and skip motion animations.",
+  "@settingsReduceEffectsHint": {
+    "description": "Helper text under reduce effects switch"
+  },
+  "settingsLanguageTitle": "Language",
+  "@settingsLanguageTitle": {
+    "description": "Section title for app language and numeral preferences"
+  },
+  "settingsLanguageSubtitle": "Choose your interface language and numeral format.",
+  "@settingsLanguageSubtitle": {
+    "description": "Subtitle under Language settings card"
+  },
+  "settingsBanglaDigitsLabel": "Use Bangla digits",
+  "@settingsBanglaDigitsLabel": {
+    "description": "Switch label enabling Bangla numerals"
+  },
+  "settingsBanglaDigitsHint": "Display dates, counters, and progress figures using Bangla digits.",
+  "@settingsBanglaDigitsHint": {
+    "description": "Helper text explaining Bangla digits toggle"
+  },
+  "settingsNotificationsSectionTitle": "Notifications",
+  "@settingsNotificationsSectionTitle": {
+    "description": "Section heading grouping email reminders and in-app notification settings"
+  },
+  "settingsStudyTitle": "Study",
+  "@settingsStudyTitle": {
+    "description": "Section heading for timer defaults and onboarding setup rerun"
+  },
+  "settingsStudySubtitle": "Set default focus & break timer lengths or rerun onboarding.",
+  "@settingsStudySubtitle": {
+    "description": "Subtitle under Study settings card"
+  },
+  "settingsTimerFocusMinutesLabel": "Focus length (minutes)",
+  "@settingsTimerFocusMinutesLabel": {
+    "description": "Input label for default Pomodoro focus duration"
+  },
+  "settingsTimerShortBreakLabel": "Short break (minutes)",
+  "@settingsTimerShortBreakLabel": {
+    "description": "Input label for default Pomodoro short break duration"
+  },
+  "settingsTimerLongBreakLabel": "Long break (minutes)",
+  "@settingsTimerLongBreakLabel": {
+    "description": "Input label for default Pomodoro long break duration"
+  },
+  "settingsStudySaveTimerButton": "Save timer defaults",
+  "@settingsStudySaveTimerButton": {
+    "description": "Button saving focus and break lengths"
+  },
+  "settingsStudyTimerSaved": "Study timer defaults saved",
+  "@settingsStudyTimerSaved": {
+    "description": "Feedback shown when timer defaults save"
+  },
+  "settingsStudyTimerInvalidError": "Enter valid minutes (Focus 5–180, Short break 1–60, Long break 5–90).",
+  "@settingsStudyTimerInvalidError": {
+    "description": "Validation error when timer lengths are outside valid bounds"
+  },
+  "vaultChangePassphraseButton": "Change passphrase",
+  "@vaultChangePassphraseButton": {
+    "description": "Button in Security section opening change vault passphrase dialog"
+  },
+  "vaultChangePassphraseTitle": "Change Vault Passphrase",
+  "@vaultChangePassphraseTitle": {
+    "description": "Title of dialog for re-keying vault with a new passphrase"
+  },
+  "vaultChangePassphraseBody": "Verify your current passphrase, then choose a new passphrase to re-encrypt all saved portal logins.",
+  "@vaultChangePassphraseBody": {
+    "description": "Instruction body inside change vault passphrase dialog"
+  },
+  "vaultCurrentPassphraseLabel": "Current passphrase",
+  "@vaultCurrentPassphraseLabel": {
+    "description": "Label for current passphrase input"
+  },
+  "vaultNewPassphraseLabel": "New passphrase",
+  "@vaultNewPassphraseLabel": {
+    "description": "Label for new vault passphrase input"
+  },
+  "vaultConfirmNewPassphraseLabel": "Confirm new passphrase",
+  "@vaultConfirmNewPassphraseLabel": {
+    "description": "Label for confirming new vault passphrase"
+  },
+  "vaultChangePassphraseSubmit": "Update passphrase",
+  "@vaultChangePassphraseSubmit": {
+    "description": "Submit action button inside change vault passphrase dialog"
+  },
+  "vaultChangePassphraseSuccess": "Vault passphrase updated",
+  "@vaultChangePassphraseSuccess": {
+    "description": "Status message shown after changing vault passphrase"
+  },
+  "vaultCurrentPassphraseWrongError": "Current passphrase is incorrect.",
+  "@vaultCurrentPassphraseWrongError": {
+    "description": "Error shown when current vault passphrase verification fails"
+  },
+  "settingsDataTitle": "Data & Account",
+  "@settingsDataTitle": {
+    "description": "Section title for data export and account deletion"
+  },
+  "settingsDataSubtitle": "Download a full backup of your circulars and study progress, or delete your account permanently.",
+  "@settingsDataSubtitle": {
+    "description": "Subtitle under Data settings card"
+  },
+  "settingsExportCsvButton": "Export CSV",
+  "@settingsExportCsvButton": {
+    "description": "Button exporting circulars and prep data as CSV"
+  },
+  "settingsExportJsonButton": "Export JSON",
+  "@settingsExportJsonButton": {
+    "description": "Button exporting circulars and prep data as JSON"
+  },
+  "settingsExportSuccess": "Exported {fileName}",
+  "@settingsExportSuccess": {
+    "description": "Confirmation message shown after saving exported archive",
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsExportError": "Could not export data. Please try again.",
+  "@settingsExportError": {
+    "description": "Error shown when data export fails"
+  },
+  "settingsDeleteAccountButton": "Delete my account",
+  "@settingsDeleteAccountButton": {
+    "description": "Destructive action opening delete account confirmation dialog"
+  },
+  "settingsDeleteAccountDialogTitle": "Delete account permanently?",
+  "@settingsDeleteAccountDialogTitle": {
+    "description": "Confirmation dialog heading for deleting user account"
+  },
+  "settingsDeleteAccountWarning": "This permanently removes your account, saved circulars, attachments, study progress, mock tests, revision marks, vault logins, and settings. This action cannot be undone.",
+  "@settingsDeleteAccountWarning": {
+    "description": "Irreversible warning inside delete account confirmation dialog"
+  },
+  "settingsDeleteAccountAckLabel": "I understand all my data will be permanently deleted.",
+  "@settingsDeleteAccountAckLabel": {
+    "description": "Checkbox label confirming account deletion"
+  },
+  "settingsDeleteAccountConfirmButton": "Delete permanently",
+  "@settingsDeleteAccountConfirmButton": {
+    "description": "Final confirmation button deleting account"
+  },
+  "settingsDeleteAccountError": "Could not delete account right now. Please try again.",
+  "@settingsDeleteAccountError": {
+    "description": "Error shown inside dialog when account deletion fails"
+  },
+  "settingsSyncWarning": "Saved locally on this device. Connect to sync across devices.",
+  "@settingsSyncWarning": {
+    "description": "Non-blocking warning shown when remote settings sync fails"
   }
 }

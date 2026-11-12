@@ -53,6 +53,12 @@ class FakeAuthRepository implements AuthRepository {
   /// Last password passed to [updatePassword].
   String? lastUpdatedPassword;
 
+  /// Last display name passed to [updateDisplayName].
+  String? lastUpdatedDisplayName;
+
+  /// Number of times [deleteMyAccount] was called.
+  int deleteAccountCallCount = 0;
+
   /// Number of times [signOut] was called.
   int signOutCallCount = 0;
 
@@ -141,6 +147,31 @@ class FakeAuthRepository implements AuthRepository {
     final updatedUser = _currentSession.user ?? defaultTestUser;
     emitSession(AuthSessionState.signedIn(updatedUser));
     return updatedUser;
+  }
+
+  @override
+  Future<AuthUser> updateDisplayName({required String? displayName}) async {
+    final trimmed = displayName?.trim();
+    final nextName = (trimmed == null || trimmed.isEmpty) ? null : trimmed;
+    lastUpdatedDisplayName = nextName;
+    await _awaitGateAndThrowIfConfigured();
+    final baseUser = _currentSession.user ?? defaultTestUser;
+    final updatedUser = AuthUser(
+      id: baseUser.id,
+      email: baseUser.email,
+      displayName: nextName,
+      avatarUrl: baseUser.avatarUrl,
+      emailConfirmed: baseUser.emailConfirmed,
+    );
+    emitSession(AuthSessionState.signedIn(updatedUser));
+    return updatedUser;
+  }
+
+  @override
+  Future<void> deleteMyAccount() async {
+    deleteAccountCallCount++;
+    await _awaitGateAndThrowIfConfigured();
+    emitSession(const AuthSessionState.signedOut());
   }
 
   @override

@@ -7,16 +7,31 @@ import 'package:job_prep/core/security/vault_providers.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/features/vault/presentation/providers/portal_vault_providers.dart';
+import 'package:job_prep/features/vault/presentation/widgets/vault_change_passphrase_dialog.dart';
+import 'package:job_prep/features/vault/presentation/widgets/vault_setup_warning_banner.dart';
 import 'package:job_prep/features/vault/presentation/widgets/vault_unlock_dialog.dart';
 
-/// Settings card exposing Portal Vault passphrase setup, unlock, and manual
-/// lock controls alongside inactivity/sign-out security notes.
-class VaultSecurityCard extends ConsumerWidget {
+/// Settings card exposing Portal Vault passphrase setup, unlock, change
+/// passphrase, and lock controls alongside unrecoverable warnings.
+class VaultSecurityCard extends ConsumerStatefulWidget {
   /// Creates a [VaultSecurityCard].
   const VaultSecurityCard({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<VaultSecurityCard> createState() => _VaultSecurityCardState();
+}
+
+class _VaultSecurityCardState extends ConsumerState<VaultSecurityCard> {
+  bool _passphraseUpdated = false;
+
+  Future<void> _openChangePassphrase() async {
+    final changed = await showVaultChangePassphraseDialog(context);
+    if (!mounted || !changed) return;
+    setState(() => _passphraseUpdated = true);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final tokens = context.tokens;
     final colors = tokens.colors;
     final spacing = tokens.spacing;
@@ -85,6 +100,8 @@ class VaultSecurityCard extends ConsumerWidget {
           SizedBox(height: spacing.xxs),
           Text(l10n.vaultAutoLockNote, style: textStyles.bodySmall),
           SizedBox(height: spacing.md),
+          const VaultSetupWarningBanner(),
+          SizedBox(height: spacing.md),
           Wrap(
             spacing: spacing.sm,
             runSpacing: spacing.sm,
@@ -110,8 +127,24 @@ class VaultSecurityCard extends ConsumerWidget {
                         : l10n.vaultSetupButton,
                   ),
                 ),
+              if (hasVerifier)
+                GlassButton(
+                  key:
+                      const ValueKey('settings-vault-change-passphrase-button'),
+                  onPressed: _openChangePassphrase,
+                  leading: Icon(Icons.key_rounded, size: spacing.lg),
+                  child: Text(l10n.vaultChangePassphraseButton),
+                ),
             ],
           ),
+          if (_passphraseUpdated) ...[
+            SizedBox(height: spacing.sm),
+            Text(
+              l10n.vaultChangePassphraseSuccess,
+              key: const ValueKey('settings-vault-changed-status'),
+              style: textStyles.bodySmall.copyWith(color: colors.success),
+            ),
+          ],
         ],
       ),
     );

@@ -7065,6 +7065,336 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Run setup again'**
   String get settingsRunSetupAgainButton;
+
+  /// Section title for user profile controls in Settings
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get settingsProfileTitle;
+
+  /// Subtitle under the Profile settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Manage your display name, account email, password, and active session.'**
+  String get settingsProfileSubtitle;
+
+  /// Label for the display name input in Profile settings
+  ///
+  /// In en, this message translates to:
+  /// **'Display name'**
+  String get settingsDisplayNameLabel;
+
+  /// Button saving edited display name in Settings
+  ///
+  /// In en, this message translates to:
+  /// **'Save name'**
+  String get settingsDisplayNameSaveButton;
+
+  /// Feedback shown when display name saves
+  ///
+  /// In en, this message translates to:
+  /// **'Display name updated'**
+  String get settingsDisplayNameSaved;
+
+  /// Error shown when saving display name fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not update display name. Please try again.'**
+  String get settingsDisplayNameSaveError;
+
+  /// Label preceding user account email in Settings
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get settingsEmailLabel;
+
+  /// Fallback when authenticated user has no email
+  ///
+  /// In en, this message translates to:
+  /// **'No email linked'**
+  String get settingsEmailUnavailable;
+
+  /// Button opening change password dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Change password'**
+  String get settingsChangePasswordButton;
+
+  /// Title of the change password dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get settingsChangePasswordTitle;
+
+  /// Field label for new account password
+  ///
+  /// In en, this message translates to:
+  /// **'New password'**
+  String get settingsNewPasswordLabel;
+
+  /// Field label for confirming new account password
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm new password'**
+  String get settingsConfirmPasswordLabel;
+
+  /// Submit button for changing account password
+  ///
+  /// In en, this message translates to:
+  /// **'Update password'**
+  String get settingsPasswordSaveButton;
+
+  /// Feedback shown after password update succeeds
+  ///
+  /// In en, this message translates to:
+  /// **'Password updated successfully'**
+  String get settingsPasswordSaved;
+
+  /// Fallback error shown when password update fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not update password. Please verify your session and try again.'**
+  String get settingsPasswordError;
+
+  /// Button signing user out from Settings
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get settingsSignOutButton;
+
+  /// Section title for theme and visual effects settings
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get settingsAppearanceTitle;
+
+  /// Subtitle under Appearance settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your color theme and visual effect preferences.'**
+  String get settingsAppearanceSubtitle;
+
+  /// Switch label replacing glass blur with solid fills and skipping animations
+  ///
+  /// In en, this message translates to:
+  /// **'Reduce visual effects'**
+  String get settingsReduceEffectsLabel;
+
+  /// Helper text under reduce effects switch
+  ///
+  /// In en, this message translates to:
+  /// **'Replace frosted glass blur with solid fills and skip motion animations.'**
+  String get settingsReduceEffectsHint;
+
+  /// Section title for app language and numeral preferences
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get settingsLanguageTitle;
+
+  /// Subtitle under Language settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your interface language and numeral format.'**
+  String get settingsLanguageSubtitle;
+
+  /// Switch label enabling Bangla numerals
+  ///
+  /// In en, this message translates to:
+  /// **'Use Bangla digits'**
+  String get settingsBanglaDigitsLabel;
+
+  /// Helper text explaining Bangla digits toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Display dates, counters, and progress figures using Bangla digits.'**
+  String get settingsBanglaDigitsHint;
+
+  /// Section heading grouping email reminders and in-app notification settings
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get settingsNotificationsSectionTitle;
+
+  /// Section heading for timer defaults and onboarding setup rerun
+  ///
+  /// In en, this message translates to:
+  /// **'Study'**
+  String get settingsStudyTitle;
+
+  /// Subtitle under Study settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Set default focus & break timer lengths or rerun onboarding.'**
+  String get settingsStudySubtitle;
+
+  /// Input label for default Pomodoro focus duration
+  ///
+  /// In en, this message translates to:
+  /// **'Focus length (minutes)'**
+  String get settingsTimerFocusMinutesLabel;
+
+  /// Input label for default Pomodoro short break duration
+  ///
+  /// In en, this message translates to:
+  /// **'Short break (minutes)'**
+  String get settingsTimerShortBreakLabel;
+
+  /// Input label for default Pomodoro long break duration
+  ///
+  /// In en, this message translates to:
+  /// **'Long break (minutes)'**
+  String get settingsTimerLongBreakLabel;
+
+  /// Button saving focus and break lengths
+  ///
+  /// In en, this message translates to:
+  /// **'Save timer defaults'**
+  String get settingsStudySaveTimerButton;
+
+  /// Feedback shown when timer defaults save
+  ///
+  /// In en, this message translates to:
+  /// **'Study timer defaults saved'**
+  String get settingsStudyTimerSaved;
+
+  /// Validation error when timer lengths are outside valid bounds
+  ///
+  /// In en, this message translates to:
+  /// **'Enter valid minutes (Focus 5–180, Short break 1–60, Long break 5–90).'**
+  String get settingsStudyTimerInvalidError;
+
+  /// Button in Security section opening change vault passphrase dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Change passphrase'**
+  String get vaultChangePassphraseButton;
+
+  /// Title of dialog for re-keying vault with a new passphrase
+  ///
+  /// In en, this message translates to:
+  /// **'Change Vault Passphrase'**
+  String get vaultChangePassphraseTitle;
+
+  /// Instruction body inside change vault passphrase dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Verify your current passphrase, then choose a new passphrase to re-encrypt all saved portal logins.'**
+  String get vaultChangePassphraseBody;
+
+  /// Label for current passphrase input
+  ///
+  /// In en, this message translates to:
+  /// **'Current passphrase'**
+  String get vaultCurrentPassphraseLabel;
+
+  /// Label for new vault passphrase input
+  ///
+  /// In en, this message translates to:
+  /// **'New passphrase'**
+  String get vaultNewPassphraseLabel;
+
+  /// Label for confirming new vault passphrase
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm new passphrase'**
+  String get vaultConfirmNewPassphraseLabel;
+
+  /// Submit action button inside change vault passphrase dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Update passphrase'**
+  String get vaultChangePassphraseSubmit;
+
+  /// Status message shown after changing vault passphrase
+  ///
+  /// In en, this message translates to:
+  /// **'Vault passphrase updated'**
+  String get vaultChangePassphraseSuccess;
+
+  /// Error shown when current vault passphrase verification fails
+  ///
+  /// In en, this message translates to:
+  /// **'Current passphrase is incorrect.'**
+  String get vaultCurrentPassphraseWrongError;
+
+  /// Section title for data export and account deletion
+  ///
+  /// In en, this message translates to:
+  /// **'Data & Account'**
+  String get settingsDataTitle;
+
+  /// Subtitle under Data settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Download a full backup of your circulars and study progress, or delete your account permanently.'**
+  String get settingsDataSubtitle;
+
+  /// Button exporting circulars and prep data as CSV
+  ///
+  /// In en, this message translates to:
+  /// **'Export CSV'**
+  String get settingsExportCsvButton;
+
+  /// Button exporting circulars and prep data as JSON
+  ///
+  /// In en, this message translates to:
+  /// **'Export JSON'**
+  String get settingsExportJsonButton;
+
+  /// Confirmation message shown after saving exported archive
+  ///
+  /// In en, this message translates to:
+  /// **'Exported {fileName}'**
+  String settingsExportSuccess(String fileName);
+
+  /// Error shown when data export fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not export data. Please try again.'**
+  String get settingsExportError;
+
+  /// Destructive action opening delete account confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete my account'**
+  String get settingsDeleteAccountButton;
+
+  /// Confirmation dialog heading for deleting user account
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account permanently?'**
+  String get settingsDeleteAccountDialogTitle;
+
+  /// Irreversible warning inside delete account confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'This permanently removes your account, saved circulars, attachments, study progress, mock tests, revision marks, vault logins, and settings. This action cannot be undone.'**
+  String get settingsDeleteAccountWarning;
+
+  /// Checkbox label confirming account deletion
+  ///
+  /// In en, this message translates to:
+  /// **'I understand all my data will be permanently deleted.'**
+  String get settingsDeleteAccountAckLabel;
+
+  /// Final confirmation button deleting account
+  ///
+  /// In en, this message translates to:
+  /// **'Delete permanently'**
+  String get settingsDeleteAccountConfirmButton;
+
+  /// Error shown inside dialog when account deletion fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not delete account right now. Please try again.'**
+  String get settingsDeleteAccountError;
+
+  /// Non-blocking warning shown when remote settings sync fails
+  ///
+  /// In en, this message translates to:
+  /// **'Saved locally on this device. Connect to sync across devices.'**
+  String get settingsSyncWarning;
 }
 
 class _AppLocalizationsDelegate
