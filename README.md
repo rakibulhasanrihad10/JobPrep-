@@ -309,6 +309,106 @@ Manual hardware verification on a physical iPhone running iOS Safari (unavailabl
 
 ---
 
+## Android Setup, Signing & CI Build
+
+Phase 8A enables Android support within the same Flutter project without breaking the web app or PWA capabilities.
+
+### 1. Android App Identity & Configuration
+- **Application ID / Package**: `com.jobprep.app` (configured in [`android/app/build.gradle.kts`](android/app/build.gradle.kts)).
+- **App Name**: Defined in [`android/app/src/main/res/values/strings.xml`](android/app/src/main/res/values/strings.xml) as `JobPrep`, and localized in [`android/app/src/main/res/values-bn/strings.xml`](android/app/src/main/res/values-bn/strings.xml) as `জবপ্রেপ`.
+- **Launcher Icons**: Crisp adaptive launcher icons across all screen densities (`mdpi`, `hdpi`, `xhdpi`, `xxhdpi`, `xxxhdpi`) located in `android/app/src/main/res/mipmap-*/`.
+- **Branded Splash Screen**:
+  - Light mode splash background: `#F4F6FB` with dark navy brand mark and subtle gold accents.
+  - Dark mode splash background: `#0A0E1A` matching deep navy design tokens.
+  - Android 12+ Splash API support via `android:windowSplashScreenBackground` in `styles.xml`.
+
+### 2. Deep Linking (OAuth Callback & Password Reset)
+[`android/app/src/main/AndroidManifest.xml`](android/app/src/main/AndroidManifest.xml) registers an `<intent-filter>` for deep linking:
+```xml
+<intent-filter android:autoVerify="true">
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data
+        android:scheme="io.supabase.jobprep"
+        android:host="login-callback" />
+    <data
+        android:scheme="io.supabase.jobprep"
+        android:host="reset-password" />
+</intent-filter>
+```
+In Supabase Dashboard under **Authentication > URL Configuration > Redirect URLs**, ensure these two URIs are registered:
+- `io.supabase.jobprep://login-callback`
+- `io.supabase.jobprep://reset-password`
+
+### 3. Google Sign-In Setup for Android
+To enable Google Sign-In on Android:
+1. Generate or extract the **SHA-1 fingerprint** of your keystore:
+   ```bash
+   keytool -list -v -keystore android/upload-keystore.jks -alias jobprep_upload_key
+   ```
+   *(For debug builds, extract from `~/.android/debug.keystore` with default password `android`).*
+2. Open [Google Cloud Console](https://console.cloud.google.com/) > **APIs & Services** > **Credentials**.
+3. Click **Create Credentials** > **OAuth client ID**:
+   - Application type: **Android**.
+   - Package name: `com.jobprep.app`.
+   - SHA-1 certificate fingerprint: Paste the extracted SHA-1 fingerprint.
+4. Save and copy the generated Android Client ID to your Supabase project under **Authentication > Providers > Google**.
+
+### 4. Release Signing Configuration
+Release signing credentials must **never** be checked into Git. The project supports two ways to supply signing keys:
+
+#### Option A: `key.properties` (Local Builds)
+1. Generate an upload keystore:
+   ```bash
+   bash scripts/generate_release_keystore.sh
+   # Or manually with keytool:
+   keytool -genkey -v -keystore android/upload-keystore.jks -alias jobprep_upload_key -keyalg RSA -keysize 2048 -validity 10000
+   ```
+2. Copy `key.properties.example` to `android/key.properties`:
+   ```properties
+   storePassword=<your-keystore-password>
+   keyPassword=<your-key-password>
+   keyAlias=jobprep_upload_key
+   storeFile=upload-keystore.jks
+   ```
+3. `android/key.properties` and `*.jks` / `*.keystore` are protected by `.gitignore`.
+
+#### Option B: Environment Variables (CI / Automated Builds)
+The build script [`android/app/build.gradle.kts`](android/app/build.gradle.kts) automatically detects:
+- `ANDROID_KEYSTORE_PATH`
+- `ANDROID_KEYSTORE_PASSWORD`
+- `ANDROID_KEY_ALIAS`
+- `ANDROID_KEY_PASSWORD`
+
+If neither `key.properties` nor the environment variables are present, the Gradle build falls back safely to debug signing for validation.
+
+### 5. Building Release Artifacts
+```bash
+# Build signed Android App Bundle (.aab) for Google Play:
+flutter build appbundle --release \
+  --dart-define=ENVIRONMENT=prod \
+  --dart-define=SUPABASE_URL=https://<your-project-id>.supabase.co \
+  --dart-define=SUPABASE_ANON_KEY=<your-anon-key>
+
+# Build signed split/fat APK (.apk) for direct distribution or testing:
+flutter build apk --release \
+  --dart-define=ENVIRONMENT=prod \
+  --dart-define=SUPABASE_URL=https://<your-project-id>.supabase.co \
+  --dart-define=SUPABASE_ANON_KEY=<your-anon-key>
+```
+
+### 6. GitHub Actions CI Secrets
+To enable signed release bundle creation in CI, configure the following secrets in **GitHub repository settings > Secrets and variables > Actions**:
+- `ANDROID_KEYSTORE_BASE64`: Base64-encoded upload keystore (`base64 -w 0 android/upload-keystore.jks`).
+- `ANDROID_KEYSTORE_PASSWORD`: Keystore password.
+- `ANDROID_KEY_ALIAS`: Key alias (`jobprep_upload_key`).
+- `ANDROID_KEY_PASSWORD`: Key password.
+
+The CI workflow in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) builds the AAB and APK, validates signing, and uploads the artifacts with a 14-day retention. If the secret is not provided (e.g. on forks or unconfigured repos), CI seamlessly generates an ephemeral verification keystore so test coverage and build stability never break.
+
+---
+
 ## Branch Protection Setup for `main`
 
 To ensure code quality and prevent unauthorized direct commits to `main`:

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="splash_background_light">#F4F6FB</color>
+    <color name="splash_background_dark">#0A0E1A</color>
+    <color name="gold_accent_light">#C59128</color>
+    <color name="gold_accent_dark">#E5A93C</color>
+</resources>

@@ -1,0 +1,7 @@
+# Template for local release signing configuration.
+# Copy this file to `android/key.properties` and fill in your real credentials.
+# NEVER commit key.properties or .keystore files to git!
+storePassword=YourKeystorePasswordHere
+keyPassword=YourKeyPasswordHere
+keyAlias=jobprep-release-key
+storeFile=app/upload-keystore.jks

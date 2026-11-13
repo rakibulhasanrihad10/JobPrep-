@@ -16,11 +16,14 @@ local.properties
 **/android/default.properties
 **/android/local.properties
 **/android/proguard-project.txt
+*.apk
+*.aab
 
 # Keystores, Certificates, Secrets & Credentials
 *.keystore
 *.jks
 key.properties
+android/key.properties
 *.pem
 *.key
 *.p12
