@@ -4493,4 +4493,79 @@ class AppLocalizationsBn extends AppLocalizations {
   String prepShowMoreItems(String count) {
     return 'আরও $countটি দেখুন';
   }
+
+  @override
+  String get legalPrivacyPolicyTitle => 'গোপনীয়তা নীতি';
+
+  @override
+  String get legalPrivacyPolicySubtitle =>
+      'ক্লায়েন্ট-সাইড এনক্রিপশন, কোনো ট্র্যাকিং নেই এবং তথ্যের সম্পূর্ণ মালিকানা।';
+
+  @override
+  String get legalTermsOfServiceTitle => 'ব্যবহারের শর্তাবলি';
+
+  @override
+  String get legalTermsOfServiceSubtitle =>
+      'উন্মুক্ত, স্বচ্ছ এবং আপনার পরীক্ষার প্রস্তুতি সহায়ক।';
+
+  @override
+  String get legalBackToSettings => 'সেটিংসে ফিরে যান';
+
+  @override
+  String get legalBackToApp => 'অ্যাপে ফিরে যান';
+
+  @override
+  String get legalPrivacySection1Title => 'কোনো ট্র্যাকিং বা বিজ্ঞাপন নেই';
+
+  @override
+  String get legalPrivacySection1Body =>
+      'জবপ্রেপ আপনার কার্যকলাপ ট্র্যাক করে না, বিজ্ঞাপন দেখায় না বা কোনো ব্যক্তিগত তথ্য বিক্রি করে না। ক্র্যাশ রিপোর্টিং সক্ষম থাকলেও সংবেদনশীল ও ব্যক্তিগত তথ্য মুছে ফেলা হয়।';
+
+  @override
+  String get legalPrivacySection2Title => 'ক্লায়েন্ট-সাইড ভল্ট এনক্রিপশন';
+
+  @override
+  String get legalPrivacySection2Body =>
+      'আপনার চাকরি পোর্টালের পাসওয়ার্ডগুলো আপনার ডিভাইসেই AES-GCM-256 ও PBKDF2 এনক্রিপশনের মাধ্যমে সংরক্ষিত হয়। আপনার গোপন পাসফ্রেজ কখনো সার্ভারে পাঠানো বা লগ করা হয় না।';
+
+  @override
+  String get legalPrivacySection3Title => 'রো-লেভেল নিরাপত্তা ও ডেটা পৃথকীকরণ';
+
+  @override
+  String get legalPrivacySection3Body =>
+      'ডেটাবেজে সংরক্ষিত সব সার্কুলার, স্টাডি অগ্রগতি এবং নোট রো-লেভেল সিকিউরিটি (RLS) দ্বারা সুরক্ষিত। শুধু আপনিই আপনার তথ্য দেখতে ও পরিবর্তন করতে পারেন।';
+
+  @override
+  String get legalPrivacySection4Title => 'ডেটা ডাউনলোড ও অ্যাকাউন্ট মুছে ফেলা';
+
+  @override
+  String get legalPrivacySection4Body =>
+      'আপনি যেকোনো সময় সেটিংস থেকে CSV বা JSON ফরম্যাটে আপনার সমস্ত ডেটা ডাউনলোড করতে পারেন অথবা স্থায়ীভাবে অ্যাকাউন্ট মুছে দিতে পারেন।';
+
+  @override
+  String get legalTermsSection1Title => 'শিক্ষামূলক ও উন্মুক্ত ব্যবহার';
+
+  @override
+  String get legalTermsSection1Body =>
+      'জবপ্রেপ প্রার্থীদের চাকরির সার্কুলার ট্র্যাকিং, পড়াশোনার পরিকল্পনা এবং প্রস্তুতিতে সহায়তা করার একটি উন্মুক্ত শিক্ষামূলক প্ল্যাটফর্ম।';
+
+  @override
+  String get legalTermsSection2Title => 'সার্কুলারের তথ্যের যথার্থতা';
+
+  @override
+  String get legalTermsSection2Body =>
+      'সরকারি ও বেসরকারি সার্কুলারের সময়সীমা কর্তৃপক্ষ কর্তৃক পরিবর্তনশীল। আবেদন করার পূর্বে সর্বদা অফিশিয়াল গেজেট বা ওয়েবসাইট থেকে যাচাই করুন।';
+
+  @override
+  String get legalTermsSection3Title => 'ব্যবহারকারীর দায়িত্ব';
+
+  @override
+  String get legalTermsSection3Body =>
+      'ভল্টের পাসওয়ার্ডগুলো আপনার নিজস্ব পাসফ্রেজ দিয়ে এনক্রিপ্ট করা হয়। তাই পাসফ্রেজ ভুলে গেলে তা পুনরুদ্ধার করা সম্ভব নয়।';
+
+  @override
+  String get legalPrivacyPolicyLink => 'গোপনীয়তা নীতি';
+
+  @override
+  String get legalTermsOfServiceLink => 'ব্যবহারের শর্তাবলি';
 }

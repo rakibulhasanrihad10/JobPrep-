@@ -99,7 +99,7 @@ class _GlassChipState extends ConsumerState<GlassChip> {
             ),
             SizedBox(width: spacing.xs),
           ],
-          widget.label,
+          Flexible(child: widget.label),
           if (widget.onDeleted != null) ...[
             SizedBox(width: spacing.xs),
             InkWell(

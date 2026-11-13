@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_text_field.dart';
+import 'package:job_prep/features/auth/presentation/navigation/auth_redirect.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_form_controller.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_form_state.dart';
 import 'package:job_prep/features/auth/presentation/utils/auth_failure_l10n.dart';
@@ -258,6 +260,42 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               mode: formState.mode,
               isDisabled: formState.isLoading,
               onSwitchMode: _switchMode,
+            ),
+            SizedBox(height: spacing.sm),
+            Wrap(
+              alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                TextButton(
+                  key: const ValueKey('login-privacy-link'),
+                  onPressed: () => context.go(AppRoutePaths.privacy),
+                  child: Text(
+                    l10n.legalPrivacyPolicyLink,
+                    style: textStyles.bodySmall.copyWith(
+                      color: colors.textSecondary,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: spacing.xs),
+                  child: Text(
+                    '•',
+                    style: textStyles.bodySmall.copyWith(
+                      color: colors.textSecondary,
+                    ),
+                  ),
+                ),
+                TextButton(
+                  key: const ValueKey('login-terms-link'),
+                  onPressed: () => context.go(AppRoutePaths.terms),
+                  child: Text(
+                    l10n.legalTermsOfServiceLink,
+                    style: textStyles.bodySmall.copyWith(
+                      color: colors.textSecondary,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

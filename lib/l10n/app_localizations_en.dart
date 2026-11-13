@@ -4499,4 +4499,79 @@ class AppLocalizationsEn extends AppLocalizations {
   String prepShowMoreItems(String count) {
     return 'Show $count more';
   }
+
+  @override
+  String get legalPrivacyPolicyTitle => 'Privacy Policy';
+
+  @override
+  String get legalPrivacyPolicySubtitle =>
+      'Client-side encryption, zero tracking, and user data ownership.';
+
+  @override
+  String get legalTermsOfServiceTitle => 'Terms of Service';
+
+  @override
+  String get legalTermsOfServiceSubtitle =>
+      'Open, transparent, and built for your exam preparation.';
+
+  @override
+  String get legalBackToSettings => 'Back to Settings';
+
+  @override
+  String get legalBackToApp => 'Back to App';
+
+  @override
+  String get legalPrivacySection1Title => 'Zero Third-Party Tracking';
+
+  @override
+  String get legalPrivacySection1Body =>
+      'JobPrep does not track you, sell your personal data, or include advertising SDKs. All analytics and crash reports, if enabled, scrub sensitive and personally identifiable information before leaving your browser.';
+
+  @override
+  String get legalPrivacySection2Title => 'Client-Side Vault Encryption';
+
+  @override
+  String get legalPrivacySection2Body =>
+      'Your job portal credentials and sensitive passwords are encrypted directly on your device using AES-GCM-256 and PBKDF2 keys derived from your secret passphrase. Your passphrase is never sent, stored, or logged anywhere.';
+
+  @override
+  String get legalPrivacySection3Title => 'Row-Level Security & Isolation';
+
+  @override
+  String get legalPrivacySection3Body =>
+      'All circulars, study progress, mock tests, and notes stored in the database are strictly protected by Row-Level Security (RLS) policies. Only you can read or modify your own records.';
+
+  @override
+  String get legalPrivacySection4Title => 'Export & Account Deletion';
+
+  @override
+  String get legalPrivacySection4Body =>
+      'You can export all your data at any time in CSV or JSON format from Settings. If you choose to delete your account, all your records are permanently and irrevocably deleted.';
+
+  @override
+  String get legalTermsSection1Title => 'Open Educational Use';
+
+  @override
+  String get legalTermsSection1Body =>
+      'JobPrep is an educational dashboard designed to help candidates track job circulars, manage study timelines, and practice mock tests effectively.';
+
+  @override
+  String get legalTermsSection2Title => 'Circulars Accuracy Disclaimer';
+
+  @override
+  String get legalTermsSection2Body =>
+      'Official circular dates, qualifications, and deadlines are subject to change by recruiting authorities. Always verify final application deadlines and details with official gazettes and portals.';
+
+  @override
+  String get legalTermsSection3Title => 'User Responsibility';
+
+  @override
+  String get legalTermsSection3Body =>
+      'Because portal passwords in your vault are encrypted with a private passphrase known only to you, losing your passphrase means encrypted vault data cannot be recovered.';
+
+  @override
+  String get legalPrivacyPolicyLink => 'Privacy Policy';
+
+  @override
+  String get legalTermsOfServiceLink => 'Terms of Service';
 }

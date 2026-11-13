@@ -7401,6 +7401,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Show {count} more'**
   String prepShowMoreItems(String count);
+
+  /// Title of the Privacy Policy document
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get legalPrivacyPolicyTitle;
+
+  /// Subtitle describing Privacy Policy tenets
+  ///
+  /// In en, this message translates to:
+  /// **'Client-side encryption, zero tracking, and user data ownership.'**
+  String get legalPrivacyPolicySubtitle;
+
+  /// Title of the Terms of Service document
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get legalTermsOfServiceTitle;
+
+  /// Subtitle describing Terms of Service
+  ///
+  /// In en, this message translates to:
+  /// **'Open, transparent, and built for your exam preparation.'**
+  String get legalTermsOfServiceSubtitle;
+
+  /// Button returning to Settings screen
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Settings'**
+  String get legalBackToSettings;
+
+  /// Button returning to previous view
+  ///
+  /// In en, this message translates to:
+  /// **'Back to App'**
+  String get legalBackToApp;
+
+  /// Privacy policy section 1 header
+  ///
+  /// In en, this message translates to:
+  /// **'Zero Third-Party Tracking'**
+  String get legalPrivacySection1Title;
+
+  /// Privacy policy section 1 body text
+  ///
+  /// In en, this message translates to:
+  /// **'JobPrep does not track you, sell your personal data, or include advertising SDKs. All analytics and crash reports, if enabled, scrub sensitive and personally identifiable information before leaving your browser.'**
+  String get legalPrivacySection1Body;
+
+  /// Privacy policy section 2 header
+  ///
+  /// In en, this message translates to:
+  /// **'Client-Side Vault Encryption'**
+  String get legalPrivacySection2Title;
+
+  /// Privacy policy section 2 body text
+  ///
+  /// In en, this message translates to:
+  /// **'Your job portal credentials and sensitive passwords are encrypted directly on your device using AES-GCM-256 and PBKDF2 keys derived from your secret passphrase. Your passphrase is never sent, stored, or logged anywhere.'**
+  String get legalPrivacySection2Body;
+
+  /// Privacy policy section 3 header
+  ///
+  /// In en, this message translates to:
+  /// **'Row-Level Security & Isolation'**
+  String get legalPrivacySection3Title;
+
+  /// Privacy policy section 3 body text
+  ///
+  /// In en, this message translates to:
+  /// **'All circulars, study progress, mock tests, and notes stored in the database are strictly protected by Row-Level Security (RLS) policies. Only you can read or modify your own records.'**
+  String get legalPrivacySection3Body;
+
+  /// Privacy policy section 4 header
+  ///
+  /// In en, this message translates to:
+  /// **'Export & Account Deletion'**
+  String get legalPrivacySection4Title;
+
+  /// Privacy policy section 4 body text
+  ///
+  /// In en, this message translates to:
+  /// **'You can export all your data at any time in CSV or JSON format from Settings. If you choose to delete your account, all your records are permanently and irrevocably deleted.'**
+  String get legalPrivacySection4Body;
+
+  /// Terms of service section 1 header
+  ///
+  /// In en, this message translates to:
+  /// **'Open Educational Use'**
+  String get legalTermsSection1Title;
+
+  /// Terms of service section 1 body text
+  ///
+  /// In en, this message translates to:
+  /// **'JobPrep is an educational dashboard designed to help candidates track job circulars, manage study timelines, and practice mock tests effectively.'**
+  String get legalTermsSection1Body;
+
+  /// Terms of service section 2 header
+  ///
+  /// In en, this message translates to:
+  /// **'Circulars Accuracy Disclaimer'**
+  String get legalTermsSection2Title;
+
+  /// Terms of service section 2 body text
+  ///
+  /// In en, this message translates to:
+  /// **'Official circular dates, qualifications, and deadlines are subject to change by recruiting authorities. Always verify final application deadlines and details with official gazettes and portals.'**
+  String get legalTermsSection2Body;
+
+  /// Terms of service section 3 header
+  ///
+  /// In en, this message translates to:
+  /// **'User Responsibility'**
+  String get legalTermsSection3Title;
+
+  /// Terms of service section 3 body text
+  ///
+  /// In en, this message translates to:
+  /// **'Because portal passwords in your vault are encrypted with a private passphrase known only to you, losing your passphrase means encrypted vault data cannot be recovered.'**
+  String get legalTermsSection3Body;
+
+  /// Navigation link to privacy policy
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get legalPrivacyPolicyLink;
+
+  /// Navigation link to terms of service
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get legalTermsOfServiceLink;
 }
 
 class _AppLocalizationsDelegate

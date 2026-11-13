@@ -22,6 +22,12 @@ abstract final class AppRoutePaths {
 
   /// Full-screen first-run onboarding wizard route.
   static const String onboarding = '/onboarding';
+
+  /// Privacy Policy declaration route.
+  static const String privacy = '/privacy';
+
+  /// Terms of Service declaration route.
+  static const String terms = '/terms';
 }
 
 /// Computes the target redirect route for [location] given [authState] and
@@ -35,12 +41,18 @@ abstract final class AppRoutePaths {
 ///    onboarding (`needsOnboarding == true`) are directed to `/onboarding`.
 /// 4. Signed-in users who completed onboarding are redirected away from `/login`,
 ///    `/`, and `/onboarding` to `/today`.
+/// 5. Legal pages (`/privacy`, `/terms`) are always accessible to all users.
 String? resolveAuthRedirect({
   required AuthSessionState authState,
   required String location,
   bool needsOnboarding = false,
 }) {
   final normalized = _normalizePath(location);
+
+  if (normalized == AppRoutePaths.privacy ||
+      normalized == AppRoutePaths.terms) {
+    return null;
+  }
 
   switch (authState.status) {
     case AuthStatus.passwordRecovery:

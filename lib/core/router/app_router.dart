@@ -15,6 +15,7 @@ import 'package:job_prep/features/circulars/presentation/screens/circulars_scree
 import 'package:job_prep/features/circulars/presentation/screens/inbox_screen.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/quick_capture_shell.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:job_prep/features/legal/presentation/screens/legal_screen.dart';
 import 'package:job_prep/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:job_prep/features/notifications/presentation/screens/weekly_review_screen.dart';
 import 'package:job_prep/features/onboarding/domain/entities/onboarding_status.dart';
@@ -128,6 +129,20 @@ final routerProvider = Provider<GoRouter>((ref) {
         name: 'onboarding',
         pageBuilder: (context, state) => const NoTransitionPage(
           child: OnboardingWizardScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutePaths.privacy,
+        name: 'privacy',
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: LegalScreen(type: LegalDocType.privacy),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutePaths.terms,
+        name: 'terms',
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: LegalScreen(type: LegalDocType.terms),
         ),
       ),
       ShellRoute(

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/fade_slide_in.dart';
+import 'package:job_prep/features/auth/presentation/navigation/auth_redirect.dart';
 import 'package:job_prep/features/settings/presentation/providers/user_settings_providers.dart';
 import 'package:job_prep/features/settings/presentation/widgets/appearance_settings_card.dart';
 import 'package:job_prep/features/settings/presentation/widgets/data_settings_card.dart';
@@ -25,6 +27,7 @@ class SettingsScreen extends ConsumerWidget {
     final tokens = context.tokens;
     final spacing = tokens.spacing;
     final textStyles = tokens.textStyles;
+    final colors = tokens.colors;
     final l10n = context.l10n;
 
     return SingleChildScrollView(
@@ -95,6 +98,45 @@ class SettingsScreen extends ConsumerWidget {
           const FadeSlideIn(
             index: 10,
             child: DataSettingsCard(),
+          ),
+          SizedBox(height: spacing.xl),
+          FadeSlideIn(
+            index: 11,
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                TextButton(
+                  key: const ValueKey('settings-privacy-link'),
+                  onPressed: () => context.go(AppRoutePaths.privacy),
+                  child: Text(
+                    l10n.legalPrivacyPolicyLink,
+                    style: textStyles.bodySmall.copyWith(
+                      color: colors.textSecondary,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: spacing.xs),
+                  child: Text(
+                    '•',
+                    style: textStyles.bodySmall.copyWith(
+                      color: colors.textSecondary,
+                    ),
+                  ),
+                ),
+                TextButton(
+                  key: const ValueKey('settings-terms-link'),
+                  onPressed: () => context.go(AppRoutePaths.terms),
+                  child: Text(
+                    l10n.legalTermsOfServiceLink,
+                    style: textStyles.bodySmall.copyWith(
+                      color: colors.textSecondary,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
