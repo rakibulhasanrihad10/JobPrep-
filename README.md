@@ -407,6 +407,14 @@ To enable signed release bundle creation in CI, configure the following secrets 
 
 The CI workflow in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) builds the AAB and APK, validates signing, and uploads the artifacts with a 14-day retention. If the secret is not provided (e.g. on forks or unconfigured repos), CI seamlessly generates an ephemeral verification keystore so test coverage and build stability never break.
 
+### 7. Android Share-to-Capture & Google Play Store Publishing (Phase 8B)
+
+- **Share Intent Support**: Sharing a Facebook post, web link, or social announcement from any Android app into JobPrep opens the **Quick Capture frosted glass dialog** with the link prefilled, saving to the user's Inbox in one tap.
+- **Store Listing Materials**: Complete verified metadata, short/full descriptions in English (`en-US`) and Bangla (`bn-BD`), screenshot specifications, and Google Play Data Safety answers are maintained in [`docs/play_store/LISTING.md`](docs/play_store/LISTING.md).
+- **Google Play 20-Tester & Release Checklist**: The operational guide for moving from Internal Testing -> Closed Testing (14-day continuous 20-tester requirement) -> Staged Production Rollout is in [`docs/play_store/RELEASE_CHECKLIST.md`](docs/play_store/RELEASE_CHECKLIST.md).
+- **Automated Google Play CI Upload**:
+  Add `PLAY_STORE_SERVICE_ACCOUNT_JSON` to GitHub Actions secrets. On releases, the `play_store_internal` CI job automatically uploads the signed `.aab` to Google Play Console's internal testing track.
+
 ---
 
 ## Branch Protection Setup for `main`

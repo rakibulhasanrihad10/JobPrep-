@@ -110,6 +110,9 @@ void runPrepMathAndTimerE2ETests() {
       final harness = await E2ETestHarness.create();
       addTearDown(harness.dispose);
 
+      final now = DateTime.now();
+      final todayUtc = DateTime.utc(now.year, now.month, now.day);
+
       // 1. Mark page for revision
       final revisionItem = await harness.revisionRepo.createRevisionItem(
         RevisionItem(
@@ -117,7 +120,7 @@ void runPrepMathAndTimerE2ETests() {
           materialId: 'mat-physics',
           referenceLabel: 'Page 45',
           note: 'Newton laws & gravitational formula recap',
-          dueOn: DateTime.utc(2026, 11, 13),
+          dueOn: todayUtc,
         ),
       );
 

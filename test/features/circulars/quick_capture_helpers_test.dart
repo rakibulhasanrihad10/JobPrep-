@@ -125,6 +125,57 @@ void main() {
         equals('/dashboard'),
       );
     });
+
+    test('extractUrlFromSharedText extracts URLs from Facebook and social text',
+        () {
+      // 1. Direct standalone URLs
+      expect(
+        extractUrlFromSharedText('https://www.facebook.com/bpsc/posts/12345'),
+        equals('https://www.facebook.com/bpsc/posts/12345'),
+      );
+      expect(
+        extractUrlFromSharedText('http://bpsc.teletalk.com.bd/apply'),
+        equals('http://bpsc.teletalk.com.bd/apply'),
+      );
+
+      // 2. URLs embedded in text with surrounding description
+      expect(
+        extractUrlFromSharedText(
+          '47th BCS Circular published! Apply here: '
+          'https://bpsc.gov.bd/notices/47.pdf Best of luck!',
+        ),
+        equals('https://bpsc.gov.bd/notices/47.pdf'),
+      );
+
+      // 3. URLs with trailing punctuation stripped
+      expect(
+        extractUrlFromSharedText(
+          'Check circular: https://erecruitment.bb.org.bd/jobs.',
+        ),
+        equals('https://erecruitment.bb.org.bd/jobs'),
+      );
+      expect(
+        extractUrlFromSharedText(
+          '(Apply at https://bpsc.gov.bd/apply)',
+        ),
+        equals('https://bpsc.gov.bd/apply'),
+      );
+      expect(
+        extractUrlFromSharedText(
+          'Important link: https://jobprep.app/notice; deadline soon!',
+        ),
+        equals('https://jobprep.app/notice'),
+      );
+
+      // 4. Whitespace, empty, null, or text without URL
+      expect(extractUrlFromSharedText(null), isNull);
+      expect(extractUrlFromSharedText(''), isNull);
+      expect(extractUrlFromSharedText('   '), isNull);
+      expect(
+        extractUrlFromSharedText('Just regular text with no links attached'),
+        isNull,
+      );
+    });
   });
 
   group('Inbox Enum & Form Promotion', () {
