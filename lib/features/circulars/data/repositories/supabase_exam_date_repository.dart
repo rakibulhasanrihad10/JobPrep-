@@ -4,6 +4,7 @@ import 'package:job_prep/features/circulars/domain/entities/circular_exam_date.d
 import 'package:job_prep/features/circulars/domain/errors/circular_failure.dart';
 import 'package:job_prep/features/circulars/domain/repositories/exam_date_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+import 'package:uuid/uuid.dart';
 
 /// Supabase PostgREST implementation of [ExamDateRepository] backed by
 /// `public.circular_exam_dates`.
@@ -43,12 +44,19 @@ class SupabaseExamDateRepository implements ExamDateRepository {
 
     try {
       final currentUserId = _client.auth.currentUser?.id;
+      final dateWithId = examDate.id.trim().isEmpty
+          ? examDate.copyWith(id: const Uuid().v4())
+          : examDate;
       final payload = CircularExamDateMapper.toInsertJson(
-        examDate,
-        userId: examDate.userId.trim().isEmpty ? currentUserId : null,
+        dateWithId,
+        userId: dateWithId.userId.trim().isEmpty ? currentUserId : null,
       );
 
-      final row = await _client.from(_table).insert(payload).select().single();
+      final row = await _client
+          .from(_table)
+          .upsert(payload, onConflict: 'id')
+          .select()
+          .single();
       return CircularExamDateMapper.fromJson(row);
     } on Object catch (error) {
       throw CircularErrorMapper.map(error);

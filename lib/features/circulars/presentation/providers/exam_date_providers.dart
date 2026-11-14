@@ -1,7 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/circulars/data/repositories/local_exam_date_repository.dart';
 import 'package:job_prep/features/circulars/data/repositories/supabase_exam_date_repository.dart';
 import 'package:job_prep/features/circulars/data/repositories/unconfigured_exam_date_repository.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_exam_date.dart';
@@ -16,6 +19,10 @@ Duration? _noRetry(int retryCount, Object error) => null;
 /// Override this provider in tests with an in-memory fake repository.
 final Provider<ExamDateRepository> examDateRepositoryProvider =
     Provider<ExamDateRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalExamDateRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredExamDateRepository();

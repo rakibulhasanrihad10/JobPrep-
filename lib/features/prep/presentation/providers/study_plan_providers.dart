@@ -1,10 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show ProviderFamily;
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_exam_date.dart';
 import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
+import 'package:job_prep/features/prep/data/repositories/local_study_plan_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_study_plan_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_study_plan_repository.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
@@ -23,6 +26,10 @@ Duration? _noRetry(int retryCount, Object error) => null;
 /// Dependency-injected [StudyPlanRepository] provider.
 final Provider<StudyPlanRepository> studyPlanRepositoryProvider =
     Provider<StudyPlanRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalStudyPlanRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredStudyPlanRepository();

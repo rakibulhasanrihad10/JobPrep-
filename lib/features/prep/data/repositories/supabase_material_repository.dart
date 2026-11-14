@@ -4,6 +4,7 @@ import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/repositories/material_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+import 'package:uuid/uuid.dart';
 
 /// Supabase PostgREST implementation of [MaterialRepository] backed by
 /// `public.materials`.
@@ -66,11 +67,18 @@ class SupabaseMaterialRepository implements MaterialRepository {
 
     try {
       final currentUserId = _client.auth.currentUser?.id;
+      final materialWithId = material.id.trim().isEmpty
+          ? material.copyWith(id: const Uuid().v4())
+          : material;
       final payload = PrepMaterialMapper.toInsertJson(
-        material,
-        userId: material.userId.trim().isEmpty ? currentUserId : null,
+        materialWithId,
+        userId: materialWithId.userId.trim().isEmpty ? currentUserId : null,
       );
-      final row = await _client.from(_table).insert(payload).select().single();
+      final row = await _client
+          .from(_table)
+          .upsert(payload, onConflict: 'id')
+          .select()
+          .single();
       return PrepMaterialMapper.fromJson(row);
     } on Object catch (error) {
       throw PrepErrorMapper.map(error);

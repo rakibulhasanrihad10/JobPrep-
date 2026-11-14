@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show ProviderFamily;
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/prep/data/repositories/local_mock_test_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_mock_test_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_mock_test_repository.dart';
 import 'package:job_prep/features/prep/domain/entities/mock_test.dart';
@@ -72,6 +75,10 @@ class MockTestFilterState {
 /// Dependency-injected [MockTestRepository] provider.
 final Provider<MockTestRepository> mockTestRepositoryProvider =
     Provider<MockTestRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalMockTestRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredMockTestRepository();

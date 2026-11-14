@@ -53,6 +53,7 @@ abstract final class PortalAccountMapper {
   }) {
     final effectiveUserId = (userId ?? account.userId).trim();
     return <String, dynamic>{
+      if (account.id.trim().isNotEmpty) 'id': account.id.trim(),
       if (effectiveUserId.isNotEmpty) 'user_id': effectiveUserId,
       'circular_id': account.circularId,
       'portal_url': _trimToNull(account.portalUrl),

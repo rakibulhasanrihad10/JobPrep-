@@ -4,6 +4,7 @@ import 'package:job_prep/features/prep/domain/entities/revision_item.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/repositories/revision_item_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+import 'package:uuid/uuid.dart';
 
 /// Supabase PostgREST implementation of [RevisionItemRepository] backed by
 /// `public.revision_items`.
@@ -35,11 +36,17 @@ class SupabaseRevisionItemRepository implements RevisionItemRepository {
 
     try {
       final currentUserId = _client.auth.currentUser?.id;
+      final itemWithId =
+          item.id.trim().isEmpty ? item.copyWith(id: const Uuid().v4()) : item;
       final payload = RevisionItemMapper.toInsertJson(
-        item,
-        userId: item.userId.trim().isEmpty ? currentUserId : null,
+        itemWithId,
+        userId: itemWithId.userId.trim().isEmpty ? currentUserId : null,
       );
-      final row = await _client.from(_table).insert(payload).select().single();
+      final row = await _client
+          .from(_table)
+          .upsert(payload, onConflict: 'id')
+          .select()
+          .single();
       return RevisionItemMapper.fromJson(row);
     } on Object catch (error) {
       throw PrepErrorMapper.map(error);
@@ -55,15 +62,19 @@ class SupabaseRevisionItemRepository implements RevisionItemRepository {
 
     try {
       final currentUserId = _client.auth.currentUser?.id;
-      final payloads = items
-          .map(
-            (item) => RevisionItemMapper.toInsertJson(
-              item,
-              userId: item.userId.trim().isEmpty ? currentUserId : null,
-            ),
-          )
-          .toList(growable: false);
-      final rows = await _client.from(_table).insert(payloads).select();
+      final payloads = items.map((item) {
+        final itemWithId = item.id.trim().isEmpty
+            ? item.copyWith(id: const Uuid().v4())
+            : item;
+        return RevisionItemMapper.toInsertJson(
+          itemWithId,
+          userId: itemWithId.userId.trim().isEmpty ? currentUserId : null,
+        );
+      }).toList(growable: false);
+      final rows = await _client
+          .from(_table)
+          .upsert(payloads, onConflict: 'id')
+          .select();
       return RevisionItemMapper.fromJsonList(rows);
     } on Object catch (error) {
       throw PrepErrorMapper.map(error);

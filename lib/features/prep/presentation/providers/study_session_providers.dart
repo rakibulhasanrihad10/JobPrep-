@@ -1,7 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/storage/preferences_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/prep/data/repositories/local_study_session_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_study_session_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_study_session_repository.dart';
 import 'package:job_prep/features/prep/domain/entities/study_session.dart';
@@ -23,6 +26,10 @@ final Provider<DateTime Function()> studyTimerNowProvider =
 /// Repository provider resolving `study_sessions` storage cleanly.
 final Provider<StudySessionRepository> studySessionRepositoryProvider =
     Provider<StudySessionRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalStudySessionRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredStudySessionRepository();

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/localization/locale_controller.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/core/theme/reduce_effects_controller.dart';
@@ -9,6 +11,7 @@ import 'package:job_prep/core/theme/theme_controller.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/features/prep/domain/entities/study_session.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_session_providers.dart';
+import 'package:job_prep/features/settings/data/repositories/local_user_settings_repository.dart';
 import 'package:job_prep/features/settings/data/repositories/supabase_user_settings_repository.dart';
 import 'package:job_prep/features/settings/data/repositories/unconfigured_user_settings_repository.dart';
 import 'package:job_prep/features/settings/domain/entities/user_app_settings.dart';
@@ -20,6 +23,10 @@ Duration? _noRetry(int retryCount, Object error) => null;
 /// `public.user_settings` when configured, or `SharedPreferences` offline.
 final Provider<UserSettingsRepository> userSettingsRepositoryProvider =
     Provider<UserSettingsRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalUserSettingsRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return UnconfiguredUserSettingsRepository(

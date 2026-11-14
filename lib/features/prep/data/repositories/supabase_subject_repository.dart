@@ -5,6 +5,7 @@ import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/repositories/subject_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+import 'package:uuid/uuid.dart';
 
 /// Supabase PostgREST implementation of [SubjectRepository] backed by
 /// `public.subjects` and `public.circular_subjects`.
@@ -52,11 +53,18 @@ class SupabaseSubjectRepository implements SubjectRepository {
 
     try {
       final currentUserId = _client.auth.currentUser?.id;
+      final subjectWithId = subject.id.trim().isEmpty
+          ? subject.copyWith(id: const Uuid().v4())
+          : subject;
       final payload = SubjectMapper.toInsertJson(
-        subject,
-        userId: subject.userId.trim().isEmpty ? currentUserId : null,
+        subjectWithId,
+        userId: subjectWithId.userId.trim().isEmpty ? currentUserId : null,
       );
-      final row = await _client.from(_table).insert(payload).select().single();
+      final row = await _client
+          .from(_table)
+          .upsert(payload, onConflict: 'id')
+          .select()
+          .single();
       return SubjectMapper.fromJson(row);
     } on Object catch (error) {
       throw PrepErrorMapper.map(error);

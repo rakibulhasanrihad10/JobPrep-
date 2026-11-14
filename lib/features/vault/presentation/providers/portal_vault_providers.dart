@@ -2,11 +2,14 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/security/vault_clipboard_service.dart';
 import 'package:job_prep/core/security/vault_models.dart';
 import 'package:job_prep/core/security/vault_providers.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/vault/data/repositories/local_portal_account_repository.dart';
 import 'package:job_prep/features/vault/data/repositories/supabase_portal_account_repository.dart';
 import 'package:job_prep/features/vault/data/repositories/unconfigured_portal_account_repository.dart';
 import 'package:job_prep/features/vault/domain/entities/portal_account.dart';
@@ -17,6 +20,10 @@ Duration? _noRetry(int retryCount, Object error) => null;
 /// Dependency-injected [PortalAccountRepository] provider.
 final Provider<PortalAccountRepository> portalAccountRepositoryProvider =
     Provider<PortalAccountRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalPortalAccountRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredPortalAccountRepository();

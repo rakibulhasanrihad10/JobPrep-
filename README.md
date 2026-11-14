@@ -58,9 +58,9 @@ lib/
 ### Architectural Guardrails
 - **Presentation Layer**: UI widgets observe Riverpod providers. **Widgets never invoke Supabase directly** and never hold business logic.
 - **Domain Layer**: Clean, pure Dart entities and abstract repository definitions independent of third-party frameworks.
-- **Data Layer**: Implements domain repositories, handles Supabase communication and local storage caching.
+- **Data Layer**: Dual-mode repositories (Cloud via Supabase PostgREST & Local via Drift SQLite/Wasm). Every repository interface has a cloud implementation and a local implementation, every method is implemented in both, and both pass the same shared contract tests. Widgets and providers remain agnostic to the active data source mode.
 - **Design Tokens**: All colors, typography, border radii, spacing, and transition durations are consumed via a `ThemeExtension`. No hardcoded colors or sizes in widgets.
-- **Security**: PostgreSQL Row Level Security (RLS) enforces `auth.uid() = user_id` on every table. Portal credentials are encrypted client-side with user-held passphrase derivations.
+- **Security & Encryption**: PostgreSQL Row Level Security (RLS) enforces `auth.uid() = user_id` on every table. Note: the local database is not encrypted, apart from portal passwords, which stay encrypted by the vault (AES-GCM with PBKDF2 key derivation). Plaintext credentials and passphrases are never stored, logged, or transmitted.
 
 ---
 

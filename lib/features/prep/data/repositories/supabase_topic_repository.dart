@@ -4,6 +4,7 @@ import 'package:job_prep/features/prep/domain/entities/topic.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/repositories/topic_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+import 'package:uuid/uuid.dart';
 
 /// Supabase PostgREST implementation of [TopicRepository] backed by
 /// `public.topics`.
@@ -38,11 +39,18 @@ class SupabaseTopicRepository implements TopicRepository {
 
     try {
       final currentUserId = _client.auth.currentUser?.id;
+      final topicWithId = topic.id.trim().isEmpty
+          ? topic.copyWith(id: const Uuid().v4())
+          : topic;
       final payload = TopicMapper.toInsertJson(
-        topic,
-        userId: topic.userId.trim().isEmpty ? currentUserId : null,
+        topicWithId,
+        userId: topicWithId.userId.trim().isEmpty ? currentUserId : null,
       );
-      final row = await _client.from(_table).insert(payload).select().single();
+      final row = await _client
+          .from(_table)
+          .upsert(payload, onConflict: 'id')
+          .select()
+          .single();
       return TopicMapper.fromJson(row);
     } on Object catch (error) {
       throw PrepErrorMapper.map(error);

@@ -1,11 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/domain/entities/auth_session_state.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular.dart';
 import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
+import 'package:job_prep/features/notifications/data/repositories/local_notifications_repository.dart';
 import 'package:job_prep/features/notifications/data/repositories/supabase_notifications_repository.dart';
 import 'package:job_prep/features/notifications/data/repositories/unconfigured_notifications_repository.dart';
 import 'package:job_prep/features/notifications/domain/entities/app_notification.dart';
@@ -30,6 +33,10 @@ Duration? _noRetry(int retryCount, Object error) => null;
 /// Dependency-injected [NotificationsRepository] provider.
 final Provider<NotificationsRepository> notificationsRepositoryProvider =
     Provider<NotificationsRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalNotificationsRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredNotificationsRepository();

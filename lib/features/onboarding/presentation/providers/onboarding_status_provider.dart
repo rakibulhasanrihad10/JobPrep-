@@ -1,10 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
+import 'package:job_prep/core/storage/preferences_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/core/theme/theme_controller.dart';
 import 'package:job_prep/features/auth/domain/entities/auth_session_state.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/onboarding/data/repositories/local_onboarding_repository.dart';
 import 'package:job_prep/features/onboarding/data/repositories/supabase_onboarding_repository.dart';
 import 'package:job_prep/features/onboarding/data/repositories/unconfigured_onboarding_repository.dart';
 import 'package:job_prep/features/onboarding/domain/entities/onboarding_draft.dart';
@@ -17,6 +21,10 @@ Duration? _noRetry(int retryCount, Object error) => null;
 /// Dependency-injected [OnboardingRepository] provider.
 final Provider<OnboardingRepository> onboardingRepositoryProvider =
     Provider<OnboardingRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalOnboardingRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     final prefs = ref.watch(sharedPreferencesProvider);

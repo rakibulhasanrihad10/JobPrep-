@@ -1,7 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show ProviderFamily;
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/prep/data/repositories/local_revision_item_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_revision_item_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_revision_item_repository.dart';
 import 'package:job_prep/features/prep/domain/entities/revision_item.dart';
@@ -18,6 +21,10 @@ Duration? _noRetry(int retryCount, Object error) => null;
 /// Dependency-injected [RevisionItemRepository] provider.
 final Provider<RevisionItemRepository> revisionItemRepositoryProvider =
     Provider<RevisionItemRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalRevisionItemRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredRevisionItemRepository();

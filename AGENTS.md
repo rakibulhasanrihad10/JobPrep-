@@ -16,6 +16,7 @@ Stack: Flutter (web first, Android later), Supabase (PostgreSQL, Auth, Storage),
 - Feature-first folders: lib/core, lib/features/<feature>/{data,domain,presentation}, lib/shared.
 - Layers: presentation depends on domain; domain depends on nothing; data implements domain interfaces.
 - Widgets NEVER call Supabase and NEVER contain business logic. Data access goes through repositories only.
+- Every repository interface has a cloud implementation and a local implementation, every new repository method must be implemented in both, and both must pass the same shared contract tests.
 - Inject dependencies with Riverpod so tests can replace them with fakes.
 - Keep files small and focused. Split any file over about 300 lines.
 - If you see duplicated or mixed-responsibility code, refactor it into the modular structure before adding more features.

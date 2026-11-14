@@ -1,8 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart'
     show FutureProviderFamily, ProviderFamily;
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/prep/data/repositories/local_material_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/local_progress_log_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/local_subject_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/local_topic_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_material_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_progress_log_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_subject_repository.dart';
@@ -26,6 +32,10 @@ Duration? _noRetry(int retryCount, Object error) => null;
 /// Dependency-injected [SubjectRepository] provider.
 final Provider<SubjectRepository> subjectRepositoryProvider =
     Provider<SubjectRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalSubjectRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredSubjectRepository();
@@ -36,6 +46,10 @@ final Provider<SubjectRepository> subjectRepositoryProvider =
 /// Dependency-injected [MaterialRepository] provider.
 final Provider<MaterialRepository> materialRepositoryProvider =
     Provider<MaterialRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalMaterialRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredMaterialRepository();
@@ -46,6 +60,10 @@ final Provider<MaterialRepository> materialRepositoryProvider =
 /// Dependency-injected [ProgressLogRepository] provider.
 final Provider<ProgressLogRepository> progressLogRepositoryProvider =
     Provider<ProgressLogRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalProgressLogRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredProgressLogRepository();
@@ -56,6 +74,10 @@ final Provider<ProgressLogRepository> progressLogRepositoryProvider =
 /// Dependency-injected [TopicRepository] provider.
 final Provider<TopicRepository> topicRepositoryProvider =
     Provider<TopicRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalTopicRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredTopicRepository();
