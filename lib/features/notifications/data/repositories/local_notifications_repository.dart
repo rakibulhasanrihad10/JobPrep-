@@ -81,7 +81,7 @@ class LocalNotificationsRepository implements NotificationsRepository {
         .go();
   }
 
-  /// Inserts or ignores duplicate notifications based on `dedupeKey`.
+  @override
   Future<AppNotification> insertNotification(
     AppNotification notification,
   ) async {

@@ -4687,4 +4687,168 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get eraseDataSuccessMessage => 'All local data has been erased.';
+
+  @override
+  String settingsLastBackup(String time) {
+    return 'Last backup: $time';
+  }
+
+  @override
+  String get settingsLastBackupNever => 'Never';
+
+  @override
+  String get settingsLastBackupToday => 'Today';
+
+  @override
+  String get settingsLastBackupYesterday => 'Yesterday';
+
+  @override
+  String settingsLastBackupDaysAgo(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days ago',
+      one: '1 day ago',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get settingsBackupReminderTitle => 'Time to back up your study data';
+
+  @override
+  String settingsBackupReminderMessage(int days, int changes) {
+    return 'Last backup was $days days ago. You have made $changes changes since.';
+  }
+
+  @override
+  String get settingsBackupReminderAction => 'Back up now';
+
+  @override
+  String get settingsBackupReminderDismiss => 'Dismiss';
+
+  @override
+  String get settingsRestoreButton => 'Restore from backup';
+
+  @override
+  String get backupDialogTitle => 'Back up study data';
+
+  @override
+  String get backupDialogDescription =>
+      'Create a downloadable backup file of all your circulars, subjects, notes, and study logs.';
+
+  @override
+  String get backupEncryptionRecommended =>
+      'Encrypt with passphrase (Recommended)';
+
+  @override
+  String get backupEncryptionNote =>
+      'Protects personal notes and encrypted portal credentials using AES-GCM. If you forget this passphrase, the backup cannot be recovered.';
+
+  @override
+  String get backupPassphraseLabel => 'Backup passphrase';
+
+  @override
+  String get backupPassphraseConfirmLabel => 'Confirm passphrase';
+
+  @override
+  String get backupPassphraseMismatch => 'Passphrases do not match';
+
+  @override
+  String get backupPassphraseTooShort =>
+      'Passphrase must be at least 8 characters';
+
+  @override
+  String get backupExportEncryptedButton => 'Export encrypted backup';
+
+  @override
+  String get backupExportPlainWarning =>
+      'Warning: An unencrypted backup file contains personal study notes and encrypted portal logins in plain JSON format.';
+
+  @override
+  String get backupExportPlainButton => 'Export without passphrase';
+
+  @override
+  String backupExportSuccess(String fileName) {
+    return 'Backup saved successfully ($fileName).';
+  }
+
+  @override
+  String get restoreDialogTitle => 'Restore study data';
+
+  @override
+  String get restorePassphrasePrompt =>
+      'This backup file is encrypted. Enter the backup passphrase to unlock and preview.';
+
+  @override
+  String get restorePassphraseLabel => 'Passphrase';
+
+  @override
+  String get restorePassphraseSubmit => 'Unlock & Preview';
+
+  @override
+  String get restorePreviewTitle => 'Backup contents preview';
+
+  @override
+  String restorePreviewTotalRecords(int count) {
+    return 'Total records: $count';
+  }
+
+  @override
+  String get restoreStrategyMergeTitle =>
+      'Merge (Preserve existing, update newer)';
+
+  @override
+  String get restoreStrategyMergeDescription =>
+      'Existing IDs are preserved. Records from the backup replace existing ones only when their update timestamp is newer. No duplicates are created.';
+
+  @override
+  String get restoreStrategyReplaceTitle => 'Replace all data on this device';
+
+  @override
+  String get restoreStrategyReplaceDescription =>
+      'Clears all local data on this device and restores the backup. Guest mode only.';
+
+  @override
+  String get restoreReplaceSafetyBackupNote =>
+      'An automatic safety backup will be created and saved before any data is replaced.';
+
+  @override
+  String get restoreReplaceConfirmPrompt =>
+      'Type REPLACE below to proceed with replacement:';
+
+  @override
+  String get restoreReplaceConfirmWord => 'REPLACE';
+
+  @override
+  String get restoreActionButton => 'Restore data';
+
+  @override
+  String restoreSuccessMessage(int count) {
+    return 'Successfully restored $count records.';
+  }
+
+  @override
+  String get restoreErrorFileTooLarge =>
+      'Backup file exceeds maximum allowed size (25 MB).';
+
+  @override
+  String get restoreErrorChecksumMismatch =>
+      'Backup file is corrupted or has been tampered with (checksum mismatch).';
+
+  @override
+  String get restoreErrorWrongPassphrase =>
+      'Incorrect passphrase or invalid backup file.';
+
+  @override
+  String restoreErrorNewerVersion(String version) {
+    return 'This backup was created by a newer version of JobPrep (v$version). Please update your app to restore this file.';
+  }
+
+  @override
+  String get backupDialogCancel => 'Cancel';
+
+  @override
+  String get restoreErrorInvalidFormat =>
+      'Invalid or unreadable backup file format.';
 }

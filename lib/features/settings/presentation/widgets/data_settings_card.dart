@@ -7,6 +7,10 @@ import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/account_feature_gate.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
+import 'package:job_prep/features/backup/domain/utils/backup_time_formatter.dart';
+import 'package:job_prep/features/backup/presentation/providers/backup_providers.dart';
+import 'package:job_prep/features/backup/presentation/utils/backup_flow_helper.dart';
+import 'package:job_prep/features/backup/presentation/widgets/backup_passphrase_dialog.dart';
 import 'package:job_prep/features/settings/domain/utils/data_export_builder.dart';
 import 'package:job_prep/features/settings/presentation/providers/data_export_providers.dart';
 import 'package:job_prep/features/settings/presentation/widgets/delete_account_dialog.dart';
@@ -24,6 +28,7 @@ class DataSettingsCard extends ConsumerWidget {
     final spacing = tokens.spacing;
     final l10n = context.l10n;
     final exportState = ref.watch(dataExportControllerProvider);
+    final lastBackup = ref.watch(lastBackupTimeProvider);
 
     return GlassCard(
       key: const ValueKey('settings-data-card'),
@@ -52,11 +57,37 @@ class DataSettingsCard extends ConsumerWidget {
             l10n.settingsDataSubtitle,
             style: tokens.textStyles.bodySmall,
           ),
+          SizedBox(height: spacing.xs),
+          Text(
+            BackupTimeFormatter.format(lastBackup, l10n),
+            key: const ValueKey('settings-signed-in-last-backup-text'),
+            style: tokens.textStyles.labelSmall.copyWith(
+              color: colors.goldAccent,
+            ),
+          ),
           SizedBox(height: spacing.md),
           Wrap(
             spacing: spacing.sm,
             runSpacing: spacing.sm,
             children: [
+              GlassButton(
+                key: const ValueKey('settings-backup-btn'),
+                onPressed: exportState.isExporting
+                    ? null
+                    : () => unawaited(showBackupPassphraseDialog(context)),
+                leading: Icon(Icons.backup_outlined, size: spacing.lg),
+                child: Text(l10n.settingsBackupDataButton),
+              ),
+              GlassButton(
+                key: const ValueKey('settings-restore-btn'),
+                onPressed: exportState.isExporting
+                    ? null
+                    : () => unawaited(
+                          BackupFlowHelper.triggerRestoreFlow(context, ref),
+                        ),
+                leading: Icon(Icons.restore_page_outlined, size: spacing.lg),
+                child: Text(l10n.settingsRestoreButton),
+              ),
               GlassButton(
                 key: const ValueKey('settings-export-csv-btn'),
                 onPressed: exportState.isExporting

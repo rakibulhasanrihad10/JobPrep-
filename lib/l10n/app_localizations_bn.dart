@@ -4683,4 +4683,162 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get eraseDataSuccessMessage => 'সমস্ত লোকাল ডেটা মুছে ফেলা হয়েছে।';
+
+  @override
+  String settingsLastBackup(String time) {
+    return 'সর্বশেষ ব্যাকআপ: $time';
+  }
+
+  @override
+  String get settingsLastBackupNever => 'কখনো নয়';
+
+  @override
+  String get settingsLastBackupToday => 'আজ';
+
+  @override
+  String get settingsLastBackupYesterday => 'গতকাল';
+
+  @override
+  String settingsLastBackupDaysAgo(int count) {
+    return '$count দিন আগে';
+  }
+
+  @override
+  String get settingsBackupReminderTitle =>
+      'আপনার স্টাডি ডেটা ব্যাকআপ নেওয়ার সময় হয়েছে';
+
+  @override
+  String settingsBackupReminderMessage(int days, int changes) {
+    return 'সর্বশেষ ব্যাকআপ $days দিন আগে নেওয়া হয়েছিল। এরপর আপনি $changesটি পরিবর্তন করেছেন।';
+  }
+
+  @override
+  String get settingsBackupReminderAction => 'এখনই ব্যাকআপ নিন';
+
+  @override
+  String get settingsBackupReminderDismiss => 'বাতিল করুন';
+
+  @override
+  String get settingsRestoreButton => 'ব্যাকআপ থেকে রিস্টোর করুন';
+
+  @override
+  String get backupDialogTitle => 'স্টাডি ডেটা ব্যাকআপ নিন';
+
+  @override
+  String get backupDialogDescription =>
+      'সমস্ত সার্কুলার, বিষয়, নোট এবং স্টাডি লগের একটি ডাউনলোডযোগ্য ব্যাকআপ তৈরি করুন।';
+
+  @override
+  String get backupEncryptionRecommended =>
+      'পাসফ্রেজ দিয়ে এনক্রিপ্ট করুন (প্রস্তাবিত)';
+
+  @override
+  String get backupEncryptionNote =>
+      'AES-GCM ব্যবহার করে আপনার ব্যক্তিগত নোট এবং এনক্রিপ্ট করা পোর্টাল তথ্য সুরক্ষিত রাখে। পাসফ্রেজ ভুলে গেলে এই ব্যাকআপ পুনরুদ্ধার করা সম্ভব নয়।';
+
+  @override
+  String get backupPassphraseLabel => 'ব্যাকআপ পাসফ্রেজ';
+
+  @override
+  String get backupPassphraseConfirmLabel => 'পাসফ্রেজ নিশ্চিত করুন';
+
+  @override
+  String get backupPassphraseMismatch => 'পাসফ্রেজ দুটি মিলছে না';
+
+  @override
+  String get backupPassphraseTooShort => 'পাসফ্রেজ কমপক্ষে ৮ অক্ষরের হতে হবে';
+
+  @override
+  String get backupExportEncryptedButton =>
+      'এনক্রিপ্ট করা ব্যাকআপ ডাউনলোড করুন';
+
+  @override
+  String get backupExportPlainWarning =>
+      'সতর্কতা: আন-এনক্রিপ্ট করা ব্যাকআপ ফাইলে ব্যক্তিগত নোট এবং পোর্টাল অ্যাকাউন্ট প্লেইনটেক্সট ফরম্যাটে থাকে।';
+
+  @override
+  String get backupExportPlainButton => 'পাসফ্রেজ ছাড়া ডাউনলোড করুন';
+
+  @override
+  String backupExportSuccess(String fileName) {
+    return 'ব্যাকআপ সফলভাবে সংরক্ষিত হয়েছে ($fileName)।';
+  }
+
+  @override
+  String get restoreDialogTitle => 'স্টাডি ডেটা রিস্টোর করুন';
+
+  @override
+  String get restorePassphrasePrompt =>
+      'এই ব্যাকআপ ফাইলটি এনক্রিপ্ট করা। আনলক ও প্রিভিউ দেখতে ব্যাকআপ পাসফ্রেজ দিন।';
+
+  @override
+  String get restorePassphraseLabel => 'পাসফ্রেজ';
+
+  @override
+  String get restorePassphraseSubmit => 'আনলক ও প্রিভিউ দেখুন';
+
+  @override
+  String get restorePreviewTitle => 'ব্যাকআপ তথ্যের প্রিভিউ';
+
+  @override
+  String restorePreviewTotalRecords(int count) {
+    return 'মোট রেকর্ড: $countটি';
+  }
+
+  @override
+  String get restoreStrategyMergeTitle =>
+      'মার্জ (বর্তমান তথ্য রেখে নতুন আপডেট যোগ)';
+
+  @override
+  String get restoreStrategyMergeDescription =>
+      'বর্তমান আইডি সংরক্ষিত থাকে। শুধুমাত্র ব্যাকআপের তথ্য নতুন হলে আপডেট হয়। কোনো ডুপ্লিকেট হবে না।';
+
+  @override
+  String get restoreStrategyReplaceTitle =>
+      'ডিভাইসের সমস্ত তথ্য প্রতিস্থাপন করুন';
+
+  @override
+  String get restoreStrategyReplaceDescription =>
+      'ডিভাইসের সমস্ত তথ্য মুছে ফেলে এই ব্যাকআপ ফাইলটি বসিয়ে দেয়। শুধুমাত্র গেস্ট মোডে প্রযোজ্য।';
+
+  @override
+  String get restoreReplaceSafetyBackupNote =>
+      'প্রতিস্থাপন করার আগে আপনার বর্তমান তথ্যের একটি স্বয়ংক্রিয় সেফটি ব্যাকআপ সংরক্ষিত হবে।';
+
+  @override
+  String get restoreReplaceConfirmPrompt => 'নিশ্চিত করতে নিচে REPLACE লিখুন:';
+
+  @override
+  String get restoreReplaceConfirmWord => 'REPLACE';
+
+  @override
+  String get restoreActionButton => 'রিস্টোর সম্পন্ন করুন';
+
+  @override
+  String restoreSuccessMessage(int count) {
+    return 'সফলভাবে $countটি রেকর্ড রিস্টোর হয়েছে।';
+  }
+
+  @override
+  String get restoreErrorFileTooLarge =>
+      'ব্যাকআপ ফাইলের সাইজ সর্বোচ্চ ২৫ মেগাবাইটের বেশি হতে পারবে না।';
+
+  @override
+  String get restoreErrorChecksumMismatch =>
+      'ব্যাকআপ ফাইলটি নষ্ট বা বিকৃত হয়েছে (চেকসাম মিলছে না)।';
+
+  @override
+  String get restoreErrorWrongPassphrase =>
+      'ভুল পাসফ্রেজ অথবা ব্যাকআপ ফাইলটি সঠিক নয়।';
+
+  @override
+  String restoreErrorNewerVersion(String version) {
+    return 'এই ব্যাকআপটি JobPrep-এর নতুন সংস্করণ (v$version) দিয়ে তৈরি। অনুগ্রহ করে অ্যাপ আপডেট করুন।';
+  }
+
+  @override
+  String get backupDialogCancel => 'বাতিল';
+
+  @override
+  String get restoreErrorInvalidFormat => 'ব্যাকআপ ফাইলের ফরম্যাট সঠিক নয়।';
 }

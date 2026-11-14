@@ -11,6 +11,10 @@ import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
 import 'package:job_prep/features/auth/presentation/navigation/auth_redirect.dart';
+import 'package:job_prep/features/backup/domain/utils/backup_time_formatter.dart';
+import 'package:job_prep/features/backup/presentation/providers/backup_providers.dart';
+import 'package:job_prep/features/backup/presentation/utils/backup_flow_helper.dart';
+import 'package:job_prep/features/backup/presentation/widgets/backup_passphrase_dialog.dart';
 
 /// Settings card rendered in guest mode replacing the account profile section.
 class GuestSettingsCard extends ConsumerWidget {
@@ -94,6 +98,7 @@ class GuestSettingsCard extends ConsumerWidget {
     final storageStatusAsync = ref.watch(persistentStorageStatusProvider);
 
     final isPersistent = storageStatusAsync.asData?.value ?? false;
+    final lastBackup = ref.watch(lastBackupTimeProvider);
 
     return GlassCard(
       key: const ValueKey('settings-guest-section-card'),
@@ -172,6 +177,14 @@ class GuestSettingsCard extends ConsumerWidget {
                     ),
                   ),
                 ],
+                SizedBox(height: spacing.xs),
+                Text(
+                  BackupTimeFormatter.format(lastBackup, l10n),
+                  key: const ValueKey('settings-last-backup-text'),
+                  style: textStyles.labelSmall.copyWith(
+                    color: colors.goldAccent,
+                  ),
+                ),
               ],
             ),
           ),
@@ -182,16 +195,17 @@ class GuestSettingsCard extends ConsumerWidget {
             children: [
               GlassButton(
                 key: const ValueKey('settings-guest-backup-btn'),
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      key: const ValueKey('settings-backup-placeholder-snack'),
-                      content: Text(l10n.settingsBackupPlaceholderMessage),
-                    ),
-                  );
-                },
+                onPressed: () => unawaited(showBackupPassphraseDialog(context)),
                 leading: Icon(Icons.backup_outlined, size: spacing.lg),
                 child: Text(l10n.settingsBackupDataButton),
+              ),
+              GlassButton(
+                key: const ValueKey('settings-guest-restore-btn'),
+                onPressed: () => unawaited(
+                  BackupFlowHelper.triggerRestoreFlow(context, ref),
+                ),
+                leading: Icon(Icons.restore_page_outlined, size: spacing.lg),
+                child: Text(l10n.settingsRestoreButton),
               ),
               GlassButton(
                 key: const ValueKey('settings-guest-create-account-btn'),

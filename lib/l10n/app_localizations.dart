@@ -7731,6 +7731,264 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All local data has been erased.'**
   String get eraseDataSuccessMessage;
+
+  /// Label indicating when the last backup was taken
+  ///
+  /// In en, this message translates to:
+  /// **'Last backup: {time}'**
+  String settingsLastBackup(String time);
+
+  /// Shown when no backup has ever been taken
+  ///
+  /// In en, this message translates to:
+  /// **'Never'**
+  String get settingsLastBackupNever;
+
+  /// Shown when last backup was taken today
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get settingsLastBackupToday;
+
+  /// Shown when last backup was taken yesterday
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get settingsLastBackupYesterday;
+
+  /// Relative days ago since last backup
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day ago} other{{count} days ago}}'**
+  String settingsLastBackupDaysAgo(int count);
+
+  /// Gentle in-app reminder card title for scheduled backups
+  ///
+  /// In en, this message translates to:
+  /// **'Time to back up your study data'**
+  String get settingsBackupReminderTitle;
+
+  /// Gentle reminder body with days elapsed and changes count
+  ///
+  /// In en, this message translates to:
+  /// **'Last backup was {days} days ago. You have made {changes} changes since.'**
+  String settingsBackupReminderMessage(int days, int changes);
+
+  /// CTA button in backup reminder banner
+  ///
+  /// In en, this message translates to:
+  /// **'Back up now'**
+  String get settingsBackupReminderAction;
+
+  /// Dismiss button in backup reminder banner
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get settingsBackupReminderDismiss;
+
+  /// Action button to pick and restore a backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Restore from backup'**
+  String get settingsRestoreButton;
+
+  /// Dialog title for exporting a backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Back up study data'**
+  String get backupDialogTitle;
+
+  /// Dialog explanation of backup export
+  ///
+  /// In en, this message translates to:
+  /// **'Create a downloadable backup file of all your circulars, subjects, notes, and study logs.'**
+  String get backupDialogDescription;
+
+  /// Label recommending encryption for backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Encrypt with passphrase (Recommended)'**
+  String get backupEncryptionRecommended;
+
+  /// Warning on irreversible loss if backup passphrase is forgotten
+  ///
+  /// In en, this message translates to:
+  /// **'Protects personal notes and encrypted portal credentials using AES-GCM. If you forget this passphrase, the backup cannot be recovered.'**
+  String get backupEncryptionNote;
+
+  /// Label for backup passphrase input
+  ///
+  /// In en, this message translates to:
+  /// **'Backup passphrase'**
+  String get backupPassphraseLabel;
+
+  /// Label for confirming backup passphrase input
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm passphrase'**
+  String get backupPassphraseConfirmLabel;
+
+  /// Validation error when passphrases do not match
+  ///
+  /// In en, this message translates to:
+  /// **'Passphrases do not match'**
+  String get backupPassphraseMismatch;
+
+  /// Validation error when passphrase is less than 8 characters
+  ///
+  /// In en, this message translates to:
+  /// **'Passphrase must be at least 8 characters'**
+  String get backupPassphraseTooShort;
+
+  /// Button to download AES-GCM encrypted backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Export encrypted backup'**
+  String get backupExportEncryptedButton;
+
+  /// Warning displayed when choosing unencrypted export
+  ///
+  /// In en, this message translates to:
+  /// **'Warning: An unencrypted backup file contains personal study notes and encrypted portal logins in plain JSON format.'**
+  String get backupExportPlainWarning;
+
+  /// Button to download plaintext backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Export without passphrase'**
+  String get backupExportPlainButton;
+
+  /// Snackbar notification after backup completes
+  ///
+  /// In en, this message translates to:
+  /// **'Backup saved successfully ({fileName}).'**
+  String backupExportSuccess(String fileName);
+
+  /// Dialog title for restoring a backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Restore study data'**
+  String get restoreDialogTitle;
+
+  /// Prompt requesting passphrase to decrypt backup
+  ///
+  /// In en, this message translates to:
+  /// **'This backup file is encrypted. Enter the backup passphrase to unlock and preview.'**
+  String get restorePassphrasePrompt;
+
+  /// Label for restore passphrase input
+  ///
+  /// In en, this message translates to:
+  /// **'Passphrase'**
+  String get restorePassphraseLabel;
+
+  /// Button to decrypt backup and show table preview
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock & Preview'**
+  String get restorePassphraseSubmit;
+
+  /// Title above table counts in restore preview dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Backup contents preview'**
+  String get restorePreviewTitle;
+
+  /// Total count of entities found in backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Total records: {count}'**
+  String restorePreviewTotalRecords(int count);
+
+  /// Title for merge restore option
+  ///
+  /// In en, this message translates to:
+  /// **'Merge (Preserve existing, update newer)'**
+  String get restoreStrategyMergeTitle;
+
+  /// Explanation for merge restore option
+  ///
+  /// In en, this message translates to:
+  /// **'Existing IDs are preserved. Records from the backup replace existing ones only when their update timestamp is newer. No duplicates are created.'**
+  String get restoreStrategyMergeDescription;
+
+  /// Title for replace restore option (guest only)
+  ///
+  /// In en, this message translates to:
+  /// **'Replace all data on this device'**
+  String get restoreStrategyReplaceTitle;
+
+  /// Explanation for replace restore option
+  ///
+  /// In en, this message translates to:
+  /// **'Clears all local data on this device and restores the backup. Guest mode only.'**
+  String get restoreStrategyReplaceDescription;
+
+  /// Safety backup guarantee note for Replace mode
+  ///
+  /// In en, this message translates to:
+  /// **'An automatic safety backup will be created and saved before any data is replaced.'**
+  String get restoreReplaceSafetyBackupNote;
+
+  /// Confirmation word typing instruction for Replace mode
+  ///
+  /// In en, this message translates to:
+  /// **'Type REPLACE below to proceed with replacement:'**
+  String get restoreReplaceConfirmPrompt;
+
+  /// Exact confirmation word to type for Replace mode
+  ///
+  /// In en, this message translates to:
+  /// **'REPLACE'**
+  String get restoreReplaceConfirmWord;
+
+  /// Action button executing selected restore strategy
+  ///
+  /// In en, this message translates to:
+  /// **'Restore data'**
+  String get restoreActionButton;
+
+  /// Snackbar confirming successful restore
+  ///
+  /// In en, this message translates to:
+  /// **'Successfully restored {count} records.'**
+  String restoreSuccessMessage(int count);
+
+  /// Error when selected backup file is too large
+  ///
+  /// In en, this message translates to:
+  /// **'Backup file exceeds maximum allowed size (25 MB).'**
+  String get restoreErrorFileTooLarge;
+
+  /// Error when checksum does not match data payload
+  ///
+  /// In en, this message translates to:
+  /// **'Backup file is corrupted or has been tampered with (checksum mismatch).'**
+  String get restoreErrorChecksumMismatch;
+
+  /// Error when backup decryption fails
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect passphrase or invalid backup file.'**
+  String get restoreErrorWrongPassphrase;
+
+  /// Error when backup file is from a newer app version
+  ///
+  /// In en, this message translates to:
+  /// **'This backup was created by a newer version of JobPrep (v{version}). Please update your app to restore this file.'**
+  String restoreErrorNewerVersion(String version);
+
+  /// Cancel button for backup and restore dialogs
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get backupDialogCancel;
+
+  /// Error when backup JSON structure is unrecognized
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid or unreadable backup file format.'**
+  String get restoreErrorInvalidFormat;
 }
 
 class _AppLocalizationsDelegate

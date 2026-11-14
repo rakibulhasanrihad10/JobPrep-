@@ -32,4 +32,8 @@ class UnconfiguredNotificationsRepository implements NotificationsRepository {
   @override
   Future<void> deleteNotification(String notificationId) =>
       Future<void>.error(_notConfiguredError);
+
+  @override
+  Future<AppNotification> insertNotification(AppNotification notification) =>
+      Future<AppNotification>.error(_notConfiguredError);
 }

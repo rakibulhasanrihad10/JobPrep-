@@ -6374,5 +6374,215 @@
   "eraseDataSuccessMessage": "All local data has been erased.",
   "@eraseDataSuccessMessage": {
     "description": "Feedback message after local data is wiped"
+  },
+  "settingsLastBackup": "Last backup: {time}",
+  "@settingsLastBackup": {
+    "description": "Label indicating when the last backup was taken",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsLastBackupNever": "Never",
+  "@settingsLastBackupNever": {
+    "description": "Shown when no backup has ever been taken"
+  },
+  "settingsLastBackupToday": "Today",
+  "@settingsLastBackupToday": {
+    "description": "Shown when last backup was taken today"
+  },
+  "settingsLastBackupYesterday": "Yesterday",
+  "@settingsLastBackupYesterday": {
+    "description": "Shown when last backup was taken yesterday"
+  },
+  "settingsLastBackupDaysAgo": "{count, plural, =1{1 day ago} other{{count} days ago}}",
+  "@settingsLastBackupDaysAgo": {
+    "description": "Relative days ago since last backup",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsBackupReminderTitle": "Time to back up your study data",
+  "@settingsBackupReminderTitle": {
+    "description": "Gentle in-app reminder card title for scheduled backups"
+  },
+  "settingsBackupReminderMessage": "Last backup was {days} days ago. You have made {changes} changes since.",
+  "@settingsBackupReminderMessage": {
+    "description": "Gentle reminder body with days elapsed and changes count",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "changes": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsBackupReminderAction": "Back up now",
+  "@settingsBackupReminderAction": {
+    "description": "CTA button in backup reminder banner"
+  },
+  "settingsBackupReminderDismiss": "Dismiss",
+  "@settingsBackupReminderDismiss": {
+    "description": "Dismiss button in backup reminder banner"
+  },
+  "settingsRestoreButton": "Restore from backup",
+  "@settingsRestoreButton": {
+    "description": "Action button to pick and restore a backup file"
+  },
+  "backupDialogTitle": "Back up study data",
+  "@backupDialogTitle": {
+    "description": "Dialog title for exporting a backup file"
+  },
+  "backupDialogDescription": "Create a downloadable backup file of all your circulars, subjects, notes, and study logs.",
+  "@backupDialogDescription": {
+    "description": "Dialog explanation of backup export"
+  },
+  "backupEncryptionRecommended": "Encrypt with passphrase (Recommended)",
+  "@backupEncryptionRecommended": {
+    "description": "Label recommending encryption for backup file"
+  },
+  "backupEncryptionNote": "Protects personal notes and encrypted portal credentials using AES-GCM. If you forget this passphrase, the backup cannot be recovered.",
+  "@backupEncryptionNote": {
+    "description": "Warning on irreversible loss if backup passphrase is forgotten"
+  },
+  "backupPassphraseLabel": "Backup passphrase",
+  "@backupPassphraseLabel": {
+    "description": "Label for backup passphrase input"
+  },
+  "backupPassphraseConfirmLabel": "Confirm passphrase",
+  "@backupPassphraseConfirmLabel": {
+    "description": "Label for confirming backup passphrase input"
+  },
+  "backupPassphraseMismatch": "Passphrases do not match",
+  "@backupPassphraseMismatch": {
+    "description": "Validation error when passphrases do not match"
+  },
+  "backupPassphraseTooShort": "Passphrase must be at least 8 characters",
+  "@backupPassphraseTooShort": {
+    "description": "Validation error when passphrase is less than 8 characters"
+  },
+  "backupExportEncryptedButton": "Export encrypted backup",
+  "@backupExportEncryptedButton": {
+    "description": "Button to download AES-GCM encrypted backup file"
+  },
+  "backupExportPlainWarning": "Warning: An unencrypted backup file contains personal study notes and encrypted portal logins in plain JSON format.",
+  "@backupExportPlainWarning": {
+    "description": "Warning displayed when choosing unencrypted export"
+  },
+  "backupExportPlainButton": "Export without passphrase",
+  "@backupExportPlainButton": {
+    "description": "Button to download plaintext backup file"
+  },
+  "backupExportSuccess": "Backup saved successfully ({fileName}).",
+  "@backupExportSuccess": {
+    "description": "Snackbar notification after backup completes",
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "restoreDialogTitle": "Restore study data",
+  "@restoreDialogTitle": {
+    "description": "Dialog title for restoring a backup file"
+  },
+  "restorePassphrasePrompt": "This backup file is encrypted. Enter the backup passphrase to unlock and preview.",
+  "@restorePassphrasePrompt": {
+    "description": "Prompt requesting passphrase to decrypt backup"
+  },
+  "restorePassphraseLabel": "Passphrase",
+  "@restorePassphraseLabel": {
+    "description": "Label for restore passphrase input"
+  },
+  "restorePassphraseSubmit": "Unlock & Preview",
+  "@restorePassphraseSubmit": {
+    "description": "Button to decrypt backup and show table preview"
+  },
+  "restorePreviewTitle": "Backup contents preview",
+  "@restorePreviewTitle": {
+    "description": "Title above table counts in restore preview dialog"
+  },
+  "restorePreviewTotalRecords": "Total records: {count}",
+  "@restorePreviewTotalRecords": {
+    "description": "Total count of entities found in backup file",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "restoreStrategyMergeTitle": "Merge (Preserve existing, update newer)",
+  "@restoreStrategyMergeTitle": {
+    "description": "Title for merge restore option"
+  },
+  "restoreStrategyMergeDescription": "Existing IDs are preserved. Records from the backup replace existing ones only when their update timestamp is newer. No duplicates are created.",
+  "@restoreStrategyMergeDescription": {
+    "description": "Explanation for merge restore option"
+  },
+  "restoreStrategyReplaceTitle": "Replace all data on this device",
+  "@restoreStrategyReplaceTitle": {
+    "description": "Title for replace restore option (guest only)"
+  },
+  "restoreStrategyReplaceDescription": "Clears all local data on this device and restores the backup. Guest mode only.",
+  "@restoreStrategyReplaceDescription": {
+    "description": "Explanation for replace restore option"
+  },
+  "restoreReplaceSafetyBackupNote": "An automatic safety backup will be created and saved before any data is replaced.",
+  "@restoreReplaceSafetyBackupNote": {
+    "description": "Safety backup guarantee note for Replace mode"
+  },
+  "restoreReplaceConfirmPrompt": "Type REPLACE below to proceed with replacement:",
+  "@restoreReplaceConfirmPrompt": {
+    "description": "Confirmation word typing instruction for Replace mode"
+  },
+  "restoreReplaceConfirmWord": "REPLACE",
+  "@restoreReplaceConfirmWord": {
+    "description": "Exact confirmation word to type for Replace mode"
+  },
+  "restoreActionButton": "Restore data",
+  "@restoreActionButton": {
+    "description": "Action button executing selected restore strategy"
+  },
+  "restoreSuccessMessage": "Successfully restored {count} records.",
+  "@restoreSuccessMessage": {
+    "description": "Snackbar confirming successful restore",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "restoreErrorFileTooLarge": "Backup file exceeds maximum allowed size (25 MB).",
+  "@restoreErrorFileTooLarge": {
+    "description": "Error when selected backup file is too large"
+  },
+  "restoreErrorChecksumMismatch": "Backup file is corrupted or has been tampered with (checksum mismatch).",
+  "@restoreErrorChecksumMismatch": {
+    "description": "Error when checksum does not match data payload"
+  },
+  "restoreErrorWrongPassphrase": "Incorrect passphrase or invalid backup file.",
+  "@restoreErrorWrongPassphrase": {
+    "description": "Error when backup decryption fails"
+  },
+  "restoreErrorNewerVersion": "This backup was created by a newer version of JobPrep (v{version}). Please update your app to restore this file.",
+  "@restoreErrorNewerVersion": {
+    "description": "Error when backup file is from a newer app version",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "backupDialogCancel": "Cancel",
+  "@backupDialogCancel": {
+    "description": "Cancel button for backup and restore dialogs"
+  },
+  "restoreErrorInvalidFormat": "Invalid or unreadable backup file format.",
+  "@restoreErrorInvalidFormat": {
+    "description": "Error when backup JSON structure is unrecognized"
   }
 }

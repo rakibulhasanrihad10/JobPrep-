@@ -78,16 +78,16 @@ void main() {
       );
     });
 
-    testWidgets('tapping Back up my data shows placeholder snackbar',
+    testWidgets('tapping Back up my data opens real backup export dialog',
         (tester) async {
       await tester.pumpWidget(buildTestSettings());
       await tester.pumpAndSettle();
 
       await tester.tap(find.byKey(const ValueKey('settings-guest-backup-btn')));
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       expect(
-        find.byKey(const ValueKey('settings-backup-placeholder-snack')),
+        find.byKey(const ValueKey('backup-passphrase-dialog')),
         findsOneWidget,
       );
     });

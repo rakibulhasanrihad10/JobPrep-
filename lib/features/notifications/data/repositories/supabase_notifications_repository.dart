@@ -142,6 +142,25 @@ class SupabaseNotificationsRepository implements NotificationsRepository {
     }
   }
 
+  @override
+  Future<AppNotification> insertNotification(
+    AppNotification notification,
+  ) async {
+    final userId = _requireUserId();
+    try {
+      final json = NotificationMapper.toJson(notification)
+        ..['user_id'] = userId;
+      final row = await _client
+          .from(_table)
+          .upsert(json)
+          .select(NotificationMapper.selectColumns)
+          .single();
+      return NotificationMapper.fromJson(Map<String, dynamic>.from(row));
+    } catch (error) {
+      throw NotificationErrorMapper.map(error);
+    }
+  }
+
   String _requireUserId() {
     final userId = _client.auth.currentUser?.id;
     if (userId == null || userId.isEmpty) {

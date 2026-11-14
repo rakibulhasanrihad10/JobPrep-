@@ -7,6 +7,7 @@ import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/fade_slide_in.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
+import 'package:job_prep/features/backup/presentation/widgets/backup_reminder_banner.dart';
 import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
 import 'package:job_prep/features/onboarding/presentation/providers/onboarding_status_provider.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
@@ -136,6 +137,7 @@ class _TodayOrderedBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        const BackupReminderBanner(),
         if (showTips) ...[
           const FadeSlideIn(
             child: OnboardingTodayTipsCard(),

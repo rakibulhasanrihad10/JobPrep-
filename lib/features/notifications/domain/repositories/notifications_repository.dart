@@ -18,4 +18,7 @@ abstract interface class NotificationsRepository {
 
   /// Permanently removes [notificationId].
   Future<void> deleteNotification(String notificationId);
+
+  /// Inserts or restores [notification] into the notification store.
+  Future<AppNotification> insertNotification(AppNotification notification);
 }
