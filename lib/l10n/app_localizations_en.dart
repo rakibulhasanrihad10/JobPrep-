@@ -4574,4 +4574,117 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get legalTermsOfServiceLink => 'Terms of Service';
+
+  @override
+  String get authContinueWithoutAccount => 'Continue without account';
+
+  @override
+  String get authDataStaysOnDevice => 'Your data stays on this device.';
+
+  @override
+  String get guestConfirmationTitle => 'Continue without an account';
+
+  @override
+  String get guestConfirmDeviceOnly =>
+      'Data is stored only on this device and browser.';
+
+  @override
+  String get guestConfirmDataLoss =>
+      'Clearing browser data or uninstalling the app deletes it permanently.';
+
+  @override
+  String get guestConfirmNoSync =>
+      'There is no cloud sync and no email reminders.';
+
+  @override
+  String get guestConfirmMoveDataLater =>
+      'You can create an account later and move your data across.';
+
+  @override
+  String get guestConfirmUnderstandButton => 'I understand';
+
+  @override
+  String get guestConfirmCancelButton => 'Go back';
+
+  @override
+  String get accountGateCloudSyncTitle => 'Cloud Sync requires an account';
+
+  @override
+  String get accountGateEmailRemindersTitle =>
+      'Email reminders require an account';
+
+  @override
+  String get accountGateFileAttachmentsTitle =>
+      'File attachments require an account';
+
+  @override
+  String get accountGateDeleteAccountTitle =>
+      'Account deletion requires a registered account';
+
+  @override
+  String get accountGateDescription =>
+      'Create a free JobPrep account to sync across devices, receive reminders, and upload files.';
+
+  @override
+  String get accountGateCreateAccountButton => 'Create an account to use this';
+
+  @override
+  String get settingsGuestSectionTitle => 'Guest Mode';
+
+  @override
+  String get settingsGuestSectionSubtitle =>
+      'Your data is stored locally on this device.';
+
+  @override
+  String get settingsStorageStatusTitle => 'Storage status';
+
+  @override
+  String get settingsStoragePersistent =>
+      'Persistent (Protected from automatic clearing)';
+
+  @override
+  String get settingsStorageTransient => 'Transient browser storage';
+
+  @override
+  String get settingsStorageSafariWarning =>
+      'Browsers such as Safari on iPhone may clear site data after a period of inactivity unless the site is added to the Home Screen.';
+
+  @override
+  String get settingsBackupDataButton => 'Back up my data';
+
+  @override
+  String get settingsBackupPlaceholderMessage =>
+      'Backup and export features will be fully available in Phase 9C.';
+
+  @override
+  String get settingsCreateAccountButton => 'Create an account';
+
+  @override
+  String get settingsEraseDataButton => 'Erase all data on this device';
+
+  @override
+  String get eraseDataDialog1Title => 'Erase all local data?';
+
+  @override
+  String get eraseDataDialog1Message =>
+      'This will permanently delete all circulars, subjects, study progress, and settings stored on this device. This action cannot be undone.';
+
+  @override
+  String get eraseDataDialog1Confirm => 'Continue';
+
+  @override
+  String get eraseDataDialogCancel => 'Cancel';
+
+  @override
+  String get eraseDataDialog2Title => 'Are you absolutely sure?';
+
+  @override
+  String get eraseDataDialog2Message =>
+      'Tap confirm below to permanently wipe all JobPrep data from this device.';
+
+  @override
+  String get eraseDataDialog2Confirm => 'Delete everything';
+
+  @override
+  String get eraseDataSuccessMessage => 'All local data has been erased.';
 }

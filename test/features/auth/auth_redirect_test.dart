@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:job_prep/core/data/app_mode.dart';
 import 'package:job_prep/core/router/app_router.dart';
 import 'package:job_prep/core/theme/theme_controller.dart';
 import 'package:job_prep/features/auth/domain/entities/auth_session_state.dart';
@@ -104,6 +105,80 @@ void main() {
 
       expect(
         resolveAuthRedirect(authState: recovery, location: '/reset-password'),
+        isNull,
+      );
+    });
+
+    test('guest users may use the whole app, and /login stays reachable', () {
+      for (final path in [
+        '/today',
+        '/dashboard',
+        '/circulars',
+        '/inbox',
+        '/prep',
+        '/calendar',
+        '/settings',
+        '/notifications',
+        '/weekly-review',
+        '/login',
+      ]) {
+        expect(
+          resolveAuthRedirect(
+            authState: signedOut,
+            appMode: AppMode.guest,
+            location: path,
+          ),
+          isNull,
+          reason: 'Expected guest access to $path to be allowed',
+        );
+      }
+
+      // Root and onboarding redirect to /today when onboarded.
+      expect(
+        resolveAuthRedirect(
+          authState: signedOut,
+          appMode: AppMode.guest,
+          location: '/',
+        ),
+        equals('/today'),
+      );
+      expect(
+        resolveAuthRedirect(
+          authState: signedOut,
+          appMode: AppMode.guest,
+          location: '/onboarding',
+        ),
+        equals('/today'),
+      );
+    });
+
+    test('guest users requiring onboarding are routed to /onboarding', () {
+      expect(
+        resolveAuthRedirect(
+          authState: signedOut,
+          appMode: AppMode.guest,
+          location: '/today',
+          needsOnboarding: true,
+        ),
+        equals('/onboarding'),
+      );
+      expect(
+        resolveAuthRedirect(
+          authState: signedOut,
+          appMode: AppMode.guest,
+          location: '/onboarding',
+          needsOnboarding: true,
+        ),
+        isNull,
+      );
+      // Even if onboarding is needed, /login is reachable.
+      expect(
+        resolveAuthRedirect(
+          authState: signedOut,
+          appMode: AppMode.guest,
+          location: '/login',
+          needsOnboarding: true,
+        ),
         isNull,
       );
     });

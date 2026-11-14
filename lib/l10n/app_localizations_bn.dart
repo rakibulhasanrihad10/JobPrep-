@@ -4568,4 +4568,119 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get legalTermsOfServiceLink => 'ব্যবহারের শর্তাবলি';
+
+  @override
+  String get authContinueWithoutAccount => 'অ্যাকাউন্ট ছাড়া চালিয়ে যান';
+
+  @override
+  String get authDataStaysOnDevice => 'আপনার ডেটা কেবল এই ডিভাইসেই থাকবে।';
+
+  @override
+  String get guestConfirmationTitle => 'অ্যাকাউন্ট ছাড়াই চালিয়ে যান';
+
+  @override
+  String get guestConfirmDeviceOnly =>
+      'ডেটা শুধুমাত্র এই ডিভাইস এবং ব্রাউজারে সংরক্ষিত থাকবে।';
+
+  @override
+  String get guestConfirmDataLoss =>
+      'ব্রাউজার ডেটা মুছে ফেললে বা অ্যাপ আনইনস্টল করলে ডেটা চিরতরে মুছে যাবে।';
+
+  @override
+  String get guestConfirmNoSync =>
+      'অন্য ডিভাইসে কোনো সিঙ্ক এবং ইমেল রিমাইন্ডার সুবিধা থাকবে না।';
+
+  @override
+  String get guestConfirmMoveDataLater =>
+      'পরবর্তীতে যেকোনো সময় অ্যাকাউন্ট তৈরি করে ডেটা স্থানান্তরিত করতে পারবেন।';
+
+  @override
+  String get guestConfirmUnderstandButton => 'আমি বুঝতে পেরেছি';
+
+  @override
+  String get guestConfirmCancelButton => 'ফিরে যান';
+
+  @override
+  String get accountGateCloudSyncTitle =>
+      'ক্লাউড সিঙ্কের জন্য অ্যাকাউন্ট প্রয়োজন';
+
+  @override
+  String get accountGateEmailRemindersTitle =>
+      'ইমেল রিমাইন্ডারের জন্য অ্যাকাউন্ট প্রয়োজন';
+
+  @override
+  String get accountGateFileAttachmentsTitle =>
+      'ফাইল সংযুক্তির জন্য অ্যাকাউন্ট প্রয়োজন';
+
+  @override
+  String get accountGateDeleteAccountTitle =>
+      'অ্যাকাউন্ট মোছার সুবিধা শুধু নিবন্ধিত অ্যাকাউন্টের জন্য';
+
+  @override
+  String get accountGateDescription =>
+      'অন্য ডিভাইসে সিঙ্ক, রিমাইন্ডার এবং ফাইল আপলোডের সুবিধা পেতে একটি ফ্রি জবপ্রেপ অ্যাকাউন্ট তৈরি করুন।';
+
+  @override
+  String get accountGateCreateAccountButton =>
+      'ব্যবহার করতে একটি অ্যাকাউন্ট তৈরি করুন';
+
+  @override
+  String get settingsGuestSectionTitle => 'গেস্ট মোড';
+
+  @override
+  String get settingsGuestSectionSubtitle =>
+      'আপনার ডেটা স্থানীয়ভাবে এই ডিভাইসে সংরক্ষিত রয়েছে।';
+
+  @override
+  String get settingsStorageStatusTitle => 'স্টোরেজ স্থিতি';
+
+  @override
+  String get settingsStoragePersistent =>
+      'স্থায়ী (স্বয়ংক্রিয়ভাবে মুছে যাওয়া থেকে সুরক্ষিত)';
+
+  @override
+  String get settingsStorageTransient => 'অস্থায়ী ব্রাউজার স্টোরেজ';
+
+  @override
+  String get settingsStorageSafariWarning =>
+      'আইফোনে সাফারি ব্রাউজারে হোম স্ক্রিনে যুক্ত না করলে দীর্ঘ সময় নিষ্ক্রিয় থাকলে ডেটা মুছে যেতে পারে।';
+
+  @override
+  String get settingsBackupDataButton => 'আমার ডেটা ব্যাকআপ নিন';
+
+  @override
+  String get settingsBackupPlaceholderMessage =>
+      'ব্যাকআপ এবং এক্সপোর্ট সুবিধা ফেজ ৯সি-তে সম্পূর্ণ উপলব্ধ হবে।';
+
+  @override
+  String get settingsCreateAccountButton => 'অ্যাকাউন্ট তৈরি করুন';
+
+  @override
+  String get settingsEraseDataButton => 'এই ডিভাইসের সমস্ত ডেটা মুছে ফেলুন';
+
+  @override
+  String get eraseDataDialog1Title => 'সমস্ত লোকাল ডেটা মুছে ফেলবেন?';
+
+  @override
+  String get eraseDataDialog1Message =>
+      'এটি এই ডিভাইসে সংরক্ষিত সমস্ত সার্কুলার, বিষয়, স্টাডি অগ্রগতি এবং সেটিংস স্থায়ীভাবে মুছে ফেলবে। এটি আর ফিরিয়ে আনা যাবে না।';
+
+  @override
+  String get eraseDataDialog1Confirm => 'এগিয়ে যান';
+
+  @override
+  String get eraseDataDialogCancel => 'বাতিল';
+
+  @override
+  String get eraseDataDialog2Title => 'আপনি কি পুরোপুরি নিশ্চিত?';
+
+  @override
+  String get eraseDataDialog2Message =>
+      'এই ডিভাইস থেকে সমস্ত জবপ্রেপ ডেটা স্থায়ীভাবে মুছে ফেলতে নিচে নিশ্চিত করুন।';
+
+  @override
+  String get eraseDataDialog2Confirm => 'সবকিছু মুছে ফেলুন';
+
+  @override
+  String get eraseDataSuccessMessage => 'সমস্ত লোকাল ডেটা মুছে ফেলা হয়েছে।';
 }

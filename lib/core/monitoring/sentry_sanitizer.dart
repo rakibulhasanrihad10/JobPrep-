@@ -7,7 +7,9 @@ abstract final class SentrySanitizer {
 
   static final RegExp _sensitiveKeyPattern = RegExp(
     '(password|passphrase|secret|token|apikey|api_key|authorization|'
-    'cookie|signed|bearer|service_role|eyj[a-zA-Z0-9_-]{8,})',
+    'cookie|signed|bearer|service_role|eyj[a-zA-Z0-9_-]{8,}|'
+    'title|circular_title|note|notes|description|reference_label|'
+    r'username|email|(?:^|_)content(?:$|_))',
     caseSensitive: false,
   );
 
@@ -41,6 +43,26 @@ abstract final class SentrySanitizer {
       for (final ex in event.exceptions!) {
         ex.value = ex.value == null ? null : scrubText(ex.value!);
       }
+    }
+
+    // Sentry extra data is sanitized for backward compatibility.
+    // ignore: deprecated_member_use
+    if (event.extra != null) {
+      // Sentry extra data is sanitized for backward compatibility.
+      // ignore: deprecated_member_use
+      event.extra = _scrubMap(event.extra);
+    }
+
+    if (event.tags != null) {
+      final cleanTags = <String, String>{};
+      for (final entry in event.tags!.entries) {
+        if (_sensitiveKeyPattern.hasMatch(entry.key)) {
+          cleanTags[entry.key] = _redacted;
+        } else {
+          cleanTags[entry.key] = scrubText(entry.value);
+        }
+      }
+      event.tags = cleanTags;
     }
 
     return event;

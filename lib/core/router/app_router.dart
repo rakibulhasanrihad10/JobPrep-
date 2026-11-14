@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:job_prep/core/data/app_mode.dart';
 import 'package:job_prep/features/auth/domain/entities/auth_session_state.dart';
 import 'package:job_prep/features/auth/presentation/navigation/auth_redirect.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
@@ -41,6 +42,14 @@ class _AuthRouterRefreshListenable extends ChangeNotifier {
         }
       },
     );
+    _appModeSubscription = _ref.listen<AppMode?>(
+      appModeProvider,
+      (previous, next) {
+        if (previous != next) {
+          notifyListeners();
+        }
+      },
+    );
     _onboardingSubscription = _ref.listen<AsyncValue<OnboardingStatus>>(
       onboardingStatusProvider,
       (previous, next) {
@@ -55,12 +64,14 @@ class _AuthRouterRefreshListenable extends ChangeNotifier {
 
   final Ref _ref;
   late final ProviderSubscription<AuthSessionState> _authSubscription;
+  late final ProviderSubscription<AppMode?> _appModeSubscription;
   late final ProviderSubscription<AsyncValue<OnboardingStatus>>
       _onboardingSubscription;
 
   @override
   void dispose() {
     _authSubscription.close();
+    _appModeSubscription.close();
     _onboardingSubscription.close();
     super.dispose();
   }
@@ -83,6 +94,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           onboardingAsync.asData?.value.needsOnboarding ?? false;
       final targetPath = resolveAuthRedirect(
         authState: ref.read(authSessionProvider),
+        appMode: ref.read(appModeProvider),
         location: state.uri.path,
         needsOnboarding: needsOnboarding,
       );

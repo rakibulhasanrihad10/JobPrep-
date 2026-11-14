@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
+import 'package:job_prep/core/widgets/account_feature_gate.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
 import 'package:job_prep/features/settings/domain/utils/data_export_builder.dart';
@@ -80,20 +81,24 @@ class DataSettingsCard extends ConsumerWidget {
                 leading: Icon(Icons.data_object_rounded, size: spacing.lg),
                 child: Text(l10n.settingsExportJsonButton),
               ),
-              GlassButton(
-                key: const ValueKey('settings-delete-account-btn'),
-                onPressed: exportState.isExporting
-                    ? null
-                    : () => unawaited(showDeleteAccountDialog(context)),
-                leading: Icon(
-                  Icons.delete_forever_outlined,
-                  size: spacing.lg,
-                  color: colors.danger,
-                ),
-                child: Text(
-                  l10n.settingsDeleteAccountButton,
-                  style: tokens.textStyles.labelLarge.copyWith(
+              AccountFeatureGate(
+                feature: AccountOnlyFeature.deleteAccount,
+                compact: true,
+                child: GlassButton(
+                  key: const ValueKey('settings-delete-account-btn'),
+                  onPressed: exportState.isExporting
+                      ? null
+                      : () => unawaited(showDeleteAccountDialog(context)),
+                  leading: Icon(
+                    Icons.delete_forever_outlined,
+                    size: spacing.lg,
                     color: colors.danger,
+                  ),
+                  child: Text(
+                    l10n.settingsDeleteAccountButton,
+                    style: tokens.textStyles.labelLarge.copyWith(
+                      color: colors.danger,
+                    ),
                   ),
                 ),
               ),

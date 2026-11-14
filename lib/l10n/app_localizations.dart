@@ -7533,6 +7533,204 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Terms of Service'**
   String get legalTermsOfServiceLink;
+
+  /// Secondary quieter button on login screen to use app in guest mode
+  ///
+  /// In en, this message translates to:
+  /// **'Continue without account'**
+  String get authContinueWithoutAccount;
+
+  /// Subtitle below Continue without account button
+  ///
+  /// In en, this message translates to:
+  /// **'Your data stays on this device.'**
+  String get authDataStaysOnDevice;
+
+  /// Title of the guest mode confirmation sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Continue without an account'**
+  String get guestConfirmationTitle;
+
+  /// First point in guest confirmation sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Data is stored only on this device and browser.'**
+  String get guestConfirmDeviceOnly;
+
+  /// Second point in guest confirmation sheet warning about data loss
+  ///
+  /// In en, this message translates to:
+  /// **'Clearing browser data or uninstalling the app deletes it permanently.'**
+  String get guestConfirmDataLoss;
+
+  /// Third point in guest confirmation sheet about missing features
+  ///
+  /// In en, this message translates to:
+  /// **'There is no cloud sync and no email reminders.'**
+  String get guestConfirmNoSync;
+
+  /// Fourth point in guest confirmation sheet about future account upgrade
+  ///
+  /// In en, this message translates to:
+  /// **'You can create an account later and move your data across.'**
+  String get guestConfirmMoveDataLater;
+
+  /// Explicit acknowledgment button in guest confirmation sheet
+  ///
+  /// In en, this message translates to:
+  /// **'I understand'**
+  String get guestConfirmUnderstandButton;
+
+  /// Cancel button in guest confirmation sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Go back'**
+  String get guestConfirmCancelButton;
+
+  /// Feature gate title for cloud sync
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud Sync requires an account'**
+  String get accountGateCloudSyncTitle;
+
+  /// Feature gate title for email reminders
+  ///
+  /// In en, this message translates to:
+  /// **'Email reminders require an account'**
+  String get accountGateEmailRemindersTitle;
+
+  /// Feature gate title for circular file attachments
+  ///
+  /// In en, this message translates to:
+  /// **'File attachments require an account'**
+  String get accountGateFileAttachmentsTitle;
+
+  /// Feature gate title for account deletion
+  ///
+  /// In en, this message translates to:
+  /// **'Account deletion requires a registered account'**
+  String get accountGateDeleteAccountTitle;
+
+  /// Explanation shown inside account-only feature gate
+  ///
+  /// In en, this message translates to:
+  /// **'Create a free JobPrep account to sync across devices, receive reminders, and upload files.'**
+  String get accountGateDescription;
+
+  /// Action button in account-only feature gate leading to login/signup
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account to use this'**
+  String get accountGateCreateAccountButton;
+
+  /// Section header in Settings when app is running in guest mode
+  ///
+  /// In en, this message translates to:
+  /// **'Guest Mode'**
+  String get settingsGuestSectionTitle;
+
+  /// Subtitle explaining guest mode in Settings
+  ///
+  /// In en, this message translates to:
+  /// **'Your data is stored locally on this device.'**
+  String get settingsGuestSectionSubtitle;
+
+  /// Label for device storage persistence status in guest settings
+  ///
+  /// In en, this message translates to:
+  /// **'Storage status'**
+  String get settingsStorageStatusTitle;
+
+  /// Storage status indicating browser persistent storage was granted
+  ///
+  /// In en, this message translates to:
+  /// **'Persistent (Protected from automatic clearing)'**
+  String get settingsStoragePersistent;
+
+  /// Storage status indicating standard transient browser storage
+  ///
+  /// In en, this message translates to:
+  /// **'Transient browser storage'**
+  String get settingsStorageTransient;
+
+  /// Warning shown on web regarding Safari 7-day storage eviction unless added to home screen
+  ///
+  /// In en, this message translates to:
+  /// **'Browsers such as Safari on iPhone may clear site data after a period of inactivity unless the site is added to the Home Screen.'**
+  String get settingsStorageSafariWarning;
+
+  /// Placeholder button in guest settings for future data backup
+  ///
+  /// In en, this message translates to:
+  /// **'Back up my data'**
+  String get settingsBackupDataButton;
+
+  /// Snackbar message shown when tapping Back up my data in Phase 9B
+  ///
+  /// In en, this message translates to:
+  /// **'Backup and export features will be fully available in Phase 9C.'**
+  String get settingsBackupPlaceholderMessage;
+
+  /// Button in guest settings to navigate to login/signup
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account'**
+  String get settingsCreateAccountButton;
+
+  /// Destructive button to wipe all local data from the device
+  ///
+  /// In en, this message translates to:
+  /// **'Erase all data on this device'**
+  String get settingsEraseDataButton;
+
+  /// First confirmation dialog title for erasing local data
+  ///
+  /// In en, this message translates to:
+  /// **'Erase all local data?'**
+  String get eraseDataDialog1Title;
+
+  /// First confirmation dialog message explaining permanent deletion
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently delete all circulars, subjects, study progress, and settings stored on this device. This action cannot be undone.'**
+  String get eraseDataDialog1Message;
+
+  /// Button to proceed to final erase confirmation
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get eraseDataDialog1Confirm;
+
+  /// Cancel button on erase confirmation dialogs
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get eraseDataDialogCancel;
+
+  /// Second confirmation dialog title for erasing local data
+  ///
+  /// In en, this message translates to:
+  /// **'Are you absolutely sure?'**
+  String get eraseDataDialog2Title;
+
+  /// Second confirmation dialog message warning of immediate wipe
+  ///
+  /// In en, this message translates to:
+  /// **'Tap confirm below to permanently wipe all JobPrep data from this device.'**
+  String get eraseDataDialog2Message;
+
+  /// Final confirmation button to wipe all local data
+  ///
+  /// In en, this message translates to:
+  /// **'Delete everything'**
+  String get eraseDataDialog2Confirm;
+
+  /// Feedback message after local data is wiped
+  ///
+  /// In en, this message translates to:
+  /// **'All local data has been erased.'**
+  String get eraseDataSuccessMessage;
 }
 
 class _AppLocalizationsDelegate

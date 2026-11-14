@@ -125,8 +125,9 @@ class E2ETestHarness {
   }
 
   /// Builds a [ProviderScope] configured with all repository overrides.
-  Widget buildApp() {
+  Widget buildApp({Key? key}) {
     return ProviderScope(
+      key: key,
       overrides: [
         sharedPreferencesProvider.overrideWithValue(prefs),
         authRepositoryProvider.overrideWithValue(authRepo),

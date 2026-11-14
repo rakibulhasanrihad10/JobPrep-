@@ -51,4 +51,13 @@ class AppDatabase extends _$AppDatabase {
           await m.createAll();
         },
       );
+
+  /// Completely wipes all local tables in a single transaction.
+  Future<void> eraseAllData() async {
+    await transaction(() async {
+      for (final table in allTables) {
+        await delete(table).go();
+      }
+    });
+  }
 }

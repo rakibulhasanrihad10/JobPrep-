@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/data/app_mode.dart';
 
 /// Supported data source execution targets for application repositories.
 enum DataSourceMode {
@@ -12,7 +13,13 @@ enum DataSourceMode {
 /// Riverpod notifier managing the active [DataSourceMode].
 class DataSourceModeNotifier extends Notifier<DataSourceMode> {
   @override
-  DataSourceMode build() => DataSourceMode.cloud;
+  DataSourceMode build() {
+    final mode = ref.watch(appModeProvider);
+    if (mode == AppMode.guest) {
+      return DataSourceMode.local;
+    }
+    return DataSourceMode.cloud;
+  }
 
   /// Switches the active repository target mode.
   void setMode(DataSourceMode mode) {

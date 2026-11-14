@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_text_field.dart';
-import 'package:job_prep/features/auth/presentation/navigation/auth_redirect.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_form_controller.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_form_state.dart';
 import 'package:job_prep/features/auth/presentation/utils/auth_failure_l10n.dart';
 import 'package:job_prep/features/auth/presentation/widgets/auth_action_button.dart';
 import 'package:job_prep/features/auth/presentation/widgets/auth_confirmation_view.dart';
+import 'package:job_prep/features/auth/presentation/widgets/auth_legal_links.dart';
 import 'package:job_prep/features/auth/presentation/widgets/auth_mode_toggle_footer.dart';
 import 'package:job_prep/features/auth/presentation/widgets/auth_page_shell.dart';
 import 'package:job_prep/features/auth/presentation/widgets/auth_status_banner.dart';
+import 'package:job_prep/features/auth/presentation/widgets/guest_login_button.dart';
 
 /// Authentication screen supporting Email Sign-In, Account Creation,
 /// Forgot Password recovery requests, and Google OAuth sign-in.
@@ -254,6 +254,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     .read(authFormControllerProvider.notifier)
                     .signInWithGoogle(),
               ),
+              SizedBox(height: spacing.md),
+              GuestLoginButton(isDisabled: formState.isLoading),
             ],
             SizedBox(height: spacing.lg),
             AuthModeToggleFooter(
@@ -262,41 +264,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               onSwitchMode: _switchMode,
             ),
             SizedBox(height: spacing.sm),
-            Wrap(
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                TextButton(
-                  key: const ValueKey('login-privacy-link'),
-                  onPressed: () => context.go(AppRoutePaths.privacy),
-                  child: Text(
-                    l10n.legalPrivacyPolicyLink,
-                    style: textStyles.bodySmall.copyWith(
-                      color: colors.textSecondary,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: spacing.xs),
-                  child: Text(
-                    '•',
-                    style: textStyles.bodySmall.copyWith(
-                      color: colors.textSecondary,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  key: const ValueKey('login-terms-link'),
-                  onPressed: () => context.go(AppRoutePaths.terms),
-                  child: Text(
-                    l10n.legalTermsOfServiceLink,
-                    style: textStyles.bodySmall.copyWith(
-                      color: colors.textSecondary,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            const AuthLegalLinks(),
           ],
         ),
       ),

@@ -6242,5 +6242,137 @@
   "legalTermsOfServiceLink": "Terms of Service",
   "@legalTermsOfServiceLink": {
     "description": "Navigation link to terms of service"
+  },
+  "authContinueWithoutAccount": "Continue without account",
+  "@authContinueWithoutAccount": {
+    "description": "Secondary quieter button on login screen to use app in guest mode"
+  },
+  "authDataStaysOnDevice": "Your data stays on this device.",
+  "@authDataStaysOnDevice": {
+    "description": "Subtitle below Continue without account button"
+  },
+  "guestConfirmationTitle": "Continue without an account",
+  "@guestConfirmationTitle": {
+    "description": "Title of the guest mode confirmation sheet"
+  },
+  "guestConfirmDeviceOnly": "Data is stored only on this device and browser.",
+  "@guestConfirmDeviceOnly": {
+    "description": "First point in guest confirmation sheet"
+  },
+  "guestConfirmDataLoss": "Clearing browser data or uninstalling the app deletes it permanently.",
+  "@guestConfirmDataLoss": {
+    "description": "Second point in guest confirmation sheet warning about data loss"
+  },
+  "guestConfirmNoSync": "There is no cloud sync and no email reminders.",
+  "@guestConfirmNoSync": {
+    "description": "Third point in guest confirmation sheet about missing features"
+  },
+  "guestConfirmMoveDataLater": "You can create an account later and move your data across.",
+  "@guestConfirmMoveDataLater": {
+    "description": "Fourth point in guest confirmation sheet about future account upgrade"
+  },
+  "guestConfirmUnderstandButton": "I understand",
+  "@guestConfirmUnderstandButton": {
+    "description": "Explicit acknowledgment button in guest confirmation sheet"
+  },
+  "guestConfirmCancelButton": "Go back",
+  "@guestConfirmCancelButton": {
+    "description": "Cancel button in guest confirmation sheet"
+  },
+  "accountGateCloudSyncTitle": "Cloud Sync requires an account",
+  "@accountGateCloudSyncTitle": {
+    "description": "Feature gate title for cloud sync"
+  },
+  "accountGateEmailRemindersTitle": "Email reminders require an account",
+  "@accountGateEmailRemindersTitle": {
+    "description": "Feature gate title for email reminders"
+  },
+  "accountGateFileAttachmentsTitle": "File attachments require an account",
+  "@accountGateFileAttachmentsTitle": {
+    "description": "Feature gate title for circular file attachments"
+  },
+  "accountGateDeleteAccountTitle": "Account deletion requires a registered account",
+  "@accountGateDeleteAccountTitle": {
+    "description": "Feature gate title for account deletion"
+  },
+  "accountGateDescription": "Create a free JobPrep account to sync across devices, receive reminders, and upload files.",
+  "@accountGateDescription": {
+    "description": "Explanation shown inside account-only feature gate"
+  },
+  "accountGateCreateAccountButton": "Create an account to use this",
+  "@accountGateCreateAccountButton": {
+    "description": "Action button in account-only feature gate leading to login/signup"
+  },
+  "settingsGuestSectionTitle": "Guest Mode",
+  "@settingsGuestSectionTitle": {
+    "description": "Section header in Settings when app is running in guest mode"
+  },
+  "settingsGuestSectionSubtitle": "Your data is stored locally on this device.",
+  "@settingsGuestSectionSubtitle": {
+    "description": "Subtitle explaining guest mode in Settings"
+  },
+  "settingsStorageStatusTitle": "Storage status",
+  "@settingsStorageStatusTitle": {
+    "description": "Label for device storage persistence status in guest settings"
+  },
+  "settingsStoragePersistent": "Persistent (Protected from automatic clearing)",
+  "@settingsStoragePersistent": {
+    "description": "Storage status indicating browser persistent storage was granted"
+  },
+  "settingsStorageTransient": "Transient browser storage",
+  "@settingsStorageTransient": {
+    "description": "Storage status indicating standard transient browser storage"
+  },
+  "settingsStorageSafariWarning": "Browsers such as Safari on iPhone may clear site data after a period of inactivity unless the site is added to the Home Screen.",
+  "@settingsStorageSafariWarning": {
+    "description": "Warning shown on web regarding Safari 7-day storage eviction unless added to home screen"
+  },
+  "settingsBackupDataButton": "Back up my data",
+  "@settingsBackupDataButton": {
+    "description": "Placeholder button in guest settings for future data backup"
+  },
+  "settingsBackupPlaceholderMessage": "Backup and export features will be fully available in Phase 9C.",
+  "@settingsBackupPlaceholderMessage": {
+    "description": "Snackbar message shown when tapping Back up my data in Phase 9B"
+  },
+  "settingsCreateAccountButton": "Create an account",
+  "@settingsCreateAccountButton": {
+    "description": "Button in guest settings to navigate to login/signup"
+  },
+  "settingsEraseDataButton": "Erase all data on this device",
+  "@settingsEraseDataButton": {
+    "description": "Destructive button to wipe all local data from the device"
+  },
+  "eraseDataDialog1Title": "Erase all local data?",
+  "@eraseDataDialog1Title": {
+    "description": "First confirmation dialog title for erasing local data"
+  },
+  "eraseDataDialog1Message": "This will permanently delete all circulars, subjects, study progress, and settings stored on this device. This action cannot be undone.",
+  "@eraseDataDialog1Message": {
+    "description": "First confirmation dialog message explaining permanent deletion"
+  },
+  "eraseDataDialog1Confirm": "Continue",
+  "@eraseDataDialog1Confirm": {
+    "description": "Button to proceed to final erase confirmation"
+  },
+  "eraseDataDialogCancel": "Cancel",
+  "@eraseDataDialogCancel": {
+    "description": "Cancel button on erase confirmation dialogs"
+  },
+  "eraseDataDialog2Title": "Are you absolutely sure?",
+  "@eraseDataDialog2Title": {
+    "description": "Second confirmation dialog title for erasing local data"
+  },
+  "eraseDataDialog2Message": "Tap confirm below to permanently wipe all JobPrep data from this device.",
+  "@eraseDataDialog2Message": {
+    "description": "Second confirmation dialog message warning of immediate wipe"
+  },
+  "eraseDataDialog2Confirm": "Delete everything",
+  "@eraseDataDialog2Confirm": {
+    "description": "Final confirmation button to wipe all local data"
+  },
+  "eraseDataSuccessMessage": "All local data has been erased.",
+  "@eraseDataSuccessMessage": {
+    "description": "Feedback message after local data is wiped"
   }
 }

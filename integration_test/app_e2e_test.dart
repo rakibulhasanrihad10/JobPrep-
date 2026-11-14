@@ -3,6 +3,7 @@ import 'package:integration_test/integration_test.dart';
 
 import 'flows/auth_and_onboarding_e2e.dart';
 import 'flows/circulars_and_inbox_e2e.dart';
+import 'flows/guest_mode_e2e.dart';
 import 'flows/prep_math_and_timer_e2e.dart';
 import 'flows/vault_and_settings_e2e.dart';
 
@@ -25,6 +26,7 @@ void main() {
 
   group('JobPrep End-to-End Integration Suite', () {
     runAuthAndOnboardingE2ETests();
+    runGuestModeE2ETests();
     runCircularsAndInboxE2ETests();
     runPrepMathAndTimerE2ETests();
     runVaultAndSettingsE2ETests();

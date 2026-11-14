@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/data/app_mode.dart';
 import 'package:job_prep/core/data/data_source_mode.dart';
 import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/storage/preferences_provider.dart';
@@ -45,7 +46,8 @@ class OnboardingStatusNotifier extends AsyncNotifier<OnboardingStatus> {
   @override
   FutureOr<OnboardingStatus> build() {
     final authState = ref.watch(authSessionProvider);
-    if (authState.status != AuthStatus.signedIn) {
+    final appMode = ref.watch(appModeProvider);
+    if (authState.status != AuthStatus.signedIn && appMode != AppMode.guest) {
       return const OnboardingStatus();
     }
     final repo = ref.watch(onboardingRepositoryProvider);

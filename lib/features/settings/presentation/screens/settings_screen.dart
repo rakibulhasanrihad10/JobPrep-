@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:job_prep/core/data/app_mode.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/fade_slide_in.dart';
@@ -9,6 +10,7 @@ import 'package:job_prep/features/settings/presentation/providers/user_settings_
 import 'package:job_prep/features/settings/presentation/widgets/appearance_settings_card.dart';
 import 'package:job_prep/features/settings/presentation/widgets/data_settings_card.dart';
 import 'package:job_prep/features/settings/presentation/widgets/email_reminders_card.dart';
+import 'package:job_prep/features/settings/presentation/widgets/guest_settings_card.dart';
 import 'package:job_prep/features/settings/presentation/widgets/in_app_notifications_card.dart';
 import 'package:job_prep/features/settings/presentation/widgets/language_settings_card.dart';
 import 'package:job_prep/features/settings/presentation/widgets/profile_settings_card.dart';
@@ -24,6 +26,7 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(userSettingsProvider);
+    final appMode = ref.watch(appModeProvider);
     final tokens = context.tokens;
     final spacing = tokens.spacing;
     final textStyles = tokens.textStyles;
@@ -51,9 +54,11 @@ class SettingsScreen extends ConsumerWidget {
             ),
           ),
           SizedBox(height: spacing.xl),
-          const FadeSlideIn(
+          FadeSlideIn(
             index: 2,
-            child: ProfileSettingsCard(),
+            child: appMode == AppMode.guest
+                ? const GuestSettingsCard()
+                : const ProfileSettingsCard(),
           ),
           SizedBox(height: spacing.lg),
           const FadeSlideIn(

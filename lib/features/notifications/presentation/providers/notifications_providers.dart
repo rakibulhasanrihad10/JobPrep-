@@ -1,19 +1,23 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/data/app_mode.dart';
 import 'package:job_prep/core/data/data_source_mode.dart';
 import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/domain/entities/auth_session_state.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular.dart';
+import 'package:job_prep/features/circulars/domain/entities/circular_exam_date.dart';
 import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
+import 'package:job_prep/features/circulars/presentation/providers/exam_date_providers.dart';
 import 'package:job_prep/features/notifications/data/repositories/local_notifications_repository.dart';
 import 'package:job_prep/features/notifications/data/repositories/supabase_notifications_repository.dart';
 import 'package:job_prep/features/notifications/data/repositories/unconfigured_notifications_repository.dart';
 import 'package:job_prep/features/notifications/domain/entities/app_notification.dart';
 import 'package:job_prep/features/notifications/domain/entities/weekly_review_summary.dart';
 import 'package:job_prep/features/notifications/domain/repositories/notifications_repository.dart';
+import 'package:job_prep/features/notifications/domain/services/guest_notifications_generator.dart';
 import 'package:job_prep/features/notifications/domain/services/push_notification_extension_point.dart';
 import 'package:job_prep/features/notifications/domain/utils/weekly_review_calculator.dart';
 import 'package:job_prep/features/prep/domain/entities/mock_test.dart';
@@ -26,6 +30,7 @@ import 'package:job_prep/features/prep/presentation/providers/prep_providers.dar
 import 'package:job_prep/features/prep/presentation/providers/revision_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_session_providers.dart';
+import 'package:job_prep/features/settings/presentation/providers/reminder_settings_providers.dart';
 import 'package:job_prep/features/today/presentation/providers/today_providers.dart';
 
 Duration? _noRetry(int retryCount, Object error) => null;
@@ -77,12 +82,17 @@ class NotificationsNotifier extends AsyncNotifier<List<AppNotification>> {
     _cancelSubscriptions();
 
     final authState = ref.watch(authSessionProvider);
-    if (authState.status != AuthStatus.signedIn) {
+    final appMode = ref.watch(appModeProvider);
+    if (authState.status != AuthStatus.signedIn && appMode != AppMode.guest) {
       return const <AppNotification>[];
     }
 
     final repo = ref.watch(notificationsRepositoryProvider);
     final pollingInterval = ref.watch(notificationPollingIntervalProvider);
+
+    if (appMode == AppMode.guest && repo is LocalNotificationsRepository) {
+      await _generateGuestNotifications(repo);
+    }
 
     final initial = await repo.getNotifications();
 
@@ -105,6 +115,39 @@ class NotificationsNotifier extends AsyncNotifier<List<AppNotification>> {
     }
 
     return initial;
+  }
+
+  Future<void> _generateGuestNotifications(
+    LocalNotificationsRepository repo,
+  ) async {
+    try {
+      final circulars = await ref.read(circularsListProvider.future);
+      final allExams = <CircularExamDate>[];
+      for (final c in circulars) {
+        final dates = await ref.read(circularExamDatesProvider(c.id).future);
+        allExams.addAll(dates);
+      }
+      final revisions = await ref.read(revisionItemsProvider.future);
+      final plans = await ref.read(studyPlansProvider.future);
+      final materials = await ref.read(allMaterialsProvider.future);
+      final reminderSettings = await ref.read(reminderSettingsProvider.future);
+      final now = ref.read(notificationsNowProvider)();
+
+      final candidates = GuestNotificationsGenerator.generateDueNotifications(
+        circulars: circulars,
+        examDates: allExams,
+        revisionItems: revisions,
+        studyPlans: plans,
+        materials: materials,
+        reminderSettings: reminderSettings,
+        now: now,
+      );
+      for (final item in candidates) {
+        await repo.insertNotification(item);
+      }
+    } on Object {
+      // Non-fatal if local tables are empty during initialization.
+    }
   }
 
   /// Refreshes notifications manually from the repository.
