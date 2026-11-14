@@ -4851,4 +4851,69 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get restoreErrorInvalidFormat =>
       'Invalid or unreadable backup file format.';
+
+  @override
+  String get todayGuestUpgradeTitle => 'Secure your study progress';
+
+  @override
+  String get todayGuestUpgradeSubtitle =>
+      'Create an account to automatically sync and access your study materials across all devices.';
+
+  @override
+  String get todayGuestUpgradeButton => 'Create an account';
+
+  @override
+  String get migrationChoiceTitle => 'Account Connected';
+
+  @override
+  String get migrationChoiceSubtitle =>
+      'We found study data on this device. Would you like to move it to your account or start fresh?';
+
+  @override
+  String get migrationChoiceMoveButton => 'Move data to my account';
+
+  @override
+  String get migrationChoiceFreshButton => 'Start fresh & keep device data';
+
+  @override
+  String get migrationProgressTitle => 'Moving Data to Account';
+
+  @override
+  String migrationProgressStep(String table, int current, int total) {
+    return 'Uploading $table ($current/$total)…';
+  }
+
+  @override
+  String get migrationCompleteTitle => 'Data Moved Successfully!';
+
+  @override
+  String get migrationCompleteSubtitle =>
+      'All records and progress totals have been verified. Would you like to keep or erase the local copy on this device?';
+
+  @override
+  String get migrationDownloadFinalBackup => 'Download Final Safety Backup';
+
+  @override
+  String get migrationEraseLocalOption => 'Erase local copy on this device';
+
+  @override
+  String get migrationEraseLocalSubtitle =>
+      'Recommended to avoid having duplicate local guest data on this browser.';
+
+  @override
+  String get migrationFinishButton => 'Continue to Dashboard';
+
+  @override
+  String get migrationErrorTitle => 'Migration Failed';
+
+  @override
+  String migrationErrorMessage(String error) {
+    return 'Could not complete data migration: $error. Your local data is completely untouched and safe.';
+  }
+
+  @override
+  String get migrationRetryButton => 'Retry Upload';
+
+  @override
+  String get migrationKeepGuestButton => 'Stay in Guest Mode';
 }

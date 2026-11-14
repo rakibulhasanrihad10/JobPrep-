@@ -4841,4 +4841,71 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get restoreErrorInvalidFormat => 'ব্যাকআপ ফাইলের ফরম্যাট সঠিক নয়।';
+
+  @override
+  String get todayGuestUpgradeTitle => 'আপনার পড়াশোনার অগ্রগতি সুরক্ষিত রাখুন';
+
+  @override
+  String get todayGuestUpgradeSubtitle =>
+      'সমস্ত ডিভাইসে স্বয়ংক্রিয়ভাবে সিঙ্ক ও ব্যাকআপ রাখতে একটি অ্যাকাউন্ট তৈরি করুন।';
+
+  @override
+  String get todayGuestUpgradeButton => 'অ্যাকাউন্ট তৈরি করুন';
+
+  @override
+  String get migrationChoiceTitle => 'অ্যাকাউন্ট সংযুক্ত হয়েছে';
+
+  @override
+  String get migrationChoiceSubtitle =>
+      'এই ডিভাইসে আপনার পূর্বের পড়াশোনার তথ্য পাওয়া গেছে। আপনি কি তা অ্যাকাউন্টে স্থানান্তর করতে চান নাকি নতুনভাবে শুরু করতে চান?';
+
+  @override
+  String get migrationChoiceMoveButton => 'তথ্য অ্যাকাউন্টে স্থানান্তর করুন';
+
+  @override
+  String get migrationChoiceFreshButton =>
+      'নতুনভাবে শুরু করুন এবং ডিভাইসে তথ্য রাখুন';
+
+  @override
+  String get migrationProgressTitle => 'অ্যাকাউন্টে তথ্য স্থানান্তর হচ্ছে';
+
+  @override
+  String migrationProgressStep(String table, int current, int total) {
+    return '$table আপলোড হচ্ছে ($current/$total)…';
+  }
+
+  @override
+  String get migrationCompleteTitle => 'তথ্য সফলভাবে স্থানান্তরিত হয়েছে!';
+
+  @override
+  String get migrationCompleteSubtitle =>
+      'সমস্ত রেকর্ড এবং অগ্রগতির হিসাব সফলভাবে যাচাই করা হয়েছে। আপনি কি এই ডিভাইসের স্থানীয় তথ্য মুছে ফেলতে চান?';
+
+  @override
+  String get migrationDownloadFinalBackup =>
+      'চূড়ান্ত সেফটি ব্যাকআপ ডাউনলোড করুন';
+
+  @override
+  String get migrationEraseLocalOption => 'এই ডিভাইসের স্থানীয় কপি মুছে ফেলুন';
+
+  @override
+  String get migrationEraseLocalSubtitle =>
+      'এই ব্রাউজারে ডুপ্লিকেট তথ্য এড়াতে স্থানীয় কপি মুছে ফেলা সুপারিশ করা হয়।';
+
+  @override
+  String get migrationFinishButton => 'ড্যাশবোর্ডে প্রবেশ করুন';
+
+  @override
+  String get migrationErrorTitle => 'স্থানান্তর ব্যর্থ হয়েছে';
+
+  @override
+  String migrationErrorMessage(String error) {
+    return 'তথ্য স্থানান্তর সম্পন্ন করা যায়নি: $error। আপনার স্থানীয় তথ্য সম্পূর্ণ অক্ষত ও সুরক্ষিত আছে।';
+  }
+
+  @override
+  String get migrationRetryButton => 'পুনরায় চেষ্টা করুন';
+
+  @override
+  String get migrationKeepGuestButton => 'গেস্ট মোডে থাকুন';
 }

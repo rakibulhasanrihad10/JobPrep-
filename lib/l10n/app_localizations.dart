@@ -7989,6 +7989,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid or unreadable backup file format.'**
   String get restoreErrorInvalidFormat;
+
+  /// Title of upgrade prompt banner on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Secure your study progress'**
+  String get todayGuestUpgradeTitle;
+
+  /// Subtitle of upgrade prompt banner on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account to automatically sync and access your study materials across all devices.'**
+  String get todayGuestUpgradeSubtitle;
+
+  /// Button to navigate to account creation from Today banner
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account'**
+  String get todayGuestUpgradeButton;
+
+  /// Title of migration choice dialog after sign-in
+  ///
+  /// In en, this message translates to:
+  /// **'Account Connected'**
+  String get migrationChoiceTitle;
+
+  /// Subtitle of migration choice dialog
+  ///
+  /// In en, this message translates to:
+  /// **'We found study data on this device. Would you like to move it to your account or start fresh?'**
+  String get migrationChoiceSubtitle;
+
+  /// Primary button to move guest data to account
+  ///
+  /// In en, this message translates to:
+  /// **'Move data to my account'**
+  String get migrationChoiceMoveButton;
+
+  /// Secondary button to start fresh without moving data
+  ///
+  /// In en, this message translates to:
+  /// **'Start fresh & keep device data'**
+  String get migrationChoiceFreshButton;
+
+  /// Title of migration progress modal
+  ///
+  /// In en, this message translates to:
+  /// **'Moving Data to Account'**
+  String get migrationProgressTitle;
+
+  /// Progress step label during upload
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading {table} ({current}/{total})…'**
+  String migrationProgressStep(String table, int current, int total);
+
+  /// Title of migration completion dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Data Moved Successfully!'**
+  String get migrationCompleteTitle;
+
+  /// Subtitle explaining verification completion
+  ///
+  /// In en, this message translates to:
+  /// **'All records and progress totals have been verified. Would you like to keep or erase the local copy on this device?'**
+  String get migrationCompleteSubtitle;
+
+  /// Button to download backup before erasing local copy
+  ///
+  /// In en, this message translates to:
+  /// **'Download Final Safety Backup'**
+  String get migrationDownloadFinalBackup;
+
+  /// Switch or checkbox label to erase local data after migration
+  ///
+  /// In en, this message translates to:
+  /// **'Erase local copy on this device'**
+  String get migrationEraseLocalOption;
+
+  /// Explanation for erasing local copy
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended to avoid having duplicate local guest data on this browser.'**
+  String get migrationEraseLocalSubtitle;
+
+  /// Button completing migration flow
+  ///
+  /// In en, this message translates to:
+  /// **'Continue to Dashboard'**
+  String get migrationFinishButton;
+
+  /// Title when migration fails
+  ///
+  /// In en, this message translates to:
+  /// **'Migration Failed'**
+  String get migrationErrorTitle;
+
+  /// Error message when migration fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not complete data migration: {error}. Your local data is completely untouched and safe.'**
+  String migrationErrorMessage(String error);
+
+  /// Retry button on migration failure
+  ///
+  /// In en, this message translates to:
+  /// **'Retry Upload'**
+  String get migrationRetryButton;
+
+  /// Abort button on migration failure to stay in guest mode
+  ///
+  /// In en, this message translates to:
+  /// **'Stay in Guest Mode'**
+  String get migrationKeepGuestButton;
 }
 
 class _AppLocalizationsDelegate

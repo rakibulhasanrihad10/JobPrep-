@@ -2,13 +2,18 @@ import 'dart:async' show unawaited;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/data/app_mode.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/fade_slide_in.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
+import 'package:job_prep/features/auth/domain/entities/auth_session_state.dart';
+import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/features/backup/presentation/widgets/backup_reminder_banner.dart';
 import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
+import 'package:job_prep/features/migration/presentation/utils/guest_migration_flow_helper.dart';
+import 'package:job_prep/features/migration/presentation/widgets/guest_upgrade_banner.dart';
 import 'package:job_prep/features/onboarding/presentation/providers/onboarding_status_provider.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/revision_providers.dart';
@@ -44,6 +49,14 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
   void initState() {
     super.initState();
     _visitId = ++_nextVisitId;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final auth = ref.read(authSessionProvider);
+      final mode = ref.read(appModeProvider);
+      if (auth.status == AuthStatus.signedIn && mode?.isGuest == true) {
+        unawaited(GuestMigrationFlowHelper.triggerMigrationFlow(context, ref));
+      }
+    });
   }
 
   void _refreshAll() {
@@ -138,6 +151,7 @@ class _TodayOrderedBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const BackupReminderBanner(),
+        const GuestUpgradeBanner(),
         if (showTips) ...[
           const FadeSlideIn(
             child: OnboardingTodayTipsCard(),

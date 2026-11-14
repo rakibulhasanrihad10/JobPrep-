@@ -6584,5 +6584,97 @@
   "restoreErrorInvalidFormat": "Invalid or unreadable backup file format.",
   "@restoreErrorInvalidFormat": {
     "description": "Error when backup JSON structure is unrecognized"
+  },
+  "todayGuestUpgradeTitle": "Secure your study progress",
+  "@todayGuestUpgradeTitle": {
+    "description": "Title of upgrade prompt banner on Today screen"
+  },
+  "todayGuestUpgradeSubtitle": "Create an account to automatically sync and access your study materials across all devices.",
+  "@todayGuestUpgradeSubtitle": {
+    "description": "Subtitle of upgrade prompt banner on Today screen"
+  },
+  "todayGuestUpgradeButton": "Create an account",
+  "@todayGuestUpgradeButton": {
+    "description": "Button to navigate to account creation from Today banner"
+  },
+  "migrationChoiceTitle": "Account Connected",
+  "@migrationChoiceTitle": {
+    "description": "Title of migration choice dialog after sign-in"
+  },
+  "migrationChoiceSubtitle": "We found study data on this device. Would you like to move it to your account or start fresh?",
+  "@migrationChoiceSubtitle": {
+    "description": "Subtitle of migration choice dialog"
+  },
+  "migrationChoiceMoveButton": "Move data to my account",
+  "@migrationChoiceMoveButton": {
+    "description": "Primary button to move guest data to account"
+  },
+  "migrationChoiceFreshButton": "Start fresh & keep device data",
+  "@migrationChoiceFreshButton": {
+    "description": "Secondary button to start fresh without moving data"
+  },
+  "migrationProgressTitle": "Moving Data to Account",
+  "@migrationProgressTitle": {
+    "description": "Title of migration progress modal"
+  },
+  "migrationProgressStep": "Uploading {table} ({current}/{total})…",
+  "@migrationProgressStep": {
+    "description": "Progress step label during upload",
+    "placeholders": {
+      "table": {
+        "type": "String"
+      },
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "migrationCompleteTitle": "Data Moved Successfully!",
+  "@migrationCompleteTitle": {
+    "description": "Title of migration completion dialog"
+  },
+  "migrationCompleteSubtitle": "All records and progress totals have been verified. Would you like to keep or erase the local copy on this device?",
+  "@migrationCompleteSubtitle": {
+    "description": "Subtitle explaining verification completion"
+  },
+  "migrationDownloadFinalBackup": "Download Final Safety Backup",
+  "@migrationDownloadFinalBackup": {
+    "description": "Button to download backup before erasing local copy"
+  },
+  "migrationEraseLocalOption": "Erase local copy on this device",
+  "@migrationEraseLocalOption": {
+    "description": "Switch or checkbox label to erase local data after migration"
+  },
+  "migrationEraseLocalSubtitle": "Recommended to avoid having duplicate local guest data on this browser.",
+  "@migrationEraseLocalSubtitle": {
+    "description": "Explanation for erasing local copy"
+  },
+  "migrationFinishButton": "Continue to Dashboard",
+  "@migrationFinishButton": {
+    "description": "Button completing migration flow"
+  },
+  "migrationErrorTitle": "Migration Failed",
+  "@migrationErrorTitle": {
+    "description": "Title when migration fails"
+  },
+  "migrationErrorMessage": "Could not complete data migration: {error}. Your local data is completely untouched and safe.",
+  "@migrationErrorMessage": {
+    "description": "Error message when migration fails",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "migrationRetryButton": "Retry Upload",
+  "@migrationRetryButton": {
+    "description": "Retry button on migration failure"
+  },
+  "migrationKeepGuestButton": "Stay in Guest Mode",
+  "@migrationKeepGuestButton": {
+    "description": "Abort button on migration failure to stay in guest mode"
   }
 }
