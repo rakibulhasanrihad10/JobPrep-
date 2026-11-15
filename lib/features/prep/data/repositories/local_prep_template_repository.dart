@@ -6,6 +6,7 @@ import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_template.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_template_item.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
+import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/repositories/prep_template_repository.dart';
 import 'package:uuid/uuid.dart';
 
@@ -59,6 +60,20 @@ class LocalPrepTemplateRepository implements PrepTemplateRepository {
     String? description,
     String examType = 'general',
   }) async {
+    final trimmedTitle = title.trim();
+    if (trimmedTitle.isEmpty) {
+      throw const PrepValidationFailure(
+        code: 'missing_template_title',
+        message: 'Template title must not be empty.',
+      );
+    }
+    if (subjects.isEmpty) {
+      throw const PrepValidationFailure(
+        code: 'empty_template_subjects',
+        message: 'At least one subject is required to save a template.',
+      );
+    }
+
     final templateId = const Uuid().v4();
     final items = <PrepTemplateItem>[];
     var itemSort = 0;

@@ -2,9 +2,12 @@ import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:job_prep/core/local/database/app_database.dart';
 import 'package:job_prep/features/circulars/data/repositories/local_exam_date_repository.dart';
+import 'package:job_prep/features/circulars/data/repositories/supabase_exam_date_repository.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_exam_date.dart';
 import 'package:job_prep/features/circulars/domain/errors/circular_failure.dart';
 import 'package:job_prep/features/circulars/domain/repositories/exam_date_repository.dart';
+
+import 'mock_supabase_http_client.dart';
 
 void testExamDateRepositoryContract({
   required Future<ExamDateRepository> Function() createRepository,
@@ -38,6 +41,31 @@ void testExamDateRepositoryContract({
       final list = await repo.getExamDatesForCircular('c-100');
       expect(list, hasLength(1));
       expect(list.first.venue, equals('Dhaka College'));
+    });
+
+    test('saving same id twice results in 1 row (upsert idempotency)',
+        () async {
+      final date = CircularExamDate(
+        id: 'ed-fixed-1',
+        circularId: 'c-100',
+        stage: 'Preliminary',
+        examDate: DateTime.utc(2026, 12),
+        venue: 'Hall A',
+      );
+
+      final initial = await repo.createExamDate(date);
+      expect(initial.id, equals('ed-fixed-1'));
+
+      final updated = await repo.createExamDate(
+        date.copyWith(venue: 'Hall B'),
+      );
+      expect(updated.id, equals('ed-fixed-1'));
+      expect(updated.venue, equals('Hall B'));
+
+      final list = await repo.getExamDatesForCircular('c-100');
+      final matching = list.where((e) => e.id == 'ed-fixed-1').toList();
+      expect(matching, hasLength(1));
+      expect(matching.first.venue, equals('Hall B'));
     });
 
     test('updates exam date cleanly', () async {
@@ -88,15 +116,33 @@ void testExamDateRepositoryContract({
 }
 
 void main() {
-  late AppDatabase db;
+  group('Local Implementation Contract', () {
+    late AppDatabase db;
 
-  testExamDateRepositoryContract(
-    createRepository: () async {
-      db = AppDatabase(NativeDatabase.memory());
-      return LocalExamDateRepository(db);
-    },
-    tearDownRepository: () async {
-      await db.close();
-    },
-  );
+    testExamDateRepositoryContract(
+      createRepository: () async {
+        db = AppDatabase(NativeDatabase.memory());
+        return LocalExamDateRepository(db);
+      },
+      tearDownRepository: () async {
+        await db.close();
+      },
+    );
+  });
+
+  group('Supabase Implementation Contract', () {
+    late MockSupabaseHttpClient mockHttp;
+    late MockSupabaseClient client;
+
+    testExamDateRepositoryContract(
+      createRepository: () async {
+        mockHttp = MockSupabaseHttpClient();
+        client = MockSupabaseClient(mockHttpClient: mockHttp);
+        return SupabaseExamDateRepository(client);
+      },
+      tearDownRepository: () async {
+        mockHttp.clear();
+      },
+    );
+  });
 }

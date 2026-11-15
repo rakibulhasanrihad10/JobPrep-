@@ -4,10 +4,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:job_prep/core/local/database/app_database.dart';
 import 'package:job_prep/features/settings/data/repositories/local_reminder_settings_repository.dart';
 import 'package:job_prep/features/settings/data/repositories/local_user_settings_repository.dart';
+import 'package:job_prep/features/settings/data/repositories/supabase_reminder_settings_repository.dart';
+import 'package:job_prep/features/settings/data/repositories/supabase_user_settings_repository.dart';
 import 'package:job_prep/features/settings/domain/entities/reminder_settings.dart';
 import 'package:job_prep/features/settings/domain/entities/user_app_settings.dart';
 import 'package:job_prep/features/settings/domain/repositories/reminder_settings_repository.dart';
 import 'package:job_prep/features/settings/domain/repositories/user_settings_repository.dart';
+
+import 'mock_supabase_http_client.dart';
 
 void testSettingsRepositoriesContract({
   required Future<
@@ -90,18 +94,39 @@ void testSettingsRepositoriesContract({
 }
 
 void main() {
-  late AppDatabase db;
+  group('Local Implementation Contract', () {
+    late AppDatabase db;
 
-  testSettingsRepositoriesContract(
-    createRepositories: () async {
-      db = AppDatabase(NativeDatabase.memory());
-      return (
-        userSettings: LocalUserSettingsRepository(db),
-        reminderSettings: LocalReminderSettingsRepository(db),
-      );
-    },
-    tearDownRepositories: () async {
-      await db.close();
-    },
-  );
+    testSettingsRepositoriesContract(
+      createRepositories: () async {
+        db = AppDatabase(NativeDatabase.memory());
+        return (
+          userSettings: LocalUserSettingsRepository(db),
+          reminderSettings: LocalReminderSettingsRepository(db),
+        );
+      },
+      tearDownRepositories: () async {
+        await db.close();
+      },
+    );
+  });
+
+  group('Supabase Implementation Contract', () {
+    late MockSupabaseHttpClient mockHttp;
+    late MockSupabaseClient client;
+
+    testSettingsRepositoriesContract(
+      createRepositories: () async {
+        mockHttp = MockSupabaseHttpClient();
+        client = MockSupabaseClient(mockHttpClient: mockHttp);
+        return (
+          userSettings: SupabaseUserSettingsRepository(client),
+          reminderSettings: SupabaseReminderSettingsRepository(client),
+        );
+      },
+      tearDownRepositories: () async {
+        mockHttp.clear();
+      },
+    );
+  });
 }

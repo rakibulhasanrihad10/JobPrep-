@@ -51,8 +51,14 @@ jobs:
       - name: Check for hardcoded user-facing strings
         run: dart run scripts/check_hardcoded_strings.dart
 
-      - name: Run automated tests
-        run: flutter test
+      - name: Enforce test baseline & prevent test deletion
+        run: dart run scripts/verify_test_baseline.dart
+
+      - name: Run automated tests with coverage
+        run: flutter test --coverage
+
+      - name: Enforce domain and data layer coverage gate (>= 80%)
+        run: dart run scripts/check_coverage.dart
 
       - name: Build web application (Wasm with JS fallback)
         run: dart run scripts/build_web.dart

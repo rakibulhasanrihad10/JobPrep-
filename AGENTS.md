@@ -60,6 +60,7 @@ Stack: Flutter (web first, Android later), Supabase (PostgreSQL, Auth, Storage),
 
 - Every feature ships with tests: unit, widget, golden (light and dark), integration, plus database and RLS tests.
 - Every bug fix starts with a failing test.
+- An existing test must never be deleted, skipped, loosened, or edited to make it pass. If a test looks wrong, the agent must stop and explain why before changing anything.
 - Progress math must keep passing this example: books of 300, 300 and 400 pages; finishing book one is 100 percent for that book and 30 percent for the subject.
 - flutter analyze must have zero warnings. Code must be formatted.
 - CI (GitHub Actions) must pass before a phase counts as done: format, analyze, tests with coverage, goldens, secrets scan, web build, database migrations and RLS tests.

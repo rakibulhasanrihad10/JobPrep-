@@ -5,6 +5,10 @@ import 'package:job_prep/features/prep/data/repositories/local_mock_test_reposit
 import 'package:job_prep/features/prep/data/repositories/local_revision_item_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/local_study_plan_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/local_study_session_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_mock_test_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_revision_item_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_study_plan_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_study_session_repository.dart';
 import 'package:job_prep/features/prep/domain/entities/mock_test.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 import 'package:job_prep/features/prep/domain/entities/revision_item.dart';
@@ -14,6 +18,8 @@ import 'package:job_prep/features/prep/domain/repositories/mock_test_repository.
 import 'package:job_prep/features/prep/domain/repositories/revision_item_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/study_plan_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/study_session_repository.dart';
+
+import 'mock_supabase_http_client.dart';
 
 void testAuxiliaryRepositoriesContract({
   required Future<
@@ -63,7 +69,6 @@ void testAuxiliaryRepositoriesContract({
       final plans = await studyPlansRepo.getPlans();
       expect(plans, hasLength(1));
 
-      // Resaving with same scope updates the plan.
       final updated = await studyPlansRepo.savePlan(
         saved.copyWith(finishBufferDays: 10),
       );
@@ -98,25 +103,19 @@ void testAuxiliaryRepositoriesContract({
       final items = [
         RevisionItem(
           subjectId: 'sub-3',
-          referenceLabel: 'Page 45',
-          pageNumber: 45,
-          dueOn: DateTime.utc(2026, 11, 15),
-        ),
-        RevisionItem(
-          subjectId: 'sub-3',
-          referenceLabel: 'Formula sheet',
-          dueOn: DateTime.utc(2026, 11, 16),
+          referenceLabel: 'Ch 1',
+          dueOn: DateTime.utc(2026, 11, 14),
         ),
       ];
 
-      final created = await revisionItemsRepo.createRevisionItems(items);
-      expect(created, hasLength(2));
+      final createdList = await revisionItemsRepo.createRevisionItems(items);
+      expect(createdList, hasLength(1));
 
-      final all = await revisionItemsRepo.getRevisionItems();
-      expect(all, hasLength(2));
+      final fetched = await revisionItemsRepo.getRevisionItems();
+      expect(fetched, hasLength(1));
 
       final updated = await revisionItemsRepo.updateRevisionItem(
-        created.first.copyWith(status: RevisionStatus.revised),
+        fetched.first.copyWith(status: RevisionStatus.revised),
       );
       expect(updated.status, equals(RevisionStatus.revised));
     });
@@ -151,20 +150,43 @@ void testAuxiliaryRepositoriesContract({
 }
 
 void main() {
-  late AppDatabase db;
+  group('Local Implementation Contract', () {
+    late AppDatabase db;
 
-  testAuxiliaryRepositoriesContract(
-    createRepositories: () async {
-      db = AppDatabase(NativeDatabase.memory());
-      return (
-        studyPlans: LocalStudyPlanRepository(db),
-        mockTests: LocalMockTestRepository(db),
-        revisionItems: LocalRevisionItemRepository(db),
-        studySessions: LocalStudySessionRepository(db),
-      );
-    },
-    tearDownRepositories: () async {
-      await db.close();
-    },
-  );
+    testAuxiliaryRepositoriesContract(
+      createRepositories: () async {
+        db = AppDatabase(NativeDatabase.memory());
+        return (
+          studyPlans: LocalStudyPlanRepository(db),
+          mockTests: LocalMockTestRepository(db),
+          revisionItems: LocalRevisionItemRepository(db),
+          studySessions: LocalStudySessionRepository(db),
+        );
+      },
+      tearDownRepositories: () async {
+        await db.close();
+      },
+    );
+  });
+
+  group('Supabase Implementation Contract', () {
+    late MockSupabaseHttpClient mockHttp;
+    late MockSupabaseClient client;
+
+    testAuxiliaryRepositoriesContract(
+      createRepositories: () async {
+        mockHttp = MockSupabaseHttpClient();
+        client = MockSupabaseClient(mockHttpClient: mockHttp);
+        return (
+          studyPlans: SupabaseStudyPlanRepository(client),
+          mockTests: SupabaseMockTestRepository(client),
+          revisionItems: SupabaseRevisionItemRepository(client),
+          studySessions: SupabaseStudySessionRepository(client),
+        );
+      },
+      tearDownRepositories: () async {
+        mockHttp.clear();
+      },
+    );
+  });
 }

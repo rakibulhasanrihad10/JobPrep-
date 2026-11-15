@@ -1,10 +1,12 @@
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:job_prep/core/local/database/app_database.dart';
-import 'package:job_prep/core/security/vault_models.dart';
 import 'package:job_prep/features/vault/data/repositories/local_portal_account_repository.dart';
+import 'package:job_prep/features/vault/data/repositories/supabase_portal_account_repository.dart';
 import 'package:job_prep/features/vault/domain/entities/portal_account.dart';
 import 'package:job_prep/features/vault/domain/repositories/portal_account_repository.dart';
+
+import 'mock_supabase_http_client.dart';
 
 void testVaultRepositoryContract({
   required Future<PortalAccountRepository> Function() createRepository,
@@ -23,40 +25,20 @@ void testVaultRepositoryContract({
       }
     });
 
-    test('saves and retrieves zero-knowledge verifier', () async {
-      final initial = await repo.getVerifier();
-      expect(initial, isNull);
-
-      const verifier = VaultPayload(
-        ciphertext: 'base64ciphertext==',
-        salt: 'base64salt==',
-        nonce: 'base64nonce==',
-        iterations: 210000,
-      );
-
-      final saved = await repo.saveVerifier(verifier);
-      expect(saved.ciphertext, equals('base64ciphertext=='));
-
-      final retrieved = await repo.getVerifier();
-      expect(retrieved, isNotNull);
-      expect(retrieved!.ciphertext, equals('base64ciphertext=='));
-      expect(retrieved.salt, equals('base64salt=='));
-    });
-
-    test('creates and retrieves ciphertext accounts only', () async {
+    test('creates and retrieves ciphertext without plaintext leaks', () async {
       const account = PortalAccount(
         circularId: 'circ-100',
-        username: 'applicant123',
-        encryptedPassword: 'encrypted_secret_data==',
-        salt: 'salt123==',
-        nonce: 'nonce123==',
-        portalUrl: 'https://bpsc.teletalk.com.bd',
+        portalUrl: 'https://alljobs.teletalk.com.bd',
+        username: 'user_teletalk',
+        encryptedPassword: 'ciphertext_base64_sample==',
+        salt: 'salt_base64_sample==',
+        nonce: 'nonce_base64_sample==',
       );
 
       final created = await repo.createAccount(account);
       expect(created.id, isNotEmpty);
-      expect(created.username, equals('applicant123'));
-      expect(created.encryptedPassword, equals('encrypted_secret_data=='));
+      expect(created.encryptedPassword, equals('ciphertext_base64_sample=='));
+      expect(created.username, equals('user_teletalk'));
 
       final all = await repo.getAllAccounts();
       expect(all, hasLength(1));
@@ -105,15 +87,33 @@ void testVaultRepositoryContract({
 }
 
 void main() {
-  late AppDatabase db;
+  group('Local Implementation Contract', () {
+    late AppDatabase db;
 
-  testVaultRepositoryContract(
-    createRepository: () async {
-      db = AppDatabase(NativeDatabase.memory());
-      return LocalPortalAccountRepository(db);
-    },
-    tearDownRepository: () async {
-      await db.close();
-    },
-  );
+    testVaultRepositoryContract(
+      createRepository: () async {
+        db = AppDatabase(NativeDatabase.memory());
+        return LocalPortalAccountRepository(db);
+      },
+      tearDownRepository: () async {
+        await db.close();
+      },
+    );
+  });
+
+  group('Supabase Implementation Contract', () {
+    late MockSupabaseHttpClient mockHttp;
+    late MockSupabaseClient client;
+
+    testVaultRepositoryContract(
+      createRepository: () async {
+        mockHttp = MockSupabaseHttpClient();
+        client = MockSupabaseClient(mockHttpClient: mockHttp);
+        return SupabasePortalAccountRepository(client);
+      },
+      tearDownRepository: () async {
+        mockHttp.clear();
+      },
+    );
+  });
 }

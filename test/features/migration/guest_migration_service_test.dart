@@ -219,5 +219,135 @@ void main() {
         expect(newSub!.name, 'Brand New Guest Subject');
       },
     );
+
+    test(
+        'migrates all 12 auxiliary tables in dependency order '
+        'with progress callback', () async {
+      final tables = BackupDataTables(
+        subjects: [
+          {
+            'id': 's-full',
+            'name': 'Full Subject',
+            'created_at': DateTime.utc(2026).toIso8601String(),
+            'updated_at': DateTime.utc(2026).toIso8601String(),
+          },
+        ],
+        topics: [
+          {
+            'id': 'top-full',
+            'subject_id': 's-full',
+            'name': 'Topic One',
+            'created_at': DateTime.utc(2026).toIso8601String(),
+          },
+        ],
+        materials: [
+          {
+            'id': 'mat-full',
+            'subject_id': 's-full',
+            'title': 'Material Full',
+            'total_units': 100,
+            'completed_units': 25,
+            'created_at': DateTime.utc(2026).toIso8601String(),
+          },
+        ],
+        progressLogs: [
+          {
+            'id': 'log-full',
+            'material_id': 'mat-full',
+            'units_completed': 25,
+            'entry_type': 'study',
+            'logged_at': DateTime.utc(2026).toIso8601String(),
+          },
+        ],
+        circulars: [
+          {
+            'id': 'circ-full',
+            'title': 'Circ Full',
+            'created_at': DateTime.utc(2026).toIso8601String(),
+          },
+        ],
+        circularExamDates: [
+          {
+            'id': 'ed-full',
+            'circular_id': 'circ-full',
+            'stage': 'Preli',
+            'exam_date': DateTime.utc(2026, 7).toIso8601String(),
+          },
+        ],
+        studyPlans: [
+          {
+            'id': 'sp-full',
+            'title': 'Plan Full',
+            'daily_target_minutes': 60,
+            'start_date': DateTime.utc(2026).toIso8601String(),
+            'target_date': DateTime.utc(2026, 6).toIso8601String(),
+            'created_at': DateTime.utc(2026).toIso8601String(),
+          },
+        ],
+        mockTests: [
+          {
+            'id': 'mt-full',
+            'title': 'Mock Full',
+            'score': 90.0,
+            'total_marks': 100.0,
+            'test_date': DateTime.utc(2026, 3).toIso8601String(),
+          },
+        ],
+        revisionItems: [
+          {
+            'id': 'ri-full',
+            'topic_id': 'top-full',
+            'confidence_level': 3,
+            'next_revision_at': DateTime.utc(2026, 3).toIso8601String(),
+          },
+        ],
+        studySessions: [
+          {
+            'id': 'ss-full',
+            'material_id': 'mat-full',
+            'duration_minutes': 50,
+            'started_at': DateTime.utc(2026, 1, 1, 10).toIso8601String(),
+            'ended_at': DateTime.utc(2026, 1, 1, 10, 50).toIso8601String(),
+          },
+        ],
+        portalAccounts: [
+          {
+            'id': 'pa-full',
+            'portal_name': 'Portal Full',
+            'username': 'user1',
+            'encrypted_password': 'nonce:cipher:tag',
+            'created_at': DateTime.utc(2026).toIso8601String(),
+          },
+        ],
+        userSettings: const [
+          {
+            'id': 'us-full',
+            'theme_mode': 'system',
+            'locale': 'bn',
+            'reduce_effects': true,
+          },
+        ],
+      );
+
+      final events = <String>[];
+      final res = await service.migrate(
+        tables: tables,
+        cloud: fakeCloud.toCloudRepositories(),
+        onProgress: (table, done, total) {
+          events.add('$table: $done/$total');
+        },
+      );
+
+      expect(res.isSuccess, isTrue);
+      expect(events, isNotEmpty);
+
+      // Verify second migration skips all without error
+      final res2 = await service.migrate(
+        tables: tables,
+        cloud: fakeCloud.toCloudRepositories(),
+      );
+      expect(res2.isSuccess, isTrue);
+      expect(res2.skippedCount, greaterThan(5));
+    });
   });
 }

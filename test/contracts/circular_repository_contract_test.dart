@@ -2,10 +2,14 @@ import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:job_prep/core/local/database/app_database.dart';
 import 'package:job_prep/features/circulars/data/repositories/local_circular_repository.dart';
+import 'package:job_prep/features/circulars/data/repositories/supabase_circular_repository.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_enums.dart';
+import 'package:job_prep/features/circulars/domain/entities/circular_filter.dart';
 import 'package:job_prep/features/circulars/domain/errors/circular_failure.dart';
 import 'package:job_prep/features/circulars/domain/repositories/circular_repository.dart';
+
+import 'mock_supabase_http_client.dart';
 
 void testCircularRepositoryContract({
   required Future<CircularRepository> Function() createRepository,
@@ -40,22 +44,56 @@ void testCircularRepositoryContract({
       expect(fetched.title, equals('Assistant Director'));
     });
 
-    test('getCirculars retrieves all stored circulars', () async {
-      await repo.createCircular(
+    test('saving same id twice results in 1 row (upsert idempotency)',
+        () async {
+      final initial = await repo.createCircular(
+        const Circular(id: 'c-fixed-1', title: 'Initial Title', vacancies: 5),
+      );
+      expect(initial.id, equals('c-fixed-1'));
+
+      final updated = await repo.createCircular(
         const Circular(
-          title: 'Circular One',
-          sector: CircularSector.bank,
+          id: 'c-fixed-1',
+          title: 'Overwritten Title',
+          vacancies: 10,
         ),
       );
-      await repo.createCircular(
-        const Circular(
-          title: 'Circular Two',
-          sector: CircularSector.private,
+      expect(updated.id, equals('c-fixed-1'));
+      expect(updated.title, equals('Overwritten Title'));
+
+      final all = await repo.getCirculars();
+      final matching = all.where((c) => c.id == 'c-fixed-1').toList();
+      expect(matching, hasLength(1));
+      expect(matching.first.title, equals('Overwritten Title'));
+      expect(matching.first.vacancies, equals(10));
+    });
+
+    test('getCirculars respects ordering and filters', () async {
+      final c1 = await repo.createCircular(
+        Circular(
+          title: 'Govt Job A',
+          deadline: DateTime.utc(2026, 12, 10),
+        ),
+      );
+      final c2 = await repo.createCircular(
+        Circular(
+          title: 'Bank Job B',
+          sector: CircularSector.bank,
+          deadline: DateTime.utc(2026, 11, 20),
         ),
       );
 
-      final all = await repo.getCirculars();
-      expect(all.length, greaterThanOrEqualTo(2));
+      final bankOnly = await repo.getCirculars(
+        filter: const CircularFilter(sectors: {CircularSector.bank}),
+      );
+      expect(bankOnly.any((c) => c.id == c2.id), isTrue);
+      expect(bankOnly.any((c) => c.id == c1.id), isFalse);
+
+      final searchA = await repo.getCirculars(
+        filter: const CircularFilter(searchQuery: 'Govt Job A'),
+      );
+      expect(searchA.any((c) => c.id == c1.id), isTrue);
+      expect(searchA.any((c) => c.id == c2.id), isFalse);
     });
 
     test('updateCircular modifies fields cleanly', () async {
@@ -100,15 +138,33 @@ void testCircularRepositoryContract({
 }
 
 void main() {
-  late AppDatabase db;
+  group('Local Implementation Contract', () {
+    late AppDatabase db;
 
-  testCircularRepositoryContract(
-    createRepository: () async {
-      db = AppDatabase(NativeDatabase.memory());
-      return LocalCircularRepository(db);
-    },
-    tearDownRepository: () async {
-      await db.close();
-    },
-  );
+    testCircularRepositoryContract(
+      createRepository: () async {
+        db = AppDatabase(NativeDatabase.memory());
+        return LocalCircularRepository(db);
+      },
+      tearDownRepository: () async {
+        await db.close();
+      },
+    );
+  });
+
+  group('Supabase Implementation Contract', () {
+    late MockSupabaseHttpClient mockHttp;
+    late MockSupabaseClient client;
+
+    testCircularRepositoryContract(
+      createRepository: () async {
+        mockHttp = MockSupabaseHttpClient();
+        client = MockSupabaseClient(mockHttpClient: mockHttp);
+        return SupabaseCircularRepository(client);
+      },
+      tearDownRepository: () async {
+        mockHttp.clear();
+      },
+    );
+  });
 }

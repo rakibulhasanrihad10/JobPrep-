@@ -5,6 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:job_prep/features/backup/domain/entities/backup_crypto_envelope.dart';
 import 'package:job_prep/features/backup/domain/entities/backup_manifest.dart';
 import 'package:job_prep/features/backup/domain/services/backup_format_service.dart';
+import 'package:job_prep/features/backup/domain/utils/backup_time_formatter.dart';
+import 'package:job_prep/l10n/app_localizations_en.dart';
 
 void main() {
   group('BackupFormatService', () {
@@ -143,6 +145,38 @@ void main() {
         0,
       );
       expect(migrated.progressLogs.first['entry_type'], 'increment');
+    });
+  });
+
+  group('BackupTimeFormatter', () {
+    final l10n = AppLocalizationsEn();
+    final now = DateTime.utc(2026, 11, 15, 12);
+
+    test('formats relative backup time labels correctly', () {
+      expect(
+        BackupTimeFormatter.format(null, l10n, now: now),
+        contains('Never'),
+      );
+      expect(
+        BackupTimeFormatter.format(now, l10n, now: now),
+        contains('Today'),
+      );
+      expect(
+        BackupTimeFormatter.format(
+          now.subtract(const Duration(days: 1)),
+          l10n,
+          now: now,
+        ),
+        contains('Yesterday'),
+      );
+      expect(
+        BackupTimeFormatter.format(
+          now.subtract(const Duration(days: 5)),
+          l10n,
+          now: now,
+        ),
+        contains('5'),
+      );
     });
   });
 }

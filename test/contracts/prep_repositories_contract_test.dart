@@ -5,6 +5,10 @@ import 'package:job_prep/features/prep/data/repositories/local_material_reposito
 import 'package:job_prep/features/prep/data/repositories/local_progress_log_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/local_subject_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/local_topic_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_material_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_progress_log_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_subject_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_topic_repository.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
@@ -15,6 +19,8 @@ import 'package:job_prep/features/prep/domain/repositories/progress_log_reposito
 import 'package:job_prep/features/prep/domain/repositories/subject_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/topic_repository.dart';
 import 'package:job_prep/features/prep/domain/utils/prep_progress.dart';
+
+import 'mock_supabase_http_client.dart';
 
 void testPrepRepositoriesContract({
   required Future<
@@ -140,8 +146,9 @@ void testPrepRepositoriesContract({
       final book3Capped = await materialsRepo.getMaterialById(book3.id);
       expect(book3Capped!.completedUnits, equals(400)); // clamped to 400
 
-      // 8. Correction log subtracts units cleanly.
-      await logsRepo.createLog(
+      // 8. Correction log subtracts units cleanly without counting as
+      // study effort.
+      final correctionLog = await logsRepo.createLog(
         ProgressLog(
           materialId: book2.id,
           unitsDone: -50,
@@ -149,8 +156,57 @@ void testPrepRepositoriesContract({
           loggedOn: DateTime.utc(2026, 11, 17),
         ),
       );
+      expect(correctionLog.isCorrection, isTrue);
+      expect(correctionLog.isStudy, isFalse);
+
       final book2Corrected = await materialsRepo.getMaterialById(book2.id);
       expect(book2Corrected!.completedUnits, equals(100));
+    });
+
+    test('saving same id twice results in 1 row (upsert idempotency)',
+        () async {
+      // Subject idempotency
+      final s = await subjectsRepo.createSubject(
+        const Subject(id: 'sub-fixed-1', name: 'Original Subject'),
+      );
+      expect(s.id, equals('sub-fixed-1'));
+
+      final sUpdated = await subjectsRepo.createSubject(
+        const Subject(id: 'sub-fixed-1', name: 'Updated Subject'),
+      );
+      expect(sUpdated.id, equals('sub-fixed-1'));
+      expect(sUpdated.name, equals('Updated Subject'));
+
+      final allSubs = await subjectsRepo.getSubjects();
+      final matchingSubs = allSubs.where((x) => x.id == 'sub-fixed-1').toList();
+      expect(matchingSubs, hasLength(1));
+      expect(matchingSubs.first.name, equals('Updated Subject'));
+
+      // Material idempotency
+      final m = await materialsRepo.createMaterial(
+        const PrepMaterial(
+          id: 'mat-fixed-1',
+          subjectId: 'sub-fixed-1',
+          title: 'Book A',
+          totalUnits: 100,
+        ),
+      );
+      expect(m.id, equals('mat-fixed-1'));
+
+      final mUpdated = await materialsRepo.createMaterial(
+        const PrepMaterial(
+          id: 'mat-fixed-1',
+          subjectId: 'sub-fixed-1',
+          title: 'Book A (2nd Ed)',
+          totalUnits: 120,
+        ),
+      );
+      expect(mUpdated.id, equals('mat-fixed-1'));
+      expect(mUpdated.title, equals('Book A (2nd Ed)'));
+
+      final matFetched = await materialsRepo.getMaterialById('mat-fixed-1');
+      expect(matFetched!.title, equals('Book A (2nd Ed)'));
+      expect(matFetched.totalUnits, equals(120));
     });
 
     test('Topic CRUD contract', () async {
@@ -179,20 +235,43 @@ void testPrepRepositoriesContract({
 }
 
 void main() {
-  late AppDatabase db;
+  group('Local Implementation Contract', () {
+    late AppDatabase db;
 
-  testPrepRepositoriesContract(
-    createRepositories: () async {
-      db = AppDatabase(NativeDatabase.memory());
-      return (
-        subjects: LocalSubjectRepository(db),
-        materials: LocalMaterialRepository(db),
-        logs: LocalProgressLogRepository(db),
-        topics: LocalTopicRepository(db),
-      );
-    },
-    tearDownRepositories: () async {
-      await db.close();
-    },
-  );
+    testPrepRepositoriesContract(
+      createRepositories: () async {
+        db = AppDatabase(NativeDatabase.memory());
+        return (
+          subjects: LocalSubjectRepository(db),
+          materials: LocalMaterialRepository(db),
+          logs: LocalProgressLogRepository(db),
+          topics: LocalTopicRepository(db),
+        );
+      },
+      tearDownRepositories: () async {
+        await db.close();
+      },
+    );
+  });
+
+  group('Supabase Implementation Contract', () {
+    late MockSupabaseHttpClient mockHttp;
+    late MockSupabaseClient client;
+
+    testPrepRepositoriesContract(
+      createRepositories: () async {
+        mockHttp = MockSupabaseHttpClient();
+        client = MockSupabaseClient(mockHttpClient: mockHttp);
+        return (
+          subjects: SupabaseSubjectRepository(client),
+          materials: SupabaseMaterialRepository(client),
+          logs: SupabaseProgressLogRepository(client),
+          topics: SupabaseTopicRepository(client),
+        );
+      },
+      tearDownRepositories: () async {
+        mockHttp.clear();
+      },
+    );
+  });
 }
