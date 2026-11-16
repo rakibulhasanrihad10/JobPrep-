@@ -14,6 +14,7 @@ import 'package:job_prep/features/migration/domain/entities/guest_migration_stat
 import 'package:job_prep/features/migration/domain/entities/migration_verification_result.dart';
 import 'package:job_prep/features/migration/domain/repositories/cloud_repositories.dart';
 import 'package:job_prep/features/migration/domain/services/guest_migration_service.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_chapter_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_material_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_mock_test_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_progress_log_repository.dart';
@@ -22,6 +23,7 @@ import 'package:job_prep/features/prep/data/repositories/supabase_study_plan_rep
 import 'package:job_prep/features/prep/data/repositories/supabase_study_session_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_subject_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_topic_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/unconfigured_chapter_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_material_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_mock_test_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_progress_log_repository.dart';
@@ -42,6 +44,7 @@ final Provider<CloudRepositories> cloudRepositoriesProvider =
   if (client == null) {
     return CloudRepositories(
       subjectRepo: const UnconfiguredSubjectRepository(),
+      chapterRepo: const UnconfiguredChapterRepository(),
       topicRepo: const UnconfiguredTopicRepository(),
       materialRepo: const UnconfiguredMaterialRepository(),
       circularRepo: const UnconfiguredCircularRepository(),
@@ -60,6 +63,7 @@ final Provider<CloudRepositories> cloudRepositoriesProvider =
 
   return CloudRepositories(
     subjectRepo: SupabaseSubjectRepository(client),
+    chapterRepo: SupabaseChapterRepository(client),
     topicRepo: SupabaseTopicRepository(client),
     materialRepo: SupabaseMaterialRepository(client),
     circularRepo: SupabaseCircularRepository(client),

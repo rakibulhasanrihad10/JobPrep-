@@ -4,6 +4,7 @@ import 'package:job_prep/features/backup/domain/services/backup_entity_codec.dar
 import 'package:job_prep/features/circulars/domain/repositories/circular_repository.dart';
 import 'package:job_prep/features/circulars/domain/repositories/exam_date_repository.dart';
 import 'package:job_prep/features/notifications/domain/repositories/notifications_repository.dart';
+import 'package:job_prep/features/prep/domain/repositories/chapter_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/material_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/mock_test_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/progress_log_repository.dart';
@@ -22,6 +23,7 @@ abstract final class BackupDataRestorer {
     required BackupDataTables tables,
     required RestoreStrategy strategy,
     required SubjectRepository subjectRepo,
+    required ChapterRepository chapterRepo,
     required TopicRepository topicRepo,
     required MaterialRepository materialRepo,
     required CircularRepository circularRepo,
@@ -55,7 +57,25 @@ abstract final class BackupDataRestorer {
       }
     }
 
-    // 2. Topics
+    // 2. Chapters
+    for (final raw in tables.chapters) {
+      final c = BackupEntityCodec.chapterFromJson(raw);
+      final existingChapters =
+          await chapterRepo.getChaptersForSubject(c.subjectId);
+      final match = existingChapters.where((i) => i.id == c.id).firstOrNull;
+      if (match == null) {
+        await chapterRepo.createChapter(c);
+        count++;
+      } else if (strategy.isReplace ||
+          (c.updatedAt != null &&
+              match.updatedAt != null &&
+              c.updatedAt!.isAfter(match.updatedAt!))) {
+        await chapterRepo.updateChapter(c);
+        count++;
+      }
+    }
+
+    // 3. Topics
     for (final raw in tables.topics) {
       final t = BackupEntityCodec.topicFromJson(raw);
       final existingTopics = await topicRepo.getTopicsForSubject(t.subjectId);

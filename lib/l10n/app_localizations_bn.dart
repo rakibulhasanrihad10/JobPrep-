@@ -4908,4 +4908,146 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get migrationKeepGuestButton => 'গেস্ট মোডে থাকুন';
+
+  @override
+  String get prepTabSyllabus => 'সিলেবাস';
+
+  @override
+  String get prepSyllabusTitle => 'সিলেবাস ট্র্যাকিং';
+
+  @override
+  String get prepSyllabusSubtitle =>
+      'অধ্যায়, বিষয় এবং চেকপয়েন্ট অনুযায়ী প্রস্তুতি ট্র্যাক করুন।';
+
+  @override
+  String get syllabusOverallProgress => 'সিলেবাস অগ্রগতি';
+
+  @override
+  String get syllabusReadingProgress => 'পড়ার অগ্রগতি';
+
+  @override
+  String get syllabusCheckpointStudy => 'পড়া';
+
+  @override
+  String get syllabusCheckpointPractice => 'অনুশীলন';
+
+  @override
+  String get syllabusCheckpointModelTest => 'মডেল টেস্ট';
+
+  @override
+  String get syllabusCheckpointRevision => 'রিভিশন';
+
+  @override
+  String get syllabusAddChapter => 'অধ্যায় যোগ করুন';
+
+  @override
+  String get syllabusEditChapter => 'অধ্যায় সম্পাদনা';
+
+  @override
+  String get syllabusDeleteChapter => 'অধ্যায় মুছুন';
+
+  @override
+  String syllabusDeleteChapterConfirm(String title, int count) {
+    return 'আপনি কি নিশ্চিতভাবে \"$title\" অধ্যায়টি মুছে ফেলতে চান? ভিতরের সমস্ত $countটি বিষয় হারিয়ে যাবে।';
+  }
+
+  @override
+  String get syllabusChapterTitleLabel => 'অধ্যায়ের নাম';
+
+  @override
+  String get syllabusAddTopic => 'বিষয় যোগ করুন';
+
+  @override
+  String get syllabusEditTopic => 'বিষয় সম্পাদনা';
+
+  @override
+  String get syllabusDeleteTopic => 'বিষয় মুছুন';
+
+  @override
+  String get syllabusTopicTitleLabel => 'বিষয়ের নাম';
+
+  @override
+  String get syllabusTopicWeightLabel => 'গুরুত্ব (Weight)';
+
+  @override
+  String get syllabusTopicNotesLabel => 'ব্যক্তিগত নোট';
+
+  @override
+  String get syllabusTopicNotesHint =>
+      'নোট, সূত্র বা গুরুত্বপূর্ণ বিষয় লিখুন...';
+
+  @override
+  String get syllabusTopicDateLabel => 'সম্পন্নের তারিখ';
+
+  @override
+  String syllabusMarkAllDone(String checkpoint) {
+    return 'সবগুলো $checkpoint সম্পন্ন চিহ্নিত করুন';
+  }
+
+  @override
+  String get syllabusConfigureCheckpoints => 'চেকপয়েন্ট কনফিগার করুন';
+
+  @override
+  String syllabusConfigureCheckpointsSubtitle(String subject) {
+    return '$subject বিষয়ের জন্য কোন কোন চেকপয়েন্ট ট্র্যাক করবেন তা নির্বাচন করুন';
+  }
+
+  @override
+  String get syllabusConfigureCheckpointsWarning =>
+      'সতর্কতা: ইতিপূর্বে সম্পন্ন কোনো চেকপয়েন্ট আনচেক করলে তা অগ্রগতির হিসাব থেকে বাদ পড়বে।';
+
+  @override
+  String get syllabusQuickAdd => 'আউটলাইন দ্রুত যোগ করুন';
+
+  @override
+  String get syllabusQuickAddSubtitle =>
+      'একাধিক লাইনের আউটলাইন পেস্ট করুন। হাইফেন ছাড়া লাইনগুলো অধ্যায় এবং \"-\" যুক্ত লাইনগুলো বিষয় হিসেবে তৈরি হবে।';
+
+  @override
+  String get syllabusQuickAddHint =>
+      'প্রথম অধ্যায়: পাটিগণিত\n- মৌলিক সংখ্যা\n- বিভাজ্যতার নিয়ম\n\nদ্বিতীয় অধ্যায়: বীজগণিত\n- বহুপদী রাশি';
+
+  @override
+  String syllabusQuickAddPreview(int chapters, int topics) {
+    return 'প্রিভিউ: $chaptersটি অধ্যায়, $topicsটি বিষয়';
+  }
+
+  @override
+  String get syllabusQuickAddImportButton => 'আউটলাইন ইমপোর্ট করুন';
+
+  @override
+  String get syllabusStartFromTemplate => 'টেমপ্লেট রূপরেখা দিয়ে শুরু করুন';
+
+  @override
+  String get syllabusTemplateNotice =>
+      'সম্পাদনাযোগ্য উদাহরণ রূপরেখা - অফিশিয়াল সিলেবাস নয়';
+
+  @override
+  String get syllabusNoChapters => 'কোনো অধ্যায় তৈরি করা হয়নি';
+
+  @override
+  String syllabusNoChaptersDesc(String subject) {
+    return '$subject বিষয়টিকে অধ্যায়ে বিভক্ত করুন এবং চেকপয়েন্ট ট্র্যাক করুন।';
+  }
+
+  @override
+  String get syllabusNoSubjects => 'কোনো বিষয় পাওয়া যায়নি';
+
+  @override
+  String get syllabusNoSubjectsDesc =>
+      'সিলেবাস ট্র্যাক করার জন্য প্রথমে একটি বিষয় তৈরি করুন।';
+
+  @override
+  String syllabusTopicCount(int count) {
+    return '$countটি বিষয়';
+  }
+
+  @override
+  String get syllabusReorderTopics => 'বিষয়ের ক্রম পরিবর্তন';
+
+  @override
+  String get syllabusClearDate => 'তারিখ মুছুন';
+
+  @override
+  String get syllabusSelectDate => 'তারিখ নির্বাচন করুন';
 }

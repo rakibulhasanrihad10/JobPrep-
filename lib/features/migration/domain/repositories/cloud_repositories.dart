@@ -1,5 +1,6 @@
 import 'package:job_prep/features/circulars/domain/repositories/circular_repository.dart';
 import 'package:job_prep/features/circulars/domain/repositories/exam_date_repository.dart';
+import 'package:job_prep/features/prep/domain/repositories/chapter_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/material_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/mock_test_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/progress_log_repository.dart';
@@ -16,6 +17,7 @@ class CloudRepositories {
   /// Creates a [CloudRepositories] bundle.
   const CloudRepositories({
     required this.subjectRepo,
+    required this.chapterRepo,
     required this.topicRepo,
     required this.materialRepo,
     required this.circularRepo,
@@ -31,6 +33,9 @@ class CloudRepositories {
 
   /// Cloud subject repository.
   final SubjectRepository subjectRepo;
+
+  /// Cloud chapter repository.
+  final ChapterRepository chapterRepo;
 
   /// Cloud topic repository.
   final TopicRepository topicRepo;

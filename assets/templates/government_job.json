@@ -161,5 +161,51 @@
       "total_units": 200,
       "item_sort_order": 10
     }
+  ],
+  "example_outlines": [
+    {
+      "subject_name": "Bengali",
+      "notice": "Editable example outline - not an official syllabus",
+      "chapters": [
+        {
+          "title": "Bengali Literature (Example Outline)",
+          "topics": [
+            "Ancient & Medieval Period (Charyapada & Mangalkavya)",
+            "Modern Poetry & Prose (Tagore, Nazrul, Jibanananda)",
+            "Liberation War & Contemporary Bengali Fiction"
+          ]
+        },
+        {
+          "title": "Bengali Grammar (Example Outline)",
+          "topics": [
+            "Phonetics & Orthography (Dhoni O Borno)",
+            "Morphology & Word Formation (Shondhi, Shomash, Prottoy)",
+            "Sentence Structure, Idioms & Correction"
+          ]
+        }
+      ]
+    },
+    {
+      "subject_name": "General Knowledge",
+      "notice": "Editable example outline - not an official syllabus",
+      "chapters": [
+        {
+          "title": "Bangladesh Affairs (Example Outline)",
+          "topics": [
+            "History, Language Movement & 1971 Liberation War",
+            "Constitution, Governance & Judicial Framework",
+            "Geography, Economy & Major Infrastructure Projects"
+          ]
+        },
+        {
+          "title": "International Affairs (Example Outline)",
+          "topics": [
+            "Global Geopolitics, Treaties & Regional Blocs",
+            "Environmental Agreements & Climate Conferences",
+            "International Organizations (UN, World Bank, IMF)"
+          ]
+        }
+      ]
+    }
   ]
 }

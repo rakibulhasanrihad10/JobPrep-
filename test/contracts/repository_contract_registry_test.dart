@@ -12,6 +12,8 @@ void main() {
           'test/contracts/exam_date_repository_contract_test.dart',
       'SubjectRepository':
           'test/contracts/prep_repositories_contract_test.dart',
+      'ChapterRepository':
+          'test/contracts/chapter_repository_contract_test.dart',
       'MaterialRepository':
           'test/contracts/prep_repositories_contract_test.dart',
       'ProgressLogRepository':

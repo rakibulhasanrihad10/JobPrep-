@@ -4,6 +4,7 @@ import 'package:job_prep/features/circulars/domain/entities/circular.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_exam_date.dart';
 import 'package:job_prep/features/notifications/data/mappers/notification_mapper.dart';
 import 'package:job_prep/features/notifications/domain/entities/app_notification.dart';
+import 'package:job_prep/features/prep/data/mappers/chapter_mapper.dart';
 import 'package:job_prep/features/prep/data/mappers/mock_test_mapper.dart';
 import 'package:job_prep/features/prep/data/mappers/prep_material_mapper.dart';
 import 'package:job_prep/features/prep/data/mappers/progress_log_mapper.dart';
@@ -12,6 +13,7 @@ import 'package:job_prep/features/prep/data/mappers/study_plan_mapper.dart';
 import 'package:job_prep/features/prep/data/mappers/study_session_mapper.dart';
 import 'package:job_prep/features/prep/data/mappers/subject_mapper.dart';
 import 'package:job_prep/features/prep/data/mappers/topic_mapper.dart';
+import 'package:job_prep/features/prep/domain/entities/chapter.dart';
 import 'package:job_prep/features/prep/domain/entities/mock_test.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
@@ -50,6 +52,14 @@ abstract final class BackupEntityCodec {
   /// Parses [Subject] from backup JSON map.
   static Subject subjectFromJson(Map<String, dynamic> json) =>
       SubjectMapper.fromJson(json);
+
+  /// Converts [Chapter] to backup JSON map.
+  static Map<String, dynamic> chapterToJson(Chapter c) =>
+      ChapterMapper.toInsertJson(c);
+
+  /// Parses [Chapter] from backup JSON map.
+  static Chapter chapterFromJson(Map<String, dynamic> json) =>
+      ChapterMapper.fromJson(json);
 
   /// Converts [PrepMaterial] to backup JSON map.
   static Map<String, dynamic> materialToJson(PrepMaterial m) =>

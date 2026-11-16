@@ -23,7 +23,7 @@ void main() {
       );
 
       expect(manifest.format, BackupManifest.formatIdentifier);
-      expect(manifest.schemaVersion, 1);
+      expect(manifest.schemaVersion, 2);
       expect(manifest.appVersion, '0.1.0+1');
       expect(manifest.data.subjects.length, 1);
       expect(manifest.checksum.isNotEmpty, isTrue);
@@ -145,6 +145,42 @@ void main() {
         0,
       );
       expect(migrated.progressLogs.first['entry_type'], 'increment');
+    });
+
+    test(
+        'migrateOlderSchema upgrades schema v1 by backfilling checkpoints and '
+        'migrating topic statuses', () {
+      final v1Data = {
+        'subjects': [
+          {'id': 'sub-1', 'name': 'General Science'},
+        ],
+        'topics': [
+          {'id': 't-1', 'name': 'Physics', 'status': 'learning'},
+          {'id': 't-2', 'name': 'Chemistry', 'status': 'revised'},
+          {'id': 't-3', 'name': 'Biology', 'status': 'mastered'},
+          {'id': 't-4', 'name': 'Astronomy', 'status': 'not_started'},
+        ],
+      };
+
+      final migrated = BackupFormatService.migrateOlderSchema(v1Data, 1);
+
+      expect(
+        migrated.subjects.first['enabled_checkpoints'],
+        containsAll(['study', 'practice', 'model_test', 'revision']),
+      );
+      expect(migrated.topics[0]['study_done_at'], isNotNull);
+      expect(migrated.topics[0]['practice_done_at'], isNull);
+
+      expect(migrated.topics[1]['study_done_at'], isNotNull);
+      expect(migrated.topics[1]['revision_done_at'], isNotNull);
+      expect(migrated.topics[1]['practice_done_at'], isNull);
+
+      expect(migrated.topics[2]['study_done_at'], isNotNull);
+      expect(migrated.topics[2]['practice_done_at'], isNotNull);
+      expect(migrated.topics[2]['model_test_done_at'], isNotNull);
+      expect(migrated.topics[2]['revision_done_at'], isNotNull);
+
+      expect(migrated.topics[3]['study_done_at'], isNull);
     });
   });
 

@@ -19,7 +19,26 @@ class LocalTopicRepository implements TopicRepository {
 
     final query = _db.select(_db.localTopics)
       ..where((t) => t.subjectId.equals(trimmedId))
-      ..orderBy([(t) => OrderingTerm.asc(t.sortOrder)]);
+      ..orderBy([
+        (t) => OrderingTerm.asc(t.sortOrder),
+        (t) => OrderingTerm.asc(t.createdAt),
+      ]);
+
+    final rows = await query.get();
+    return List.unmodifiable(rows.map(_mapRow));
+  }
+
+  @override
+  Future<List<Topic>> getTopicsForChapter(String chapterId) async {
+    final trimmedId = chapterId.trim();
+    if (trimmedId.isEmpty) return const [];
+
+    final query = _db.select(_db.localTopics)
+      ..where((t) => t.chapterId.equals(trimmedId))
+      ..orderBy([
+        (t) => OrderingTerm.asc(t.sortOrder),
+        (t) => OrderingTerm.asc(t.createdAt),
+      ]);
 
     final rows = await query.get();
     return List.unmodifiable(rows.map(_mapRow));
@@ -34,7 +53,16 @@ class LocalTopicRepository implements TopicRepository {
     final entry = LocalTopicsCompanion(
       id: Value(id),
       subjectId: Value(topic.subjectId.trim()),
-      name: Value(topic.name.trim()),
+      chapterId: Value(topic.chapterId?.trim()),
+      title: Value(topic.title.trim()),
+      name: Value(topic.title.trim()),
+      sortOrder: Value(topic.sortOrder < 0 ? 0 : topic.sortOrder),
+      weight: Value(topic.weight < 0 ? 0 : topic.weight),
+      studyDoneAt: Value(topic.studyDoneAt),
+      practiceDoneAt: Value(topic.practiceDoneAt),
+      modelTestDoneAt: Value(topic.modelTestDoneAt),
+      revisionDoneAt: Value(topic.revisionDoneAt),
+      notes: Value(topic.notes?.trim()),
       createdAt: Value(topic.createdAt ?? now),
       updatedAt: Value(now),
     );
@@ -45,6 +73,16 @@ class LocalTopicRepository implements TopicRepository {
       createdAt: topic.createdAt ?? now,
       updatedAt: now,
     );
+  }
+
+  @override
+  Future<List<Topic>> batchCreateTopics(List<Topic> topics) async {
+    final result = <Topic>[];
+    for (final topic in topics) {
+      final saved = await createTopic(topic);
+      result.add(saved);
+    }
+    return List.unmodifiable(result);
   }
 
   @override
@@ -72,7 +110,16 @@ class LocalTopicRepository implements TopicRepository {
     final entry = LocalTopicsCompanion(
       id: Value(trimmedId),
       subjectId: Value(topic.subjectId.trim()),
-      name: Value(topic.name.trim()),
+      chapterId: Value(topic.chapterId?.trim()),
+      title: Value(topic.title.trim()),
+      name: Value(topic.title.trim()),
+      sortOrder: Value(topic.sortOrder < 0 ? 0 : topic.sortOrder),
+      weight: Value(topic.weight < 0 ? 0 : topic.weight),
+      studyDoneAt: Value(topic.studyDoneAt),
+      practiceDoneAt: Value(topic.practiceDoneAt),
+      modelTestDoneAt: Value(topic.modelTestDoneAt),
+      revisionDoneAt: Value(topic.revisionDoneAt),
+      notes: Value(topic.notes?.trim()),
       createdAt: Value(existing.createdAt),
       updatedAt: Value(now),
     );
@@ -99,6 +146,20 @@ class LocalTopicRepository implements TopicRepository {
         .go();
   }
 
+  @override
+  Future<void> reorderTopics(List<String> orderedTopicIds) async {
+    if (orderedTopicIds.isEmpty) return;
+
+    await _db.transaction(() async {
+      for (var i = 0; i < orderedTopicIds.length; i++) {
+        final id = orderedTopicIds[i].trim();
+        if (id.isEmpty) continue;
+        await (_db.update(_db.localTopics)..where((t) => t.id.equals(id)))
+            .write(LocalTopicsCompanion(sortOrder: Value(i)));
+      }
+    });
+  }
+
   void _validateForWrite(Topic topic) {
     if (topic.subjectId.trim().isEmpty) {
       throw const PrepValidationFailure(
@@ -106,7 +167,7 @@ class LocalTopicRepository implements TopicRepository {
         message: 'A topic must belong to a subject.',
       );
     }
-    if (topic.name.trim().isEmpty) {
+    if (topic.title.trim().isEmpty) {
       throw const PrepValidationFailure(
         code: 'missing_topic_name',
         message: 'A topic must have a non-empty name.',
@@ -118,7 +179,15 @@ class LocalTopicRepository implements TopicRepository {
     return Topic(
       id: row.id,
       subjectId: row.subjectId,
-      name: row.name,
+      chapterId: row.chapterId,
+      title: row.title ?? row.name,
+      sortOrder: row.sortOrder,
+      weight: row.weight,
+      studyDoneAt: row.studyDoneAt,
+      practiceDoneAt: row.practiceDoneAt,
+      modelTestDoneAt: row.modelTestDoneAt,
+      revisionDoneAt: row.revisionDoneAt,
+      notes: row.notes,
       createdAt: row.createdAt,
       updatedAt: row.updatedAt,
     );

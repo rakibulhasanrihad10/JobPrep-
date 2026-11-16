@@ -8,6 +8,7 @@ import 'package:job_prep/features/circulars/domain/entities/circular.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_enums.dart';
 import 'package:job_prep/features/migration/domain/services/guest_migration_service.dart';
 import 'package:job_prep/features/notifications/data/repositories/local_notifications_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/local_chapter_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/local_material_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/local_mock_test_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/local_progress_log_repository.dart';
@@ -46,6 +47,7 @@ void main() {
       circularRepo: localCircularRepo,
       examDateRepo: LocalExamDateRepository(db),
       subjectRepo: localSubjectRepo,
+      chapterRepo: LocalChapterRepository(db),
       materialRepo: localMaterialRepo,
       progressLogRepo: localProgressRepo,
       topicRepo: LocalTopicRepository(db),

@@ -8,6 +8,7 @@ import 'package:job_prep/features/backup/domain/services/backup_format_service.d
 import 'package:job_prep/features/circulars/domain/repositories/circular_repository.dart';
 import 'package:job_prep/features/circulars/domain/repositories/exam_date_repository.dart';
 import 'package:job_prep/features/notifications/domain/repositories/notifications_repository.dart';
+import 'package:job_prep/features/prep/domain/repositories/chapter_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/material_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/mock_test_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/progress_log_repository.dart';
@@ -27,6 +28,7 @@ class AppBackupRepository implements BackupRepository {
     required this.circularRepo,
     required this.examDateRepo,
     required this.subjectRepo,
+    required this.chapterRepo,
     required this.materialRepo,
     required this.progressLogRepo,
     required this.topicRepo,
@@ -44,6 +46,7 @@ class AppBackupRepository implements BackupRepository {
   final CircularRepository circularRepo;
   final ExamDateRepository examDateRepo;
   final SubjectRepository subjectRepo;
+  final ChapterRepository chapterRepo;
   final MaterialRepository materialRepo;
   final ProgressLogRepository progressLogRepo;
   final TopicRepository topicRepo;
@@ -77,8 +80,11 @@ class AppBackupRepository implements BackupRepository {
     }
 
     final subjects = await subjectRepo.getSubjects();
+    final chapters = <Map<String, dynamic>>[];
     final topics = <Map<String, dynamic>>[];
     for (final s in subjects) {
+      final sChapters = await chapterRepo.getChaptersForSubject(s.id);
+      chapters.addAll(sChapters.map(BackupEntityCodec.chapterToJson));
       final sTopics = await topicRepo.getTopicsForSubject(s.id);
       topics.addAll(sTopics.map(BackupEntityCodec.topicToJson));
     }
@@ -102,6 +108,7 @@ class AppBackupRepository implements BackupRepository {
       circulars: circulars.map(BackupEntityCodec.circularToJson).toList(),
       circularExamDates: examDates,
       subjects: subjects.map(BackupEntityCodec.subjectToJson).toList(),
+      chapters: chapters,
       materials: materials.map(BackupEntityCodec.materialToJson).toList(),
       progressLogs: progressLogs,
       topics: topics,
@@ -149,6 +156,7 @@ class AppBackupRepository implements BackupRepository {
       tables: manifest.data,
       strategy: strategy,
       subjectRepo: subjectRepo,
+      chapterRepo: chapterRepo,
       topicRepo: topicRepo,
       materialRepo: materialRepo,
       circularRepo: circularRepo,

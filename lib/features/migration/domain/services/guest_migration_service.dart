@@ -54,7 +54,40 @@ class GuestMigrationService {
       report('subjects');
     }
 
-    // 2. Materials
+    // 2. Chapters
+    for (final raw in tables.chapters) {
+      final c = BackupEntityCodec.chapterFromJson(raw);
+      final existingChapters =
+          await cloud.chapterRepo.getChaptersForSubject(c.subjectId);
+      final match =
+          existingChapters.where((item) => item.id == c.id).firstOrNull;
+      if (match != null) {
+        skipped++;
+      } else {
+        await cloud.chapterRepo.createChapter(c);
+        uploaded++;
+      }
+      processed++;
+      report('chapters');
+    }
+
+    // 3. Topics
+    for (final raw in tables.topics) {
+      final t = BackupEntityCodec.topicFromJson(raw);
+      final existingTopics =
+          await cloud.topicRepo.getTopicsForSubject(t.subjectId);
+      final match = existingTopics.where((item) => item.id == t.id).firstOrNull;
+      if (match != null) {
+        skipped++;
+      } else {
+        await cloud.topicRepo.createTopic(t);
+        uploaded++;
+      }
+      processed++;
+      report('topics');
+    }
+
+    // 4. Materials
     for (final raw in tables.materials) {
       final m = BackupEntityCodec.materialFromJson(raw);
       final existingMaterials =
@@ -71,7 +104,7 @@ class GuestMigrationService {
       report('materials');
     }
 
-    // 3. Progress Logs
+    // 5. Progress Logs
     for (final raw in tables.progressLogs) {
       final log = BackupEntityCodec.progressLogFromJson(raw);
       final existingLogs =
@@ -87,23 +120,7 @@ class GuestMigrationService {
       report('progress_logs');
     }
 
-    // 4. Topics
-    for (final raw in tables.topics) {
-      final t = BackupEntityCodec.topicFromJson(raw);
-      final existingTopics =
-          await cloud.topicRepo.getTopicsForSubject(t.subjectId);
-      final match = existingTopics.where((item) => item.id == t.id).firstOrNull;
-      if (match != null) {
-        skipped++;
-      } else {
-        await cloud.topicRepo.createTopic(t);
-        uploaded++;
-      }
-      processed++;
-      report('topics');
-    }
-
-    // 5. Circulars
+    // 6. Circulars
     final cloudCirculars = await cloud.circularRepo.getCirculars();
     final cloudCircularMap = {for (final c in cloudCirculars) c.id: c};
     for (final raw in tables.circulars) {

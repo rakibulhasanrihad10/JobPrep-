@@ -32,6 +32,7 @@ final Provider<BackupRepository> backupRepositoryProvider =
     circularRepo: ref.watch(circularRepositoryProvider),
     examDateRepo: ref.watch(examDateRepositoryProvider),
     subjectRepo: ref.watch(subjectRepositoryProvider),
+    chapterRepo: ref.watch(chapterRepositoryProvider),
     materialRepo: ref.watch(materialRepositoryProvider),
     progressLogRepo: ref.watch(progressLogRepositoryProvider),
     topicRepo: ref.watch(topicRepositoryProvider),

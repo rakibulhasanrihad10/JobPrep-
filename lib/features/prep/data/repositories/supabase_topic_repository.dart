@@ -26,6 +26,25 @@ class SupabaseTopicRepository implements TopicRepository {
           .from(_table)
           .select()
           .eq('subject_id', trimmedId)
+          .order('sort_order', ascending: true)
+          .order('created_at', ascending: true);
+      return TopicMapper.fromJsonList(rows);
+    } on Object catch (error) {
+      throw PrepErrorMapper.map(error);
+    }
+  }
+
+  @override
+  Future<List<Topic>> getTopicsForChapter(String chapterId) async {
+    final trimmedId = chapterId.trim();
+    if (trimmedId.isEmpty) return const [];
+
+    try {
+      final rows = await _client
+          .from(_table)
+          .select()
+          .eq('chapter_id', trimmedId)
+          .order('sort_order', ascending: true)
           .order('created_at', ascending: true);
       return TopicMapper.fromJsonList(rows);
     } on Object catch (error) {
@@ -55,6 +74,16 @@ class SupabaseTopicRepository implements TopicRepository {
     } on Object catch (error) {
       throw PrepErrorMapper.map(error);
     }
+  }
+
+  @override
+  Future<List<Topic>> batchCreateTopics(List<Topic> topics) async {
+    final result = <Topic>[];
+    for (final topic in topics) {
+      final created = await createTopic(topic);
+      result.add(created);
+    }
+    return List.unmodifiable(result);
   }
 
   @override
@@ -98,6 +127,21 @@ class SupabaseTopicRepository implements TopicRepository {
     }
   }
 
+  @override
+  Future<void> reorderTopics(List<String> orderedTopicIds) async {
+    if (orderedTopicIds.isEmpty) return;
+
+    try {
+      for (var i = 0; i < orderedTopicIds.length; i++) {
+        final id = orderedTopicIds[i].trim();
+        if (id.isEmpty) continue;
+        await _client.from(_table).update({'sort_order': i}).eq('id', id);
+      }
+    } on Object catch (error) {
+      throw PrepErrorMapper.map(error);
+    }
+  }
+
   void _validateForWrite(Topic topic) {
     if (topic.subjectId.trim().isEmpty) {
       throw const PrepValidationFailure(
@@ -105,7 +149,7 @@ class SupabaseTopicRepository implements TopicRepository {
         message: 'Topic requires a parent subject id.',
       );
     }
-    if (topic.name.trim().isEmpty) {
+    if (topic.title.trim().isEmpty) {
       throw const PrepValidationFailure(
         code: 'empty_topic_name',
         message: 'Topic name cannot be empty.',

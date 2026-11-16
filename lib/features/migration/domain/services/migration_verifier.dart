@@ -33,7 +33,24 @@ abstract final class MigrationVerifier {
       }
     }
 
-    // 2. Verify materials and progress totals
+    // 2. Verify chapters exist in cloud
+    for (final raw in tables.chapters) {
+      final c = BackupEntityCodec.chapterFromJson(raw);
+      final cloudChapter = await cloud.chapterRepo.getChapterById(c.id);
+      if (cloudChapter == null) {
+        return MigrationVerificationResult(
+          isSuccess: false,
+          totalRecordsChecked: totalRecords,
+          uploadedCount: uploadedCount,
+          skippedCount: skippedCount,
+          progressTotalsMatch: false,
+          mismatchDetails:
+              'Chapter "${c.title}" (id: ${c.id}) missing in cloud',
+        );
+      }
+    }
+
+    // 3. Verify materials and progress totals
     var progressMatched = true;
     for (final rawSub in tables.subjects) {
       final sub = BackupEntityCodec.subjectFromJson(rawSub);

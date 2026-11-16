@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart' show compute;
 import 'package:job_prep/features/backup/domain/entities/backup_crypto_envelope.dart';
 import 'package:job_prep/features/backup/domain/entities/backup_manifest.dart';
 import 'package:job_prep/features/backup/domain/entities/backup_validation_result.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 
 /// Serialization, checksum verification, isolate parsing, and version migration
 /// for JobPrep backup archives.
@@ -14,7 +15,7 @@ abstract final class BackupFormatService {
   static const int maxBackupSizeBytes = 25 * 1024 * 1024;
 
   /// Active backup schema version.
-  static const int currentSchemaVersion = 1;
+  static const int currentSchemaVersion = 2;
 
   /// Current application version baseline.
   static const String currentAppVersion = '0.1.0';
@@ -167,7 +168,6 @@ abstract final class BackupFormatService {
     Map<String, dynamic> legacyData,
     int sourceSchemaVersion,
   ) {
-    // Schema version 0 (e.g. initial export or legacy JSON without entry_type)
     final tables = BackupDataTables.fromJson(legacyData);
 
     // Normalize progress logs: ensure every progress log has entry_type
@@ -177,13 +177,47 @@ abstract final class BackupFormatService {
       return map;
     }).toList(growable: false);
 
+    // Normalize subjects: ensure enabled_checkpoints defaults
+    final upgradedSubjects = tables.subjects.map((sub) {
+      final map = Map<String, dynamic>.from(sub);
+      map['enabled_checkpoints'] = (map['enabled_checkpoints'] as List?) ??
+          SyllabusCheckpoint.defaultEnabledValues;
+      return map;
+    }).toList(growable: false);
+
+    // Normalize topics: weight, sort_order, title, and migrate status
+    // to timestamps
+    final upgradedTopics = tables.topics.map((top) {
+      final map = Map<String, dynamic>.from(top);
+      map['weight'] = (map['weight'] as num?)?.toInt() ?? 1;
+      map['sort_order'] = (map['sort_order'] as num?)?.toInt() ?? 0;
+      map['title'] =
+          (map['title'] as String?) ?? (map['name'] as String?) ?? '';
+      final statusVal = (map['status'] as String?)?.toLowerCase().trim();
+      final nowStr = (map['updated_at'] as String?) ??
+          DateTime.now().toUtc().toIso8601String();
+      if (statusVal == 'learning' || statusVal == 'in_progress') {
+        map['study_done_at'] ??= nowStr;
+      } else if (statusVal == 'revised' || statusVal == 'needs_revision') {
+        map['study_done_at'] ??= nowStr;
+        map['revision_done_at'] ??= nowStr;
+      } else if (statusVal == 'mastered' || statusVal == 'completed') {
+        map['study_done_at'] ??= nowStr;
+        map['practice_done_at'] ??= nowStr;
+        map['model_test_done_at'] ??= nowStr;
+        map['revision_done_at'] ??= nowStr;
+      }
+      return map;
+    }).toList(growable: false);
+
     return BackupDataTables(
       circulars: tables.circulars,
       circularExamDates: tables.circularExamDates,
-      subjects: tables.subjects,
+      subjects: upgradedSubjects,
+      chapters: tables.chapters,
       materials: tables.materials,
       progressLogs: upgradedLogs,
-      topics: tables.topics,
+      topics: upgradedTopics,
       circularSubjects: tables.circularSubjects,
       studyPlans: tables.studyPlans,
       mockTests: tables.mockTests,

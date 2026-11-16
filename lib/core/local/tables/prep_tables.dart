@@ -11,6 +11,25 @@ class LocalSubjects extends Table {
   TextColumn get icon => text().withDefault(const Constant('menu_book'))();
   TextColumn get examType => text().withDefault(const Constant('general'))();
   IntColumn get sortOrder => integer().withDefault(const Constant(0))();
+  TextColumn get enabledCheckpoints => text().withDefault(
+        const Constant('["study","practice","model_test","revision"]'),
+      )();
+  DateTimeColumn get createdAt => dateTime().nullable()();
+  DateTimeColumn get updatedAt => dateTime().nullable()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+/// Local SQLite schema for syllabus chapters.
+class LocalChapters extends Table {
+  @override
+  String get tableName => 'chapters';
+
+  TextColumn get id => text()();
+  TextColumn get subjectId => text()();
+  TextColumn get title => text()();
+  IntColumn get sortOrder => integer().withDefault(const Constant(0))();
   DateTimeColumn get createdAt => dateTime().nullable()();
   DateTimeColumn get updatedAt => dateTime().nullable()();
 
@@ -64,8 +83,16 @@ class LocalTopics extends Table {
 
   TextColumn get id => text()();
   TextColumn get subjectId => text()();
+  TextColumn get chapterId => text().nullable()();
+  TextColumn get title => text().nullable()();
   TextColumn get name => text()();
   IntColumn get sortOrder => integer().withDefault(const Constant(0))();
+  IntColumn get weight => integer().withDefault(const Constant(1))();
+  DateTimeColumn get studyDoneAt => dateTime().nullable()();
+  DateTimeColumn get practiceDoneAt => dateTime().nullable()();
+  DateTimeColumn get modelTestDoneAt => dateTime().nullable()();
+  DateTimeColumn get revisionDoneAt => dateTime().nullable()();
+  TextColumn get notes => text().nullable()();
   DateTimeColumn get createdAt => dateTime().nullable()();
   DateTimeColumn get updatedAt => dateTime().nullable()();
 

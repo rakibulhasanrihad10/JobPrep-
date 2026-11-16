@@ -1906,6 +1906,15 @@ class $LocalSubjectsTable extends LocalSubjects
       type: DriftSqlType.int,
       requiredDuringInsert: false,
       defaultValue: const Constant(0));
+  static const VerificationMeta _enabledCheckpointsMeta =
+      const VerificationMeta('enabledCheckpoints');
+  @override
+  late final GeneratedColumn<String> enabledCheckpoints =
+      GeneratedColumn<String>('enabled_checkpoints', aliasedName, false,
+          type: DriftSqlType.string,
+          requiredDuringInsert: false,
+          defaultValue:
+              const Constant('["study","practice","model_test","revision"]'));
   static const VerificationMeta _createdAtMeta =
       const VerificationMeta('createdAt');
   @override
@@ -1919,8 +1928,17 @@ class $LocalSubjectsTable extends LocalSubjects
       'updated_at', aliasedName, true,
       type: DriftSqlType.dateTime, requiredDuringInsert: false);
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, name, color, icon, examType, sortOrder, createdAt, updatedAt];
+  List<GeneratedColumn> get $columns => [
+        id,
+        name,
+        color,
+        icon,
+        examType,
+        sortOrder,
+        enabledCheckpoints,
+        createdAt,
+        updatedAt
+      ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -1958,6 +1976,12 @@ class $LocalSubjectsTable extends LocalSubjects
       context.handle(_sortOrderMeta,
           sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta));
     }
+    if (data.containsKey('enabled_checkpoints')) {
+      context.handle(
+          _enabledCheckpointsMeta,
+          enabledCheckpoints.isAcceptableOrUnknown(
+              data['enabled_checkpoints']!, _enabledCheckpointsMeta));
+    }
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta));
@@ -1987,6 +2011,8 @@ class $LocalSubjectsTable extends LocalSubjects
           .read(DriftSqlType.string, data['${effectivePrefix}exam_type'])!,
       sortOrder: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}sort_order'])!,
+      enabledCheckpoints: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}enabled_checkpoints'])!,
       createdAt: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at']),
       updatedAt: attachedDatabase.typeMapping
@@ -2007,6 +2033,7 @@ class LocalSubject extends DataClass implements Insertable<LocalSubject> {
   final String icon;
   final String examType;
   final int sortOrder;
+  final String enabledCheckpoints;
   final DateTime? createdAt;
   final DateTime? updatedAt;
   const LocalSubject(
@@ -2016,6 +2043,7 @@ class LocalSubject extends DataClass implements Insertable<LocalSubject> {
       required this.icon,
       required this.examType,
       required this.sortOrder,
+      required this.enabledCheckpoints,
       this.createdAt,
       this.updatedAt});
   @override
@@ -2027,6 +2055,7 @@ class LocalSubject extends DataClass implements Insertable<LocalSubject> {
     map['icon'] = Variable<String>(icon);
     map['exam_type'] = Variable<String>(examType);
     map['sort_order'] = Variable<int>(sortOrder);
+    map['enabled_checkpoints'] = Variable<String>(enabledCheckpoints);
     if (!nullToAbsent || createdAt != null) {
       map['created_at'] = Variable<DateTime>(createdAt);
     }
@@ -2044,6 +2073,7 @@ class LocalSubject extends DataClass implements Insertable<LocalSubject> {
       icon: Value(icon),
       examType: Value(examType),
       sortOrder: Value(sortOrder),
+      enabledCheckpoints: Value(enabledCheckpoints),
       createdAt: createdAt == null && nullToAbsent
           ? const Value.absent()
           : Value(createdAt),
@@ -2063,6 +2093,8 @@ class LocalSubject extends DataClass implements Insertable<LocalSubject> {
       icon: serializer.fromJson<String>(json['icon']),
       examType: serializer.fromJson<String>(json['examType']),
       sortOrder: serializer.fromJson<int>(json['sortOrder']),
+      enabledCheckpoints:
+          serializer.fromJson<String>(json['enabledCheckpoints']),
       createdAt: serializer.fromJson<DateTime?>(json['createdAt']),
       updatedAt: serializer.fromJson<DateTime?>(json['updatedAt']),
     );
@@ -2077,6 +2109,7 @@ class LocalSubject extends DataClass implements Insertable<LocalSubject> {
       'icon': serializer.toJson<String>(icon),
       'examType': serializer.toJson<String>(examType),
       'sortOrder': serializer.toJson<int>(sortOrder),
+      'enabledCheckpoints': serializer.toJson<String>(enabledCheckpoints),
       'createdAt': serializer.toJson<DateTime?>(createdAt),
       'updatedAt': serializer.toJson<DateTime?>(updatedAt),
     };
@@ -2089,6 +2122,7 @@ class LocalSubject extends DataClass implements Insertable<LocalSubject> {
           String? icon,
           String? examType,
           int? sortOrder,
+          String? enabledCheckpoints,
           Value<DateTime?> createdAt = const Value.absent(),
           Value<DateTime?> updatedAt = const Value.absent()}) =>
       LocalSubject(
@@ -2098,6 +2132,7 @@ class LocalSubject extends DataClass implements Insertable<LocalSubject> {
         icon: icon ?? this.icon,
         examType: examType ?? this.examType,
         sortOrder: sortOrder ?? this.sortOrder,
+        enabledCheckpoints: enabledCheckpoints ?? this.enabledCheckpoints,
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
         updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
       );
@@ -2109,6 +2144,9 @@ class LocalSubject extends DataClass implements Insertable<LocalSubject> {
       icon: data.icon.present ? data.icon.value : this.icon,
       examType: data.examType.present ? data.examType.value : this.examType,
       sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+      enabledCheckpoints: data.enabledCheckpoints.present
+          ? data.enabledCheckpoints.value
+          : this.enabledCheckpoints,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
     );
@@ -2123,6 +2161,7 @@ class LocalSubject extends DataClass implements Insertable<LocalSubject> {
           ..write('icon: $icon, ')
           ..write('examType: $examType, ')
           ..write('sortOrder: $sortOrder, ')
+          ..write('enabledCheckpoints: $enabledCheckpoints, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt')
           ..write(')'))
@@ -2130,8 +2169,8 @@ class LocalSubject extends DataClass implements Insertable<LocalSubject> {
   }
 
   @override
-  int get hashCode => Object.hash(
-      id, name, color, icon, examType, sortOrder, createdAt, updatedAt);
+  int get hashCode => Object.hash(id, name, color, icon, examType, sortOrder,
+      enabledCheckpoints, createdAt, updatedAt);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -2142,6 +2181,7 @@ class LocalSubject extends DataClass implements Insertable<LocalSubject> {
           other.icon == this.icon &&
           other.examType == this.examType &&
           other.sortOrder == this.sortOrder &&
+          other.enabledCheckpoints == this.enabledCheckpoints &&
           other.createdAt == this.createdAt &&
           other.updatedAt == this.updatedAt);
 }
@@ -2153,6 +2193,7 @@ class LocalSubjectsCompanion extends UpdateCompanion<LocalSubject> {
   final Value<String> icon;
   final Value<String> examType;
   final Value<int> sortOrder;
+  final Value<String> enabledCheckpoints;
   final Value<DateTime?> createdAt;
   final Value<DateTime?> updatedAt;
   final Value<int> rowid;
@@ -2163,6 +2204,7 @@ class LocalSubjectsCompanion extends UpdateCompanion<LocalSubject> {
     this.icon = const Value.absent(),
     this.examType = const Value.absent(),
     this.sortOrder = const Value.absent(),
+    this.enabledCheckpoints = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -2174,6 +2216,7 @@ class LocalSubjectsCompanion extends UpdateCompanion<LocalSubject> {
     this.icon = const Value.absent(),
     this.examType = const Value.absent(),
     this.sortOrder = const Value.absent(),
+    this.enabledCheckpoints = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -2186,6 +2229,7 @@ class LocalSubjectsCompanion extends UpdateCompanion<LocalSubject> {
     Expression<String>? icon,
     Expression<String>? examType,
     Expression<int>? sortOrder,
+    Expression<String>? enabledCheckpoints,
     Expression<DateTime>? createdAt,
     Expression<DateTime>? updatedAt,
     Expression<int>? rowid,
@@ -2197,6 +2241,7 @@ class LocalSubjectsCompanion extends UpdateCompanion<LocalSubject> {
       if (icon != null) 'icon': icon,
       if (examType != null) 'exam_type': examType,
       if (sortOrder != null) 'sort_order': sortOrder,
+      if (enabledCheckpoints != null) 'enabled_checkpoints': enabledCheckpoints,
       if (createdAt != null) 'created_at': createdAt,
       if (updatedAt != null) 'updated_at': updatedAt,
       if (rowid != null) 'rowid': rowid,
@@ -2210,6 +2255,7 @@ class LocalSubjectsCompanion extends UpdateCompanion<LocalSubject> {
       Value<String>? icon,
       Value<String>? examType,
       Value<int>? sortOrder,
+      Value<String>? enabledCheckpoints,
       Value<DateTime?>? createdAt,
       Value<DateTime?>? updatedAt,
       Value<int>? rowid}) {
@@ -2220,6 +2266,7 @@ class LocalSubjectsCompanion extends UpdateCompanion<LocalSubject> {
       icon: icon ?? this.icon,
       examType: examType ?? this.examType,
       sortOrder: sortOrder ?? this.sortOrder,
+      enabledCheckpoints: enabledCheckpoints ?? this.enabledCheckpoints,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       rowid: rowid ?? this.rowid,
@@ -2247,6 +2294,9 @@ class LocalSubjectsCompanion extends UpdateCompanion<LocalSubject> {
     if (sortOrder.present) {
       map['sort_order'] = Variable<int>(sortOrder.value);
     }
+    if (enabledCheckpoints.present) {
+      map['enabled_checkpoints'] = Variable<String>(enabledCheckpoints.value);
+    }
     if (createdAt.present) {
       map['created_at'] = Variable<DateTime>(createdAt.value);
     }
@@ -2267,6 +2317,354 @@ class LocalSubjectsCompanion extends UpdateCompanion<LocalSubject> {
           ..write('color: $color, ')
           ..write('icon: $icon, ')
           ..write('examType: $examType, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('enabledCheckpoints: $enabledCheckpoints, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $LocalChaptersTable extends LocalChapters
+    with TableInfo<$LocalChaptersTable, LocalChapter> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $LocalChaptersTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _subjectIdMeta =
+      const VerificationMeta('subjectId');
+  @override
+  late final GeneratedColumn<String> subjectId = GeneratedColumn<String>(
+      'subject_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+      'title', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _sortOrderMeta =
+      const VerificationMeta('sortOrder');
+  @override
+  late final GeneratedColumn<int> sortOrder = GeneratedColumn<int>(
+      'sort_order', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(0));
+  static const VerificationMeta _createdAtMeta =
+      const VerificationMeta('createdAt');
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+      'created_at', aliasedName, true,
+      type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _updatedAtMeta =
+      const VerificationMeta('updatedAt');
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+      'updated_at', aliasedName, true,
+      type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns =>
+      [id, subjectId, title, sortOrder, createdAt, updatedAt];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'chapters';
+  @override
+  VerificationContext validateIntegrity(Insertable<LocalChapter> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('subject_id')) {
+      context.handle(_subjectIdMeta,
+          subjectId.isAcceptableOrUnknown(data['subject_id']!, _subjectIdMeta));
+    } else if (isInserting) {
+      context.missing(_subjectIdMeta);
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+          _titleMeta, title.isAcceptableOrUnknown(data['title']!, _titleMeta));
+    } else if (isInserting) {
+      context.missing(_titleMeta);
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(_sortOrderMeta,
+          sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta));
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(_createdAtMeta,
+          createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta));
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(_updatedAtMeta,
+          updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LocalChapter map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LocalChapter(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
+      subjectId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}subject_id'])!,
+      title: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title'])!,
+      sortOrder: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}sort_order'])!,
+      createdAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at']),
+      updatedAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}updated_at']),
+    );
+  }
+
+  @override
+  $LocalChaptersTable createAlias(String alias) {
+    return $LocalChaptersTable(attachedDatabase, alias);
+  }
+}
+
+class LocalChapter extends DataClass implements Insertable<LocalChapter> {
+  final String id;
+  final String subjectId;
+  final String title;
+  final int sortOrder;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  const LocalChapter(
+      {required this.id,
+      required this.subjectId,
+      required this.title,
+      required this.sortOrder,
+      this.createdAt,
+      this.updatedAt});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['subject_id'] = Variable<String>(subjectId);
+    map['title'] = Variable<String>(title);
+    map['sort_order'] = Variable<int>(sortOrder);
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<DateTime>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<DateTime>(updatedAt);
+    }
+    return map;
+  }
+
+  LocalChaptersCompanion toCompanion(bool nullToAbsent) {
+    return LocalChaptersCompanion(
+      id: Value(id),
+      subjectId: Value(subjectId),
+      title: Value(title),
+      sortOrder: Value(sortOrder),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory LocalChapter.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LocalChapter(
+      id: serializer.fromJson<String>(json['id']),
+      subjectId: serializer.fromJson<String>(json['subjectId']),
+      title: serializer.fromJson<String>(json['title']),
+      sortOrder: serializer.fromJson<int>(json['sortOrder']),
+      createdAt: serializer.fromJson<DateTime?>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'subjectId': serializer.toJson<String>(subjectId),
+      'title': serializer.toJson<String>(title),
+      'sortOrder': serializer.toJson<int>(sortOrder),
+      'createdAt': serializer.toJson<DateTime?>(createdAt),
+      'updatedAt': serializer.toJson<DateTime?>(updatedAt),
+    };
+  }
+
+  LocalChapter copyWith(
+          {String? id,
+          String? subjectId,
+          String? title,
+          int? sortOrder,
+          Value<DateTime?> createdAt = const Value.absent(),
+          Value<DateTime?> updatedAt = const Value.absent()}) =>
+      LocalChapter(
+        id: id ?? this.id,
+        subjectId: subjectId ?? this.subjectId,
+        title: title ?? this.title,
+        sortOrder: sortOrder ?? this.sortOrder,
+        createdAt: createdAt.present ? createdAt.value : this.createdAt,
+        updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+      );
+  LocalChapter copyWithCompanion(LocalChaptersCompanion data) {
+    return LocalChapter(
+      id: data.id.present ? data.id.value : this.id,
+      subjectId: data.subjectId.present ? data.subjectId.value : this.subjectId,
+      title: data.title.present ? data.title.value : this.title,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LocalChapter(')
+          ..write('id: $id, ')
+          ..write('subjectId: $subjectId, ')
+          ..write('title: $title, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(id, subjectId, title, sortOrder, createdAt, updatedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LocalChapter &&
+          other.id == this.id &&
+          other.subjectId == this.subjectId &&
+          other.title == this.title &&
+          other.sortOrder == this.sortOrder &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class LocalChaptersCompanion extends UpdateCompanion<LocalChapter> {
+  final Value<String> id;
+  final Value<String> subjectId;
+  final Value<String> title;
+  final Value<int> sortOrder;
+  final Value<DateTime?> createdAt;
+  final Value<DateTime?> updatedAt;
+  final Value<int> rowid;
+  const LocalChaptersCompanion({
+    this.id = const Value.absent(),
+    this.subjectId = const Value.absent(),
+    this.title = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  LocalChaptersCompanion.insert({
+    required String id,
+    required String subjectId,
+    required String title,
+    this.sortOrder = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        subjectId = Value(subjectId),
+        title = Value(title);
+  static Insertable<LocalChapter> custom({
+    Expression<String>? id,
+    Expression<String>? subjectId,
+    Expression<String>? title,
+    Expression<int>? sortOrder,
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (subjectId != null) 'subject_id': subjectId,
+      if (title != null) 'title': title,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  LocalChaptersCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? subjectId,
+      Value<String>? title,
+      Value<int>? sortOrder,
+      Value<DateTime?>? createdAt,
+      Value<DateTime?>? updatedAt,
+      Value<int>? rowid}) {
+    return LocalChaptersCompanion(
+      id: id ?? this.id,
+      subjectId: subjectId ?? this.subjectId,
+      title: title ?? this.title,
+      sortOrder: sortOrder ?? this.sortOrder,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (subjectId.present) {
+      map['subject_id'] = Variable<String>(subjectId.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<int>(sortOrder.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LocalChaptersCompanion(')
+          ..write('id: $id, ')
+          ..write('subjectId: $subjectId, ')
+          ..write('title: $title, ')
           ..write('sortOrder: $sortOrder, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt, ')
@@ -3292,6 +3690,17 @@ class $LocalTopicsTable extends LocalTopics
   late final GeneratedColumn<String> subjectId = GeneratedColumn<String>(
       'subject_id', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _chapterIdMeta =
+      const VerificationMeta('chapterId');
+  @override
+  late final GeneratedColumn<String> chapterId = GeneratedColumn<String>(
+      'chapter_id', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+      'title', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
@@ -3305,6 +3714,42 @@ class $LocalTopicsTable extends LocalTopics
       type: DriftSqlType.int,
       requiredDuringInsert: false,
       defaultValue: const Constant(0));
+  static const VerificationMeta _weightMeta = const VerificationMeta('weight');
+  @override
+  late final GeneratedColumn<int> weight = GeneratedColumn<int>(
+      'weight', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(1));
+  static const VerificationMeta _studyDoneAtMeta =
+      const VerificationMeta('studyDoneAt');
+  @override
+  late final GeneratedColumn<DateTime> studyDoneAt = GeneratedColumn<DateTime>(
+      'study_done_at', aliasedName, true,
+      type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _practiceDoneAtMeta =
+      const VerificationMeta('practiceDoneAt');
+  @override
+  late final GeneratedColumn<DateTime> practiceDoneAt =
+      GeneratedColumn<DateTime>('practice_done_at', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _modelTestDoneAtMeta =
+      const VerificationMeta('modelTestDoneAt');
+  @override
+  late final GeneratedColumn<DateTime> modelTestDoneAt =
+      GeneratedColumn<DateTime>('model_test_done_at', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _revisionDoneAtMeta =
+      const VerificationMeta('revisionDoneAt');
+  @override
+  late final GeneratedColumn<DateTime> revisionDoneAt =
+      GeneratedColumn<DateTime>('revision_done_at', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+      'notes', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _createdAtMeta =
       const VerificationMeta('createdAt');
   @override
@@ -3318,8 +3763,22 @@ class $LocalTopicsTable extends LocalTopics
       'updated_at', aliasedName, true,
       type: DriftSqlType.dateTime, requiredDuringInsert: false);
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, subjectId, name, sortOrder, createdAt, updatedAt];
+  List<GeneratedColumn> get $columns => [
+        id,
+        subjectId,
+        chapterId,
+        title,
+        name,
+        sortOrder,
+        weight,
+        studyDoneAt,
+        practiceDoneAt,
+        modelTestDoneAt,
+        revisionDoneAt,
+        notes,
+        createdAt,
+        updatedAt
+      ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -3341,6 +3800,14 @@ class $LocalTopicsTable extends LocalTopics
     } else if (isInserting) {
       context.missing(_subjectIdMeta);
     }
+    if (data.containsKey('chapter_id')) {
+      context.handle(_chapterIdMeta,
+          chapterId.isAcceptableOrUnknown(data['chapter_id']!, _chapterIdMeta));
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+          _titleMeta, title.isAcceptableOrUnknown(data['title']!, _titleMeta));
+    }
     if (data.containsKey('name')) {
       context.handle(
           _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
@@ -3350,6 +3817,38 @@ class $LocalTopicsTable extends LocalTopics
     if (data.containsKey('sort_order')) {
       context.handle(_sortOrderMeta,
           sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta));
+    }
+    if (data.containsKey('weight')) {
+      context.handle(_weightMeta,
+          weight.isAcceptableOrUnknown(data['weight']!, _weightMeta));
+    }
+    if (data.containsKey('study_done_at')) {
+      context.handle(
+          _studyDoneAtMeta,
+          studyDoneAt.isAcceptableOrUnknown(
+              data['study_done_at']!, _studyDoneAtMeta));
+    }
+    if (data.containsKey('practice_done_at')) {
+      context.handle(
+          _practiceDoneAtMeta,
+          practiceDoneAt.isAcceptableOrUnknown(
+              data['practice_done_at']!, _practiceDoneAtMeta));
+    }
+    if (data.containsKey('model_test_done_at')) {
+      context.handle(
+          _modelTestDoneAtMeta,
+          modelTestDoneAt.isAcceptableOrUnknown(
+              data['model_test_done_at']!, _modelTestDoneAtMeta));
+    }
+    if (data.containsKey('revision_done_at')) {
+      context.handle(
+          _revisionDoneAtMeta,
+          revisionDoneAt.isAcceptableOrUnknown(
+              data['revision_done_at']!, _revisionDoneAtMeta));
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+          _notesMeta, notes.isAcceptableOrUnknown(data['notes']!, _notesMeta));
     }
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
@@ -3372,10 +3871,26 @@ class $LocalTopicsTable extends LocalTopics
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       subjectId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}subject_id'])!,
+      chapterId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}chapter_id']),
+      title: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title']),
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
       sortOrder: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}sort_order'])!,
+      weight: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}weight'])!,
+      studyDoneAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}study_done_at']),
+      practiceDoneAt: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}practice_done_at']),
+      modelTestDoneAt: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}model_test_done_at']),
+      revisionDoneAt: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}revision_done_at']),
+      notes: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}notes']),
       createdAt: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at']),
       updatedAt: attachedDatabase.typeMapping
@@ -3392,15 +3907,31 @@ class $LocalTopicsTable extends LocalTopics
 class LocalTopic extends DataClass implements Insertable<LocalTopic> {
   final String id;
   final String subjectId;
+  final String? chapterId;
+  final String? title;
   final String name;
   final int sortOrder;
+  final int weight;
+  final DateTime? studyDoneAt;
+  final DateTime? practiceDoneAt;
+  final DateTime? modelTestDoneAt;
+  final DateTime? revisionDoneAt;
+  final String? notes;
   final DateTime? createdAt;
   final DateTime? updatedAt;
   const LocalTopic(
       {required this.id,
       required this.subjectId,
+      this.chapterId,
+      this.title,
       required this.name,
       required this.sortOrder,
+      required this.weight,
+      this.studyDoneAt,
+      this.practiceDoneAt,
+      this.modelTestDoneAt,
+      this.revisionDoneAt,
+      this.notes,
       this.createdAt,
       this.updatedAt});
   @override
@@ -3408,8 +3939,30 @@ class LocalTopic extends DataClass implements Insertable<LocalTopic> {
     final map = <String, Expression>{};
     map['id'] = Variable<String>(id);
     map['subject_id'] = Variable<String>(subjectId);
+    if (!nullToAbsent || chapterId != null) {
+      map['chapter_id'] = Variable<String>(chapterId);
+    }
+    if (!nullToAbsent || title != null) {
+      map['title'] = Variable<String>(title);
+    }
     map['name'] = Variable<String>(name);
     map['sort_order'] = Variable<int>(sortOrder);
+    map['weight'] = Variable<int>(weight);
+    if (!nullToAbsent || studyDoneAt != null) {
+      map['study_done_at'] = Variable<DateTime>(studyDoneAt);
+    }
+    if (!nullToAbsent || practiceDoneAt != null) {
+      map['practice_done_at'] = Variable<DateTime>(practiceDoneAt);
+    }
+    if (!nullToAbsent || modelTestDoneAt != null) {
+      map['model_test_done_at'] = Variable<DateTime>(modelTestDoneAt);
+    }
+    if (!nullToAbsent || revisionDoneAt != null) {
+      map['revision_done_at'] = Variable<DateTime>(revisionDoneAt);
+    }
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
     if (!nullToAbsent || createdAt != null) {
       map['created_at'] = Variable<DateTime>(createdAt);
     }
@@ -3423,8 +3976,28 @@ class LocalTopic extends DataClass implements Insertable<LocalTopic> {
     return LocalTopicsCompanion(
       id: Value(id),
       subjectId: Value(subjectId),
+      chapterId: chapterId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(chapterId),
+      title:
+          title == null && nullToAbsent ? const Value.absent() : Value(title),
       name: Value(name),
       sortOrder: Value(sortOrder),
+      weight: Value(weight),
+      studyDoneAt: studyDoneAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(studyDoneAt),
+      practiceDoneAt: practiceDoneAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(practiceDoneAt),
+      modelTestDoneAt: modelTestDoneAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(modelTestDoneAt),
+      revisionDoneAt: revisionDoneAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(revisionDoneAt),
+      notes:
+          notes == null && nullToAbsent ? const Value.absent() : Value(notes),
       createdAt: createdAt == null && nullToAbsent
           ? const Value.absent()
           : Value(createdAt),
@@ -3440,8 +4013,16 @@ class LocalTopic extends DataClass implements Insertable<LocalTopic> {
     return LocalTopic(
       id: serializer.fromJson<String>(json['id']),
       subjectId: serializer.fromJson<String>(json['subjectId']),
+      chapterId: serializer.fromJson<String?>(json['chapterId']),
+      title: serializer.fromJson<String?>(json['title']),
       name: serializer.fromJson<String>(json['name']),
       sortOrder: serializer.fromJson<int>(json['sortOrder']),
+      weight: serializer.fromJson<int>(json['weight']),
+      studyDoneAt: serializer.fromJson<DateTime?>(json['studyDoneAt']),
+      practiceDoneAt: serializer.fromJson<DateTime?>(json['practiceDoneAt']),
+      modelTestDoneAt: serializer.fromJson<DateTime?>(json['modelTestDoneAt']),
+      revisionDoneAt: serializer.fromJson<DateTime?>(json['revisionDoneAt']),
+      notes: serializer.fromJson<String?>(json['notes']),
       createdAt: serializer.fromJson<DateTime?>(json['createdAt']),
       updatedAt: serializer.fromJson<DateTime?>(json['updatedAt']),
     );
@@ -3452,8 +4033,16 @@ class LocalTopic extends DataClass implements Insertable<LocalTopic> {
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
       'subjectId': serializer.toJson<String>(subjectId),
+      'chapterId': serializer.toJson<String?>(chapterId),
+      'title': serializer.toJson<String?>(title),
       'name': serializer.toJson<String>(name),
       'sortOrder': serializer.toJson<int>(sortOrder),
+      'weight': serializer.toJson<int>(weight),
+      'studyDoneAt': serializer.toJson<DateTime?>(studyDoneAt),
+      'practiceDoneAt': serializer.toJson<DateTime?>(practiceDoneAt),
+      'modelTestDoneAt': serializer.toJson<DateTime?>(modelTestDoneAt),
+      'revisionDoneAt': serializer.toJson<DateTime?>(revisionDoneAt),
+      'notes': serializer.toJson<String?>(notes),
       'createdAt': serializer.toJson<DateTime?>(createdAt),
       'updatedAt': serializer.toJson<DateTime?>(updatedAt),
     };
@@ -3462,15 +4051,35 @@ class LocalTopic extends DataClass implements Insertable<LocalTopic> {
   LocalTopic copyWith(
           {String? id,
           String? subjectId,
+          Value<String?> chapterId = const Value.absent(),
+          Value<String?> title = const Value.absent(),
           String? name,
           int? sortOrder,
+          int? weight,
+          Value<DateTime?> studyDoneAt = const Value.absent(),
+          Value<DateTime?> practiceDoneAt = const Value.absent(),
+          Value<DateTime?> modelTestDoneAt = const Value.absent(),
+          Value<DateTime?> revisionDoneAt = const Value.absent(),
+          Value<String?> notes = const Value.absent(),
           Value<DateTime?> createdAt = const Value.absent(),
           Value<DateTime?> updatedAt = const Value.absent()}) =>
       LocalTopic(
         id: id ?? this.id,
         subjectId: subjectId ?? this.subjectId,
+        chapterId: chapterId.present ? chapterId.value : this.chapterId,
+        title: title.present ? title.value : this.title,
         name: name ?? this.name,
         sortOrder: sortOrder ?? this.sortOrder,
+        weight: weight ?? this.weight,
+        studyDoneAt: studyDoneAt.present ? studyDoneAt.value : this.studyDoneAt,
+        practiceDoneAt:
+            practiceDoneAt.present ? practiceDoneAt.value : this.practiceDoneAt,
+        modelTestDoneAt: modelTestDoneAt.present
+            ? modelTestDoneAt.value
+            : this.modelTestDoneAt,
+        revisionDoneAt:
+            revisionDoneAt.present ? revisionDoneAt.value : this.revisionDoneAt,
+        notes: notes.present ? notes.value : this.notes,
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
         updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
       );
@@ -3478,8 +4087,23 @@ class LocalTopic extends DataClass implements Insertable<LocalTopic> {
     return LocalTopic(
       id: data.id.present ? data.id.value : this.id,
       subjectId: data.subjectId.present ? data.subjectId.value : this.subjectId,
+      chapterId: data.chapterId.present ? data.chapterId.value : this.chapterId,
+      title: data.title.present ? data.title.value : this.title,
       name: data.name.present ? data.name.value : this.name,
       sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+      weight: data.weight.present ? data.weight.value : this.weight,
+      studyDoneAt:
+          data.studyDoneAt.present ? data.studyDoneAt.value : this.studyDoneAt,
+      practiceDoneAt: data.practiceDoneAt.present
+          ? data.practiceDoneAt.value
+          : this.practiceDoneAt,
+      modelTestDoneAt: data.modelTestDoneAt.present
+          ? data.modelTestDoneAt.value
+          : this.modelTestDoneAt,
+      revisionDoneAt: data.revisionDoneAt.present
+          ? data.revisionDoneAt.value
+          : this.revisionDoneAt,
+      notes: data.notes.present ? data.notes.value : this.notes,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
     );
@@ -3490,8 +4114,16 @@ class LocalTopic extends DataClass implements Insertable<LocalTopic> {
     return (StringBuffer('LocalTopic(')
           ..write('id: $id, ')
           ..write('subjectId: $subjectId, ')
+          ..write('chapterId: $chapterId, ')
+          ..write('title: $title, ')
           ..write('name: $name, ')
           ..write('sortOrder: $sortOrder, ')
+          ..write('weight: $weight, ')
+          ..write('studyDoneAt: $studyDoneAt, ')
+          ..write('practiceDoneAt: $practiceDoneAt, ')
+          ..write('modelTestDoneAt: $modelTestDoneAt, ')
+          ..write('revisionDoneAt: $revisionDoneAt, ')
+          ..write('notes: $notes, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt')
           ..write(')'))
@@ -3499,16 +4131,37 @@ class LocalTopic extends DataClass implements Insertable<LocalTopic> {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, subjectId, name, sortOrder, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      id,
+      subjectId,
+      chapterId,
+      title,
+      name,
+      sortOrder,
+      weight,
+      studyDoneAt,
+      practiceDoneAt,
+      modelTestDoneAt,
+      revisionDoneAt,
+      notes,
+      createdAt,
+      updatedAt);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is LocalTopic &&
           other.id == this.id &&
           other.subjectId == this.subjectId &&
+          other.chapterId == this.chapterId &&
+          other.title == this.title &&
           other.name == this.name &&
           other.sortOrder == this.sortOrder &&
+          other.weight == this.weight &&
+          other.studyDoneAt == this.studyDoneAt &&
+          other.practiceDoneAt == this.practiceDoneAt &&
+          other.modelTestDoneAt == this.modelTestDoneAt &&
+          other.revisionDoneAt == this.revisionDoneAt &&
+          other.notes == this.notes &&
           other.createdAt == this.createdAt &&
           other.updatedAt == this.updatedAt);
 }
@@ -3516,16 +4169,32 @@ class LocalTopic extends DataClass implements Insertable<LocalTopic> {
 class LocalTopicsCompanion extends UpdateCompanion<LocalTopic> {
   final Value<String> id;
   final Value<String> subjectId;
+  final Value<String?> chapterId;
+  final Value<String?> title;
   final Value<String> name;
   final Value<int> sortOrder;
+  final Value<int> weight;
+  final Value<DateTime?> studyDoneAt;
+  final Value<DateTime?> practiceDoneAt;
+  final Value<DateTime?> modelTestDoneAt;
+  final Value<DateTime?> revisionDoneAt;
+  final Value<String?> notes;
   final Value<DateTime?> createdAt;
   final Value<DateTime?> updatedAt;
   final Value<int> rowid;
   const LocalTopicsCompanion({
     this.id = const Value.absent(),
     this.subjectId = const Value.absent(),
+    this.chapterId = const Value.absent(),
+    this.title = const Value.absent(),
     this.name = const Value.absent(),
     this.sortOrder = const Value.absent(),
+    this.weight = const Value.absent(),
+    this.studyDoneAt = const Value.absent(),
+    this.practiceDoneAt = const Value.absent(),
+    this.modelTestDoneAt = const Value.absent(),
+    this.revisionDoneAt = const Value.absent(),
+    this.notes = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -3533,8 +4202,16 @@ class LocalTopicsCompanion extends UpdateCompanion<LocalTopic> {
   LocalTopicsCompanion.insert({
     required String id,
     required String subjectId,
+    this.chapterId = const Value.absent(),
+    this.title = const Value.absent(),
     required String name,
     this.sortOrder = const Value.absent(),
+    this.weight = const Value.absent(),
+    this.studyDoneAt = const Value.absent(),
+    this.practiceDoneAt = const Value.absent(),
+    this.modelTestDoneAt = const Value.absent(),
+    this.revisionDoneAt = const Value.absent(),
+    this.notes = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -3544,8 +4221,16 @@ class LocalTopicsCompanion extends UpdateCompanion<LocalTopic> {
   static Insertable<LocalTopic> custom({
     Expression<String>? id,
     Expression<String>? subjectId,
+    Expression<String>? chapterId,
+    Expression<String>? title,
     Expression<String>? name,
     Expression<int>? sortOrder,
+    Expression<int>? weight,
+    Expression<DateTime>? studyDoneAt,
+    Expression<DateTime>? practiceDoneAt,
+    Expression<DateTime>? modelTestDoneAt,
+    Expression<DateTime>? revisionDoneAt,
+    Expression<String>? notes,
     Expression<DateTime>? createdAt,
     Expression<DateTime>? updatedAt,
     Expression<int>? rowid,
@@ -3553,8 +4238,16 @@ class LocalTopicsCompanion extends UpdateCompanion<LocalTopic> {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (subjectId != null) 'subject_id': subjectId,
+      if (chapterId != null) 'chapter_id': chapterId,
+      if (title != null) 'title': title,
       if (name != null) 'name': name,
       if (sortOrder != null) 'sort_order': sortOrder,
+      if (weight != null) 'weight': weight,
+      if (studyDoneAt != null) 'study_done_at': studyDoneAt,
+      if (practiceDoneAt != null) 'practice_done_at': practiceDoneAt,
+      if (modelTestDoneAt != null) 'model_test_done_at': modelTestDoneAt,
+      if (revisionDoneAt != null) 'revision_done_at': revisionDoneAt,
+      if (notes != null) 'notes': notes,
       if (createdAt != null) 'created_at': createdAt,
       if (updatedAt != null) 'updated_at': updatedAt,
       if (rowid != null) 'rowid': rowid,
@@ -3564,16 +4257,32 @@ class LocalTopicsCompanion extends UpdateCompanion<LocalTopic> {
   LocalTopicsCompanion copyWith(
       {Value<String>? id,
       Value<String>? subjectId,
+      Value<String?>? chapterId,
+      Value<String?>? title,
       Value<String>? name,
       Value<int>? sortOrder,
+      Value<int>? weight,
+      Value<DateTime?>? studyDoneAt,
+      Value<DateTime?>? practiceDoneAt,
+      Value<DateTime?>? modelTestDoneAt,
+      Value<DateTime?>? revisionDoneAt,
+      Value<String?>? notes,
       Value<DateTime?>? createdAt,
       Value<DateTime?>? updatedAt,
       Value<int>? rowid}) {
     return LocalTopicsCompanion(
       id: id ?? this.id,
       subjectId: subjectId ?? this.subjectId,
+      chapterId: chapterId ?? this.chapterId,
+      title: title ?? this.title,
       name: name ?? this.name,
       sortOrder: sortOrder ?? this.sortOrder,
+      weight: weight ?? this.weight,
+      studyDoneAt: studyDoneAt ?? this.studyDoneAt,
+      practiceDoneAt: practiceDoneAt ?? this.practiceDoneAt,
+      modelTestDoneAt: modelTestDoneAt ?? this.modelTestDoneAt,
+      revisionDoneAt: revisionDoneAt ?? this.revisionDoneAt,
+      notes: notes ?? this.notes,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       rowid: rowid ?? this.rowid,
@@ -3589,11 +4298,35 @@ class LocalTopicsCompanion extends UpdateCompanion<LocalTopic> {
     if (subjectId.present) {
       map['subject_id'] = Variable<String>(subjectId.value);
     }
+    if (chapterId.present) {
+      map['chapter_id'] = Variable<String>(chapterId.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
     if (name.present) {
       map['name'] = Variable<String>(name.value);
     }
     if (sortOrder.present) {
       map['sort_order'] = Variable<int>(sortOrder.value);
+    }
+    if (weight.present) {
+      map['weight'] = Variable<int>(weight.value);
+    }
+    if (studyDoneAt.present) {
+      map['study_done_at'] = Variable<DateTime>(studyDoneAt.value);
+    }
+    if (practiceDoneAt.present) {
+      map['practice_done_at'] = Variable<DateTime>(practiceDoneAt.value);
+    }
+    if (modelTestDoneAt.present) {
+      map['model_test_done_at'] = Variable<DateTime>(modelTestDoneAt.value);
+    }
+    if (revisionDoneAt.present) {
+      map['revision_done_at'] = Variable<DateTime>(revisionDoneAt.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
     }
     if (createdAt.present) {
       map['created_at'] = Variable<DateTime>(createdAt.value);
@@ -3612,8 +4345,16 @@ class LocalTopicsCompanion extends UpdateCompanion<LocalTopic> {
     return (StringBuffer('LocalTopicsCompanion(')
           ..write('id: $id, ')
           ..write('subjectId: $subjectId, ')
+          ..write('chapterId: $chapterId, ')
+          ..write('title: $title, ')
           ..write('name: $name, ')
           ..write('sortOrder: $sortOrder, ')
+          ..write('weight: $weight, ')
+          ..write('studyDoneAt: $studyDoneAt, ')
+          ..write('practiceDoneAt: $practiceDoneAt, ')
+          ..write('modelTestDoneAt: $modelTestDoneAt, ')
+          ..write('revisionDoneAt: $revisionDoneAt, ')
+          ..write('notes: $notes, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt, ')
           ..write('rowid: $rowid')
@@ -9537,6 +10278,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $LocalCircularExamDatesTable localCircularExamDates =
       $LocalCircularExamDatesTable(this);
   late final $LocalSubjectsTable localSubjects = $LocalSubjectsTable(this);
+  late final $LocalChaptersTable localChapters = $LocalChaptersTable(this);
   late final $LocalMaterialsTable localMaterials = $LocalMaterialsTable(this);
   late final $LocalProgressLogsTable localProgressLogs =
       $LocalProgressLogsTable(this);
@@ -9566,6 +10308,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         localCirculars,
         localCircularExamDates,
         localSubjects,
+        localChapters,
         localMaterials,
         localProgressLogs,
         localTopics,
@@ -10375,6 +11118,7 @@ typedef $$LocalSubjectsTableCreateCompanionBuilder = LocalSubjectsCompanion
   Value<String> icon,
   Value<String> examType,
   Value<int> sortOrder,
+  Value<String> enabledCheckpoints,
   Value<DateTime?> createdAt,
   Value<DateTime?> updatedAt,
   Value<int> rowid,
@@ -10387,6 +11131,7 @@ typedef $$LocalSubjectsTableUpdateCompanionBuilder = LocalSubjectsCompanion
   Value<String> icon,
   Value<String> examType,
   Value<int> sortOrder,
+  Value<String> enabledCheckpoints,
   Value<DateTime?> createdAt,
   Value<DateTime?> updatedAt,
   Value<int> rowid,
@@ -10418,6 +11163,10 @@ class $$LocalSubjectsTableFilterComposer
 
   ColumnFilters<int> get sortOrder => $composableBuilder(
       column: $table.sortOrder, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get enabledCheckpoints => $composableBuilder(
+      column: $table.enabledCheckpoints,
+      builder: (column) => ColumnFilters(column));
 
   ColumnFilters<DateTime> get createdAt => $composableBuilder(
       column: $table.createdAt, builder: (column) => ColumnFilters(column));
@@ -10453,6 +11202,10 @@ class $$LocalSubjectsTableOrderingComposer
   ColumnOrderings<int> get sortOrder => $composableBuilder(
       column: $table.sortOrder, builder: (column) => ColumnOrderings(column));
 
+  ColumnOrderings<String> get enabledCheckpoints => $composableBuilder(
+      column: $table.enabledCheckpoints,
+      builder: (column) => ColumnOrderings(column));
+
   ColumnOrderings<DateTime> get createdAt => $composableBuilder(
       column: $table.createdAt, builder: (column) => ColumnOrderings(column));
 
@@ -10486,6 +11239,9 @@ class $$LocalSubjectsTableAnnotationComposer
 
   GeneratedColumn<int> get sortOrder =>
       $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  GeneratedColumn<String> get enabledCheckpoints => $composableBuilder(
+      column: $table.enabledCheckpoints, builder: (column) => column);
 
   GeneratedColumn<DateTime> get createdAt =>
       $composableBuilder(column: $table.createdAt, builder: (column) => column);
@@ -10526,6 +11282,7 @@ class $$LocalSubjectsTableTableManager extends RootTableManager<
             Value<String> icon = const Value.absent(),
             Value<String> examType = const Value.absent(),
             Value<int> sortOrder = const Value.absent(),
+            Value<String> enabledCheckpoints = const Value.absent(),
             Value<DateTime?> createdAt = const Value.absent(),
             Value<DateTime?> updatedAt = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -10537,6 +11294,7 @@ class $$LocalSubjectsTableTableManager extends RootTableManager<
             icon: icon,
             examType: examType,
             sortOrder: sortOrder,
+            enabledCheckpoints: enabledCheckpoints,
             createdAt: createdAt,
             updatedAt: updatedAt,
             rowid: rowid,
@@ -10548,6 +11306,7 @@ class $$LocalSubjectsTableTableManager extends RootTableManager<
             Value<String> icon = const Value.absent(),
             Value<String> examType = const Value.absent(),
             Value<int> sortOrder = const Value.absent(),
+            Value<String> enabledCheckpoints = const Value.absent(),
             Value<DateTime?> createdAt = const Value.absent(),
             Value<DateTime?> updatedAt = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -10559,6 +11318,7 @@ class $$LocalSubjectsTableTableManager extends RootTableManager<
             icon: icon,
             examType: examType,
             sortOrder: sortOrder,
+            enabledCheckpoints: enabledCheckpoints,
             createdAt: createdAt,
             updatedAt: updatedAt,
             rowid: rowid,
@@ -10584,6 +11344,194 @@ typedef $$LocalSubjectsTableProcessedTableManager = ProcessedTableManager<
       BaseReferences<_$AppDatabase, $LocalSubjectsTable, LocalSubject>
     ),
     LocalSubject,
+    PrefetchHooks Function()>;
+typedef $$LocalChaptersTableCreateCompanionBuilder = LocalChaptersCompanion
+    Function({
+  required String id,
+  required String subjectId,
+  required String title,
+  Value<int> sortOrder,
+  Value<DateTime?> createdAt,
+  Value<DateTime?> updatedAt,
+  Value<int> rowid,
+});
+typedef $$LocalChaptersTableUpdateCompanionBuilder = LocalChaptersCompanion
+    Function({
+  Value<String> id,
+  Value<String> subjectId,
+  Value<String> title,
+  Value<int> sortOrder,
+  Value<DateTime?> createdAt,
+  Value<DateTime?> updatedAt,
+  Value<int> rowid,
+});
+
+class $$LocalChaptersTableFilterComposer
+    extends Composer<_$AppDatabase, $LocalChaptersTable> {
+  $$LocalChaptersTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get subjectId => $composableBuilder(
+      column: $table.subjectId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get title => $composableBuilder(
+      column: $table.title, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get sortOrder => $composableBuilder(
+      column: $table.sortOrder, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$LocalChaptersTableOrderingComposer
+    extends Composer<_$AppDatabase, $LocalChaptersTable> {
+  $$LocalChaptersTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get subjectId => $composableBuilder(
+      column: $table.subjectId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get title => $composableBuilder(
+      column: $table.title, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get sortOrder => $composableBuilder(
+      column: $table.sortOrder, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$LocalChaptersTableAnnotationComposer
+    extends Composer<_$AppDatabase, $LocalChaptersTable> {
+  $$LocalChaptersTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get subjectId =>
+      $composableBuilder(column: $table.subjectId, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<int> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$LocalChaptersTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $LocalChaptersTable,
+    LocalChapter,
+    $$LocalChaptersTableFilterComposer,
+    $$LocalChaptersTableOrderingComposer,
+    $$LocalChaptersTableAnnotationComposer,
+    $$LocalChaptersTableCreateCompanionBuilder,
+    $$LocalChaptersTableUpdateCompanionBuilder,
+    (
+      LocalChapter,
+      BaseReferences<_$AppDatabase, $LocalChaptersTable, LocalChapter>
+    ),
+    LocalChapter,
+    PrefetchHooks Function()> {
+  $$LocalChaptersTableTableManager(_$AppDatabase db, $LocalChaptersTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$LocalChaptersTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$LocalChaptersTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$LocalChaptersTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> subjectId = const Value.absent(),
+            Value<String> title = const Value.absent(),
+            Value<int> sortOrder = const Value.absent(),
+            Value<DateTime?> createdAt = const Value.absent(),
+            Value<DateTime?> updatedAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              LocalChaptersCompanion(
+            id: id,
+            subjectId: subjectId,
+            title: title,
+            sortOrder: sortOrder,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String subjectId,
+            required String title,
+            Value<int> sortOrder = const Value.absent(),
+            Value<DateTime?> createdAt = const Value.absent(),
+            Value<DateTime?> updatedAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              LocalChaptersCompanion.insert(
+            id: id,
+            subjectId: subjectId,
+            title: title,
+            sortOrder: sortOrder,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$LocalChaptersTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $LocalChaptersTable,
+    LocalChapter,
+    $$LocalChaptersTableFilterComposer,
+    $$LocalChaptersTableOrderingComposer,
+    $$LocalChaptersTableAnnotationComposer,
+    $$LocalChaptersTableCreateCompanionBuilder,
+    $$LocalChaptersTableUpdateCompanionBuilder,
+    (
+      LocalChapter,
+      BaseReferences<_$AppDatabase, $LocalChaptersTable, LocalChapter>
+    ),
+    LocalChapter,
     PrefetchHooks Function()>;
 typedef $$LocalMaterialsTableCreateCompanionBuilder = LocalMaterialsCompanion
     Function({
@@ -11078,8 +12026,16 @@ typedef $$LocalTopicsTableCreateCompanionBuilder = LocalTopicsCompanion
     Function({
   required String id,
   required String subjectId,
+  Value<String?> chapterId,
+  Value<String?> title,
   required String name,
   Value<int> sortOrder,
+  Value<int> weight,
+  Value<DateTime?> studyDoneAt,
+  Value<DateTime?> practiceDoneAt,
+  Value<DateTime?> modelTestDoneAt,
+  Value<DateTime?> revisionDoneAt,
+  Value<String?> notes,
   Value<DateTime?> createdAt,
   Value<DateTime?> updatedAt,
   Value<int> rowid,
@@ -11088,8 +12044,16 @@ typedef $$LocalTopicsTableUpdateCompanionBuilder = LocalTopicsCompanion
     Function({
   Value<String> id,
   Value<String> subjectId,
+  Value<String?> chapterId,
+  Value<String?> title,
   Value<String> name,
   Value<int> sortOrder,
+  Value<int> weight,
+  Value<DateTime?> studyDoneAt,
+  Value<DateTime?> practiceDoneAt,
+  Value<DateTime?> modelTestDoneAt,
+  Value<DateTime?> revisionDoneAt,
+  Value<String?> notes,
   Value<DateTime?> createdAt,
   Value<DateTime?> updatedAt,
   Value<int> rowid,
@@ -11110,11 +12074,38 @@ class $$LocalTopicsTableFilterComposer
   ColumnFilters<String> get subjectId => $composableBuilder(
       column: $table.subjectId, builder: (column) => ColumnFilters(column));
 
+  ColumnFilters<String> get chapterId => $composableBuilder(
+      column: $table.chapterId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get title => $composableBuilder(
+      column: $table.title, builder: (column) => ColumnFilters(column));
+
   ColumnFilters<String> get name => $composableBuilder(
       column: $table.name, builder: (column) => ColumnFilters(column));
 
   ColumnFilters<int> get sortOrder => $composableBuilder(
       column: $table.sortOrder, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get weight => $composableBuilder(
+      column: $table.weight, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get studyDoneAt => $composableBuilder(
+      column: $table.studyDoneAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get practiceDoneAt => $composableBuilder(
+      column: $table.practiceDoneAt,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get modelTestDoneAt => $composableBuilder(
+      column: $table.modelTestDoneAt,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get revisionDoneAt => $composableBuilder(
+      column: $table.revisionDoneAt,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get notes => $composableBuilder(
+      column: $table.notes, builder: (column) => ColumnFilters(column));
 
   ColumnFilters<DateTime> get createdAt => $composableBuilder(
       column: $table.createdAt, builder: (column) => ColumnFilters(column));
@@ -11138,11 +12129,38 @@ class $$LocalTopicsTableOrderingComposer
   ColumnOrderings<String> get subjectId => $composableBuilder(
       column: $table.subjectId, builder: (column) => ColumnOrderings(column));
 
+  ColumnOrderings<String> get chapterId => $composableBuilder(
+      column: $table.chapterId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get title => $composableBuilder(
+      column: $table.title, builder: (column) => ColumnOrderings(column));
+
   ColumnOrderings<String> get name => $composableBuilder(
       column: $table.name, builder: (column) => ColumnOrderings(column));
 
   ColumnOrderings<int> get sortOrder => $composableBuilder(
       column: $table.sortOrder, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get weight => $composableBuilder(
+      column: $table.weight, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get studyDoneAt => $composableBuilder(
+      column: $table.studyDoneAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get practiceDoneAt => $composableBuilder(
+      column: $table.practiceDoneAt,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get modelTestDoneAt => $composableBuilder(
+      column: $table.modelTestDoneAt,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get revisionDoneAt => $composableBuilder(
+      column: $table.revisionDoneAt,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+      column: $table.notes, builder: (column) => ColumnOrderings(column));
 
   ColumnOrderings<DateTime> get createdAt => $composableBuilder(
       column: $table.createdAt, builder: (column) => ColumnOrderings(column));
@@ -11166,11 +12184,35 @@ class $$LocalTopicsTableAnnotationComposer
   GeneratedColumn<String> get subjectId =>
       $composableBuilder(column: $table.subjectId, builder: (column) => column);
 
+  GeneratedColumn<String> get chapterId =>
+      $composableBuilder(column: $table.chapterId, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
   GeneratedColumn<String> get name =>
       $composableBuilder(column: $table.name, builder: (column) => column);
 
   GeneratedColumn<int> get sortOrder =>
       $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  GeneratedColumn<int> get weight =>
+      $composableBuilder(column: $table.weight, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get studyDoneAt => $composableBuilder(
+      column: $table.studyDoneAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get practiceDoneAt => $composableBuilder(
+      column: $table.practiceDoneAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get modelTestDoneAt => $composableBuilder(
+      column: $table.modelTestDoneAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get revisionDoneAt => $composableBuilder(
+      column: $table.revisionDoneAt, builder: (column) => column);
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
 
   GeneratedColumn<DateTime> get createdAt =>
       $composableBuilder(column: $table.createdAt, builder: (column) => column);
@@ -11204,8 +12246,16 @@ class $$LocalTopicsTableTableManager extends RootTableManager<
           updateCompanionCallback: ({
             Value<String> id = const Value.absent(),
             Value<String> subjectId = const Value.absent(),
+            Value<String?> chapterId = const Value.absent(),
+            Value<String?> title = const Value.absent(),
             Value<String> name = const Value.absent(),
             Value<int> sortOrder = const Value.absent(),
+            Value<int> weight = const Value.absent(),
+            Value<DateTime?> studyDoneAt = const Value.absent(),
+            Value<DateTime?> practiceDoneAt = const Value.absent(),
+            Value<DateTime?> modelTestDoneAt = const Value.absent(),
+            Value<DateTime?> revisionDoneAt = const Value.absent(),
+            Value<String?> notes = const Value.absent(),
             Value<DateTime?> createdAt = const Value.absent(),
             Value<DateTime?> updatedAt = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -11213,8 +12263,16 @@ class $$LocalTopicsTableTableManager extends RootTableManager<
               LocalTopicsCompanion(
             id: id,
             subjectId: subjectId,
+            chapterId: chapterId,
+            title: title,
             name: name,
             sortOrder: sortOrder,
+            weight: weight,
+            studyDoneAt: studyDoneAt,
+            practiceDoneAt: practiceDoneAt,
+            modelTestDoneAt: modelTestDoneAt,
+            revisionDoneAt: revisionDoneAt,
+            notes: notes,
             createdAt: createdAt,
             updatedAt: updatedAt,
             rowid: rowid,
@@ -11222,8 +12280,16 @@ class $$LocalTopicsTableTableManager extends RootTableManager<
           createCompanionCallback: ({
             required String id,
             required String subjectId,
+            Value<String?> chapterId = const Value.absent(),
+            Value<String?> title = const Value.absent(),
             required String name,
             Value<int> sortOrder = const Value.absent(),
+            Value<int> weight = const Value.absent(),
+            Value<DateTime?> studyDoneAt = const Value.absent(),
+            Value<DateTime?> practiceDoneAt = const Value.absent(),
+            Value<DateTime?> modelTestDoneAt = const Value.absent(),
+            Value<DateTime?> revisionDoneAt = const Value.absent(),
+            Value<String?> notes = const Value.absent(),
             Value<DateTime?> createdAt = const Value.absent(),
             Value<DateTime?> updatedAt = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -11231,8 +12297,16 @@ class $$LocalTopicsTableTableManager extends RootTableManager<
               LocalTopicsCompanion.insert(
             id: id,
             subjectId: subjectId,
+            chapterId: chapterId,
+            title: title,
             name: name,
             sortOrder: sortOrder,
+            weight: weight,
+            studyDoneAt: studyDoneAt,
+            practiceDoneAt: practiceDoneAt,
+            modelTestDoneAt: modelTestDoneAt,
+            revisionDoneAt: revisionDoneAt,
+            notes: notes,
             createdAt: createdAt,
             updatedAt: updatedAt,
             rowid: rowid,
@@ -13997,6 +15071,8 @@ class $AppDatabaseManager {
           _db, _db.localCircularExamDates);
   $$LocalSubjectsTableTableManager get localSubjects =>
       $$LocalSubjectsTableTableManager(_db, _db.localSubjects);
+  $$LocalChaptersTableTableManager get localChapters =>
+      $$LocalChaptersTableTableManager(_db, _db.localChapters);
   $$LocalMaterialsTableTableManager get localMaterials =>
       $$LocalMaterialsTableTableManager(_db, _db.localMaterials);
   $$LocalProgressLogsTableTableManager get localProgressLogs =>

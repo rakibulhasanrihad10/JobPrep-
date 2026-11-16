@@ -14,6 +14,7 @@ import '../vault/fake_portal_account_repository.dart';
 class FakeCloudRepositoriesBundle {
   FakeCloudRepositoriesBundle({
     FakeSubjectRepository? subjectRepo,
+    FakeChapterRepository? chapterRepo,
     FakeTopicRepository? topicRepo,
     FakeMaterialRepository? materialRepo,
     FakeProgressLogRepository? progressLogRepo,
@@ -26,6 +27,7 @@ class FakeCloudRepositoriesBundle {
     FakePortalAccountRepository? portalAccountRepo,
     FakeUserSettingsRepository? userSettingsRepo,
   })  : subjectRepo = subjectRepo ?? FakeSubjectRepository(),
+        chapterRepo = chapterRepo ?? FakeChapterRepository(),
         topicRepo = topicRepo ?? FakeTopicRepository(),
         materialRepo = materialRepo ?? FakeMaterialRepository(),
         progressLogRepo = progressLogRepo ?? FakeProgressLogRepository(),
@@ -39,6 +41,7 @@ class FakeCloudRepositoriesBundle {
         userSettingsRepo = userSettingsRepo ?? FakeUserSettingsRepository();
 
   final FakeSubjectRepository subjectRepo;
+  final FakeChapterRepository chapterRepo;
   final FakeTopicRepository topicRepo;
   final FakeMaterialRepository materialRepo;
   final FakeProgressLogRepository progressLogRepo;
@@ -54,6 +57,7 @@ class FakeCloudRepositoriesBundle {
   CloudRepositories toCloudRepositories() {
     return CloudRepositories(
       subjectRepo: subjectRepo,
+      chapterRepo: chapterRepo,
       topicRepo: topicRepo,
       materialRepo: materialRepo,
       circularRepo: circularRepo,

@@ -8103,6 +8103,252 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Stay in Guest Mode'**
   String get migrationKeepGuestButton;
+
+  /// Tab label for Syllabus in Prep section
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus'**
+  String get prepTabSyllabus;
+
+  /// Title of the syllabus tab
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus Tracking'**
+  String get prepSyllabusTitle;
+
+  /// Subtitle of the syllabus tab
+  ///
+  /// In en, this message translates to:
+  /// **'Track chapters, topics, and checkpoint mastery.'**
+  String get prepSyllabusSubtitle;
+
+  /// Label for weighted syllabus progress ring
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus Progress'**
+  String get syllabusOverallProgress;
+
+  /// Label for page-based reading progress ring
+  ///
+  /// In en, this message translates to:
+  /// **'Reading Progress'**
+  String get syllabusReadingProgress;
+
+  /// Checkpoint name for study
+  ///
+  /// In en, this message translates to:
+  /// **'Study'**
+  String get syllabusCheckpointStudy;
+
+  /// Checkpoint name for practice
+  ///
+  /// In en, this message translates to:
+  /// **'Practice'**
+  String get syllabusCheckpointPractice;
+
+  /// Checkpoint name for model test
+  ///
+  /// In en, this message translates to:
+  /// **'Model Test'**
+  String get syllabusCheckpointModelTest;
+
+  /// Checkpoint name for revision
+  ///
+  /// In en, this message translates to:
+  /// **'Revision'**
+  String get syllabusCheckpointRevision;
+
+  /// Button to add a new chapter
+  ///
+  /// In en, this message translates to:
+  /// **'Add Chapter'**
+  String get syllabusAddChapter;
+
+  /// Button to edit an existing chapter
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Chapter'**
+  String get syllabusEditChapter;
+
+  /// Button to delete an existing chapter
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Chapter'**
+  String get syllabusDeleteChapter;
+
+  /// Confirmation message when deleting a chapter
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete chapter \"{title}\"? All {count} topic(s) inside will be lost.'**
+  String syllabusDeleteChapterConfirm(String title, int count);
+
+  /// Label for chapter title input
+  ///
+  /// In en, this message translates to:
+  /// **'Chapter Title'**
+  String get syllabusChapterTitleLabel;
+
+  /// Button to add a new topic
+  ///
+  /// In en, this message translates to:
+  /// **'Add Topic'**
+  String get syllabusAddTopic;
+
+  /// Button to edit topic details
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Topic'**
+  String get syllabusEditTopic;
+
+  /// Button to delete a topic
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Topic'**
+  String get syllabusDeleteTopic;
+
+  /// Label for topic title input
+  ///
+  /// In en, this message translates to:
+  /// **'Topic Title'**
+  String get syllabusTopicTitleLabel;
+
+  /// Label for topic weight input
+  ///
+  /// In en, this message translates to:
+  /// **'Weight'**
+  String get syllabusTopicWeightLabel;
+
+  /// Label for topic notes input
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Notes'**
+  String get syllabusTopicNotesLabel;
+
+  /// Hint for topic notes input
+  ///
+  /// In en, this message translates to:
+  /// **'Write study notes, formulas, or tricky points...'**
+  String get syllabusTopicNotesHint;
+
+  /// Label for topic completion date
+  ///
+  /// In en, this message translates to:
+  /// **'Completion Date'**
+  String get syllabusTopicDateLabel;
+
+  /// Button to bulk complete a checkpoint for all topics in chapter
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all {checkpoint} done'**
+  String syllabusMarkAllDone(String checkpoint);
+
+  /// Button to configure subject checkpoints
+  ///
+  /// In en, this message translates to:
+  /// **'Configure Checkpoints'**
+  String get syllabusConfigureCheckpoints;
+
+  /// Subtitle for configure checkpoints dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Choose which checkpoints to track for {subject}'**
+  String syllabusConfigureCheckpointsSubtitle(String subject);
+
+  /// Warning message when disabling checkpoints
+  ///
+  /// In en, this message translates to:
+  /// **'Warning: unchecking checkpoints with completed data will hide them from progress calculation.'**
+  String get syllabusConfigureCheckpointsWarning;
+
+  /// Button to quick add syllabus outline
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Add Outline'**
+  String get syllabusQuickAdd;
+
+  /// Subtitle for quick add outline dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Paste a multi-line outline. Lines without a leading dash become chapters; lines starting with \"-\" become topics.'**
+  String get syllabusQuickAddSubtitle;
+
+  /// Hint text for quick add input
+  ///
+  /// In en, this message translates to:
+  /// **'Chapter 1: Arithmetic\n- Prime Numbers\n- Divisibility Rules\n\nChapter 2: Algebra\n- Polynomials'**
+  String get syllabusQuickAddHint;
+
+  /// Preview count for parsed outline
+  ///
+  /// In en, this message translates to:
+  /// **'Preview: {chapters} chapter(s), {topics} topic(s)'**
+  String syllabusQuickAddPreview(int chapters, int topics);
+
+  /// Button to confirm outline import
+  ///
+  /// In en, this message translates to:
+  /// **'Import Outline'**
+  String get syllabusQuickAddImportButton;
+
+  /// Button to start syllabus from template pack
+  ///
+  /// In en, this message translates to:
+  /// **'Start from Template Outline'**
+  String get syllabusStartFromTemplate;
+
+  /// Notice for template example outlines
+  ///
+  /// In en, this message translates to:
+  /// **'Editable example outline - not an official syllabus'**
+  String get syllabusTemplateNotice;
+
+  /// Empty state title when subject has no chapters
+  ///
+  /// In en, this message translates to:
+  /// **'No Chapters Yet'**
+  String get syllabusNoChapters;
+
+  /// Empty state description when subject has no chapters
+  ///
+  /// In en, this message translates to:
+  /// **'Break down {subject} into chapters and track your checkpoint mastery.'**
+  String syllabusNoChaptersDesc(String subject);
+
+  /// Empty state title when no subjects exist
+  ///
+  /// In en, this message translates to:
+  /// **'No Subjects Available'**
+  String get syllabusNoSubjects;
+
+  /// Empty state description when no subjects exist
+  ///
+  /// In en, this message translates to:
+  /// **'Add a subject first to track syllabus progress.'**
+  String get syllabusNoSubjectsDesc;
+
+  /// Topic count label
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 topic} other{{count} topics}}'**
+  String syllabusTopicCount(int count);
+
+  /// Button or title for reordering topics
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder Topics'**
+  String get syllabusReorderTopics;
+
+  /// Button to clear completion date
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Date'**
+  String get syllabusClearDate;
+
+  /// Button to select completion date
+  ///
+  /// In en, this message translates to:
+  /// **'Select Date'**
+  String get syllabusSelectDate;
 }
 
 class _AppLocalizationsDelegate

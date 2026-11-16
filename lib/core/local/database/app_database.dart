@@ -12,6 +12,7 @@ part 'app_database.g.dart';
     LocalCirculars,
     LocalCircularExamDates,
     LocalSubjects,
+    LocalChapters,
     LocalMaterials,
     LocalProgressLogs,
     LocalTopics,
@@ -43,12 +44,27 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
         onCreate: (m) async {
           await m.createAll();
+        },
+        onUpgrade: (m, from, to) async {
+          if (from < 2) {
+            await m.createTable(localChapters);
+            await m.addColumn(localSubjects, localSubjects.enabledCheckpoints);
+            await m.addColumn(localTopics, localTopics.chapterId);
+            await m.addColumn(localTopics, localTopics.title);
+            await m.addColumn(localTopics, localTopics.sortOrder);
+            await m.addColumn(localTopics, localTopics.weight);
+            await m.addColumn(localTopics, localTopics.studyDoneAt);
+            await m.addColumn(localTopics, localTopics.practiceDoneAt);
+            await m.addColumn(localTopics, localTopics.modelTestDoneAt);
+            await m.addColumn(localTopics, localTopics.revisionDoneAt);
+            await m.addColumn(localTopics, localTopics.notes);
+          }
         },
       );
 

@@ -240,6 +240,13 @@ final routerProvider = Provider<GoRouter>((ref) {
             ),
             routes: [
               GoRoute(
+                path: 'syllabus',
+                name: 'prep_syllabus',
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: PrepScreen(initialTab: PrepSectionTab.syllabus),
+                ),
+              ),
+              GoRoute(
                 path: 'analytics',
                 name: 'prep_analytics',
                 pageBuilder: (context, state) => const NoTransitionPage(

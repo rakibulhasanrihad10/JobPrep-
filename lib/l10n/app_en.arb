@@ -6676,5 +6676,205 @@
   "migrationKeepGuestButton": "Stay in Guest Mode",
   "@migrationKeepGuestButton": {
     "description": "Abort button on migration failure to stay in guest mode"
+  },
+  "prepTabSyllabus": "Syllabus",
+  "@prepTabSyllabus": {
+    "description": "Tab label for Syllabus in Prep section"
+  },
+  "prepSyllabusTitle": "Syllabus Tracking",
+  "@prepSyllabusTitle": {
+    "description": "Title of the syllabus tab"
+  },
+  "prepSyllabusSubtitle": "Track chapters, topics, and checkpoint mastery.",
+  "@prepSyllabusSubtitle": {
+    "description": "Subtitle of the syllabus tab"
+  },
+  "syllabusOverallProgress": "Syllabus Progress",
+  "@syllabusOverallProgress": {
+    "description": "Label for weighted syllabus progress ring"
+  },
+  "syllabusReadingProgress": "Reading Progress",
+  "@syllabusReadingProgress": {
+    "description": "Label for page-based reading progress ring"
+  },
+  "syllabusCheckpointStudy": "Study",
+  "@syllabusCheckpointStudy": {
+    "description": "Checkpoint name for study"
+  },
+  "syllabusCheckpointPractice": "Practice",
+  "@syllabusCheckpointPractice": {
+    "description": "Checkpoint name for practice"
+  },
+  "syllabusCheckpointModelTest": "Model Test",
+  "@syllabusCheckpointModelTest": {
+    "description": "Checkpoint name for model test"
+  },
+  "syllabusCheckpointRevision": "Revision",
+  "@syllabusCheckpointRevision": {
+    "description": "Checkpoint name for revision"
+  },
+  "syllabusAddChapter": "Add Chapter",
+  "@syllabusAddChapter": {
+    "description": "Button to add a new chapter"
+  },
+  "syllabusEditChapter": "Edit Chapter",
+  "@syllabusEditChapter": {
+    "description": "Button to edit an existing chapter"
+  },
+  "syllabusDeleteChapter": "Delete Chapter",
+  "@syllabusDeleteChapter": {
+    "description": "Button to delete an existing chapter"
+  },
+  "syllabusDeleteChapterConfirm": "Are you sure you want to delete chapter \"{title}\"? All {count} topic(s) inside will be lost.",
+  "@syllabusDeleteChapterConfirm": {
+    "description": "Confirmation message when deleting a chapter",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syllabusChapterTitleLabel": "Chapter Title",
+  "@syllabusChapterTitleLabel": {
+    "description": "Label for chapter title input"
+  },
+  "syllabusAddTopic": "Add Topic",
+  "@syllabusAddTopic": {
+    "description": "Button to add a new topic"
+  },
+  "syllabusEditTopic": "Edit Topic",
+  "@syllabusEditTopic": {
+    "description": "Button to edit topic details"
+  },
+  "syllabusDeleteTopic": "Delete Topic",
+  "@syllabusDeleteTopic": {
+    "description": "Button to delete a topic"
+  },
+  "syllabusTopicTitleLabel": "Topic Title",
+  "@syllabusTopicTitleLabel": {
+    "description": "Label for topic title input"
+  },
+  "syllabusTopicWeightLabel": "Weight",
+  "@syllabusTopicWeightLabel": {
+    "description": "Label for topic weight input"
+  },
+  "syllabusTopicNotesLabel": "Personal Notes",
+  "@syllabusTopicNotesLabel": {
+    "description": "Label for topic notes input"
+  },
+  "syllabusTopicNotesHint": "Write study notes, formulas, or tricky points...",
+  "@syllabusTopicNotesHint": {
+    "description": "Hint for topic notes input"
+  },
+  "syllabusTopicDateLabel": "Completion Date",
+  "@syllabusTopicDateLabel": {
+    "description": "Label for topic completion date"
+  },
+  "syllabusMarkAllDone": "Mark all {checkpoint} done",
+  "@syllabusMarkAllDone": {
+    "description": "Button to bulk complete a checkpoint for all topics in chapter",
+    "placeholders": {
+      "checkpoint": {
+        "type": "String"
+      }
+    }
+  },
+  "syllabusConfigureCheckpoints": "Configure Checkpoints",
+  "@syllabusConfigureCheckpoints": {
+    "description": "Button to configure subject checkpoints"
+  },
+  "syllabusConfigureCheckpointsSubtitle": "Choose which checkpoints to track for {subject}",
+  "@syllabusConfigureCheckpointsSubtitle": {
+    "description": "Subtitle for configure checkpoints dialog",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      }
+    }
+  },
+  "syllabusConfigureCheckpointsWarning": "Warning: unchecking checkpoints with completed data will hide them from progress calculation.",
+  "@syllabusConfigureCheckpointsWarning": {
+    "description": "Warning message when disabling checkpoints"
+  },
+  "syllabusQuickAdd": "Quick Add Outline",
+  "@syllabusQuickAdd": {
+    "description": "Button to quick add syllabus outline"
+  },
+  "syllabusQuickAddSubtitle": "Paste a multi-line outline. Lines without a leading dash become chapters; lines starting with \"-\" become topics.",
+  "@syllabusQuickAddSubtitle": {
+    "description": "Subtitle for quick add outline dialog"
+  },
+  "syllabusQuickAddHint": "Chapter 1: Arithmetic\n- Prime Numbers\n- Divisibility Rules\n\nChapter 2: Algebra\n- Polynomials",
+  "@syllabusQuickAddHint": {
+    "description": "Hint text for quick add input"
+  },
+  "syllabusQuickAddPreview": "Preview: {chapters} chapter(s), {topics} topic(s)",
+  "@syllabusQuickAddPreview": {
+    "description": "Preview count for parsed outline",
+    "placeholders": {
+      "chapters": {
+        "type": "int"
+      },
+      "topics": {
+        "type": "int"
+      }
+    }
+  },
+  "syllabusQuickAddImportButton": "Import Outline",
+  "@syllabusQuickAddImportButton": {
+    "description": "Button to confirm outline import"
+  },
+  "syllabusStartFromTemplate": "Start from Template Outline",
+  "@syllabusStartFromTemplate": {
+    "description": "Button to start syllabus from template pack"
+  },
+  "syllabusTemplateNotice": "Editable example outline - not an official syllabus",
+  "@syllabusTemplateNotice": {
+    "description": "Notice for template example outlines"
+  },
+  "syllabusNoChapters": "No Chapters Yet",
+  "@syllabusNoChapters": {
+    "description": "Empty state title when subject has no chapters"
+  },
+  "syllabusNoChaptersDesc": "Break down {subject} into chapters and track your checkpoint mastery.",
+  "@syllabusNoChaptersDesc": {
+    "description": "Empty state description when subject has no chapters",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      }
+    }
+  },
+  "syllabusNoSubjects": "No Subjects Available",
+  "@syllabusNoSubjects": {
+    "description": "Empty state title when no subjects exist"
+  },
+  "syllabusNoSubjectsDesc": "Add a subject first to track syllabus progress.",
+  "@syllabusNoSubjectsDesc": {
+    "description": "Empty state description when no subjects exist"
+  },
+  "syllabusTopicCount": "{count, plural, =1{1 topic} other{{count} topics}}",
+  "@syllabusTopicCount": {
+    "description": "Topic count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syllabusReorderTopics": "Reorder Topics",
+  "@syllabusReorderTopics": {
+    "description": "Button or title for reordering topics"
+  },
+  "syllabusClearDate": "Clear Date",
+  "@syllabusClearDate": {
+    "description": "Button to clear completion date"
+  },
+  "syllabusSelectDate": "Select Date",
+  "@syllabusSelectDate": {
+    "description": "Button to select completion date"
   }
 }

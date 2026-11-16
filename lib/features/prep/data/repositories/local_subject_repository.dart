@@ -1,5 +1,8 @@
+import 'dart:convert' show jsonDecode, jsonEncode;
+
 import 'package:drift/drift.dart';
 import 'package:job_prep/core/local/database/app_database.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/repositories/subject_repository.dart';
@@ -54,6 +57,7 @@ class LocalSubjectRepository implements SubjectRepository {
         subject.examType.trim().isEmpty ? 'general' : subject.examType.trim(),
       ),
       sortOrder: Value(subject.sortOrder < 0 ? 0 : subject.sortOrder),
+      enabledCheckpoints: Value(jsonEncode(subject.enabledCheckpoints)),
       createdAt: Value(subject.createdAt ?? now),
       updatedAt: Value(now),
     );
@@ -100,6 +104,7 @@ class LocalSubjectRepository implements SubjectRepository {
         subject.examType.trim().isEmpty ? 'general' : subject.examType.trim(),
       ),
       sortOrder: Value(subject.sortOrder < 0 ? 0 : subject.sortOrder),
+      enabledCheckpoints: Value(jsonEncode(subject.enabledCheckpoints)),
       createdAt: Value(existing.createdAt),
       updatedAt: Value(now),
     );
@@ -207,6 +212,19 @@ class LocalSubjectRepository implements SubjectRepository {
   }
 
   Subject _mapRow(LocalSubject row) {
+    List<String> parseCheckpoints(String raw) {
+      try {
+        final decoded = jsonDecode(raw);
+        if (decoded is List) {
+          return decoded
+              .map((e) => e.toString().trim())
+              .where((s) => s.isNotEmpty)
+              .toList();
+        }
+      } on Object catch (_) {}
+      return SyllabusCheckpoint.defaultEnabledValues;
+    }
+
     return Subject(
       id: row.id,
       name: row.name,
@@ -214,6 +232,7 @@ class LocalSubjectRepository implements SubjectRepository {
       icon: row.icon,
       examType: row.examType,
       sortOrder: row.sortOrder,
+      enabledCheckpoints: parseCheckpoints(row.enabledCheckpoints),
       createdAt: row.createdAt,
       updatedAt: row.updatedAt,
     );

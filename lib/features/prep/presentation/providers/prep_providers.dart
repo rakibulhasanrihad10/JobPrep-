@@ -5,14 +5,17 @@ import 'package:job_prep/core/data/data_source_mode.dart';
 import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/prep/data/repositories/local_chapter_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/local_material_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/local_progress_log_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/local_subject_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/local_topic_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_chapter_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_material_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_progress_log_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_subject_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_topic_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/unconfigured_chapter_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_material_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_progress_log_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_subject_repository.dart';
@@ -21,6 +24,7 @@ import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/domain/entities/topic.dart';
+import 'package:job_prep/features/prep/domain/repositories/chapter_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/material_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/progress_log_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/subject_repository.dart';
@@ -83,6 +87,20 @@ final Provider<TopicRepository> topicRepositoryProvider =
     return const UnconfiguredTopicRepository();
   }
   return SupabaseTopicRepository(client);
+});
+
+/// Dependency-injected [ChapterRepository] provider.
+final Provider<ChapterRepository> chapterRepositoryProvider =
+    Provider<ChapterRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalChapterRepository(ref.watch(appDatabaseProvider));
+  }
+  final client = ref.watch(optionalSupabaseClientProvider);
+  if (client == null) {
+    return const UnconfiguredChapterRepository();
+  }
+  return SupabaseChapterRepository(client);
 });
 
 /// Async notifier loading all study subjects for the signed-in user.

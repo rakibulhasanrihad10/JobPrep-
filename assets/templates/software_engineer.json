@@ -119,5 +119,54 @@
       "total_units": 180,
       "item_sort_order": 7
     }
+  ],
+  "example_outlines": [
+    {
+      "subject_name": "Data Structures & Algorithms",
+      "notice": "Editable example outline - not an official syllabus",
+      "chapters": [
+        {
+          "title": "Core Data Structures (Example Outline)",
+          "topics": [
+            "Arrays, Dynamic Sizing & Strings",
+            "Hash Maps, Sets & Collision Handling",
+            "Singly & Doubly Linked Lists",
+            "Stacks, Monotonic Queues & Deques",
+            "Trees, Heaps & Priority Queues"
+          ]
+        },
+        {
+          "title": "Algorithmic Techniques (Example Outline)",
+          "topics": [
+            "Two Pointers & Sliding Window",
+            "Binary Search on Value Spaces",
+            "Breadth-First Search & Depth-First Search",
+            "Dynamic Programming Memoization & Tabulation"
+          ]
+        }
+      ]
+    },
+    {
+      "subject_name": "System Design",
+      "notice": "Editable example outline - not an official syllabus",
+      "chapters": [
+        {
+          "title": "Distributed Building Blocks (Example Outline)",
+          "topics": [
+            "Load Balancers, Reverse Proxies & CDN Caching",
+            "Database Sharding, Replication & CAP Theorem",
+            "Message Brokers & Event-Driven Pipelines (Kafka, RabbitMQ)"
+          ]
+        },
+        {
+          "title": "Real-World Architecture Scenarios (Example Outline)",
+          "topics": [
+            "Designing a Distributed Rate Limiter",
+            "Designing a URL Shortener with High Availability",
+            "Designing a Scalable Notification Service"
+          ]
+        }
+      ]
+    }
   ]
 }

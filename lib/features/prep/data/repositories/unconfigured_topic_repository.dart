@@ -16,11 +16,22 @@ class UnconfiguredTopicRepository implements TopicRepository {
   Future<List<Topic>> getTopicsForSubject(String subjectId) async => const [];
 
   @override
+  Future<List<Topic>> getTopicsForChapter(String chapterId) async => const [];
+
+  @override
   Future<Topic> createTopic(Topic topic) => Future.error(_failure);
+
+  @override
+  Future<List<Topic>> batchCreateTopics(List<Topic> topics) =>
+      Future.error(_failure);
 
   @override
   Future<Topic> updateTopic(Topic topic) => Future.error(_failure);
 
   @override
   Future<void> deleteTopic(String id) => Future.error(_failure);
+
+  @override
+  Future<void> reorderTopics(List<String> orderedTopicIds) =>
+      Future.error(_failure);
 }

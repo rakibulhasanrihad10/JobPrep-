@@ -10,6 +10,7 @@ class BackupDataTables {
     this.circulars = const <Map<String, dynamic>>[],
     this.circularExamDates = const <Map<String, dynamic>>[],
     this.subjects = const <Map<String, dynamic>>[],
+    this.chapters = const <Map<String, dynamic>>[],
     this.materials = const <Map<String, dynamic>>[],
     this.progressLogs = const <Map<String, dynamic>>[],
     this.topics = const <Map<String, dynamic>>[],
@@ -38,6 +39,7 @@ class BackupDataTables {
       circulars: readList('circulars'),
       circularExamDates: readList('circular_exam_dates'),
       subjects: readList('subjects'),
+      chapters: readList('chapters'),
       materials: readList('materials'),
       progressLogs: readList('progress_logs'),
       topics: readList('topics'),
@@ -60,6 +62,9 @@ class BackupDataTables {
 
   /// Stored prep subjects.
   final List<Map<String, dynamic>> subjects;
+
+  /// Stored syllabus chapters.
+  final List<Map<String, dynamic>> chapters;
 
   /// Stored study materials / books.
   final List<Map<String, dynamic>> materials;
@@ -99,6 +104,7 @@ class BackupDataTables {
       circulars.length +
       circularExamDates.length +
       subjects.length +
+      chapters.length +
       materials.length +
       progressLogs.length +
       topics.length +
@@ -116,6 +122,7 @@ class BackupDataTables {
         'circulars': circulars.length,
         'circular_exam_dates': circularExamDates.length,
         'subjects': subjects.length,
+        'chapters': chapters.length,
         'materials': materials.length,
         'progress_logs': progressLogs.length,
         'topics': topics.length,
@@ -135,6 +142,7 @@ class BackupDataTables {
       'circulars': circulars,
       'circular_exam_dates': circularExamDates,
       'subjects': subjects,
+      'chapters': chapters,
       'materials': materials,
       'progress_logs': progressLogs,
       'topics': topics,

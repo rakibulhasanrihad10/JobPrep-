@@ -4916,4 +4916,152 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get migrationKeepGuestButton => 'Stay in Guest Mode';
+
+  @override
+  String get prepTabSyllabus => 'Syllabus';
+
+  @override
+  String get prepSyllabusTitle => 'Syllabus Tracking';
+
+  @override
+  String get prepSyllabusSubtitle =>
+      'Track chapters, topics, and checkpoint mastery.';
+
+  @override
+  String get syllabusOverallProgress => 'Syllabus Progress';
+
+  @override
+  String get syllabusReadingProgress => 'Reading Progress';
+
+  @override
+  String get syllabusCheckpointStudy => 'Study';
+
+  @override
+  String get syllabusCheckpointPractice => 'Practice';
+
+  @override
+  String get syllabusCheckpointModelTest => 'Model Test';
+
+  @override
+  String get syllabusCheckpointRevision => 'Revision';
+
+  @override
+  String get syllabusAddChapter => 'Add Chapter';
+
+  @override
+  String get syllabusEditChapter => 'Edit Chapter';
+
+  @override
+  String get syllabusDeleteChapter => 'Delete Chapter';
+
+  @override
+  String syllabusDeleteChapterConfirm(String title, int count) {
+    return 'Are you sure you want to delete chapter \"$title\"? All $count topic(s) inside will be lost.';
+  }
+
+  @override
+  String get syllabusChapterTitleLabel => 'Chapter Title';
+
+  @override
+  String get syllabusAddTopic => 'Add Topic';
+
+  @override
+  String get syllabusEditTopic => 'Edit Topic';
+
+  @override
+  String get syllabusDeleteTopic => 'Delete Topic';
+
+  @override
+  String get syllabusTopicTitleLabel => 'Topic Title';
+
+  @override
+  String get syllabusTopicWeightLabel => 'Weight';
+
+  @override
+  String get syllabusTopicNotesLabel => 'Personal Notes';
+
+  @override
+  String get syllabusTopicNotesHint =>
+      'Write study notes, formulas, or tricky points...';
+
+  @override
+  String get syllabusTopicDateLabel => 'Completion Date';
+
+  @override
+  String syllabusMarkAllDone(String checkpoint) {
+    return 'Mark all $checkpoint done';
+  }
+
+  @override
+  String get syllabusConfigureCheckpoints => 'Configure Checkpoints';
+
+  @override
+  String syllabusConfigureCheckpointsSubtitle(String subject) {
+    return 'Choose which checkpoints to track for $subject';
+  }
+
+  @override
+  String get syllabusConfigureCheckpointsWarning =>
+      'Warning: unchecking checkpoints with completed data will hide them from progress calculation.';
+
+  @override
+  String get syllabusQuickAdd => 'Quick Add Outline';
+
+  @override
+  String get syllabusQuickAddSubtitle =>
+      'Paste a multi-line outline. Lines without a leading dash become chapters; lines starting with \"-\" become topics.';
+
+  @override
+  String get syllabusQuickAddHint =>
+      'Chapter 1: Arithmetic\n- Prime Numbers\n- Divisibility Rules\n\nChapter 2: Algebra\n- Polynomials';
+
+  @override
+  String syllabusQuickAddPreview(int chapters, int topics) {
+    return 'Preview: $chapters chapter(s), $topics topic(s)';
+  }
+
+  @override
+  String get syllabusQuickAddImportButton => 'Import Outline';
+
+  @override
+  String get syllabusStartFromTemplate => 'Start from Template Outline';
+
+  @override
+  String get syllabusTemplateNotice =>
+      'Editable example outline - not an official syllabus';
+
+  @override
+  String get syllabusNoChapters => 'No Chapters Yet';
+
+  @override
+  String syllabusNoChaptersDesc(String subject) {
+    return 'Break down $subject into chapters and track your checkpoint mastery.';
+  }
+
+  @override
+  String get syllabusNoSubjects => 'No Subjects Available';
+
+  @override
+  String get syllabusNoSubjectsDesc =>
+      'Add a subject first to track syllabus progress.';
+
+  @override
+  String syllabusTopicCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count topics',
+      one: '1 topic',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get syllabusReorderTopics => 'Reorder Topics';
+
+  @override
+  String get syllabusClearDate => 'Clear Date';
+
+  @override
+  String get syllabusSelectDate => 'Select Date';
 }
