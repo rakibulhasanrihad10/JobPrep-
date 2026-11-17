@@ -31,7 +31,7 @@ val hasReleaseSigning = hasFileKeystore || hasEnvKeystore
 
 android {
     namespace = "com.jobprep.app"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

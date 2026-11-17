@@ -62,6 +62,8 @@ CREATE POLICY "Users can delete own chapters"
   TO authenticated
   USING (user_id = auth.uid());
 
+REVOKE TRUNCATE, REFERENCES, TRIGGER ON public.chapters FROM authenticated, anon;
+
 -- ============================================================================
 -- 2. Extend public.subjects with enabled_checkpoints
 -- ============================================================================
@@ -95,6 +97,28 @@ ALTER TABLE public.topics
 UPDATE public.topics
    SET title = name
  WHERE title IS NULL;
+
+-- Automatically synchronize name and title for backward and forward compatibility
+CREATE OR REPLACE FUNCTION public.sync_topic_name_and_title()
+RETURNS trigger AS $$
+BEGIN
+  IF NEW.title IS NULL AND NEW.name IS NOT NULL THEN
+    NEW.title := NEW.name;
+  ELSIF NEW.name IS NULL AND NEW.title IS NOT NULL THEN
+    NEW.name := NEW.title;
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS trigger_sync_topic_name_and_title ON public.topics;
+CREATE TRIGGER trigger_sync_topic_name_and_title
+  BEFORE INSERT OR UPDATE ON public.topics
+  FOR EACH ROW
+  EXECUTE FUNCTION public.sync_topic_name_and_title();
+
+ALTER TABLE public.topics
+  ALTER COLUMN name DROP NOT NULL;
 
 ALTER TABLE public.topics
   ALTER COLUMN title SET NOT NULL;

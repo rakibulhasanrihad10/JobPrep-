@@ -44,8 +44,8 @@ BEGIN
   INSERT INTO public.chapters (id, user_id, subject_id, title)
   VALUES (v_chap_a, v_user_a, v_subj_a, 'Mechanics');
 
-  INSERT INTO public.topics (id, user_id, subject_id, chapter_id, title)
-  VALUES (v_top_a, v_user_a, v_subj_a, v_chap_a, 'Newtonian Laws');
+  INSERT INTO public.topics (id, user_id, subject_id, chapter_id, title, name)
+  VALUES (v_top_a, v_user_a, v_subj_a, v_chap_a, 'Newtonian Laws', 'Newtonian Laws');
 
   INSERT INTO public.materials (id, user_id, subject_id, title)
   VALUES (v_mat_a, v_user_a, v_subj_a, 'University Physics Book');

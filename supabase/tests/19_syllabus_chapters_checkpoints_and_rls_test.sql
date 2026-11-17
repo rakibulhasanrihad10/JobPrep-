@@ -84,7 +84,7 @@ SELECT results_eq(
 INSERT INTO public.topics (
   id, user_id, subject_id, chapter_id, title, name, sort_order, weight, study_done_at
 ) VALUES (
-  '8888tttt-tttt-4ttt-8ttt-tttttttttttt',
+  '8888ffff-ffff-4fff-8fff-ffffffffffff',
   '88881111-1111-4111-8111-111111111111',
   '8888aaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',
   '8888cccc-cccc-4ccc-8ccc-cccccccccccc',
@@ -92,7 +92,7 @@ INSERT INTO public.topics (
 );
 
 SELECT results_eq(
-  $$ SELECT weight FROM public.topics WHERE id = '8888tttt-tttt-4ttt-8ttt-tttttttttttt' $$,
+  $$ SELECT weight FROM public.topics WHERE id = '8888ffff-ffff-4fff-8fff-ffffffffffff' $$,
   $$ VALUES (2) $$,
   'User A topic weight is preserved'
 );
@@ -129,7 +129,7 @@ SELECT is_empty(
 );
 
 SELECT is_empty(
-  $$ SELECT * FROM public.topics WHERE id = '8888tttt-tttt-4ttt-8ttt-tttttttttttt' $$,
+  $$ SELECT * FROM public.topics WHERE id = '8888ffff-ffff-4fff-8fff-ffffffffffff' $$,
   'User B cannot read User A topic'
 );
 

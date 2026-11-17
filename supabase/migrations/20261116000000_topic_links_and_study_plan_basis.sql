@@ -57,6 +57,8 @@ CREATE POLICY "Users can delete own mock_test_topics"
   TO authenticated
   USING (user_id = auth.uid());
 
+REVOKE TRUNCATE, REFERENCES, TRIGGER ON public.mock_test_topics FROM authenticated, anon;
+
 -- ============================================================================
 -- 2. public.material_chapters
 -- ============================================================================
@@ -113,6 +115,8 @@ CREATE POLICY "Users can delete own material_chapters"
   FOR DELETE
   TO authenticated
   USING (user_id = auth.uid());
+
+REVOKE TRUNCATE, REFERENCES, TRIGGER ON public.material_chapters FROM authenticated, anon;
 
 -- ============================================================================
 -- 3. public.study_plans: plan_basis column
