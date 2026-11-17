@@ -160,6 +160,22 @@ CREATE INDEX IF NOT EXISTS idx_topics_chapter_id
 CREATE INDEX IF NOT EXISTS idx_topics_sort_order
   ON public.topics (subject_id, sort_order);
 
+ALTER TABLE public.topics
+  DROP CONSTRAINT IF EXISTS topics_status_check;
+
+ALTER TABLE public.topics
+  ADD CONSTRAINT topics_status_check CHECK (
+    status IN (
+      'not_started',
+      'in_progress',
+      'needs_revision',
+      'completed',
+      'learning',
+      'revised',
+      'mastered'
+    )
+  );
+
 -- ============================================================================
 -- 4. Migrate legacy topics.status into checkpoint timestamps
 -- ============================================================================

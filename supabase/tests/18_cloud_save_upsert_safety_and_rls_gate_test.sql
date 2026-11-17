@@ -13,7 +13,7 @@ GRANT USAGE ON SCHEMA extensions TO anon, authenticated;
 SET LOCAL search_path = public, extensions;
 
 -- Total planned tests
-SELECT plan(42);
+SELECT plan(35);
 
 -- ============================================================================
 -- 1. Seed two isolated mock users in auth.users
