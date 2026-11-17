@@ -8349,6 +8349,192 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select Date'**
   String get syllabusSelectDate;
+
+  /// Label for tree view mode in syllabus tab
+  ///
+  /// In en, this message translates to:
+  /// **'Tree'**
+  String get syllabusViewTree;
+
+  /// Label for map view mode in syllabus tab
+  ///
+  /// In en, this message translates to:
+  /// **'Map'**
+  String get syllabusViewMap;
+
+  /// Title for topics completion grid in syllabus map
+  ///
+  /// In en, this message translates to:
+  /// **'Topics Map'**
+  String get syllabusTopicGridTitle;
+
+  /// Title for chapter breakdown table in syllabus map
+  ///
+  /// In en, this message translates to:
+  /// **'Chapter Progress'**
+  String get syllabusChapterTableTitle;
+
+  /// Title for syllabus gaps section
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus Gaps'**
+  String get syllabusGapsTitle;
+
+  /// Subtitle describing syllabus gaps
+  ///
+  /// In en, this message translates to:
+  /// **'Studied topics missing practice or testing'**
+  String get syllabusGapsSubtitle;
+
+  /// Message shown when no syllabus gaps exist
+  ///
+  /// In en, this message translates to:
+  /// **'No gaps! All studied topics are practiced and tested.'**
+  String get syllabusGapsEmpty;
+
+  /// Badge indicating topic has not been practiced
+  ///
+  /// In en, this message translates to:
+  /// **'Needs Practice'**
+  String get syllabusGapNeedsPractice;
+
+  /// Badge indicating topic has not been tested
+  ///
+  /// In en, this message translates to:
+  /// **'Needs Model Test'**
+  String get syllabusGapNeedsModelTest;
+
+  /// Column header for chapter in progress table
+  ///
+  /// In en, this message translates to:
+  /// **'Chapter'**
+  String get syllabusColChapter;
+
+  /// Column header for studied percentage in progress table
+  ///
+  /// In en, this message translates to:
+  /// **'Studied'**
+  String get syllabusColStudied;
+
+  /// Column header for practiced percentage in progress table
+  ///
+  /// In en, this message translates to:
+  /// **'Practiced'**
+  String get syllabusColPracticed;
+
+  /// Column header for tested percentage in progress table
+  ///
+  /// In en, this message translates to:
+  /// **'Tested'**
+  String get syllabusColTested;
+
+  /// Column header for revised percentage in progress table
+  ///
+  /// In en, this message translates to:
+  /// **'Revised'**
+  String get syllabusColRevised;
+
+  /// Card title for next topics on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Next Topics'**
+  String get todayNextTopicsTitle;
+
+  /// Empty state for next topics on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'No upcoming topics found'**
+  String get todayNextTopicsEmpty;
+
+  /// Label for picking weak topics from syllabus chips
+  ///
+  /// In en, this message translates to:
+  /// **'Pick from syllabus'**
+  String get prepMockWeakTopicsSyllabusLabel;
+
+  /// Label for free-text weak topics fallback input
+  ///
+  /// In en, this message translates to:
+  /// **'Custom weak topics (fallback)'**
+  String get prepMockFormWeakTopicsFallbackLabel;
+
+  /// Dialog title offering to update syllabus checkpoints after mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Update Syllabus Checkpoints'**
+  String get prepMockMarkCheckpointsTitle;
+
+  /// Prompt asking user to mark model test checkpoint done
+  ///
+  /// In en, this message translates to:
+  /// **'Mark Model Test checkpoint done for {count} topics?'**
+  String prepMockMarkCheckpointsPrompt(int count);
+
+  /// Checkbox to automatically mark checkpoints in future
+  ///
+  /// In en, this message translates to:
+  /// **'Do this automatically in the future'**
+  String get prepMockMarkCheckpointsAuto;
+
+  /// Action button to mark checkpoints done
+  ///
+  /// In en, this message translates to:
+  /// **'Mark Done'**
+  String get prepMockMarkCheckpointsAction;
+
+  /// Dialog title offering to add weak topics to revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'Add weak topics to revision queue?'**
+  String get prepMockAddToRevisionPrompt;
+
+  /// Action button to add weak topics to revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Revision'**
+  String get prepMockAddToRevisionAction;
+
+  /// Dropdown label for optional topic in revision dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Topic (optional)'**
+  String get prepRevisionTopicOptionalLabel;
+
+  /// Option in topic dropdown for unlinked revision
+  ///
+  /// In en, this message translates to:
+  /// **'No topic linked'**
+  String get prepRevisionNoTopicOption;
+
+  /// Label for choosing study plan basis
+  ///
+  /// In en, this message translates to:
+  /// **'Plan Basis'**
+  String get studyPlanBasisLabel;
+
+  /// Option for reading units plan basis
+  ///
+  /// In en, this message translates to:
+  /// **'Reading Units'**
+  String get studyPlanBasisReadingUnits;
+
+  /// Option for syllabus topics plan basis
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus Topics'**
+  String get studyPlanBasisSyllabusTopics;
+
+  /// Chart title for weekly completed topics in study analytics
+  ///
+  /// In en, this message translates to:
+  /// **'Topics Completed per Week'**
+  String get prepAnalyticsWeeklyTopicsTitle;
+
+  /// Metric tile title for topics completed in weekly review
+  ///
+  /// In en, this message translates to:
+  /// **'Topics Completed'**
+  String get weeklyReviewTopicsCompletedTitle;
 }
 
 class _AppLocalizationsDelegate

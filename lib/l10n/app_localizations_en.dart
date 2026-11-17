@@ -5064,4 +5064,104 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get syllabusSelectDate => 'Select Date';
+
+  @override
+  String get syllabusViewTree => 'Tree';
+
+  @override
+  String get syllabusViewMap => 'Map';
+
+  @override
+  String get syllabusTopicGridTitle => 'Topics Map';
+
+  @override
+  String get syllabusChapterTableTitle => 'Chapter Progress';
+
+  @override
+  String get syllabusGapsTitle => 'Syllabus Gaps';
+
+  @override
+  String get syllabusGapsSubtitle =>
+      'Studied topics missing practice or testing';
+
+  @override
+  String get syllabusGapsEmpty =>
+      'No gaps! All studied topics are practiced and tested.';
+
+  @override
+  String get syllabusGapNeedsPractice => 'Needs Practice';
+
+  @override
+  String get syllabusGapNeedsModelTest => 'Needs Model Test';
+
+  @override
+  String get syllabusColChapter => 'Chapter';
+
+  @override
+  String get syllabusColStudied => 'Studied';
+
+  @override
+  String get syllabusColPracticed => 'Practiced';
+
+  @override
+  String get syllabusColTested => 'Tested';
+
+  @override
+  String get syllabusColRevised => 'Revised';
+
+  @override
+  String get todayNextTopicsTitle => 'Next Topics';
+
+  @override
+  String get todayNextTopicsEmpty => 'No upcoming topics found';
+
+  @override
+  String get prepMockWeakTopicsSyllabusLabel => 'Pick from syllabus';
+
+  @override
+  String get prepMockFormWeakTopicsFallbackLabel =>
+      'Custom weak topics (fallback)';
+
+  @override
+  String get prepMockMarkCheckpointsTitle => 'Update Syllabus Checkpoints';
+
+  @override
+  String prepMockMarkCheckpointsPrompt(int count) {
+    return 'Mark Model Test checkpoint done for $count topics?';
+  }
+
+  @override
+  String get prepMockMarkCheckpointsAuto =>
+      'Do this automatically in the future';
+
+  @override
+  String get prepMockMarkCheckpointsAction => 'Mark Done';
+
+  @override
+  String get prepMockAddToRevisionPrompt =>
+      'Add weak topics to revision queue?';
+
+  @override
+  String get prepMockAddToRevisionAction => 'Add to Revision';
+
+  @override
+  String get prepRevisionTopicOptionalLabel => 'Topic (optional)';
+
+  @override
+  String get prepRevisionNoTopicOption => 'No topic linked';
+
+  @override
+  String get studyPlanBasisLabel => 'Plan Basis';
+
+  @override
+  String get studyPlanBasisReadingUnits => 'Reading Units';
+
+  @override
+  String get studyPlanBasisSyllabusTopics => 'Syllabus Topics';
+
+  @override
+  String get prepAnalyticsWeeklyTopicsTitle => 'Topics Completed per Week';
+
+  @override
+  String get weeklyReviewTopicsCompletedTitle => 'Topics Completed';
 }

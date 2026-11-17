@@ -9,8 +9,10 @@ import 'package:job_prep/features/circulars/domain/repositories/circular_reposit
 import 'package:job_prep/features/circulars/domain/repositories/exam_date_repository.dart';
 import 'package:job_prep/features/notifications/domain/repositories/notifications_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/chapter_repository.dart';
+import 'package:job_prep/features/prep/domain/repositories/material_chapter_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/material_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/mock_test_repository.dart';
+import 'package:job_prep/features/prep/domain/repositories/mock_test_topic_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/progress_log_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/revision_item_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/study_plan_repository.dart';
@@ -39,6 +41,8 @@ class AppBackupRepository implements BackupRepository {
     required this.notificationsRepo,
     required this.portalAccountRepo,
     required this.userSettingsRepo,
+    this.materialChapterRepo,
+    this.mockTestTopicRepo,
     this.appDatabase,
     this.isGuest = false,
   });
@@ -48,10 +52,12 @@ class AppBackupRepository implements BackupRepository {
   final SubjectRepository subjectRepo;
   final ChapterRepository chapterRepo;
   final MaterialRepository materialRepo;
+  final MaterialChapterRepository? materialChapterRepo;
   final ProgressLogRepository progressLogRepo;
   final TopicRepository topicRepo;
   final StudyPlanRepository studyPlanRepo;
   final MockTestRepository mockTestRepo;
+  final MockTestTopicRepository? mockTestTopicRepo;
   final RevisionItemRepository revisionItemRepo;
   final StudySessionRepository studySessionRepo;
   final NotificationsRepository notificationsRepo;
@@ -104,6 +110,18 @@ class AppBackupRepository implements BackupRepository {
     final portalAccounts = await portalAccountRepo.getAllAccounts();
     final settings = await userSettingsRepo.getSettings();
 
+    final mockTestTopics = mockTestTopicRepo != null
+        ? (await mockTestTopicRepo!.getAll())
+            .map(BackupEntityCodec.mockTestTopicToJson)
+            .toList()
+        : const <Map<String, dynamic>>[];
+
+    final materialChapters = materialChapterRepo != null
+        ? (await materialChapterRepo!.getAll())
+            .map(BackupEntityCodec.materialChapterToJson)
+            .toList()
+        : const <Map<String, dynamic>>[];
+
     return BackupDataTables(
       circulars: circulars.map(BackupEntityCodec.circularToJson).toList(),
       circularExamDates: examDates,
@@ -126,6 +144,8 @@ class AppBackupRepository implements BackupRepository {
       userSettings: settings != null
           ? [BackupEntityCodec.userSettingsToJson(settings)]
           : const <Map<String, dynamic>>[],
+      mockTestTopics: mockTestTopics,
+      materialChapters: materialChapters,
     );
   }
 
@@ -159,10 +179,12 @@ class AppBackupRepository implements BackupRepository {
       chapterRepo: chapterRepo,
       topicRepo: topicRepo,
       materialRepo: materialRepo,
+      materialChapterRepo: materialChapterRepo,
       circularRepo: circularRepo,
       examDateRepo: examDateRepo,
       studyPlanRepo: studyPlanRepo,
       mockTestRepo: mockTestRepo,
+      mockTestTopicRepo: mockTestTopicRepo,
       progressLogRepo: progressLogRepo,
       revisionItemRepo: revisionItemRepo,
       studySessionRepo: studySessionRepo,

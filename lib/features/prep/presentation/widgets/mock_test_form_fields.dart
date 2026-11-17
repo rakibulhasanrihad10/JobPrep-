@@ -3,6 +3,8 @@ import 'package:job_prep/core/localization/app_localizations_extension.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_text_field.dart';
+import 'package:job_prep/features/prep/domain/entities/topic.dart';
+import 'package:job_prep/features/prep/presentation/widgets/mock_test_weak_topics_field.dart';
 
 /// Text and numeric input fields section inside the mock test create/edit form.
 class MockTestFormFields extends StatelessWidget {
@@ -20,6 +22,9 @@ class MockTestFormFields extends StatelessWidget {
     required this.formattedDate,
     required this.isBusy,
     required this.onPickDate,
+    this.syllabusTopics = const <Topic>[],
+    this.selectedWeakTopicIds = const <String>{},
+    this.onToggleWeakTopic,
     super.key,
   });
 
@@ -58,6 +63,15 @@ class MockTestFormFields extends StatelessWidget {
 
   /// Opens calendar date picker for test `taken_on`.
   final VoidCallback onPickDate;
+
+  /// Syllabus topics available for picking weak topics.
+  final List<Topic> syllabusTopics;
+
+  /// Set of picked weak topic IDs.
+  final Set<String> selectedWeakTopicIds;
+
+  /// Callback when a syllabus topic is toggled as weak.
+  final ValueChanged<Topic>? onToggleWeakTopic;
 
   @override
   Widget build(BuildContext context) {
@@ -158,13 +172,22 @@ class MockTestFormFields extends StatelessWidget {
           ],
         ),
         SizedBox(height: spacing.md),
-        GlassTextField(
-          key: const ValueKey('mock-form-weak-topics-field'),
-          controller: weakTopicsController,
-          enabled: !isBusy,
-          labelText: l10n.prepMockFormWeakTopicsLabel,
-          hintText: l10n.prepMockFormWeakTopicsHint,
-        ),
+        if (syllabusTopics.isNotEmpty && onToggleWeakTopic != null)
+          MockTestWeakTopicsField(
+            controller: weakTopicsController,
+            syllabusTopics: syllabusTopics,
+            selectedWeakTopicIds: selectedWeakTopicIds,
+            onToggleWeakTopic: onToggleWeakTopic!,
+            isBusy: isBusy,
+          )
+        else
+          GlassTextField(
+            key: const ValueKey('mock-form-weak-topics-field'),
+            controller: weakTopicsController,
+            enabled: !isBusy,
+            labelText: l10n.prepMockFormWeakTopicsLabel,
+            hintText: l10n.prepMockFormWeakTopicsHint,
+          ),
         SizedBox(height: spacing.md),
         GlassTextField(
           key: const ValueKey('mock-form-notes-field'),

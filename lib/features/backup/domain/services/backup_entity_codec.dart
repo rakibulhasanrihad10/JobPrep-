@@ -5,7 +5,9 @@ import 'package:job_prep/features/circulars/domain/entities/circular_exam_date.d
 import 'package:job_prep/features/notifications/data/mappers/notification_mapper.dart';
 import 'package:job_prep/features/notifications/domain/entities/app_notification.dart';
 import 'package:job_prep/features/prep/data/mappers/chapter_mapper.dart';
+import 'package:job_prep/features/prep/data/mappers/material_chapter_mapper.dart';
 import 'package:job_prep/features/prep/data/mappers/mock_test_mapper.dart';
+import 'package:job_prep/features/prep/data/mappers/mock_test_topic_mapper.dart';
 import 'package:job_prep/features/prep/data/mappers/prep_material_mapper.dart';
 import 'package:job_prep/features/prep/data/mappers/progress_log_mapper.dart';
 import 'package:job_prep/features/prep/data/mappers/revision_item_mapper.dart';
@@ -14,7 +16,9 @@ import 'package:job_prep/features/prep/data/mappers/study_session_mapper.dart';
 import 'package:job_prep/features/prep/data/mappers/subject_mapper.dart';
 import 'package:job_prep/features/prep/data/mappers/topic_mapper.dart';
 import 'package:job_prep/features/prep/domain/entities/chapter.dart';
+import 'package:job_prep/features/prep/domain/entities/material_chapter.dart';
 import 'package:job_prep/features/prep/domain/entities/mock_test.dart';
+import 'package:job_prep/features/prep/domain/entities/mock_test_topic.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/entities/revision_item.dart';
@@ -100,6 +104,22 @@ abstract final class BackupEntityCodec {
   /// Parses [MockTest] from backup JSON map.
   static MockTest mockTestFromJson(Map<String, dynamic> json) =>
       MockTestMapper.fromJson(json);
+
+  /// Converts [MockTestTopic] to backup JSON map.
+  static Map<String, dynamic> mockTestTopicToJson(MockTestTopic m) =>
+      MockTestTopicMapper.toInsertJson(m);
+
+  /// Parses [MockTestTopic] from backup JSON map.
+  static MockTestTopic mockTestTopicFromJson(Map<String, dynamic> json) =>
+      MockTestTopicMapper.fromJson(json);
+
+  /// Converts [MaterialChapter] to backup JSON map.
+  static Map<String, dynamic> materialChapterToJson(MaterialChapter m) =>
+      MaterialChapterMapper.toInsertJson(m);
+
+  /// Parses [MaterialChapter] from backup JSON map.
+  static MaterialChapter materialChapterFromJson(Map<String, dynamic> json) =>
+      MaterialChapterMapper.fromJson(json);
 
   /// Converts [RevisionItem] to backup JSON map.
   static Map<String, dynamic> revisionItemToJson(RevisionItem r) =>

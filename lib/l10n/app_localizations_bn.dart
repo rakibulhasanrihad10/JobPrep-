@@ -5050,4 +5050,104 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get syllabusSelectDate => 'তারিখ নির্বাচন করুন';
+
+  @override
+  String get syllabusViewTree => 'শাখা';
+
+  @override
+  String get syllabusViewMap => 'মানচিত্র';
+
+  @override
+  String get syllabusTopicGridTitle => 'বিষয় মানচিত্র';
+
+  @override
+  String get syllabusChapterTableTitle => 'অধ্যায় অগ্রগতি';
+
+  @override
+  String get syllabusGapsTitle => 'সিলেবাসের ফাঁক';
+
+  @override
+  String get syllabusGapsSubtitle =>
+      'পড়া হয়েছে কিন্তু অনুশীলন বা পরীক্ষা বাকি';
+
+  @override
+  String get syllabusGapsEmpty =>
+      'কোনো ফাঁক নেই! সব পঠিত বিষয়ে অনুশীলন ও পরীক্ষা সম্পন্ন হয়েছে।';
+
+  @override
+  String get syllabusGapNeedsPractice => 'অনুশীলন প্রয়োজন';
+
+  @override
+  String get syllabusGapNeedsModelTest => 'মডেল টেস্ট প্রয়োজন';
+
+  @override
+  String get syllabusColChapter => 'অধ্যায়';
+
+  @override
+  String get syllabusColStudied => 'পঠিত';
+
+  @override
+  String get syllabusColPracticed => 'অনুশীলিত';
+
+  @override
+  String get syllabusColTested => 'পরীক্ষিত';
+
+  @override
+  String get syllabusColRevised => 'পুনর্বিবেচিত';
+
+  @override
+  String get todayNextTopicsTitle => 'পরবর্তী বিষয়';
+
+  @override
+  String get todayNextTopicsEmpty => 'কোনো পরবর্তী বিষয় নেই';
+
+  @override
+  String get prepMockWeakTopicsSyllabusLabel => 'সিলেবাস থেকে নির্বাচন করুন';
+
+  @override
+  String get prepMockFormWeakTopicsFallbackLabel =>
+      'কাস্টম দুর্বল বিষয় (অন্যান্য)';
+
+  @override
+  String get prepMockMarkCheckpointsTitle => 'সিলেবাস চেকপয়েন্ট আপডেট করুন';
+
+  @override
+  String prepMockMarkCheckpointsPrompt(int count) {
+    return '$countটি বিষয়ের জন্য মডেল টেস্ট সম্পন্ন হিসেবে চিহ্নিত করবেন?';
+  }
+
+  @override
+  String get prepMockMarkCheckpointsAuto =>
+      'ভবিষ্যতে এটি স্বয়ংক্রিয়ভাবে করুন';
+
+  @override
+  String get prepMockMarkCheckpointsAction => 'চিহ্নিত করুন';
+
+  @override
+  String get prepMockAddToRevisionPrompt =>
+      'দুর্বল বিষয়গুলো রিভিশন কিউতে যোগ করবেন?';
+
+  @override
+  String get prepMockAddToRevisionAction => 'রিভিশনে যোগ করুন';
+
+  @override
+  String get prepRevisionTopicOptionalLabel => 'বিষয় (ঐচ্ছিক)';
+
+  @override
+  String get prepRevisionNoTopicOption => 'কোনো বিষয় যুক্ত নেই';
+
+  @override
+  String get studyPlanBasisLabel => 'পরিকল্পনার ভিত্তি';
+
+  @override
+  String get studyPlanBasisReadingUnits => 'পড়ার একক';
+
+  @override
+  String get studyPlanBasisSyllabusTopics => 'সিলেবাসের বিষয়';
+
+  @override
+  String get prepAnalyticsWeeklyTopicsTitle => 'সাপ্তাহিক সম্পন্ন বিষয়';
+
+  @override
+  String get weeklyReviewTopicsCompletedTitle => 'সম্পন্ন বিষয়';
 }

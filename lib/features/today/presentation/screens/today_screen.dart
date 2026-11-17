@@ -28,6 +28,7 @@ import 'package:job_prep/features/today/presentation/widgets/today_do_next_card.
 import 'package:job_prep/features/today/presentation/widgets/today_exams_card.dart';
 import 'package:job_prep/features/today/presentation/widgets/today_header_card.dart';
 import 'package:job_prep/features/today/presentation/widgets/today_inbox_time_cards.dart';
+import 'package:job_prep/features/today/presentation/widgets/today_next_topics_card.dart';
 import 'package:job_prep/features/today/presentation/widgets/today_revision_card.dart';
 import 'package:job_prep/features/today/presentation/widgets/today_study_targets_card.dart';
 
@@ -178,16 +179,21 @@ class _TodayOrderedBody extends StatelessWidget {
             visitId: visitId,
           ),
         ),
+        SizedBox(height: spacing.lg),
+        const FadeSlideIn(
+          index: 3,
+          child: TodayNextTopicsCard(),
+        ),
         if (summary.catchUpNotices.isNotEmpty) ...[
           SizedBox(height: spacing.lg),
           FadeSlideIn(
-            index: 3,
+            index: 4,
             child: TodayCatchUpCard(notices: summary.catchUpNotices),
           ),
         ],
         SizedBox(height: spacing.lg),
         FadeSlideIn(
-          index: 4,
+          index: 5,
           child: TodayRevisionCard(
             summary: summary.revision,
             referenceNow: summary.date,

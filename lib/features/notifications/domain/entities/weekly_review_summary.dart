@@ -47,6 +47,8 @@ class WeeklyReviewSummary {
     required this.upcomingDeadlines,
     required this.upcomingExams,
     required this.suggestionKind,
+    this.topicsCompletedThisWeek = 0,
+    this.topicsCompletedPreviousWeek = 0,
     this.suggestionParam,
   });
 
@@ -92,6 +94,13 @@ class WeeklyReviewSummary {
   /// Count of revision items reviewed (`revised` or `mastered`) this week.
   final int revisionsClearedThisWeek;
 
+  /// Count of syllabus topics completed during this week
+  /// (`[weekStart .. weekEnd]`).
+  final int topicsCompletedThisWeek;
+
+  /// Count of syllabus topics completed during the previous week.
+  final int topicsCompletedPreviousWeek;
+
   /// Circular application deadlines closing in the next 7 days.
   final List<TodayDeadlineEntry> upcomingDeadlines;
 
@@ -121,5 +130,6 @@ class WeeklyReviewSummary {
       unitsThisWeek > 0 ||
       secondsThisWeek > 0 ||
       mockTestsThisWeekCount > 0 ||
-      revisionsClearedThisWeek > 0;
+      revisionsClearedThisWeek > 0 ||
+      topicsCompletedThisWeek > 0;
 }

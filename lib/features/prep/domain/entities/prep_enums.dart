@@ -279,3 +279,32 @@ enum PomodoroPhase {
     return null;
   }
 }
+
+/// Target basis for study plans: reading units (pages) or syllabus topics.
+enum StudyPlanBasis {
+  readingUnits('reading_units'),
+  syllabusTopics('syllabus_topics');
+
+  const StudyPlanBasis(this.value);
+
+  /// Database string value persisted in PostgreSQL.
+  final String value;
+
+  /// Parses [raw] into a [StudyPlanBasis], or returns `null` when invalid.
+  static StudyPlanBasis? tryParse(String? raw) {
+    final normalized = raw?.trim().toLowerCase();
+    if (normalized == null || normalized.isEmpty) return null;
+    for (final item in StudyPlanBasis.values) {
+      if (item.value == normalized) return item;
+    }
+    return null;
+  }
+
+  /// Parses [raw] into a [StudyPlanBasis], falling back to [fallback].
+  static StudyPlanBasis fromValue(
+    String? raw, {
+    StudyPlanBasis fallback = StudyPlanBasis.readingUnits,
+  }) {
+    return tryParse(raw) ?? fallback;
+  }
+}

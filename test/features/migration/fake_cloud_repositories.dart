@@ -7,6 +7,7 @@ import '../prep/fake_revision_item_repository.dart';
 import '../prep/fake_study_plan_repository.dart';
 import '../prep/fake_study_session_repository.dart';
 import '../prep/fake_subject_and_topic_repositories.dart';
+import '../prep/fake_topic_links_repositories.dart';
 import '../settings/fake_user_settings_repository.dart';
 import '../vault/fake_portal_account_repository.dart';
 
@@ -17,11 +18,13 @@ class FakeCloudRepositoriesBundle {
     FakeChapterRepository? chapterRepo,
     FakeTopicRepository? topicRepo,
     FakeMaterialRepository? materialRepo,
+    FakeMaterialChapterRepository? materialChapterRepo,
     FakeProgressLogRepository? progressLogRepo,
     FakeCircularRepository? circularRepo,
     FakeExamDateRepository? examDateRepo,
     FakeStudyPlanRepository? studyPlanRepo,
     FakeMockTestRepository? mockTestRepo,
+    FakeMockTestTopicRepository? mockTestTopicRepo,
     FakeRevisionItemRepository? revisionItemRepo,
     FakeStudySessionRepository? studySessionRepo,
     FakePortalAccountRepository? portalAccountRepo,
@@ -30,11 +33,14 @@ class FakeCloudRepositoriesBundle {
         chapterRepo = chapterRepo ?? FakeChapterRepository(),
         topicRepo = topicRepo ?? FakeTopicRepository(),
         materialRepo = materialRepo ?? FakeMaterialRepository(),
+        materialChapterRepo =
+            materialChapterRepo ?? FakeMaterialChapterRepository(),
         progressLogRepo = progressLogRepo ?? FakeProgressLogRepository(),
         circularRepo = circularRepo ?? FakeCircularRepository(),
         examDateRepo = examDateRepo ?? FakeExamDateRepository(),
         studyPlanRepo = studyPlanRepo ?? FakeStudyPlanRepository(),
         mockTestRepo = mockTestRepo ?? FakeMockTestRepository(),
+        mockTestTopicRepo = mockTestTopicRepo ?? FakeMockTestTopicRepository(),
         revisionItemRepo = revisionItemRepo ?? FakeRevisionItemRepository(),
         studySessionRepo = studySessionRepo ?? FakeStudySessionRepository(),
         portalAccountRepo = portalAccountRepo ?? FakePortalAccountRepository(),
@@ -44,11 +50,13 @@ class FakeCloudRepositoriesBundle {
   final FakeChapterRepository chapterRepo;
   final FakeTopicRepository topicRepo;
   final FakeMaterialRepository materialRepo;
+  final FakeMaterialChapterRepository materialChapterRepo;
   final FakeProgressLogRepository progressLogRepo;
   final FakeCircularRepository circularRepo;
   final FakeExamDateRepository examDateRepo;
   final FakeStudyPlanRepository studyPlanRepo;
   final FakeMockTestRepository mockTestRepo;
+  final FakeMockTestTopicRepository mockTestTopicRepo;
   final FakeRevisionItemRepository revisionItemRepo;
   final FakeStudySessionRepository studySessionRepo;
   final FakePortalAccountRepository portalAccountRepo;
@@ -60,10 +68,12 @@ class FakeCloudRepositoriesBundle {
       chapterRepo: chapterRepo,
       topicRepo: topicRepo,
       materialRepo: materialRepo,
+      materialChapterRepo: materialChapterRepo,
       circularRepo: circularRepo,
       examDateRepo: examDateRepo,
       studyPlanRepo: studyPlanRepo,
       mockTestRepo: mockTestRepo,
+      mockTestTopicRepo: mockTestTopicRepo,
       progressLogRepo: progressLogRepo,
       revisionItemRepo: revisionItemRepo,
       studySessionRepo: studySessionRepo,

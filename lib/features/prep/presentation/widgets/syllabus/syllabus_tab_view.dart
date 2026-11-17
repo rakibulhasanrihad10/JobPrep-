@@ -6,13 +6,12 @@ import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_card.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/syllabus_providers.dart';
-import 'package:job_prep/features/prep/presentation/widgets/syllabus/chapter_card.dart';
 import 'package:job_prep/features/prep/presentation/widgets/syllabus/chapter_form_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/syllabus/quick_add_outline_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/syllabus/subject_checkpoints_dialog.dart';
-import 'package:job_prep/features/prep/presentation/widgets/syllabus/syllabus_empty_state.dart';
+import 'package:job_prep/features/prep/presentation/widgets/syllabus/syllabus_map_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/syllabus/syllabus_progress_ring_summary.dart';
-import 'package:job_prep/features/prep/presentation/widgets/syllabus/topic_checkpoint_row.dart';
+import 'package:job_prep/features/prep/presentation/widgets/syllabus/syllabus_tree_view.dart';
 
 /// Main Syllabus tab view hosted inside `PrepScreen`.
 class SyllabusTabView extends ConsumerWidget {
@@ -93,6 +92,7 @@ class SyllabusTabView extends ConsumerWidget {
         final readingProgressAsync =
             ref.watch(subjectProgressProvider(currentSubject.id));
         final readingProgress = readingProgressAsync.asData?.value ?? 0.0;
+        final viewMode = ref.watch(syllabusViewModeProvider);
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -203,61 +203,80 @@ class SyllabusTabView extends ConsumerWidget {
                 ],
               ),
             ),
-            SizedBox(height: spacing.lg),
+            SizedBox(height: spacing.md),
 
-            // Chapters list
+            // View toggle (Tree vs Map)
+            Row(
+              children: [
+                ChoiceChip(
+                  key: const ValueKey('syllabus-view-tree-chip'),
+                  label: Text(l10n.syllabusViewTree),
+                  selected: viewMode == SyllabusViewMode.tree,
+                  selectedColor: colors.goldAccent.withValues(alpha: 0.25),
+                  backgroundColor: colors.surfaceElevated,
+                  labelStyle: textStyles.labelMedium.copyWith(
+                    color: viewMode == SyllabusViewMode.tree
+                        ? colors.goldAccent
+                        : colors.textSecondary,
+                    fontWeight: viewMode == SyllabusViewMode.tree
+                        ? FontWeight.bold
+                        : FontWeight.normal,
+                  ),
+                  onSelected: (_) {
+                    ref
+                        .read(syllabusViewModeProvider.notifier)
+                        .setMode(SyllabusViewMode.tree);
+                  },
+                ),
+                SizedBox(width: spacing.xs),
+                ChoiceChip(
+                  key: const ValueKey('syllabus-view-map-chip'),
+                  label: Text(l10n.syllabusViewMap),
+                  selected: viewMode == SyllabusViewMode.map,
+                  selectedColor: colors.goldAccent.withValues(alpha: 0.25),
+                  backgroundColor: colors.surfaceElevated,
+                  labelStyle: textStyles.labelMedium.copyWith(
+                    color: viewMode == SyllabusViewMode.map
+                        ? colors.goldAccent
+                        : colors.textSecondary,
+                    fontWeight: viewMode == SyllabusViewMode.map
+                        ? FontWeight.bold
+                        : FontWeight.normal,
+                  ),
+                  onSelected: (_) {
+                    ref
+                        .read(syllabusViewModeProvider.notifier)
+                        .setMode(SyllabusViewMode.map);
+                  },
+                ),
+              ],
+            ),
+            SizedBox(height: spacing.md),
+
+            // Content: Tree or Map
             chaptersAsync.when(
               loading: () => const Center(child: CircularProgressIndicator()),
               error: (e, _) => Center(child: Text(e.toString())),
               data: (chapters) {
-                if (chapters.isEmpty && unassignedTopics.isEmpty) {
-                  return SyllabusEmptyState(subject: currentSubject);
+                final allTopics = ref
+                        .watch(topicsForSubjectProvider(currentSubject.id))
+                        .asData
+                        ?.value ??
+                    const [];
+
+                if (viewMode == SyllabusViewMode.map) {
+                  return SyllabusMapView(
+                    subject: currentSubject,
+                    chapters: chapters,
+                    topics: allTopics,
+                  );
                 }
 
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    ...chapters.map((chapter) {
-                      return Padding(
-                        padding: EdgeInsets.only(bottom: spacing.md),
-                        child: ChapterCard(
-                          key: ValueKey('chapter-card-${chapter.id}'),
-                          chapter: chapter,
-                          enabledCheckpoints: currentSubject.enabledCheckpoints,
-                          visitId: visitId,
-                        ),
-                      );
-                    }),
-                    if (unassignedTopics.isNotEmpty) ...[
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: spacing.xs),
-                        child: Text(
-                          'Unassigned Topics',
-                          style: textStyles.bodyLarge.copyWith(
-                            color: colors.textSecondary,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      GlassCard(
-                        padding: EdgeInsets.symmetric(vertical: spacing.xs),
-                        child: ListView.separated(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: unassignedTopics.length,
-                          separatorBuilder: (_, __) => Divider(
-                            height: 1,
-                            color: colors.glassBorder,
-                          ),
-                          itemBuilder: (ctx, idx) => TopicCheckpointRow(
-                            topic: unassignedTopics[idx],
-                            enabledCheckpoints:
-                                currentSubject.enabledCheckpoints,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ],
+                return SyllabusTreeView(
+                  subject: currentSubject,
+                  chapters: chapters,
+                  unassignedTopics: unassignedTopics,
+                  visitId: visitId,
                 );
               },
             ),

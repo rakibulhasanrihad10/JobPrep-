@@ -143,8 +143,21 @@ class MockSupabaseHttpClient extends http.BaseClient {
       final results = <Map<String, dynamic>>[];
       for (final row in toInsert) {
         final id = row['id'];
-        final existingIndex =
+        var existingIndex =
             id != null ? tableRows.indexWhere((r) => r['id'] == id) : -1;
+        if (existingIndex == -1 && tableName == 'mock_test_topics') {
+          existingIndex = tableRows.indexWhere(
+            (r) =>
+                r['mock_test_id'] == row['mock_test_id'] &&
+                r['topic_id'] == row['topic_id'],
+          );
+        } else if (existingIndex == -1 && tableName == 'material_chapters') {
+          existingIndex = tableRows.indexWhere(
+            (r) =>
+                r['material_id'] == row['material_id'] &&
+                r['chapter_id'] == row['chapter_id'],
+          );
+        }
 
         if (existingIndex != -1) {
           tableRows[existingIndex].addAll(row);

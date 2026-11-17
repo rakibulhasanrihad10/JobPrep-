@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:drift/drift.dart';
 import 'package:job_prep/core/local/database/app_database.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/repositories/study_plan_repository.dart';
@@ -133,6 +134,7 @@ class LocalStudyPlanRepository implements StudyPlanRepository {
       maxDailyPace: Value(p.maxDailyPace),
       initialCompletedUnits: Value(p.initialCompletedUnits),
       postponedMaterialIds: Value(jsonEncode(p.postponedMaterialIds)),
+      planBasis: Value(p.planBasis.value),
       createdAt: Value(p.createdAt ?? createdAt ?? now),
       updatedAt: Value(now),
     );
@@ -163,6 +165,7 @@ class LocalStudyPlanRepository implements StudyPlanRepository {
       maxDailyPace: row.maxDailyPace,
       initialCompletedUnits: row.initialCompletedUnits,
       postponedMaterialIds: postponed,
+      planBasis: StudyPlanBasis.fromValue(row.planBasis),
       createdAt: row.createdAt,
       updatedAt: row.updatedAt,
     );

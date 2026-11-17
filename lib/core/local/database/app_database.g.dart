@@ -4768,6 +4768,14 @@ class $LocalStudyPlansTable extends LocalStudyPlans
           type: DriftSqlType.string,
           requiredDuringInsert: false,
           defaultValue: const Constant('[]'));
+  static const VerificationMeta _planBasisMeta =
+      const VerificationMeta('planBasis');
+  @override
+  late final GeneratedColumn<String> planBasis = GeneratedColumn<String>(
+      'plan_basis', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('reading_units'));
   static const VerificationMeta _createdAtMeta =
       const VerificationMeta('createdAt');
   @override
@@ -4794,6 +4802,7 @@ class $LocalStudyPlansTable extends LocalStudyPlans
         maxDailyPace,
         initialCompletedUnits,
         postponedMaterialIds,
+        planBasis,
         createdAt,
         updatedAt
       ];
@@ -4878,6 +4887,10 @@ class $LocalStudyPlansTable extends LocalStudyPlans
           postponedMaterialIds.isAcceptableOrUnknown(
               data['postponed_material_ids']!, _postponedMaterialIdsMeta));
     }
+    if (data.containsKey('plan_basis')) {
+      context.handle(_planBasisMeta,
+          planBasis.isAcceptableOrUnknown(data['plan_basis']!, _planBasisMeta));
+    }
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
           createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta));
@@ -4920,6 +4933,8 @@ class $LocalStudyPlansTable extends LocalStudyPlans
       postponedMaterialIds: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}postponed_material_ids'])!,
+      planBasis: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}plan_basis'])!,
       createdAt: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at']),
       updatedAt: attachedDatabase.typeMapping
@@ -4946,6 +4961,7 @@ class LocalStudyPlan extends DataClass implements Insertable<LocalStudyPlan> {
   final int? maxDailyPace;
   final int initialCompletedUnits;
   final String postponedMaterialIds;
+  final String planBasis;
   final DateTime? createdAt;
   final DateTime? updatedAt;
   const LocalStudyPlan(
@@ -4961,6 +4977,7 @@ class LocalStudyPlan extends DataClass implements Insertable<LocalStudyPlan> {
       this.maxDailyPace,
       required this.initialCompletedUnits,
       required this.postponedMaterialIds,
+      required this.planBasis,
       this.createdAt,
       this.updatedAt});
   @override
@@ -4986,6 +5003,7 @@ class LocalStudyPlan extends DataClass implements Insertable<LocalStudyPlan> {
     }
     map['initial_completed_units'] = Variable<int>(initialCompletedUnits);
     map['postponed_material_ids'] = Variable<String>(postponedMaterialIds);
+    map['plan_basis'] = Variable<String>(planBasis);
     if (!nullToAbsent || createdAt != null) {
       map['created_at'] = Variable<DateTime>(createdAt);
     }
@@ -5017,6 +5035,7 @@ class LocalStudyPlan extends DataClass implements Insertable<LocalStudyPlan> {
           : Value(maxDailyPace),
       initialCompletedUnits: Value(initialCompletedUnits),
       postponedMaterialIds: Value(postponedMaterialIds),
+      planBasis: Value(planBasis),
       createdAt: createdAt == null && nullToAbsent
           ? const Value.absent()
           : Value(createdAt),
@@ -5044,6 +5063,7 @@ class LocalStudyPlan extends DataClass implements Insertable<LocalStudyPlan> {
           serializer.fromJson<int>(json['initialCompletedUnits']),
       postponedMaterialIds:
           serializer.fromJson<String>(json['postponedMaterialIds']),
+      planBasis: serializer.fromJson<String>(json['planBasis']),
       createdAt: serializer.fromJson<DateTime?>(json['createdAt']),
       updatedAt: serializer.fromJson<DateTime?>(json['updatedAt']),
     );
@@ -5064,6 +5084,7 @@ class LocalStudyPlan extends DataClass implements Insertable<LocalStudyPlan> {
       'maxDailyPace': serializer.toJson<int?>(maxDailyPace),
       'initialCompletedUnits': serializer.toJson<int>(initialCompletedUnits),
       'postponedMaterialIds': serializer.toJson<String>(postponedMaterialIds),
+      'planBasis': serializer.toJson<String>(planBasis),
       'createdAt': serializer.toJson<DateTime?>(createdAt),
       'updatedAt': serializer.toJson<DateTime?>(updatedAt),
     };
@@ -5082,6 +5103,7 @@ class LocalStudyPlan extends DataClass implements Insertable<LocalStudyPlan> {
           Value<int?> maxDailyPace = const Value.absent(),
           int? initialCompletedUnits,
           String? postponedMaterialIds,
+          String? planBasis,
           Value<DateTime?> createdAt = const Value.absent(),
           Value<DateTime?> updatedAt = const Value.absent()}) =>
       LocalStudyPlan(
@@ -5099,6 +5121,7 @@ class LocalStudyPlan extends DataClass implements Insertable<LocalStudyPlan> {
         initialCompletedUnits:
             initialCompletedUnits ?? this.initialCompletedUnits,
         postponedMaterialIds: postponedMaterialIds ?? this.postponedMaterialIds,
+        planBasis: planBasis ?? this.planBasis,
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
         updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
       );
@@ -5131,6 +5154,7 @@ class LocalStudyPlan extends DataClass implements Insertable<LocalStudyPlan> {
       postponedMaterialIds: data.postponedMaterialIds.present
           ? data.postponedMaterialIds.value
           : this.postponedMaterialIds,
+      planBasis: data.planBasis.present ? data.planBasis.value : this.planBasis,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
     );
@@ -5151,6 +5175,7 @@ class LocalStudyPlan extends DataClass implements Insertable<LocalStudyPlan> {
           ..write('maxDailyPace: $maxDailyPace, ')
           ..write('initialCompletedUnits: $initialCompletedUnits, ')
           ..write('postponedMaterialIds: $postponedMaterialIds, ')
+          ..write('planBasis: $planBasis, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt')
           ..write(')'))
@@ -5171,6 +5196,7 @@ class LocalStudyPlan extends DataClass implements Insertable<LocalStudyPlan> {
       maxDailyPace,
       initialCompletedUnits,
       postponedMaterialIds,
+      planBasis,
       createdAt,
       updatedAt);
   @override
@@ -5189,6 +5215,7 @@ class LocalStudyPlan extends DataClass implements Insertable<LocalStudyPlan> {
           other.maxDailyPace == this.maxDailyPace &&
           other.initialCompletedUnits == this.initialCompletedUnits &&
           other.postponedMaterialIds == this.postponedMaterialIds &&
+          other.planBasis == this.planBasis &&
           other.createdAt == this.createdAt &&
           other.updatedAt == this.updatedAt);
 }
@@ -5206,6 +5233,7 @@ class LocalStudyPlansCompanion extends UpdateCompanion<LocalStudyPlan> {
   final Value<int?> maxDailyPace;
   final Value<int> initialCompletedUnits;
   final Value<String> postponedMaterialIds;
+  final Value<String> planBasis;
   final Value<DateTime?> createdAt;
   final Value<DateTime?> updatedAt;
   final Value<int> rowid;
@@ -5222,6 +5250,7 @@ class LocalStudyPlansCompanion extends UpdateCompanion<LocalStudyPlan> {
     this.maxDailyPace = const Value.absent(),
     this.initialCompletedUnits = const Value.absent(),
     this.postponedMaterialIds = const Value.absent(),
+    this.planBasis = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -5239,6 +5268,7 @@ class LocalStudyPlansCompanion extends UpdateCompanion<LocalStudyPlan> {
     this.maxDailyPace = const Value.absent(),
     this.initialCompletedUnits = const Value.absent(),
     this.postponedMaterialIds = const Value.absent(),
+    this.planBasis = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -5258,6 +5288,7 @@ class LocalStudyPlansCompanion extends UpdateCompanion<LocalStudyPlan> {
     Expression<int>? maxDailyPace,
     Expression<int>? initialCompletedUnits,
     Expression<String>? postponedMaterialIds,
+    Expression<String>? planBasis,
     Expression<DateTime>? createdAt,
     Expression<DateTime>? updatedAt,
     Expression<int>? rowid,
@@ -5277,6 +5308,7 @@ class LocalStudyPlansCompanion extends UpdateCompanion<LocalStudyPlan> {
         'initial_completed_units': initialCompletedUnits,
       if (postponedMaterialIds != null)
         'postponed_material_ids': postponedMaterialIds,
+      if (planBasis != null) 'plan_basis': planBasis,
       if (createdAt != null) 'created_at': createdAt,
       if (updatedAt != null) 'updated_at': updatedAt,
       if (rowid != null) 'rowid': rowid,
@@ -5296,6 +5328,7 @@ class LocalStudyPlansCompanion extends UpdateCompanion<LocalStudyPlan> {
       Value<int?>? maxDailyPace,
       Value<int>? initialCompletedUnits,
       Value<String>? postponedMaterialIds,
+      Value<String>? planBasis,
       Value<DateTime?>? createdAt,
       Value<DateTime?>? updatedAt,
       Value<int>? rowid}) {
@@ -5313,6 +5346,7 @@ class LocalStudyPlansCompanion extends UpdateCompanion<LocalStudyPlan> {
       initialCompletedUnits:
           initialCompletedUnits ?? this.initialCompletedUnits,
       postponedMaterialIds: postponedMaterialIds ?? this.postponedMaterialIds,
+      planBasis: planBasis ?? this.planBasis,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       rowid: rowid ?? this.rowid,
@@ -5360,6 +5394,9 @@ class LocalStudyPlansCompanion extends UpdateCompanion<LocalStudyPlan> {
       map['postponed_material_ids'] =
           Variable<String>(postponedMaterialIds.value);
     }
+    if (planBasis.present) {
+      map['plan_basis'] = Variable<String>(planBasis.value);
+    }
     if (createdAt.present) {
       map['created_at'] = Variable<DateTime>(createdAt.value);
     }
@@ -5387,6 +5424,7 @@ class LocalStudyPlansCompanion extends UpdateCompanion<LocalStudyPlan> {
           ..write('maxDailyPace: $maxDailyPace, ')
           ..write('initialCompletedUnits: $initialCompletedUnits, ')
           ..write('postponedMaterialIds: $postponedMaterialIds, ')
+          ..write('planBasis: $planBasis, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt, ')
           ..write('rowid: $rowid')
@@ -6215,6 +6253,560 @@ class LocalMockTestsCompanion extends UpdateCompanion<LocalMockTest> {
           ..write('notes: $notes, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $LocalMockTestTopicsTable extends LocalMockTestTopics
+    with TableInfo<$LocalMockTestTopicsTable, LocalMockTestTopic> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $LocalMockTestTopicsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _mockTestIdMeta =
+      const VerificationMeta('mockTestId');
+  @override
+  late final GeneratedColumn<String> mockTestId = GeneratedColumn<String>(
+      'mock_test_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _topicIdMeta =
+      const VerificationMeta('topicId');
+  @override
+  late final GeneratedColumn<String> topicId = GeneratedColumn<String>(
+      'topic_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _createdAtMeta =
+      const VerificationMeta('createdAt');
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+      'created_at', aliasedName, true,
+      type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns => [id, mockTestId, topicId, createdAt];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'mock_test_topics';
+  @override
+  VerificationContext validateIntegrity(Insertable<LocalMockTestTopic> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('mock_test_id')) {
+      context.handle(
+          _mockTestIdMeta,
+          mockTestId.isAcceptableOrUnknown(
+              data['mock_test_id']!, _mockTestIdMeta));
+    } else if (isInserting) {
+      context.missing(_mockTestIdMeta);
+    }
+    if (data.containsKey('topic_id')) {
+      context.handle(_topicIdMeta,
+          topicId.isAcceptableOrUnknown(data['topic_id']!, _topicIdMeta));
+    } else if (isInserting) {
+      context.missing(_topicIdMeta);
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(_createdAtMeta,
+          createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LocalMockTestTopic map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LocalMockTestTopic(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
+      mockTestId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}mock_test_id'])!,
+      topicId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}topic_id'])!,
+      createdAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at']),
+    );
+  }
+
+  @override
+  $LocalMockTestTopicsTable createAlias(String alias) {
+    return $LocalMockTestTopicsTable(attachedDatabase, alias);
+  }
+}
+
+class LocalMockTestTopic extends DataClass
+    implements Insertable<LocalMockTestTopic> {
+  final String id;
+  final String mockTestId;
+  final String topicId;
+  final DateTime? createdAt;
+  const LocalMockTestTopic(
+      {required this.id,
+      required this.mockTestId,
+      required this.topicId,
+      this.createdAt});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['mock_test_id'] = Variable<String>(mockTestId);
+    map['topic_id'] = Variable<String>(topicId);
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<DateTime>(createdAt);
+    }
+    return map;
+  }
+
+  LocalMockTestTopicsCompanion toCompanion(bool nullToAbsent) {
+    return LocalMockTestTopicsCompanion(
+      id: Value(id),
+      mockTestId: Value(mockTestId),
+      topicId: Value(topicId),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+    );
+  }
+
+  factory LocalMockTestTopic.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LocalMockTestTopic(
+      id: serializer.fromJson<String>(json['id']),
+      mockTestId: serializer.fromJson<String>(json['mockTestId']),
+      topicId: serializer.fromJson<String>(json['topicId']),
+      createdAt: serializer.fromJson<DateTime?>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'mockTestId': serializer.toJson<String>(mockTestId),
+      'topicId': serializer.toJson<String>(topicId),
+      'createdAt': serializer.toJson<DateTime?>(createdAt),
+    };
+  }
+
+  LocalMockTestTopic copyWith(
+          {String? id,
+          String? mockTestId,
+          String? topicId,
+          Value<DateTime?> createdAt = const Value.absent()}) =>
+      LocalMockTestTopic(
+        id: id ?? this.id,
+        mockTestId: mockTestId ?? this.mockTestId,
+        topicId: topicId ?? this.topicId,
+        createdAt: createdAt.present ? createdAt.value : this.createdAt,
+      );
+  LocalMockTestTopic copyWithCompanion(LocalMockTestTopicsCompanion data) {
+    return LocalMockTestTopic(
+      id: data.id.present ? data.id.value : this.id,
+      mockTestId:
+          data.mockTestId.present ? data.mockTestId.value : this.mockTestId,
+      topicId: data.topicId.present ? data.topicId.value : this.topicId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LocalMockTestTopic(')
+          ..write('id: $id, ')
+          ..write('mockTestId: $mockTestId, ')
+          ..write('topicId: $topicId, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, mockTestId, topicId, createdAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LocalMockTestTopic &&
+          other.id == this.id &&
+          other.mockTestId == this.mockTestId &&
+          other.topicId == this.topicId &&
+          other.createdAt == this.createdAt);
+}
+
+class LocalMockTestTopicsCompanion extends UpdateCompanion<LocalMockTestTopic> {
+  final Value<String> id;
+  final Value<String> mockTestId;
+  final Value<String> topicId;
+  final Value<DateTime?> createdAt;
+  final Value<int> rowid;
+  const LocalMockTestTopicsCompanion({
+    this.id = const Value.absent(),
+    this.mockTestId = const Value.absent(),
+    this.topicId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  LocalMockTestTopicsCompanion.insert({
+    required String id,
+    required String mockTestId,
+    required String topicId,
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        mockTestId = Value(mockTestId),
+        topicId = Value(topicId);
+  static Insertable<LocalMockTestTopic> custom({
+    Expression<String>? id,
+    Expression<String>? mockTestId,
+    Expression<String>? topicId,
+    Expression<DateTime>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (mockTestId != null) 'mock_test_id': mockTestId,
+      if (topicId != null) 'topic_id': topicId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  LocalMockTestTopicsCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? mockTestId,
+      Value<String>? topicId,
+      Value<DateTime?>? createdAt,
+      Value<int>? rowid}) {
+    return LocalMockTestTopicsCompanion(
+      id: id ?? this.id,
+      mockTestId: mockTestId ?? this.mockTestId,
+      topicId: topicId ?? this.topicId,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (mockTestId.present) {
+      map['mock_test_id'] = Variable<String>(mockTestId.value);
+    }
+    if (topicId.present) {
+      map['topic_id'] = Variable<String>(topicId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LocalMockTestTopicsCompanion(')
+          ..write('id: $id, ')
+          ..write('mockTestId: $mockTestId, ')
+          ..write('topicId: $topicId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $LocalMaterialChaptersTable extends LocalMaterialChapters
+    with TableInfo<$LocalMaterialChaptersTable, LocalMaterialChapter> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $LocalMaterialChaptersTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _materialIdMeta =
+      const VerificationMeta('materialId');
+  @override
+  late final GeneratedColumn<String> materialId = GeneratedColumn<String>(
+      'material_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _chapterIdMeta =
+      const VerificationMeta('chapterId');
+  @override
+  late final GeneratedColumn<String> chapterId = GeneratedColumn<String>(
+      'chapter_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _createdAtMeta =
+      const VerificationMeta('createdAt');
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+      'created_at', aliasedName, true,
+      type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns => [id, materialId, chapterId, createdAt];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'material_chapters';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<LocalMaterialChapter> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('material_id')) {
+      context.handle(
+          _materialIdMeta,
+          materialId.isAcceptableOrUnknown(
+              data['material_id']!, _materialIdMeta));
+    } else if (isInserting) {
+      context.missing(_materialIdMeta);
+    }
+    if (data.containsKey('chapter_id')) {
+      context.handle(_chapterIdMeta,
+          chapterId.isAcceptableOrUnknown(data['chapter_id']!, _chapterIdMeta));
+    } else if (isInserting) {
+      context.missing(_chapterIdMeta);
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(_createdAtMeta,
+          createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LocalMaterialChapter map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LocalMaterialChapter(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
+      materialId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}material_id'])!,
+      chapterId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}chapter_id'])!,
+      createdAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at']),
+    );
+  }
+
+  @override
+  $LocalMaterialChaptersTable createAlias(String alias) {
+    return $LocalMaterialChaptersTable(attachedDatabase, alias);
+  }
+}
+
+class LocalMaterialChapter extends DataClass
+    implements Insertable<LocalMaterialChapter> {
+  final String id;
+  final String materialId;
+  final String chapterId;
+  final DateTime? createdAt;
+  const LocalMaterialChapter(
+      {required this.id,
+      required this.materialId,
+      required this.chapterId,
+      this.createdAt});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['material_id'] = Variable<String>(materialId);
+    map['chapter_id'] = Variable<String>(chapterId);
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<DateTime>(createdAt);
+    }
+    return map;
+  }
+
+  LocalMaterialChaptersCompanion toCompanion(bool nullToAbsent) {
+    return LocalMaterialChaptersCompanion(
+      id: Value(id),
+      materialId: Value(materialId),
+      chapterId: Value(chapterId),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+    );
+  }
+
+  factory LocalMaterialChapter.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LocalMaterialChapter(
+      id: serializer.fromJson<String>(json['id']),
+      materialId: serializer.fromJson<String>(json['materialId']),
+      chapterId: serializer.fromJson<String>(json['chapterId']),
+      createdAt: serializer.fromJson<DateTime?>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'materialId': serializer.toJson<String>(materialId),
+      'chapterId': serializer.toJson<String>(chapterId),
+      'createdAt': serializer.toJson<DateTime?>(createdAt),
+    };
+  }
+
+  LocalMaterialChapter copyWith(
+          {String? id,
+          String? materialId,
+          String? chapterId,
+          Value<DateTime?> createdAt = const Value.absent()}) =>
+      LocalMaterialChapter(
+        id: id ?? this.id,
+        materialId: materialId ?? this.materialId,
+        chapterId: chapterId ?? this.chapterId,
+        createdAt: createdAt.present ? createdAt.value : this.createdAt,
+      );
+  LocalMaterialChapter copyWithCompanion(LocalMaterialChaptersCompanion data) {
+    return LocalMaterialChapter(
+      id: data.id.present ? data.id.value : this.id,
+      materialId:
+          data.materialId.present ? data.materialId.value : this.materialId,
+      chapterId: data.chapterId.present ? data.chapterId.value : this.chapterId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LocalMaterialChapter(')
+          ..write('id: $id, ')
+          ..write('materialId: $materialId, ')
+          ..write('chapterId: $chapterId, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, materialId, chapterId, createdAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LocalMaterialChapter &&
+          other.id == this.id &&
+          other.materialId == this.materialId &&
+          other.chapterId == this.chapterId &&
+          other.createdAt == this.createdAt);
+}
+
+class LocalMaterialChaptersCompanion
+    extends UpdateCompanion<LocalMaterialChapter> {
+  final Value<String> id;
+  final Value<String> materialId;
+  final Value<String> chapterId;
+  final Value<DateTime?> createdAt;
+  final Value<int> rowid;
+  const LocalMaterialChaptersCompanion({
+    this.id = const Value.absent(),
+    this.materialId = const Value.absent(),
+    this.chapterId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  LocalMaterialChaptersCompanion.insert({
+    required String id,
+    required String materialId,
+    required String chapterId,
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        materialId = Value(materialId),
+        chapterId = Value(chapterId);
+  static Insertable<LocalMaterialChapter> custom({
+    Expression<String>? id,
+    Expression<String>? materialId,
+    Expression<String>? chapterId,
+    Expression<DateTime>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (materialId != null) 'material_id': materialId,
+      if (chapterId != null) 'chapter_id': chapterId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  LocalMaterialChaptersCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? materialId,
+      Value<String>? chapterId,
+      Value<DateTime?>? createdAt,
+      Value<int>? rowid}) {
+    return LocalMaterialChaptersCompanion(
+      id: id ?? this.id,
+      materialId: materialId ?? this.materialId,
+      chapterId: chapterId ?? this.chapterId,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (materialId.present) {
+      map['material_id'] = Variable<String>(materialId.value);
+    }
+    if (chapterId.present) {
+      map['chapter_id'] = Variable<String>(chapterId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LocalMaterialChaptersCompanion(')
+          ..write('id: $id, ')
+          ..write('materialId: $materialId, ')
+          ..write('chapterId: $chapterId, ')
+          ..write('createdAt: $createdAt, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -10288,6 +10880,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $LocalStudyPlansTable localStudyPlans =
       $LocalStudyPlansTable(this);
   late final $LocalMockTestsTable localMockTests = $LocalMockTestsTable(this);
+  late final $LocalMockTestTopicsTable localMockTestTopics =
+      $LocalMockTestTopicsTable(this);
+  late final $LocalMaterialChaptersTable localMaterialChapters =
+      $LocalMaterialChaptersTable(this);
   late final $LocalRevisionItemsTable localRevisionItems =
       $LocalRevisionItemsTable(this);
   late final $LocalStudySessionsTable localStudySessions =
@@ -10315,6 +10911,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         localCircularSubjects,
         localStudyPlans,
         localMockTests,
+        localMockTestTopics,
+        localMaterialChapters,
         localRevisionItems,
         localStudySessions,
         localNotifications,
@@ -12524,6 +13122,7 @@ typedef $$LocalStudyPlansTableCreateCompanionBuilder = LocalStudyPlansCompanion
   Value<int?> maxDailyPace,
   Value<int> initialCompletedUnits,
   Value<String> postponedMaterialIds,
+  Value<String> planBasis,
   Value<DateTime?> createdAt,
   Value<DateTime?> updatedAt,
   Value<int> rowid,
@@ -12542,6 +13141,7 @@ typedef $$LocalStudyPlansTableUpdateCompanionBuilder = LocalStudyPlansCompanion
   Value<int?> maxDailyPace,
   Value<int> initialCompletedUnits,
   Value<String> postponedMaterialIds,
+  Value<String> planBasis,
   Value<DateTime?> createdAt,
   Value<DateTime?> updatedAt,
   Value<int> rowid,
@@ -12596,6 +13196,9 @@ class $$LocalStudyPlansTableFilterComposer
   ColumnFilters<String> get postponedMaterialIds => $composableBuilder(
       column: $table.postponedMaterialIds,
       builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get planBasis => $composableBuilder(
+      column: $table.planBasis, builder: (column) => ColumnFilters(column));
 
   ColumnFilters<DateTime> get createdAt => $composableBuilder(
       column: $table.createdAt, builder: (column) => ColumnFilters(column));
@@ -12655,6 +13258,9 @@ class $$LocalStudyPlansTableOrderingComposer
       column: $table.postponedMaterialIds,
       builder: (column) => ColumnOrderings(column));
 
+  ColumnOrderings<String> get planBasis => $composableBuilder(
+      column: $table.planBasis, builder: (column) => ColumnOrderings(column));
+
   ColumnOrderings<DateTime> get createdAt => $composableBuilder(
       column: $table.createdAt, builder: (column) => ColumnOrderings(column));
 
@@ -12707,6 +13313,9 @@ class $$LocalStudyPlansTableAnnotationComposer
   GeneratedColumn<String> get postponedMaterialIds => $composableBuilder(
       column: $table.postponedMaterialIds, builder: (column) => column);
 
+  GeneratedColumn<String> get planBasis =>
+      $composableBuilder(column: $table.planBasis, builder: (column) => column);
+
   GeneratedColumn<DateTime> get createdAt =>
       $composableBuilder(column: $table.createdAt, builder: (column) => column);
 
@@ -12753,6 +13362,7 @@ class $$LocalStudyPlansTableTableManager extends RootTableManager<
             Value<int?> maxDailyPace = const Value.absent(),
             Value<int> initialCompletedUnits = const Value.absent(),
             Value<String> postponedMaterialIds = const Value.absent(),
+            Value<String> planBasis = const Value.absent(),
             Value<DateTime?> createdAt = const Value.absent(),
             Value<DateTime?> updatedAt = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -12770,6 +13380,7 @@ class $$LocalStudyPlansTableTableManager extends RootTableManager<
             maxDailyPace: maxDailyPace,
             initialCompletedUnits: initialCompletedUnits,
             postponedMaterialIds: postponedMaterialIds,
+            planBasis: planBasis,
             createdAt: createdAt,
             updatedAt: updatedAt,
             rowid: rowid,
@@ -12787,6 +13398,7 @@ class $$LocalStudyPlansTableTableManager extends RootTableManager<
             Value<int?> maxDailyPace = const Value.absent(),
             Value<int> initialCompletedUnits = const Value.absent(),
             Value<String> postponedMaterialIds = const Value.absent(),
+            Value<String> planBasis = const Value.absent(),
             Value<DateTime?> createdAt = const Value.absent(),
             Value<DateTime?> updatedAt = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -12804,6 +13416,7 @@ class $$LocalStudyPlansTableTableManager extends RootTableManager<
             maxDailyPace: maxDailyPace,
             initialCompletedUnits: initialCompletedUnits,
             postponedMaterialIds: postponedMaterialIds,
+            planBasis: planBasis,
             createdAt: createdAt,
             updatedAt: updatedAt,
             rowid: rowid,
@@ -13190,6 +13803,334 @@ typedef $$LocalMockTestsTableProcessedTableManager = ProcessedTableManager<
     ),
     LocalMockTest,
     PrefetchHooks Function()>;
+typedef $$LocalMockTestTopicsTableCreateCompanionBuilder
+    = LocalMockTestTopicsCompanion Function({
+  required String id,
+  required String mockTestId,
+  required String topicId,
+  Value<DateTime?> createdAt,
+  Value<int> rowid,
+});
+typedef $$LocalMockTestTopicsTableUpdateCompanionBuilder
+    = LocalMockTestTopicsCompanion Function({
+  Value<String> id,
+  Value<String> mockTestId,
+  Value<String> topicId,
+  Value<DateTime?> createdAt,
+  Value<int> rowid,
+});
+
+class $$LocalMockTestTopicsTableFilterComposer
+    extends Composer<_$AppDatabase, $LocalMockTestTopicsTable> {
+  $$LocalMockTestTopicsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get mockTestId => $composableBuilder(
+      column: $table.mockTestId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get topicId => $composableBuilder(
+      column: $table.topicId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$LocalMockTestTopicsTableOrderingComposer
+    extends Composer<_$AppDatabase, $LocalMockTestTopicsTable> {
+  $$LocalMockTestTopicsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get mockTestId => $composableBuilder(
+      column: $table.mockTestId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get topicId => $composableBuilder(
+      column: $table.topicId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$LocalMockTestTopicsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $LocalMockTestTopicsTable> {
+  $$LocalMockTestTopicsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get mockTestId => $composableBuilder(
+      column: $table.mockTestId, builder: (column) => column);
+
+  GeneratedColumn<String> get topicId =>
+      $composableBuilder(column: $table.topicId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$LocalMockTestTopicsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $LocalMockTestTopicsTable,
+    LocalMockTestTopic,
+    $$LocalMockTestTopicsTableFilterComposer,
+    $$LocalMockTestTopicsTableOrderingComposer,
+    $$LocalMockTestTopicsTableAnnotationComposer,
+    $$LocalMockTestTopicsTableCreateCompanionBuilder,
+    $$LocalMockTestTopicsTableUpdateCompanionBuilder,
+    (
+      LocalMockTestTopic,
+      BaseReferences<_$AppDatabase, $LocalMockTestTopicsTable,
+          LocalMockTestTopic>
+    ),
+    LocalMockTestTopic,
+    PrefetchHooks Function()> {
+  $$LocalMockTestTopicsTableTableManager(
+      _$AppDatabase db, $LocalMockTestTopicsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$LocalMockTestTopicsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$LocalMockTestTopicsTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$LocalMockTestTopicsTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> mockTestId = const Value.absent(),
+            Value<String> topicId = const Value.absent(),
+            Value<DateTime?> createdAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              LocalMockTestTopicsCompanion(
+            id: id,
+            mockTestId: mockTestId,
+            topicId: topicId,
+            createdAt: createdAt,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String mockTestId,
+            required String topicId,
+            Value<DateTime?> createdAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              LocalMockTestTopicsCompanion.insert(
+            id: id,
+            mockTestId: mockTestId,
+            topicId: topicId,
+            createdAt: createdAt,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$LocalMockTestTopicsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $LocalMockTestTopicsTable,
+    LocalMockTestTopic,
+    $$LocalMockTestTopicsTableFilterComposer,
+    $$LocalMockTestTopicsTableOrderingComposer,
+    $$LocalMockTestTopicsTableAnnotationComposer,
+    $$LocalMockTestTopicsTableCreateCompanionBuilder,
+    $$LocalMockTestTopicsTableUpdateCompanionBuilder,
+    (
+      LocalMockTestTopic,
+      BaseReferences<_$AppDatabase, $LocalMockTestTopicsTable,
+          LocalMockTestTopic>
+    ),
+    LocalMockTestTopic,
+    PrefetchHooks Function()>;
+typedef $$LocalMaterialChaptersTableCreateCompanionBuilder
+    = LocalMaterialChaptersCompanion Function({
+  required String id,
+  required String materialId,
+  required String chapterId,
+  Value<DateTime?> createdAt,
+  Value<int> rowid,
+});
+typedef $$LocalMaterialChaptersTableUpdateCompanionBuilder
+    = LocalMaterialChaptersCompanion Function({
+  Value<String> id,
+  Value<String> materialId,
+  Value<String> chapterId,
+  Value<DateTime?> createdAt,
+  Value<int> rowid,
+});
+
+class $$LocalMaterialChaptersTableFilterComposer
+    extends Composer<_$AppDatabase, $LocalMaterialChaptersTable> {
+  $$LocalMaterialChaptersTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get materialId => $composableBuilder(
+      column: $table.materialId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get chapterId => $composableBuilder(
+      column: $table.chapterId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$LocalMaterialChaptersTableOrderingComposer
+    extends Composer<_$AppDatabase, $LocalMaterialChaptersTable> {
+  $$LocalMaterialChaptersTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get materialId => $composableBuilder(
+      column: $table.materialId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get chapterId => $composableBuilder(
+      column: $table.chapterId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$LocalMaterialChaptersTableAnnotationComposer
+    extends Composer<_$AppDatabase, $LocalMaterialChaptersTable> {
+  $$LocalMaterialChaptersTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get materialId => $composableBuilder(
+      column: $table.materialId, builder: (column) => column);
+
+  GeneratedColumn<String> get chapterId =>
+      $composableBuilder(column: $table.chapterId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$LocalMaterialChaptersTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $LocalMaterialChaptersTable,
+    LocalMaterialChapter,
+    $$LocalMaterialChaptersTableFilterComposer,
+    $$LocalMaterialChaptersTableOrderingComposer,
+    $$LocalMaterialChaptersTableAnnotationComposer,
+    $$LocalMaterialChaptersTableCreateCompanionBuilder,
+    $$LocalMaterialChaptersTableUpdateCompanionBuilder,
+    (
+      LocalMaterialChapter,
+      BaseReferences<_$AppDatabase, $LocalMaterialChaptersTable,
+          LocalMaterialChapter>
+    ),
+    LocalMaterialChapter,
+    PrefetchHooks Function()> {
+  $$LocalMaterialChaptersTableTableManager(
+      _$AppDatabase db, $LocalMaterialChaptersTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$LocalMaterialChaptersTableFilterComposer(
+                  $db: db, $table: table),
+          createOrderingComposer: () =>
+              $$LocalMaterialChaptersTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$LocalMaterialChaptersTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> materialId = const Value.absent(),
+            Value<String> chapterId = const Value.absent(),
+            Value<DateTime?> createdAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              LocalMaterialChaptersCompanion(
+            id: id,
+            materialId: materialId,
+            chapterId: chapterId,
+            createdAt: createdAt,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String materialId,
+            required String chapterId,
+            Value<DateTime?> createdAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              LocalMaterialChaptersCompanion.insert(
+            id: id,
+            materialId: materialId,
+            chapterId: chapterId,
+            createdAt: createdAt,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$LocalMaterialChaptersTableProcessedTableManager
+    = ProcessedTableManager<
+        _$AppDatabase,
+        $LocalMaterialChaptersTable,
+        LocalMaterialChapter,
+        $$LocalMaterialChaptersTableFilterComposer,
+        $$LocalMaterialChaptersTableOrderingComposer,
+        $$LocalMaterialChaptersTableAnnotationComposer,
+        $$LocalMaterialChaptersTableCreateCompanionBuilder,
+        $$LocalMaterialChaptersTableUpdateCompanionBuilder,
+        (
+          LocalMaterialChapter,
+          BaseReferences<_$AppDatabase, $LocalMaterialChaptersTable,
+              LocalMaterialChapter>
+        ),
+        LocalMaterialChapter,
+        PrefetchHooks Function()>;
 typedef $$LocalRevisionItemsTableCreateCompanionBuilder
     = LocalRevisionItemsCompanion Function({
   required String id,
@@ -15085,6 +16026,10 @@ class $AppDatabaseManager {
       $$LocalStudyPlansTableTableManager(_db, _db.localStudyPlans);
   $$LocalMockTestsTableTableManager get localMockTests =>
       $$LocalMockTestsTableTableManager(_db, _db.localMockTests);
+  $$LocalMockTestTopicsTableTableManager get localMockTestTopics =>
+      $$LocalMockTestTopicsTableTableManager(_db, _db.localMockTestTopics);
+  $$LocalMaterialChaptersTableTableManager get localMaterialChapters =>
+      $$LocalMaterialChaptersTableTableManager(_db, _db.localMaterialChapters);
   $$LocalRevisionItemsTableTableManager get localRevisionItems =>
       $$LocalRevisionItemsTableTableManager(_db, _db.localRevisionItems);
   $$LocalStudySessionsTableTableManager get localStudySessions =>

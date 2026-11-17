@@ -19,6 +19,8 @@ part 'app_database.g.dart';
     LocalCircularSubjects,
     LocalStudyPlans,
     LocalMockTests,
+    LocalMockTestTopics,
+    LocalMaterialChapters,
     LocalRevisionItems,
     LocalStudySessions,
     LocalNotifications,
@@ -44,7 +46,7 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -64,6 +66,11 @@ class AppDatabase extends _$AppDatabase {
             await m.addColumn(localTopics, localTopics.modelTestDoneAt);
             await m.addColumn(localTopics, localTopics.revisionDoneAt);
             await m.addColumn(localTopics, localTopics.notes);
+          }
+          if (from < 3) {
+            await m.createTable(localMockTestTopics);
+            await m.createTable(localMaterialChapters);
+            await m.addColumn(localStudyPlans, localStudyPlans.planBasis);
           }
         },
       );

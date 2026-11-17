@@ -1,8 +1,10 @@
 import 'package:job_prep/features/circulars/domain/repositories/circular_repository.dart';
 import 'package:job_prep/features/circulars/domain/repositories/exam_date_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/chapter_repository.dart';
+import 'package:job_prep/features/prep/domain/repositories/material_chapter_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/material_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/mock_test_repository.dart';
+import 'package:job_prep/features/prep/domain/repositories/mock_test_topic_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/progress_log_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/revision_item_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/study_plan_repository.dart';
@@ -29,6 +31,8 @@ class CloudRepositories {
     required this.studySessionRepo,
     required this.portalAccountRepo,
     required this.userSettingsRepo,
+    this.materialChapterRepo,
+    this.mockTestTopicRepo,
   });
 
   /// Cloud subject repository.
@@ -43,6 +47,9 @@ class CloudRepositories {
   /// Cloud material repository.
   final MaterialRepository materialRepo;
 
+  /// Cloud material-chapter repository.
+  final MaterialChapterRepository? materialChapterRepo;
+
   /// Cloud circular repository.
   final CircularRepository circularRepo;
 
@@ -54,6 +61,9 @@ class CloudRepositories {
 
   /// Cloud mock test repository.
   final MockTestRepository mockTestRepo;
+
+  /// Cloud mock test-topic repository.
+  final MockTestTopicRepository? mockTestTopicRepo;
 
   /// Cloud progress log repository.
   final ProgressLogRepository progressLogRepo;

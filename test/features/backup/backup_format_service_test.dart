@@ -23,7 +23,7 @@ void main() {
       );
 
       expect(manifest.format, BackupManifest.formatIdentifier);
-      expect(manifest.schemaVersion, 2);
+      expect(manifest.schemaVersion, BackupManifest.currentSchemaVersion);
       expect(manifest.appVersion, '0.1.0+1');
       expect(manifest.data.subjects.length, 1);
       expect(manifest.checksum.isNotEmpty, isTrue);
@@ -181,6 +181,25 @@ void main() {
       expect(migrated.topics[2]['revision_done_at'], isNotNull);
 
       expect(migrated.topics[3]['study_done_at'], isNull);
+    });
+
+    test(
+        'migrateOlderSchema upgrades schema v2 by ensuring mock_test_topics, '
+        'material_chapters exist and study_plans have plan_basis', () {
+      final v2Data = {
+        'subjects': [
+          {'id': 'sub-1', 'name': 'Bangla'},
+        ],
+        'study_plans': [
+          {'id': 'plan-1', 'subject_id': 'sub-1', 'daily_reading_target': 10},
+        ],
+      };
+
+      final migrated = BackupFormatService.migrateOlderSchema(v2Data, 2);
+
+      expect(migrated.mockTestTopics, isEmpty);
+      expect(migrated.materialChapters, isEmpty);
+      expect(migrated.studyPlans.first['plan_basis'], 'reading_units');
     });
   });
 

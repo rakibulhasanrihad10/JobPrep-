@@ -15,7 +15,7 @@ abstract final class BackupFormatService {
   static const int maxBackupSizeBytes = 25 * 1024 * 1024;
 
   /// Active backup schema version.
-  static const int currentSchemaVersion = 2;
+  static const int currentSchemaVersion = 3;
 
   /// Current application version baseline.
   static const String currentAppVersion = '0.1.0';
@@ -210,6 +210,13 @@ abstract final class BackupFormatService {
       return map;
     }).toList(growable: false);
 
+    // Normalize study plans: ensure plan_basis defaults to reading_units
+    final upgradedPlans = tables.studyPlans.map((plan) {
+      final map = Map<String, dynamic>.from(plan);
+      map['plan_basis'] = (map['plan_basis'] as String?) ?? 'reading_units';
+      return map;
+    }).toList(growable: false);
+
     return BackupDataTables(
       circulars: tables.circulars,
       circularExamDates: tables.circularExamDates,
@@ -219,8 +226,10 @@ abstract final class BackupFormatService {
       progressLogs: upgradedLogs,
       topics: upgradedTopics,
       circularSubjects: tables.circularSubjects,
-      studyPlans: tables.studyPlans,
+      studyPlans: upgradedPlans,
       mockTests: tables.mockTests,
+      mockTestTopics: tables.mockTestTopics,
+      materialChapters: tables.materialChapters,
       revisionItems: tables.revisionItems,
       studySessions: tables.studySessions,
       notifications: tables.notifications,

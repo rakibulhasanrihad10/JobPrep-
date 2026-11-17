@@ -105,3 +105,38 @@ final ProviderFamily<double, ({String subjectId, String chapterId})>
 /// Provider for [SyllabusController].
 final Provider<SyllabusController> syllabusControllerProvider =
     Provider<SyllabusController>(SyllabusController.new);
+
+/// Display mode for the syllabus tab (tree hierarchy vs visual map).
+enum SyllabusViewMode { tree, map }
+
+/// Notifier coordinating syllabus view mode.
+class SyllabusViewModeNotifier extends Notifier<SyllabusViewMode> {
+  @override
+  SyllabusViewMode build() => SyllabusViewMode.tree;
+
+  /// Changes the current view mode.
+  void setMode(SyllabusViewMode mode) {
+    if (state != mode) {
+      state = mode;
+    }
+  }
+}
+
+/// Provider managing active [SyllabusViewMode].
+final NotifierProvider<SyllabusViewModeNotifier, SyllabusViewMode>
+    syllabusViewModeProvider =
+    NotifierProvider<SyllabusViewModeNotifier, SyllabusViewMode>(
+  SyllabusViewModeNotifier.new,
+);
+
+/// Fetches all syllabus topics across all subjects.
+final FutureProvider<List<Topic>> allTopicsProvider =
+    FutureProvider<List<Topic>>((ref) async {
+  final subjects = await ref.watch(subjectsProvider.future);
+  final allTopics = <Topic>[];
+  for (final s in subjects) {
+    final topics = await ref.watch(topicsForSubjectProvider(s.id).future);
+    allTopics.addAll(topics);
+  }
+  return allTopics;
+});

@@ -17,6 +17,8 @@ class BackupDataTables {
     this.circularSubjects = const <Map<String, dynamic>>[],
     this.studyPlans = const <Map<String, dynamic>>[],
     this.mockTests = const <Map<String, dynamic>>[],
+    this.mockTestTopics = const <Map<String, dynamic>>[],
+    this.materialChapters = const <Map<String, dynamic>>[],
     this.revisionItems = const <Map<String, dynamic>>[],
     this.studySessions = const <Map<String, dynamic>>[],
     this.notifications = const <Map<String, dynamic>>[],
@@ -46,6 +48,8 @@ class BackupDataTables {
       circularSubjects: readList('circular_subjects'),
       studyPlans: readList('study_plans'),
       mockTests: readList('mock_tests'),
+      mockTestTopics: readList('mock_test_topics'),
+      materialChapters: readList('material_chapters'),
       revisionItems: readList('revision_items'),
       studySessions: readList('study_sessions'),
       notifications: readList('notifications'),
@@ -84,6 +88,12 @@ class BackupDataTables {
   /// Stored mock tests.
   final List<Map<String, dynamic>> mockTests;
 
+  /// Stored mock-test-to-topic associations.
+  final List<Map<String, dynamic>> mockTestTopics;
+
+  /// Stored material-to-chapter associations.
+  final List<Map<String, dynamic>> materialChapters;
+
   /// Stored spaced revision items.
   final List<Map<String, dynamic>> revisionItems;
 
@@ -111,6 +121,8 @@ class BackupDataTables {
       circularSubjects.length +
       studyPlans.length +
       mockTests.length +
+      mockTestTopics.length +
+      materialChapters.length +
       revisionItems.length +
       studySessions.length +
       notifications.length +
@@ -129,6 +141,8 @@ class BackupDataTables {
         'circular_subjects': circularSubjects.length,
         'study_plans': studyPlans.length,
         'mock_tests': mockTests.length,
+        'mock_test_topics': mockTestTopics.length,
+        'material_chapters': materialChapters.length,
         'revision_items': revisionItems.length,
         'study_sessions': studySessions.length,
         'notifications': notifications.length,
@@ -149,6 +163,8 @@ class BackupDataTables {
       'circular_subjects': circularSubjects,
       'study_plans': studyPlans,
       'mock_tests': mockTests,
+      'mock_test_topics': mockTestTopics,
+      'material_chapters': materialChapters,
       'revision_items': revisionItems,
       'study_sessions': studySessions,
       'notifications': notifications,
@@ -192,6 +208,9 @@ class BackupManifest {
 
   /// Standard plaintext format identifier.
   static const String formatIdentifier = 'jobprep_backup';
+
+  /// Current format schema version.
+  static const int currentSchemaVersion = 3;
 
   /// Format header string.
   final String format;

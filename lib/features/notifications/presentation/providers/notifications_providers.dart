@@ -30,6 +30,7 @@ import 'package:job_prep/features/prep/presentation/providers/prep_providers.dar
 import 'package:job_prep/features/prep/presentation/providers/revision_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_session_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/syllabus_providers.dart';
 import 'package:job_prep/features/settings/presentation/providers/reminder_settings_providers.dart';
 import 'package:job_prep/features/today/presentation/providers/today_providers.dart';
 
@@ -307,6 +308,12 @@ final Provider<AsyncValue<WeeklyReviewSummary>> weeklyReviewSummaryProvider =
     return const AsyncLoading<WeeklyReviewSummary>();
   }
 
+  final allTopics = ref.watch(allTopicsProvider).asData?.value ?? const [];
+  final subjects = ref.watch(subjectsProvider).asData?.value ?? const [];
+  final subjectCheckpoints = {
+    for (final s in subjects) s.id: s.enabledCheckpoints,
+  };
+
   return AsyncData<WeeklyReviewSummary>(
     WeeklyReviewCalculator.buildSummary(
       logs: logsAsync.asData?.value ?? const <ProgressLog>[],
@@ -316,6 +323,8 @@ final Provider<AsyncValue<WeeklyReviewSummary>> weeklyReviewSummaryProvider =
       circulars: circularsAsync.asData?.value ?? const <Circular>[],
       planSnapshots:
           planSnapshotsAsync.asData?.value ?? const <StudyPlanSnapshot>[],
+      topics: allTopics,
+      subjectEnabledCheckpoints: subjectCheckpoints,
       now: now,
       localOffset: localOffset,
     ),

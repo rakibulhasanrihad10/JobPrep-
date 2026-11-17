@@ -134,6 +134,8 @@ class LocalStudyPlans extends Table {
       integer().withDefault(const Constant(0))();
   TextColumn get postponedMaterialIds =>
       text().withDefault(const Constant('[]'))();
+  TextColumn get planBasis =>
+      text().withDefault(const Constant('reading_units'))();
   DateTimeColumn get createdAt => dateTime().nullable()();
   DateTimeColumn get updatedAt => dateTime().nullable()();
 
@@ -218,6 +220,34 @@ class LocalStudySessions extends Table {
   IntColumn get longBreakMinutes => integer().withDefault(const Constant(15))();
   DateTimeColumn get createdAt => dateTime().nullable()();
   DateTimeColumn get updatedAt => dateTime().nullable()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+/// Local SQLite schema for mock test linked topics.
+class LocalMockTestTopics extends Table {
+  @override
+  String get tableName => 'mock_test_topics';
+
+  TextColumn get id => text()();
+  TextColumn get mockTestId => text()();
+  TextColumn get topicId => text()();
+  DateTimeColumn get createdAt => dateTime().nullable()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+/// Local SQLite schema for material linked chapters.
+class LocalMaterialChapters extends Table {
+  @override
+  String get tableName => 'material_chapters';
+
+  TextColumn get id => text()();
+  TextColumn get materialId => text()();
+  TextColumn get chapterId => text()();
+  DateTimeColumn get createdAt => dateTime().nullable()();
 
   @override
   Set<Column> get primaryKey => {id};

@@ -6876,5 +6876,134 @@
   "syllabusSelectDate": "Select Date",
   "@syllabusSelectDate": {
     "description": "Button to select completion date"
+  },
+  "syllabusViewTree": "Tree",
+  "@syllabusViewTree": {
+    "description": "Label for tree view mode in syllabus tab"
+  },
+  "syllabusViewMap": "Map",
+  "@syllabusViewMap": {
+    "description": "Label for map view mode in syllabus tab"
+  },
+  "syllabusTopicGridTitle": "Topics Map",
+  "@syllabusTopicGridTitle": {
+    "description": "Title for topics completion grid in syllabus map"
+  },
+  "syllabusChapterTableTitle": "Chapter Progress",
+  "@syllabusChapterTableTitle": {
+    "description": "Title for chapter breakdown table in syllabus map"
+  },
+  "syllabusGapsTitle": "Syllabus Gaps",
+  "@syllabusGapsTitle": {
+    "description": "Title for syllabus gaps section"
+  },
+  "syllabusGapsSubtitle": "Studied topics missing practice or testing",
+  "@syllabusGapsSubtitle": {
+    "description": "Subtitle describing syllabus gaps"
+  },
+  "syllabusGapsEmpty": "No gaps! All studied topics are practiced and tested.",
+  "@syllabusGapsEmpty": {
+    "description": "Message shown when no syllabus gaps exist"
+  },
+  "syllabusGapNeedsPractice": "Needs Practice",
+  "@syllabusGapNeedsPractice": {
+    "description": "Badge indicating topic has not been practiced"
+  },
+  "syllabusGapNeedsModelTest": "Needs Model Test",
+  "@syllabusGapNeedsModelTest": {
+    "description": "Badge indicating topic has not been tested"
+  },
+  "syllabusColChapter": "Chapter",
+  "@syllabusColChapter": {
+    "description": "Column header for chapter in progress table"
+  },
+  "syllabusColStudied": "Studied",
+  "@syllabusColStudied": {
+    "description": "Column header for studied percentage in progress table"
+  },
+  "syllabusColPracticed": "Practiced",
+  "@syllabusColPracticed": {
+    "description": "Column header for practiced percentage in progress table"
+  },
+  "syllabusColTested": "Tested",
+  "@syllabusColTested": {
+    "description": "Column header for tested percentage in progress table"
+  },
+  "syllabusColRevised": "Revised",
+  "@syllabusColRevised": {
+    "description": "Column header for revised percentage in progress table"
+  },
+  "todayNextTopicsTitle": "Next Topics",
+  "@todayNextTopicsTitle": {
+    "description": "Card title for next topics on Today screen"
+  },
+  "todayNextTopicsEmpty": "No upcoming topics found",
+  "@todayNextTopicsEmpty": {
+    "description": "Empty state for next topics on Today screen"
+  },
+  "prepMockWeakTopicsSyllabusLabel": "Pick from syllabus",
+  "@prepMockWeakTopicsSyllabusLabel": {
+    "description": "Label for picking weak topics from syllabus chips"
+  },
+  "prepMockFormWeakTopicsFallbackLabel": "Custom weak topics (fallback)",
+  "@prepMockFormWeakTopicsFallbackLabel": {
+    "description": "Label for free-text weak topics fallback input"
+  },
+  "prepMockMarkCheckpointsTitle": "Update Syllabus Checkpoints",
+  "@prepMockMarkCheckpointsTitle": {
+    "description": "Dialog title offering to update syllabus checkpoints after mock test"
+  },
+  "prepMockMarkCheckpointsPrompt": "Mark Model Test checkpoint done for {count} topics?",
+  "@prepMockMarkCheckpointsPrompt": {
+    "description": "Prompt asking user to mark model test checkpoint done",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "prepMockMarkCheckpointsAuto": "Do this automatically in the future",
+  "@prepMockMarkCheckpointsAuto": {
+    "description": "Checkbox to automatically mark checkpoints in future"
+  },
+  "prepMockMarkCheckpointsAction": "Mark Done",
+  "@prepMockMarkCheckpointsAction": {
+    "description": "Action button to mark checkpoints done"
+  },
+  "prepMockAddToRevisionPrompt": "Add weak topics to revision queue?",
+  "@prepMockAddToRevisionPrompt": {
+    "description": "Dialog title offering to add weak topics to revision queue"
+  },
+  "prepMockAddToRevisionAction": "Add to Revision",
+  "@prepMockAddToRevisionAction": {
+    "description": "Action button to add weak topics to revision queue"
+  },
+  "prepRevisionTopicOptionalLabel": "Topic (optional)",
+  "@prepRevisionTopicOptionalLabel": {
+    "description": "Dropdown label for optional topic in revision dialog"
+  },
+  "prepRevisionNoTopicOption": "No topic linked",
+  "@prepRevisionNoTopicOption": {
+    "description": "Option in topic dropdown for unlinked revision"
+  },
+  "studyPlanBasisLabel": "Plan Basis",
+  "@studyPlanBasisLabel": {
+    "description": "Label for choosing study plan basis"
+  },
+  "studyPlanBasisReadingUnits": "Reading Units",
+  "@studyPlanBasisReadingUnits": {
+    "description": "Option for reading units plan basis"
+  },
+  "studyPlanBasisSyllabusTopics": "Syllabus Topics",
+  "@studyPlanBasisSyllabusTopics": {
+    "description": "Option for syllabus topics plan basis"
+  },
+  "prepAnalyticsWeeklyTopicsTitle": "Topics Completed per Week",
+  "@prepAnalyticsWeeklyTopicsTitle": {
+    "description": "Chart title for weekly completed topics in study analytics"
+  },
+  "weeklyReviewTopicsCompletedTitle": "Topics Completed",
+  "@weeklyReviewTopicsCompletedTitle": {
+    "description": "Metric tile title for topics completed in weekly review"
   }
 }

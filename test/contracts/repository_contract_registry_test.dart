@@ -19,6 +19,10 @@ void main() {
       'ProgressLogRepository':
           'test/contracts/prep_repositories_contract_test.dart',
       'TopicRepository': 'test/contracts/prep_repositories_contract_test.dart',
+      'MockTestTopicRepository':
+          'test/contracts/topic_links_repository_contract_test.dart',
+      'MaterialChapterRepository':
+          'test/contracts/topic_links_repository_contract_test.dart',
       'StudyPlanRepository':
           'test/contracts/auxiliary_repositories_contract_test.dart',
       'MockTestRepository':

@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart' show immutable, listEquals;
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 
 /// Schedule comparison status against the ideal progress line from `startDate`.
 enum StudyScheduleStatus {
@@ -38,6 +39,7 @@ class StudyPlan {
     this.maxDailyPace,
     this.initialCompletedUnits = 0,
     this.postponedMaterialIds = const <String>[],
+    this.planBasis = StudyPlanBasis.readingUnits,
     this.createdAt,
     this.updatedAt,
   });
@@ -83,6 +85,9 @@ class StudyPlan {
   /// Per-plan list of lower-priority material IDs temporarily postponed.
   final List<String> postponedMaterialIds;
 
+  /// Target plan basis: reading units (pages) or syllabus topics.
+  final StudyPlanBasis planBasis;
+
   /// Record creation timestamp managed by PostgreSQL.
   final DateTime? createdAt;
 
@@ -107,6 +112,7 @@ class StudyPlan {
     Object? maxDailyPace = _unset,
     int? initialCompletedUnits,
     List<String>? postponedMaterialIds,
+    StudyPlanBasis? planBasis,
     Object? createdAt = _unset,
     Object? updatedAt = _unset,
   }) {
@@ -132,6 +138,7 @@ class StudyPlan {
       initialCompletedUnits:
           initialCompletedUnits ?? this.initialCompletedUnits,
       postponedMaterialIds: postponedMaterialIds ?? this.postponedMaterialIds,
+      planBasis: planBasis ?? this.planBasis,
       createdAt: identical(createdAt, _unset)
           ? this.createdAt
           : createdAt as DateTime?,
@@ -158,6 +165,7 @@ class StudyPlan {
         other.maxDailyPace == maxDailyPace &&
         other.initialCompletedUnits == initialCompletedUnits &&
         listEquals(other.postponedMaterialIds, postponedMaterialIds) &&
+        other.planBasis == planBasis &&
         other.createdAt == createdAt &&
         other.updatedAt == updatedAt;
   }
@@ -177,6 +185,7 @@ class StudyPlan {
         maxDailyPace,
         initialCompletedUnits,
         Object.hashAll(postponedMaterialIds),
+        planBasis,
         createdAt,
         updatedAt,
       );

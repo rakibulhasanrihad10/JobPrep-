@@ -20,6 +20,7 @@ import 'package:job_prep/features/prep/domain/utils/study_plan_calculator.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_mutation_state.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_progress_log_controller.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
+import 'package:job_prep/features/prep/presentation/providers/syllabus_providers.dart';
 
 Duration? _noRetry(int retryCount, Object error) => null;
 
@@ -134,6 +135,7 @@ final Provider<AsyncValue<List<StudyPlanSnapshot>>> studyPlanSnapshotsProvider =
         subject: subject,
         materials: materials,
         recentLogs: logs,
+        topics: ref.watch(allTopicsProvider).asData?.value,
         circular: circular,
         examDate: examDate,
       ),

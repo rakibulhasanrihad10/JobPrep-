@@ -75,12 +75,14 @@ class RevisionFlagDialog extends ConsumerStatefulWidget {
 class _RevisionFlagDialogState extends ConsumerState<RevisionFlagDialog> {
   String? _selectedSubjectId;
   String? _selectedMaterialId;
+  String? _selectedTopicId;
 
   @override
   void initState() {
     super.initState();
     _selectedSubjectId = widget.initialSubjectId;
     _selectedMaterialId = widget.initialMaterialId;
+    _selectedTopicId = widget.topicId;
   }
 
   @override
@@ -156,6 +158,7 @@ class _RevisionFlagDialogState extends ConsumerState<RevisionFlagDialog> {
                 onChanged: (next) => setState(() {
                   _selectedSubjectId = next;
                   _selectedMaterialId = null;
+                  _selectedTopicId = null;
                 }),
               ),
               SizedBox(height: spacing.md),
@@ -195,11 +198,60 @@ class _RevisionFlagDialogState extends ConsumerState<RevisionFlagDialog> {
               ),
               SizedBox(height: spacing.md),
             ],
+            if (widget.topicId == null && effectiveSubjectId != null) ...[
+              () {
+                final subjectTopics = ref
+                        .watch(topicsForSubjectProvider(effectiveSubjectId))
+                        .asData
+                        ?.value ??
+                    const [];
+                if (subjectTopics.isEmpty) return const SizedBox.shrink();
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    DropdownButtonFormField<String?>(
+                      key:
+                          ValueKey('revision-dialog-topic-$effectiveSubjectId'),
+                      initialValue: _selectedTopicId,
+                      isExpanded: true,
+                      decoration: InputDecoration(
+                        labelText: l10n.prepRevisionTopicOptionalLabel,
+                        border: OutlineInputBorder(
+                          borderRadius: tokens.radii.buttonRadius,
+                        ),
+                      ),
+                      dropdownColor: colors.surfaceElevated,
+                      items: [
+                        DropdownMenuItem<String?>(
+                          child: Text(
+                            l10n.prepRevisionNoTopicOption,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        for (final topic in subjectTopics)
+                          DropdownMenuItem<String?>(
+                            value: topic.id,
+                            child: Text(
+                              topic.title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                      ],
+                      onChanged: (next) =>
+                          setState(() => _selectedTopicId = next),
+                    ),
+                    SizedBox(height: spacing.md),
+                  ],
+                );
+              }(),
+            ],
             if (effectiveSubjectId != null)
               RevisionFlagComposer(
                 subjectId: effectiveSubjectId,
                 materialId: effectiveMaterialId,
-                topicId: widget.topicId,
+                topicId: _selectedTopicId ?? widget.topicId,
                 mockTestId: widget.fromMockTest?.id,
                 source: widget.source,
                 initialReference: initialRef,

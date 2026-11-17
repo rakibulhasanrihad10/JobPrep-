@@ -2,6 +2,7 @@ import 'package:job_prep/features/backup/domain/entities/backup_manifest.dart';
 import 'package:job_prep/features/backup/domain/services/backup_entity_codec.dart';
 import 'package:job_prep/features/migration/domain/entities/migration_verification_result.dart';
 import 'package:job_prep/features/migration/domain/repositories/cloud_repositories.dart';
+import 'package:job_prep/features/migration/domain/services/guest_prep_uploader.dart';
 import 'package:job_prep/features/migration/domain/services/migration_verifier.dart';
 
 /// Exception thrown when guest migration fails or verification mismatches.
@@ -39,88 +40,23 @@ class GuestMigrationService {
       onProgress?.call(table, processed, total);
     }
 
-    // 1. Subjects
-    final cloudSubjects = await cloud.subjectRepo.getSubjects();
-    final cloudSubjectMap = {for (final s in cloudSubjects) s.id: s};
-    for (final raw in tables.subjects) {
-      final s = BackupEntityCodec.subjectFromJson(raw);
-      if (cloudSubjectMap.containsKey(s.id)) {
-        skipped++;
-      } else {
-        await cloud.subjectRepo.createSubject(s);
-        uploaded++;
-      }
-      processed++;
-      report('subjects');
-    }
+    // 1. Preparation tables uploaded in dependency order
+    final prepCounts = await GuestPrepUploader.uploadPrepTables(
+      tables: tables,
+      cloud: cloud,
+      onStep: (table, p) {
+        processed = p;
+        report(table);
+      },
+      initialProcessed: processed,
+      initialUploaded: uploaded,
+      initialSkipped: skipped,
+    );
+    processed = prepCounts.processed;
+    uploaded = prepCounts.uploaded;
+    skipped = prepCounts.skipped;
 
-    // 2. Chapters
-    for (final raw in tables.chapters) {
-      final c = BackupEntityCodec.chapterFromJson(raw);
-      final existingChapters =
-          await cloud.chapterRepo.getChaptersForSubject(c.subjectId);
-      final match =
-          existingChapters.where((item) => item.id == c.id).firstOrNull;
-      if (match != null) {
-        skipped++;
-      } else {
-        await cloud.chapterRepo.createChapter(c);
-        uploaded++;
-      }
-      processed++;
-      report('chapters');
-    }
-
-    // 3. Topics
-    for (final raw in tables.topics) {
-      final t = BackupEntityCodec.topicFromJson(raw);
-      final existingTopics =
-          await cloud.topicRepo.getTopicsForSubject(t.subjectId);
-      final match = existingTopics.where((item) => item.id == t.id).firstOrNull;
-      if (match != null) {
-        skipped++;
-      } else {
-        await cloud.topicRepo.createTopic(t);
-        uploaded++;
-      }
-      processed++;
-      report('topics');
-    }
-
-    // 4. Materials
-    for (final raw in tables.materials) {
-      final m = BackupEntityCodec.materialFromJson(raw);
-      final existingMaterials =
-          await cloud.materialRepo.getMaterialsForSubject(m.subjectId);
-      final match =
-          existingMaterials.where((item) => item.id == m.id).firstOrNull;
-      if (match != null) {
-        skipped++;
-      } else {
-        await cloud.materialRepo.createMaterial(m);
-        uploaded++;
-      }
-      processed++;
-      report('materials');
-    }
-
-    // 5. Progress Logs
-    for (final raw in tables.progressLogs) {
-      final log = BackupEntityCodec.progressLogFromJson(raw);
-      final existingLogs =
-          await cloud.progressLogRepo.getLogsForMaterial(log.materialId);
-      final match = existingLogs.where((l) => l.id == log.id).firstOrNull;
-      if (match != null) {
-        skipped++;
-      } else {
-        await cloud.progressLogRepo.createLog(log);
-        uploaded++;
-      }
-      processed++;
-      report('progress_logs');
-    }
-
-    // 6. Circulars
+    // 2. Circulars
     final cloudCirculars = await cloud.circularRepo.getCirculars();
     final cloudCircularMap = {for (final c in cloudCirculars) c.id: c};
     for (final raw in tables.circulars) {
@@ -135,7 +71,7 @@ class GuestMigrationService {
       report('circulars');
     }
 
-    // 6. Exam Dates
+    // 3. Exam Dates
     for (final raw in tables.circularExamDates) {
       final d = BackupEntityCodec.examDateFromJson(raw);
       final existingDates =
@@ -151,7 +87,7 @@ class GuestMigrationService {
       report('circular_exam_dates');
     }
 
-    // 7. Circular Subjects Link
+    // 4. Circular Subjects Link
     for (final raw in tables.circularSubjects) {
       final cId = (raw['circular_id'] as String?) ?? '';
       final sId = (raw['subject_id'] as String?) ?? '';
@@ -165,67 +101,7 @@ class GuestMigrationService {
       report('circular_subjects');
     }
 
-    // 8. Study Plans
-    final cloudPlans = await cloud.studyPlanRepo.getPlans();
-    final cloudPlanMap = {for (final p in cloudPlans) p.id: p};
-    for (final raw in tables.studyPlans) {
-      final p = BackupEntityCodec.studyPlanFromJson(raw);
-      if (cloudPlanMap.containsKey(p.id)) {
-        skipped++;
-      } else {
-        await cloud.studyPlanRepo.savePlan(p);
-        uploaded++;
-      }
-      processed++;
-      report('study_plans');
-    }
-
-    // 9. Mock Tests
-    final cloudTests = await cloud.mockTestRepo.getTests();
-    final cloudTestMap = {for (final t in cloudTests) t.id: t};
-    for (final raw in tables.mockTests) {
-      final mt = BackupEntityCodec.mockTestFromJson(raw);
-      if (cloudTestMap.containsKey(mt.id)) {
-        skipped++;
-      } else {
-        await cloud.mockTestRepo.createTest(mt);
-        uploaded++;
-      }
-      processed++;
-      report('mock_tests');
-    }
-
-    // 10. Revision Items
-    final cloudRevisions = await cloud.revisionItemRepo.getRevisionItems();
-    final cloudRevisionMap = {for (final r in cloudRevisions) r.id: r};
-    for (final raw in tables.revisionItems) {
-      final r = BackupEntityCodec.revisionItemFromJson(raw);
-      if (cloudRevisionMap.containsKey(r.id)) {
-        skipped++;
-      } else {
-        await cloud.revisionItemRepo.createRevisionItem(r);
-        uploaded++;
-      }
-      processed++;
-      report('revision_items');
-    }
-
-    // 11. Study Sessions
-    final cloudSessions = await cloud.studySessionRepo.getStudySessions();
-    final cloudSessionMap = {for (final s in cloudSessions) s.id: s};
-    for (final raw in tables.studySessions) {
-      final s = BackupEntityCodec.studySessionFromJson(raw);
-      if (cloudSessionMap.containsKey(s.id)) {
-        skipped++;
-      } else {
-        await cloud.studySessionRepo.createStudySession(s);
-        uploaded++;
-      }
-      processed++;
-      report('study_sessions');
-    }
-
-    // 12. Portal Accounts (as ciphertext)
+    // 5. Portal Accounts (as ciphertext)
     final cloudPortals = await cloud.portalAccountRepo.getAllAccounts();
     final cloudPortalMap = {for (final p in cloudPortals) p.id: p};
     for (final raw in tables.portalAccounts) {
@@ -240,7 +116,7 @@ class GuestMigrationService {
       report('portal_accounts');
     }
 
-    // 13. User Settings
+    // 6. User Settings
     if (tables.userSettings.isNotEmpty) {
       final cloudSettings = await cloud.userSettingsRepo.getSettings();
       if (cloudSettings != null) {

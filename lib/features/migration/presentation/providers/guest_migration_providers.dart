@@ -15,8 +15,10 @@ import 'package:job_prep/features/migration/domain/entities/migration_verificati
 import 'package:job_prep/features/migration/domain/repositories/cloud_repositories.dart';
 import 'package:job_prep/features/migration/domain/services/guest_migration_service.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_chapter_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_material_chapter_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_material_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_mock_test_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_mock_test_topic_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_progress_log_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_revision_item_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_study_plan_repository.dart';
@@ -24,8 +26,10 @@ import 'package:job_prep/features/prep/data/repositories/supabase_study_session_
 import 'package:job_prep/features/prep/data/repositories/supabase_subject_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_topic_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_chapter_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/unconfigured_material_chapter_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_material_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_mock_test_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/unconfigured_mock_test_topic_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_progress_log_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_revision_item_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_study_plan_repository.dart';
@@ -47,10 +51,12 @@ final Provider<CloudRepositories> cloudRepositoriesProvider =
       chapterRepo: const UnconfiguredChapterRepository(),
       topicRepo: const UnconfiguredTopicRepository(),
       materialRepo: const UnconfiguredMaterialRepository(),
+      materialChapterRepo: const UnconfiguredMaterialChapterRepository(),
       circularRepo: const UnconfiguredCircularRepository(),
       examDateRepo: const UnconfiguredExamDateRepository(),
       studyPlanRepo: const UnconfiguredStudyPlanRepository(),
       mockTestRepo: const UnconfiguredMockTestRepository(),
+      mockTestTopicRepo: const UnconfiguredMockTestTopicRepository(),
       progressLogRepo: const UnconfiguredProgressLogRepository(),
       revisionItemRepo: const UnconfiguredRevisionItemRepository(),
       studySessionRepo: const UnconfiguredStudySessionRepository(),
@@ -66,10 +72,12 @@ final Provider<CloudRepositories> cloudRepositoriesProvider =
     chapterRepo: SupabaseChapterRepository(client),
     topicRepo: SupabaseTopicRepository(client),
     materialRepo: SupabaseMaterialRepository(client),
+    materialChapterRepo: SupabaseMaterialChapterRepository(client),
     circularRepo: SupabaseCircularRepository(client),
     examDateRepo: SupabaseExamDateRepository(client),
     studyPlanRepo: SupabaseStudyPlanRepository(client),
     mockTestRepo: SupabaseMockTestRepository(client),
+    mockTestTopicRepo: SupabaseMockTestTopicRepository(client),
     progressLogRepo: SupabaseProgressLogRepository(client),
     revisionItemRepo: SupabaseRevisionItemRepository(client),
     studySessionRepo: SupabaseStudySessionRepository(client),
