@@ -1,6 +1,6 @@
 import { createServer } from 'node:http';
 import { appendFile, mkdtemp, readFile, rm, stat } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { extname, join, normalize, resolve } from 'node:path';
 import { spawn } from 'node:child_process';
@@ -166,34 +166,82 @@ async function launchHeadlessChrome(userDataDir) {
       '--headless=new',
       '--disable-gpu',
       '--remote-debugging-port=0',
+      '--remote-debugging-address=127.0.0.1',
       `--user-data-dir=${userDataDir}`,
       '--no-first-run',
       '--no-default-browser-check',
       '--disable-dev-shm-usage',
+      '--disable-background-networking',
+      '--disable-default-apps',
+      '--disable-sync',
+      '--no-zygote',
       '--no-sandbox',
       'about:blank',
     ],
     { stdio: ['ignore', 'pipe', 'pipe'] },
   );
 
-  const port = await new Promise((resolvePort, rejectPort) => {
-    let stderrBuf = '';
-    const timer = setTimeout(() => {
-      rejectPort(new Error(`Chrome failed to open DevTools port cleanly.\n${stderrBuf}`));
-    }, 20000);
+  const activePortFile = join(userDataDir, 'DevToolsActivePort');
 
-    chrome.stderr.on('data', (chunk) => {
-      stderrBuf += chunk.toString();
-      const match = stderrBuf.match(/DevTools listening on ws:\/\/127\.0\.0\.1:(\d+)\//);
+  const port = await new Promise((resolvePort, rejectPort) => {
+    let outputBuf = '';
+    let resolved = false;
+
+    const cleanup = () => {
+      clearInterval(fileCheckInterval);
+      clearTimeout(timer);
+    };
+
+    const tryResolve = (portNum) => {
+      if (resolved) return;
+      resolved = true;
+      cleanup();
+      resolvePort(portNum);
+    };
+
+    const timer = setTimeout(() => {
+      cleanup();
+      rejectPort(
+        new Error(
+          `Chrome failed to open DevTools port cleanly within 30s.\n${outputBuf}`,
+        ),
+      );
+    }, 30000);
+
+    const onData = (chunk) => {
+      outputBuf += chunk.toString();
+      const match = outputBuf.match(
+        /(?:DevTools listening on ws:\/\/(?:127\.0\.0\.1|localhost|\[::1\]|0\.0\.0\.0):)(\d+)\//,
+      );
       if (match) {
-        clearTimeout(timer);
-        resolvePort(Number(match[1]));
+        tryResolve(Number(match[1]));
       }
-    });
+    };
+
+    chrome.stdout.on('data', onData);
+    chrome.stderr.on('data', onData);
+
+    const fileCheckInterval = setInterval(() => {
+      if (existsSync(activePortFile)) {
+        try {
+          const content = readFileSync(activePortFile, 'utf8').trim().split('\n');
+          const portNum = Number(content[0]);
+          if (portNum && !isNaN(portNum)) {
+            tryResolve(portNum);
+          }
+        } catch (_) {
+          // File may be partially written, retry next tick
+        }
+      }
+    }, 100);
 
     chrome.on('exit', (code) => {
-      clearTimeout(timer);
-      rejectPort(new Error(`Chrome exited prematurely (${code}).\n${stderrBuf}`));
+      cleanup();
+      if (!resolved) {
+        rejectPort(
+          new Error(`Chrome exited prematurely (${code}).\n${outputBuf}`),
+        );
+      }
     });
   });
 
