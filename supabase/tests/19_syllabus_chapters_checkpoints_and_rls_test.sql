@@ -56,8 +56,10 @@ SELECT table_privs_are(
 );
 
 -- User A Context
+SET LOCAL ROLE authenticated;
 SET LOCAL "request.jwt.claim.sub" = '88881111-1111-4111-8111-111111111111';
 SET LOCAL "request.jwt.claim.role" = 'authenticated';
+SET LOCAL request.jwt.claims = '{"sub":"88881111-1111-4111-8111-111111111111","role":"authenticated"}';
 
 INSERT INTO public.subjects (id, user_id, name)
 VALUES ('8888aaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', '88881111-1111-4111-8111-111111111111', 'General Science')
@@ -122,6 +124,7 @@ SELECT is(
 -- User B Context (RLS isolation)
 SET LOCAL "request.jwt.claim.sub" = '88882222-2222-4222-8222-222222222222';
 SET LOCAL "request.jwt.claim.role" = 'authenticated';
+SET LOCAL request.jwt.claims = '{"sub":"88882222-2222-4222-8222-222222222222","role":"authenticated"}';
 
 SELECT is_empty(
   $$ SELECT * FROM public.chapters WHERE id = '8888cccc-cccc-4ccc-8ccc-cccccccccccc' $$,
@@ -146,5 +149,6 @@ SELECT is_empty(
   'User B update on User A chapter affects 0 rows'
 );
 
+RESET ROLE;
 SELECT * FROM finish();
 ROLLBACK;
