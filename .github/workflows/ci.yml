@@ -90,6 +90,7 @@ jobs:
         uses: supabase/setup-cli@v1
         with:
           version: latest
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Start local Supabase instance
         run: supabase start
@@ -102,7 +103,7 @@ jobs:
 
       - name: Stop Supabase instance
         if: always()
-        run: supabase stop
+        run: command -v supabase >/dev/null 2>&1 && supabase stop || true
 
   edge_functions:
     name: Supabase Edge Function Checks
@@ -148,6 +149,7 @@ jobs:
         uses: supabase/setup-cli@v1
         with:
           version: latest
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Start local Supabase instance
         run: |
@@ -161,7 +163,7 @@ jobs:
 
       - name: Stop Supabase instance
         if: always()
-        run: supabase stop
+        run: command -v supabase >/dev/null 2>&1 && supabase stop || true
 
   android:
     name: Android Build & App Bundle Verification

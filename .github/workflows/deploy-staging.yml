@@ -51,6 +51,7 @@ jobs:
         uses: supabase/setup-cli@v1
         with:
           version: latest
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push database migrations to staging Supabase project
         if: ${{ steps.secrets_check.outputs.ready == 'true' && secrets.SUPABASE_ACCESS_TOKEN != '' && secrets.STAGING_SUPABASE_PROJECT_REF != '' && secrets.STAGING_SUPABASE_DB_PASSWORD != '' }}
