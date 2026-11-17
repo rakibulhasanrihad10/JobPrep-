@@ -311,7 +311,7 @@ SELECT throws_ok(
   '42501', NULL, 'Anon cannot insert circular_exam_dates'
 );
 SELECT throws_ok(
-  $$ INSERT INTO public.circular_files (circular_id, user_id, file_name, file_path, file_size_bytes, mime_type) VALUES ('ca000001-0000-4000-8000-000000000001', '11111111-1111-4111-8111-111111111111', 'doc.pdf', 'path', 100, 'application/pdf') $$,
+  $$ INSERT INTO public.circular_files (circular_id, user_id, file_name, storage_path, size_bytes, mime_type) VALUES ('ca000001-0000-4000-8000-000000000001', '11111111-1111-4111-8111-111111111111', 'doc.pdf', 'path', 100, 'application/pdf') $$,
   '42501', NULL, 'Anon cannot insert circular_files'
 );
 
@@ -343,15 +343,15 @@ SELECT throws_ok(
   '42501', NULL, 'Anon cannot insert user_reminder_settings'
 );
 SELECT throws_ok(
-  $$ INSERT INTO public.reminder_log (user_id, dedupe_key, circular_id, stage, scheduled_for) VALUES ('11111111-1111-4111-8111-111111111111', 'k1', 'ca000001-0000-4000-8000-000000000001', 'preliminary', '2026-12-01') $$,
+  $$ INSERT INTO public.reminder_log (user_id, circular_id, reminder_kind, days_before, target_date, recipient_email, email_language) VALUES ('11111111-1111-4111-8111-111111111111', 'ca000001-0000-4000-8000-000000000001', 'circular_deadline', 3, '2026-12-01', 'a@b.com', 'en') $$,
   '42501', NULL, 'Anon cannot insert reminder_log'
 );
 SELECT throws_ok(
-  $$ INSERT INTO public.vault_verifiers (user_id, salt, nonce, ciphertext) VALUES ('11111111-1111-4111-8111-111111111111', 's', 'n', 'c') $$,
+  $$ INSERT INTO public.vault_verifiers (user_id, check_salt, check_nonce, check_ciphertext) VALUES ('11111111-1111-4111-8111-111111111111', 's', 'n', 'c') $$,
   '42501', NULL, 'Anon cannot insert vault_verifiers'
 );
 SELECT throws_ok(
-  $$ INSERT INTO public.portal_accounts (user_id, portal_name, portal_url, username, password_ciphertext, nonce, salt) VALUES ('11111111-1111-4111-8111-111111111111', 'p', 'http://', 'u', 'c', 'n', 's') $$,
+  $$ INSERT INTO public.portal_accounts (user_id, circular_id, portal_url, username, encrypted_password, nonce, salt) VALUES ('11111111-1111-4111-8111-111111111111', 'ca000001-0000-4000-8000-000000000001', 'http://', 'u', 'c', 'n', 's') $$,
   '42501', NULL, 'Anon cannot insert portal_accounts'
 );
 SELECT throws_ok(
@@ -363,15 +363,15 @@ SELECT throws_ok(
   '42501', NULL, 'Anon cannot insert mock_tests'
 );
 SELECT throws_ok(
-  $$ INSERT INTO public.revision_items (user_id, subject_id, page_or_chapter, requested_at, status) VALUES ('11111111-1111-4111-8111-111111111111', '5a000001-0000-4000-8000-000000000001', 'p10', now(), 'pending') $$,
+  $$ INSERT INTO public.revision_items (user_id, subject_id, reference_label, status) VALUES ('11111111-1111-4111-8111-111111111111', '5a000001-0000-4000-8000-000000000001', 'p10', 'pending') $$,
   '42501', NULL, 'Anon cannot insert revision_items'
 );
 SELECT throws_ok(
-  $$ INSERT INTO public.study_sessions (user_id, date, duration_seconds) VALUES ('11111111-1111-4111-8111-111111111111', '2026-11-14', 1800) $$,
+  $$ INSERT INTO public.study_sessions (user_id, subject_id, started_at, duration_seconds) VALUES ('11111111-1111-4111-8111-111111111111', '5a000001-0000-4000-8000-000000000001', now(), 1800) $$,
   '42501', NULL, 'Anon cannot insert study_sessions'
 );
 SELECT throws_ok(
-  $$ INSERT INTO public.notifications (user_id, title, message, dedupe_key, type) VALUES ('11111111-1111-4111-8111-111111111111', 'T', 'M', 'd1', 'review') $$,
+  $$ INSERT INTO public.notifications (user_id, type, message_key, route, dedupe_key) VALUES ('11111111-1111-4111-8111-111111111111', 'review', 'k', '/today', 'd1') $$,
   '42501', NULL, 'Anon cannot insert notifications'
 );
 SELECT throws_ok(

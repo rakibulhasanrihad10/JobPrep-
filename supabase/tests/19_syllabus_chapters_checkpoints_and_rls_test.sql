@@ -6,7 +6,7 @@ CREATE EXTENSION IF NOT EXISTS pgtap WITH SCHEMA extensions;
 GRANT USAGE ON SCHEMA extensions TO anon, authenticated;
 SET LOCAL search_path = public, extensions;
 
-SELECT plan(22);
+SELECT plan(21);
 
 -- Setup test users
 INSERT INTO auth.users (
@@ -101,7 +101,7 @@ SELECT results_eq(
 INSERT INTO public.topics (
   id, user_id, subject_id, title, name, status
 ) VALUES (
-  '8888mmmm-mmmm-4mmm-8mmm-mmmmmmmmmmmm',
+  '8888bbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',
   '88881111-1111-4111-8111-111111111111',
   '8888aaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',
   'Chemistry', 'Chemistry', 'learning'
@@ -109,12 +109,12 @@ INSERT INTO public.topics (
 
 UPDATE public.topics
    SET study_done_at = COALESCE(study_done_at, updated_at, now())
- WHERE id = '8888mmmm-mmmm-4mmm-8mmm-mmmmmmmmmmmm'
+ WHERE id = '8888bbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'
    AND status IN ('learning', 'in_progress')
    AND study_done_at IS NULL;
 
 SELECT is(
-  (SELECT study_done_at IS NOT NULL FROM public.topics WHERE id = '8888mmmm-mmmm-4mmm-8mmm-mmmmmmmmmmmm'),
+  (SELECT study_done_at IS NOT NULL FROM public.topics WHERE id = '8888bbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'),
   true,
   'Status migration stamps study_done_at for learning topic'
 );
@@ -136,13 +136,13 @@ SELECT is_empty(
 SELECT throws_ok(
   $$ INSERT INTO public.chapters (id, user_id, subject_id, title)
      VALUES ('8888cccc-2222-4ccc-8ccc-cccccccccccc', '88881111-1111-4111-8111-111111111111', '8888aaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', 'Hacked') $$,
-  'new row violates row-level security policy for table "chapters"',
+  '42501',
+  NULL,
   'User B cannot spoof user_id on chapters'
 );
 
-SELECT throws_ok(
-  $$ UPDATE public.chapters SET title = 'Tampered' WHERE id = '8888cccc-cccc-4ccc-8ccc-cccccccccccc' $$,
-  NULL,
+SELECT is_empty(
+  $$ UPDATE public.chapters SET title = 'Tampered' WHERE id = '8888cccc-cccc-4ccc-8ccc-cccccccccccc' RETURNING id $$,
   'User B update on User A chapter affects 0 rows'
 );
 

@@ -2,7 +2,7 @@
 -- StudyPlan plan_basis, and RLS multi-tenant isolation.
 
 BEGIN;
-SELECT plan(24);
+SELECT plan(18);
 
 -- 1. Table existence
 SELECT has_table('public', 'mock_test_topics', 'Table mock_test_topics exists');
