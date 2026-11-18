@@ -86,6 +86,7 @@ class SubjectCard extends StatelessWidget {
       key: ValueKey('subject-card-${subject.id}'),
       margin: EdgeInsets.only(bottom: spacing.md),
       padding: spacing.insetsAllLg,
+      useBlur: false,
       borderColor: isSelected ? colors.goldAccent : colors.glassBorder,
       fillColor: isSelected ? colors.goldAccentSubtle : null,
       onTap: onTap,

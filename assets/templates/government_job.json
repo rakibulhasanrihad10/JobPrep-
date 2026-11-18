@@ -1,0 +1,211 @@
+{
+  "id": "00000000-0000-4000-8000-000000000101",
+  "slug": "government_job",
+  "title": "Government Job",
+  "description": "Core BCS, bank, and public recruitment syllabus covering Bengali, English, GK, Mathematics, Analytical Reasoning, and Computer.",
+  "exam_type": "government",
+  "is_system": true,
+  "sort_order": 0,
+  "items": [
+    {
+      "id": "00000000-0000-4000-8101-000000000001",
+      "template_id": "00000000-0000-4000-8000-000000000101",
+      "subject_name": "Bengali",
+      "subject_color": "gold",
+      "subject_icon": "language",
+      "exam_type": "government",
+      "subject_sort_order": 0,
+      "material_title": "Bengali Literature Guide",
+      "material_kind": "book",
+      "unit_label": "pages",
+      "total_units": 300,
+      "item_sort_order": 0
+    },
+    {
+      "id": "00000000-0000-4000-8101-000000000002",
+      "template_id": "00000000-0000-4000-8000-000000000101",
+      "subject_name": "Bengali",
+      "subject_color": "gold",
+      "subject_icon": "language",
+      "exam_type": "government",
+      "subject_sort_order": 0,
+      "material_title": "Bengali Grammar Practice",
+      "material_kind": "book",
+      "unit_label": "pages",
+      "total_units": 300,
+      "item_sort_order": 1
+    },
+    {
+      "id": "00000000-0000-4000-8101-000000000003",
+      "template_id": "00000000-0000-4000-8000-000000000101",
+      "subject_name": "Bengali",
+      "subject_color": "gold",
+      "subject_icon": "language",
+      "exam_type": "government",
+      "subject_sort_order": 0,
+      "material_title": "Bangla Model Digest",
+      "material_kind": "book",
+      "unit_label": "pages",
+      "total_units": 400,
+      "item_sort_order": 2
+    },
+    {
+      "id": "00000000-0000-4000-8101-000000000004",
+      "template_id": "00000000-0000-4000-8000-000000000101",
+      "subject_name": "English",
+      "subject_color": "info",
+      "subject_icon": "menu_book",
+      "exam_type": "government",
+      "subject_sort_order": 1,
+      "material_title": "Competitive English Grammar",
+      "material_kind": "book",
+      "unit_label": "pages",
+      "total_units": 300,
+      "item_sort_order": 3
+    },
+    {
+      "id": "00000000-0000-4000-8101-000000000005",
+      "template_id": "00000000-0000-4000-8000-000000000101",
+      "subject_name": "English",
+      "subject_color": "info",
+      "subject_icon": "menu_book",
+      "exam_type": "government",
+      "subject_sort_order": 1,
+      "material_title": "Vocabulary & Passage Bank",
+      "material_kind": "question_bank",
+      "unit_label": "questions",
+      "total_units": 400,
+      "item_sort_order": 4
+    },
+    {
+      "id": "00000000-0000-4000-8101-000000000006",
+      "template_id": "00000000-0000-4000-8000-000000000101",
+      "subject_name": "General Knowledge",
+      "subject_color": "success",
+      "subject_icon": "public",
+      "exam_type": "government",
+      "subject_sort_order": 2,
+      "material_title": "Bangladesh Affairs Digest",
+      "material_kind": "book",
+      "unit_label": "pages",
+      "total_units": 250,
+      "item_sort_order": 5
+    },
+    {
+      "id": "00000000-0000-4000-8101-000000000007",
+      "template_id": "00000000-0000-4000-8000-000000000101",
+      "subject_name": "General Knowledge",
+      "subject_color": "success",
+      "subject_icon": "public",
+      "exam_type": "government",
+      "subject_sort_order": 2,
+      "material_title": "International Affairs Notes",
+      "material_kind": "notes",
+      "unit_label": "pages",
+      "total_units": 180,
+      "item_sort_order": 6
+    },
+    {
+      "id": "00000000-0000-4000-8101-000000000008",
+      "template_id": "00000000-0000-4000-8000-000000000101",
+      "subject_name": "Mathematics",
+      "subject_color": "warning",
+      "subject_icon": "calculate",
+      "exam_type": "government",
+      "subject_sort_order": 3,
+      "material_title": "Arithmetic & Algebra Workbook",
+      "material_kind": "book",
+      "unit_label": "pages",
+      "total_units": 300,
+      "item_sort_order": 7
+    },
+    {
+      "id": "00000000-0000-4000-8101-000000000009",
+      "template_id": "00000000-0000-4000-8000-000000000101",
+      "subject_name": "Mathematics",
+      "subject_color": "warning",
+      "subject_icon": "calculate",
+      "exam_type": "government",
+      "subject_sort_order": 3,
+      "material_title": "Quantitative Question Bank",
+      "material_kind": "question_bank",
+      "unit_label": "questions",
+      "total_units": 500,
+      "item_sort_order": 8
+    },
+    {
+      "id": "00000000-0000-4000-8101-000000000010",
+      "template_id": "00000000-0000-4000-8000-000000000101",
+      "subject_name": "Analytical Reasoning",
+      "subject_color": "accent_secondary",
+      "subject_icon": "psychology",
+      "exam_type": "government",
+      "subject_sort_order": 4,
+      "material_title": "Mental Ability & Puzzles",
+      "material_kind": "question_bank",
+      "unit_label": "questions",
+      "total_units": 300,
+      "item_sort_order": 9
+    },
+    {
+      "id": "00000000-0000-4000-8101-000000000011",
+      "template_id": "00000000-0000-4000-8000-000000000101",
+      "subject_name": "Computer",
+      "subject_color": "info",
+      "subject_icon": "computer",
+      "exam_type": "government",
+      "subject_sort_order": 5,
+      "material_title": "Computer & ICT Fundamentals",
+      "material_kind": "book",
+      "unit_label": "pages",
+      "total_units": 200,
+      "item_sort_order": 10
+    }
+  ],
+  "example_outlines": [
+    {
+      "subject_name": "Bengali",
+      "notice": "Editable example outline - not an official syllabus",
+      "chapters": [
+        {
+          "title": "Bengali Literature (Example Outline)",
+          "topics": [
+            "Ancient & Medieval Period (Charyapada & Mangalkavya)",
+            "Modern Poetry & Prose (Tagore, Nazrul, Jibanananda)",
+            "Liberation War & Contemporary Bengali Fiction"
+          ]
+        },
+        {
+          "title": "Bengali Grammar (Example Outline)",
+          "topics": [
+            "Phonetics & Orthography (Dhoni O Borno)",
+            "Morphology & Word Formation (Shondhi, Shomash, Prottoy)",
+            "Sentence Structure, Idioms & Correction"
+          ]
+        }
+      ]
+    },
+    {
+      "subject_name": "General Knowledge",
+      "notice": "Editable example outline - not an official syllabus",
+      "chapters": [
+        {
+          "title": "Bangladesh Affairs (Example Outline)",
+          "topics": [
+            "History, Language Movement & 1971 Liberation War",
+            "Constitution, Governance & Judicial Framework",
+            "Geography, Economy & Major Infrastructure Projects"
+          ]
+        },
+        {
+          "title": "International Affairs (Example Outline)",
+          "topics": [
+            "Global Geopolitics, Treaties & Regional Blocs",
+            "Environmental Agreements & Climate Conferences",
+            "International Organizations (UN, World Bank, IMF)"
+          ]
+        }
+      ]
+    }
+  ]
+}

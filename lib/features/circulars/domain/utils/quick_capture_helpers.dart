@@ -95,3 +95,46 @@ String buildLocationWithCapture(
     queryParameters: {'capture': captureLink},
   ).toString();
 }
+
+/// Regex matching HTTP and HTTPS URLs embedded within shared text or social
+/// posts.
+final _embeddedUrlRegex = RegExp(
+  r'https?:\/\/[^\s<>"{}|\\^`]+',
+  caseSensitive: false,
+);
+
+/// Extracts the first valid HTTP or HTTPS URL from [sharedText] (such as a
+/// shared Facebook post, social media share, or browser URL), stripping
+/// trailing punctuation. Returns `null` if no URL is identified.
+String? extractUrlFromSharedText(String? sharedText) {
+  if (sharedText == null) return null;
+  final trimmed = sharedText.trim();
+  if (trimmed.isEmpty) return null;
+
+  final match = _embeddedUrlRegex.firstMatch(trimmed);
+  if (match != null) {
+    var url = match.group(0)!;
+    // Strip trailing punctuation frequently attached to URLs in social posts
+    while (url.isNotEmpty &&
+        (url.endsWith('.') ||
+            url.endsWith(',') ||
+            url.endsWith(')') ||
+            url.endsWith(']') ||
+            url.endsWith(';') ||
+            url.endsWith(':') ||
+            url.endsWith('!'))) {
+      url = url.substring(0, url.length - 1);
+    }
+    return url.isNotEmpty ? url : null;
+  }
+
+  // Fallback: check if the trimmed string itself is a valid absolute URI
+  final parsed = Uri.tryParse(trimmed);
+  if (parsed != null &&
+      parsed.hasScheme &&
+      (parsed.scheme == 'http' || parsed.scheme == 'https') &&
+      parsed.hasAuthority) {
+    return trimmed;
+  }
+  return null;
+}

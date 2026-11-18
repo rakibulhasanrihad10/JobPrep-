@@ -1,7 +1,9 @@
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/data/data_source_mode.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/prep/data/repositories/local_prep_template_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_prep_template_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_prep_template_repository.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
@@ -17,6 +19,10 @@ Duration? _noRetry(int retryCount, Object error) => null;
 /// Dependency-injected [PrepTemplateRepository] provider.
 final Provider<PrepTemplateRepository> prepTemplateRepositoryProvider =
     Provider<PrepTemplateRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalPrepTemplateRepository();
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredPrepTemplateRepository();

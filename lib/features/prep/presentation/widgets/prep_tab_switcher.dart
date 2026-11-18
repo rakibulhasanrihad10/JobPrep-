@@ -8,6 +8,9 @@ enum PrepSectionTab {
   /// Subjects, syllabus progress, materials, and study plans.
   subjects,
 
+  /// Chapters, topics, checkpoint tracking, and syllabus tree.
+  syllabus,
+
   /// Cross-subject mock test history, filters, analytics, and trend chart.
   mockTests,
 
@@ -58,6 +61,14 @@ class PrepTabSwitcher extends StatelessWidget {
                 label: l10n.prepTabSubjects,
                 isSelected: activeTab == PrepSectionTab.subjects,
                 onTap: () => onChanged(PrepSectionTab.subjects),
+              ),
+              SizedBox(width: spacing.xs),
+              _TabButton(
+                key: const ValueKey('prep-tab-syllabus'),
+                icon: Icons.account_tree_outlined,
+                label: l10n.prepTabSyllabus,
+                isSelected: activeTab == PrepSectionTab.syllabus,
+                onTap: () => onChanged(PrepSectionTab.syllabus),
               ),
               SizedBox(width: spacing.xs),
               _TabButton(

@@ -4,6 +4,7 @@ import 'package:job_prep/features/prep/domain/entities/topic.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/repositories/topic_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+import 'package:uuid/uuid.dart';
 
 /// Supabase PostgREST implementation of [TopicRepository] backed by
 /// `public.topics`.
@@ -25,6 +26,25 @@ class SupabaseTopicRepository implements TopicRepository {
           .from(_table)
           .select()
           .eq('subject_id', trimmedId)
+          .order('sort_order', ascending: true)
+          .order('created_at', ascending: true);
+      return TopicMapper.fromJsonList(rows);
+    } on Object catch (error) {
+      throw PrepErrorMapper.map(error);
+    }
+  }
+
+  @override
+  Future<List<Topic>> getTopicsForChapter(String chapterId) async {
+    final trimmedId = chapterId.trim();
+    if (trimmedId.isEmpty) return const [];
+
+    try {
+      final rows = await _client
+          .from(_table)
+          .select()
+          .eq('chapter_id', trimmedId)
+          .order('sort_order', ascending: true)
           .order('created_at', ascending: true);
       return TopicMapper.fromJsonList(rows);
     } on Object catch (error) {
@@ -38,15 +58,32 @@ class SupabaseTopicRepository implements TopicRepository {
 
     try {
       final currentUserId = _client.auth.currentUser?.id;
+      final topicWithId = topic.id.trim().isEmpty
+          ? topic.copyWith(id: const Uuid().v4())
+          : topic;
       final payload = TopicMapper.toInsertJson(
-        topic,
-        userId: topic.userId.trim().isEmpty ? currentUserId : null,
+        topicWithId,
+        userId: topicWithId.userId.trim().isEmpty ? currentUserId : null,
       );
-      final row = await _client.from(_table).insert(payload).select().single();
+      final row = await _client
+          .from(_table)
+          .upsert(payload, onConflict: 'id')
+          .select()
+          .single();
       return TopicMapper.fromJson(row);
     } on Object catch (error) {
       throw PrepErrorMapper.map(error);
     }
+  }
+
+  @override
+  Future<List<Topic>> batchCreateTopics(List<Topic> topics) async {
+    final result = <Topic>[];
+    for (final topic in topics) {
+      final created = await createTopic(topic);
+      result.add(created);
+    }
+    return List.unmodifiable(result);
   }
 
   @override
@@ -90,6 +127,21 @@ class SupabaseTopicRepository implements TopicRepository {
     }
   }
 
+  @override
+  Future<void> reorderTopics(List<String> orderedTopicIds) async {
+    if (orderedTopicIds.isEmpty) return;
+
+    try {
+      for (var i = 0; i < orderedTopicIds.length; i++) {
+        final id = orderedTopicIds[i].trim();
+        if (id.isEmpty) continue;
+        await _client.from(_table).update({'sort_order': i}).eq('id', id);
+      }
+    } on Object catch (error) {
+      throw PrepErrorMapper.map(error);
+    }
+  }
+
   void _validateForWrite(Topic topic) {
     if (topic.subjectId.trim().isEmpty) {
       throw const PrepValidationFailure(
@@ -97,7 +149,7 @@ class SupabaseTopicRepository implements TopicRepository {
         message: 'Topic requires a parent subject id.',
       );
     }
-    if (topic.name.trim().isEmpty) {
+    if (topic.title.trim().isEmpty) {
       throw const PrepValidationFailure(
         code: 'empty_topic_name',
         message: 'Topic name cannot be empty.',

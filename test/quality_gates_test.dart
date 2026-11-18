@@ -162,7 +162,8 @@ void main() {
           contains('dart run scripts/check_hardcoded_strings.dart'),
         );
         expect(content, contains('flutter test'));
-        expect(content, contains('flutter build web --release'));
+        expect(content, contains('dart run scripts/build_web.dart'));
+        expect(content, contains('node scripts/pwa_lighthouse_check.mjs'));
         expect(content, contains('database:'));
         expect(content, contains('supabase/setup-cli@v1'));
         expect(content, contains('supabase start'));

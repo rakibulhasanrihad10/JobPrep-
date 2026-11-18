@@ -1,4 +1,5 @@
 import 'package:job_prep/features/prep/data/mappers/prep_json_helpers.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan.dart';
 
 /// Maps between PostgreSQL `public.study_plans` JSON payloads and [StudyPlan].
@@ -52,6 +53,7 @@ abstract final class StudyPlanMapper {
         'initial_completed_units',
       ).clamp(0, 100000000),
       postponedMaterialIds: postponedIds,
+      planBasis: StudyPlanBasis.fromValue(json['plan_basis']?.toString()),
       createdAt: PrepJsonHelpers.readOptionalDateTime(json, 'created_at'),
       updatedAt: PrepJsonHelpers.readOptionalDateTime(json, 'updated_at'),
     );
@@ -109,6 +111,7 @@ abstract final class StudyPlanMapper {
           : null,
       'initial_completed_units': plan.initialCompletedUnits.clamp(0, 100000000),
       'postponed_material_ids': cleanPostponed,
+      'plan_basis': plan.planBasis.value,
     };
   }
 }

@@ -1,7 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/circulars/data/repositories/local_circular_repository.dart';
 import 'package:job_prep/features/circulars/data/repositories/supabase_circular_repository.dart';
 import 'package:job_prep/features/circulars/data/repositories/unconfigured_circular_repository.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular.dart';
@@ -14,6 +17,10 @@ import 'package:job_prep/features/circulars/domain/utils/deadline_countdown.dart
 ///
 /// Override this provider in tests with a fake [CircularRepository].
 final circularRepositoryProvider = Provider<CircularRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalCircularRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredCircularRepository();

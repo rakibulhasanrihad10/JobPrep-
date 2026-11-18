@@ -120,7 +120,7 @@ class AppScaffold extends StatelessWidget {
                         child: MediaQuery.removePadding(
                           context: context,
                           removeTop: true,
-                          child: child,
+                          child: RepaintBoundary(child: child),
                         ),
                       ),
                     ],
@@ -168,7 +168,7 @@ class AppScaffold extends StatelessWidget {
                           constraints: BoxConstraints(
                             maxWidth: breakpoints.maxContentWidth,
                           ),
-                          child: child,
+                          child: RepaintBoundary(child: child),
                         ),
                       ),
                     ),
@@ -194,7 +194,7 @@ class AppScaffold extends StatelessWidget {
                         constraints: BoxConstraints(
                           maxWidth: breakpoints.maxContentWidth,
                         ),
-                        child: child,
+                        child: RepaintBoundary(child: child),
                       ),
                     ),
                   ),

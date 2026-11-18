@@ -31,6 +31,7 @@ import 'package:job_prep/features/prep/presentation/widgets/study_analytics_tab_
 import 'package:job_prep/features/prep/presentation/widgets/study_plan_form_dialog.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_timer_tab_view.dart';
 import 'package:job_prep/features/prep/presentation/widgets/subject_form_dialog.dart';
+import 'package:job_prep/features/prep/presentation/widgets/syllabus/syllabus_tab_view.dart';
 
 /// Main animated preparation dashboard and Subject & Material Manager screen.
 class PrepScreen extends ConsumerStatefulWidget {
@@ -61,12 +62,14 @@ class PrepScreen extends ConsumerStatefulWidget {
 
 class _PrepScreenState extends ConsumerState<PrepScreen> {
   static int _nextTabVisitId = 0;
+  static int _nextSyllabusVisitId = 0;
   static int _nextMockVisitId = 0;
   static int _nextAnalyticsVisitId = 0;
   static int _nextRevisionVisitId = 0;
   static int _nextTimerVisitId = 0;
 
   late int _tabVisitId;
+  late int _syllabusVisitId;
   late int _mockVisitId;
   late int _analyticsVisitId;
   late int _revisionVisitId;
@@ -82,6 +85,7 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
   void initState() {
     super.initState();
     _tabVisitId = ++_nextTabVisitId;
+    _syllabusVisitId = ++_nextSyllabusVisitId;
     _mockVisitId = ++_nextMockVisitId;
     _analyticsVisitId = ++_nextAnalyticsVisitId;
     _revisionVisitId = ++_nextRevisionVisitId;
@@ -121,6 +125,8 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
       switch (next) {
         case PrepSectionTab.subjects:
           _tabVisitId = ++_nextTabVisitId;
+        case PrepSectionTab.syllabus:
+          _syllabusVisitId = ++_nextSyllabusVisitId;
         case PrepSectionTab.mockTests:
           _hasVisitedMockTab = true;
           _mockVisitId = ++_nextMockVisitId;
@@ -354,7 +360,9 @@ class _PrepScreenState extends ConsumerState<PrepScreen> {
             onChanged: _switchTab,
           ),
           SizedBox(height: spacing.lg),
-          if (_activeTab == PrepSectionTab.mockTests)
+          if (_activeTab == PrepSectionTab.syllabus)
+            SyllabusTabView(visitId: _syllabusVisitId)
+          else if (_activeTab == PrepSectionTab.mockTests)
             MockTestsTabView(visitId: _mockVisitId)
           else if (_activeTab == PrepSectionTab.analytics)
             StudyAnalyticsTabView(

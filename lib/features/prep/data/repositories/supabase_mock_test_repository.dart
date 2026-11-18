@@ -4,6 +4,7 @@ import 'package:job_prep/features/prep/domain/entities/mock_test.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/repositories/mock_test_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+import 'package:uuid/uuid.dart';
 
 /// Supabase PostgREST implementation of [MockTestRepository] backed by
 /// `public.mock_tests`.
@@ -53,11 +54,17 @@ class SupabaseMockTestRepository implements MockTestRepository {
 
     try {
       final currentUserId = _client.auth.currentUser?.id;
+      final testWithId =
+          test.id.trim().isEmpty ? test.copyWith(id: const Uuid().v4()) : test;
       final payload = MockTestMapper.toInsertJson(
-        test,
-        userId: test.userId.trim().isEmpty ? currentUserId : null,
+        testWithId,
+        userId: testWithId.userId.trim().isEmpty ? currentUserId : null,
       );
-      final row = await _client.from(_table).insert(payload).select().single();
+      final row = await _client
+          .from(_table)
+          .upsert(payload, onConflict: 'id')
+          .select()
+          .single();
       return MockTestMapper.fromJson(row);
     } on Object catch (error) {
       throw PrepErrorMapper.map(error);

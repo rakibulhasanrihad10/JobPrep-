@@ -58,9 +58,9 @@ lib/
 ### Architectural Guardrails
 - **Presentation Layer**: UI widgets observe Riverpod providers. **Widgets never invoke Supabase directly** and never hold business logic.
 - **Domain Layer**: Clean, pure Dart entities and abstract repository definitions independent of third-party frameworks.
-- **Data Layer**: Implements domain repositories, handles Supabase communication and local storage caching.
+- **Data Layer**: Dual-mode repositories (Cloud via Supabase PostgREST & Local via Drift SQLite/Wasm). Every repository interface has a cloud implementation and a local implementation, every method is implemented in both, and both pass the same shared contract tests. Widgets and providers remain agnostic to the active data source mode.
 - **Design Tokens**: All colors, typography, border radii, spacing, and transition durations are consumed via a `ThemeExtension`. No hardcoded colors or sizes in widgets.
-- **Security**: PostgreSQL Row Level Security (RLS) enforces `auth.uid() = user_id` on every table. Portal credentials are encrypted client-side with user-held passphrase derivations.
+- **Security & Encryption**: PostgreSQL Row Level Security (RLS) enforces `auth.uid() = user_id` on every table. Note: the local database is not encrypted, apart from portal passwords, which stay encrypted by the vault (AES-GCM with PBKDF2 key derivation). Plaintext credentials and passphrases are never stored, logged, or transmitted.
 
 ---
 
@@ -285,7 +285,135 @@ The pipeline executes the following checks sequentially:
 4. **Code Formatting Check**: Enforces `dart format --output=none --set-exit-if-changed .`.
 5. **Strict Static Analysis**: Enforces `flutter analyze --fatal-infos --fatal-warnings`.
 6. **Automated Test Suite**: Executes unit and widget tests with `flutter test`.
-7. **Web Compilation Verification**: Compiles production web bundle (`flutter build web --release`).
+7. **Web Compilation Verification**: Compiles production web bundle (`dart run scripts/build_web.dart` — builds with `--wasm --release` when supported and falls back cleanly to standard JS/CanvasKit).
+8. **PWA Installability, Mobile Throttling & Lighthouse**: Runs `node scripts/pwa_lighthouse_check.mjs` against `build/web` to verify manifest/maskable icons/service worker/Wasm fallback, 4x-CPU/Slow-4G Chrome startup (`reduceEffects` frame pacing), and Lighthouse Performance score.
+
+---
+
+## PWA, WebAssembly & iOS Safari Notes
+
+- **Installable Web App**: [web/manifest.json](web/manifest.json) provides app identity, `#0A0E17` dark navy theme/background colors, and separate `any` + `maskable` 192x192 / 512x512 PNG icons plus an opaque 180x180 `web/icons/apple-touch-icon.png`.
+- **Custom Service Worker & Startup Screen**: [web/sw.js](web/sw.js) precaches the static app shell while leaving cross-origin Supabase Auth/REST/Storage calls network-only, and [web/index.html](web/index.html) displays a lightweight branded `#jobprep-loader` dismissed in [web/flutter_bootstrap.js](web/flutter_bootstrap.js) on Flutter's first frame.
+- **Wasm + JS Fallback**: `dart run scripts/build_web.dart` outputs `main.dart.wasm` + `main.dart.mjs` alongside `main.dart.js` (`canvaskit`). Browsers supporting WasmGC + WebGL use Skwasm; Safari/WebKit and older browsers fall back automatically to CanvasKit/JS.
+- **Performance & Reduce Effects**: `BackdropFilter` layers are restricted to cards (`GlassCard`), navigation chrome/sidebar, and dialogs (omitted from buttons, chips, text fields, and repeated list rows). `CircularsScreen` and `InboxScreen` use sliver virtualization, `MaterialCoverThumbnail` defers loading during rapid flings with bounded `cacheWidth`/`cacheHeight`, and **Settings > Appearance > Reduce effects** disables blurs and entrance motion.
+
+### Testing on iPhone Safari ("Add to Home Screen") & Known Caveats
+
+Manual hardware verification on a physical iPhone running iOS Safari (unavailable in headless Linux/Windows CI) should check **Share > Add to Home Screen** over HTTPS. Known iOS Safari / WebKit PWA behaviors to account for:
+
+1. **WebAssembly Engine Fallback**: iOS Safari currently lacks Skwasm `WasmGC` support, so Flutter's bootstrapper automatically falls back to `main.dart.js` (`canvaskit`). First boot downloads a larger JS/CanvasKit payload on cellular connections before [web/sw.js](web/sw.js) caches it.
+2. **Isolated Standalone Storage & Google OAuth**: On iOS, a Home Screen standalone PWA runs in a storage partition separate from Safari tabs. Signing in with Google OAuth redirects inside standalone mode or Safari tabs may not share cookies/session storage back automatically; email/password sign-in works natively inside standalone mode without cross-context handoff.
+3. **Opaque Touch Icon & Safe Area**: iOS masks non-opaque touch icons against black; `web/icons/apple-touch-icon.png` is intentionally 180x180 opaque `#0A0E17`, paired with `viewport-fit=cover` and `apple-mobile-web-app-status-bar-style="black-translucent"`.
+4. **7-Day Script-Writable Cache Eviction**: WebKit evicts Service Worker caches if the Home Screen app is unused for 7 consecutive days; subsequent opens re-fetch the shell cleanly from network.
+5. **File Downloads & Background Audio Alerts**: Blob exports (CSV/JSON) open in an iOS preview/share sheet rather than a direct Downloads toast, and study-timer Web Audio notifications require prior user tap interaction in the session due to iOS autoplay policies.
+
+---
+
+## Android Setup, Signing & CI Build
+
+Phase 8A enables Android support within the same Flutter project without breaking the web app or PWA capabilities.
+
+### 1. Android App Identity & Configuration
+- **Application ID / Package**: `com.jobprep.app` (configured in [`android/app/build.gradle.kts`](android/app/build.gradle.kts)).
+- **App Name**: Defined in [`android/app/src/main/res/values/strings.xml`](android/app/src/main/res/values/strings.xml) as `JobPrep`, and localized in [`android/app/src/main/res/values-bn/strings.xml`](android/app/src/main/res/values-bn/strings.xml) as `জবপ্রেপ`.
+- **Launcher Icons**: Crisp adaptive launcher icons across all screen densities (`mdpi`, `hdpi`, `xhdpi`, `xxhdpi`, `xxxhdpi`) located in `android/app/src/main/res/mipmap-*/`.
+- **Branded Splash Screen**:
+  - Light mode splash background: `#F4F6FB` with dark navy brand mark and subtle gold accents.
+  - Dark mode splash background: `#0A0E1A` matching deep navy design tokens.
+  - Android 12+ Splash API support via `android:windowSplashScreenBackground` in `styles.xml`.
+
+### 2. Deep Linking (OAuth Callback & Password Reset)
+[`android/app/src/main/AndroidManifest.xml`](android/app/src/main/AndroidManifest.xml) registers an `<intent-filter>` for deep linking:
+```xml
+<intent-filter android:autoVerify="true">
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data
+        android:scheme="io.supabase.jobprep"
+        android:host="login-callback" />
+    <data
+        android:scheme="io.supabase.jobprep"
+        android:host="reset-password" />
+</intent-filter>
+```
+In Supabase Dashboard under **Authentication > URL Configuration > Redirect URLs**, ensure these two URIs are registered:
+- `io.supabase.jobprep://login-callback`
+- `io.supabase.jobprep://reset-password`
+
+### 3. Google Sign-In Setup for Android
+To enable Google Sign-In on Android:
+1. Generate or extract the **SHA-1 fingerprint** of your keystore:
+   ```bash
+   keytool -list -v -keystore android/upload-keystore.jks -alias jobprep_upload_key
+   ```
+   *(For debug builds, extract from `~/.android/debug.keystore` with default password `android`).*
+2. Open [Google Cloud Console](https://console.cloud.google.com/) > **APIs & Services** > **Credentials**.
+3. Click **Create Credentials** > **OAuth client ID**:
+   - Application type: **Android**.
+   - Package name: `com.jobprep.app`.
+   - SHA-1 certificate fingerprint: Paste the extracted SHA-1 fingerprint.
+4. Save and copy the generated Android Client ID to your Supabase project under **Authentication > Providers > Google**.
+
+### 4. Release Signing Configuration
+Release signing credentials must **never** be checked into Git. The project supports two ways to supply signing keys:
+
+#### Option A: `key.properties` (Local Builds)
+1. Generate an upload keystore:
+   ```bash
+   bash scripts/generate_release_keystore.sh
+   # Or manually with keytool:
+   keytool -genkey -v -keystore android/upload-keystore.jks -alias jobprep_upload_key -keyalg RSA -keysize 2048 -validity 10000
+   ```
+2. Copy `key.properties.example` to `android/key.properties`:
+   ```properties
+   storePassword=<your-keystore-password>
+   keyPassword=<your-key-password>
+   keyAlias=jobprep_upload_key
+   storeFile=upload-keystore.jks
+   ```
+3. `android/key.properties` and `*.jks` / `*.keystore` are protected by `.gitignore`.
+
+#### Option B: Environment Variables (CI / Automated Builds)
+The build script [`android/app/build.gradle.kts`](android/app/build.gradle.kts) automatically detects:
+- `ANDROID_KEYSTORE_PATH`
+- `ANDROID_KEYSTORE_PASSWORD`
+- `ANDROID_KEY_ALIAS`
+- `ANDROID_KEY_PASSWORD`
+
+If neither `key.properties` nor the environment variables are present, the Gradle build falls back safely to debug signing for validation.
+
+### 5. Building Release Artifacts
+```bash
+# Build signed Android App Bundle (.aab) for Google Play:
+flutter build appbundle --release \
+  --dart-define=ENVIRONMENT=prod \
+  --dart-define=SUPABASE_URL=https://<your-project-id>.supabase.co \
+  --dart-define=SUPABASE_ANON_KEY=<your-anon-key>
+
+# Build signed split/fat APK (.apk) for direct distribution or testing:
+flutter build apk --release \
+  --dart-define=ENVIRONMENT=prod \
+  --dart-define=SUPABASE_URL=https://<your-project-id>.supabase.co \
+  --dart-define=SUPABASE_ANON_KEY=<your-anon-key>
+```
+
+### 6. GitHub Actions CI Secrets
+To enable signed release bundle creation in CI, configure the following secrets in **GitHub repository settings > Secrets and variables > Actions**:
+- `ANDROID_KEYSTORE_BASE64`: Base64-encoded upload keystore (`base64 -w 0 android/upload-keystore.jks`).
+- `ANDROID_KEYSTORE_PASSWORD`: Keystore password.
+- `ANDROID_KEY_ALIAS`: Key alias (`jobprep_upload_key`).
+- `ANDROID_KEY_PASSWORD`: Key password.
+
+The CI workflow in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) builds the AAB and APK, validates signing, and uploads the artifacts with a 14-day retention. If the secret is not provided (e.g. on forks or unconfigured repos), CI seamlessly generates an ephemeral verification keystore so test coverage and build stability never break.
+
+### 7. Android Share-to-Capture & Google Play Store Publishing (Phase 8B)
+
+- **Share Intent Support**: Sharing a Facebook post, web link, or social announcement from any Android app into JobPrep opens the **Quick Capture frosted glass dialog** with the link prefilled, saving to the user's Inbox in one tap.
+- **Store Listing Materials**: Complete verified metadata, short/full descriptions in English (`en-US`) and Bangla (`bn-BD`), screenshot specifications, and Google Play Data Safety answers are maintained in [`docs/play_store/LISTING.md`](docs/play_store/LISTING.md).
+- **Google Play 20-Tester & Release Checklist**: The operational guide for moving from Internal Testing -> Closed Testing (14-day continuous 20-tester requirement) -> Staged Production Rollout is in [`docs/play_store/RELEASE_CHECKLIST.md`](docs/play_store/RELEASE_CHECKLIST.md).
+- **Automated Google Play CI Upload**:
+  Add `PLAY_STORE_SERVICE_ACCOUNT_JSON` to GitHub Actions secrets. On releases, the `play_store_internal` CI job automatically uploads the signed `.aab` to Google Play Console's internal testing track.
 
 ---
 

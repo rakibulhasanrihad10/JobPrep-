@@ -1,13 +1,28 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart'
     show FutureProviderFamily, ProviderFamily;
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/prep/data/repositories/local_chapter_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/local_material_chapter_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/local_material_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/local_mock_test_topic_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/local_progress_log_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/local_subject_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/local_topic_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_chapter_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_material_chapter_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_material_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/supabase_mock_test_topic_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_progress_log_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_subject_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/supabase_topic_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/unconfigured_chapter_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/unconfigured_material_chapter_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_material_repository.dart';
+import 'package:job_prep/features/prep/data/repositories/unconfigured_mock_test_topic_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_progress_log_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_subject_repository.dart';
 import 'package:job_prep/features/prep/data/repositories/unconfigured_topic_repository.dart';
@@ -15,7 +30,10 @@ import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 import 'package:job_prep/features/prep/domain/entities/topic.dart';
+import 'package:job_prep/features/prep/domain/repositories/chapter_repository.dart';
+import 'package:job_prep/features/prep/domain/repositories/material_chapter_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/material_repository.dart';
+import 'package:job_prep/features/prep/domain/repositories/mock_test_topic_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/progress_log_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/subject_repository.dart';
 import 'package:job_prep/features/prep/domain/repositories/topic_repository.dart';
@@ -26,6 +44,10 @@ Duration? _noRetry(int retryCount, Object error) => null;
 /// Dependency-injected [SubjectRepository] provider.
 final Provider<SubjectRepository> subjectRepositoryProvider =
     Provider<SubjectRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalSubjectRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredSubjectRepository();
@@ -36,6 +58,10 @@ final Provider<SubjectRepository> subjectRepositoryProvider =
 /// Dependency-injected [MaterialRepository] provider.
 final Provider<MaterialRepository> materialRepositoryProvider =
     Provider<MaterialRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalMaterialRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredMaterialRepository();
@@ -46,6 +72,10 @@ final Provider<MaterialRepository> materialRepositoryProvider =
 /// Dependency-injected [ProgressLogRepository] provider.
 final Provider<ProgressLogRepository> progressLogRepositoryProvider =
     Provider<ProgressLogRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalProgressLogRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredProgressLogRepository();
@@ -56,11 +86,57 @@ final Provider<ProgressLogRepository> progressLogRepositoryProvider =
 /// Dependency-injected [TopicRepository] provider.
 final Provider<TopicRepository> topicRepositoryProvider =
     Provider<TopicRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalTopicRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredTopicRepository();
   }
   return SupabaseTopicRepository(client);
+});
+
+/// Dependency-injected [ChapterRepository] provider.
+final Provider<ChapterRepository> chapterRepositoryProvider =
+    Provider<ChapterRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalChapterRepository(ref.watch(appDatabaseProvider));
+  }
+  final client = ref.watch(optionalSupabaseClientProvider);
+  if (client == null) {
+    return const UnconfiguredChapterRepository();
+  }
+  return SupabaseChapterRepository(client);
+});
+
+/// Dependency-injected [MockTestTopicRepository] provider.
+final Provider<MockTestTopicRepository> mockTestTopicRepositoryProvider =
+    Provider<MockTestTopicRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalMockTestTopicRepository(ref.watch(appDatabaseProvider));
+  }
+  final client = ref.watch(optionalSupabaseClientProvider);
+  if (client == null) {
+    return const UnconfiguredMockTestTopicRepository();
+  }
+  return SupabaseMockTestTopicRepository(client);
+});
+
+/// Dependency-injected [MaterialChapterRepository] provider.
+final Provider<MaterialChapterRepository> materialChapterRepositoryProvider =
+    Provider<MaterialChapterRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalMaterialChapterRepository(ref.watch(appDatabaseProvider));
+  }
+  final client = ref.watch(optionalSupabaseClientProvider);
+  if (client == null) {
+    return const UnconfiguredMaterialChapterRepository();
+  }
+  return SupabaseMaterialChapterRepository(client);
 });
 
 /// Async notifier loading all study subjects for the signed-in user.

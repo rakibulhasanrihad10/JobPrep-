@@ -53,5 +53,12 @@ class UnconfiguredAuthRepository implements AuthRepository {
       Future.error(_notConfiguredError);
 
   @override
+  Future<AuthUser> updateDisplayName({required String? displayName}) =>
+      Future.error(_notConfiguredError);
+
+  @override
+  Future<void> deleteMyAccount() => Future.error(_notConfiguredError);
+
+  @override
   Future<void> signOut() async {}
 }

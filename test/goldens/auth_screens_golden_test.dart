@@ -49,6 +49,7 @@ void main() {
   Future<void> pumpLoginGolden(
     WidgetTester tester, {
     required ThemeMode themeMode,
+    Locale locale = const Locale('en'),
   }) async {
     tester.view.physicalSize = const Size(900, 820);
     tester.view.devicePixelRatio = 1.0;
@@ -59,7 +60,7 @@ void main() {
 
     SharedPreferences.setMockInitialValues({
       kReduceEffectsStorageKey: false,
-      kLocaleStorageKey: 'en',
+      kLocaleStorageKey: locale.languageCode,
     });
     final prefs = await SharedPreferences.getInstance();
     final fakeRepo = FakeAuthRepository();
@@ -76,7 +77,7 @@ void main() {
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
           themeMode: themeMode,
-          locale: const Locale('en'),
+          locale: locale,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           home: const LoginScreen(),
@@ -87,8 +88,11 @@ void main() {
   }
 
   group('Auth Screens Golden Tests', () {
-    testWidgets('LoginScreen golden - dark mode', (tester) async {
-      await pumpLoginGolden(tester, themeMode: ThemeMode.dark);
+    testWidgets('LoginScreen golden - dark mode (en)', (tester) async {
+      await pumpLoginGolden(
+        tester,
+        themeMode: ThemeMode.dark,
+      );
 
       await expectLater(
         find.byType(MaterialApp),
@@ -96,12 +100,41 @@ void main() {
       );
     });
 
-    testWidgets('LoginScreen golden - light mode', (tester) async {
-      await pumpLoginGolden(tester, themeMode: ThemeMode.light);
+    testWidgets('LoginScreen golden - light mode (en)', (tester) async {
+      await pumpLoginGolden(
+        tester,
+        themeMode: ThemeMode.light,
+      );
 
       await expectLater(
         find.byType(MaterialApp),
         matchesGoldenFile('goldens/login_screen_light.png'),
+      );
+    });
+
+    testWidgets('LoginScreen golden - dark mode (bn)', (tester) async {
+      await pumpLoginGolden(
+        tester,
+        themeMode: ThemeMode.dark,
+        locale: const Locale('bn'),
+      );
+
+      await expectLater(
+        find.byType(MaterialApp),
+        matchesGoldenFile('goldens/login_screen_bn_dark.png'),
+      );
+    });
+
+    testWidgets('LoginScreen golden - light mode (bn)', (tester) async {
+      await pumpLoginGolden(
+        tester,
+        themeMode: ThemeMode.light,
+        locale: const Locale('bn'),
+      );
+
+      await expectLater(
+        find.byType(MaterialApp),
+        matchesGoldenFile('goldens/login_screen_bn_light.png'),
       );
     });
   });

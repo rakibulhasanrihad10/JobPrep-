@@ -8,6 +8,7 @@ import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan_snapshot.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
+import 'package:job_prep/features/prep/domain/entities/topic.dart';
 import 'package:job_prep/features/prep/domain/utils/study_plan_snapshot_builder.dart';
 
 /// Breakdown of remaining calendar, rest, and study days until plan finish.
@@ -201,6 +202,7 @@ abstract final class StudyPlanCalculator {
     required DateTime today,
     required Iterable<PrepMaterial> materials,
     required Iterable<ProgressLog> recentLogs,
+    Iterable<Topic>? topics,
     Subject? subject,
     Circular? circular,
     CircularExamDate? examDate,
@@ -210,6 +212,7 @@ abstract final class StudyPlanCalculator {
       today: today,
       materials: materials,
       recentLogs: recentLogs,
+      topics: topics,
       subject: subject,
       circular: circular,
       examDate: examDate,

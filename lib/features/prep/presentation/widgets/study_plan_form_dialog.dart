@@ -10,11 +10,13 @@ import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_dialog.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular.dart';
 import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan.dart';
 import 'package:job_prep/features/prep/domain/utils/study_plan_calculator.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/study_plan_providers.dart';
 import 'package:job_prep/features/prep/presentation/widgets/prep_option_chip.dart';
+import 'package:job_prep/features/prep/presentation/widgets/study_plan_basis_selector.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_plan_circular_link_fields.dart';
 import 'package:job_prep/features/prep/presentation/widgets/study_plan_schedule_fields.dart';
 
@@ -65,6 +67,7 @@ class _StudyPlanFormDialogState extends ConsumerState<StudyPlanFormDialog> {
   String? _selectedCircularId;
   String? _selectedExamDateId;
   late int _restDaysPerWeek;
+  late StudyPlanBasis _planBasis;
   String? _dateError;
 
   @override
@@ -80,6 +83,7 @@ class _StudyPlanFormDialogState extends ConsumerState<StudyPlanFormDialog> {
     _startDate = existing?.startDate ?? today;
     _targetDate = existing?.targetDate ?? today.add(const Duration(days: 37));
     _restDaysPerWeek = existing?.restDaysPerWeek ?? 0;
+    _planBasis = existing?.planBasis ?? StudyPlanBasis.readingUnits;
     _bufferController = TextEditingController(
       text: '${existing?.finishBufferDays ?? 7}',
     );
@@ -169,6 +173,7 @@ class _StudyPlanFormDialogState extends ConsumerState<StudyPlanFormDialog> {
       finishBufferDays: buffer,
       restDaysPerWeek: _restDaysPerWeek,
       maxDailyPace: maxPace,
+      planBasis: _planBasis,
     );
 
     final saved =
@@ -206,6 +211,12 @@ class _StudyPlanFormDialogState extends ConsumerState<StudyPlanFormDialog> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              StudyPlanBasisSelector(
+                selectedBasis: _planBasis,
+                isBusy: isBusy,
+                onBasisChanged: (val) => setState(() => _planBasis = val),
+              ),
+              SizedBox(height: spacing.md),
               Text(
                 l10n.prepStudyPlanScopeLabel,
                 style: tokens.textStyles.labelLarge,

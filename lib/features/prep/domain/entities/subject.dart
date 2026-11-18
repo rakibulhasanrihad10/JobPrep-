@@ -1,4 +1,5 @@
-import 'package:flutter/foundation.dart' show immutable;
+import 'package:flutter/foundation.dart' show immutable, listEquals;
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 
 /// Immutable domain entity representing a study subject (`public.subjects`).
 @immutable
@@ -12,6 +13,7 @@ class Subject {
     this.icon = 'menu_book',
     this.examType = 'general',
     this.sortOrder = 0,
+    this.enabledCheckpoints = SyllabusCheckpoint.defaultEnabledValues,
     this.createdAt,
     this.updatedAt,
   });
@@ -39,10 +41,13 @@ class Subject {
   /// Display ordering index (`>= 0`).
   final int sortOrder;
 
-  /// Creation timestamp managed by PostgreSQL.
+  /// Checkpoints active for this subject's syllabus ('study', 'practice', etc).
+  final List<String> enabledCheckpoints;
+
+  /// Creation timestamp managed by database.
   final DateTime? createdAt;
 
-  /// Last update timestamp managed by PostgreSQL.
+  /// Last update timestamp managed by database.
   final DateTime? updatedAt;
 
   /// Returns a copy of this [Subject] with specified fields overridden.
@@ -54,6 +59,7 @@ class Subject {
     String? icon,
     String? examType,
     int? sortOrder,
+    List<String>? enabledCheckpoints,
     Object? createdAt = _unset,
     Object? updatedAt = _unset,
   }) {
@@ -65,6 +71,7 @@ class Subject {
       icon: icon ?? this.icon,
       examType: examType ?? this.examType,
       sortOrder: sortOrder ?? this.sortOrder,
+      enabledCheckpoints: enabledCheckpoints ?? this.enabledCheckpoints,
       createdAt: identical(createdAt, _unset)
           ? this.createdAt
           : createdAt as DateTime?,
@@ -85,6 +92,7 @@ class Subject {
         other.icon == icon &&
         other.examType == examType &&
         other.sortOrder == sortOrder &&
+        listEquals(other.enabledCheckpoints, enabledCheckpoints) &&
         other.createdAt == createdAt &&
         other.updatedAt == updatedAt;
   }
@@ -98,6 +106,7 @@ class Subject {
         icon,
         examType,
         sortOrder,
+        Object.hashAll(enabledCheckpoints),
         createdAt,
         updatedAt,
       );

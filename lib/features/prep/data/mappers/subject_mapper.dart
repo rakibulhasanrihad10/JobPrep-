@@ -1,10 +1,33 @@
+import 'dart:convert' show jsonDecode;
+
 import 'package:job_prep/features/prep/data/mappers/prep_json_helpers.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
 
 /// Maps between PostgreSQL `public.subjects` JSON rows and [Subject].
 abstract final class SubjectMapper {
   /// Deserializes a single `subjects` JSON row.
   static Subject fromJson(Map<String, dynamic> json) {
+    List<String> parseCheckpoints(dynamic raw) {
+      if (raw is List) {
+        return raw
+            .map((e) => e.toString().trim())
+            .where((s) => s.isNotEmpty)
+            .toList();
+      } else if (raw is String && raw.trim().isNotEmpty) {
+        try {
+          final decoded = jsonDecode(raw);
+          if (decoded is List) {
+            return decoded
+                .map((e) => e.toString().trim())
+                .where((s) => s.isNotEmpty)
+                .toList();
+          }
+        } on Object catch (_) {}
+      }
+      return SyllabusCheckpoint.defaultEnabledValues;
+    }
+
     return Subject(
       id: PrepJsonHelpers.readRequiredString(json, 'id'),
       userId: PrepJsonHelpers.readRequiredString(json, 'user_id'),
@@ -28,6 +51,7 @@ abstract final class SubjectMapper {
           ) ??
           'general',
       sortOrder: PrepJsonHelpers.readRequiredInt(json, 'sort_order'),
+      enabledCheckpoints: parseCheckpoints(json['enabled_checkpoints']),
       createdAt: PrepJsonHelpers.readOptionalDateTime(json, 'created_at'),
       updatedAt: PrepJsonHelpers.readOptionalDateTime(json, 'updated_at'),
     );
@@ -49,6 +73,7 @@ abstract final class SubjectMapper {
       'icon': subject.icon,
       'exam_type': subject.examType,
       'sort_order': subject.sortOrder,
+      'enabled_checkpoints': subject.enabledCheckpoints,
       'created_at': subject.createdAt?.toUtc().toIso8601String(),
       'updated_at': subject.updatedAt?.toUtc().toIso8601String(),
     };
@@ -66,6 +91,7 @@ abstract final class SubjectMapper {
       'exam_type':
           subject.examType.trim().isEmpty ? 'general' : subject.examType.trim(),
       'sort_order': subject.sortOrder < 0 ? 0 : subject.sortOrder,
+      'enabled_checkpoints': subject.enabledCheckpoints,
     };
   }
 
@@ -78,6 +104,7 @@ abstract final class SubjectMapper {
       'exam_type':
           subject.examType.trim().isEmpty ? 'general' : subject.examType.trim(),
       'sort_order': subject.sortOrder < 0 ? 0 : subject.sortOrder,
+      'enabled_checkpoints': subject.enabledCheckpoints,
     };
   }
 }

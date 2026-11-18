@@ -2,20 +2,25 @@ import 'dart:math' as math;
 
 import 'package:job_prep/features/circulars/domain/entities/circular.dart';
 import 'package:job_prep/features/circulars/domain/entities/circular_exam_date.dart';
+import 'package:job_prep/features/prep/domain/entities/prep_enums.dart';
 import 'package:job_prep/features/prep/domain/entities/prep_material.dart';
 import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan_snapshot.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
+import 'package:job_prep/features/prep/domain/entities/topic.dart';
 import 'package:job_prep/features/prep/domain/utils/study_plan_calculator.dart';
+import 'package:job_prep/features/prep/domain/utils/topic_plan_calculator.dart';
 
-/// Builds a live [StudyPlanSnapshot] from [plan], [today], active materials,
-/// recent progress logs, and optional subject or circular metadata.
+/// Builds a live [StudyPlanSnapshot] from [plan], [today], active materials
+/// or syllabus topics, recent progress logs, and optional subject or circular
+/// metadata.
 StudyPlanSnapshot assembleStudyPlanSnapshot({
   required StudyPlan plan,
   required DateTime today,
   required Iterable<PrepMaterial> materials,
   required Iterable<ProgressLog> recentLogs,
+  Iterable<Topic>? topics,
   Subject? subject,
   Circular? circular,
   CircularExamDate? examDate,
@@ -30,21 +35,45 @@ StudyPlanSnapshot assembleStudyPlanSnapshot({
   final activeMaterialIds = <String>{};
   final postponedMaterials = <PrepMaterial>[];
 
-  for (final material in materials) {
-    if (scopeId != null && material.subjectId != scopeId) {
-      continue;
-    }
-    if (postponedSet.contains(material.id)) {
-      postponedMaterials.add(material);
-      continue;
-    }
-    activeMaterialIds.add(material.id);
-    final total = math.max(0, material.totalUnits);
-    final completed = math.max(0, material.completedUnits);
-    totalUnits += total;
-    completedUnits += math.min(total, completed);
-    if (total > completed) {
-      remainingUnits += total - completed;
+  final isTopicBasis =
+      plan.planBasis == StudyPlanBasis.syllabusTopics && topics != null;
+
+  if (isTopicBasis) {
+    final scopedTopics = topics.where((t) {
+      if (scopeId != null && t.subjectId != scopeId) return false;
+      return true;
+    }).toList();
+
+    final totalWeighted =
+        TopicPlanCalculator.calculateTotalWeightedTopics(scopedTopics);
+    final remainingWeighted =
+        TopicPlanCalculator.calculateRemainingWeightedTopics(
+      scopedTopics,
+      enabledCheckpoints: subject?.enabledCheckpoints ??
+          SyllabusCheckpoint.defaultEnabledValues,
+    );
+    final completedWeighted = math.max(0, totalWeighted - remainingWeighted);
+
+    totalUnits = totalWeighted.round();
+    remainingUnits = remainingWeighted.ceil();
+    completedUnits = completedWeighted.round();
+  } else {
+    for (final material in materials) {
+      if (scopeId != null && material.subjectId != scopeId) {
+        continue;
+      }
+      if (postponedSet.contains(material.id)) {
+        postponedMaterials.add(material);
+        continue;
+      }
+      activeMaterialIds.add(material.id);
+      final total = math.max(0, material.totalUnits);
+      final completed = math.max(0, material.completedUnits);
+      totalUnits += total;
+      completedUnits += math.min(total, completed);
+      if (total > completed) {
+        remainingUnits += total - completed;
+      }
     }
   }
 
@@ -115,16 +144,27 @@ StudyPlanSnapshot assembleStudyPlanSnapshot({
       ? missedUnits / days.studyDaysLeft
       : 0.0;
 
-  final dailyTargetResult = StudyPlanCalculator.calculateDailyTarget(
-    remainingUnits: remainingUnits,
-    studyDaysLeft: days.studyDaysLeft,
-  );
+  final dailyTargetResult = isTopicBasis
+      ? TopicPlanCalculator.calculateDailyTopicTarget(
+          remainingWeightedTopics: remainingUnits.toDouble(),
+          studyDaysLeft: days.studyDaysLeft,
+        )
+      : StudyPlanCalculator.calculateDailyTarget(
+          remainingUnits: remainingUnits,
+          studyDaysLeft: days.studyDaysLeft,
+        );
+
   final unitsAtStartOfToday =
       remainingUnits <= 0 ? 0 : remainingUnits + todayCompletedUnits;
-  final todayTargetResult = StudyPlanCalculator.calculateDailyTarget(
-    remainingUnits: unitsAtStartOfToday,
-    studyDaysLeft: days.studyDaysLeft,
-  );
+  final todayTargetResult = isTopicBasis
+      ? TopicPlanCalculator.calculateDailyTopicTarget(
+          remainingWeightedTopics: unitsAtStartOfToday.toDouble(),
+          studyDaysLeft: days.studyDaysLeft,
+        )
+      : StudyPlanCalculator.calculateDailyTarget(
+          remainingUnits: unitsAtStartOfToday,
+          studyDaysLeft: days.studyDaysLeft,
+        );
 
   final todayProgress = remainingUnits <= 0
       ? 1.0
@@ -132,15 +172,24 @@ StudyPlanSnapshot assembleStudyPlanSnapshot({
           ? 0.0
           : (todayCompletedUnits / todayTargetResult.rounded).clamp(0.0, 1.0));
 
-  final scheduleStatus = StudyPlanCalculator.determineScheduleStatus(
-    totalSpanUnits: totalSpanUnits,
-    completedSinceStart: completedSinceStart,
-    completedBeforeToday: completedBeforeToday,
-    remainingUnits: remainingUnits,
-    studyDaysLeft: days.studyDaysLeft,
-    elapsedStudyDays: elapsedStudyDays,
-    baselineDailyPace: baselineDailyPace,
-  );
+  final scheduleStatus = isTopicBasis
+      ? TopicPlanCalculator.determineTopicScheduleStatus(
+          totalWeightedTopics: totalSpanUnits.toDouble(),
+          completedWeightedTopics: completedSinceStart.toDouble(),
+          remainingWeightedTopics: remainingUnits.toDouble(),
+          studyDaysLeft: days.studyDaysLeft,
+          elapsedStudyDays: elapsedStudyDays,
+          baselineDailyPace: baselineDailyPace,
+        )
+      : StudyPlanCalculator.determineScheduleStatus(
+          totalSpanUnits: totalSpanUnits,
+          completedSinceStart: completedSinceStart,
+          completedBeforeToday: completedBeforeToday,
+          remainingUnits: remainingUnits,
+          studyDaysLeft: days.studyDaysLeft,
+          elapsedStudyDays: elapsedStudyDays,
+          baselineDailyPace: baselineDailyPace,
+        );
 
   final maxPace = plan.maxDailyPace;
   final isOverPaceLimit = maxPace != null &&

@@ -5,6 +5,7 @@ import 'package:job_prep/features/circulars/domain/entities/circular_filter.dart
 import 'package:job_prep/features/circulars/domain/errors/circular_failure.dart';
 import 'package:job_prep/features/circulars/domain/repositories/circular_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+import 'package:uuid/uuid.dart';
 
 /// Supabase PostgREST implementation of [CircularRepository].
 class SupabaseCircularRepository implements CircularRepository {
@@ -63,14 +64,17 @@ class SupabaseCircularRepository implements CircularRepository {
 
     try {
       final currentUserId = _client.auth.currentUser?.id;
+      final circularWithId = circular.id.trim().isEmpty
+          ? circular.copyWith(id: const Uuid().v4())
+          : circular;
       final payload = CircularMapper.toInsertJson(
-        circular,
-        userId: circular.userId.trim().isEmpty ? currentUserId : null,
+        circularWithId,
+        userId: circularWithId.userId.trim().isEmpty ? currentUserId : null,
       );
 
       final row = await _client
           .from(_table)
-          .insert(payload)
+          .upsert(payload, onConflict: 'id')
           .select(_selectWithRelations)
           .single();
 

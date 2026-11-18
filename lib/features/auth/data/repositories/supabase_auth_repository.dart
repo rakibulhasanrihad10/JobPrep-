@@ -186,6 +186,43 @@ class SupabaseAuthRepository implements AuthRepository {
   }
 
   @override
+  Future<AuthUser> updateDisplayName({required String? displayName}) async {
+    try {
+      final trimmed = displayName?.trim();
+      final nextName = (trimmed == null || trimmed.isEmpty) ? null : trimmed;
+      final response = await _client.auth.updateUser(
+        supabase.UserAttributes(
+          data: <String, dynamic>{'full_name': nextName},
+        ),
+      );
+      final user = response.user;
+      if (user == null) {
+        throw const UnknownAuthFailure(
+          message: 'Profile update completed without a user payload.',
+        );
+      }
+      return AuthUserMapper.fromSupabase(user);
+    } catch (error) {
+      throw AuthErrorMapper.map(error);
+    }
+  }
+
+  @override
+  Future<void> deleteMyAccount() async {
+    try {
+      await _client.rpc<void>('delete_my_account');
+      _inPasswordRecovery = false;
+      try {
+        await _client.auth.signOut();
+      } on Object {
+        // User row is already removed server-side; ignore sign-out errors.
+      }
+    } catch (error) {
+      throw AuthErrorMapper.map(error);
+    }
+  }
+
+  @override
   Future<void> signOut() async {
     try {
       await _client.auth.signOut();

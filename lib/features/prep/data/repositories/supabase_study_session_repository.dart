@@ -4,6 +4,7 @@ import 'package:job_prep/features/prep/domain/entities/study_session.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/repositories/study_session_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+import 'package:uuid/uuid.dart';
 
 /// Supabase PostgREST implementation of [StudySessionRepository] backed by
 /// `public.study_sessions`.
@@ -50,11 +51,18 @@ class SupabaseStudySessionRepository implements StudySessionRepository {
 
     try {
       final currentUserId = _client.auth.currentUser?.id;
+      final sessionWithId = session.id.trim().isEmpty
+          ? session.copyWith(id: const Uuid().v4())
+          : session;
       final payload = StudySessionMapper.toInsertJson(
-        session,
-        userId: session.userId.trim().isEmpty ? currentUserId : null,
+        sessionWithId,
+        userId: sessionWithId.userId.trim().isEmpty ? currentUserId : null,
       );
-      final row = await _client.from(_table).insert(payload).select().single();
+      final row = await _client
+          .from(_table)
+          .upsert(payload, onConflict: 'id')
+          .select()
+          .single();
       return StudySessionMapper.fromJson(row);
     } on Object catch (error) {
       throw PrepErrorMapper.map(error);

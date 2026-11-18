@@ -166,66 +166,89 @@ class _CircularsScreenState extends ConsumerState<CircularsScreen> {
         activeSelectedId != null &&
         widget.onTapCircular == null;
 
-    Widget buildMasterColumn({required bool forceCards}) {
+    Widget buildMasterScroll({
+      required bool forceCards,
+      required EdgeInsetsGeometry padding,
+      Key? scrollKey,
+    }) {
       return LayoutBuilder(
         builder: (context, constraints) {
           final useDesktopTable = !forceCards &&
               isExpandedViewport &&
               !breakpoints.isCompact(constraints.maxWidth);
 
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CircularsToolbar(
-                searchController: _searchController,
-                visibleCount: visibleCount,
-                filter: effectiveFilter,
-                filtersExpanded: _filtersExpanded,
-                onToggleFilters: () {
-                  setState(() => _filtersExpanded = !_filtersExpanded);
-                },
-                onClearAllFilters: _clearAllFilters,
-                onRefresh: _refresh,
-                onAddCircular: _openAddForm,
+          final listSliver = filteredAsync.when(
+            loading: () => const SliverToBoxAdapter(
+              child: CircularsLoadingState(),
+            ),
+            error: (error, _) => SliverToBoxAdapter(
+              child: CircularsErrorState(
+                error: error,
+                onRetry: _refresh,
               ),
-              SizedBox(height: spacing.lg),
-              filteredAsync.when(
-                loading: () => const CircularsLoadingState(),
-                error: (error, _) => CircularsErrorState(
-                  error: error,
-                  onRetry: _refresh,
-                ),
-                data: (circulars) {
-                  if (circulars.isEmpty) {
-                    final hasRawItems =
-                        rawListAsync.asData?.value.isNotEmpty ?? false;
-                    return CircularsEmptyState(
-                      isFiltered:
-                          hasRawItems || effectiveFilter.hasActiveFilters,
-                      onClearFilters: _clearAllFilters,
-                    );
-                  }
+            ),
+            data: (circulars) {
+              if (circulars.isEmpty) {
+                final hasRawItems =
+                    rawListAsync.asData?.value.isNotEmpty ?? false;
+                return SliverToBoxAdapter(
+                  child: CircularsEmptyState(
+                    isFiltered: hasRawItems || effectiveFilter.hasActiveFilters,
+                    onClearFilters: _clearAllFilters,
+                  ),
+                );
+              }
 
-                  if (useDesktopTable) {
-                    return CircularsTableView(
-                      circulars: circulars,
-                      onTapCircular: (c) => _openCircularDetail(
-                        c,
-                        isExpanded: isExpandedViewport,
-                      ),
-                    );
-                  }
-
-                  return CircularsCardList(
+              if (useDesktopTable) {
+                return SliverToBoxAdapter(
+                  child: CircularsTableView(
                     circulars: circulars,
-                    selectedCircularId:
-                        showMasterDetail ? activeSelectedId : null,
                     onTapCircular: (c) => _openCircularDetail(
                       c,
                       isExpanded: isExpandedViewport,
                     ),
-                  );
-                },
+                  ),
+                );
+              }
+
+              return SliverCircularsCardList(
+                circulars: circulars,
+                selectedCircularId: showMasterDetail ? activeSelectedId : null,
+                onTapCircular: (c) => _openCircularDetail(
+                  c,
+                  isExpanded: isExpandedViewport,
+                ),
+              );
+            },
+          );
+
+          return CustomScrollView(
+            key: scrollKey,
+            slivers: [
+              SliverPadding(
+                padding: padding,
+                sliver: SliverMainAxisGroup(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: CircularsToolbar(
+                        searchController: _searchController,
+                        visibleCount: visibleCount,
+                        filter: effectiveFilter,
+                        filtersExpanded: _filtersExpanded,
+                        onToggleFilters: () {
+                          setState(() => _filtersExpanded = !_filtersExpanded);
+                        },
+                        onClearAllFilters: _clearAllFilters,
+                        onRefresh: _refresh,
+                        onAddCircular: _openAddForm,
+                      ),
+                    ),
+                    SliverToBoxAdapter(
+                      child: SizedBox(height: spacing.lg),
+                    ),
+                    listSliver,
+                  ],
+                ),
               ),
             ],
           );
@@ -234,23 +257,23 @@ class _CircularsScreenState extends ConsumerState<CircularsScreen> {
     }
 
     if (!showMasterDetail) {
-      return SingleChildScrollView(
+      return buildMasterScroll(
+        forceCards: false,
         padding: spacing.insetsAllXl,
-        child: buildMasterColumn(forceCards: false),
       );
     }
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final masterPane = SingleChildScrollView(
-          key: const ValueKey('circulars-master-pane-scroll'),
+        final masterPane = buildMasterScroll(
+          forceCards: true,
+          scrollKey: const ValueKey('circulars-master-pane-scroll'),
           padding: EdgeInsets.fromLTRB(
             spacing.xl,
             spacing.xl,
             spacing.sm,
             spacing.xl,
           ),
-          child: buildMasterColumn(forceCards: true),
         );
 
         final detailPane = SingleChildScrollView(

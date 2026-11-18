@@ -5920,5 +5920,1090 @@
   "settingsRunSetupAgainButton": "Run setup again",
   "@settingsRunSetupAgainButton": {
     "description": "Button in Settings reopening the onboarding wizard"
+  },
+  "settingsProfileTitle": "Profile",
+  "@settingsProfileTitle": {
+    "description": "Section title for user profile controls in Settings"
+  },
+  "settingsProfileSubtitle": "Manage your display name, account email, password, and active session.",
+  "@settingsProfileSubtitle": {
+    "description": "Subtitle under the Profile settings card"
+  },
+  "settingsDisplayNameLabel": "Display name",
+  "@settingsDisplayNameLabel": {
+    "description": "Label for the display name input in Profile settings"
+  },
+  "settingsDisplayNameSaveButton": "Save name",
+  "@settingsDisplayNameSaveButton": {
+    "description": "Button saving edited display name in Settings"
+  },
+  "settingsDisplayNameSaved": "Display name updated",
+  "@settingsDisplayNameSaved": {
+    "description": "Feedback shown when display name saves"
+  },
+  "settingsDisplayNameSaveError": "Could not update display name. Please try again.",
+  "@settingsDisplayNameSaveError": {
+    "description": "Error shown when saving display name fails"
+  },
+  "settingsEmailLabel": "Email",
+  "@settingsEmailLabel": {
+    "description": "Label preceding user account email in Settings"
+  },
+  "settingsEmailUnavailable": "No email linked",
+  "@settingsEmailUnavailable": {
+    "description": "Fallback when authenticated user has no email"
+  },
+  "settingsChangePasswordButton": "Change password",
+  "@settingsChangePasswordButton": {
+    "description": "Button opening change password dialog"
+  },
+  "settingsChangePasswordTitle": "Change Password",
+  "@settingsChangePasswordTitle": {
+    "description": "Title of the change password dialog"
+  },
+  "settingsNewPasswordLabel": "New password",
+  "@settingsNewPasswordLabel": {
+    "description": "Field label for new account password"
+  },
+  "settingsConfirmPasswordLabel": "Confirm new password",
+  "@settingsConfirmPasswordLabel": {
+    "description": "Field label for confirming new account password"
+  },
+  "settingsPasswordSaveButton": "Update password",
+  "@settingsPasswordSaveButton": {
+    "description": "Submit button for changing account password"
+  },
+  "settingsPasswordSaved": "Password updated successfully",
+  "@settingsPasswordSaved": {
+    "description": "Feedback shown after password update succeeds"
+  },
+  "settingsPasswordError": "Could not update password. Please verify your session and try again.",
+  "@settingsPasswordError": {
+    "description": "Fallback error shown when password update fails"
+  },
+  "settingsSignOutButton": "Sign out",
+  "@settingsSignOutButton": {
+    "description": "Button signing user out from Settings"
+  },
+  "settingsAppearanceTitle": "Appearance",
+  "@settingsAppearanceTitle": {
+    "description": "Section title for theme and visual effects settings"
+  },
+  "settingsAppearanceSubtitle": "Choose your color theme and visual effect preferences.",
+  "@settingsAppearanceSubtitle": {
+    "description": "Subtitle under Appearance settings card"
+  },
+  "settingsReduceEffectsLabel": "Reduce visual effects",
+  "@settingsReduceEffectsLabel": {
+    "description": "Switch label replacing glass blur with solid fills and skipping animations"
+  },
+  "settingsReduceEffectsHint": "Replace frosted glass blur with solid fills and skip motion animations.",
+  "@settingsReduceEffectsHint": {
+    "description": "Helper text under reduce effects switch"
+  },
+  "settingsLanguageTitle": "Language",
+  "@settingsLanguageTitle": {
+    "description": "Section title for app language and numeral preferences"
+  },
+  "settingsLanguageSubtitle": "Choose your interface language and numeral format.",
+  "@settingsLanguageSubtitle": {
+    "description": "Subtitle under Language settings card"
+  },
+  "settingsBanglaDigitsLabel": "Use Bangla digits",
+  "@settingsBanglaDigitsLabel": {
+    "description": "Switch label enabling Bangla numerals"
+  },
+  "settingsBanglaDigitsHint": "Display dates, counters, and progress figures using Bangla digits.",
+  "@settingsBanglaDigitsHint": {
+    "description": "Helper text explaining Bangla digits toggle"
+  },
+  "settingsNotificationsSectionTitle": "Notifications",
+  "@settingsNotificationsSectionTitle": {
+    "description": "Section heading grouping email reminders and in-app notification settings"
+  },
+  "settingsStudyTitle": "Study",
+  "@settingsStudyTitle": {
+    "description": "Section heading for timer defaults and onboarding setup rerun"
+  },
+  "settingsStudySubtitle": "Set default focus & break timer lengths or rerun onboarding.",
+  "@settingsStudySubtitle": {
+    "description": "Subtitle under Study settings card"
+  },
+  "settingsTimerFocusMinutesLabel": "Focus length (minutes)",
+  "@settingsTimerFocusMinutesLabel": {
+    "description": "Input label for default Pomodoro focus duration"
+  },
+  "settingsTimerShortBreakLabel": "Short break (minutes)",
+  "@settingsTimerShortBreakLabel": {
+    "description": "Input label for default Pomodoro short break duration"
+  },
+  "settingsTimerLongBreakLabel": "Long break (minutes)",
+  "@settingsTimerLongBreakLabel": {
+    "description": "Input label for default Pomodoro long break duration"
+  },
+  "settingsStudySaveTimerButton": "Save timer defaults",
+  "@settingsStudySaveTimerButton": {
+    "description": "Button saving focus and break lengths"
+  },
+  "settingsStudyTimerSaved": "Study timer defaults saved",
+  "@settingsStudyTimerSaved": {
+    "description": "Feedback shown when timer defaults save"
+  },
+  "settingsStudyTimerInvalidError": "Enter valid minutes (Focus 5–180, Short break 1–60, Long break 5–90).",
+  "@settingsStudyTimerInvalidError": {
+    "description": "Validation error when timer lengths are outside valid bounds"
+  },
+  "vaultChangePassphraseButton": "Change passphrase",
+  "@vaultChangePassphraseButton": {
+    "description": "Button in Security section opening change vault passphrase dialog"
+  },
+  "vaultChangePassphraseTitle": "Change Vault Passphrase",
+  "@vaultChangePassphraseTitle": {
+    "description": "Title of dialog for re-keying vault with a new passphrase"
+  },
+  "vaultChangePassphraseBody": "Verify your current passphrase, then choose a new passphrase to re-encrypt all saved portal logins.",
+  "@vaultChangePassphraseBody": {
+    "description": "Instruction body inside change vault passphrase dialog"
+  },
+  "vaultCurrentPassphraseLabel": "Current passphrase",
+  "@vaultCurrentPassphraseLabel": {
+    "description": "Label for current passphrase input"
+  },
+  "vaultNewPassphraseLabel": "New passphrase",
+  "@vaultNewPassphraseLabel": {
+    "description": "Label for new vault passphrase input"
+  },
+  "vaultConfirmNewPassphraseLabel": "Confirm new passphrase",
+  "@vaultConfirmNewPassphraseLabel": {
+    "description": "Label for confirming new vault passphrase"
+  },
+  "vaultChangePassphraseSubmit": "Update passphrase",
+  "@vaultChangePassphraseSubmit": {
+    "description": "Submit action button inside change vault passphrase dialog"
+  },
+  "vaultChangePassphraseSuccess": "Vault passphrase updated",
+  "@vaultChangePassphraseSuccess": {
+    "description": "Status message shown after changing vault passphrase"
+  },
+  "vaultCurrentPassphraseWrongError": "Current passphrase is incorrect.",
+  "@vaultCurrentPassphraseWrongError": {
+    "description": "Error shown when current vault passphrase verification fails"
+  },
+  "settingsDataTitle": "Data & Account",
+  "@settingsDataTitle": {
+    "description": "Section title for data export and account deletion"
+  },
+  "settingsDataSubtitle": "Download a full backup of your circulars and study progress, or delete your account permanently.",
+  "@settingsDataSubtitle": {
+    "description": "Subtitle under Data settings card"
+  },
+  "settingsExportCsvButton": "Export CSV",
+  "@settingsExportCsvButton": {
+    "description": "Button exporting circulars and prep data as CSV"
+  },
+  "settingsExportJsonButton": "Export JSON",
+  "@settingsExportJsonButton": {
+    "description": "Button exporting circulars and prep data as JSON"
+  },
+  "settingsExportSuccess": "Exported {fileName}",
+  "@settingsExportSuccess": {
+    "description": "Confirmation message shown after saving exported archive",
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsExportError": "Could not export data. Please try again.",
+  "@settingsExportError": {
+    "description": "Error shown when data export fails"
+  },
+  "settingsDeleteAccountButton": "Delete my account",
+  "@settingsDeleteAccountButton": {
+    "description": "Destructive action opening delete account confirmation dialog"
+  },
+  "settingsDeleteAccountDialogTitle": "Delete account permanently?",
+  "@settingsDeleteAccountDialogTitle": {
+    "description": "Confirmation dialog heading for deleting user account"
+  },
+  "settingsDeleteAccountWarning": "This permanently removes your account, saved circulars, attachments, study progress, mock tests, revision marks, vault logins, and settings. This action cannot be undone.",
+  "@settingsDeleteAccountWarning": {
+    "description": "Irreversible warning inside delete account confirmation dialog"
+  },
+  "settingsDeleteAccountAckLabel": "I understand all my data will be permanently deleted.",
+  "@settingsDeleteAccountAckLabel": {
+    "description": "Checkbox label confirming account deletion"
+  },
+  "settingsDeleteAccountConfirmButton": "Delete permanently",
+  "@settingsDeleteAccountConfirmButton": {
+    "description": "Final confirmation button deleting account"
+  },
+  "settingsDeleteAccountError": "Could not delete account right now. Please try again.",
+  "@settingsDeleteAccountError": {
+    "description": "Error shown inside dialog when account deletion fails"
+  },
+  "settingsSyncWarning": "Saved locally on this device. Connect to sync across devices.",
+  "@settingsSyncWarning": {
+    "description": "Non-blocking warning shown when remote settings sync fails"
+  },
+  "prepShowMoreItems": "Show {count} more",
+  "@prepShowMoreItems": {
+    "description": "Button label revealing the next batch of items in a long list",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "legalPrivacyPolicyTitle": "Privacy Policy",
+  "@legalPrivacyPolicyTitle": {
+    "description": "Title of the Privacy Policy document"
+  },
+  "legalPrivacyPolicySubtitle": "Client-side encryption, zero tracking, and user data ownership.",
+  "@legalPrivacyPolicySubtitle": {
+    "description": "Subtitle describing Privacy Policy tenets"
+  },
+  "legalTermsOfServiceTitle": "Terms of Service",
+  "@legalTermsOfServiceTitle": {
+    "description": "Title of the Terms of Service document"
+  },
+  "legalTermsOfServiceSubtitle": "Open, transparent, and built for your exam preparation.",
+  "@legalTermsOfServiceSubtitle": {
+    "description": "Subtitle describing Terms of Service"
+  },
+  "legalBackToSettings": "Back to Settings",
+  "@legalBackToSettings": {
+    "description": "Button returning to Settings screen"
+  },
+  "legalBackToApp": "Back to App",
+  "@legalBackToApp": {
+    "description": "Button returning to previous view"
+  },
+  "legalPrivacySection1Title": "Zero Third-Party Tracking",
+  "@legalPrivacySection1Title": {
+    "description": "Privacy policy section 1 header"
+  },
+  "legalPrivacySection1Body": "JobPrep does not track you, sell your personal data, or include advertising SDKs. All analytics and crash reports, if enabled, scrub sensitive and personally identifiable information before leaving your browser.",
+  "@legalPrivacySection1Body": {
+    "description": "Privacy policy section 1 body text"
+  },
+  "legalPrivacySection2Title": "Client-Side Vault Encryption",
+  "@legalPrivacySection2Title": {
+    "description": "Privacy policy section 2 header"
+  },
+  "legalPrivacySection2Body": "Your job portal credentials and sensitive passwords are encrypted directly on your device using AES-GCM-256 and PBKDF2 keys derived from your secret passphrase. Your passphrase is never sent, stored, or logged anywhere.",
+  "@legalPrivacySection2Body": {
+    "description": "Privacy policy section 2 body text"
+  },
+  "legalPrivacySection3Title": "Row-Level Security & Isolation",
+  "@legalPrivacySection3Title": {
+    "description": "Privacy policy section 3 header"
+  },
+  "legalPrivacySection3Body": "All circulars, study progress, mock tests, and notes stored in the database are strictly protected by Row-Level Security (RLS) policies. Only you can read or modify your own records.",
+  "@legalPrivacySection3Body": {
+    "description": "Privacy policy section 3 body text"
+  },
+  "legalPrivacySection4Title": "Export & Account Deletion",
+  "@legalPrivacySection4Title": {
+    "description": "Privacy policy section 4 header"
+  },
+  "legalPrivacySection4Body": "You can export all your data at any time in CSV or JSON format from Settings. If you choose to delete your account, all your records are permanently and irrevocably deleted.",
+  "@legalPrivacySection4Body": {
+    "description": "Privacy policy section 4 body text"
+  },
+  "legalTermsSection1Title": "Open Educational Use",
+  "@legalTermsSection1Title": {
+    "description": "Terms of service section 1 header"
+  },
+  "legalTermsSection1Body": "JobPrep is an educational dashboard designed to help candidates track job circulars, manage study timelines, and practice mock tests effectively.",
+  "@legalTermsSection1Body": {
+    "description": "Terms of service section 1 body text"
+  },
+  "legalTermsSection2Title": "Circulars Accuracy Disclaimer",
+  "@legalTermsSection2Title": {
+    "description": "Terms of service section 2 header"
+  },
+  "legalTermsSection2Body": "Official circular dates, qualifications, and deadlines are subject to change by recruiting authorities. Always verify final application deadlines and details with official gazettes and portals.",
+  "@legalTermsSection2Body": {
+    "description": "Terms of service section 2 body text"
+  },
+  "legalTermsSection3Title": "User Responsibility",
+  "@legalTermsSection3Title": {
+    "description": "Terms of service section 3 header"
+  },
+  "legalTermsSection3Body": "Because portal passwords in your vault are encrypted with a private passphrase known only to you, losing your passphrase means encrypted vault data cannot be recovered.",
+  "@legalTermsSection3Body": {
+    "description": "Terms of service section 3 body text"
+  },
+  "legalPrivacyPolicyLink": "Privacy Policy",
+  "@legalPrivacyPolicyLink": {
+    "description": "Navigation link to privacy policy"
+  },
+  "legalTermsOfServiceLink": "Terms of Service",
+  "@legalTermsOfServiceLink": {
+    "description": "Navigation link to terms of service"
+  },
+  "authContinueWithoutAccount": "Continue without account",
+  "@authContinueWithoutAccount": {
+    "description": "Secondary quieter button on login screen to use app in guest mode"
+  },
+  "authDataStaysOnDevice": "Your data stays on this device.",
+  "@authDataStaysOnDevice": {
+    "description": "Subtitle below Continue without account button"
+  },
+  "guestConfirmationTitle": "Continue without an account",
+  "@guestConfirmationTitle": {
+    "description": "Title of the guest mode confirmation sheet"
+  },
+  "guestConfirmDeviceOnly": "Data is stored only on this device and browser.",
+  "@guestConfirmDeviceOnly": {
+    "description": "First point in guest confirmation sheet"
+  },
+  "guestConfirmDataLoss": "Clearing browser data or uninstalling the app deletes it permanently.",
+  "@guestConfirmDataLoss": {
+    "description": "Second point in guest confirmation sheet warning about data loss"
+  },
+  "guestConfirmNoSync": "There is no cloud sync and no email reminders.",
+  "@guestConfirmNoSync": {
+    "description": "Third point in guest confirmation sheet about missing features"
+  },
+  "guestConfirmMoveDataLater": "You can create an account later and move your data across.",
+  "@guestConfirmMoveDataLater": {
+    "description": "Fourth point in guest confirmation sheet about future account upgrade"
+  },
+  "guestConfirmUnderstandButton": "I understand",
+  "@guestConfirmUnderstandButton": {
+    "description": "Explicit acknowledgment button in guest confirmation sheet"
+  },
+  "guestConfirmCancelButton": "Go back",
+  "@guestConfirmCancelButton": {
+    "description": "Cancel button in guest confirmation sheet"
+  },
+  "accountGateCloudSyncTitle": "Cloud Sync requires an account",
+  "@accountGateCloudSyncTitle": {
+    "description": "Feature gate title for cloud sync"
+  },
+  "accountGateEmailRemindersTitle": "Email reminders require an account",
+  "@accountGateEmailRemindersTitle": {
+    "description": "Feature gate title for email reminders"
+  },
+  "accountGateFileAttachmentsTitle": "File attachments require an account",
+  "@accountGateFileAttachmentsTitle": {
+    "description": "Feature gate title for circular file attachments"
+  },
+  "accountGateDeleteAccountTitle": "Account deletion requires a registered account",
+  "@accountGateDeleteAccountTitle": {
+    "description": "Feature gate title for account deletion"
+  },
+  "accountGateDescription": "Create a free JobPrep account to sync across devices, receive reminders, and upload files.",
+  "@accountGateDescription": {
+    "description": "Explanation shown inside account-only feature gate"
+  },
+  "accountGateCreateAccountButton": "Create an account to use this",
+  "@accountGateCreateAccountButton": {
+    "description": "Action button in account-only feature gate leading to login/signup"
+  },
+  "settingsGuestSectionTitle": "Guest Mode",
+  "@settingsGuestSectionTitle": {
+    "description": "Section header in Settings when app is running in guest mode"
+  },
+  "settingsGuestSectionSubtitle": "Your data is stored locally on this device.",
+  "@settingsGuestSectionSubtitle": {
+    "description": "Subtitle explaining guest mode in Settings"
+  },
+  "settingsStorageStatusTitle": "Storage status",
+  "@settingsStorageStatusTitle": {
+    "description": "Label for device storage persistence status in guest settings"
+  },
+  "settingsStoragePersistent": "Persistent (Protected from automatic clearing)",
+  "@settingsStoragePersistent": {
+    "description": "Storage status indicating browser persistent storage was granted"
+  },
+  "settingsStorageTransient": "Transient browser storage",
+  "@settingsStorageTransient": {
+    "description": "Storage status indicating standard transient browser storage"
+  },
+  "settingsStorageSafariWarning": "Browsers such as Safari on iPhone may clear site data after a period of inactivity unless the site is added to the Home Screen.",
+  "@settingsStorageSafariWarning": {
+    "description": "Warning shown on web regarding Safari 7-day storage eviction unless added to home screen"
+  },
+  "settingsBackupDataButton": "Back up my data",
+  "@settingsBackupDataButton": {
+    "description": "Placeholder button in guest settings for future data backup"
+  },
+  "settingsBackupPlaceholderMessage": "Backup and export features will be fully available in Phase 9C.",
+  "@settingsBackupPlaceholderMessage": {
+    "description": "Snackbar message shown when tapping Back up my data in Phase 9B"
+  },
+  "settingsCreateAccountButton": "Create an account",
+  "@settingsCreateAccountButton": {
+    "description": "Button in guest settings to navigate to login/signup"
+  },
+  "settingsEraseDataButton": "Erase all data on this device",
+  "@settingsEraseDataButton": {
+    "description": "Destructive button to wipe all local data from the device"
+  },
+  "eraseDataDialog1Title": "Erase all local data?",
+  "@eraseDataDialog1Title": {
+    "description": "First confirmation dialog title for erasing local data"
+  },
+  "eraseDataDialog1Message": "This will permanently delete all circulars, subjects, study progress, and settings stored on this device. This action cannot be undone.",
+  "@eraseDataDialog1Message": {
+    "description": "First confirmation dialog message explaining permanent deletion"
+  },
+  "eraseDataDialog1Confirm": "Continue",
+  "@eraseDataDialog1Confirm": {
+    "description": "Button to proceed to final erase confirmation"
+  },
+  "eraseDataDialogCancel": "Cancel",
+  "@eraseDataDialogCancel": {
+    "description": "Cancel button on erase confirmation dialogs"
+  },
+  "eraseDataDialog2Title": "Are you absolutely sure?",
+  "@eraseDataDialog2Title": {
+    "description": "Second confirmation dialog title for erasing local data"
+  },
+  "eraseDataDialog2Message": "Tap confirm below to permanently wipe all JobPrep data from this device.",
+  "@eraseDataDialog2Message": {
+    "description": "Second confirmation dialog message warning of immediate wipe"
+  },
+  "eraseDataDialog2Confirm": "Delete everything",
+  "@eraseDataDialog2Confirm": {
+    "description": "Final confirmation button to wipe all local data"
+  },
+  "eraseDataSuccessMessage": "All local data has been erased.",
+  "@eraseDataSuccessMessage": {
+    "description": "Feedback message after local data is wiped"
+  },
+  "settingsLastBackup": "Last backup: {time}",
+  "@settingsLastBackup": {
+    "description": "Label indicating when the last backup was taken",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsLastBackupNever": "Never",
+  "@settingsLastBackupNever": {
+    "description": "Shown when no backup has ever been taken"
+  },
+  "settingsLastBackupToday": "Today",
+  "@settingsLastBackupToday": {
+    "description": "Shown when last backup was taken today"
+  },
+  "settingsLastBackupYesterday": "Yesterday",
+  "@settingsLastBackupYesterday": {
+    "description": "Shown when last backup was taken yesterday"
+  },
+  "settingsLastBackupDaysAgo": "{count, plural, =1{1 day ago} other{{count} days ago}}",
+  "@settingsLastBackupDaysAgo": {
+    "description": "Relative days ago since last backup",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsBackupReminderTitle": "Time to back up your study data",
+  "@settingsBackupReminderTitle": {
+    "description": "Gentle in-app reminder card title for scheduled backups"
+  },
+  "settingsBackupReminderMessage": "Last backup was {days} days ago. You have made {changes} changes since.",
+  "@settingsBackupReminderMessage": {
+    "description": "Gentle reminder body with days elapsed and changes count",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "changes": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsBackupReminderAction": "Back up now",
+  "@settingsBackupReminderAction": {
+    "description": "CTA button in backup reminder banner"
+  },
+  "settingsBackupReminderDismiss": "Dismiss",
+  "@settingsBackupReminderDismiss": {
+    "description": "Dismiss button in backup reminder banner"
+  },
+  "settingsRestoreButton": "Restore from backup",
+  "@settingsRestoreButton": {
+    "description": "Action button to pick and restore a backup file"
+  },
+  "backupDialogTitle": "Back up study data",
+  "@backupDialogTitle": {
+    "description": "Dialog title for exporting a backup file"
+  },
+  "backupDialogDescription": "Create a downloadable backup file of all your circulars, subjects, notes, and study logs.",
+  "@backupDialogDescription": {
+    "description": "Dialog explanation of backup export"
+  },
+  "backupEncryptionRecommended": "Encrypt with passphrase (Recommended)",
+  "@backupEncryptionRecommended": {
+    "description": "Label recommending encryption for backup file"
+  },
+  "backupEncryptionNote": "Protects personal notes and encrypted portal credentials using AES-GCM. If you forget this passphrase, the backup cannot be recovered.",
+  "@backupEncryptionNote": {
+    "description": "Warning on irreversible loss if backup passphrase is forgotten"
+  },
+  "backupPassphraseLabel": "Backup passphrase",
+  "@backupPassphraseLabel": {
+    "description": "Label for backup passphrase input"
+  },
+  "backupPassphraseConfirmLabel": "Confirm passphrase",
+  "@backupPassphraseConfirmLabel": {
+    "description": "Label for confirming backup passphrase input"
+  },
+  "backupPassphraseMismatch": "Passphrases do not match",
+  "@backupPassphraseMismatch": {
+    "description": "Validation error when passphrases do not match"
+  },
+  "backupPassphraseTooShort": "Passphrase must be at least 8 characters",
+  "@backupPassphraseTooShort": {
+    "description": "Validation error when passphrase is less than 8 characters"
+  },
+  "backupExportEncryptedButton": "Export encrypted backup",
+  "@backupExportEncryptedButton": {
+    "description": "Button to download AES-GCM encrypted backup file"
+  },
+  "backupExportPlainWarning": "Warning: An unencrypted backup file contains personal study notes and encrypted portal logins in plain JSON format.",
+  "@backupExportPlainWarning": {
+    "description": "Warning displayed when choosing unencrypted export"
+  },
+  "backupExportPlainButton": "Export without passphrase",
+  "@backupExportPlainButton": {
+    "description": "Button to download plaintext backup file"
+  },
+  "backupExportSuccess": "Backup saved successfully ({fileName}).",
+  "@backupExportSuccess": {
+    "description": "Snackbar notification after backup completes",
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "restoreDialogTitle": "Restore study data",
+  "@restoreDialogTitle": {
+    "description": "Dialog title for restoring a backup file"
+  },
+  "restorePassphrasePrompt": "This backup file is encrypted. Enter the backup passphrase to unlock and preview.",
+  "@restorePassphrasePrompt": {
+    "description": "Prompt requesting passphrase to decrypt backup"
+  },
+  "restorePassphraseLabel": "Passphrase",
+  "@restorePassphraseLabel": {
+    "description": "Label for restore passphrase input"
+  },
+  "restorePassphraseSubmit": "Unlock & Preview",
+  "@restorePassphraseSubmit": {
+    "description": "Button to decrypt backup and show table preview"
+  },
+  "restorePreviewTitle": "Backup contents preview",
+  "@restorePreviewTitle": {
+    "description": "Title above table counts in restore preview dialog"
+  },
+  "restorePreviewTotalRecords": "Total records: {count}",
+  "@restorePreviewTotalRecords": {
+    "description": "Total count of entities found in backup file",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "restoreStrategyMergeTitle": "Merge (Preserve existing, update newer)",
+  "@restoreStrategyMergeTitle": {
+    "description": "Title for merge restore option"
+  },
+  "restoreStrategyMergeDescription": "Existing IDs are preserved. Records from the backup replace existing ones only when their update timestamp is newer. No duplicates are created.",
+  "@restoreStrategyMergeDescription": {
+    "description": "Explanation for merge restore option"
+  },
+  "restoreStrategyReplaceTitle": "Replace all data on this device",
+  "@restoreStrategyReplaceTitle": {
+    "description": "Title for replace restore option (guest only)"
+  },
+  "restoreStrategyReplaceDescription": "Clears all local data on this device and restores the backup. Guest mode only.",
+  "@restoreStrategyReplaceDescription": {
+    "description": "Explanation for replace restore option"
+  },
+  "restoreReplaceSafetyBackupNote": "An automatic safety backup will be created and saved before any data is replaced.",
+  "@restoreReplaceSafetyBackupNote": {
+    "description": "Safety backup guarantee note for Replace mode"
+  },
+  "restoreReplaceConfirmPrompt": "Type REPLACE below to proceed with replacement:",
+  "@restoreReplaceConfirmPrompt": {
+    "description": "Confirmation word typing instruction for Replace mode"
+  },
+  "restoreReplaceConfirmWord": "REPLACE",
+  "@restoreReplaceConfirmWord": {
+    "description": "Exact confirmation word to type for Replace mode"
+  },
+  "restoreActionButton": "Restore data",
+  "@restoreActionButton": {
+    "description": "Action button executing selected restore strategy"
+  },
+  "restoreSuccessMessage": "Successfully restored {count} records.",
+  "@restoreSuccessMessage": {
+    "description": "Snackbar confirming successful restore",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "restoreErrorFileTooLarge": "Backup file exceeds maximum allowed size (25 MB).",
+  "@restoreErrorFileTooLarge": {
+    "description": "Error when selected backup file is too large"
+  },
+  "restoreErrorChecksumMismatch": "Backup file is corrupted or has been tampered with (checksum mismatch).",
+  "@restoreErrorChecksumMismatch": {
+    "description": "Error when checksum does not match data payload"
+  },
+  "restoreErrorWrongPassphrase": "Incorrect passphrase or invalid backup file.",
+  "@restoreErrorWrongPassphrase": {
+    "description": "Error when backup decryption fails"
+  },
+  "restoreErrorNewerVersion": "This backup was created by a newer version of JobPrep (v{version}). Please update your app to restore this file.",
+  "@restoreErrorNewerVersion": {
+    "description": "Error when backup file is from a newer app version",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "backupDialogCancel": "Cancel",
+  "@backupDialogCancel": {
+    "description": "Cancel button for backup and restore dialogs"
+  },
+  "restoreErrorInvalidFormat": "Invalid or unreadable backup file format.",
+  "@restoreErrorInvalidFormat": {
+    "description": "Error when backup JSON structure is unrecognized"
+  },
+  "todayGuestUpgradeTitle": "Secure your study progress",
+  "@todayGuestUpgradeTitle": {
+    "description": "Title of upgrade prompt banner on Today screen"
+  },
+  "todayGuestUpgradeSubtitle": "Create an account to automatically sync and access your study materials across all devices.",
+  "@todayGuestUpgradeSubtitle": {
+    "description": "Subtitle of upgrade prompt banner on Today screen"
+  },
+  "todayGuestUpgradeButton": "Create an account",
+  "@todayGuestUpgradeButton": {
+    "description": "Button to navigate to account creation from Today banner"
+  },
+  "migrationChoiceTitle": "Account Connected",
+  "@migrationChoiceTitle": {
+    "description": "Title of migration choice dialog after sign-in"
+  },
+  "migrationChoiceSubtitle": "We found study data on this device. Would you like to move it to your account or start fresh?",
+  "@migrationChoiceSubtitle": {
+    "description": "Subtitle of migration choice dialog"
+  },
+  "migrationChoiceMoveButton": "Move data to my account",
+  "@migrationChoiceMoveButton": {
+    "description": "Primary button to move guest data to account"
+  },
+  "migrationChoiceFreshButton": "Start fresh & keep device data",
+  "@migrationChoiceFreshButton": {
+    "description": "Secondary button to start fresh without moving data"
+  },
+  "migrationProgressTitle": "Moving Data to Account",
+  "@migrationProgressTitle": {
+    "description": "Title of migration progress modal"
+  },
+  "migrationProgressStep": "Uploading {table} ({current}/{total})…",
+  "@migrationProgressStep": {
+    "description": "Progress step label during upload",
+    "placeholders": {
+      "table": {
+        "type": "String"
+      },
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "migrationCompleteTitle": "Data Moved Successfully!",
+  "@migrationCompleteTitle": {
+    "description": "Title of migration completion dialog"
+  },
+  "migrationCompleteSubtitle": "All records and progress totals have been verified. Would you like to keep or erase the local copy on this device?",
+  "@migrationCompleteSubtitle": {
+    "description": "Subtitle explaining verification completion"
+  },
+  "migrationDownloadFinalBackup": "Download Final Safety Backup",
+  "@migrationDownloadFinalBackup": {
+    "description": "Button to download backup before erasing local copy"
+  },
+  "migrationEraseLocalOption": "Erase local copy on this device",
+  "@migrationEraseLocalOption": {
+    "description": "Switch or checkbox label to erase local data after migration"
+  },
+  "migrationEraseLocalSubtitle": "Recommended to avoid having duplicate local guest data on this browser.",
+  "@migrationEraseLocalSubtitle": {
+    "description": "Explanation for erasing local copy"
+  },
+  "migrationFinishButton": "Continue to Dashboard",
+  "@migrationFinishButton": {
+    "description": "Button completing migration flow"
+  },
+  "migrationErrorTitle": "Migration Failed",
+  "@migrationErrorTitle": {
+    "description": "Title when migration fails"
+  },
+  "migrationErrorMessage": "Could not complete data migration: {error}. Your local data is completely untouched and safe.",
+  "@migrationErrorMessage": {
+    "description": "Error message when migration fails",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "migrationRetryButton": "Retry Upload",
+  "@migrationRetryButton": {
+    "description": "Retry button on migration failure"
+  },
+  "migrationKeepGuestButton": "Stay in Guest Mode",
+  "@migrationKeepGuestButton": {
+    "description": "Abort button on migration failure to stay in guest mode"
+  },
+  "prepTabSyllabus": "Syllabus",
+  "@prepTabSyllabus": {
+    "description": "Tab label for Syllabus in Prep section"
+  },
+  "prepSyllabusTitle": "Syllabus Tracking",
+  "@prepSyllabusTitle": {
+    "description": "Title of the syllabus tab"
+  },
+  "prepSyllabusSubtitle": "Track chapters, topics, and checkpoint mastery.",
+  "@prepSyllabusSubtitle": {
+    "description": "Subtitle of the syllabus tab"
+  },
+  "syllabusOverallProgress": "Syllabus Progress",
+  "@syllabusOverallProgress": {
+    "description": "Label for weighted syllabus progress ring"
+  },
+  "syllabusReadingProgress": "Reading Progress",
+  "@syllabusReadingProgress": {
+    "description": "Label for page-based reading progress ring"
+  },
+  "syllabusCheckpointStudy": "Study",
+  "@syllabusCheckpointStudy": {
+    "description": "Checkpoint name for study"
+  },
+  "syllabusCheckpointPractice": "Practice",
+  "@syllabusCheckpointPractice": {
+    "description": "Checkpoint name for practice"
+  },
+  "syllabusCheckpointModelTest": "Model Test",
+  "@syllabusCheckpointModelTest": {
+    "description": "Checkpoint name for model test"
+  },
+  "syllabusCheckpointRevision": "Revision",
+  "@syllabusCheckpointRevision": {
+    "description": "Checkpoint name for revision"
+  },
+  "syllabusAddChapter": "Add Chapter",
+  "@syllabusAddChapter": {
+    "description": "Button to add a new chapter"
+  },
+  "syllabusEditChapter": "Edit Chapter",
+  "@syllabusEditChapter": {
+    "description": "Button to edit an existing chapter"
+  },
+  "syllabusDeleteChapter": "Delete Chapter",
+  "@syllabusDeleteChapter": {
+    "description": "Button to delete an existing chapter"
+  },
+  "syllabusDeleteChapterConfirm": "Are you sure you want to delete chapter \"{title}\"? All {count} topic(s) inside will be lost.",
+  "@syllabusDeleteChapterConfirm": {
+    "description": "Confirmation message when deleting a chapter",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syllabusChapterTitleLabel": "Chapter Title",
+  "@syllabusChapterTitleLabel": {
+    "description": "Label for chapter title input"
+  },
+  "syllabusAddTopic": "Add Topic",
+  "@syllabusAddTopic": {
+    "description": "Button to add a new topic"
+  },
+  "syllabusEditTopic": "Edit Topic",
+  "@syllabusEditTopic": {
+    "description": "Button to edit topic details"
+  },
+  "syllabusDeleteTopic": "Delete Topic",
+  "@syllabusDeleteTopic": {
+    "description": "Button to delete a topic"
+  },
+  "syllabusTopicTitleLabel": "Topic Title",
+  "@syllabusTopicTitleLabel": {
+    "description": "Label for topic title input"
+  },
+  "syllabusTopicWeightLabel": "Weight",
+  "@syllabusTopicWeightLabel": {
+    "description": "Label for topic weight input"
+  },
+  "syllabusTopicNotesLabel": "Personal Notes",
+  "@syllabusTopicNotesLabel": {
+    "description": "Label for topic notes input"
+  },
+  "syllabusTopicNotesHint": "Write study notes, formulas, or tricky points...",
+  "@syllabusTopicNotesHint": {
+    "description": "Hint for topic notes input"
+  },
+  "syllabusTopicDateLabel": "Completion Date",
+  "@syllabusTopicDateLabel": {
+    "description": "Label for topic completion date"
+  },
+  "syllabusMarkAllDone": "Mark all {checkpoint} done",
+  "@syllabusMarkAllDone": {
+    "description": "Button to bulk complete a checkpoint for all topics in chapter",
+    "placeholders": {
+      "checkpoint": {
+        "type": "String"
+      }
+    }
+  },
+  "syllabusConfigureCheckpoints": "Configure Checkpoints",
+  "@syllabusConfigureCheckpoints": {
+    "description": "Button to configure subject checkpoints"
+  },
+  "syllabusConfigureCheckpointsSubtitle": "Choose which checkpoints to track for {subject}",
+  "@syllabusConfigureCheckpointsSubtitle": {
+    "description": "Subtitle for configure checkpoints dialog",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      }
+    }
+  },
+  "syllabusConfigureCheckpointsWarning": "Warning: unchecking checkpoints with completed data will hide them from progress calculation.",
+  "@syllabusConfigureCheckpointsWarning": {
+    "description": "Warning message when disabling checkpoints"
+  },
+  "syllabusQuickAdd": "Quick Add Outline",
+  "@syllabusQuickAdd": {
+    "description": "Button to quick add syllabus outline"
+  },
+  "syllabusQuickAddSubtitle": "Paste a multi-line outline. Lines without a leading dash become chapters; lines starting with \"-\" become topics.",
+  "@syllabusQuickAddSubtitle": {
+    "description": "Subtitle for quick add outline dialog"
+  },
+  "syllabusQuickAddHint": "Chapter 1: Arithmetic\n- Prime Numbers\n- Divisibility Rules\n\nChapter 2: Algebra\n- Polynomials",
+  "@syllabusQuickAddHint": {
+    "description": "Hint text for quick add input"
+  },
+  "syllabusQuickAddPreview": "Preview: {chapters} chapter(s), {topics} topic(s)",
+  "@syllabusQuickAddPreview": {
+    "description": "Preview count for parsed outline",
+    "placeholders": {
+      "chapters": {
+        "type": "int"
+      },
+      "topics": {
+        "type": "int"
+      }
+    }
+  },
+  "syllabusQuickAddImportButton": "Import Outline",
+  "@syllabusQuickAddImportButton": {
+    "description": "Button to confirm outline import"
+  },
+  "syllabusStartFromTemplate": "Start from Template Outline",
+  "@syllabusStartFromTemplate": {
+    "description": "Button to start syllabus from template pack"
+  },
+  "syllabusTemplateNotice": "Editable example outline - not an official syllabus",
+  "@syllabusTemplateNotice": {
+    "description": "Notice for template example outlines"
+  },
+  "syllabusNoChapters": "No Chapters Yet",
+  "@syllabusNoChapters": {
+    "description": "Empty state title when subject has no chapters"
+  },
+  "syllabusNoChaptersDesc": "Break down {subject} into chapters and track your checkpoint mastery.",
+  "@syllabusNoChaptersDesc": {
+    "description": "Empty state description when subject has no chapters",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      }
+    }
+  },
+  "syllabusNoSubjects": "No Subjects Available",
+  "@syllabusNoSubjects": {
+    "description": "Empty state title when no subjects exist"
+  },
+  "syllabusNoSubjectsDesc": "Add a subject first to track syllabus progress.",
+  "@syllabusNoSubjectsDesc": {
+    "description": "Empty state description when no subjects exist"
+  },
+  "syllabusTopicCount": "{count, plural, =1{1 topic} other{{count} topics}}",
+  "@syllabusTopicCount": {
+    "description": "Topic count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syllabusReorderTopics": "Reorder Topics",
+  "@syllabusReorderTopics": {
+    "description": "Button or title for reordering topics"
+  },
+  "syllabusClearDate": "Clear Date",
+  "@syllabusClearDate": {
+    "description": "Button to clear completion date"
+  },
+  "syllabusSelectDate": "Select Date",
+  "@syllabusSelectDate": {
+    "description": "Button to select completion date"
+  },
+  "syllabusViewTree": "Tree",
+  "@syllabusViewTree": {
+    "description": "Label for tree view mode in syllabus tab"
+  },
+  "syllabusViewMap": "Map",
+  "@syllabusViewMap": {
+    "description": "Label for map view mode in syllabus tab"
+  },
+  "syllabusTopicGridTitle": "Topics Map",
+  "@syllabusTopicGridTitle": {
+    "description": "Title for topics completion grid in syllabus map"
+  },
+  "syllabusChapterTableTitle": "Chapter Progress",
+  "@syllabusChapterTableTitle": {
+    "description": "Title for chapter breakdown table in syllabus map"
+  },
+  "syllabusGapsTitle": "Syllabus Gaps",
+  "@syllabusGapsTitle": {
+    "description": "Title for syllabus gaps section"
+  },
+  "syllabusGapsSubtitle": "Studied topics missing practice or testing",
+  "@syllabusGapsSubtitle": {
+    "description": "Subtitle describing syllabus gaps"
+  },
+  "syllabusGapsEmpty": "No gaps! All studied topics are practiced and tested.",
+  "@syllabusGapsEmpty": {
+    "description": "Message shown when no syllabus gaps exist"
+  },
+  "syllabusGapNeedsPractice": "Needs Practice",
+  "@syllabusGapNeedsPractice": {
+    "description": "Badge indicating topic has not been practiced"
+  },
+  "syllabusGapNeedsModelTest": "Needs Model Test",
+  "@syllabusGapNeedsModelTest": {
+    "description": "Badge indicating topic has not been tested"
+  },
+  "syllabusColChapter": "Chapter",
+  "@syllabusColChapter": {
+    "description": "Column header for chapter in progress table"
+  },
+  "syllabusColStudied": "Studied",
+  "@syllabusColStudied": {
+    "description": "Column header for studied percentage in progress table"
+  },
+  "syllabusColPracticed": "Practiced",
+  "@syllabusColPracticed": {
+    "description": "Column header for practiced percentage in progress table"
+  },
+  "syllabusColTested": "Tested",
+  "@syllabusColTested": {
+    "description": "Column header for tested percentage in progress table"
+  },
+  "syllabusColRevised": "Revised",
+  "@syllabusColRevised": {
+    "description": "Column header for revised percentage in progress table"
+  },
+  "todayNextTopicsTitle": "Next Topics",
+  "@todayNextTopicsTitle": {
+    "description": "Card title for next topics on Today screen"
+  },
+  "todayNextTopicsEmpty": "No upcoming topics found",
+  "@todayNextTopicsEmpty": {
+    "description": "Empty state for next topics on Today screen"
+  },
+  "prepMockWeakTopicsSyllabusLabel": "Pick from syllabus",
+  "@prepMockWeakTopicsSyllabusLabel": {
+    "description": "Label for picking weak topics from syllabus chips"
+  },
+  "prepMockFormWeakTopicsFallbackLabel": "Custom weak topics (fallback)",
+  "@prepMockFormWeakTopicsFallbackLabel": {
+    "description": "Label for free-text weak topics fallback input"
+  },
+  "prepMockMarkCheckpointsTitle": "Update Syllabus Checkpoints",
+  "@prepMockMarkCheckpointsTitle": {
+    "description": "Dialog title offering to update syllabus checkpoints after mock test"
+  },
+  "prepMockMarkCheckpointsPrompt": "Mark Model Test checkpoint done for {count} topics?",
+  "@prepMockMarkCheckpointsPrompt": {
+    "description": "Prompt asking user to mark model test checkpoint done",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "prepMockMarkCheckpointsAuto": "Do this automatically in the future",
+  "@prepMockMarkCheckpointsAuto": {
+    "description": "Checkbox to automatically mark checkpoints in future"
+  },
+  "prepMockMarkCheckpointsAction": "Mark Done",
+  "@prepMockMarkCheckpointsAction": {
+    "description": "Action button to mark checkpoints done"
+  },
+  "prepMockAddToRevisionPrompt": "Add weak topics to revision queue?",
+  "@prepMockAddToRevisionPrompt": {
+    "description": "Dialog title offering to add weak topics to revision queue"
+  },
+  "prepMockAddToRevisionAction": "Add to Revision",
+  "@prepMockAddToRevisionAction": {
+    "description": "Action button to add weak topics to revision queue"
+  },
+  "prepRevisionTopicOptionalLabel": "Topic (optional)",
+  "@prepRevisionTopicOptionalLabel": {
+    "description": "Dropdown label for optional topic in revision dialog"
+  },
+  "prepRevisionNoTopicOption": "No topic linked",
+  "@prepRevisionNoTopicOption": {
+    "description": "Option in topic dropdown for unlinked revision"
+  },
+  "studyPlanBasisLabel": "Plan Basis",
+  "@studyPlanBasisLabel": {
+    "description": "Label for choosing study plan basis"
+  },
+  "studyPlanBasisReadingUnits": "Reading Units",
+  "@studyPlanBasisReadingUnits": {
+    "description": "Option for reading units plan basis"
+  },
+  "studyPlanBasisSyllabusTopics": "Syllabus Topics",
+  "@studyPlanBasisSyllabusTopics": {
+    "description": "Option for syllabus topics plan basis"
+  },
+  "prepAnalyticsWeeklyTopicsTitle": "Topics Completed per Week",
+  "@prepAnalyticsWeeklyTopicsTitle": {
+    "description": "Chart title for weekly completed topics in study analytics"
+  },
+  "weeklyReviewTopicsCompletedTitle": "Topics Completed",
+  "@weeklyReviewTopicsCompletedTitle": {
+    "description": "Metric tile title for topics completed in weekly review"
   }
 }

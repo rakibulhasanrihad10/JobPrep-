@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:job_prep/core/data/app_mode.dart';
 import 'package:job_prep/features/auth/domain/entities/auth_session_state.dart';
 import 'package:job_prep/features/auth/presentation/navigation/auth_redirect.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
@@ -15,6 +16,7 @@ import 'package:job_prep/features/circulars/presentation/screens/circulars_scree
 import 'package:job_prep/features/circulars/presentation/screens/inbox_screen.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/quick_capture_shell.dart';
 import 'package:job_prep/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:job_prep/features/legal/presentation/screens/legal_screen.dart';
 import 'package:job_prep/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:job_prep/features/notifications/presentation/screens/weekly_review_screen.dart';
 import 'package:job_prep/features/onboarding/domain/entities/onboarding_status.dart';
@@ -40,6 +42,14 @@ class _AuthRouterRefreshListenable extends ChangeNotifier {
         }
       },
     );
+    _appModeSubscription = _ref.listen<AppMode?>(
+      appModeProvider,
+      (previous, next) {
+        if (previous != next) {
+          notifyListeners();
+        }
+      },
+    );
     _onboardingSubscription = _ref.listen<AsyncValue<OnboardingStatus>>(
       onboardingStatusProvider,
       (previous, next) {
@@ -54,12 +64,14 @@ class _AuthRouterRefreshListenable extends ChangeNotifier {
 
   final Ref _ref;
   late final ProviderSubscription<AuthSessionState> _authSubscription;
+  late final ProviderSubscription<AppMode?> _appModeSubscription;
   late final ProviderSubscription<AsyncValue<OnboardingStatus>>
       _onboardingSubscription;
 
   @override
   void dispose() {
     _authSubscription.close();
+    _appModeSubscription.close();
     _onboardingSubscription.close();
     super.dispose();
   }
@@ -82,6 +94,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           onboardingAsync.asData?.value.needsOnboarding ?? false;
       final targetPath = resolveAuthRedirect(
         authState: ref.read(authSessionProvider),
+        appMode: ref.read(appModeProvider),
         location: state.uri.path,
         needsOnboarding: needsOnboarding,
       );
@@ -128,6 +141,20 @@ final routerProvider = Provider<GoRouter>((ref) {
         name: 'onboarding',
         pageBuilder: (context, state) => const NoTransitionPage(
           child: OnboardingWizardScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutePaths.privacy,
+        name: 'privacy',
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: LegalScreen(type: LegalDocType.privacy),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutePaths.terms,
+        name: 'terms',
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: LegalScreen(type: LegalDocType.terms),
         ),
       ),
       ShellRoute(
@@ -212,6 +239,13 @@ final routerProvider = Provider<GoRouter>((ref) {
               child: PrepScreen(),
             ),
             routes: [
+              GoRoute(
+                path: 'syllabus',
+                name: 'prep_syllabus',
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: PrepScreen(initialTab: PrepSectionTab.syllabus),
+                ),
+              ),
               GoRoute(
                 path: 'analytics',
                 name: 'prep_analytics',

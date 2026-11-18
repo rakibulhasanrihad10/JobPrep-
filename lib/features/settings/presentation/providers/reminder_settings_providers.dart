@@ -1,6 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/data/data_source_mode.dart';
+import 'package:job_prep/core/local/local_database_provider.dart';
 import 'package:job_prep/core/supabase/supabase_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
+import 'package:job_prep/features/settings/data/repositories/local_reminder_settings_repository.dart';
 import 'package:job_prep/features/settings/data/repositories/supabase_reminder_settings_repository.dart';
 import 'package:job_prep/features/settings/data/repositories/unconfigured_reminder_settings_repository.dart';
 import 'package:job_prep/features/settings/domain/entities/reminder_settings.dart';
@@ -11,6 +14,10 @@ Duration? _noRetry(int retryCount, Object error) => null;
 /// Dependency-injected [ReminderSettingsRepository] provider.
 final Provider<ReminderSettingsRepository> reminderSettingsRepositoryProvider =
     Provider<ReminderSettingsRepository>((ref) {
+  final mode = ref.watch(dataSourceModeProvider);
+  if (mode == DataSourceMode.local) {
+    return LocalReminderSettingsRepository(ref.watch(appDatabaseProvider));
+  }
   final client = ref.watch(optionalSupabaseClientProvider);
   if (client == null) {
     return const UnconfiguredReminderSettingsRepository();

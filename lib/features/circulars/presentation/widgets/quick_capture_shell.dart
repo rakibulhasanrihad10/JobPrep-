@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
 import 'package:job_prep/core/security/vault_providers.dart';
 import 'package:job_prep/core/widgets/app_scaffold.dart';
+import 'package:job_prep/features/circulars/data/services/share_intent_service.dart';
 import 'package:job_prep/features/circulars/domain/utils/quick_capture_helpers.dart';
 import 'package:job_prep/features/circulars/presentation/providers/circulars_providers.dart';
 import 'package:job_prep/features/circulars/presentation/widgets/quick_capture_dialog.dart';
@@ -39,6 +40,14 @@ class _QuickCaptureShellState extends ConsumerState<QuickCaptureShell> {
   void initState() {
     super.initState();
     _scheduleIncomingCaptureIfNeeded(widget.currentUri);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final pendingShare =
+          ref.read(pendingShareCaptureProvider.notifier).consume();
+      if (pendingShare != null && !_isDialogOpen) {
+        unawaited(_openQuickCapture(initialUrl: pendingShare));
+      }
+    });
   }
 
   @override
@@ -113,6 +122,18 @@ class _QuickCaptureShellState extends ConsumerState<QuickCaptureShell> {
   @override
   Widget build(BuildContext context) {
     final inboxCount = ref.watch(inboxCountProvider);
+
+    ref.listen<String?>(pendingShareCaptureProvider, (previous, next) {
+      if (next != null && !_isDialogOpen) {
+        final link = ref.read(pendingShareCaptureProvider.notifier).consume();
+        if (link != null) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (!mounted) return;
+            unawaited(_openQuickCapture(initialUrl: link));
+          });
+        }
+      }
+    });
 
     return Listener(
       behavior: HitTestBehavior.translucent,

@@ -5,6 +5,7 @@ import 'package:job_prep/features/vault/domain/entities/portal_account.dart';
 import 'package:job_prep/features/vault/domain/errors/vault_feature_failure.dart';
 import 'package:job_prep/features/vault/domain/repositories/portal_account_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+import 'package:uuid/uuid.dart';
 
 /// Supabase PostgREST implementation of [PortalAccountRepository].
 ///
@@ -65,6 +66,22 @@ class SupabasePortalAccountRepository implements PortalAccountRepository {
   }
 
   @override
+  Future<List<PortalAccount>> getAllAccounts() async {
+    try {
+      final rows = await _client
+          .from(_accountsTable)
+          .select()
+          .order('created_at', ascending: true);
+
+      return List<PortalAccount>.unmodifiable(
+        rows.map(PortalAccountMapper.fromJson),
+      );
+    } on Object catch (error) {
+      throw VaultErrorMapper.map(error);
+    }
+  }
+
+  @override
   Future<List<PortalAccount>> getAccountsForCircular(String circularId) async {
     final trimmedId = circularId.trim();
     if (trimmedId.isEmpty) return const [];
@@ -90,12 +107,18 @@ class SupabasePortalAccountRepository implements PortalAccountRepository {
 
     try {
       final currentUserId = _client.auth.currentUser?.id;
+      final accountWithId = account.id.trim().isEmpty
+          ? account.copyWith(id: const Uuid().v4())
+          : account;
       final payload = PortalAccountMapper.toInsertJson(
-        account,
-        userId: account.userId.trim().isEmpty ? currentUserId : null,
+        accountWithId,
+        userId: accountWithId.userId.trim().isEmpty ? currentUserId : null,
       );
-      final row =
-          await _client.from(_accountsTable).insert(payload).select().single();
+      final row = await _client
+          .from(_accountsTable)
+          .upsert(payload, onConflict: 'id')
+          .select()
+          .single();
       return PortalAccountMapper.fromJson(row);
     } on Object catch (error) {
       throw VaultErrorMapper.map(error);

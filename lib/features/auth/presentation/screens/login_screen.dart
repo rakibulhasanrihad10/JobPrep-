@@ -1,17 +1,25 @@
+import 'dart:async' show unawaited;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_prep/core/data/app_mode.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
 import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_text_field.dart';
+import 'package:job_prep/features/auth/domain/entities/auth_session_state.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_form_controller.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_form_state.dart';
+import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/features/auth/presentation/utils/auth_failure_l10n.dart';
 import 'package:job_prep/features/auth/presentation/widgets/auth_action_button.dart';
 import 'package:job_prep/features/auth/presentation/widgets/auth_confirmation_view.dart';
+import 'package:job_prep/features/auth/presentation/widgets/auth_legal_links.dart';
 import 'package:job_prep/features/auth/presentation/widgets/auth_mode_toggle_footer.dart';
 import 'package:job_prep/features/auth/presentation/widgets/auth_page_shell.dart';
 import 'package:job_prep/features/auth/presentation/widgets/auth_status_banner.dart';
+import 'package:job_prep/features/auth/presentation/widgets/guest_login_button.dart';
+import 'package:job_prep/features/migration/presentation/utils/guest_migration_flow_helper.dart';
 
 /// Authentication screen supporting Email Sign-In, Account Creation,
 /// Forgot Password recovery requests, and Google OAuth sign-in.
@@ -61,6 +69,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<AuthSessionState>(authSessionProvider, (previous, next) {
+      if (previous?.status != AuthStatus.signedIn &&
+          next.status == AuthStatus.signedIn) {
+        final mode = ref.read(appModeProvider);
+        if (mode?.isGuest == true) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) {
+              unawaited(
+                GuestMigrationFlowHelper.triggerMigrationFlow(context, ref),
+              );
+            }
+          });
+        }
+      }
+    });
+
     final formState = ref.watch(authFormControllerProvider);
     final tokens = context.tokens;
     final colors = tokens.colors;
@@ -252,6 +276,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     .read(authFormControllerProvider.notifier)
                     .signInWithGoogle(),
               ),
+              SizedBox(height: spacing.md),
+              GuestLoginButton(isDisabled: formState.isLoading),
             ],
             SizedBox(height: spacing.lg),
             AuthModeToggleFooter(
@@ -259,6 +285,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               isDisabled: formState.isLoading,
               onSwitchMode: _switchMode,
             ),
+            SizedBox(height: spacing.sm),
+            const AuthLegalLinks(),
           ],
         ),
       ),

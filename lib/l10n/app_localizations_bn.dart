@@ -4305,4 +4305,849 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get settingsRunSetupAgainButton => 'আবার সেটআপ চালান';
+
+  @override
+  String get settingsProfileTitle => 'প্রোফাইল';
+
+  @override
+  String get settingsProfileSubtitle =>
+      'আপনার প্রদর্শিত নাম, ইমেইল, পাসওয়ার্ড এবং সেশন পরিচালনা করুন।';
+
+  @override
+  String get settingsDisplayNameLabel => 'প্রদর্শিত নাম';
+
+  @override
+  String get settingsDisplayNameSaveButton => 'নাম সংরক্ষণ';
+
+  @override
+  String get settingsDisplayNameSaved => 'প্রদর্শিত নাম হালনাগাদ হয়েছে';
+
+  @override
+  String get settingsDisplayNameSaveError =>
+      'প্রদর্শিত নাম সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get settingsEmailLabel => 'ইমেইল';
+
+  @override
+  String get settingsEmailUnavailable => 'কোনো ইমেইল যুক্ত নেই';
+
+  @override
+  String get settingsChangePasswordButton => 'পাসওয়ার্ড পরিবর্তন';
+
+  @override
+  String get settingsChangePasswordTitle => 'পাসওয়ার্ড পরিবর্তন করুন';
+
+  @override
+  String get settingsNewPasswordLabel => 'নতুন পাসওয়ার্ড';
+
+  @override
+  String get settingsConfirmPasswordLabel => 'নতুন পাসওয়ার্ড নিশ্চিত করুন';
+
+  @override
+  String get settingsPasswordSaveButton => 'পাসওয়ার্ড হালনাগাদ';
+
+  @override
+  String get settingsPasswordSaved => 'পাসওয়ার্ড সফলভাবে হালনাগাদ হয়েছে';
+
+  @override
+  String get settingsPasswordError =>
+      'পাসওয়ার্ড হালনাগাদ করা যায়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get settingsSignOutButton => 'সাইন আউট';
+
+  @override
+  String get settingsAppearanceTitle => 'চেহারা ও থিম';
+
+  @override
+  String get settingsAppearanceSubtitle =>
+      'রঙের থিম এবং ভিজ্যুয়াল ইফেক্ট পছন্দ নির্ধারণ করুন।';
+
+  @override
+  String get settingsReduceEffectsLabel => 'ভিজ্যুয়াল ইফেক্ট কমান';
+
+  @override
+  String get settingsReduceEffectsHint =>
+      'ব্লারের পরিবর্তে সাধারণ ব্যাকগ্রাউন্ড দেখান এবং অ্যানিমেশন বন্ধ রাখুন।';
+
+  @override
+  String get settingsLanguageTitle => 'ভাষা';
+
+  @override
+  String get settingsLanguageSubtitle => 'অ্যাপের ভাষা ও সংখ্যার ধরন বেছে নিন।';
+
+  @override
+  String get settingsBanglaDigitsLabel => 'বাংলা সংখ্যা ব্যবহার করুন';
+
+  @override
+  String get settingsBanglaDigitsHint =>
+      'তারিখ, সংখ্যা এবং অগ্রগতির হিসাব বাংলা অঙ্কে দেখান।';
+
+  @override
+  String get settingsNotificationsSectionTitle => 'বিজ্ঞপ্তি';
+
+  @override
+  String get settingsStudyTitle => 'পড়াশোনা';
+
+  @override
+  String get settingsStudySubtitle =>
+      'ফোকাস ও বিরতির ডিফল্ট সময় নির্ধারণ করুন বা সেটআপ আবার চালান।';
+
+  @override
+  String get settingsTimerFocusMinutesLabel => 'ফোকাস সময় (মিনিট)';
+
+  @override
+  String get settingsTimerShortBreakLabel => 'ছোট বিরতি (মিনিট)';
+
+  @override
+  String get settingsTimerLongBreakLabel => 'বড় বিরতি (মিনিট)';
+
+  @override
+  String get settingsStudySaveTimerButton => 'টাইমার সংরক্ষণ';
+
+  @override
+  String get settingsStudyTimerSaved => 'স্টাডি টাইমারের সময় সংরক্ষিত হয়েছে';
+
+  @override
+  String get settingsStudyTimerInvalidError =>
+      'সঠিক মিনিট লিখুন (ফোকাস ৫–১৮০, ছোট বিরতি ১–৬০, বড় বিরতি ৫–৯০)।';
+
+  @override
+  String get vaultChangePassphraseButton => 'পাসফ্রেজ পরিবর্তন';
+
+  @override
+  String get vaultChangePassphraseTitle => 'ভল্ট পাসফ্রেজ পরিবর্তন';
+
+  @override
+  String get vaultChangePassphraseBody =>
+      'বর্তমান পাসফ্রেজ যাচাই করে নতুন পাসফ্রেজ দিন যাতে সংরক্ষিত লগইন পুনরায় এনক্রিপ্ট হয়।';
+
+  @override
+  String get vaultCurrentPassphraseLabel => 'বর্তমান পাসফ্রেজ';
+
+  @override
+  String get vaultNewPassphraseLabel => 'নতুন পাসফ্রেজ';
+
+  @override
+  String get vaultConfirmNewPassphraseLabel => 'নতুন পাসফ্রেজ নিশ্চিত করুন';
+
+  @override
+  String get vaultChangePassphraseSubmit => 'পাসফ্রেজ হালনাগাদ';
+
+  @override
+  String get vaultChangePassphraseSuccess => 'ভল্ট পাসফ্রেজ হালনাগাদ হয়েছে';
+
+  @override
+  String get vaultCurrentPassphraseWrongError => 'বর্তমান পাসফ্রেজটি সঠিক নয়।';
+
+  @override
+  String get settingsDataTitle => 'ডেটা ও অ্যাকাউন্ট';
+
+  @override
+  String get settingsDataSubtitle =>
+      'আপনার সার্কুলার ও প্রস্তুতির সম্পূর্ণ ব্যাকআপ ডাউনলোড করুন বা অ্যাকাউন্ট স্থায়ীভাবে মুছে ফেলুন।';
+
+  @override
+  String get settingsExportCsvButton => 'CSV এক্সপোর্ট';
+
+  @override
+  String get settingsExportJsonButton => 'JSON এক্সপোর্ট';
+
+  @override
+  String settingsExportSuccess(String fileName) {
+    return '$fileName এক্সপোর্ট হয়েছে';
+  }
+
+  @override
+  String get settingsExportError =>
+      'ডেটা এক্সপোর্ট করা যায়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get settingsDeleteAccountButton => 'আমার অ্যাকাউন্ট মুছুন';
+
+  @override
+  String get settingsDeleteAccountDialogTitle =>
+      'স্থায়ীভাবে অ্যাকাউন্ট মুছবেন?';
+
+  @override
+  String get settingsDeleteAccountWarning =>
+      'এতে আপনার অ্যাকাউন্ট, সংরক্ষিত সার্কুলার, ফাইল, পড়াশোনার অগ্রগতি, মডেল টেস্ট, রিভিশন তালিকা, ভল্ট লগইন ও সেটিংস চিরতরে মুছে যাবে।';
+
+  @override
+  String get settingsDeleteAccountAckLabel =>
+      'আমি বুঝতে পেরেছি যে আমার সব ডেটা স্থায়ীভাবে মুছে যাবে।';
+
+  @override
+  String get settingsDeleteAccountConfirmButton => 'স্থায়ীভাবে মুছুন';
+
+  @override
+  String get settingsDeleteAccountError =>
+      'এখন অ্যাকাউন্ট মুছে ফেলা যায়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get settingsSyncWarning =>
+      'এই ডিভাইসে সংরক্ষিত হয়েছে। সিঙ্ক করতে সংযোগ পরীক্ষা করুন।';
+
+  @override
+  String prepShowMoreItems(String count) {
+    return 'আরও $countটি দেখুন';
+  }
+
+  @override
+  String get legalPrivacyPolicyTitle => 'গোপনীয়তা নীতি';
+
+  @override
+  String get legalPrivacyPolicySubtitle =>
+      'ক্লায়েন্ট-সাইড এনক্রিপশন, কোনো ট্র্যাকিং নেই এবং তথ্যের সম্পূর্ণ মালিকানা।';
+
+  @override
+  String get legalTermsOfServiceTitle => 'ব্যবহারের শর্তাবলি';
+
+  @override
+  String get legalTermsOfServiceSubtitle =>
+      'উন্মুক্ত, স্বচ্ছ এবং আপনার পরীক্ষার প্রস্তুতি সহায়ক।';
+
+  @override
+  String get legalBackToSettings => 'সেটিংসে ফিরে যান';
+
+  @override
+  String get legalBackToApp => 'অ্যাপে ফিরে যান';
+
+  @override
+  String get legalPrivacySection1Title => 'কোনো ট্র্যাকিং বা বিজ্ঞাপন নেই';
+
+  @override
+  String get legalPrivacySection1Body =>
+      'জবপ্রেপ আপনার কার্যকলাপ ট্র্যাক করে না, বিজ্ঞাপন দেখায় না বা কোনো ব্যক্তিগত তথ্য বিক্রি করে না। ক্র্যাশ রিপোর্টিং সক্ষম থাকলেও সংবেদনশীল ও ব্যক্তিগত তথ্য মুছে ফেলা হয়।';
+
+  @override
+  String get legalPrivacySection2Title => 'ক্লায়েন্ট-সাইড ভল্ট এনক্রিপশন';
+
+  @override
+  String get legalPrivacySection2Body =>
+      'আপনার চাকরি পোর্টালের পাসওয়ার্ডগুলো আপনার ডিভাইসেই AES-GCM-256 ও PBKDF2 এনক্রিপশনের মাধ্যমে সংরক্ষিত হয়। আপনার গোপন পাসফ্রেজ কখনো সার্ভারে পাঠানো বা লগ করা হয় না।';
+
+  @override
+  String get legalPrivacySection3Title => 'রো-লেভেল নিরাপত্তা ও ডেটা পৃথকীকরণ';
+
+  @override
+  String get legalPrivacySection3Body =>
+      'ডেটাবেজে সংরক্ষিত সব সার্কুলার, স্টাডি অগ্রগতি এবং নোট রো-লেভেল সিকিউরিটি (RLS) দ্বারা সুরক্ষিত। শুধু আপনিই আপনার তথ্য দেখতে ও পরিবর্তন করতে পারেন।';
+
+  @override
+  String get legalPrivacySection4Title => 'ডেটা ডাউনলোড ও অ্যাকাউন্ট মুছে ফেলা';
+
+  @override
+  String get legalPrivacySection4Body =>
+      'আপনি যেকোনো সময় সেটিংস থেকে CSV বা JSON ফরম্যাটে আপনার সমস্ত ডেটা ডাউনলোড করতে পারেন অথবা স্থায়ীভাবে অ্যাকাউন্ট মুছে দিতে পারেন।';
+
+  @override
+  String get legalTermsSection1Title => 'শিক্ষামূলক ও উন্মুক্ত ব্যবহার';
+
+  @override
+  String get legalTermsSection1Body =>
+      'জবপ্রেপ প্রার্থীদের চাকরির সার্কুলার ট্র্যাকিং, পড়াশোনার পরিকল্পনা এবং প্রস্তুতিতে সহায়তা করার একটি উন্মুক্ত শিক্ষামূলক প্ল্যাটফর্ম।';
+
+  @override
+  String get legalTermsSection2Title => 'সার্কুলারের তথ্যের যথার্থতা';
+
+  @override
+  String get legalTermsSection2Body =>
+      'সরকারি ও বেসরকারি সার্কুলারের সময়সীমা কর্তৃপক্ষ কর্তৃক পরিবর্তনশীল। আবেদন করার পূর্বে সর্বদা অফিশিয়াল গেজেট বা ওয়েবসাইট থেকে যাচাই করুন।';
+
+  @override
+  String get legalTermsSection3Title => 'ব্যবহারকারীর দায়িত্ব';
+
+  @override
+  String get legalTermsSection3Body =>
+      'ভল্টের পাসওয়ার্ডগুলো আপনার নিজস্ব পাসফ্রেজ দিয়ে এনক্রিপ্ট করা হয়। তাই পাসফ্রেজ ভুলে গেলে তা পুনরুদ্ধার করা সম্ভব নয়।';
+
+  @override
+  String get legalPrivacyPolicyLink => 'গোপনীয়তা নীতি';
+
+  @override
+  String get legalTermsOfServiceLink => 'ব্যবহারের শর্তাবলি';
+
+  @override
+  String get authContinueWithoutAccount => 'অ্যাকাউন্ট ছাড়া চালিয়ে যান';
+
+  @override
+  String get authDataStaysOnDevice => 'আপনার ডেটা কেবল এই ডিভাইসেই থাকবে।';
+
+  @override
+  String get guestConfirmationTitle => 'অ্যাকাউন্ট ছাড়াই চালিয়ে যান';
+
+  @override
+  String get guestConfirmDeviceOnly =>
+      'ডেটা শুধুমাত্র এই ডিভাইস এবং ব্রাউজারে সংরক্ষিত থাকবে।';
+
+  @override
+  String get guestConfirmDataLoss =>
+      'ব্রাউজার ডেটা মুছে ফেললে বা অ্যাপ আনইনস্টল করলে ডেটা চিরতরে মুছে যাবে।';
+
+  @override
+  String get guestConfirmNoSync =>
+      'অন্য ডিভাইসে কোনো সিঙ্ক এবং ইমেল রিমাইন্ডার সুবিধা থাকবে না।';
+
+  @override
+  String get guestConfirmMoveDataLater =>
+      'পরবর্তীতে যেকোনো সময় অ্যাকাউন্ট তৈরি করে ডেটা স্থানান্তরিত করতে পারবেন।';
+
+  @override
+  String get guestConfirmUnderstandButton => 'আমি বুঝতে পেরেছি';
+
+  @override
+  String get guestConfirmCancelButton => 'ফিরে যান';
+
+  @override
+  String get accountGateCloudSyncTitle =>
+      'ক্লাউড সিঙ্কের জন্য অ্যাকাউন্ট প্রয়োজন';
+
+  @override
+  String get accountGateEmailRemindersTitle =>
+      'ইমেল রিমাইন্ডারের জন্য অ্যাকাউন্ট প্রয়োজন';
+
+  @override
+  String get accountGateFileAttachmentsTitle =>
+      'ফাইল সংযুক্তির জন্য অ্যাকাউন্ট প্রয়োজন';
+
+  @override
+  String get accountGateDeleteAccountTitle =>
+      'অ্যাকাউন্ট মোছার সুবিধা শুধু নিবন্ধিত অ্যাকাউন্টের জন্য';
+
+  @override
+  String get accountGateDescription =>
+      'অন্য ডিভাইসে সিঙ্ক, রিমাইন্ডার এবং ফাইল আপলোডের সুবিধা পেতে একটি ফ্রি জবপ্রেপ অ্যাকাউন্ট তৈরি করুন।';
+
+  @override
+  String get accountGateCreateAccountButton =>
+      'ব্যবহার করতে একটি অ্যাকাউন্ট তৈরি করুন';
+
+  @override
+  String get settingsGuestSectionTitle => 'গেস্ট মোড';
+
+  @override
+  String get settingsGuestSectionSubtitle =>
+      'আপনার ডেটা স্থানীয়ভাবে এই ডিভাইসে সংরক্ষিত রয়েছে।';
+
+  @override
+  String get settingsStorageStatusTitle => 'স্টোরেজ স্থিতি';
+
+  @override
+  String get settingsStoragePersistent =>
+      'স্থায়ী (স্বয়ংক্রিয়ভাবে মুছে যাওয়া থেকে সুরক্ষিত)';
+
+  @override
+  String get settingsStorageTransient => 'অস্থায়ী ব্রাউজার স্টোরেজ';
+
+  @override
+  String get settingsStorageSafariWarning =>
+      'আইফোনে সাফারি ব্রাউজারে হোম স্ক্রিনে যুক্ত না করলে দীর্ঘ সময় নিষ্ক্রিয় থাকলে ডেটা মুছে যেতে পারে।';
+
+  @override
+  String get settingsBackupDataButton => 'আমার ডেটা ব্যাকআপ নিন';
+
+  @override
+  String get settingsBackupPlaceholderMessage =>
+      'ব্যাকআপ এবং এক্সপোর্ট সুবিধা ফেজ ৯সি-তে সম্পূর্ণ উপলব্ধ হবে।';
+
+  @override
+  String get settingsCreateAccountButton => 'অ্যাকাউন্ট তৈরি করুন';
+
+  @override
+  String get settingsEraseDataButton => 'এই ডিভাইসের সমস্ত ডেটা মুছে ফেলুন';
+
+  @override
+  String get eraseDataDialog1Title => 'সমস্ত লোকাল ডেটা মুছে ফেলবেন?';
+
+  @override
+  String get eraseDataDialog1Message =>
+      'এটি এই ডিভাইসে সংরক্ষিত সমস্ত সার্কুলার, বিষয়, স্টাডি অগ্রগতি এবং সেটিংস স্থায়ীভাবে মুছে ফেলবে। এটি আর ফিরিয়ে আনা যাবে না।';
+
+  @override
+  String get eraseDataDialog1Confirm => 'এগিয়ে যান';
+
+  @override
+  String get eraseDataDialogCancel => 'বাতিল';
+
+  @override
+  String get eraseDataDialog2Title => 'আপনি কি পুরোপুরি নিশ্চিত?';
+
+  @override
+  String get eraseDataDialog2Message =>
+      'এই ডিভাইস থেকে সমস্ত জবপ্রেপ ডেটা স্থায়ীভাবে মুছে ফেলতে নিচে নিশ্চিত করুন।';
+
+  @override
+  String get eraseDataDialog2Confirm => 'সবকিছু মুছে ফেলুন';
+
+  @override
+  String get eraseDataSuccessMessage => 'সমস্ত লোকাল ডেটা মুছে ফেলা হয়েছে।';
+
+  @override
+  String settingsLastBackup(String time) {
+    return 'সর্বশেষ ব্যাকআপ: $time';
+  }
+
+  @override
+  String get settingsLastBackupNever => 'কখনো নয়';
+
+  @override
+  String get settingsLastBackupToday => 'আজ';
+
+  @override
+  String get settingsLastBackupYesterday => 'গতকাল';
+
+  @override
+  String settingsLastBackupDaysAgo(int count) {
+    return '$count দিন আগে';
+  }
+
+  @override
+  String get settingsBackupReminderTitle =>
+      'আপনার স্টাডি ডেটা ব্যাকআপ নেওয়ার সময় হয়েছে';
+
+  @override
+  String settingsBackupReminderMessage(int days, int changes) {
+    return 'সর্বশেষ ব্যাকআপ $days দিন আগে নেওয়া হয়েছিল। এরপর আপনি $changesটি পরিবর্তন করেছেন।';
+  }
+
+  @override
+  String get settingsBackupReminderAction => 'এখনই ব্যাকআপ নিন';
+
+  @override
+  String get settingsBackupReminderDismiss => 'বাতিল করুন';
+
+  @override
+  String get settingsRestoreButton => 'ব্যাকআপ থেকে রিস্টোর করুন';
+
+  @override
+  String get backupDialogTitle => 'স্টাডি ডেটা ব্যাকআপ নিন';
+
+  @override
+  String get backupDialogDescription =>
+      'সমস্ত সার্কুলার, বিষয়, নোট এবং স্টাডি লগের একটি ডাউনলোডযোগ্য ব্যাকআপ তৈরি করুন।';
+
+  @override
+  String get backupEncryptionRecommended =>
+      'পাসফ্রেজ দিয়ে এনক্রিপ্ট করুন (প্রস্তাবিত)';
+
+  @override
+  String get backupEncryptionNote =>
+      'AES-GCM ব্যবহার করে আপনার ব্যক্তিগত নোট এবং এনক্রিপ্ট করা পোর্টাল তথ্য সুরক্ষিত রাখে। পাসফ্রেজ ভুলে গেলে এই ব্যাকআপ পুনরুদ্ধার করা সম্ভব নয়।';
+
+  @override
+  String get backupPassphraseLabel => 'ব্যাকআপ পাসফ্রেজ';
+
+  @override
+  String get backupPassphraseConfirmLabel => 'পাসফ্রেজ নিশ্চিত করুন';
+
+  @override
+  String get backupPassphraseMismatch => 'পাসফ্রেজ দুটি মিলছে না';
+
+  @override
+  String get backupPassphraseTooShort => 'পাসফ্রেজ কমপক্ষে ৮ অক্ষরের হতে হবে';
+
+  @override
+  String get backupExportEncryptedButton =>
+      'এনক্রিপ্ট করা ব্যাকআপ ডাউনলোড করুন';
+
+  @override
+  String get backupExportPlainWarning =>
+      'সতর্কতা: আন-এনক্রিপ্ট করা ব্যাকআপ ফাইলে ব্যক্তিগত নোট এবং পোর্টাল অ্যাকাউন্ট প্লেইনটেক্সট ফরম্যাটে থাকে।';
+
+  @override
+  String get backupExportPlainButton => 'পাসফ্রেজ ছাড়া ডাউনলোড করুন';
+
+  @override
+  String backupExportSuccess(String fileName) {
+    return 'ব্যাকআপ সফলভাবে সংরক্ষিত হয়েছে ($fileName)।';
+  }
+
+  @override
+  String get restoreDialogTitle => 'স্টাডি ডেটা রিস্টোর করুন';
+
+  @override
+  String get restorePassphrasePrompt =>
+      'এই ব্যাকআপ ফাইলটি এনক্রিপ্ট করা। আনলক ও প্রিভিউ দেখতে ব্যাকআপ পাসফ্রেজ দিন।';
+
+  @override
+  String get restorePassphraseLabel => 'পাসফ্রেজ';
+
+  @override
+  String get restorePassphraseSubmit => 'আনলক ও প্রিভিউ দেখুন';
+
+  @override
+  String get restorePreviewTitle => 'ব্যাকআপ তথ্যের প্রিভিউ';
+
+  @override
+  String restorePreviewTotalRecords(int count) {
+    return 'মোট রেকর্ড: $countটি';
+  }
+
+  @override
+  String get restoreStrategyMergeTitle =>
+      'মার্জ (বর্তমান তথ্য রেখে নতুন আপডেট যোগ)';
+
+  @override
+  String get restoreStrategyMergeDescription =>
+      'বর্তমান আইডি সংরক্ষিত থাকে। শুধুমাত্র ব্যাকআপের তথ্য নতুন হলে আপডেট হয়। কোনো ডুপ্লিকেট হবে না।';
+
+  @override
+  String get restoreStrategyReplaceTitle =>
+      'ডিভাইসের সমস্ত তথ্য প্রতিস্থাপন করুন';
+
+  @override
+  String get restoreStrategyReplaceDescription =>
+      'ডিভাইসের সমস্ত তথ্য মুছে ফেলে এই ব্যাকআপ ফাইলটি বসিয়ে দেয়। শুধুমাত্র গেস্ট মোডে প্রযোজ্য।';
+
+  @override
+  String get restoreReplaceSafetyBackupNote =>
+      'প্রতিস্থাপন করার আগে আপনার বর্তমান তথ্যের একটি স্বয়ংক্রিয় সেফটি ব্যাকআপ সংরক্ষিত হবে।';
+
+  @override
+  String get restoreReplaceConfirmPrompt => 'নিশ্চিত করতে নিচে REPLACE লিখুন:';
+
+  @override
+  String get restoreReplaceConfirmWord => 'REPLACE';
+
+  @override
+  String get restoreActionButton => 'রিস্টোর সম্পন্ন করুন';
+
+  @override
+  String restoreSuccessMessage(int count) {
+    return 'সফলভাবে $countটি রেকর্ড রিস্টোর হয়েছে।';
+  }
+
+  @override
+  String get restoreErrorFileTooLarge =>
+      'ব্যাকআপ ফাইলের সাইজ সর্বোচ্চ ২৫ মেগাবাইটের বেশি হতে পারবে না।';
+
+  @override
+  String get restoreErrorChecksumMismatch =>
+      'ব্যাকআপ ফাইলটি নষ্ট বা বিকৃত হয়েছে (চেকসাম মিলছে না)।';
+
+  @override
+  String get restoreErrorWrongPassphrase =>
+      'ভুল পাসফ্রেজ অথবা ব্যাকআপ ফাইলটি সঠিক নয়।';
+
+  @override
+  String restoreErrorNewerVersion(String version) {
+    return 'এই ব্যাকআপটি JobPrep-এর নতুন সংস্করণ (v$version) দিয়ে তৈরি। অনুগ্রহ করে অ্যাপ আপডেট করুন।';
+  }
+
+  @override
+  String get backupDialogCancel => 'বাতিল';
+
+  @override
+  String get restoreErrorInvalidFormat => 'ব্যাকআপ ফাইলের ফরম্যাট সঠিক নয়।';
+
+  @override
+  String get todayGuestUpgradeTitle => 'আপনার পড়াশোনার অগ্রগতি সুরক্ষিত রাখুন';
+
+  @override
+  String get todayGuestUpgradeSubtitle =>
+      'সমস্ত ডিভাইসে স্বয়ংক্রিয়ভাবে সিঙ্ক ও ব্যাকআপ রাখতে একটি অ্যাকাউন্ট তৈরি করুন।';
+
+  @override
+  String get todayGuestUpgradeButton => 'অ্যাকাউন্ট তৈরি করুন';
+
+  @override
+  String get migrationChoiceTitle => 'অ্যাকাউন্ট সংযুক্ত হয়েছে';
+
+  @override
+  String get migrationChoiceSubtitle =>
+      'এই ডিভাইসে আপনার পূর্বের পড়াশোনার তথ্য পাওয়া গেছে। আপনি কি তা অ্যাকাউন্টে স্থানান্তর করতে চান নাকি নতুনভাবে শুরু করতে চান?';
+
+  @override
+  String get migrationChoiceMoveButton => 'তথ্য অ্যাকাউন্টে স্থানান্তর করুন';
+
+  @override
+  String get migrationChoiceFreshButton =>
+      'নতুনভাবে শুরু করুন এবং ডিভাইসে তথ্য রাখুন';
+
+  @override
+  String get migrationProgressTitle => 'অ্যাকাউন্টে তথ্য স্থানান্তর হচ্ছে';
+
+  @override
+  String migrationProgressStep(String table, int current, int total) {
+    return '$table আপলোড হচ্ছে ($current/$total)…';
+  }
+
+  @override
+  String get migrationCompleteTitle => 'তথ্য সফলভাবে স্থানান্তরিত হয়েছে!';
+
+  @override
+  String get migrationCompleteSubtitle =>
+      'সমস্ত রেকর্ড এবং অগ্রগতির হিসাব সফলভাবে যাচাই করা হয়েছে। আপনি কি এই ডিভাইসের স্থানীয় তথ্য মুছে ফেলতে চান?';
+
+  @override
+  String get migrationDownloadFinalBackup =>
+      'চূড়ান্ত সেফটি ব্যাকআপ ডাউনলোড করুন';
+
+  @override
+  String get migrationEraseLocalOption => 'এই ডিভাইসের স্থানীয় কপি মুছে ফেলুন';
+
+  @override
+  String get migrationEraseLocalSubtitle =>
+      'এই ব্রাউজারে ডুপ্লিকেট তথ্য এড়াতে স্থানীয় কপি মুছে ফেলা সুপারিশ করা হয়।';
+
+  @override
+  String get migrationFinishButton => 'ড্যাশবোর্ডে প্রবেশ করুন';
+
+  @override
+  String get migrationErrorTitle => 'স্থানান্তর ব্যর্থ হয়েছে';
+
+  @override
+  String migrationErrorMessage(String error) {
+    return 'তথ্য স্থানান্তর সম্পন্ন করা যায়নি: $error। আপনার স্থানীয় তথ্য সম্পূর্ণ অক্ষত ও সুরক্ষিত আছে।';
+  }
+
+  @override
+  String get migrationRetryButton => 'পুনরায় চেষ্টা করুন';
+
+  @override
+  String get migrationKeepGuestButton => 'গেস্ট মোডে থাকুন';
+
+  @override
+  String get prepTabSyllabus => 'সিলেবাস';
+
+  @override
+  String get prepSyllabusTitle => 'সিলেবাস ট্র্যাকিং';
+
+  @override
+  String get prepSyllabusSubtitle =>
+      'অধ্যায়, বিষয় এবং চেকপয়েন্ট অনুযায়ী প্রস্তুতি ট্র্যাক করুন।';
+
+  @override
+  String get syllabusOverallProgress => 'সিলেবাস অগ্রগতি';
+
+  @override
+  String get syllabusReadingProgress => 'পড়ার অগ্রগতি';
+
+  @override
+  String get syllabusCheckpointStudy => 'পড়া';
+
+  @override
+  String get syllabusCheckpointPractice => 'অনুশীলন';
+
+  @override
+  String get syllabusCheckpointModelTest => 'মডেল টেস্ট';
+
+  @override
+  String get syllabusCheckpointRevision => 'রিভিশন';
+
+  @override
+  String get syllabusAddChapter => 'অধ্যায় যোগ করুন';
+
+  @override
+  String get syllabusEditChapter => 'অধ্যায় সম্পাদনা';
+
+  @override
+  String get syllabusDeleteChapter => 'অধ্যায় মুছুন';
+
+  @override
+  String syllabusDeleteChapterConfirm(String title, int count) {
+    return 'আপনি কি নিশ্চিতভাবে \"$title\" অধ্যায়টি মুছে ফেলতে চান? ভিতরের সমস্ত $countটি বিষয় হারিয়ে যাবে।';
+  }
+
+  @override
+  String get syllabusChapterTitleLabel => 'অধ্যায়ের নাম';
+
+  @override
+  String get syllabusAddTopic => 'বিষয় যোগ করুন';
+
+  @override
+  String get syllabusEditTopic => 'বিষয় সম্পাদনা';
+
+  @override
+  String get syllabusDeleteTopic => 'বিষয় মুছুন';
+
+  @override
+  String get syllabusTopicTitleLabel => 'বিষয়ের নাম';
+
+  @override
+  String get syllabusTopicWeightLabel => 'গুরুত্ব (Weight)';
+
+  @override
+  String get syllabusTopicNotesLabel => 'ব্যক্তিগত নোট';
+
+  @override
+  String get syllabusTopicNotesHint =>
+      'নোট, সূত্র বা গুরুত্বপূর্ণ বিষয় লিখুন...';
+
+  @override
+  String get syllabusTopicDateLabel => 'সম্পন্নের তারিখ';
+
+  @override
+  String syllabusMarkAllDone(String checkpoint) {
+    return 'সবগুলো $checkpoint সম্পন্ন চিহ্নিত করুন';
+  }
+
+  @override
+  String get syllabusConfigureCheckpoints => 'চেকপয়েন্ট কনফিগার করুন';
+
+  @override
+  String syllabusConfigureCheckpointsSubtitle(String subject) {
+    return '$subject বিষয়ের জন্য কোন কোন চেকপয়েন্ট ট্র্যাক করবেন তা নির্বাচন করুন';
+  }
+
+  @override
+  String get syllabusConfigureCheckpointsWarning =>
+      'সতর্কতা: ইতিপূর্বে সম্পন্ন কোনো চেকপয়েন্ট আনচেক করলে তা অগ্রগতির হিসাব থেকে বাদ পড়বে।';
+
+  @override
+  String get syllabusQuickAdd => 'আউটলাইন দ্রুত যোগ করুন';
+
+  @override
+  String get syllabusQuickAddSubtitle =>
+      'একাধিক লাইনের আউটলাইন পেস্ট করুন। হাইফেন ছাড়া লাইনগুলো অধ্যায় এবং \"-\" যুক্ত লাইনগুলো বিষয় হিসেবে তৈরি হবে।';
+
+  @override
+  String get syllabusQuickAddHint =>
+      'প্রথম অধ্যায়: পাটিগণিত\n- মৌলিক সংখ্যা\n- বিভাজ্যতার নিয়ম\n\nদ্বিতীয় অধ্যায়: বীজগণিত\n- বহুপদী রাশি';
+
+  @override
+  String syllabusQuickAddPreview(int chapters, int topics) {
+    return 'প্রিভিউ: $chaptersটি অধ্যায়, $topicsটি বিষয়';
+  }
+
+  @override
+  String get syllabusQuickAddImportButton => 'আউটলাইন ইমপোর্ট করুন';
+
+  @override
+  String get syllabusStartFromTemplate => 'টেমপ্লেট রূপরেখা দিয়ে শুরু করুন';
+
+  @override
+  String get syllabusTemplateNotice =>
+      'সম্পাদনাযোগ্য উদাহরণ রূপরেখা - অফিশিয়াল সিলেবাস নয়';
+
+  @override
+  String get syllabusNoChapters => 'কোনো অধ্যায় তৈরি করা হয়নি';
+
+  @override
+  String syllabusNoChaptersDesc(String subject) {
+    return '$subject বিষয়টিকে অধ্যায়ে বিভক্ত করুন এবং চেকপয়েন্ট ট্র্যাক করুন।';
+  }
+
+  @override
+  String get syllabusNoSubjects => 'কোনো বিষয় পাওয়া যায়নি';
+
+  @override
+  String get syllabusNoSubjectsDesc =>
+      'সিলেবাস ট্র্যাক করার জন্য প্রথমে একটি বিষয় তৈরি করুন।';
+
+  @override
+  String syllabusTopicCount(int count) {
+    return '$countটি বিষয়';
+  }
+
+  @override
+  String get syllabusReorderTopics => 'বিষয়ের ক্রম পরিবর্তন';
+
+  @override
+  String get syllabusClearDate => 'তারিখ মুছুন';
+
+  @override
+  String get syllabusSelectDate => 'তারিখ নির্বাচন করুন';
+
+  @override
+  String get syllabusViewTree => 'শাখা';
+
+  @override
+  String get syllabusViewMap => 'মানচিত্র';
+
+  @override
+  String get syllabusTopicGridTitle => 'বিষয় মানচিত্র';
+
+  @override
+  String get syllabusChapterTableTitle => 'অধ্যায় অগ্রগতি';
+
+  @override
+  String get syllabusGapsTitle => 'সিলেবাসের ফাঁক';
+
+  @override
+  String get syllabusGapsSubtitle =>
+      'পড়া হয়েছে কিন্তু অনুশীলন বা পরীক্ষা বাকি';
+
+  @override
+  String get syllabusGapsEmpty =>
+      'কোনো ফাঁক নেই! সব পঠিত বিষয়ে অনুশীলন ও পরীক্ষা সম্পন্ন হয়েছে।';
+
+  @override
+  String get syllabusGapNeedsPractice => 'অনুশীলন প্রয়োজন';
+
+  @override
+  String get syllabusGapNeedsModelTest => 'মডেল টেস্ট প্রয়োজন';
+
+  @override
+  String get syllabusColChapter => 'অধ্যায়';
+
+  @override
+  String get syllabusColStudied => 'পঠিত';
+
+  @override
+  String get syllabusColPracticed => 'অনুশীলিত';
+
+  @override
+  String get syllabusColTested => 'পরীক্ষিত';
+
+  @override
+  String get syllabusColRevised => 'পুনর্বিবেচিত';
+
+  @override
+  String get todayNextTopicsTitle => 'পরবর্তী বিষয়';
+
+  @override
+  String get todayNextTopicsEmpty => 'কোনো পরবর্তী বিষয় নেই';
+
+  @override
+  String get prepMockWeakTopicsSyllabusLabel => 'সিলেবাস থেকে নির্বাচন করুন';
+
+  @override
+  String get prepMockFormWeakTopicsFallbackLabel =>
+      'কাস্টম দুর্বল বিষয় (অন্যান্য)';
+
+  @override
+  String get prepMockMarkCheckpointsTitle => 'সিলেবাস চেকপয়েন্ট আপডেট করুন';
+
+  @override
+  String prepMockMarkCheckpointsPrompt(int count) {
+    return '$countটি বিষয়ের জন্য মডেল টেস্ট সম্পন্ন হিসেবে চিহ্নিত করবেন?';
+  }
+
+  @override
+  String get prepMockMarkCheckpointsAuto =>
+      'ভবিষ্যতে এটি স্বয়ংক্রিয়ভাবে করুন';
+
+  @override
+  String get prepMockMarkCheckpointsAction => 'চিহ্নিত করুন';
+
+  @override
+  String get prepMockAddToRevisionPrompt =>
+      'দুর্বল বিষয়গুলো রিভিশন কিউতে যোগ করবেন?';
+
+  @override
+  String get prepMockAddToRevisionAction => 'রিভিশনে যোগ করুন';
+
+  @override
+  String get prepRevisionTopicOptionalLabel => 'বিষয় (ঐচ্ছিক)';
+
+  @override
+  String get prepRevisionNoTopicOption => 'কোনো বিষয় যুক্ত নেই';
+
+  @override
+  String get studyPlanBasisLabel => 'পরিকল্পনার ভিত্তি';
+
+  @override
+  String get studyPlanBasisReadingUnits => 'পড়ার একক';
+
+  @override
+  String get studyPlanBasisSyllabusTopics => 'সিলেবাসের বিষয়';
+
+  @override
+  String get prepAnalyticsWeeklyTopicsTitle => 'সাপ্তাহিক সম্পন্ন বিষয়';
+
+  @override
+  String get weeklyReviewTopicsCompletedTitle => 'সম্পন্ন বিষয়';
 }

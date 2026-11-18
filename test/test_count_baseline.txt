@@ -1,0 +1,5 @@
+# Automated Test Count Baseline
+# Enforced by scripts/verify_test_baseline.dart and AGENTS.md rules.
+# This baseline must NEVER be reduced without an explicit written justification
+# approved in the corresponding pull request.
+BASELINE=659

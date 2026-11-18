@@ -46,6 +46,22 @@ abstract final class EnvConfig {
     'SUPABASE_ANON_KEY',
   );
 
+  /// Sentry DSN passed exclusively via `--dart-define=SENTRY_DSN=...`.
+  static const String sentryDsn = String.fromEnvironment(
+    'SENTRY_DSN',
+  );
+
+  /// Optional override for Sentry environment label (`dev`, `staging`, `prod`).
+  static const String _rawSentryEnvironment = String.fromEnvironment(
+    'SENTRY_ENVIRONMENT',
+  );
+
+  /// Application release version injected during CI builds (`--dart-define`).
+  static const String appVersion = String.fromEnvironment(
+    'APP_VERSION',
+    defaultValue: '0.1.0+1',
+  );
+
   /// Returns true if active environment is [AppEnvironment.dev].
   static bool get isDev => environment == AppEnvironment.dev;
 
@@ -58,4 +74,12 @@ abstract final class EnvConfig {
   /// Returns true if Supabase URL and Anon Key are configured.
   static bool get isSupabaseConfigured =>
       supabaseUrl.isNotEmpty && supabaseAnonKey.isNotEmpty;
+
+  /// Returns true when a non-empty Sentry DSN was supplied via `--dart-define`.
+  static bool get isSentryConfigured => sentryDsn.trim().isNotEmpty;
+
+  /// Effective Sentry environment tag.
+  static String get sentryEnvironment => _rawSentryEnvironment.trim().isNotEmpty
+      ? _rawSentryEnvironment.trim()
+      : environment.name;
 }

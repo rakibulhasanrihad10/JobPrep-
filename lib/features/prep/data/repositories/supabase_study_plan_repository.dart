@@ -4,6 +4,7 @@ import 'package:job_prep/features/prep/domain/entities/study_plan.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/repositories/study_plan_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+import 'package:uuid/uuid.dart';
 
 /// Supabase PostgREST implementation of [StudyPlanRepository] backed by
 /// `public.study_plans`.
@@ -59,12 +60,17 @@ class SupabaseStudyPlanRepository implements StudyPlanRepository {
       }
 
       final currentUserId = _client.auth.currentUser?.id;
+      final planWithId =
+          plan.id.trim().isEmpty ? plan.copyWith(id: const Uuid().v4()) : plan;
       final payload = StudyPlanMapper.toInsertJson(
-        plan,
-        userId: plan.userId.trim().isEmpty ? currentUserId : null,
+        planWithId,
+        userId: planWithId.userId.trim().isEmpty ? currentUserId : null,
       );
-      final inserted =
-          await _client.from(_table).insert(payload).select().single();
+      final inserted = await _client
+          .from(_table)
+          .upsert(payload, onConflict: 'id')
+          .select()
+          .single();
       return StudyPlanMapper.fromJson(inserted);
     } on Object catch (error) {
       throw PrepErrorMapper.map(error);

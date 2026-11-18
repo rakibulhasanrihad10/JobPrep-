@@ -99,112 +99,129 @@ class InboxScreen extends ConsumerWidget {
       );
     }
 
-    return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(
-        spacing.xl,
-        spacing.xl,
-        spacing.xl,
-        spacing.xl + spacing.xxxl,
+    final listSliver = inboxAsync.when(
+      loading: () => const SliverToBoxAdapter(
+        child: CircularsLoadingState(),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          GlassCard(
-            padding: spacing.insetsAllLg,
-            child: FadeSlideIn(
-              child: Wrap(
-                spacing: spacing.md,
-                runSpacing: spacing.sm,
-                alignment: WrapAlignment.spaceBetween,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.inboxTitle,
-                        style: textStyles.headlineMedium,
-                      ),
-                      SizedBox(height: spacing.xs),
-                      Text(
-                        l10n.inboxCount(itemCount, formattedCount),
-                        style: textStyles.bodyMedium,
-                      ),
-                    ],
-                  ),
-                  Wrap(
-                    spacing: spacing.sm,
-                    runSpacing: spacing.sm,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      IconButton(
-                        key: const ValueKey('inbox-refresh-btn'),
-                        tooltip: l10n.inboxRefreshTooltip,
-                        onPressed: refresh,
-                        icon: Icon(
-                          Icons.refresh_rounded,
-                          color: colors.goldAccent,
-                        ),
-                      ),
-                      GlassButton(
-                        key: const ValueKey('inbox-quick-capture-btn'),
-                        variant: GlassButtonVariant.primary,
-                        onPressed: triggerQuickCapture,
-                        leading: Icon(
-                          Icons.add_link_rounded,
-                          size: spacing.lg,
-                        ),
-                        child: Text(l10n.quickCaptureButton),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+      error: (error, _) => SliverToBoxAdapter(
+        child: CircularsErrorState(
+          error: error,
+          onRetry: refresh,
+        ),
+      ),
+      data: (items) {
+        if (items.isEmpty) {
+          return SliverToBoxAdapter(
+            child: InboxEmptyState(
+              onQuickCapture: triggerQuickCapture,
             ),
-          ),
-          if (actionState.lastFailure != null) ...[
-            SizedBox(height: spacing.md),
-            InboxFailureBanner(
-              failure: actionState.lastFailure!,
-              onDismiss: inboxController.clearError,
-            ),
-          ],
-          SizedBox(height: spacing.lg),
-          inboxAsync.when(
-            loading: () => const CircularsLoadingState(),
-            error: (error, _) => CircularsErrorState(
-              error: error,
-              onRetry: refresh,
-            ),
-            data: (items) {
-              if (items.isEmpty) {
-                return InboxEmptyState(
-                  onQuickCapture: triggerQuickCapture,
-                );
-              }
+          );
+        }
 
-              return ListView.separated(
-                key: const ValueKey('inbox-list'),
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: items.length,
-                separatorBuilder: (_, __) => SizedBox(height: spacing.md),
-                itemBuilder: (context, index) {
-                  final circular = items[index];
-                  return InboxItemCard(
-                    circular: circular,
-                    index: index,
-                    isBusy: actionState.isBusy(circular.id),
-                    onCompleteDetails: () => openCompleteDetails(circular),
-                    onSkip: () => unawaited(handleSkip(circular)),
-                    onDelete: () => unawaited(handleDelete(circular)),
-                  );
-                },
-              );
-            },
+        return SliverList.separated(
+          key: const ValueKey('inbox-list'),
+          itemCount: items.length,
+          separatorBuilder: (_, __) => SizedBox(height: spacing.md),
+          itemBuilder: (context, index) {
+            final circular = items[index];
+            return InboxItemCard(
+              circular: circular,
+              index: index,
+              isBusy: actionState.isBusy(circular.id),
+              onCompleteDetails: () => openCompleteDetails(circular),
+              onSkip: () => unawaited(handleSkip(circular)),
+              onDelete: () => unawaited(handleDelete(circular)),
+            );
+          },
+        );
+      },
+    );
+
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: EdgeInsets.fromLTRB(
+            spacing.xl,
+            spacing.xl,
+            spacing.xl,
+            spacing.xl + spacing.xxxl,
           ),
-        ],
-      ),
+          sliver: SliverMainAxisGroup(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    GlassCard(
+                      padding: spacing.insetsAllLg,
+                      child: FadeSlideIn(
+                        child: Wrap(
+                          spacing: spacing.md,
+                          runSpacing: spacing.sm,
+                          alignment: WrapAlignment.spaceBetween,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  l10n.inboxTitle,
+                                  style: textStyles.headlineMedium,
+                                ),
+                                SizedBox(height: spacing.xs),
+                                Text(
+                                  l10n.inboxCount(itemCount, formattedCount),
+                                  style: textStyles.bodyMedium,
+                                ),
+                              ],
+                            ),
+                            Wrap(
+                              spacing: spacing.sm,
+                              runSpacing: spacing.sm,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              children: [
+                                IconButton(
+                                  key: const ValueKey('inbox-refresh-btn'),
+                                  tooltip: l10n.inboxRefreshTooltip,
+                                  onPressed: refresh,
+                                  icon: Icon(
+                                    Icons.refresh_rounded,
+                                    color: colors.goldAccent,
+                                  ),
+                                ),
+                                GlassButton(
+                                  key:
+                                      const ValueKey('inbox-quick-capture-btn'),
+                                  variant: GlassButtonVariant.primary,
+                                  onPressed: triggerQuickCapture,
+                                  leading: Icon(
+                                    Icons.add_link_rounded,
+                                    size: spacing.lg,
+                                  ),
+                                  child: Text(l10n.quickCaptureButton),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    if (actionState.lastFailure != null) ...[
+                      SizedBox(height: spacing.md),
+                      InboxFailureBanner(
+                        failure: actionState.lastFailure!,
+                        onDismiss: inboxController.clearError,
+                      ),
+                    ],
+                    SizedBox(height: spacing.lg),
+                  ],
+                ),
+              ),
+              listSliver,
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

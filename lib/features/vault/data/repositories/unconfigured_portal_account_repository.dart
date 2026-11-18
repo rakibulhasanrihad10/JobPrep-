@@ -23,6 +23,9 @@ class UnconfiguredPortalAccountRepository implements PortalAccountRepository {
       Future.error(_notConfiguredError);
 
   @override
+  Future<List<PortalAccount>> getAllAccounts() async => const [];
+
+  @override
   Future<List<PortalAccount>> getAccountsForCircular(String circularId) async =>
       const [];
 

@@ -38,4 +38,19 @@ abstract final class NotificationMapper {
       readAt: readRaw == null ? null : DateTime.tryParse(readRaw)?.toUtc(),
     );
   }
+
+  /// Serializes an [AppNotification] to JSON for Supabase upsert.
+  static Map<String, dynamic> toJson(AppNotification notification) {
+    return <String, dynamic>{
+      if (notification.id.isNotEmpty) 'id': notification.id,
+      'type': notification.type.value,
+      'message_key': notification.messageKey,
+      'params': notification.params,
+      'route': notification.route,
+      'dedupe_key': notification.dedupeKey,
+      'created_at': notification.createdAt.toUtc().toIso8601String(),
+      if (notification.readAt != null)
+        'read_at': notification.readAt!.toUtc().toIso8601String(),
+    };
+  }
 }

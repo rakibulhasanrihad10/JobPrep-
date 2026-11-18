@@ -7,13 +7,19 @@ import 'package:job_prep/core/localization/locale_controller.dart';
 import 'package:job_prep/core/theme/app_theme.dart';
 import 'package:job_prep/core/theme/reduce_effects_controller.dart';
 import 'package:job_prep/core/theme/theme_controller.dart';
+import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
 import 'package:job_prep/features/settings/domain/entities/reminder_settings.dart';
 import 'package:job_prep/features/settings/presentation/providers/reminder_settings_providers.dart';
+import 'package:job_prep/features/settings/presentation/providers/user_settings_providers.dart';
 import 'package:job_prep/features/settings/presentation/screens/settings_screen.dart';
+import 'package:job_prep/features/vault/presentation/providers/portal_vault_providers.dart';
 import 'package:job_prep/l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../features/auth/fake_auth_repository.dart';
 import '../features/settings/fake_reminder_settings_repository.dart';
+import '../features/settings/fake_user_settings_repository.dart';
+import '../features/vault/fake_portal_account_repository.dart';
 
 class _TolerantGoldenComparator extends LocalFileComparator {
   _TolerantGoldenComparator(super.testFile);
@@ -65,6 +71,8 @@ void main() {
       kThemeModeStorageKey: themeMode.name,
     });
     final prefs = await SharedPreferences.getInstance();
+    final authRepo = FakeAuthRepository.authenticated();
+    addTearDown(authRepo.dispose);
     final repo = FakeReminderSettingsRepository(
       initialSettings: ReminderSettings(
         id: 'rem-g1',
@@ -79,6 +87,13 @@ void main() {
       ProviderScope(
         overrides: [
           sharedPreferencesProvider.overrideWithValue(prefs),
+          authRepositoryProvider.overrideWithValue(authRepo),
+          userSettingsRepositoryProvider.overrideWithValue(
+            FakeUserSettingsRepository(),
+          ),
+          portalAccountRepositoryProvider.overrideWithValue(
+            FakePortalAccountRepository(),
+          ),
           reminderSettingsRepositoryProvider.overrideWithValue(repo),
         ],
         child: MaterialApp(

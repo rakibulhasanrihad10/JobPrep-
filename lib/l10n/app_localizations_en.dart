@@ -4311,4 +4311,857 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsRunSetupAgainButton => 'Run setup again';
+
+  @override
+  String get settingsProfileTitle => 'Profile';
+
+  @override
+  String get settingsProfileSubtitle =>
+      'Manage your display name, account email, password, and active session.';
+
+  @override
+  String get settingsDisplayNameLabel => 'Display name';
+
+  @override
+  String get settingsDisplayNameSaveButton => 'Save name';
+
+  @override
+  String get settingsDisplayNameSaved => 'Display name updated';
+
+  @override
+  String get settingsDisplayNameSaveError =>
+      'Could not update display name. Please try again.';
+
+  @override
+  String get settingsEmailLabel => 'Email';
+
+  @override
+  String get settingsEmailUnavailable => 'No email linked';
+
+  @override
+  String get settingsChangePasswordButton => 'Change password';
+
+  @override
+  String get settingsChangePasswordTitle => 'Change Password';
+
+  @override
+  String get settingsNewPasswordLabel => 'New password';
+
+  @override
+  String get settingsConfirmPasswordLabel => 'Confirm new password';
+
+  @override
+  String get settingsPasswordSaveButton => 'Update password';
+
+  @override
+  String get settingsPasswordSaved => 'Password updated successfully';
+
+  @override
+  String get settingsPasswordError =>
+      'Could not update password. Please verify your session and try again.';
+
+  @override
+  String get settingsSignOutButton => 'Sign out';
+
+  @override
+  String get settingsAppearanceTitle => 'Appearance';
+
+  @override
+  String get settingsAppearanceSubtitle =>
+      'Choose your color theme and visual effect preferences.';
+
+  @override
+  String get settingsReduceEffectsLabel => 'Reduce visual effects';
+
+  @override
+  String get settingsReduceEffectsHint =>
+      'Replace frosted glass blur with solid fills and skip motion animations.';
+
+  @override
+  String get settingsLanguageTitle => 'Language';
+
+  @override
+  String get settingsLanguageSubtitle =>
+      'Choose your interface language and numeral format.';
+
+  @override
+  String get settingsBanglaDigitsLabel => 'Use Bangla digits';
+
+  @override
+  String get settingsBanglaDigitsHint =>
+      'Display dates, counters, and progress figures using Bangla digits.';
+
+  @override
+  String get settingsNotificationsSectionTitle => 'Notifications';
+
+  @override
+  String get settingsStudyTitle => 'Study';
+
+  @override
+  String get settingsStudySubtitle =>
+      'Set default focus & break timer lengths or rerun onboarding.';
+
+  @override
+  String get settingsTimerFocusMinutesLabel => 'Focus length (minutes)';
+
+  @override
+  String get settingsTimerShortBreakLabel => 'Short break (minutes)';
+
+  @override
+  String get settingsTimerLongBreakLabel => 'Long break (minutes)';
+
+  @override
+  String get settingsStudySaveTimerButton => 'Save timer defaults';
+
+  @override
+  String get settingsStudyTimerSaved => 'Study timer defaults saved';
+
+  @override
+  String get settingsStudyTimerInvalidError =>
+      'Enter valid minutes (Focus 5–180, Short break 1–60, Long break 5–90).';
+
+  @override
+  String get vaultChangePassphraseButton => 'Change passphrase';
+
+  @override
+  String get vaultChangePassphraseTitle => 'Change Vault Passphrase';
+
+  @override
+  String get vaultChangePassphraseBody =>
+      'Verify your current passphrase, then choose a new passphrase to re-encrypt all saved portal logins.';
+
+  @override
+  String get vaultCurrentPassphraseLabel => 'Current passphrase';
+
+  @override
+  String get vaultNewPassphraseLabel => 'New passphrase';
+
+  @override
+  String get vaultConfirmNewPassphraseLabel => 'Confirm new passphrase';
+
+  @override
+  String get vaultChangePassphraseSubmit => 'Update passphrase';
+
+  @override
+  String get vaultChangePassphraseSuccess => 'Vault passphrase updated';
+
+  @override
+  String get vaultCurrentPassphraseWrongError =>
+      'Current passphrase is incorrect.';
+
+  @override
+  String get settingsDataTitle => 'Data & Account';
+
+  @override
+  String get settingsDataSubtitle =>
+      'Download a full backup of your circulars and study progress, or delete your account permanently.';
+
+  @override
+  String get settingsExportCsvButton => 'Export CSV';
+
+  @override
+  String get settingsExportJsonButton => 'Export JSON';
+
+  @override
+  String settingsExportSuccess(String fileName) {
+    return 'Exported $fileName';
+  }
+
+  @override
+  String get settingsExportError => 'Could not export data. Please try again.';
+
+  @override
+  String get settingsDeleteAccountButton => 'Delete my account';
+
+  @override
+  String get settingsDeleteAccountDialogTitle => 'Delete account permanently?';
+
+  @override
+  String get settingsDeleteAccountWarning =>
+      'This permanently removes your account, saved circulars, attachments, study progress, mock tests, revision marks, vault logins, and settings. This action cannot be undone.';
+
+  @override
+  String get settingsDeleteAccountAckLabel =>
+      'I understand all my data will be permanently deleted.';
+
+  @override
+  String get settingsDeleteAccountConfirmButton => 'Delete permanently';
+
+  @override
+  String get settingsDeleteAccountError =>
+      'Could not delete account right now. Please try again.';
+
+  @override
+  String get settingsSyncWarning =>
+      'Saved locally on this device. Connect to sync across devices.';
+
+  @override
+  String prepShowMoreItems(String count) {
+    return 'Show $count more';
+  }
+
+  @override
+  String get legalPrivacyPolicyTitle => 'Privacy Policy';
+
+  @override
+  String get legalPrivacyPolicySubtitle =>
+      'Client-side encryption, zero tracking, and user data ownership.';
+
+  @override
+  String get legalTermsOfServiceTitle => 'Terms of Service';
+
+  @override
+  String get legalTermsOfServiceSubtitle =>
+      'Open, transparent, and built for your exam preparation.';
+
+  @override
+  String get legalBackToSettings => 'Back to Settings';
+
+  @override
+  String get legalBackToApp => 'Back to App';
+
+  @override
+  String get legalPrivacySection1Title => 'Zero Third-Party Tracking';
+
+  @override
+  String get legalPrivacySection1Body =>
+      'JobPrep does not track you, sell your personal data, or include advertising SDKs. All analytics and crash reports, if enabled, scrub sensitive and personally identifiable information before leaving your browser.';
+
+  @override
+  String get legalPrivacySection2Title => 'Client-Side Vault Encryption';
+
+  @override
+  String get legalPrivacySection2Body =>
+      'Your job portal credentials and sensitive passwords are encrypted directly on your device using AES-GCM-256 and PBKDF2 keys derived from your secret passphrase. Your passphrase is never sent, stored, or logged anywhere.';
+
+  @override
+  String get legalPrivacySection3Title => 'Row-Level Security & Isolation';
+
+  @override
+  String get legalPrivacySection3Body =>
+      'All circulars, study progress, mock tests, and notes stored in the database are strictly protected by Row-Level Security (RLS) policies. Only you can read or modify your own records.';
+
+  @override
+  String get legalPrivacySection4Title => 'Export & Account Deletion';
+
+  @override
+  String get legalPrivacySection4Body =>
+      'You can export all your data at any time in CSV or JSON format from Settings. If you choose to delete your account, all your records are permanently and irrevocably deleted.';
+
+  @override
+  String get legalTermsSection1Title => 'Open Educational Use';
+
+  @override
+  String get legalTermsSection1Body =>
+      'JobPrep is an educational dashboard designed to help candidates track job circulars, manage study timelines, and practice mock tests effectively.';
+
+  @override
+  String get legalTermsSection2Title => 'Circulars Accuracy Disclaimer';
+
+  @override
+  String get legalTermsSection2Body =>
+      'Official circular dates, qualifications, and deadlines are subject to change by recruiting authorities. Always verify final application deadlines and details with official gazettes and portals.';
+
+  @override
+  String get legalTermsSection3Title => 'User Responsibility';
+
+  @override
+  String get legalTermsSection3Body =>
+      'Because portal passwords in your vault are encrypted with a private passphrase known only to you, losing your passphrase means encrypted vault data cannot be recovered.';
+
+  @override
+  String get legalPrivacyPolicyLink => 'Privacy Policy';
+
+  @override
+  String get legalTermsOfServiceLink => 'Terms of Service';
+
+  @override
+  String get authContinueWithoutAccount => 'Continue without account';
+
+  @override
+  String get authDataStaysOnDevice => 'Your data stays on this device.';
+
+  @override
+  String get guestConfirmationTitle => 'Continue without an account';
+
+  @override
+  String get guestConfirmDeviceOnly =>
+      'Data is stored only on this device and browser.';
+
+  @override
+  String get guestConfirmDataLoss =>
+      'Clearing browser data or uninstalling the app deletes it permanently.';
+
+  @override
+  String get guestConfirmNoSync =>
+      'There is no cloud sync and no email reminders.';
+
+  @override
+  String get guestConfirmMoveDataLater =>
+      'You can create an account later and move your data across.';
+
+  @override
+  String get guestConfirmUnderstandButton => 'I understand';
+
+  @override
+  String get guestConfirmCancelButton => 'Go back';
+
+  @override
+  String get accountGateCloudSyncTitle => 'Cloud Sync requires an account';
+
+  @override
+  String get accountGateEmailRemindersTitle =>
+      'Email reminders require an account';
+
+  @override
+  String get accountGateFileAttachmentsTitle =>
+      'File attachments require an account';
+
+  @override
+  String get accountGateDeleteAccountTitle =>
+      'Account deletion requires a registered account';
+
+  @override
+  String get accountGateDescription =>
+      'Create a free JobPrep account to sync across devices, receive reminders, and upload files.';
+
+  @override
+  String get accountGateCreateAccountButton => 'Create an account to use this';
+
+  @override
+  String get settingsGuestSectionTitle => 'Guest Mode';
+
+  @override
+  String get settingsGuestSectionSubtitle =>
+      'Your data is stored locally on this device.';
+
+  @override
+  String get settingsStorageStatusTitle => 'Storage status';
+
+  @override
+  String get settingsStoragePersistent =>
+      'Persistent (Protected from automatic clearing)';
+
+  @override
+  String get settingsStorageTransient => 'Transient browser storage';
+
+  @override
+  String get settingsStorageSafariWarning =>
+      'Browsers such as Safari on iPhone may clear site data after a period of inactivity unless the site is added to the Home Screen.';
+
+  @override
+  String get settingsBackupDataButton => 'Back up my data';
+
+  @override
+  String get settingsBackupPlaceholderMessage =>
+      'Backup and export features will be fully available in Phase 9C.';
+
+  @override
+  String get settingsCreateAccountButton => 'Create an account';
+
+  @override
+  String get settingsEraseDataButton => 'Erase all data on this device';
+
+  @override
+  String get eraseDataDialog1Title => 'Erase all local data?';
+
+  @override
+  String get eraseDataDialog1Message =>
+      'This will permanently delete all circulars, subjects, study progress, and settings stored on this device. This action cannot be undone.';
+
+  @override
+  String get eraseDataDialog1Confirm => 'Continue';
+
+  @override
+  String get eraseDataDialogCancel => 'Cancel';
+
+  @override
+  String get eraseDataDialog2Title => 'Are you absolutely sure?';
+
+  @override
+  String get eraseDataDialog2Message =>
+      'Tap confirm below to permanently wipe all JobPrep data from this device.';
+
+  @override
+  String get eraseDataDialog2Confirm => 'Delete everything';
+
+  @override
+  String get eraseDataSuccessMessage => 'All local data has been erased.';
+
+  @override
+  String settingsLastBackup(String time) {
+    return 'Last backup: $time';
+  }
+
+  @override
+  String get settingsLastBackupNever => 'Never';
+
+  @override
+  String get settingsLastBackupToday => 'Today';
+
+  @override
+  String get settingsLastBackupYesterday => 'Yesterday';
+
+  @override
+  String settingsLastBackupDaysAgo(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days ago',
+      one: '1 day ago',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get settingsBackupReminderTitle => 'Time to back up your study data';
+
+  @override
+  String settingsBackupReminderMessage(int days, int changes) {
+    return 'Last backup was $days days ago. You have made $changes changes since.';
+  }
+
+  @override
+  String get settingsBackupReminderAction => 'Back up now';
+
+  @override
+  String get settingsBackupReminderDismiss => 'Dismiss';
+
+  @override
+  String get settingsRestoreButton => 'Restore from backup';
+
+  @override
+  String get backupDialogTitle => 'Back up study data';
+
+  @override
+  String get backupDialogDescription =>
+      'Create a downloadable backup file of all your circulars, subjects, notes, and study logs.';
+
+  @override
+  String get backupEncryptionRecommended =>
+      'Encrypt with passphrase (Recommended)';
+
+  @override
+  String get backupEncryptionNote =>
+      'Protects personal notes and encrypted portal credentials using AES-GCM. If you forget this passphrase, the backup cannot be recovered.';
+
+  @override
+  String get backupPassphraseLabel => 'Backup passphrase';
+
+  @override
+  String get backupPassphraseConfirmLabel => 'Confirm passphrase';
+
+  @override
+  String get backupPassphraseMismatch => 'Passphrases do not match';
+
+  @override
+  String get backupPassphraseTooShort =>
+      'Passphrase must be at least 8 characters';
+
+  @override
+  String get backupExportEncryptedButton => 'Export encrypted backup';
+
+  @override
+  String get backupExportPlainWarning =>
+      'Warning: An unencrypted backup file contains personal study notes and encrypted portal logins in plain JSON format.';
+
+  @override
+  String get backupExportPlainButton => 'Export without passphrase';
+
+  @override
+  String backupExportSuccess(String fileName) {
+    return 'Backup saved successfully ($fileName).';
+  }
+
+  @override
+  String get restoreDialogTitle => 'Restore study data';
+
+  @override
+  String get restorePassphrasePrompt =>
+      'This backup file is encrypted. Enter the backup passphrase to unlock and preview.';
+
+  @override
+  String get restorePassphraseLabel => 'Passphrase';
+
+  @override
+  String get restorePassphraseSubmit => 'Unlock & Preview';
+
+  @override
+  String get restorePreviewTitle => 'Backup contents preview';
+
+  @override
+  String restorePreviewTotalRecords(int count) {
+    return 'Total records: $count';
+  }
+
+  @override
+  String get restoreStrategyMergeTitle =>
+      'Merge (Preserve existing, update newer)';
+
+  @override
+  String get restoreStrategyMergeDescription =>
+      'Existing IDs are preserved. Records from the backup replace existing ones only when their update timestamp is newer. No duplicates are created.';
+
+  @override
+  String get restoreStrategyReplaceTitle => 'Replace all data on this device';
+
+  @override
+  String get restoreStrategyReplaceDescription =>
+      'Clears all local data on this device and restores the backup. Guest mode only.';
+
+  @override
+  String get restoreReplaceSafetyBackupNote =>
+      'An automatic safety backup will be created and saved before any data is replaced.';
+
+  @override
+  String get restoreReplaceConfirmPrompt =>
+      'Type REPLACE below to proceed with replacement:';
+
+  @override
+  String get restoreReplaceConfirmWord => 'REPLACE';
+
+  @override
+  String get restoreActionButton => 'Restore data';
+
+  @override
+  String restoreSuccessMessage(int count) {
+    return 'Successfully restored $count records.';
+  }
+
+  @override
+  String get restoreErrorFileTooLarge =>
+      'Backup file exceeds maximum allowed size (25 MB).';
+
+  @override
+  String get restoreErrorChecksumMismatch =>
+      'Backup file is corrupted or has been tampered with (checksum mismatch).';
+
+  @override
+  String get restoreErrorWrongPassphrase =>
+      'Incorrect passphrase or invalid backup file.';
+
+  @override
+  String restoreErrorNewerVersion(String version) {
+    return 'This backup was created by a newer version of JobPrep (v$version). Please update your app to restore this file.';
+  }
+
+  @override
+  String get backupDialogCancel => 'Cancel';
+
+  @override
+  String get restoreErrorInvalidFormat =>
+      'Invalid or unreadable backup file format.';
+
+  @override
+  String get todayGuestUpgradeTitle => 'Secure your study progress';
+
+  @override
+  String get todayGuestUpgradeSubtitle =>
+      'Create an account to automatically sync and access your study materials across all devices.';
+
+  @override
+  String get todayGuestUpgradeButton => 'Create an account';
+
+  @override
+  String get migrationChoiceTitle => 'Account Connected';
+
+  @override
+  String get migrationChoiceSubtitle =>
+      'We found study data on this device. Would you like to move it to your account or start fresh?';
+
+  @override
+  String get migrationChoiceMoveButton => 'Move data to my account';
+
+  @override
+  String get migrationChoiceFreshButton => 'Start fresh & keep device data';
+
+  @override
+  String get migrationProgressTitle => 'Moving Data to Account';
+
+  @override
+  String migrationProgressStep(String table, int current, int total) {
+    return 'Uploading $table ($current/$total)…';
+  }
+
+  @override
+  String get migrationCompleteTitle => 'Data Moved Successfully!';
+
+  @override
+  String get migrationCompleteSubtitle =>
+      'All records and progress totals have been verified. Would you like to keep or erase the local copy on this device?';
+
+  @override
+  String get migrationDownloadFinalBackup => 'Download Final Safety Backup';
+
+  @override
+  String get migrationEraseLocalOption => 'Erase local copy on this device';
+
+  @override
+  String get migrationEraseLocalSubtitle =>
+      'Recommended to avoid having duplicate local guest data on this browser.';
+
+  @override
+  String get migrationFinishButton => 'Continue to Dashboard';
+
+  @override
+  String get migrationErrorTitle => 'Migration Failed';
+
+  @override
+  String migrationErrorMessage(String error) {
+    return 'Could not complete data migration: $error. Your local data is completely untouched and safe.';
+  }
+
+  @override
+  String get migrationRetryButton => 'Retry Upload';
+
+  @override
+  String get migrationKeepGuestButton => 'Stay in Guest Mode';
+
+  @override
+  String get prepTabSyllabus => 'Syllabus';
+
+  @override
+  String get prepSyllabusTitle => 'Syllabus Tracking';
+
+  @override
+  String get prepSyllabusSubtitle =>
+      'Track chapters, topics, and checkpoint mastery.';
+
+  @override
+  String get syllabusOverallProgress => 'Syllabus Progress';
+
+  @override
+  String get syllabusReadingProgress => 'Reading Progress';
+
+  @override
+  String get syllabusCheckpointStudy => 'Study';
+
+  @override
+  String get syllabusCheckpointPractice => 'Practice';
+
+  @override
+  String get syllabusCheckpointModelTest => 'Model Test';
+
+  @override
+  String get syllabusCheckpointRevision => 'Revision';
+
+  @override
+  String get syllabusAddChapter => 'Add Chapter';
+
+  @override
+  String get syllabusEditChapter => 'Edit Chapter';
+
+  @override
+  String get syllabusDeleteChapter => 'Delete Chapter';
+
+  @override
+  String syllabusDeleteChapterConfirm(String title, int count) {
+    return 'Are you sure you want to delete chapter \"$title\"? All $count topic(s) inside will be lost.';
+  }
+
+  @override
+  String get syllabusChapterTitleLabel => 'Chapter Title';
+
+  @override
+  String get syllabusAddTopic => 'Add Topic';
+
+  @override
+  String get syllabusEditTopic => 'Edit Topic';
+
+  @override
+  String get syllabusDeleteTopic => 'Delete Topic';
+
+  @override
+  String get syllabusTopicTitleLabel => 'Topic Title';
+
+  @override
+  String get syllabusTopicWeightLabel => 'Weight';
+
+  @override
+  String get syllabusTopicNotesLabel => 'Personal Notes';
+
+  @override
+  String get syllabusTopicNotesHint =>
+      'Write study notes, formulas, or tricky points...';
+
+  @override
+  String get syllabusTopicDateLabel => 'Completion Date';
+
+  @override
+  String syllabusMarkAllDone(String checkpoint) {
+    return 'Mark all $checkpoint done';
+  }
+
+  @override
+  String get syllabusConfigureCheckpoints => 'Configure Checkpoints';
+
+  @override
+  String syllabusConfigureCheckpointsSubtitle(String subject) {
+    return 'Choose which checkpoints to track for $subject';
+  }
+
+  @override
+  String get syllabusConfigureCheckpointsWarning =>
+      'Warning: unchecking checkpoints with completed data will hide them from progress calculation.';
+
+  @override
+  String get syllabusQuickAdd => 'Quick Add Outline';
+
+  @override
+  String get syllabusQuickAddSubtitle =>
+      'Paste a multi-line outline. Lines without a leading dash become chapters; lines starting with \"-\" become topics.';
+
+  @override
+  String get syllabusQuickAddHint =>
+      'Chapter 1: Arithmetic\n- Prime Numbers\n- Divisibility Rules\n\nChapter 2: Algebra\n- Polynomials';
+
+  @override
+  String syllabusQuickAddPreview(int chapters, int topics) {
+    return 'Preview: $chapters chapter(s), $topics topic(s)';
+  }
+
+  @override
+  String get syllabusQuickAddImportButton => 'Import Outline';
+
+  @override
+  String get syllabusStartFromTemplate => 'Start from Template Outline';
+
+  @override
+  String get syllabusTemplateNotice =>
+      'Editable example outline - not an official syllabus';
+
+  @override
+  String get syllabusNoChapters => 'No Chapters Yet';
+
+  @override
+  String syllabusNoChaptersDesc(String subject) {
+    return 'Break down $subject into chapters and track your checkpoint mastery.';
+  }
+
+  @override
+  String get syllabusNoSubjects => 'No Subjects Available';
+
+  @override
+  String get syllabusNoSubjectsDesc =>
+      'Add a subject first to track syllabus progress.';
+
+  @override
+  String syllabusTopicCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count topics',
+      one: '1 topic',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get syllabusReorderTopics => 'Reorder Topics';
+
+  @override
+  String get syllabusClearDate => 'Clear Date';
+
+  @override
+  String get syllabusSelectDate => 'Select Date';
+
+  @override
+  String get syllabusViewTree => 'Tree';
+
+  @override
+  String get syllabusViewMap => 'Map';
+
+  @override
+  String get syllabusTopicGridTitle => 'Topics Map';
+
+  @override
+  String get syllabusChapterTableTitle => 'Chapter Progress';
+
+  @override
+  String get syllabusGapsTitle => 'Syllabus Gaps';
+
+  @override
+  String get syllabusGapsSubtitle =>
+      'Studied topics missing practice or testing';
+
+  @override
+  String get syllabusGapsEmpty =>
+      'No gaps! All studied topics are practiced and tested.';
+
+  @override
+  String get syllabusGapNeedsPractice => 'Needs Practice';
+
+  @override
+  String get syllabusGapNeedsModelTest => 'Needs Model Test';
+
+  @override
+  String get syllabusColChapter => 'Chapter';
+
+  @override
+  String get syllabusColStudied => 'Studied';
+
+  @override
+  String get syllabusColPracticed => 'Practiced';
+
+  @override
+  String get syllabusColTested => 'Tested';
+
+  @override
+  String get syllabusColRevised => 'Revised';
+
+  @override
+  String get todayNextTopicsTitle => 'Next Topics';
+
+  @override
+  String get todayNextTopicsEmpty => 'No upcoming topics found';
+
+  @override
+  String get prepMockWeakTopicsSyllabusLabel => 'Pick from syllabus';
+
+  @override
+  String get prepMockFormWeakTopicsFallbackLabel =>
+      'Custom weak topics (fallback)';
+
+  @override
+  String get prepMockMarkCheckpointsTitle => 'Update Syllabus Checkpoints';
+
+  @override
+  String prepMockMarkCheckpointsPrompt(int count) {
+    return 'Mark Model Test checkpoint done for $count topics?';
+  }
+
+  @override
+  String get prepMockMarkCheckpointsAuto =>
+      'Do this automatically in the future';
+
+  @override
+  String get prepMockMarkCheckpointsAction => 'Mark Done';
+
+  @override
+  String get prepMockAddToRevisionPrompt =>
+      'Add weak topics to revision queue?';
+
+  @override
+  String get prepMockAddToRevisionAction => 'Add to Revision';
+
+  @override
+  String get prepRevisionTopicOptionalLabel => 'Topic (optional)';
+
+  @override
+  String get prepRevisionNoTopicOption => 'No topic linked';
+
+  @override
+  String get studyPlanBasisLabel => 'Plan Basis';
+
+  @override
+  String get studyPlanBasisReadingUnits => 'Reading Units';
+
+  @override
+  String get studyPlanBasisSyllabusTopics => 'Syllabus Topics';
+
+  @override
+  String get prepAnalyticsWeeklyTopicsTitle => 'Topics Completed per Week';
+
+  @override
+  String get weeklyReviewTopicsCompletedTitle => 'Topics Completed';
 }

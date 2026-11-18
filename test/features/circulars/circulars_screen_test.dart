@@ -233,10 +233,21 @@ void main() {
         findsNothing,
       );
 
-      expect(find.text('Senior Software Engineer'), findsOneWidget);
-      expect(find.text('১৫০টি পদ'), findsOneWidget);
-      expect(find.text('১৫ দিন বাকি'), findsOneWidget);
       expect(find.text('১ দিন মেয়াদোত্তীর্ণ'), findsOneWidget);
+      await tester.scrollUntilVisible(
+        find.text('১৫০টি পদ'),
+        250,
+        scrollable: find.byType(Scrollable).first,
+      );
+      expect(find.text('১৫০টি পদ'), findsOneWidget);
+      await tester.scrollUntilVisible(
+        find.text('Senior Software Engineer'),
+        250,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Senior Software Engineer'), findsOneWidget);
+      expect(find.text('১৫ দিন বাকি'), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
   });

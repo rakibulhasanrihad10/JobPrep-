@@ -7,9 +7,11 @@ import 'package:job_prep/features/prep/domain/entities/revision_item.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan.dart';
 import 'package:job_prep/features/prep/domain/entities/study_plan_snapshot.dart';
 import 'package:job_prep/features/prep/domain/entities/study_session.dart';
+import 'package:job_prep/features/prep/domain/entities/topic.dart';
 import 'package:job_prep/features/prep/domain/utils/mock_test_analytics.dart';
 import 'package:job_prep/features/prep/domain/utils/study_session_date_splitter.dart';
 import 'package:job_prep/features/prep/domain/utils/study_timer_calculator.dart';
+import 'package:job_prep/features/prep/domain/utils/weekly_topic_counts_calculator.dart';
 import 'package:job_prep/features/today/domain/entities/today_summary.dart';
 import 'package:job_prep/features/today/domain/utils/today_window_selectors.dart';
 
@@ -29,6 +31,8 @@ abstract final class WeeklyReviewCalculator {
     required List<Circular> circulars,
     required List<StudyPlanSnapshot> planSnapshots,
     required DateTime now,
+    Iterable<Topic> topics = const <Topic>[],
+    Map<String, List<String>>? subjectEnabledCheckpoints,
     Duration? localOffset,
   }) {
     final weekEnd = StudySessionDateSplitter.toLocalDate(
@@ -151,6 +155,24 @@ abstract final class WeeklyReviewCalculator {
       maxDays: TodayWindowSelectors.upcomingDeadlinesWindowDays,
     );
 
+    var topicsCompletedThisWeek = 0;
+    var topicsCompletedPreviousWeek = 0;
+    for (final topic in topics) {
+      final checkpoints = subjectEnabledCheckpoints?[topic.subjectId];
+      final completionDate = WeeklyTopicCountsCalculator.getCompletionDate(
+        topic,
+        enabledCheckpoints: checkpoints,
+      );
+      if (completionDate != null) {
+        final day = _dateOnly(completionDate);
+        if (!day.isBefore(weekStart) && !day.isAfter(weekEnd)) {
+          topicsCompletedThisWeek++;
+        } else if (!day.isBefore(prevStart) && !day.isAfter(prevEnd)) {
+          topicsCompletedPreviousWeek++;
+        }
+      }
+    }
+
     final suggestion = selectSuggestion(
       daysStudied: daysStudied,
       missedDaysCount: missedDates.length,
@@ -177,6 +199,8 @@ abstract final class WeeklyReviewCalculator {
       mockTestAveragePreviousWeek: mockTestAveragePreviousWeek,
       mockAverageDelta: mockAverageDelta,
       revisionsClearedThisWeek: revisionsClearedThisWeek,
+      topicsCompletedThisWeek: topicsCompletedThisWeek,
+      topicsCompletedPreviousWeek: topicsCompletedPreviousWeek,
       upcomingDeadlines: upcomingDeadlines,
       upcomingExams: upcomingExams,
       suggestionKind: suggestion.kind,

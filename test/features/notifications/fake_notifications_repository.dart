@@ -99,6 +99,19 @@ class FakeNotificationsRepository implements NotificationsRepository {
   }
 
   @override
+  Future<AppNotification> insertNotification(
+    AppNotification notification,
+  ) async {
+    _consumeError();
+    _items.removeWhere((item) => item.id == notification.id);
+    _items.insert(0, notification);
+    if (!_controller.isClosed) {
+      _controller.add(currentItems);
+    }
+    return notification;
+  }
+
+  @override
   Future<void> deleteNotification(String notificationId) async {
     _consumeError();
     _items.removeWhere((item) => item.id == notificationId);

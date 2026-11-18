@@ -63,6 +63,49 @@ enum TopicStatus {
   }
 }
 
+/// Checkpoint stages for syllabus topics in Phase 9F.
+enum SyllabusCheckpoint {
+  study('study', 40),
+  practice('practice', 30),
+  modelTest('model_test', 20),
+  revision('revision', 10);
+
+  const SyllabusCheckpoint(this.value, this.weight);
+
+  /// Database string value.
+  final String value;
+
+  /// Default weight contribution for syllabus calculation.
+  final int weight;
+
+  /// Parses [raw] into a [SyllabusCheckpoint], or returns `null` when
+  /// unrecognized.
+  static SyllabusCheckpoint? tryParse(String? raw) {
+    final normalized = raw?.trim().toLowerCase();
+    if (normalized == null || normalized.isEmpty) return null;
+    for (final item in SyllabusCheckpoint.values) {
+      if (item.value == normalized) return item;
+    }
+    return null;
+  }
+
+  /// Parses [raw] into a [SyllabusCheckpoint], falling back to [fallback].
+  static SyllabusCheckpoint fromValue(
+    String? raw, {
+    SyllabusCheckpoint fallback = SyllabusCheckpoint.study,
+  }) {
+    return tryParse(raw) ?? fallback;
+  }
+
+  /// Default enabled list containing all four checkpoints.
+  static const List<String> defaultEnabledValues = [
+    'study',
+    'practice',
+    'model_test',
+    'revision',
+  ];
+}
+
 /// Entry classification matching `public.progress_logs.entry_type` constraint.
 enum ProgressLogEntryType {
   study('study'),
@@ -234,5 +277,34 @@ enum PomodoroPhase {
       if (item.value == normalized) return item;
     }
     return null;
+  }
+}
+
+/// Target basis for study plans: reading units (pages) or syllabus topics.
+enum StudyPlanBasis {
+  readingUnits('reading_units'),
+  syllabusTopics('syllabus_topics');
+
+  const StudyPlanBasis(this.value);
+
+  /// Database string value persisted in PostgreSQL.
+  final String value;
+
+  /// Parses [raw] into a [StudyPlanBasis], or returns `null` when invalid.
+  static StudyPlanBasis? tryParse(String? raw) {
+    final normalized = raw?.trim().toLowerCase();
+    if (normalized == null || normalized.isEmpty) return null;
+    for (final item in StudyPlanBasis.values) {
+      if (item.value == normalized) return item;
+    }
+    return null;
+  }
+
+  /// Parses [raw] into a [StudyPlanBasis], falling back to [fallback].
+  static StudyPlanBasis fromValue(
+    String? raw, {
+    StudyPlanBasis fallback = StudyPlanBasis.readingUnits,
+  }) {
+    return tryParse(raw) ?? fallback;
   }
 }

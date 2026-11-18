@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_prep/core/localization/app_localizations_extension.dart';
@@ -8,10 +10,12 @@ import 'package:job_prep/core/widgets/glass_button.dart';
 import 'package:job_prep/core/widgets/glass_dialog.dart';
 import 'package:job_prep/features/prep/domain/entities/mock_test.dart';
 import 'package:job_prep/features/prep/domain/entities/subject.dart';
+import 'package:job_prep/features/prep/domain/entities/topic.dart';
 import 'package:job_prep/features/prep/presentation/providers/mock_test_providers.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_progress_log_controller.dart';
 import 'package:job_prep/features/prep/presentation/providers/prep_providers.dart';
 import 'package:job_prep/features/prep/presentation/utils/mock_test_form_validator.dart';
+import 'package:job_prep/features/prep/presentation/utils/mock_test_post_save_helper.dart';
 import 'package:job_prep/features/prep/presentation/utils/prep_l10n.dart';
 import 'package:job_prep/features/prep/presentation/widgets/mock_test_attachment_fields.dart';
 import 'package:job_prep/features/prep/presentation/widgets/mock_test_form_fields.dart';
@@ -57,6 +61,7 @@ class _MockTestFormDialogState extends ConsumerState<_MockTestFormDialog> {
   late final TextEditingController _weakTopicsController;
   late final TextEditingController _notesController;
 
+  final Set<String> _selectedWeakTopicIds = <String>{};
   String? _subjectId;
   String? _circularId;
   String? _materialId;
@@ -98,7 +103,7 @@ class _MockTestFormDialogState extends ConsumerState<_MockTestFormDialog> {
 
     final now = ref.read(prepNowProvider)();
     final rawDate = existing?.takenOn ?? now;
-    _takenOn = DateTime.utc(rawDate.year, rawDate.month, rawDate.day);
+    _takenOn = DateTime(rawDate.year, rawDate.month, rawDate.day);
   }
 
   @override
@@ -115,23 +120,44 @@ class _MockTestFormDialogState extends ConsumerState<_MockTestFormDialog> {
     super.dispose();
   }
 
-  String _formatCleanNumber(double value) =>
-      value % 1 == 0 ? value.round().toString() : value.toString();
+  static String _formatCleanNumber(double val) {
+    if (val == val.roundToDouble()) {
+      return val.toInt().toString();
+    }
+    return val.toString();
+  }
 
   Future<void> _pickDate() async {
+    final now = ref.read(prepNowProvider)();
     final picked = await showDatePicker(
       context: context,
-      initialDate: _takenOn.toLocal(),
-      firstDate: DateTime(2020),
-      lastDate: DateTime(2100),
+      initialDate: _takenOn,
+      firstDate: DateTime(now.year - 5),
+      lastDate: DateTime(now.year + 2),
     );
-    if (!mounted || picked == null) return;
+    if (picked != null) {
+      setState(() => _takenOn = picked);
+    }
+  }
+
+  void _toggleWeak(Topic topic, List<Topic> topics) {
     setState(() {
-      _takenOn = DateTime.utc(picked.year, picked.month, picked.day);
+      if (_selectedWeakTopicIds.contains(topic.id)) {
+        _selectedWeakTopicIds.remove(topic.id);
+      } else {
+        _selectedWeakTopicIds.add(topic.id);
+      }
+      final titles = topics
+          .where((t) => _selectedWeakTopicIds.contains(t.id))
+          .map((t) => t.title);
+      _weakTopicsController.text = titles.join(', ');
     });
   }
 
-  Future<void> _submit(List<Subject> subjects) async {
+  Future<void> _submit(
+    List<Subject> subjects,
+    List<Topic> subjectTopics,
+  ) async {
     final result = MockTestFormValidator.validateAndBuildDraft(
       l10n: context.l10n,
       subjects: subjects,
@@ -161,7 +187,26 @@ class _MockTestFormDialogState extends ConsumerState<_MockTestFormDialog> {
         await ref.read(mockTestControllerProvider.notifier).saveTest(draft);
     if (!mounted) return;
     if (saved != null) {
-      Navigator.of(context).pop(saved);
+      final linkedIds = _selectedWeakTopicIds.isNotEmpty
+          ? {
+              ..._selectedWeakTopicIds,
+              if (_topicId?.isNotEmpty == true) _topicId!,
+            }.toList()
+          : const <String>[];
+      final weak = subjectTopics
+          .where((t) => _selectedWeakTopicIds.contains(t.id))
+          .toList();
+
+      await MockTestPostSaveHelper.handlePostSaveAutomations(
+        context,
+        ref,
+        test: saved,
+        linkedTopicIds: linkedIds,
+        weakTopics: weak,
+      );
+      if (mounted) {
+        Navigator.of(context).pop(saved);
+      }
     }
   }
 
@@ -182,6 +227,12 @@ class _MockTestFormDialogState extends ConsumerState<_MockTestFormDialog> {
 
     final effectiveSubjectId =
         MockTestFormValidator.resolveSubjectId(subjects, _subjectId);
+    final subjectTopics = ref
+            .watch(topicsForSubjectProvider(effectiveSubjectId ?? ''))
+            .asData
+            ?.value ??
+        const <Topic>[];
+
     final formattedDate = AppFormatters.formatDate(
       _takenOn,
       locale: locale,
@@ -232,6 +283,7 @@ class _MockTestFormDialogState extends ConsumerState<_MockTestFormDialog> {
                             _subjectId = value;
                             _materialId = null;
                             _topicId = null;
+                            _selectedWeakTopicIds.clear();
                           }),
                 )
               else
@@ -255,6 +307,9 @@ class _MockTestFormDialogState extends ConsumerState<_MockTestFormDialog> {
                 formattedDate: formattedDate,
                 isBusy: isBusy,
                 onPickDate: _pickDate,
+                syllabusTopics: subjectTopics,
+                selectedWeakTopicIds: _selectedWeakTopicIds,
+                onToggleWeakTopic: (t) => _toggleWeak(t, subjectTopics),
               ),
               SizedBox(height: spacing.md),
               MockTestAttachmentFields(
@@ -289,7 +344,7 @@ class _MockTestFormDialogState extends ConsumerState<_MockTestFormDialog> {
         GlassButton(
           key: const ValueKey('mock-form-submit-button'),
           variant: GlassButtonVariant.primary,
-          onPressed: isBusy ? null : () => _submit(subjects),
+          onPressed: isBusy ? null : () => _submit(subjects, subjectTopics),
           child: Text(l10n.prepMockFormSaveAction),
         ),
       ],

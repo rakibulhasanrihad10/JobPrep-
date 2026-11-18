@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_prep/core/theme/app_theme_tokens.dart';
@@ -154,7 +152,7 @@ class _GlassButtonState extends ConsumerState<GlassButton> {
     );
 
     content = AnimatedContainer(
-      duration: durations.fast,
+      duration: reduceEffects ? Duration.zero : durations.fast,
       width: widget.width,
       height: widget.height,
       padding: widget.padding ?? defaultPadding,
@@ -181,19 +179,9 @@ class _GlassButtonState extends ConsumerState<GlassButton> {
       );
     }
 
-    if (reduceEffects) {
-      return ClipRRect(
-        borderRadius: buttonRadius,
-        child: content,
-      );
-    }
-
     return ClipRRect(
       borderRadius: buttonRadius,
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
-        child: content,
-      ),
+      child: content,
     );
   }
 }

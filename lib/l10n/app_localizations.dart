@@ -7065,6 +7065,1476 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Run setup again'**
   String get settingsRunSetupAgainButton;
+
+  /// Section title for user profile controls in Settings
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get settingsProfileTitle;
+
+  /// Subtitle under the Profile settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Manage your display name, account email, password, and active session.'**
+  String get settingsProfileSubtitle;
+
+  /// Label for the display name input in Profile settings
+  ///
+  /// In en, this message translates to:
+  /// **'Display name'**
+  String get settingsDisplayNameLabel;
+
+  /// Button saving edited display name in Settings
+  ///
+  /// In en, this message translates to:
+  /// **'Save name'**
+  String get settingsDisplayNameSaveButton;
+
+  /// Feedback shown when display name saves
+  ///
+  /// In en, this message translates to:
+  /// **'Display name updated'**
+  String get settingsDisplayNameSaved;
+
+  /// Error shown when saving display name fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not update display name. Please try again.'**
+  String get settingsDisplayNameSaveError;
+
+  /// Label preceding user account email in Settings
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get settingsEmailLabel;
+
+  /// Fallback when authenticated user has no email
+  ///
+  /// In en, this message translates to:
+  /// **'No email linked'**
+  String get settingsEmailUnavailable;
+
+  /// Button opening change password dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Change password'**
+  String get settingsChangePasswordButton;
+
+  /// Title of the change password dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get settingsChangePasswordTitle;
+
+  /// Field label for new account password
+  ///
+  /// In en, this message translates to:
+  /// **'New password'**
+  String get settingsNewPasswordLabel;
+
+  /// Field label for confirming new account password
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm new password'**
+  String get settingsConfirmPasswordLabel;
+
+  /// Submit button for changing account password
+  ///
+  /// In en, this message translates to:
+  /// **'Update password'**
+  String get settingsPasswordSaveButton;
+
+  /// Feedback shown after password update succeeds
+  ///
+  /// In en, this message translates to:
+  /// **'Password updated successfully'**
+  String get settingsPasswordSaved;
+
+  /// Fallback error shown when password update fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not update password. Please verify your session and try again.'**
+  String get settingsPasswordError;
+
+  /// Button signing user out from Settings
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get settingsSignOutButton;
+
+  /// Section title for theme and visual effects settings
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get settingsAppearanceTitle;
+
+  /// Subtitle under Appearance settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your color theme and visual effect preferences.'**
+  String get settingsAppearanceSubtitle;
+
+  /// Switch label replacing glass blur with solid fills and skipping animations
+  ///
+  /// In en, this message translates to:
+  /// **'Reduce visual effects'**
+  String get settingsReduceEffectsLabel;
+
+  /// Helper text under reduce effects switch
+  ///
+  /// In en, this message translates to:
+  /// **'Replace frosted glass blur with solid fills and skip motion animations.'**
+  String get settingsReduceEffectsHint;
+
+  /// Section title for app language and numeral preferences
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get settingsLanguageTitle;
+
+  /// Subtitle under Language settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your interface language and numeral format.'**
+  String get settingsLanguageSubtitle;
+
+  /// Switch label enabling Bangla numerals
+  ///
+  /// In en, this message translates to:
+  /// **'Use Bangla digits'**
+  String get settingsBanglaDigitsLabel;
+
+  /// Helper text explaining Bangla digits toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Display dates, counters, and progress figures using Bangla digits.'**
+  String get settingsBanglaDigitsHint;
+
+  /// Section heading grouping email reminders and in-app notification settings
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get settingsNotificationsSectionTitle;
+
+  /// Section heading for timer defaults and onboarding setup rerun
+  ///
+  /// In en, this message translates to:
+  /// **'Study'**
+  String get settingsStudyTitle;
+
+  /// Subtitle under Study settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Set default focus & break timer lengths or rerun onboarding.'**
+  String get settingsStudySubtitle;
+
+  /// Input label for default Pomodoro focus duration
+  ///
+  /// In en, this message translates to:
+  /// **'Focus length (minutes)'**
+  String get settingsTimerFocusMinutesLabel;
+
+  /// Input label for default Pomodoro short break duration
+  ///
+  /// In en, this message translates to:
+  /// **'Short break (minutes)'**
+  String get settingsTimerShortBreakLabel;
+
+  /// Input label for default Pomodoro long break duration
+  ///
+  /// In en, this message translates to:
+  /// **'Long break (minutes)'**
+  String get settingsTimerLongBreakLabel;
+
+  /// Button saving focus and break lengths
+  ///
+  /// In en, this message translates to:
+  /// **'Save timer defaults'**
+  String get settingsStudySaveTimerButton;
+
+  /// Feedback shown when timer defaults save
+  ///
+  /// In en, this message translates to:
+  /// **'Study timer defaults saved'**
+  String get settingsStudyTimerSaved;
+
+  /// Validation error when timer lengths are outside valid bounds
+  ///
+  /// In en, this message translates to:
+  /// **'Enter valid minutes (Focus 5–180, Short break 1–60, Long break 5–90).'**
+  String get settingsStudyTimerInvalidError;
+
+  /// Button in Security section opening change vault passphrase dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Change passphrase'**
+  String get vaultChangePassphraseButton;
+
+  /// Title of dialog for re-keying vault with a new passphrase
+  ///
+  /// In en, this message translates to:
+  /// **'Change Vault Passphrase'**
+  String get vaultChangePassphraseTitle;
+
+  /// Instruction body inside change vault passphrase dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Verify your current passphrase, then choose a new passphrase to re-encrypt all saved portal logins.'**
+  String get vaultChangePassphraseBody;
+
+  /// Label for current passphrase input
+  ///
+  /// In en, this message translates to:
+  /// **'Current passphrase'**
+  String get vaultCurrentPassphraseLabel;
+
+  /// Label for new vault passphrase input
+  ///
+  /// In en, this message translates to:
+  /// **'New passphrase'**
+  String get vaultNewPassphraseLabel;
+
+  /// Label for confirming new vault passphrase
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm new passphrase'**
+  String get vaultConfirmNewPassphraseLabel;
+
+  /// Submit action button inside change vault passphrase dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Update passphrase'**
+  String get vaultChangePassphraseSubmit;
+
+  /// Status message shown after changing vault passphrase
+  ///
+  /// In en, this message translates to:
+  /// **'Vault passphrase updated'**
+  String get vaultChangePassphraseSuccess;
+
+  /// Error shown when current vault passphrase verification fails
+  ///
+  /// In en, this message translates to:
+  /// **'Current passphrase is incorrect.'**
+  String get vaultCurrentPassphraseWrongError;
+
+  /// Section title for data export and account deletion
+  ///
+  /// In en, this message translates to:
+  /// **'Data & Account'**
+  String get settingsDataTitle;
+
+  /// Subtitle under Data settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Download a full backup of your circulars and study progress, or delete your account permanently.'**
+  String get settingsDataSubtitle;
+
+  /// Button exporting circulars and prep data as CSV
+  ///
+  /// In en, this message translates to:
+  /// **'Export CSV'**
+  String get settingsExportCsvButton;
+
+  /// Button exporting circulars and prep data as JSON
+  ///
+  /// In en, this message translates to:
+  /// **'Export JSON'**
+  String get settingsExportJsonButton;
+
+  /// Confirmation message shown after saving exported archive
+  ///
+  /// In en, this message translates to:
+  /// **'Exported {fileName}'**
+  String settingsExportSuccess(String fileName);
+
+  /// Error shown when data export fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not export data. Please try again.'**
+  String get settingsExportError;
+
+  /// Destructive action opening delete account confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete my account'**
+  String get settingsDeleteAccountButton;
+
+  /// Confirmation dialog heading for deleting user account
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account permanently?'**
+  String get settingsDeleteAccountDialogTitle;
+
+  /// Irreversible warning inside delete account confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'This permanently removes your account, saved circulars, attachments, study progress, mock tests, revision marks, vault logins, and settings. This action cannot be undone.'**
+  String get settingsDeleteAccountWarning;
+
+  /// Checkbox label confirming account deletion
+  ///
+  /// In en, this message translates to:
+  /// **'I understand all my data will be permanently deleted.'**
+  String get settingsDeleteAccountAckLabel;
+
+  /// Final confirmation button deleting account
+  ///
+  /// In en, this message translates to:
+  /// **'Delete permanently'**
+  String get settingsDeleteAccountConfirmButton;
+
+  /// Error shown inside dialog when account deletion fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not delete account right now. Please try again.'**
+  String get settingsDeleteAccountError;
+
+  /// Non-blocking warning shown when remote settings sync fails
+  ///
+  /// In en, this message translates to:
+  /// **'Saved locally on this device. Connect to sync across devices.'**
+  String get settingsSyncWarning;
+
+  /// Button label revealing the next batch of items in a long list
+  ///
+  /// In en, this message translates to:
+  /// **'Show {count} more'**
+  String prepShowMoreItems(String count);
+
+  /// Title of the Privacy Policy document
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get legalPrivacyPolicyTitle;
+
+  /// Subtitle describing Privacy Policy tenets
+  ///
+  /// In en, this message translates to:
+  /// **'Client-side encryption, zero tracking, and user data ownership.'**
+  String get legalPrivacyPolicySubtitle;
+
+  /// Title of the Terms of Service document
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get legalTermsOfServiceTitle;
+
+  /// Subtitle describing Terms of Service
+  ///
+  /// In en, this message translates to:
+  /// **'Open, transparent, and built for your exam preparation.'**
+  String get legalTermsOfServiceSubtitle;
+
+  /// Button returning to Settings screen
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Settings'**
+  String get legalBackToSettings;
+
+  /// Button returning to previous view
+  ///
+  /// In en, this message translates to:
+  /// **'Back to App'**
+  String get legalBackToApp;
+
+  /// Privacy policy section 1 header
+  ///
+  /// In en, this message translates to:
+  /// **'Zero Third-Party Tracking'**
+  String get legalPrivacySection1Title;
+
+  /// Privacy policy section 1 body text
+  ///
+  /// In en, this message translates to:
+  /// **'JobPrep does not track you, sell your personal data, or include advertising SDKs. All analytics and crash reports, if enabled, scrub sensitive and personally identifiable information before leaving your browser.'**
+  String get legalPrivacySection1Body;
+
+  /// Privacy policy section 2 header
+  ///
+  /// In en, this message translates to:
+  /// **'Client-Side Vault Encryption'**
+  String get legalPrivacySection2Title;
+
+  /// Privacy policy section 2 body text
+  ///
+  /// In en, this message translates to:
+  /// **'Your job portal credentials and sensitive passwords are encrypted directly on your device using AES-GCM-256 and PBKDF2 keys derived from your secret passphrase. Your passphrase is never sent, stored, or logged anywhere.'**
+  String get legalPrivacySection2Body;
+
+  /// Privacy policy section 3 header
+  ///
+  /// In en, this message translates to:
+  /// **'Row-Level Security & Isolation'**
+  String get legalPrivacySection3Title;
+
+  /// Privacy policy section 3 body text
+  ///
+  /// In en, this message translates to:
+  /// **'All circulars, study progress, mock tests, and notes stored in the database are strictly protected by Row-Level Security (RLS) policies. Only you can read or modify your own records.'**
+  String get legalPrivacySection3Body;
+
+  /// Privacy policy section 4 header
+  ///
+  /// In en, this message translates to:
+  /// **'Export & Account Deletion'**
+  String get legalPrivacySection4Title;
+
+  /// Privacy policy section 4 body text
+  ///
+  /// In en, this message translates to:
+  /// **'You can export all your data at any time in CSV or JSON format from Settings. If you choose to delete your account, all your records are permanently and irrevocably deleted.'**
+  String get legalPrivacySection4Body;
+
+  /// Terms of service section 1 header
+  ///
+  /// In en, this message translates to:
+  /// **'Open Educational Use'**
+  String get legalTermsSection1Title;
+
+  /// Terms of service section 1 body text
+  ///
+  /// In en, this message translates to:
+  /// **'JobPrep is an educational dashboard designed to help candidates track job circulars, manage study timelines, and practice mock tests effectively.'**
+  String get legalTermsSection1Body;
+
+  /// Terms of service section 2 header
+  ///
+  /// In en, this message translates to:
+  /// **'Circulars Accuracy Disclaimer'**
+  String get legalTermsSection2Title;
+
+  /// Terms of service section 2 body text
+  ///
+  /// In en, this message translates to:
+  /// **'Official circular dates, qualifications, and deadlines are subject to change by recruiting authorities. Always verify final application deadlines and details with official gazettes and portals.'**
+  String get legalTermsSection2Body;
+
+  /// Terms of service section 3 header
+  ///
+  /// In en, this message translates to:
+  /// **'User Responsibility'**
+  String get legalTermsSection3Title;
+
+  /// Terms of service section 3 body text
+  ///
+  /// In en, this message translates to:
+  /// **'Because portal passwords in your vault are encrypted with a private passphrase known only to you, losing your passphrase means encrypted vault data cannot be recovered.'**
+  String get legalTermsSection3Body;
+
+  /// Navigation link to privacy policy
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get legalPrivacyPolicyLink;
+
+  /// Navigation link to terms of service
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get legalTermsOfServiceLink;
+
+  /// Secondary quieter button on login screen to use app in guest mode
+  ///
+  /// In en, this message translates to:
+  /// **'Continue without account'**
+  String get authContinueWithoutAccount;
+
+  /// Subtitle below Continue without account button
+  ///
+  /// In en, this message translates to:
+  /// **'Your data stays on this device.'**
+  String get authDataStaysOnDevice;
+
+  /// Title of the guest mode confirmation sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Continue without an account'**
+  String get guestConfirmationTitle;
+
+  /// First point in guest confirmation sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Data is stored only on this device and browser.'**
+  String get guestConfirmDeviceOnly;
+
+  /// Second point in guest confirmation sheet warning about data loss
+  ///
+  /// In en, this message translates to:
+  /// **'Clearing browser data or uninstalling the app deletes it permanently.'**
+  String get guestConfirmDataLoss;
+
+  /// Third point in guest confirmation sheet about missing features
+  ///
+  /// In en, this message translates to:
+  /// **'There is no cloud sync and no email reminders.'**
+  String get guestConfirmNoSync;
+
+  /// Fourth point in guest confirmation sheet about future account upgrade
+  ///
+  /// In en, this message translates to:
+  /// **'You can create an account later and move your data across.'**
+  String get guestConfirmMoveDataLater;
+
+  /// Explicit acknowledgment button in guest confirmation sheet
+  ///
+  /// In en, this message translates to:
+  /// **'I understand'**
+  String get guestConfirmUnderstandButton;
+
+  /// Cancel button in guest confirmation sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Go back'**
+  String get guestConfirmCancelButton;
+
+  /// Feature gate title for cloud sync
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud Sync requires an account'**
+  String get accountGateCloudSyncTitle;
+
+  /// Feature gate title for email reminders
+  ///
+  /// In en, this message translates to:
+  /// **'Email reminders require an account'**
+  String get accountGateEmailRemindersTitle;
+
+  /// Feature gate title for circular file attachments
+  ///
+  /// In en, this message translates to:
+  /// **'File attachments require an account'**
+  String get accountGateFileAttachmentsTitle;
+
+  /// Feature gate title for account deletion
+  ///
+  /// In en, this message translates to:
+  /// **'Account deletion requires a registered account'**
+  String get accountGateDeleteAccountTitle;
+
+  /// Explanation shown inside account-only feature gate
+  ///
+  /// In en, this message translates to:
+  /// **'Create a free JobPrep account to sync across devices, receive reminders, and upload files.'**
+  String get accountGateDescription;
+
+  /// Action button in account-only feature gate leading to login/signup
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account to use this'**
+  String get accountGateCreateAccountButton;
+
+  /// Section header in Settings when app is running in guest mode
+  ///
+  /// In en, this message translates to:
+  /// **'Guest Mode'**
+  String get settingsGuestSectionTitle;
+
+  /// Subtitle explaining guest mode in Settings
+  ///
+  /// In en, this message translates to:
+  /// **'Your data is stored locally on this device.'**
+  String get settingsGuestSectionSubtitle;
+
+  /// Label for device storage persistence status in guest settings
+  ///
+  /// In en, this message translates to:
+  /// **'Storage status'**
+  String get settingsStorageStatusTitle;
+
+  /// Storage status indicating browser persistent storage was granted
+  ///
+  /// In en, this message translates to:
+  /// **'Persistent (Protected from automatic clearing)'**
+  String get settingsStoragePersistent;
+
+  /// Storage status indicating standard transient browser storage
+  ///
+  /// In en, this message translates to:
+  /// **'Transient browser storage'**
+  String get settingsStorageTransient;
+
+  /// Warning shown on web regarding Safari 7-day storage eviction unless added to home screen
+  ///
+  /// In en, this message translates to:
+  /// **'Browsers such as Safari on iPhone may clear site data after a period of inactivity unless the site is added to the Home Screen.'**
+  String get settingsStorageSafariWarning;
+
+  /// Placeholder button in guest settings for future data backup
+  ///
+  /// In en, this message translates to:
+  /// **'Back up my data'**
+  String get settingsBackupDataButton;
+
+  /// Snackbar message shown when tapping Back up my data in Phase 9B
+  ///
+  /// In en, this message translates to:
+  /// **'Backup and export features will be fully available in Phase 9C.'**
+  String get settingsBackupPlaceholderMessage;
+
+  /// Button in guest settings to navigate to login/signup
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account'**
+  String get settingsCreateAccountButton;
+
+  /// Destructive button to wipe all local data from the device
+  ///
+  /// In en, this message translates to:
+  /// **'Erase all data on this device'**
+  String get settingsEraseDataButton;
+
+  /// First confirmation dialog title for erasing local data
+  ///
+  /// In en, this message translates to:
+  /// **'Erase all local data?'**
+  String get eraseDataDialog1Title;
+
+  /// First confirmation dialog message explaining permanent deletion
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently delete all circulars, subjects, study progress, and settings stored on this device. This action cannot be undone.'**
+  String get eraseDataDialog1Message;
+
+  /// Button to proceed to final erase confirmation
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get eraseDataDialog1Confirm;
+
+  /// Cancel button on erase confirmation dialogs
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get eraseDataDialogCancel;
+
+  /// Second confirmation dialog title for erasing local data
+  ///
+  /// In en, this message translates to:
+  /// **'Are you absolutely sure?'**
+  String get eraseDataDialog2Title;
+
+  /// Second confirmation dialog message warning of immediate wipe
+  ///
+  /// In en, this message translates to:
+  /// **'Tap confirm below to permanently wipe all JobPrep data from this device.'**
+  String get eraseDataDialog2Message;
+
+  /// Final confirmation button to wipe all local data
+  ///
+  /// In en, this message translates to:
+  /// **'Delete everything'**
+  String get eraseDataDialog2Confirm;
+
+  /// Feedback message after local data is wiped
+  ///
+  /// In en, this message translates to:
+  /// **'All local data has been erased.'**
+  String get eraseDataSuccessMessage;
+
+  /// Label indicating when the last backup was taken
+  ///
+  /// In en, this message translates to:
+  /// **'Last backup: {time}'**
+  String settingsLastBackup(String time);
+
+  /// Shown when no backup has ever been taken
+  ///
+  /// In en, this message translates to:
+  /// **'Never'**
+  String get settingsLastBackupNever;
+
+  /// Shown when last backup was taken today
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get settingsLastBackupToday;
+
+  /// Shown when last backup was taken yesterday
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get settingsLastBackupYesterday;
+
+  /// Relative days ago since last backup
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day ago} other{{count} days ago}}'**
+  String settingsLastBackupDaysAgo(int count);
+
+  /// Gentle in-app reminder card title for scheduled backups
+  ///
+  /// In en, this message translates to:
+  /// **'Time to back up your study data'**
+  String get settingsBackupReminderTitle;
+
+  /// Gentle reminder body with days elapsed and changes count
+  ///
+  /// In en, this message translates to:
+  /// **'Last backup was {days} days ago. You have made {changes} changes since.'**
+  String settingsBackupReminderMessage(int days, int changes);
+
+  /// CTA button in backup reminder banner
+  ///
+  /// In en, this message translates to:
+  /// **'Back up now'**
+  String get settingsBackupReminderAction;
+
+  /// Dismiss button in backup reminder banner
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get settingsBackupReminderDismiss;
+
+  /// Action button to pick and restore a backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Restore from backup'**
+  String get settingsRestoreButton;
+
+  /// Dialog title for exporting a backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Back up study data'**
+  String get backupDialogTitle;
+
+  /// Dialog explanation of backup export
+  ///
+  /// In en, this message translates to:
+  /// **'Create a downloadable backup file of all your circulars, subjects, notes, and study logs.'**
+  String get backupDialogDescription;
+
+  /// Label recommending encryption for backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Encrypt with passphrase (Recommended)'**
+  String get backupEncryptionRecommended;
+
+  /// Warning on irreversible loss if backup passphrase is forgotten
+  ///
+  /// In en, this message translates to:
+  /// **'Protects personal notes and encrypted portal credentials using AES-GCM. If you forget this passphrase, the backup cannot be recovered.'**
+  String get backupEncryptionNote;
+
+  /// Label for backup passphrase input
+  ///
+  /// In en, this message translates to:
+  /// **'Backup passphrase'**
+  String get backupPassphraseLabel;
+
+  /// Label for confirming backup passphrase input
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm passphrase'**
+  String get backupPassphraseConfirmLabel;
+
+  /// Validation error when passphrases do not match
+  ///
+  /// In en, this message translates to:
+  /// **'Passphrases do not match'**
+  String get backupPassphraseMismatch;
+
+  /// Validation error when passphrase is less than 8 characters
+  ///
+  /// In en, this message translates to:
+  /// **'Passphrase must be at least 8 characters'**
+  String get backupPassphraseTooShort;
+
+  /// Button to download AES-GCM encrypted backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Export encrypted backup'**
+  String get backupExportEncryptedButton;
+
+  /// Warning displayed when choosing unencrypted export
+  ///
+  /// In en, this message translates to:
+  /// **'Warning: An unencrypted backup file contains personal study notes and encrypted portal logins in plain JSON format.'**
+  String get backupExportPlainWarning;
+
+  /// Button to download plaintext backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Export without passphrase'**
+  String get backupExportPlainButton;
+
+  /// Snackbar notification after backup completes
+  ///
+  /// In en, this message translates to:
+  /// **'Backup saved successfully ({fileName}).'**
+  String backupExportSuccess(String fileName);
+
+  /// Dialog title for restoring a backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Restore study data'**
+  String get restoreDialogTitle;
+
+  /// Prompt requesting passphrase to decrypt backup
+  ///
+  /// In en, this message translates to:
+  /// **'This backup file is encrypted. Enter the backup passphrase to unlock and preview.'**
+  String get restorePassphrasePrompt;
+
+  /// Label for restore passphrase input
+  ///
+  /// In en, this message translates to:
+  /// **'Passphrase'**
+  String get restorePassphraseLabel;
+
+  /// Button to decrypt backup and show table preview
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock & Preview'**
+  String get restorePassphraseSubmit;
+
+  /// Title above table counts in restore preview dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Backup contents preview'**
+  String get restorePreviewTitle;
+
+  /// Total count of entities found in backup file
+  ///
+  /// In en, this message translates to:
+  /// **'Total records: {count}'**
+  String restorePreviewTotalRecords(int count);
+
+  /// Title for merge restore option
+  ///
+  /// In en, this message translates to:
+  /// **'Merge (Preserve existing, update newer)'**
+  String get restoreStrategyMergeTitle;
+
+  /// Explanation for merge restore option
+  ///
+  /// In en, this message translates to:
+  /// **'Existing IDs are preserved. Records from the backup replace existing ones only when their update timestamp is newer. No duplicates are created.'**
+  String get restoreStrategyMergeDescription;
+
+  /// Title for replace restore option (guest only)
+  ///
+  /// In en, this message translates to:
+  /// **'Replace all data on this device'**
+  String get restoreStrategyReplaceTitle;
+
+  /// Explanation for replace restore option
+  ///
+  /// In en, this message translates to:
+  /// **'Clears all local data on this device and restores the backup. Guest mode only.'**
+  String get restoreStrategyReplaceDescription;
+
+  /// Safety backup guarantee note for Replace mode
+  ///
+  /// In en, this message translates to:
+  /// **'An automatic safety backup will be created and saved before any data is replaced.'**
+  String get restoreReplaceSafetyBackupNote;
+
+  /// Confirmation word typing instruction for Replace mode
+  ///
+  /// In en, this message translates to:
+  /// **'Type REPLACE below to proceed with replacement:'**
+  String get restoreReplaceConfirmPrompt;
+
+  /// Exact confirmation word to type for Replace mode
+  ///
+  /// In en, this message translates to:
+  /// **'REPLACE'**
+  String get restoreReplaceConfirmWord;
+
+  /// Action button executing selected restore strategy
+  ///
+  /// In en, this message translates to:
+  /// **'Restore data'**
+  String get restoreActionButton;
+
+  /// Snackbar confirming successful restore
+  ///
+  /// In en, this message translates to:
+  /// **'Successfully restored {count} records.'**
+  String restoreSuccessMessage(int count);
+
+  /// Error when selected backup file is too large
+  ///
+  /// In en, this message translates to:
+  /// **'Backup file exceeds maximum allowed size (25 MB).'**
+  String get restoreErrorFileTooLarge;
+
+  /// Error when checksum does not match data payload
+  ///
+  /// In en, this message translates to:
+  /// **'Backup file is corrupted or has been tampered with (checksum mismatch).'**
+  String get restoreErrorChecksumMismatch;
+
+  /// Error when backup decryption fails
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect passphrase or invalid backup file.'**
+  String get restoreErrorWrongPassphrase;
+
+  /// Error when backup file is from a newer app version
+  ///
+  /// In en, this message translates to:
+  /// **'This backup was created by a newer version of JobPrep (v{version}). Please update your app to restore this file.'**
+  String restoreErrorNewerVersion(String version);
+
+  /// Cancel button for backup and restore dialogs
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get backupDialogCancel;
+
+  /// Error when backup JSON structure is unrecognized
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid or unreadable backup file format.'**
+  String get restoreErrorInvalidFormat;
+
+  /// Title of upgrade prompt banner on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Secure your study progress'**
+  String get todayGuestUpgradeTitle;
+
+  /// Subtitle of upgrade prompt banner on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account to automatically sync and access your study materials across all devices.'**
+  String get todayGuestUpgradeSubtitle;
+
+  /// Button to navigate to account creation from Today banner
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account'**
+  String get todayGuestUpgradeButton;
+
+  /// Title of migration choice dialog after sign-in
+  ///
+  /// In en, this message translates to:
+  /// **'Account Connected'**
+  String get migrationChoiceTitle;
+
+  /// Subtitle of migration choice dialog
+  ///
+  /// In en, this message translates to:
+  /// **'We found study data on this device. Would you like to move it to your account or start fresh?'**
+  String get migrationChoiceSubtitle;
+
+  /// Primary button to move guest data to account
+  ///
+  /// In en, this message translates to:
+  /// **'Move data to my account'**
+  String get migrationChoiceMoveButton;
+
+  /// Secondary button to start fresh without moving data
+  ///
+  /// In en, this message translates to:
+  /// **'Start fresh & keep device data'**
+  String get migrationChoiceFreshButton;
+
+  /// Title of migration progress modal
+  ///
+  /// In en, this message translates to:
+  /// **'Moving Data to Account'**
+  String get migrationProgressTitle;
+
+  /// Progress step label during upload
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading {table} ({current}/{total})…'**
+  String migrationProgressStep(String table, int current, int total);
+
+  /// Title of migration completion dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Data Moved Successfully!'**
+  String get migrationCompleteTitle;
+
+  /// Subtitle explaining verification completion
+  ///
+  /// In en, this message translates to:
+  /// **'All records and progress totals have been verified. Would you like to keep or erase the local copy on this device?'**
+  String get migrationCompleteSubtitle;
+
+  /// Button to download backup before erasing local copy
+  ///
+  /// In en, this message translates to:
+  /// **'Download Final Safety Backup'**
+  String get migrationDownloadFinalBackup;
+
+  /// Switch or checkbox label to erase local data after migration
+  ///
+  /// In en, this message translates to:
+  /// **'Erase local copy on this device'**
+  String get migrationEraseLocalOption;
+
+  /// Explanation for erasing local copy
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended to avoid having duplicate local guest data on this browser.'**
+  String get migrationEraseLocalSubtitle;
+
+  /// Button completing migration flow
+  ///
+  /// In en, this message translates to:
+  /// **'Continue to Dashboard'**
+  String get migrationFinishButton;
+
+  /// Title when migration fails
+  ///
+  /// In en, this message translates to:
+  /// **'Migration Failed'**
+  String get migrationErrorTitle;
+
+  /// Error message when migration fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not complete data migration: {error}. Your local data is completely untouched and safe.'**
+  String migrationErrorMessage(String error);
+
+  /// Retry button on migration failure
+  ///
+  /// In en, this message translates to:
+  /// **'Retry Upload'**
+  String get migrationRetryButton;
+
+  /// Abort button on migration failure to stay in guest mode
+  ///
+  /// In en, this message translates to:
+  /// **'Stay in Guest Mode'**
+  String get migrationKeepGuestButton;
+
+  /// Tab label for Syllabus in Prep section
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus'**
+  String get prepTabSyllabus;
+
+  /// Title of the syllabus tab
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus Tracking'**
+  String get prepSyllabusTitle;
+
+  /// Subtitle of the syllabus tab
+  ///
+  /// In en, this message translates to:
+  /// **'Track chapters, topics, and checkpoint mastery.'**
+  String get prepSyllabusSubtitle;
+
+  /// Label for weighted syllabus progress ring
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus Progress'**
+  String get syllabusOverallProgress;
+
+  /// Label for page-based reading progress ring
+  ///
+  /// In en, this message translates to:
+  /// **'Reading Progress'**
+  String get syllabusReadingProgress;
+
+  /// Checkpoint name for study
+  ///
+  /// In en, this message translates to:
+  /// **'Study'**
+  String get syllabusCheckpointStudy;
+
+  /// Checkpoint name for practice
+  ///
+  /// In en, this message translates to:
+  /// **'Practice'**
+  String get syllabusCheckpointPractice;
+
+  /// Checkpoint name for model test
+  ///
+  /// In en, this message translates to:
+  /// **'Model Test'**
+  String get syllabusCheckpointModelTest;
+
+  /// Checkpoint name for revision
+  ///
+  /// In en, this message translates to:
+  /// **'Revision'**
+  String get syllabusCheckpointRevision;
+
+  /// Button to add a new chapter
+  ///
+  /// In en, this message translates to:
+  /// **'Add Chapter'**
+  String get syllabusAddChapter;
+
+  /// Button to edit an existing chapter
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Chapter'**
+  String get syllabusEditChapter;
+
+  /// Button to delete an existing chapter
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Chapter'**
+  String get syllabusDeleteChapter;
+
+  /// Confirmation message when deleting a chapter
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete chapter \"{title}\"? All {count} topic(s) inside will be lost.'**
+  String syllabusDeleteChapterConfirm(String title, int count);
+
+  /// Label for chapter title input
+  ///
+  /// In en, this message translates to:
+  /// **'Chapter Title'**
+  String get syllabusChapterTitleLabel;
+
+  /// Button to add a new topic
+  ///
+  /// In en, this message translates to:
+  /// **'Add Topic'**
+  String get syllabusAddTopic;
+
+  /// Button to edit topic details
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Topic'**
+  String get syllabusEditTopic;
+
+  /// Button to delete a topic
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Topic'**
+  String get syllabusDeleteTopic;
+
+  /// Label for topic title input
+  ///
+  /// In en, this message translates to:
+  /// **'Topic Title'**
+  String get syllabusTopicTitleLabel;
+
+  /// Label for topic weight input
+  ///
+  /// In en, this message translates to:
+  /// **'Weight'**
+  String get syllabusTopicWeightLabel;
+
+  /// Label for topic notes input
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Notes'**
+  String get syllabusTopicNotesLabel;
+
+  /// Hint for topic notes input
+  ///
+  /// In en, this message translates to:
+  /// **'Write study notes, formulas, or tricky points...'**
+  String get syllabusTopicNotesHint;
+
+  /// Label for topic completion date
+  ///
+  /// In en, this message translates to:
+  /// **'Completion Date'**
+  String get syllabusTopicDateLabel;
+
+  /// Button to bulk complete a checkpoint for all topics in chapter
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all {checkpoint} done'**
+  String syllabusMarkAllDone(String checkpoint);
+
+  /// Button to configure subject checkpoints
+  ///
+  /// In en, this message translates to:
+  /// **'Configure Checkpoints'**
+  String get syllabusConfigureCheckpoints;
+
+  /// Subtitle for configure checkpoints dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Choose which checkpoints to track for {subject}'**
+  String syllabusConfigureCheckpointsSubtitle(String subject);
+
+  /// Warning message when disabling checkpoints
+  ///
+  /// In en, this message translates to:
+  /// **'Warning: unchecking checkpoints with completed data will hide them from progress calculation.'**
+  String get syllabusConfigureCheckpointsWarning;
+
+  /// Button to quick add syllabus outline
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Add Outline'**
+  String get syllabusQuickAdd;
+
+  /// Subtitle for quick add outline dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Paste a multi-line outline. Lines without a leading dash become chapters; lines starting with \"-\" become topics.'**
+  String get syllabusQuickAddSubtitle;
+
+  /// Hint text for quick add input
+  ///
+  /// In en, this message translates to:
+  /// **'Chapter 1: Arithmetic\n- Prime Numbers\n- Divisibility Rules\n\nChapter 2: Algebra\n- Polynomials'**
+  String get syllabusQuickAddHint;
+
+  /// Preview count for parsed outline
+  ///
+  /// In en, this message translates to:
+  /// **'Preview: {chapters} chapter(s), {topics} topic(s)'**
+  String syllabusQuickAddPreview(int chapters, int topics);
+
+  /// Button to confirm outline import
+  ///
+  /// In en, this message translates to:
+  /// **'Import Outline'**
+  String get syllabusQuickAddImportButton;
+
+  /// Button to start syllabus from template pack
+  ///
+  /// In en, this message translates to:
+  /// **'Start from Template Outline'**
+  String get syllabusStartFromTemplate;
+
+  /// Notice for template example outlines
+  ///
+  /// In en, this message translates to:
+  /// **'Editable example outline - not an official syllabus'**
+  String get syllabusTemplateNotice;
+
+  /// Empty state title when subject has no chapters
+  ///
+  /// In en, this message translates to:
+  /// **'No Chapters Yet'**
+  String get syllabusNoChapters;
+
+  /// Empty state description when subject has no chapters
+  ///
+  /// In en, this message translates to:
+  /// **'Break down {subject} into chapters and track your checkpoint mastery.'**
+  String syllabusNoChaptersDesc(String subject);
+
+  /// Empty state title when no subjects exist
+  ///
+  /// In en, this message translates to:
+  /// **'No Subjects Available'**
+  String get syllabusNoSubjects;
+
+  /// Empty state description when no subjects exist
+  ///
+  /// In en, this message translates to:
+  /// **'Add a subject first to track syllabus progress.'**
+  String get syllabusNoSubjectsDesc;
+
+  /// Topic count label
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 topic} other{{count} topics}}'**
+  String syllabusTopicCount(int count);
+
+  /// Button or title for reordering topics
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder Topics'**
+  String get syllabusReorderTopics;
+
+  /// Button to clear completion date
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Date'**
+  String get syllabusClearDate;
+
+  /// Button to select completion date
+  ///
+  /// In en, this message translates to:
+  /// **'Select Date'**
+  String get syllabusSelectDate;
+
+  /// Label for tree view mode in syllabus tab
+  ///
+  /// In en, this message translates to:
+  /// **'Tree'**
+  String get syllabusViewTree;
+
+  /// Label for map view mode in syllabus tab
+  ///
+  /// In en, this message translates to:
+  /// **'Map'**
+  String get syllabusViewMap;
+
+  /// Title for topics completion grid in syllabus map
+  ///
+  /// In en, this message translates to:
+  /// **'Topics Map'**
+  String get syllabusTopicGridTitle;
+
+  /// Title for chapter breakdown table in syllabus map
+  ///
+  /// In en, this message translates to:
+  /// **'Chapter Progress'**
+  String get syllabusChapterTableTitle;
+
+  /// Title for syllabus gaps section
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus Gaps'**
+  String get syllabusGapsTitle;
+
+  /// Subtitle describing syllabus gaps
+  ///
+  /// In en, this message translates to:
+  /// **'Studied topics missing practice or testing'**
+  String get syllabusGapsSubtitle;
+
+  /// Message shown when no syllabus gaps exist
+  ///
+  /// In en, this message translates to:
+  /// **'No gaps! All studied topics are practiced and tested.'**
+  String get syllabusGapsEmpty;
+
+  /// Badge indicating topic has not been practiced
+  ///
+  /// In en, this message translates to:
+  /// **'Needs Practice'**
+  String get syllabusGapNeedsPractice;
+
+  /// Badge indicating topic has not been tested
+  ///
+  /// In en, this message translates to:
+  /// **'Needs Model Test'**
+  String get syllabusGapNeedsModelTest;
+
+  /// Column header for chapter in progress table
+  ///
+  /// In en, this message translates to:
+  /// **'Chapter'**
+  String get syllabusColChapter;
+
+  /// Column header for studied percentage in progress table
+  ///
+  /// In en, this message translates to:
+  /// **'Studied'**
+  String get syllabusColStudied;
+
+  /// Column header for practiced percentage in progress table
+  ///
+  /// In en, this message translates to:
+  /// **'Practiced'**
+  String get syllabusColPracticed;
+
+  /// Column header for tested percentage in progress table
+  ///
+  /// In en, this message translates to:
+  /// **'Tested'**
+  String get syllabusColTested;
+
+  /// Column header for revised percentage in progress table
+  ///
+  /// In en, this message translates to:
+  /// **'Revised'**
+  String get syllabusColRevised;
+
+  /// Card title for next topics on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'Next Topics'**
+  String get todayNextTopicsTitle;
+
+  /// Empty state for next topics on Today screen
+  ///
+  /// In en, this message translates to:
+  /// **'No upcoming topics found'**
+  String get todayNextTopicsEmpty;
+
+  /// Label for picking weak topics from syllabus chips
+  ///
+  /// In en, this message translates to:
+  /// **'Pick from syllabus'**
+  String get prepMockWeakTopicsSyllabusLabel;
+
+  /// Label for free-text weak topics fallback input
+  ///
+  /// In en, this message translates to:
+  /// **'Custom weak topics (fallback)'**
+  String get prepMockFormWeakTopicsFallbackLabel;
+
+  /// Dialog title offering to update syllabus checkpoints after mock test
+  ///
+  /// In en, this message translates to:
+  /// **'Update Syllabus Checkpoints'**
+  String get prepMockMarkCheckpointsTitle;
+
+  /// Prompt asking user to mark model test checkpoint done
+  ///
+  /// In en, this message translates to:
+  /// **'Mark Model Test checkpoint done for {count} topics?'**
+  String prepMockMarkCheckpointsPrompt(int count);
+
+  /// Checkbox to automatically mark checkpoints in future
+  ///
+  /// In en, this message translates to:
+  /// **'Do this automatically in the future'**
+  String get prepMockMarkCheckpointsAuto;
+
+  /// Action button to mark checkpoints done
+  ///
+  /// In en, this message translates to:
+  /// **'Mark Done'**
+  String get prepMockMarkCheckpointsAction;
+
+  /// Dialog title offering to add weak topics to revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'Add weak topics to revision queue?'**
+  String get prepMockAddToRevisionPrompt;
+
+  /// Action button to add weak topics to revision queue
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Revision'**
+  String get prepMockAddToRevisionAction;
+
+  /// Dropdown label for optional topic in revision dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Topic (optional)'**
+  String get prepRevisionTopicOptionalLabel;
+
+  /// Option in topic dropdown for unlinked revision
+  ///
+  /// In en, this message translates to:
+  /// **'No topic linked'**
+  String get prepRevisionNoTopicOption;
+
+  /// Label for choosing study plan basis
+  ///
+  /// In en, this message translates to:
+  /// **'Plan Basis'**
+  String get studyPlanBasisLabel;
+
+  /// Option for reading units plan basis
+  ///
+  /// In en, this message translates to:
+  /// **'Reading Units'**
+  String get studyPlanBasisReadingUnits;
+
+  /// Option for syllabus topics plan basis
+  ///
+  /// In en, this message translates to:
+  /// **'Syllabus Topics'**
+  String get studyPlanBasisSyllabusTopics;
+
+  /// Chart title for weekly completed topics in study analytics
+  ///
+  /// In en, this message translates to:
+  /// **'Topics Completed per Week'**
+  String get prepAnalyticsWeeklyTopicsTitle;
+
+  /// Metric tile title for topics completed in weekly review
+  ///
+  /// In en, this message translates to:
+  /// **'Topics Completed'**
+  String get weeklyReviewTopicsCompletedTitle;
 }
 
 class _AppLocalizationsDelegate

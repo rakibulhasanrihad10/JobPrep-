@@ -4,6 +4,7 @@ import 'package:job_prep/features/prep/domain/entities/progress_log.dart';
 import 'package:job_prep/features/prep/domain/errors/prep_failure.dart';
 import 'package:job_prep/features/prep/domain/repositories/progress_log_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
+import 'package:uuid/uuid.dart';
 
 /// Supabase PostgREST implementation of [ProgressLogRepository] backed by
 /// `public.progress_logs`.
@@ -55,11 +56,17 @@ class SupabaseProgressLogRepository implements ProgressLogRepository {
 
     try {
       final currentUserId = _client.auth.currentUser?.id;
+      final logWithId =
+          log.id.trim().isEmpty ? log.copyWith(id: const Uuid().v4()) : log;
       final payload = ProgressLogMapper.toInsertJson(
-        log,
-        userId: log.userId.trim().isEmpty ? currentUserId : null,
+        logWithId,
+        userId: logWithId.userId.trim().isEmpty ? currentUserId : null,
       );
-      final row = await _client.from(_table).insert(payload).select().single();
+      final row = await _client
+          .from(_table)
+          .upsert(payload, onConflict: 'id')
+          .select()
+          .single();
       return ProgressLogMapper.fromJson(row);
     } on Object catch (error) {
       throw PrepErrorMapper.map(error);

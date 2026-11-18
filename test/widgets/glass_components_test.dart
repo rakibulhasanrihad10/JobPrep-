@@ -139,10 +139,25 @@ void main() {
       expect(find.text('Solid Glass Card'), findsOneWidget);
       expect(find.byType(BackdropFilter), findsNothing);
     });
+
+    testWidgets('omits BackdropFilter when useBlur is false', (tester) async {
+      await tester.pumpWidget(
+        _buildTestApp(
+          child: const GlassCard(
+            useBlur: false,
+            child: Text('No Blur List Row Card'),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('No Blur List Row Card'), findsOneWidget);
+      expect(find.byType(BackdropFilter), findsNothing);
+    });
   });
 
   group('GlassButton Widget Tests', () {
-    testWidgets('renders child, leading, trailing and handles tap',
+    testWidgets('renders child, leading, trailing and handles tap without blur',
         (tester) async {
       var pressed = false;
 
@@ -161,7 +176,7 @@ void main() {
       expect(find.text('Action Button'), findsOneWidget);
       expect(find.byIcon(Icons.star), findsOneWidget);
       expect(find.byIcon(Icons.arrow_forward), findsOneWidget);
-      expect(find.byType(BackdropFilter), findsOneWidget);
+      expect(find.byType(BackdropFilter), findsNothing);
 
       await tester.tap(find.text('Action Button'));
       expect(pressed, isTrue);
@@ -238,6 +253,7 @@ void main() {
       expect(find.text('Search Query'), findsOneWidget);
       expect(find.text('Enter keyword...'), findsOneWidget);
       expect(find.byIcon(Icons.search), findsOneWidget);
+      expect(find.byType(BackdropFilter), findsNothing);
 
       await tester.enterText(find.byType(TextFormField), 'Flutter');
       expect(entered, equals('Flutter'));
@@ -420,6 +436,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('Selected Chip'), findsOneWidget);
+      expect(find.byType(BackdropFilter), findsNothing);
     });
   });
 }

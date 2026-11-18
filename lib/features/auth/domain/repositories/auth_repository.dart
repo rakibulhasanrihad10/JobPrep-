@@ -51,6 +51,17 @@ abstract interface class AuthRepository {
   /// Throws an `AuthFailure` subclass on failure.
   Future<AuthUser> updatePassword({required String newPassword});
 
+  /// Updates the authenticated user's profile display name.
+  ///
+  /// Throws an `AuthFailure` subclass on failure.
+  Future<AuthUser> updateDisplayName({required String? displayName});
+
+  /// Permanently deletes the authenticated user's account and clears local
+  /// session state.
+  ///
+  /// Throws an `AuthFailure` subclass on failure.
+  Future<void> deleteMyAccount();
+
   /// Signs the current user out and clears local session state.
   ///
   /// Throws an `AuthFailure` subclass on failure.

@@ -111,6 +111,8 @@ class CircularFilePreviewDialog extends ConsumerWidget {
             child: Image.network(
               signedUri.toString(),
               fit: BoxFit.contain,
+              cacheWidth: 1200,
+              gaplessPlayback: true,
               loadingBuilder: (context, child, loadingProgress) {
                 if (loadingProgress == null) return child;
                 return Padding(

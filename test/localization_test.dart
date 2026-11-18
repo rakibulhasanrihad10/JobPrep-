@@ -9,7 +9,7 @@ import 'package:job_prep/core/localization/locale_controller.dart';
 import 'package:job_prep/core/router/app_router.dart';
 import 'package:job_prep/core/storage/preferences_provider.dart';
 import 'package:job_prep/features/auth/presentation/providers/auth_providers.dart';
-import 'package:job_prep/features/dashboard/presentation/widgets/language_switcher_card.dart';
+import 'package:job_prep/features/settings/presentation/widgets/language_settings_card.dart';
 import 'package:job_prep/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -280,34 +280,34 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('Language Switcher'), findsOneWidget);
-      expect(find.text('Theme Mode Switcher'), findsOneWidget);
+      expect(find.text('Language'), findsOneWidget);
+      expect(find.text('Appearance'), findsOneWidget);
 
       // Tap Bangla radio option
-      await tester.tap(
-        find.descendant(
-          of: find.byType(LanguageSwitcherCard),
-          matching: find.text('বাংলা (Bangla)'),
-        ),
+      final bnFinder = find.descendant(
+        of: find.byType(LanguageSettingsCard),
+        matching: find.text('বাংলা (Bangla)'),
       );
+      await tester.ensureVisible(bnFinder);
+      await tester.tap(bnFinder);
       await tester.pumpAndSettle();
 
       // Verify UI updated to Bangla
-      expect(find.text('ভাষা পরিবর্তন'), findsOneWidget);
-      expect(find.text('থিম মোড পরিবর্তন'), findsOneWidget);
+      expect(find.text('ভাষা'), findsOneWidget);
+      expect(find.text('চেহারা ও থিম'), findsOneWidget);
       expect(prefs.getString(kLocaleStorageKey), equals('bn'));
 
       // Tap English radio option
-      await tester.tap(
-        find.descendant(
-          of: find.byType(LanguageSwitcherCard),
-          matching: find.text('English'),
-        ),
+      final enFinder = find.descendant(
+        of: find.byType(LanguageSettingsCard),
+        matching: find.text('English'),
       );
+      await tester.ensureVisible(enFinder);
+      await tester.tap(enFinder);
       await tester.pumpAndSettle();
 
       // Verify UI reverted to English
-      expect(find.text('Language Switcher'), findsOneWidget);
+      expect(find.text('Language'), findsOneWidget);
       expect(prefs.getString(kLocaleStorageKey), equals('en'));
     });
   });
