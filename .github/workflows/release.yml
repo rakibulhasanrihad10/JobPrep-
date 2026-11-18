@@ -113,7 +113,7 @@ jobs:
 
       - name: Set up Supabase CLI
         if: ${{ (github.event_name != 'workflow_dispatch' || (!inputs.dry_run && !inputs.skip_migrations)) }}
-        uses: supabase/setup-cli@v1
+        uses: supabase/setup-cli@v3
         with:
           version: latest
           github-token: ${{ secrets.GITHUB_TOKEN }}
