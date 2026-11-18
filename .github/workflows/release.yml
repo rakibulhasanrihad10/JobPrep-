@@ -190,7 +190,7 @@ jobs:
 
       - name: Publish GitHub Release
         if: ${{ github.event_name != 'workflow_dispatch' || !inputs.dry_run }}
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ needs.verify_and_migrate.outputs.release_tag }}
           name: JobPrep ${{ needs.verify_and_migrate.outputs.release_tag }}
